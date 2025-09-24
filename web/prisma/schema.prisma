@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model animals {
+  id              Int           @id @default(autoincrement())
+  name            String
+  species         String
+  sex             String?       @db.VarChar(1)
+  color           String?
+  birth_date      DateTime      @db.Date
+  is_neutered     Boolean
+  status          String?       @default("unhosted")
+  last_vax        DateTime?     @db.Date
+  is_primo_vax    Boolean?      @default(false)
+  last_deworm     DateTime?     @db.Date
+  is_first_deworm Boolean?      @default(false)
+  information     String?
+  family_id       Int?
+  organization_id Int
+  created_at      DateTime?     @default(now()) @db.Timestamptz(6)
+  families        families?     @relation(fields: [family_id], references: [id], onUpdate: NoAction)
+  organizations   organizations @relation(fields: [organization_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model families {
+  id              Int           @id @default(autoincrement())
+  contact_name    String
+  email           String?
+  phone_number    String
+  address         String?
+  organization_id Int
+  created_at      DateTime?     @default(now()) @db.Timestamptz(6)
+  animals         animals[]
+  organizations   organizations @relation(fields: [organization_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model member_organization {
+  member_id       Int
+  organization_id Int
+  role            String?       @default("member")
+  status          String?       @default("pending")
+  joined_at       DateTime?     @default(now()) @db.Timestamptz(6)
+  members         members       @relation(fields: [member_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  organizations   organizations @relation(fields: [organization_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([member_id, organization_id])
+}
+
+model members {
+  id                  Int                   @id @default(autoincrement())
+  first_name          String
+  last_name           String
+  email               String                @unique
+  phone_number        String                @unique
+  password_hash       String
+  created_at          DateTime?             @default(now()) @db.Timestamptz(6)
+  member_organization member_organization[]
+}
+
+model organizations {
+  id                  Int                   @id @default(autoincrement())
+  name                String
+  created_at          DateTime?             @default(now()) @db.Timestamptz(6)
+  animals             animals[]
+  families            families[]
+  member_organization member_organization[]
+}
