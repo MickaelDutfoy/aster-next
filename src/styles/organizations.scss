@@ -1,0 +1,100 @@
+@use "vars";
+@use "global";
+
+.org-wrapper {
+    padding: 10px 0;
+
+    h3 {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 10px;
+    }
+}
+
+// .orga-search {
+//     position: relative;
+
+//     form {
+//         display: flex;
+//         flex-direction: row;
+//         gap: 10px;
+//     }
+
+//     ul {
+//         background-color: vars.$snow;
+//         position: absolute;
+//         top: 40px;
+//         display: flex;
+//         flex-direction: column;
+//         font-size: 1rem;
+//         list-style: none;
+//         z-index: 2;
+//     }
+
+//     li:first-child {
+//         border: 1px solid vars.$outer-space;
+//     }
+
+//     li {
+//         cursor: pointer;
+//         color: vars.$outer-space;
+//         border-bottom: 1px solid vars.$outer-space;
+//         border-right: 1px solid vars.$outer-space;
+//         border-left: 1px solid vars.$outer-space;
+//         padding: 10px;
+//     }
+// }
+
+// .pending-list {
+//     margin-bottom: 10px;
+//     padding-left: 20px;
+//     background-color: inherit;
+//     list-style-type: disc;
+
+//     li {
+//         cursor: pointer;
+//         text-decoration: none;
+//         color: vars.$outer-space;
+//         font-size: 1rem;
+//     }
+// }
+
+// .waiting-list {
+//     margin-bottom: 10px;
+//     padding-left: 20px;
+//     background-color: inherit;
+//     list-style-type: disc;
+
+//     li {
+//         text-decoration: none;
+//         color: inherit;
+//         font-size: 1rem;
+//     }
+// }
+
+@media (prefers-color-scheme: dark) {
+    // ul {
+    //     background-color: vars.$isabelline;
+    // }
+
+    // li:first-child {
+    //     border: 1px solid vars.$outer-space;
+    // }
+
+    // li {
+    //     color: vars.$smoky-black;
+    //     border-bottom: 1px solid vars.$outer-space;
+    //     border-right: 1px solid vars.$outer-space;
+    //     border-left: 1px solid vars.$outer-space;
+    // }
+
+    // .pending-list > li {
+    //     color: vars.$cinereous;
+    // }
+}

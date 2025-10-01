@@ -1,0 +1,44 @@
+@use "_vars";
+
+.auth-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0 20px;
+    gap: 30px;
+}
+
+.auth-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    form {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        font-size: 1.2rem;
+    }
+
+    .auth-field {
+        background-color: vars.$isabelline;
+        border: 1px solid vars.$outer-space;
+        border-radius: 5px;
+        box-shadow: 1px 1px 4px vars.$smoky-black;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .disclaimer {
+        margin-top: 10px;
+        font-size: 0.9rem;
+    }
+}

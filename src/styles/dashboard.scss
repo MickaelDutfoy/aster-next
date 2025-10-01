@@ -1,0 +1,60 @@
+@use "vars";
+
+.dashboard {
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    bottom: 2vh;
+    left: 2vw;
+    padding: 10px;
+    background-color: vars.$isabelline;
+    color: vars.$smoky-black;
+    border: 3px solid vars.$cinereous;
+    border-radius: 10px;
+    z-index: 2;
+    overflow-y: auto;
+    opacity: 0.9;
+}
+
+nav {
+    padding: 0 10px;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    min-height: 50px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orga-select {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.notice {
+    text-align: center;
+    padding: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .dashboard {
+        background-color: vars.$outer-space;
+        color: vars.$isabelline;
+        border: 3px solid vars.$smoky-black;
+    }
+}

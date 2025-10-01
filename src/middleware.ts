@@ -34,7 +34,7 @@ export async function middleware(req: NextRequest) {
   // 2) Garde d'auth: protège tout sauf les PUBLIC_PATHS
   const isPublic = PUBLIC_PATHS.some(p => pathname.startsWith(p));
   const token = await getToken({ req, secret: SECRET }); // nécessite NEXTAUTH_SECRET
-  if (!isPublic && !token) {
+  if (!isPublic && !token && !pathname.startsWith("/register")) {
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("from", pathname); // pratique pour post-login redirect

@@ -1,5 +1,5 @@
-const Intro = () => {
-    return <h1 className="m-5">This is the intro page.</h1>
+const Families = () => {
+    return <></>
 }
 
-export default Intro;
+export default Families;

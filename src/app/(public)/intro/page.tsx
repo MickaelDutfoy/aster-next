@@ -1,5 +1,6 @@
 'use client'
 
+import "@/styles/intro.scss"
 import { markSeen } from "@/app/(public)/intro/actions";
 import { useState } from "react";
 
@@ -14,7 +15,7 @@ const Intro = () => {
         }
     }
 
-    return <>
+    return <div className="intro">
         {step === 0 && <div>
             <h2>Bienvenue sur Aster !</h2>
             <p>« Aider ceux qui aident. »</p>
@@ -39,7 +40,7 @@ const Intro = () => {
             <p>Alors, on commence ?</p>
             <button className="main-button" onClick={nextFrame}>C'est parti !</button>
         </div>}
-    </>
+    </div>
 }
 
 export default Intro;

@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
         };
       },
     }),
-  ],
+  ]
 };
 
 // ⬇️ v5: expose a single NextAuth instance with helpers

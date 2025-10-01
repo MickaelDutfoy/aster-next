@@ -1,0 +1,30 @@
+@use "_vars";
+
+.intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+
+    div {
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+    }
+
+    h2 {
+        color: vars.$smoky-black;
+        padding: 15px;
+    }
+
+    p {
+        padding: 10px;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+}

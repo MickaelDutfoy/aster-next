@@ -1,0 +1,134 @@
+@use "vars";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-nunito);
+    font-size: 18px;
+}
+
+body {
+    min-height: 100vh;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
+        url('../../public/aster.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a, button {
+    text-decoration: none;
+    color: inherit;
+    font: inherit;
+}
+
+.link {
+    color: vars.$raw-umber;
+    text-decoration: underline;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-comfortaa);
+    font-weight: 700;
+}
+
+// #toast-container {
+//     position: fixed;
+//     top: 25px;
+//     right: 20px;
+//     width: calc(100% - 40px);
+//     z-index: 100;
+
+//     .toast {
+//         background-color: vars.$smoky-black;
+//         color: vars.$isabelline;
+//         padding: 12px 20px;
+//         margin-bottom: 10px;
+//         border-radius: 6px;
+//         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+//         opacity: 1;
+//         transition: opacity 0.3s ease-out;
+//     }
+
+//     .toast.hide {
+//         opacity: 0;
+//     }
+// }
+
+.main-button {
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    background-color: vars.$cinereous;
+    box-shadow: 2px 2px 4px vars.$outer-space;
+    padding: 15px;
+    border: 2px solid vars.$raw-umber;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.little-button {
+    cursor: pointer;
+    background-color: vars.$cinereous;
+    color: vars.$smoky-black;
+    box-shadow: 1px 1px 4px vars.$smoky-black;
+    padding: 7px;
+    border: 1px solid vars.$raw-umber;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.box {
+    transform: scale(1.4);
+    accent-color: vars.$cinereous;
+}
+
+input[type=text], select, textarea {
+    font-family: var(--font-nunito);
+    background-color: vars.$snow;
+    border: 1px solid vars.$outer-space;
+    border-radius: 3px;
+    color: vars.$outer-space;
+    box-shadow: 1px 1px 4px vars.$smoky-black;
+    padding: 5px;
+}
+
+textarea {
+    resize: vertical;
+    overflow: auto;
+}
+
+hr {
+    color: vars.$cinereous;
+    margin: 5px 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .link {
+        color: vars.$cinereous;
+    }
+
+    .box {
+        accent-color: vars.$raw-umber;
+    }
+
+    input[type=text], select, textarea {
+        background-color: vars.$isabelline;
+        color: vars.$smoky-black;
+    }
+
+    .little-button {
+        background-color: vars.$raw-umber;
+        color: vars.$smoky-black;
+        border: 1px solid vars.$smoky-black;
+    }
+
+    hr {
+        color: vars.$raw-umber;
+    }
+}

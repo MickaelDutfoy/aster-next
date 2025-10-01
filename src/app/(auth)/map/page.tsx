@@ -1,5 +1,5 @@
-const Intro = () => {
-    return <h1 className="m-5">This is the map page.</h1>
+const Map = () => {
+    return <></>
 }
 
-export default Intro;
+export default Map;
