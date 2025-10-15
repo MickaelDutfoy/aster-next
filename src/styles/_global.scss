@@ -1,40 +1,61 @@
-@use "vars";
+@use 'vars';
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: var(--font-nunito);
-    font-size: 18px;
+  font-family: var(--font-nunito);
+  font-size: 18px;
 }
 
 body {
-    min-height: 100vh;
-    background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
-        url('../../public/aster.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
+    url('../../public/aster.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-a, button {
-    text-decoration: none;
-    color: inherit;
-    font: inherit;
+a,
+button {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
 }
 
 .link {
-    color: vars.$raw-umber;
-    text-decoration: underline;
+  color: vars.$raw-umber;
 }
 
-h1, h2, h3 {
-    font-family: var(--font-comfortaa);
-    font-weight: 700;
+.links-box {
+  padding: 5px 0 10px 0;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 5px;
+}
+
+.yes-no {
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-comfortaa);
+  font-weight: 700;
+}
+
+.denied-page {
+  margin: 50px 30px;
+  text-align: center;
 }
 
 // #toast-container {
@@ -61,74 +82,122 @@ h1, h2, h3 {
 // }
 
 .main-button {
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-    background-color: vars.$cinereous;
-    box-shadow: 2px 2px 4px vars.$outer-space;
-    padding: 15px;
-    border: 2px solid vars.$raw-umber;
-    border-radius: 10px;
-    font-size: 20px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  background-color: vars.$cinereous;
+  box-shadow: 2px 2px 4px vars.$outer-space;
+  padding: 15px;
+  border: 2px solid vars.$raw-umber;
+  border-radius: 10px;
+  font-size: 20px;
 }
 
 .little-button {
-    cursor: pointer;
-    background-color: vars.$cinereous;
-    color: vars.$smoky-black;
-    box-shadow: 1px 1px 4px vars.$smoky-black;
-    padding: 7px;
-    border: 1px solid vars.$raw-umber;
-    border-radius: 5px;
-    font-size: 0.9rem;
+  cursor: pointer;
+  background-color: vars.$cinereous;
+  color: vars.$smoky-black;
+  box-shadow: 1px 1px 4px vars.$smoky-black;
+  padding: 7px;
+  border: 1px solid vars.$raw-umber;
+  border-radius: 5px;
+  font-size: 0.9rem;
 }
 
-.box {
-    transform: scale(1.4);
-    accent-color: vars.$cinereous;
+.disabled-button {
+  cursor: default !important;
+  background-color: vars.$stone !important;
+  opacity: 0.6;
 }
 
-input[type=text], select, textarea {
-    font-family: var(--font-nunito);
-    background-color: vars.$snow;
-    border: 1px solid vars.$outer-space;
-    border-radius: 3px;
-    color: vars.$outer-space;
-    box-shadow: 1px 1px 4px vars.$smoky-black;
-    padding: 5px;
+.right-button {
+  text-align: right;
+  margin: 20px;
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+  transform: scale(1.5);
+  accent-color: vars.$cinereous;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-nunito);
+  background-color: vars.$snow;
+  border: 1px solid vars.$outer-space;
+  border-radius: 3px;
+  color: vars.$outer-space;
+  box-shadow: 1px 1px 4px vars.$smoky-black;
+  padding: 5px;
 }
 
 textarea {
-    resize: vertical;
-    overflow: auto;
+  resize: vertical;
+  overflow: auto;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.modal {
+  max-width: 90vw;
+  background-color: vars.$isabelline;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid vars.$cinereous;
+  border-radius: 5px;
+
+  .close {
+    align-self: flex-end;
+    cursor: pointer;
+    padding: 3px;
+    margin-bottom: 10px;
+  }
 }
 
 hr {
-    color: vars.$cinereous;
-    margin: 5px 0;
+  color: vars.$cinereous;
+  margin: 5px 0;
 }
 
 @media (prefers-color-scheme: dark) {
-    .link {
-        color: vars.$cinereous;
-    }
+  .link {
+    color: vars.$cinereous;
+  }
 
-    .box {
-        accent-color: vars.$raw-umber;
-    }
+  input[type='checkbox'] {
+    accent-color: vars.$raw-umber;
+  }
 
-    input[type=text], select, textarea {
-        background-color: vars.$isabelline;
-        color: vars.$smoky-black;
-    }
+  input,
+  select,
+  textarea {
+    background-color: vars.$isabelline;
+    color: vars.$smoky-black;
+  }
 
-    .little-button {
-        background-color: vars.$raw-umber;
-        color: vars.$smoky-black;
-        border: 1px solid vars.$smoky-black;
-    }
+  .little-button {
+    background-color: vars.$raw-umber;
+    color: vars.$smoky-black;
+    border: 1px solid vars.$smoky-black;
+  }
 
-    hr {
-        color: vars.$raw-umber;
-    }
+  .modal {
+    background-color: vars.$outer-space;
+    border: 2px solid vars.$raw-umber;
+  }
+
+  hr {
+    color: vars.$raw-umber;
+  }
 }

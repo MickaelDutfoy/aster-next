@@ -1,0 +1,67 @@
+@use "vars";
+
+.post-animal-form {
+    h3 {
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 10px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        .name-species-color {
+            display: flex;
+            justify-content: space-between;
+    
+            * { width: 33% }
+        }
+    
+        .sex, .vax-deworm-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 10px;
+        }
+    
+        .birth-vax-deworm {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            align-self: center;
+        }
+    }
+}
+
+.animal-list {
+    ul {
+        padding: 10px 10px 10px 20px;
+
+        li {
+            line-height: 1.75;
+        }
+    }
+}
+
+.animal-details {
+    h3 {
+        padding-bottom: 10px;
+    }
+
+    .animal-details-section {
+        padding: 10px;
+
+        p {
+            padding-left: 10px;
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+}

@@ -1,7 +1,7 @@
 'use client'
 
 import "@/styles/intro.scss"
-import { markSeen } from "@/app/(public)/intro/actions";
+import { markIntroSeen } from "@/actions/markIntroSeen";
 import { useState } from "react";
 
 const Intro = () => {
@@ -11,7 +11,7 @@ const Intro = () => {
         if (step < 3) {
             setStep(step + 1);
         } else {
-            markSeen();
+            markIntroSeen();
         }
     }
 

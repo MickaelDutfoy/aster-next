@@ -14,16 +14,16 @@ export const authOptions: NextAuthOptions = {
         const password = creds?.password?.toString() ?? "";
         if (!email || !password) return null;
 
-        const user = await prisma.members.findUnique({ where: { email } });
+        const user = await prisma.member.findUnique({ where: { email } });
         if (!user) return null;
 
-        const ok = await bcrypt.compare(password, user.password_hash);
+        const ok = await bcrypt.compare(password, user.passwordHash);
         if (!ok) return null;
 
         return {
           id: String(user.id),
           email: user.email,
-          name: `${user.first_name} ${user.last_name}`,
+          name: `${user.firstName} ${user.lastName}`,
         };
       },
     }),

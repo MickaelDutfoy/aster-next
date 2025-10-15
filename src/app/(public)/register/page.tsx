@@ -21,13 +21,13 @@ const Register = () => {
         const passwordHash = await bcrypt.hash(newUser.password, 12);
 
         try {
-            await prisma.members.create({
+            await prisma.member.create({
                 data: {
-                    first_name: newUser.firstName,
-                    last_name: newUser.lastName,
+                    firstName: newUser.firstName,
+                    lastName: newUser.lastName,
                     email: newUser.email,
-                    phone_number: newUser.phoneNumber,
-                    password_hash: passwordHash
+                    phoneNumber: newUser.phoneNumber,
+                    passwordHash: passwordHash
                 }
             })
 
@@ -55,7 +55,7 @@ const Register = () => {
                 <label htmlFor="userPhoneNumber">Téléphone :</label>
                 <input className="auth-field" type="text" name="userPhoneNumber" placeholder="Téléphone" />
                 <label htmlFor="userPassword">Mot de passe :</label>
-                <input className="auth-field" type="text" name="userPassword" placeholder="Mot de passe" />
+                <input className="auth-field" type="password" name="userPassword" placeholder="Mot de passe" />
                 <p className="disclaimer">Le numéro de téléphone n'est requis que par commodité de communication pour les membres d'une association. Aster n'utilisera jamais votre numéro.</p>
                 <button type="submit" className="main-button">Créer un compte</button>
             </form>

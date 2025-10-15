@@ -8,7 +8,7 @@ const Settings = () => {
     }
 
     return <>
-        <form action={logout}>
+        <form style={{ textAlign: "right", margin: "10px 0" }} action={logout}>
             <button type="submit" className="little-button">Se déconnecter ?</button>
         </form>
     </>

@@ -1,29 +1,38 @@
-import "@/styles/dashboard.scss"
-import { getUser } from "@/lib/getUser";
-import { Member, Organization } from "@/lib/types";
-import { UserProvider } from "@/components/UserProvider";
-import { OrgProvider } from "@/components/OrgProvider";
-import { Header } from "@/components/Header";
-import { NavBar } from "@/components/NavBar";
-import { OrgSelector } from "@/components/OrgSelector";
-import { getOrg } from "@/lib/getOrg";
+import { Header } from '@/components/Header';
+import { NavBar } from '@/components/NavBar';
+import { OrgProvider } from '@/components/OrgProvider';
+import { OrgSelector } from '@/components/OrgSelector';
+import { UserProvider } from '@/components/UserProvider';
+import { getSelectedOrg } from '@/lib/getSelectedOrg';
+import { getUser } from '@/lib/getUser';
+import { Member, Organization } from '@/lib/types';
+import '@/styles/dashboard.scss';
 
-const Layout = async ({ children }: { children: React.ReactNode }) => {
-    const user: Member | null = await getUser();
-    if (!user) return null;
+const Layout = async ({
+  children,
+  modal,
+}: {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}) => {
+  const user: Member | null = await getUser();
+  if (!user) return null;
 
-    const org : Organization | null = await getOrg(user);
+  const org: Organization | null = await getSelectedOrg(user);
 
-    return <div className="dashboard">
-        <UserProvider value={user}>
-            <OrgProvider value={org}>
-                <NavBar />
-                <Header />
-                <OrgSelector />
-                {children}
-            </OrgProvider>
-        </UserProvider>
+  return (
+    <div className="dashboard">
+      <UserProvider value={user}>
+        <OrgProvider value={org}>
+          <NavBar />
+          <Header />
+          <OrgSelector />
+          {children}
+          {modal}
+        </OrgProvider>
+      </UserProvider>
     </div>
-}
+  );
+};
 
 export default Layout;

@@ -12,7 +12,9 @@ const titles: Record<string, string> = {
 };
 
 export const Header = () => {
-  const pathname = usePathname();
+  const pathname = usePathname() || "/";
+  const keys = Object.keys(titles).sort((a, b) => b.length - a.length);
+  const key = keys.find(k => pathname === k || pathname.startsWith(k + "/"));
 
-  return <><header>{titles[pathname] ?? ""}</header><hr /></>;
+  return <><header><h2>{key ? titles[key] : ""}</h2></header><hr /></>;
 };
