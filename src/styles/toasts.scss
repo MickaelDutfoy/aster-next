@@ -1,0 +1,91 @@
+/* —— TOASTS —— */
+.toast-container {
+  position: fixed;
+  top: env(safe-area-inset-top, 0);
+  left: 0;
+  right: 0;
+  z-index: 2147483647; // au-dessus de tout
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none; // laisse cliquer le contenu derrière sauf sur les toasts
+  padding: 8px;
+}
+
+.toast {
+  pointer-events: auto; // clic/tap actif
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  min-width: min(92vw, 480px);
+  max-width: min(92vw, 600px);
+  width: max-content;
+
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  color: #fff;
+  font:
+    500 14px/1.35 system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    Cantarell,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    'Apple Color Emoji',
+    'Segoe UI Emoji';
+  text-align: left;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+
+  transform: translateY(-8px);
+  opacity: 0;
+  animation: toast-in 160ms ease-out forwards;
+
+  // tactile friendly
+  -webkit-tap-highlight-color: transparent;
+
+  // légère transparence pour lisibilité sur fonds variés
+  backdrop-filter: saturate(120%) blur(4px);
+}
+
+.toast__message {
+  display: block;
+  word-break: break-word;
+}
+
+/* variantes (seule la couleur varie) */
+.toast--success {
+  background: #16a34a;
+} /* vert */
+.toast--error {
+  background: #dc2626;
+} /* rouge */
+.toast--info {
+  background: #111827;
+} /* noir/gris très foncé */
+
+@keyframes toast-in {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* petite anim de sortie si tu veux ajouter une classe .is-leaving plus tard */
+/*
+  @keyframes toast-out {
+    to {
+      transform: translateY(-8px);
+      opacity: 0;
+    }
+  }
+  */
+
+/* pile “qui monte” naturellement : les nouveaux s’ajoutent en bas et poussent vers le haut
+     (déjà géré par flex-direction: column + ajout en fin de liste) */

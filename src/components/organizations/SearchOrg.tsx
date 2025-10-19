@@ -1,6 +1,6 @@
 'use client';
-import { joinOrg } from '@/actions/joinOrg';
-import { getMatchingOrgs } from '@/lib/getMatchingOrgs';
+import { joinOrg } from '@/actions/organizations/joinOrg';
+import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';

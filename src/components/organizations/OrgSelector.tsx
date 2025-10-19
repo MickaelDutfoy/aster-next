@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import { setOrgCookie } from '@/actions/setOrgCookie';
+import { setOrgCookie } from '@/actions/organizations/setOrgCookie';
 import { Member, Organization } from '@/lib/types';
 import { useRouter } from 'next/navigation';
+import { useUser } from '../UserProvider';
 import { useOrg } from './OrgProvider';
-import { useUser } from './UserProvider';
 
 export const OrgSelector = () => {
   const user: Member | null = useUser();

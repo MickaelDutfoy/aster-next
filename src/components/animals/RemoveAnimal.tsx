@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteAnimal } from "@/actions/deleteAnimal";
+import { deleteAnimal } from '@/actions/animals/deleteAnimal';
 import { useRouter } from "next/navigation";
 
 export const RemoveAnimal = ({ id }: { id: string }) => {

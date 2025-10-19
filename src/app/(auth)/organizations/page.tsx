@@ -1,6 +1,6 @@
-import { registerOrg } from '@/actions/registerOrg';
-import { OrgList } from '@/components/OrgList';
-import { SearchOrg } from '@/components/SearchOrg';
+import { registerOrg } from '@/actions/organizations/registerOrg';
+import { OrgList } from '@/components/organizations/OrgList';
+import { SearchOrg } from '@/components/organizations/SearchOrg';
 import { getUser } from '@/lib/getUser';
 import { Member } from '@/lib/types';
 import '@/styles/organizations.scss';

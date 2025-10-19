@@ -1,7 +1,7 @@
-import { getAge } from '@/lib/getAge';
-import { getSelectedOrg } from '@/lib/getSelectedOrg';
 import { getUser } from '@/lib/getUser';
+import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
+import { getAge } from '@/lib/utils/getAge';
 import Link from 'next/link';
 
 const Animals = async () => {

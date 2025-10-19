@@ -1,7 +1,7 @@
 'use client'
 
-import "@/styles/intro.scss"
-import { markIntroSeen } from "@/actions/markIntroSeen";
+import { markIntroSeen } from '@/actions/intro/markIntroSeen';
+import '@/styles/intro.scss';
 import { useState } from "react";
 
 const Intro = () => {

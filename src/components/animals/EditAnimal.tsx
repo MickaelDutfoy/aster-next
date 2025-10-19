@@ -1,6 +1,6 @@
 'use client'
 
-import { updateAnimal } from "@/actions/updateAnimal";
+import { updateAnimal } from '@/actions/animals/updateAnimal';
 import { useRouter } from "next/navigation";
 
 export const EditAnimal = ({ id }: { id: string }) => {

@@ -1,7 +1,7 @@
 'use server';
 
-import { getSelectedOrg } from '@/lib/getSelectedOrg';
 import { getUser } from '@/lib/getUser';
+import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { prisma } from '@/lib/prisma';
 import { Member, Organization } from '@/lib/types';
 import { Sex } from '@prisma/client';
@@ -32,8 +32,6 @@ export const postAnimal = async (formdata: FormData) => {
     console.log('champs invalides');
     return;
   }
-
-  console.log('ready to insert', animal);
 
   try {
     await prisma.animal.create({

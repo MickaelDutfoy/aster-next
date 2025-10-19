@@ -1,7 +1,7 @@
 'use client';
 
-import { AddAnimal } from '@/components/AddAnimal';
 import { Modal } from '@/components/Modal';
+import { AddAnimal } from '@/components/animals/AddAnimal';
 import { usePathname } from 'next/navigation';
 
 export default function AddAnimalModal() {

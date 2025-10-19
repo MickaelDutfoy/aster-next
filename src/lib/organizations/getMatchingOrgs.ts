@@ -1,7 +1,7 @@
 'use server';
 
-import { prisma } from './prisma';
-import { Organization } from './types';
+import { prisma } from '../prisma';
+import { Organization } from '../types';
 
 export const getMatchingOrgs = async (input: string): Promise<Organization[]> => {
   const orgs = await prisma.organization.findMany({

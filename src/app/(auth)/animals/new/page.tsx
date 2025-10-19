@@ -1,7 +1,7 @@
-import { AddAnimal } from "@/components/AddAnimal";
+import { AddAnimal } from '@/components/animals/AddAnimal';
 
 const AddAnimalPage = () => {
-    return <AddAnimal />
-}
+  return <AddAnimal />;
+};
 
 export default AddAnimalPage;

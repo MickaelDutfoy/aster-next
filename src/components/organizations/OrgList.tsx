@@ -1,8 +1,8 @@
 'use client';
 
-import { cancelOrgRequest } from '@/actions/cancelOrgRequest';
+import { cancelOrgRequest } from '@/actions/organizations/cancelOrgRequest';
 import { Member } from '@/lib/types';
-import { useUser } from './UserProvider';
+import { useUser } from '../UserProvider';
 
 export const OrgList = () => {
   const user: Member | null = useUser();

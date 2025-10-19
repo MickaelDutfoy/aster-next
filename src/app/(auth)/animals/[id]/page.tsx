@@ -1,9 +1,9 @@
-import { displayDate } from '@/lib/displayDate';
-import { getAge } from '@/lib/getAge';
-import { getAnimalById } from '@/lib/getAnimalById';
-import { getSelectedOrg } from '@/lib/getSelectedOrg';
+import { getAnimalById } from '@/lib/animals/getAnimalById';
 import { getUser } from '@/lib/getUser';
+import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Animal, Member, Organization } from '@/lib/types';
+import { displayDate } from '@/lib/utils/displayDate';
+import { getAge } from '@/lib/utils/getAge';
 import Link from 'next/link';
 
 const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
