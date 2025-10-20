@@ -1,8 +1,8 @@
 import { registerOrg } from '@/actions/organizations/registerOrg';
 import { OrgList } from '@/components/organizations/OrgList';
 import { SearchOrg } from '@/components/organizations/SearchOrg';
-import { getUser } from '@/lib/getUser';
 import { Member } from '@/lib/types';
+import { getUser } from '@/lib/user/getUser';
 import '@/styles/organizations.scss';
 
 const Organizations = async () => {

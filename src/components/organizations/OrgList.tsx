@@ -2,7 +2,7 @@
 
 import { cancelOrgRequest } from '@/actions/organizations/cancelOrgRequest';
 import { Member } from '@/lib/types';
-import { useUser } from '../UserProvider';
+import { useUser } from '../providers/UserProvider';
 
 export const OrgList = () => {
   const user: Member | null = useUser();

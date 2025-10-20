@@ -1,6 +1,6 @@
-import { getUser } from '@/lib/getUser';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
+import { getUser } from '@/lib/user/getUser';
 import { getAge } from '@/lib/utils/getAge';
 import Link from 'next/link';
 

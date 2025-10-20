@@ -2,7 +2,7 @@
 
 import { postAnimal } from '@/actions/animals/postAnimal';
 import { useRouter } from 'next/navigation';
-import { showToast } from '../ToastProvider';
+import { showToast } from '../providers/ToastProvider';
 
 export const AddAnimal = () => {
   const router = useRouter();

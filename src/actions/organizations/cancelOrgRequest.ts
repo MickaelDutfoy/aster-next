@@ -1,8 +1,8 @@
 'use server';
 
-import { getUser } from '@/lib/getUser';
 import { prisma } from '@/lib/prisma';
 import { Member } from '@/lib/types';
+import { getUser } from '@/lib/user/getUser';
 import { revalidateTag } from 'next/cache';
 
 export const cancelOrgRequest = async (orgId: number) => {

@@ -1,10 +1,9 @@
-import ToastProvider from '@/components/ToastProvider';
+import ToastProvider from '@/components/providers/ToastProvider';
 import '@/styles/_global.scss';
 import type { Metadata } from 'next';
 import { Comfortaa, Nunito } from 'next/font/google';
 
 export const nunito = Nunito({
-  // app main font
   subsets: ['latin', 'latin-ext'],
   style: ['normal', 'italic'],
   weight: ['400', '700'],
@@ -12,7 +11,6 @@ export const nunito = Nunito({
 });
 
 export const comfortaa = Comfortaa({
-  // buttons, titles
   subsets: ['latin', 'latin-ext'],
   style: ['normal'],
   weight: ['400', '700'],

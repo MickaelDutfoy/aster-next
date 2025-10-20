@@ -2,12 +2,20 @@
 
 import { login } from '@/actions/auth/login';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { showToast } from '../providers/ToastProvider';
 
 export const Login = () => {
+  const router = useRouter();
+
   const handleLogin = async (formdata: FormData) => {
-    await login(formdata);
-    redirect('/');
+    const res = await login(formdata);
+
+    if (res.ok) {
+      router.replace('/');
+    } else {
+      showToast(res.message as string, 'error');
+    }
   };
 
   return (

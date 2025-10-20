@@ -1,7 +1,7 @@
 import { getAnimalById } from '@/lib/animals/getAnimalById';
-import { getUser } from '@/lib/getUser';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Animal, Member, Organization } from '@/lib/types';
+import { getUser } from '@/lib/user/getUser';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
 import Link from 'next/link';

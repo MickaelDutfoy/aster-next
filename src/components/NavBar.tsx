@@ -4,7 +4,7 @@ import { Member } from '@/lib/types';
 import { Cat, FolderOpen, HouseHeart, MapPinned, Settings, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useUser } from './UserProvider';
+import { useUser } from './providers/UserProvider';
 
 export const NavBar = () => {
   const user: Member | null = useUser();

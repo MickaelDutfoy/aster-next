@@ -8,7 +8,6 @@ type Toast = { id: number; message: string; type: ToastType };
 
 export type ToastEventDetail = { message: string; type?: ToastType; duration?: number };
 
-// API IMPÉRATIVE LÉGÈRE
 export function showToast(message: string, type: ToastType = 'info', duration = 3000) {
   if (typeof window === 'undefined') return;
   const event = new CustomEvent<ToastEventDetail>('toast', { detail: { message, type, duration } });
@@ -19,7 +18,6 @@ export default function ToastProvider() {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const timers = useRef<Map<number, number>>(new Map());
 
-  // écoute des événements "toast"
   useEffect(() => {
     function onToast(e: Event) {
       const {
@@ -53,11 +51,11 @@ export default function ToastProvider() {
       {toasts.map((toast) => (
         <button
           key={toast.id}
-          className={`toast ${toast.type === 'error' ? 'toast--error' : toast.type === 'success' ? 'toast--success' : 'toast--info'}`}
-          onClick={() => dismiss(toast.id)} // tap/click pour fermer
+          className={`toast ${toast.type === 'error' ? 'toast-error' : toast.type === 'success' ? 'toast-success' : 'toast-info'}`}
+          onClick={() => dismiss(toast.id)}
           type="button"
         >
-          <span className="toast__message">{toast.message}</span>
+          <span className="toast-message">{toast.message}</span>
         </button>
       ))}
     </div>

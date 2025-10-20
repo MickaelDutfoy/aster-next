@@ -3,7 +3,7 @@
 import { setOrgCookie } from '@/actions/organizations/setOrgCookie';
 import { Member, Organization } from '@/lib/types';
 import { useRouter } from 'next/navigation';
-import { useUser } from '../UserProvider';
+import { useUser } from '../providers/UserProvider';
 import { useOrg } from './OrgProvider';
 
 export const OrgSelector = () => {

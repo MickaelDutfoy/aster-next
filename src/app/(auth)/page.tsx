@@ -1,5 +1,5 @@
-import { getUser } from '@/lib/getUser';
 import { Member } from '@/lib/types';
+import { getUser } from '@/lib/user/getUser';
 import Link from 'next/link';
 
 const Dashboard = async () => {
@@ -7,6 +7,7 @@ const Dashboard = async () => {
   if (!user) return;
 
   return (
+    // contenu à repenser
     <>
       <p>Bienvenue, {user.firstName} !</p>
       {user.organizations.length === 0 && (
