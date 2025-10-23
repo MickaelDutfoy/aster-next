@@ -17,16 +17,14 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <h3 className="denied-page">Une erreur est survenue.</h3>;
 
-  if (user.organizations.every((org) => org.id !== animal.organizationId))
+  if (user.organizations.every((org) => org.id !== animal.orgId))
     return (
       <h3 className="denied-page">
         Vous n'avez pas les permissions pour accéder à cette ressource.
       </h3>
     );
 
-  const animalOrg: Organization | undefined = user.organizations.find(
-    (o) => o.id === animal.organizationId,
-  );
+  const animalOrg: Organization | undefined = user.organizations.find((o) => o.id === animal.orgId);
 
   return (
     <>

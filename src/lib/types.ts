@@ -1,7 +1,13 @@
-import { Sex } from '@prisma/client';
+import { MemberRole, MemberStatus, Sex } from '@prisma/client';
+
+export type ActionValidation = {
+  ok: boolean;
+  status?: 'success' | 'error' | 'info';
+  message?: string;
+};
 
 export type Family = {
-  id: number;
+  id: number; // WIP
 };
 
 export type Animal = {
@@ -19,16 +25,23 @@ export type Animal = {
   isFirstDeworm: boolean;
   information: string | null;
   familyId: number | null;
-  organizationId: number;
+  orgId: number;
 };
 
 export type Organization = {
   id: number;
   name: string;
   superAdmin?: string;
-  userRole?: string;
-  status?: string;
+  userRole?: MemberRole;
+  userStatus?: MemberStatus;
   animals?: Animal[];
+};
+
+export type PendingOrgRequest = {
+  memberId: number;
+  orgId: number;
+  memberName?: string;
+  orgName?: string;
 };
 
 export type Member = {

@@ -1,10 +1,10 @@
 // middleware.ts
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { getToken } from 'next-auth/jwt';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 const PUBLIC_PATHS = ["/intro", "/login", "/api/auth"]; // ajoute d'autres routes publiques si besoin
-const SECRET = process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET;
+const SECRET = process.env.NEXTAUTH_SECRET;
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

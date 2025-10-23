@@ -1,23 +1,24 @@
-'use client'
+'use client';
 
-import { useRouter } from "next/navigation";
-import { CircleX } from "lucide-react";
+import { CircleX } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
 
-export const Modal = ({ children }: { children: React.ReactNode}) => {
-    const router = useRouter();
+export const Modal = ({
+  expectedPath, // bloque les réouvertures de modale post-validation
+  children,
+}: {
+  expectedPath: string;
+  children: React.ReactNode;
+}) => {
+  const router = useRouter();
+  const pathname = usePathname();
 
-    return (
-        <div className="overlay"
-            onClick={() => router.back()} // clic sur l’overlay => fermer
-        >
-            <div className="modal"
-                onClick={(e) => e.stopPropagation()} // éviter de fermer si on clique dans la modale
-            >
-                <CircleX className="close" size={35}
-                    onClick={() => router.back()}
-                />
-                {children}
-            </div>
-        </div>
-    );
-}
+  return pathname === expectedPath ? (
+    <div className="overlay" onClick={() => router.back()}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <CircleX className="close" size={35} onClick={() => router.back()} />
+        {children}
+      </div>
+    </div>
+  ) : null;
+};

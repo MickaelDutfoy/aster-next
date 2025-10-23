@@ -6,7 +6,7 @@ export const getSelectedOrg = async (user: Member): Promise<Organization | null>
   const orgIdCookie = Number(cookieStore.get('orgId')?.value);
 
   const org: Organization | null =
-    user?.organizations.find((o) => o.id === orgIdCookie) ?? user.organizations[0];
+    user?.organizations.find((org) => org.id === orgIdCookie) ?? user.organizations[0];
 
   return org;
 };

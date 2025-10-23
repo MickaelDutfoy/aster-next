@@ -1,17 +1,17 @@
-import NextAuth, { type NextAuthOptions } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import { prisma } from "@/lib/prisma";
-import bcrypt from "bcryptjs";
+import { prisma } from '@/lib/prisma';
+import bcrypt from 'bcryptjs';
+import NextAuth, { type NextAuthOptions } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
 
 export const authOptions: NextAuthOptions = {
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
   providers: [
     Credentials({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: { email: {}, password: {} },
       async authorize(creds) {
         const email = creds?.email?.toString().toLowerCase();
-        const password = creds?.password?.toString() ?? "";
+        const password = creds?.password?.toString() ?? '';
         if (!email || !password) return null;
 
         const user = await prisma.member.findUnique({ where: { email } });
@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
         };
       },
     }),
-  ]
+  ],
 };
 
 // ⬇️ v5: expose a single NextAuth instance with helpers

@@ -1,27 +1,22 @@
-import { Member } from '@/lib/types';
+import { Dashboard } from '@/components/Dashboard';
+import { getPendingOrgRequests } from '@/lib/organizations/getPendingOrgRequests';
+import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
+import { Member, Organization, PendingOrgRequest } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import Link from 'next/link';
 
-const Dashboard = async () => {
+const DashboardPage = async () => {
   const user: Member | null = await getUser();
-  if (!user) return;
+  if (!user) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+
+  const org: Organization | null = await getSelectedOrg(user);
+
+  const pending: PendingOrgRequest[] | null = await getPendingOrgRequests(org?.id);
 
   return (
-    // contenu à repenser
     <>
-      <p>Bienvenue, {user.firstName} !</p>
-      {user.organizations.length === 0 && (
-        <p className="notice">Vous devez d'abord ajouter une association ou en rejoindre une.</p>
-      )}
-      <p className="notice">
-        Un problème ? Une suggestion ?{' '}
-        <Link className="link" href="mailto:m.dutfoy@gmail.com">
-          Envoyez-moi un message
-        </Link>{' '}
-        !
-      </p>
+      <Dashboard user={user} org={org} pending={pending} />
     </>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

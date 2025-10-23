@@ -14,56 +14,66 @@ enum Sex {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model Animal {
-  id             Int       @id @default(autoincrement())
-  name           String
-  species        String
-  sex            Sex
-  color          String?
-  birthDate      DateTime  @map("birth_date") @db.Date
-  isNeutered     Boolean   @map("is_neutered")
-  status         String    @default("unhosted")
-  lastVax        DateTime? @map("last_vax") @db.Date
-  isPrimoVax     Boolean   @default(false) @map("is_primo_vax")
-  lastDeworm     DateTime? @map("last_deworm") @db.Date
-  isFirstDeworm  Boolean   @default(false) @map("is_first_deworm")
-  information    String?
-  familyId       Int?      @map("family_id")
-  organizationId Int       @map("organization_id")
-  createdAt      DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  id            Int       @id @default(autoincrement())
+  name          String
+  species       String
+  sex           Sex
+  color         String?
+  birthDate     DateTime  @map("birth_date") @db.Date
+  isNeutered    Boolean   @map("is_neutered")
+  status        String    @default("unhosted")
+  lastVax       DateTime? @map("last_vax") @db.Date
+  isPrimoVax    Boolean   @default(false) @map("is_primo_vax")
+  lastDeworm    DateTime? @map("last_deworm") @db.Date
+  isFirstDeworm Boolean   @default(false) @map("is_first_deworm")
+  information   String?
+  familyId      Int?      @map("family_id")
+  orgId         Int       @map("organization_id")
+  createdAt     DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
 
   // relations
   family       Family?      @relation(fields: [familyId], references: [id], onUpdate: NoAction)
-  organization Organization @relation(fields: [organizationId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@map("animals") // table en base = animals
 }
 
 model Family {
-  id             Int       @id @default(autoincrement())
-  contactName    String    @map("contact_name")
-  email          String?
-  phoneNumber    String    @map("phone_number")
-  address        String?
-  organizationId Int       @map("organization_id")
-  createdAt      DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  id          Int       @id @default(autoincrement())
+  contactName String    @map("contact_name")
+  email       String?
+  phoneNumber String    @map("phone_number")
+  address     String?
+  orgId       Int       @map("organization_id")
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
 
   animals      Animal[]
-  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@map("families")
 }
 
+enum MemberRole {
+  MEMBER
+  SUPERADMIN
+}
+
+enum MemberStatus {
+  PENDING
+  VALIDATED
+}
+
 model MemberOrganization {
-  memberId       Int       @map("member_id")
-  organizationId Int       @map("organization_id")
-  role           String?   @default("member")
-  status         String?   @default("pending")
-  joinedAt       DateTime? @default(now()) @map("joined_at") @db.Timestamptz(6)
+  memberId Int          @map("member_id")
+  orgId    Int          @map("organization_id")
+  role     MemberRole
+  status   MemberStatus
+  joinedAt DateTime?    @default(now()) @map("joined_at") @db.Timestamptz(6)
 
   member       Member       @relation(fields: [memberId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
-  @@id([memberId, organizationId])
+  @@id([memberId, orgId])
   @@map("member_organization")
 }
 

@@ -1,9 +1,13 @@
 @use 'vars';
 @use 'global';
 
-.org-wrapper {
-  padding: 10px 0;
+.org-page {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
+.org-wrapper {
   h3 {
     text-align: center;
     margin: 10px 0;
@@ -52,25 +56,6 @@
   }
 }
 
-.pending-list {
-  h3 {
-    text-align: center;
-    margin: 10px 0;
-  }
-
-  padding: 0 10px;
-  ul {
-    margin: 10px;
-  }
-
-  li {
-    cursor: pointer;
-    text-decoration: none;
-    color: vars.$outer-space;
-    font-size: 1rem;
-  }
-}
-
 .waiting-list {
   margin-bottom: 10px;
   padding-left: 20px;
@@ -100,9 +85,5 @@
       border-right: 1px solid vars.$outer-space;
       border-left: 1px solid vars.$outer-space;
     }
-  }
-
-  .pending-list li {
-    color: vars.$cinereous;
   }
 }

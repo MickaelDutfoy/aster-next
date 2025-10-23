@@ -2,9 +2,10 @@
 
 import { signIn } from '@/auth';
 import { prisma } from '@/lib/prisma';
+import { ActionValidation } from '@/lib/types';
 import bcrypt from 'bcryptjs';
 
-export const register = async (formdata: FormData): Promise<{ ok: boolean; message: string }> => {
+export const register = async (formdata: FormData): Promise<ActionValidation> => {
   const newUser = {
     firstName: formdata.get('userFirstName')?.toString(),
     lastName: formdata.get('userLastName')?.toString(),
@@ -20,7 +21,7 @@ export const register = async (formdata: FormData): Promise<{ ok: boolean; messa
     !newUser.phoneNumber ||
     !newUser.password
   )
-    return { ok: false, message: 'Tous les champs doivent être remplis.' };
+    return { ok: false, status: 'error', message: 'Tous les champs doivent être remplis.' };
 
   const passwordHash = await bcrypt.hash(newUser.password, 12);
 
@@ -41,9 +42,9 @@ export const register = async (formdata: FormData): Promise<{ ok: boolean; messa
       password: newUser.password,
     });
 
-    return { ok: true, message: 'Compte créé avec succès !' };
+    return { ok: true, status: 'success', message: 'Compte créé avec succès !' };
   } catch (err) {
     console.error(err);
-    return { ok: false, message: 'Une erreur est survenue.' };
+    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
   }
 };

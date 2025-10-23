@@ -1,59 +1,100 @@
-@use "vars";
+@use 'vars';
 
 .dashboard {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
-    padding: 10px;
-    background-color: vars.$isabelline;
-    color: vars.$smoky-black;
-    border: 3px solid vars.$cinereous;
-    border-radius: 10px;
-    z-index: 2;
-    overflow-y: auto;
-    opacity: 0.9;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  padding: 10px;
+  background-color: vars.$isabelline;
+  color: vars.$smoky-black;
+  border: 3px solid vars.$cinereous;
+  border-radius: 10px;
+  z-index: 2;
+  overflow-y: auto;
+  opacity: 0.9;
 }
 
 nav {
-    padding: 0 10px;
-    min-height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 0 10px;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header {
-    min-height: 50px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 50px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .orga-select {
-    margin: 10px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .disabled {
-    opacity: 0.3;
-    pointer-events: none;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.dash-content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
 }
 
 .notice {
+  font-size: 0.85rem;
+}
+
+.denied-page {
+  margin: 40px 30px;
+  text-align: center;
+}
+
+.pending-list {
+  h3 {
     text-align: center;
-    padding: 20px;
+    margin: 10px 0;
+  }
+
+  ul {
+    margin: 5px 25px;
+  }
+
+  li {
+    cursor: pointer;
+    text-decoration: none;
+    color: vars.$raw-umber;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-    .dashboard {
-        background-color: vars.$outer-space;
-        color: vars.$isabelline;
-        border: 3px solid vars.$smoky-black;
-    }
+  .dashboard {
+    background-color: vars.$outer-space;
+    color: vars.$isabelline;
+    border: 3px solid vars.$smoky-black;
+  }
+
+  .pending-list li {
+    color: vars.$cinereous;
+  }
 }

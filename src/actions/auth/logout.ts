@@ -1,9 +1,17 @@
-'use server'
+'use server';
 
-import { signOut } from "@/auth";
+import { signOut } from '@/auth';
+import { ActionValidation } from '@/lib/types';
 
-export const logout = async () => {
-    'use server';
+export const logout = async (): Promise<ActionValidation> => {
+  'use server';
 
-    await signOut({ redirectTo: "/login" });
-}
+  try {
+    await signOut({ redirect: false });
+
+    return { ok: true, message: 'Vous avez été déconnecté(e).' };
+  } catch (err) {
+    console.error(err);
+    return { ok: false, status: 'error' };
+  }
+};

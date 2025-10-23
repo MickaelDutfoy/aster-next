@@ -3,8 +3,8 @@
 import { setOrgCookie } from '@/actions/organizations/setOrgCookie';
 import { Member, Organization } from '@/lib/types';
 import { useRouter } from 'next/navigation';
+import { useOrg } from '../providers/OrgProvider';
 import { useUser } from '../providers/UserProvider';
-import { useOrg } from './OrgProvider';
 
 export const OrgSelector = () => {
   const user: Member | null = useUser();

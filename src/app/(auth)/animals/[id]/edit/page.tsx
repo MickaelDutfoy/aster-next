@@ -1,9 +1,13 @@
-import { EditAnimal } from '@/components/animals/EditAnimal';
+import { UpdateAnimal } from '@/components/animals/UpdateAnimal';
+import { getAnimalById } from '@/lib/animals/getAnimalById';
+import { Animal } from '@/lib/types';
 
-const EditAnimalPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+const UpdateAnimalPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
+  const animal: Animal | null = await getAnimalById(Number(id));
+  if (!animal) return <h3 className="denied-page">Une erreur est survenue.</h3>;
 
-  return <EditAnimal id={id} />;
+  return <UpdateAnimal animal={animal} />;
 };
 
-export default EditAnimalPage;
+export default UpdateAnimalPage;

@@ -1,33 +1,41 @@
 'use client';
 
+import { ActionValidation } from '@/lib/types';
 import '@/styles/toasts.scss';
 import { useEffect, useRef, useState } from 'react';
 
-type ToastType = 'success' | 'error' | 'info';
-type Toast = { id: number; message: string; type: ToastType };
+type ToastEventDetail = {
+  message: string;
+  status?: 'success' | 'error' | 'info';
+  duration?: number;
+};
 
-export type ToastEventDetail = { message: string; type?: ToastType; duration?: number };
-
-export function showToast(message: string, type: ToastType = 'info', duration = 3000) {
+export function showToast(res: ActionValidation, duration?: number) {
   if (typeof window === 'undefined') return;
-  const event = new CustomEvent<ToastEventDetail>('toast', { detail: { message, type, duration } });
+  const event = new CustomEvent<ToastEventDetail>('toast', {
+    detail: { message: res.message ?? '', status: res.status, duration },
+  });
   window.dispatchEvent(event);
 }
 
 export default function ToastProvider() {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [toasts, setToasts] = useState<
+    { id: number; message: string; status: 'success' | 'error' | 'info' }[]
+  >([]);
   const timers = useRef<Map<number, number>>(new Map());
 
   useEffect(() => {
     function onToast(e: Event) {
       const {
         message,
-        type = 'info',
+        status = 'info',
         duration = 3000,
       } = (e as CustomEvent<ToastEventDetail>).detail;
+      if (!message) return;
+
       const id = Date.now() + Math.floor(Math.random() * 1000);
 
-      setToasts((prev) => [...prev, { id, message, type }]);
+      setToasts((prev) => [...prev, { id, message, status }]);
 
       const toast = window.setTimeout(() => dismiss(id), duration);
       timers.current.set(id, toast);
@@ -51,7 +59,7 @@ export default function ToastProvider() {
       {toasts.map((toast) => (
         <button
           key={toast.id}
-          className={`toast ${toast.type === 'error' ? 'toast-error' : toast.type === 'success' ? 'toast-success' : 'toast-info'}`}
+          className={`toast ${toast.status === 'error' ? 'toast-error' : toast.status === 'success' ? 'toast-success' : 'toast-info'}`}
           onClick={() => dismiss(toast.id)}
           type="button"
         >

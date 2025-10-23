@@ -11,10 +11,13 @@ const Animals = async () => {
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <h3 className="denied-page">Une erreur est survenue.</h3>;
 
-  if (org.status === 'pending')
+  console.log(org.userStatus);
+
+  if (org.userStatus === 'PENDING')
     return (
       <h3 className="denied-page">
-        Vous n'avez pas les permissions pour accéder à cette ressource.
+        Vous ne pouvez pas voir les animaux de cette association car votre adhésion n'a pas encore
+        été approuvée.
       </h3>
     );
 

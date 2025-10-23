@@ -1,9 +1,9 @@
-import { RemoveAnimal } from '@/components/animals/RemoveAnimal';
+import { DeleteAnimal } from '@/components/animals/DeleteAnimal';
 
-const RemoveAnimalPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+const DeleteAnimalPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
-  return <RemoveAnimal id={id} />;
+  return <DeleteAnimal id={id} />;
 };
 
-export default RemoveAnimalPage;
+export default DeleteAnimalPage;

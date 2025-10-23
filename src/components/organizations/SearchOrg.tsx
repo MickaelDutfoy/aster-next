@@ -4,6 +4,7 @@ import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+import { showToast } from '../providers/ToastProvider';
 
 export const SearchOrg = () => {
   const [query, setQuery] = useState('');
@@ -37,10 +38,16 @@ export const SearchOrg = () => {
     setMatchingOrgs([]);
   };
 
+  const handleJoinOrg = async (pickedOrg: number) => {
+    const res = await joinOrg(pickedOrg);
+    showToast(res);
+    if (res.ok) setQuery('');
+  };
+
   return (
     <>
       <h3>Rechercher une association existante ?</h3>
-      <form action={() => joinOrg(pickedOrg)}>
+      <form action={() => handleJoinOrg(pickedOrg)}>
         <input
           type="text"
           name="orgNameSearch"

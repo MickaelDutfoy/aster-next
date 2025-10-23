@@ -3,20 +3,25 @@
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
+import { MemberStatus } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export const cancelOrgRequest = async (orgId: number): Promise<ActionValidation> => {
+export const approveOrgRequest = async (
+  memberId: number,
+  orgId: number,
+): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
   if (!user) return { ok: false };
 
   try {
-    await prisma.memberOrganization.delete({
-      where: { memberId_orgId: { memberId: user.id, orgId } },
+    await prisma.memberOrganization.update({
+      where: { memberId_orgId: { memberId, orgId } },
+      data: { status: MemberStatus.VALIDATED },
     });
 
     revalidatePath('/organizations');
 
-    return { ok: true, message: "Votre demande d'adhésion a été annulée." };
+    return { ok: true, status: 'success', message: "Cette demande d'adhésion a été approuvée." };
   } catch (err) {
     console.error(err);
     return { ok: false, status: 'error', message: 'Une erreur est survenue.' };

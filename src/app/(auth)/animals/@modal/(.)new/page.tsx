@@ -1,17 +1,10 @@
-'use client';
-
 import { Modal } from '@/components/Modal';
-import { AddAnimal } from '@/components/animals/AddAnimal';
-import { usePathname } from 'next/navigation';
+import { CreateAnimal } from '@/components/animals/CreateAnimal';
 
 export default function AddAnimalModal() {
-  const pathname = usePathname();
-
-  if (pathname !== '/animals/new') return null; // empêche réouverture de modale
-
   return (
-    <Modal>
-      <AddAnimal />
+    <Modal expectedPath="/animals/new">
+      <CreateAnimal />
     </Modal>
   );
 }

@@ -1,17 +1,10 @@
-import { signOut } from "@/auth";
+import { Logout } from '@/components/auth/Logout';
 
-const Settings = () => {
-    const logout = async () => {
-        'use server'
-        
-        await signOut({ redirectTo: "/login" });
-    }
+const SettingsPage = () => {
+  return (
+    // page à créer
+    <Logout />
+  );
+};
 
-    return <>
-        <form style={{ textAlign: "right", margin: "10px 0" }} action={logout}>
-            <button type="submit" className="little-button">Se déconnecter ?</button>
-        </form>
-    </>
-}
-
-export default Settings;
+export default SettingsPage;

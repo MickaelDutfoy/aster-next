@@ -1,5 +1,5 @@
-import { registerOrg } from '@/actions/organizations/registerOrg';
 import { OrgList } from '@/components/organizations/OrgList';
+import { RegisterOrg } from '@/components/organizations/RegisterOrg';
 import { SearchOrg } from '@/components/organizations/SearchOrg';
 import { Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
@@ -9,15 +9,11 @@ const Organizations = async () => {
   const user: Member | null = await getUser();
   if (!user) return;
 
-  // repenser la mise en forme ici
   return (
-    <>
+    // repenser la mise en forme ici
+    <div className="org-page">
       <div className="org-wrapper">
-        <h3>Enregistrer une nouvelle association ?</h3>
-        <form action={registerOrg}>
-          <input type="text" name="orgName" placeholder="Nom de l'association" />
-          <button className="little-button">Enregistrer</button>
-        </form>
+        <RegisterOrg />
       </div>
       <div className="org-wrapper">
         <SearchOrg />
@@ -25,7 +21,7 @@ const Organizations = async () => {
       <div className="pending-list">
         <OrgList />
       </div>
-    </>
+    </div>
   );
 };
 

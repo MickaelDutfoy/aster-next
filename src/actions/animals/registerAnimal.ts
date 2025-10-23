@@ -1,18 +1,18 @@
 'use server';
 
-import { getUser } from '@/lib/getUser';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { prisma } from '@/lib/prisma';
-import { Member, Organization } from '@/lib/types';
+import { ActionValidation, Member, Organization } from '@/lib/types';
+import { getUser } from '@/lib/user/getUser';
 import { Sex } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export const postAnimal = async (formdata: FormData) => {
+export const registerAnimal = async (formdata: FormData): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
-  if (!user) return;
+  if (!user) return { ok: false };
 
   const org: Organization | null = await getSelectedOrg(user);
-  if (!org) return;
+  if (!org) return { ok: false };
 
   const animal = {
     name: formdata.get('animalName')?.toString().trim(),
@@ -30,7 +30,7 @@ export const postAnimal = async (formdata: FormData) => {
 
   if (!animal.name || !animal.species || !animal.birthDate) {
     console.log('champs invalides');
-    return;
+    return { ok: false };
   }
 
   try {
@@ -47,12 +47,15 @@ export const postAnimal = async (formdata: FormData) => {
         isPrimoVax: animal.isPrimeVax,
         isFirstDeworm: animal.isFirstDeworm,
         information: animal.information,
-        organizationId: org.id,
+        orgId: org.id,
       },
     });
-  } catch (error) {
-    console.log('process failed', error);
-  }
 
-  revalidatePath('/animals');
+    revalidatePath('/animals');
+
+    return { ok: true, status: 'success', message: "L'animal a bien été ajouté." };
+  } catch (err) {
+    console.log(err);
+    return { ok: false, status: 'error', message: "Une erreur s'est produite." };
+  }
 };

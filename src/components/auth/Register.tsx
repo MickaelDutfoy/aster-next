@@ -11,9 +11,9 @@ export const Register = () => {
     const res = await register(formdata);
     if (res.ok) {
       router.replace('/');
-      showToast(res.message, 'success');
+      showToast(res);
     } else {
-      showToast(res.message, 'error');
+      showToast(res);
     }
   };
 

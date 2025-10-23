@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
 import 'server-only';
-import { Member, Organization } from './types';
+import { Member, Organization } from '../types';
 
 export const getUser = async (): Promise<Member | null> => {
   const session = await auth();
@@ -24,7 +24,7 @@ export const getUser = async (): Promise<Member | null> => {
 
     // fetch member's organizations
     const memberOrgs: Organization[] = await prisma.organization.findMany({
-      where: { id: { in: res.memberOrganizations?.map((mo) => mo.organizationId) } },
+      where: { id: { in: res.memberOrganizations?.map((mo) => mo.orgId) } },
       select: { id: true, name: true, animals: true },
     });
 
@@ -32,10 +32,8 @@ export const getUser = async (): Promise<Member | null> => {
     const organizations =
       memberOrgs.map((org) => ({
         ...org,
-        role:
-          res.memberOrganizations?.find((mo) => mo.organizationId === org.id)?.role ?? undefined,
-        status:
-          res.memberOrganizations?.find((mo) => mo.organizationId === org.id)?.status ?? undefined,
+        userRole: res.memberOrganizations?.find((mo) => mo.orgId === org.id)?.role ?? undefined,
+        userStatus: res.memberOrganizations?.find((mo) => mo.orgId === org.id)?.status ?? undefined,
       })) ?? [];
 
     const member: Member = {
@@ -47,8 +45,8 @@ export const getUser = async (): Promise<Member | null> => {
     };
 
     return member;
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
     return null;
   }
 };

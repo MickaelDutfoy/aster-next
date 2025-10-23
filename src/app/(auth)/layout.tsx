@@ -1,7 +1,7 @@
 import { Header } from '@/components/Header';
 import { NavBar } from '@/components/NavBar';
-import { OrgProvider } from '@/components/organizations/OrgProvider';
 import { OrgSelector } from '@/components/organizations/OrgSelector';
+import { OrgProvider } from '@/components/providers/OrgProvider';
 import { UserProvider } from '@/components/providers/UserProvider';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';

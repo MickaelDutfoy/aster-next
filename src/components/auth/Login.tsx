@@ -11,11 +11,9 @@ export const Login = () => {
   const handleLogin = async (formdata: FormData) => {
     const res = await login(formdata);
 
-    if (res.ok) {
-      router.replace('/');
-    } else {
-      showToast(res.message as string, 'error');
-    }
+    showToast(res);
+
+    if (res.ok) router.replace('/');
   };
 
   return (

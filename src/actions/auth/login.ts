@@ -1,8 +1,9 @@
 'use server';
 
 import { signIn } from '@/auth';
+import { ActionValidation } from '@/lib/types';
 
-export const login = async (formdata: FormData): Promise<{ ok: boolean; message?: string }> => {
+export const login = async (formdata: FormData): Promise<ActionValidation> => {
   const user = {
     email: formdata.get('userEmail')?.toString(),
     password: formdata.get('userPassword')?.toString(),
@@ -15,9 +16,9 @@ export const login = async (formdata: FormData): Promise<{ ok: boolean; message?
       password: user.password,
     });
 
-    return { ok: true };
+    return { ok: true, status: 'success' };
   } catch (err) {
     console.error(err);
-    return { ok: false, message: 'Identifiants invalides.' };
+    return { ok: false, status: 'error', message: 'Identifiants invalides.' };
   }
 };
