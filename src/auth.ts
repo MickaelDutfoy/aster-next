@@ -5,6 +5,8 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
 export const authOptions: NextAuthConfig = {
+  trustHost: true,
+  secret: process.env.AUTH_SECRET,
   session: { strategy: 'jwt' },
   providers: [
     Credentials({
