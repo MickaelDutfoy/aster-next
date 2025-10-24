@@ -32,7 +32,11 @@ export async function proxy(req: NextRequest) {
 
   // 2) Auth guard
   const isPublic = PUBLIC_PATHS.some((p) => pathname.startsWith(p));
-  const token = await getToken({ req, secret: SECRET }); // nécessite AUTH_SECRET en env
+  const token = await getToken({ req, secret: SECRET });
+
+  console.log('==== isPublic ====>', isPublic);
+  console.log('==== token ====>', token);
+
   if (!isPublic && !token && !pathname.startsWith('/register')) {
     const url = req.nextUrl.clone();
     url.pathname = '/login';
