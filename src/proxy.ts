@@ -1,3 +1,5 @@
+export const runtime = 'nodejs';
+
 import { getToken } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
@@ -7,16 +9,6 @@ const SECRET = process.env.AUTH_SECRET;
 
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
-
-  const hasSessionCookie =
-    !!req.cookies.get('authjs.session-token')?.value ||
-    !!req.cookies.get('__Secure-authjs.session-token')?.value;
-
-  // …puis dans un log (Vercel > Functions > Logs)
-  console.log('============ edge DEBUG', {
-    hasSessionCookie,
-    hasSecret: Boolean(process.env.AUTH_SECRET),
-  });
 
   // Laisse passer assets & static
   if (
