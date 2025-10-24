@@ -8,13 +8,7 @@ import { Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 import '@/styles/dashboard.scss';
 
-const Layout = async ({
-  children,
-  modal,
-}: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
-}) => {
+const Layout = async ({ children }: { children: React.ReactNode; modal: React.ReactNode }) => {
   const user: Member | null = await getUser();
   if (!user) return null;
 
@@ -28,7 +22,6 @@ const Layout = async ({
           <Header />
           <OrgSelector />
           {children}
-          {modal}
         </OrgProvider>
       </UserProvider>
     </div>
