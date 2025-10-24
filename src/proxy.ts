@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 const PUBLIC_PATHS = ['/intro', '/login', '/api/auth']; // ajoute d'autres routes publiques si besoin
-const SECRET = process.env.NEXTAUTH_SECRET;
+const SECRET = process.env.AUTH_SECRET;
 
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -32,7 +32,7 @@ export async function proxy(req: NextRequest) {
 
   // 2) Garde d'auth: protège tout sauf les PUBLIC_PATHS
   const isPublic = PUBLIC_PATHS.some((p) => pathname.startsWith(p));
-  const token = await getToken({ req, secret: SECRET }); // nécessite NEXTAUTH_SECRET
+  const token = await getToken({ req, secret: SECRET }); // nécessite AUTH_SECRET
   if (!isPublic && !token && !pathname.startsWith('/register')) {
     const url = req.nextUrl.clone();
     url.pathname = '/login';
