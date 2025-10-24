@@ -49,6 +49,10 @@ export async function proxy(req: NextRequest) {
   return NextResponse.next();
 }
 
+// src/proxy.ts
+export { auth as middleware } from "@/auth";
+
+// (optionnel) scope de protection
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
