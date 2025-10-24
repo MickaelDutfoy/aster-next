@@ -2,10 +2,10 @@ import { getToken } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-const PUBLIC_PATHS = ['/intro', '/login', '/api/auth']; // ajoute d'autres routes publiques si besoin
+const PUBLIC_PATHS = ['/intro', '/login', '/api/auth']; // + autres si besoin
 const SECRET = process.env.AUTH_SECRET;
 
-export async function proxy(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Laisse passer assets & static
@@ -17,7 +17,7 @@ export async function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // 1) Garde "intro": si pas vu, force /intro (mais laisse /intro passer)
+  // 1) Intro guard
   const hasIntro = req.cookies.get('intro_seen')?.value === '1';
   if (!hasIntro && !pathname.startsWith('/intro')) {
     const url = req.nextUrl.clone();
@@ -30,16 +30,17 @@ export async function proxy(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // 2) Garde d'auth: protège tout sauf les PUBLIC_PATHS
+  // 2) Auth guard
   const isPublic = PUBLIC_PATHS.some((p) => pathname.startsWith(p));
-  const token = await getToken({ req, secret: SECRET }); // nécessite AUTH_SECRET
+  const token = await getToken({ req, secret: SECRET }); // nécessite AUTH_SECRET en env
   if (!isPublic && !token && !pathname.startsWith('/register')) {
     const url = req.nextUrl.clone();
     url.pathname = '/login';
-    url.searchParams.set('from', pathname); // pratique pour post-login redirect
+    url.searchParams.set('from', pathname);
     return NextResponse.redirect(url);
   }
-  // Optionnel: si connecté, évite /login
+
+  // Optionnel: éviter /login si déjà connecté
   if (token && pathname === '/login') {
     const url = req.nextUrl.clone();
     url.pathname = '/';
@@ -49,10 +50,7 @@ export async function proxy(req: NextRequest) {
   return NextResponse.next();
 }
 
-// src/proxy.ts
-export { auth as middleware } from "@/auth";
-
-// (optionnel) scope de protection
+// Scope du middleware (exclut tout /api, donc /api/auth est déjà hors scope)
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
