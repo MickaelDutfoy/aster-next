@@ -1,5 +1,3 @@
-export const runtime = 'nodejs';
-
 import { getToken } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
