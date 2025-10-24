@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 const PUBLIC_PATHS = ['/intro', '/login', '/api/auth']; // + autres si besoin
 const SECRET = process.env.AUTH_SECRET;
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Laisse passer assets & static
