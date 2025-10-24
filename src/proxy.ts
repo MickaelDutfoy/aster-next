@@ -1,23 +1,32 @@
-import { getToken } from 'next-auth/jwt';
+// proxy.ts
+import { auth } from '@/auth';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-const PUBLIC_PATHS = ['/intro', '/login', '/api/auth']; // + autres si besoin
-const SECRET = process.env.AUTH_SECRET;
+type AuthMiddleware = (
+  handler: (req: NextRequest) => Promise<Response | NextResponse | void>,
+  options?: {
+    callbacks?: {
+      authorized?: (params: { auth: any; request: NextRequest }) => boolean;
+    };
+  },
+) => (req: NextRequest) => Promise<Response | NextResponse | void>;
 
-export async function proxy(req: NextRequest) {
+// 👇 on caste l’overload vers la variante middleware
+const authMw = auth as unknown as AuthMiddleware;
+
+async function handler(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Laisse passer assets & static
+  // static
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/assets') ||
     pathname === '/favicon.ico'
-  ) {
+  )
     return NextResponse.next();
-  }
 
-  // 1) Intro guard
+  // intro guard
   const hasIntro = req.cookies.get('intro_seen')?.value === '1';
   if (!hasIntro && !pathname.startsWith('/intro')) {
     const url = req.nextUrl.clone();
@@ -30,18 +39,19 @@ export async function proxy(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // 2) Auth guard
-  const isPublic = PUBLIC_PATHS.some((p) => pathname.startsWith(p));
-  const token = await getToken({ req, secret: SECRET }); // nécessite AUTH_SECRET en env
-  if (!isPublic && !token && !pathname.startsWith('/register')) {
+  // auth guard
+  const isPublic = pathname.startsWith('/intro') || pathname.startsWith('/login');
+  // @ts-expect-error: injecté par le wrapper
+  const isAuthed = Boolean(req.auth);
+
+  if (!isPublic && !pathname.startsWith('/register') && !isAuthed) {
     const url = req.nextUrl.clone();
     url.pathname = '/login';
     url.searchParams.set('from', pathname);
     return NextResponse.redirect(url);
   }
 
-  // Optionnel: éviter /login si déjà connecté
-  if (token && pathname === '/login') {
+  if (isAuthed && pathname === '/login') {
     const url = req.nextUrl.clone();
     url.pathname = '/';
     return NextResponse.redirect(url);
@@ -50,7 +60,11 @@ export async function proxy(req: NextRequest) {
   return NextResponse.next();
 }
 
-// Scope du middleware (exclut tout /api, donc /api/auth est déjà hors scope)
+// 👇 on wrappe avec l’overload middleware typé
+export const proxy = authMw(handler, {
+  callbacks: { authorized: () => true },
+});
+
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
