@@ -2,6 +2,7 @@
 
 import { setOrgCookie } from '@/actions/organizations/setOrgCookie';
 import { Member, Organization } from '@/lib/types';
+import { MemberStatus } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import { useOrg } from '../providers/OrgProvider';
 import { useUser } from '../providers/UserProvider';
@@ -16,7 +17,7 @@ export const OrgSelector = () => {
   return (
     <>
       {user.organizations.length > 0 &&
-        user.organizations.some((org) => org.status !== 'pending') && (
+        user.organizations.some((org) => org.userStatus !== MemberStatus.PENDING) && (
           <>
             <div className="orga-select">
               <h4>Vos associations :</h4>

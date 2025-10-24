@@ -1,6 +1,7 @@
 'use client';
 
 import { Member } from '@/lib/types';
+import { MemberStatus } from '@prisma/client';
 import { Cat, FolderOpen, HouseHeart, MapPinned, Settings, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,7 +13,7 @@ export const NavBar = () => {
 
   const disableMenu = (): string => {
     return user?.organizations?.length === 0 ||
-      user?.organizations.every((org) => org.status === 'pending')
+      user?.organizations.every((org) => org.userStatus === MemberStatus.PENDING)
       ? 'disabled'
       : '';
   };

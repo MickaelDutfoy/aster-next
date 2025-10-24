@@ -8,7 +8,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@prisma/client": "^6.16.1",
