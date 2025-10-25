@@ -19,8 +19,6 @@ export const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  manifest: '/manifest.webmanifest',
-
   applicationName: 'Aster',
   title: 'Aster',
   appleWebApp: { capable: true, statusBarStyle: 'default' },
