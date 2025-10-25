@@ -1,4 +1,5 @@
 import ToastProvider from '@/components/providers/ToastProvider';
+import ServiceWorkerRegister from '@/components/ServiceWorkerRegister';
 import '@/styles/_global.scss';
 import type { Metadata } from 'next';
 import { Comfortaa, Nunito } from 'next/font/google';
@@ -18,7 +19,11 @@ export const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  title: 'Aster - Dev',
+  manifest: '/manifest.webmanifest',
+  themeColor: '#0ea5e9',
+  applicationName: 'Aster',
+  title: 'Aster',
+  appleWebApp: { capable: true, statusBarStyle: 'default' },
   description: 'A webapp to manage your animal welfare organizations',
 };
 
@@ -30,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${nunito.variable} ${comfortaa.variable}`}>
       <body>
+        <ServiceWorkerRegister />
         <ToastProvider />
         {children}
       </body>
