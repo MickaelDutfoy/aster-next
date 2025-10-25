@@ -22,7 +22,9 @@ async function handler(req: NextRequest) {
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/assets') ||
-    pathname === '/favicon.ico'
+    pathname === '/favicon.ico' ||
+    pathname === '/sw.js' ||
+    pathname === '/manifest.webmanifest'
   )
     return NextResponse.next();
 
