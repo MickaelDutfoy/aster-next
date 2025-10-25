@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Aster',
     short_name: 'Aster',
-    description: 'A Mobile Web App for your animal welfare organizations',
+    description: 'A mobile app for your animal welfare organizations',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

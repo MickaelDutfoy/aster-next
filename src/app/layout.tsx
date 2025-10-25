@@ -1,6 +1,6 @@
 import ToastProvider from '@/components/providers/ToastProvider';
 import '@/styles/_global.scss';
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Comfortaa, Nunito } from 'next/font/google';
 
 export const nunito = Nunito({
@@ -17,12 +17,12 @@ export const comfortaa = Comfortaa({
   variable: '--font-comfortaa',
 });
 
-// export const metadata: Metadata = {
-//   applicationName: 'Aster',
-//   title: 'Aster',
-//   appleWebApp: { capable: true, statusBarStyle: 'default' },
-//   description: 'A webapp to manage your animal welfare organizations',
-// };
+export const metadata: Metadata = {
+  applicationName: 'Aster',
+  title: 'Aster',
+  appleWebApp: { capable: true, statusBarStyle: 'default' },
+  description: 'A mobile app for your animal welfare organizations',
+};
 
 export const viewport: Viewport = {
   themeColor: '#0ea5e9',
