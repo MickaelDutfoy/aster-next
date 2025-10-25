@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 
 export default function ServiceWorkerRegister() {
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js?v=4').catch(() => {});
-    }
+    // Désactivé pour test A/B :
+    // if ("serviceWorker" in navigator) {
+    //   navigator.serviceWorker.register("/sw.js?v=off").catch(() => {});
+    // }
   }, []);
   return null;
 }
