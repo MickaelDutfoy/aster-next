@@ -1,5 +1,4 @@
 import ToastProvider from '@/components/providers/ToastProvider';
-import ServiceWorkerRegister from '@/components/ServiceWorkerRegister';
 import '@/styles/_global.scss';
 import type { Metadata, Viewport } from 'next';
 import { Comfortaa, Nunito } from 'next/font/google';
@@ -37,7 +36,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${nunito.variable} ${comfortaa.variable}`}>
       <body>
-        <ServiceWorkerRegister />
         <ToastProvider />
         {children}
       </body>
