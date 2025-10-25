@@ -32,6 +32,20 @@ button {
   color: vars.$raw-umber;
 }
 
+button:active:not(:disabled),
+a.main-button:active {
+  filter: brightness(0.95);
+  transform: scale(0.98);
+}
+
+.page-loading {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
 .links-box {
   padding: 5px 0 10px 0;
   display: flex;
@@ -79,11 +93,6 @@ h3 {
 [aria-busy='true'] {
   opacity: 0.6;
   pointer-events: none;
-}
-
-button:active:not(:disabled) {
-  filter: brightness(0.95);
-  transform: scale(0.98);
 }
 
 .right-button {
