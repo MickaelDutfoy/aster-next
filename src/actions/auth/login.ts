@@ -3,7 +3,7 @@
 import { signIn } from '@/auth';
 import { ActionValidation } from '@/lib/types';
 
-export const login = async (formdata: FormData): Promise<ActionValidation> => {
+export const login = async (prevstate: any, formdata: FormData): Promise<ActionValidation> => {
   const user = {
     email: formdata.get('userEmail')?.toString(),
     password: formdata.get('userPassword')?.toString(),

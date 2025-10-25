@@ -2,20 +2,19 @@
 
 import { register } from '@/actions/auth/register';
 import { useRouter } from 'next/navigation';
+import { useActionState, useEffect } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const Register = () => {
+  const [res, handleRegister, isLoading] = useActionState(register, null);
+
   const router = useRouter();
 
-  const handleRegister = async (formdata: FormData) => {
-    const res = await register(formdata);
-    if (res.ok) {
-      router.replace('/');
-      showToast(res);
-    } else {
-      showToast(res);
-    }
-  };
+  useEffect(() => {
+    if (!res) return;
+    showToast(res);
+    if (res.ok) router.replace('/');
+  }, [res]);
 
   return (
     <div className="auth-page">
@@ -45,8 +44,8 @@ export const Register = () => {
             Le numéro de téléphone n'est requis que par commodité de communication pour les membres
             d'une association. Aster n'utilisera jamais votre numéro.
           </p>
-          <button type="submit" className="main-button">
-            Créer un compte
+          <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
+              {isLoading ? 'Connexion...' : 'Créer un compte'}
           </button>
         </form>
       </div>

@@ -2,7 +2,6 @@
 import { joinOrg } from '@/actions/organizations/joinOrg';
 import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
-import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
@@ -59,10 +58,7 @@ export const SearchOrg = () => {
             setPickedOrg(0);
           }}
         />
-        <button
-          className={`little-button ${clsx(!picked && 'disabled-button')}`}
-          disabled={!picked}
-        >
+        <button className="little-button" aria-busy={!picked} disabled={!picked}>
           Rejoindre
         </button>
       </form>

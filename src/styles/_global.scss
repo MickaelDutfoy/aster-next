@@ -76,10 +76,14 @@ h3 {
   font-size: 0.9rem;
 }
 
-.disabled-button {
-  cursor: default !important;
-  background-color: vars.$stone !important;
+[aria-busy='true'] {
   opacity: 0.6;
+  pointer-events: none;
+}
+
+button:active:not(:disabled) {
+  filter: brightness(0.95);
+  transform: scale(0.98);
 }
 
 .right-button {
