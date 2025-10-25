@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import bcrypt from 'bcryptjs';
 
-export const register = async (formdata: FormData): Promise<ActionValidation> => {
+export const register = async (prevstate: any, formdata: FormData): Promise<ActionValidation> => {
   const newUser = {
     firstName: formdata.get('userFirstName')?.toString(),
     lastName: formdata.get('userLastName')?.toString(),
