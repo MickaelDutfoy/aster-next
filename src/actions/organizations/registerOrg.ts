@@ -6,7 +6,7 @@ import { getUser } from '@/lib/user/getUser';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export const registerOrg = async (formdata: FormData): Promise<ActionValidation> => {
+export const registerOrg = async (prevdata: any, formdata: FormData): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
   if (!user) return { ok: false };
 

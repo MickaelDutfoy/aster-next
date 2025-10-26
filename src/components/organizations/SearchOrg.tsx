@@ -2,7 +2,7 @@
 import { joinOrg } from '@/actions/organizations/joinOrg';
 import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
-import { useEffect, useRef, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const SearchOrg = () => {
@@ -10,6 +10,7 @@ export const SearchOrg = () => {
   const [picked, setPicked] = useState(false);
   const [pickedOrg, setPickedOrg] = useState<number>(0);
   const [matchingOrgs, setMatchingOrgs] = useState<Organization[]>([]);
+  const [res, handleJoinOrg, isLoading] = useActionState(joinOrg.bind(null, pickedOrg), null);
   const suppressFetch = useRef(false);
 
   useEffect(() => {
@@ -31,22 +32,21 @@ export const SearchOrg = () => {
     return () => clearTimeout(req);
   }, [query]);
 
+  useEffect(() => {
+    if (!res) return;
+    showToast(res);
+  }, [res]);
+
   const fillSearchField = (orgName: string) => {
     suppressFetch.current = true;
     setQuery(orgName);
     setMatchingOrgs([]);
   };
 
-  const handleJoinOrg = async (pickedOrg: number) => {
-    const res = await joinOrg(pickedOrg);
-    showToast(res);
-    if (res.ok) setQuery('');
-  };
-
   return (
     <>
       <h3>Rechercher une association existante ?</h3>
-      <form action={() => handleJoinOrg(pickedOrg)}>
+      <form action={handleJoinOrg}>
         <input
           type="text"
           name="orgNameSearch"
@@ -58,8 +58,12 @@ export const SearchOrg = () => {
             setPickedOrg(0);
           }}
         />
-        <button className="little-button" aria-busy={!picked} disabled={!picked}>
-          Rejoindre
+        <button
+          className="little-button"
+          aria-busy={!picked || isLoading}
+          disabled={!picked || isLoading}
+        >
+          {isLoading ? 'Envoi...' : 'Rejoindre'}
         </button>
       </form>
       <div className="org-results">

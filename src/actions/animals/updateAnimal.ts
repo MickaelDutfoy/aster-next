@@ -8,6 +8,7 @@ import { revalidatePath } from 'next/cache';
 
 export const updateAnimal = async (
   animalId: number,
+  prevstate: any,
   formdata: FormData,
 ): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
@@ -28,8 +29,7 @@ export const updateAnimal = async (
   };
 
   if (!animal.name || !animal.species || !animal.birthDate) {
-    console.log('champs invalides');
-    return { ok: false };
+    return { ok: false, status: 'error', message: 'Des champs obligatoires sont incomplets.' };
   }
 
   try {
