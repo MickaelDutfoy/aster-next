@@ -38,7 +38,7 @@ export const Login = () => {
             placeholder="Password"
           />
           <button className="main-button" aria-busy={isLoading} disabled={isLoading}>
-
+            {isLoading ? 'Connexion...' : 'Se connecter'}
           </button>
         </form>
       </div>
