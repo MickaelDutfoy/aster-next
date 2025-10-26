@@ -33,7 +33,7 @@ button {
 }
 
 button:active:not(:disabled),
-a.main-button:active {
+a:active {
   filter: brightness(0.95);
   transform: scale(0.98);
 }
@@ -44,6 +44,21 @@ a.main-button:active {
   place-items: center;
   font-size: 2rem;
   opacity: 0.8;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+  
+}
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
 }
 
 .links-box {

@@ -1,10 +1,10 @@
 import { Modal } from '@/components/Modal';
-import { CreateAnimal } from '@/components/animals/CreateAnimal';
+import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
 
 export default function AddAnimalModal() {
   return (
     <Modal expectedPath="/animals/new">
-      <CreateAnimal />
+      <RegisterAnimal />
     </Modal>
   );
 }

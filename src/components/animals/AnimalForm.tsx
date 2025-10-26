@@ -2,9 +2,17 @@
 
 import { Animal } from '@/lib/types';
 
-export const AnimalForm = ({ animal }: { animal?: Animal }) => {
+export const AnimalForm = ({
+  animal,
+  action,
+  isLoading,
+}: {
+  animal?: Animal;
+  action: (formdata: FormData) => void;
+  isLoading: boolean;
+}) => {
   return (
-    <>
+    <form action={action}>
       <p>(Les champs marqués d'un * sont requis.)</p>
       <div className="name-species-color">
         <input type="text" name="animalName" placeholder="Nom *" defaultValue={animal?.name} />
@@ -82,7 +90,10 @@ export const AnimalForm = ({ animal }: { animal?: Animal }) => {
           el.style.height = `${el.scrollHeight}px`;
         }}
       />
-      <button className="little-button">Enregistrer</button>
-    </>
+      <button className="little-button" aria-busy={isLoading} disabled={isLoading}>
+        {' '}
+        {isLoading ? 'Enregistrement...' : 'Enregistrer'}
+      </button>
+    </form>
   );
 };

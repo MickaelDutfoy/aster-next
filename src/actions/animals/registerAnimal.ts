@@ -7,7 +7,10 @@ import { getUser } from '@/lib/user/getUser';
 import type { Sex } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export const registerAnimal = async (formdata: FormData): Promise<ActionValidation> => {
+export const registerAnimal = async (
+  prevstate: any,
+  formdata: FormData,
+): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
   if (!user) return { ok: false };
 
@@ -29,8 +32,7 @@ export const registerAnimal = async (formdata: FormData): Promise<ActionValidati
   };
 
   if (!animal.name || !animal.species || !animal.birthDate) {
-    console.log('champs invalides');
-    return { ok: false };
+    return { ok: false, status: 'error', message: 'Des champs obligatoires sont incomplets.' };
   }
 
   try {

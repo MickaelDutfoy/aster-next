@@ -2,13 +2,14 @@
 
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
-import { revalidatePath } from 'next/cache';
 
-export const deleteAnimal = async (animalId: number): Promise<ActionValidation> => {
+export const deleteAnimal = async (
+  animalId: number,
+  prevstate: any,
+  formdata: FormData,
+): Promise<ActionValidation> => {
   try {
     await prisma.animal.delete({ where: { id: animalId } });
-
-    revalidatePath('/animals');
 
     return { ok: true, status: 'success', message: "L'animal a bien été supprimé." };
   } catch (err) {

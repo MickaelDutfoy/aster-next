@@ -1,7 +1,7 @@
-import { CreateAnimal } from '@/components/animals/CreateAnimal';
+import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
 
-const AddAnimalPage = () => {
-  return <CreateAnimal />;
+const RegisterAnimalPage = () => {
+  return <RegisterAnimal />;
 };
 
-export default AddAnimalPage;
+export default RegisterAnimalPage;
