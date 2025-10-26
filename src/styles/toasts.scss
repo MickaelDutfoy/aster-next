@@ -1,6 +1,6 @@
 .toast-container {
   position: fixed;
-  top: 15px;
+  bottom: 15px;
   left: 0;
   right: 0;
   z-index: 3;
@@ -30,7 +30,7 @@
 
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 
-  transform: translateY(-8px);
+  transform: translateY(8px);
   opacity: 0;
   animation: toast-in 160ms ease-out forwards;
 
