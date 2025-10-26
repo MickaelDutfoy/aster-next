@@ -12,30 +12,55 @@ enum Sex {
   F
 }
 
+enum AnimalStatus {
+  UNHOSTED
+  FOSTERED
+  ADOPTED
+}
+
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model Animal {
-  id            Int       @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   name          String
   species       String
   sex           Sex
   color         String?
-  birthDate     DateTime  @map("birth_date") @db.Date
-  isNeutered    Boolean   @map("is_neutered")
-  status        String    @default("unhosted")
-  lastVax       DateTime? @map("last_vax") @db.Date
-  isPrimoVax    Boolean   @default(false) @map("is_primo_vax")
-  lastDeworm    DateTime? @map("last_deworm") @db.Date
-  isFirstDeworm Boolean   @default(false) @map("is_first_deworm")
+  birthDate     DateTime     @map("birth_date") @db.Date
+  isNeutered    Boolean      @map("is_neutered")
+  status        AnimalStatus @default(UNHOSTED)
+  lastVax       DateTime?    @map("last_vax") @db.Date
+  isPrimoVax    Boolean      @default(false) @map("is_primo_vax")
+  lastDeworm    DateTime?    @map("last_deworm") @db.Date
+  isFirstDeworm Boolean      @default(false) @map("is_first_deworm")
   information   String?
-  familyId      Int?      @map("family_id")
-  orgId         Int       @map("organization_id")
-  createdAt     DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  familyId      Int?         @map("family_id")
+  orgId         Int          @map("organization_id")
+  createdAt     DateTime?    @default(now()) @map("created_at") @db.Timestamptz(6)
 
-  // relations
-  family       Family?      @relation(fields: [familyId], references: [id], onUpdate: NoAction)
-  organization Organization @relation(fields: [orgId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  family       Family?         @relation(fields: [familyId], references: [id], onUpdate: NoAction)
+  organization Organization    @relation(fields: [orgId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  adoption     AnimalAdoption?
 
-  @@map("animals") // table en base = animals
+  @@map("animals")
+}
+
+model AnimalAdoption {
+  id                       Int       @id @default(autoincrement())
+  animalId                 Int       @unique // <- 0-1 par animal (MVP)
+  adopterName              String
+  adopterEmail             String?
+  adopterPhoneNumber       String
+  adopterAddress           String
+  homeVisitDone            Boolean   @default(false)
+  knowledgeCertSignedAt    DateTime? @db.Date
+  neuteringPlannedAt       DateTime? @db.Date
+  adoptionContractSignedAt DateTime? @db.Date
+  adoptionFeePaid          Boolean   @default(false)
+  legalTransferAt          DateTime? @db.Date
+  notes                    String?
+  createdAt                DateTime? @default(now()) @db.Timestamptz(6)
+
+  animal Animal @relation(fields: [animalId], references: [id], onDelete: Cascade)
 }
 
 model Family {
