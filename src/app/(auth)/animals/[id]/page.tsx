@@ -24,7 +24,9 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
       </h3>
     );
 
-  const animalOrg: Organization | undefined = user.organizations.find((o) => o.id === animal.orgId);
+  const animalOrg: Organization | undefined = user.organizations.find(
+    (org) => org.id === animal.orgId,
+  );
 
   return (
     <>
@@ -42,7 +44,7 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
         </h3>
         <p>
           {animal.species} {animal.sex === 'M' ? 'mâle' : 'femelle'} {animal.color?.toLowerCase()}{' '}
-          de {getAge(animal.birthDate)}
+          de {getAge(animal.birthDate, true)}
           {animal.isNeutered ? `, stérilisé${animal.sex === 'M' ? '' : 'e'}.` : '.'}
         </p>
         {animal.lastVax && (
@@ -50,7 +52,7 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
             <h4>Dernier vaccin le :</h4>
             <p>
               {displayDate(animal.lastVax)}
-              {animal.isPrimoVax ? ' (primo)' : ''}, il y a {getAge(animal.lastVax)}.
+              {animal.isPrimoVax ? ' (primo)' : ''}, il y a {getAge(animal.lastVax, true)}.
             </p>
           </div>
         )}
@@ -59,7 +61,7 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
             <h4>Dernier déparasitage le :</h4>
             <p>
               {displayDate(animal.lastDeworm)}
-              {animal.isFirstDeworm ? ' (premier)' : ''}, il y a {getAge(animal.lastDeworm)}.
+              {animal.isFirstDeworm ? ' (premier)' : ''}, il y a {getAge(animal.lastDeworm, true)}.
             </p>
           </div>
         )}

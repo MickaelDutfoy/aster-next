@@ -12,11 +12,7 @@ const DashboardPage = async () => {
 
   const pending: PendingOrgRequest[] | null = await getPendingOrgRequests(org?.id);
 
-  return (
-    <>
-      <Dashboard user={user} org={org} pending={pending} />
-    </>
-  );
+  return <Dashboard user={user} org={org} pending={pending} />;
 };
 
 export default DashboardPage;

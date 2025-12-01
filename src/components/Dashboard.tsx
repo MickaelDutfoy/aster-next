@@ -28,8 +28,7 @@ export const Dashboard = ({
           <p>Vous êtes admin de l'association {org.name}.</p>
           {pending && pending.length > 0 && (
             <div className="pending-list">
-              <p>Vous devez valider les demandes d'adhésion suivantes :</p>
-
+              <p>Vous devez valider les demandes d'adhésion suivantes :</p>
               <ul>
                 {pending.map((req) => (
                   <li
@@ -46,9 +45,9 @@ export const Dashboard = ({
         </>
       )}
       <div className="contact">
-        <p>Un problème ? Une suggestion ? </p>
+        <p>Un problème ? Une suggestion ?</p>
         <Link className="link" href="mailto:m.dutfoy@gmail.com">
-          Envoyez-moi un message  !
+          Envoyez-moi un message !
         </Link>
       </div>
     </div>

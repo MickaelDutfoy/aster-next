@@ -1,6 +1,9 @@
 'use client';
 
 import { Animal } from '@/lib/types';
+import { AnimalStatus, Sex } from '@prisma/client';
+import { clsx } from 'clsx';
+import { useState } from 'react';
 
 export const AnimalForm = ({
   animal,
@@ -11,89 +14,224 @@ export const AnimalForm = ({
   action: (formdata: FormData) => void;
   isLoading: boolean;
 }) => {
+  const [form, setForm] = useState<'health' | 'adopt'>('health');
+  const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
+
   return (
-    <form action={action}>
-      <p>(Les champs marqués d'un * sont requis.)</p>
-      <div className="name-species-color">
-        <input type="text" name="animalName" placeholder="Nom *" defaultValue={animal?.name} />
-        <input
-          type="text"
-          name="animalSpecies"
-          placeholder="Espèce *"
-          defaultValue={animal?.species}
-        />
-        <input
-          type="text"
-          name="animalColor"
-          placeholder="Couleur"
-          defaultValue={animal?.color ?? ''}
-        />
+    <>
+      <div className="tabs">
+        <div className={clsx(form === 'health' ? 'active' : '')} onClick={() => setForm('health')}>
+          Santé
+        </div>
+        <div className={clsx(form === 'adopt' ? 'active' : '')} onClick={() => setForm('adopt')}>
+          Adoption
+        </div>
       </div>
-      <div className="sex">
-        <p>Sexe * :</p>
-        <select name="animalSex" defaultValue={animal?.sex}>
-          <option value="M">Mâle</option>
-          <option value="F">Femelle</option>
-        </select>
-        <p>Stérilisé(e) ?</p>
-        <input type="checkbox" name="animalIsNeutered" defaultChecked={animal?.isNeutered} />
-      </div>
-      <div className="birth-vax-deworm">
-        <p>Né(e) le * :</p>
-        <input
-          type="date"
-          name="animalBirthDate"
-          defaultValue={animal?.birthDate.toISOString().slice(0, 10)}
-        />
-      </div>
-      <div className="birth-vax-deworm">
-        <p>Vacciné(e) le :</p>
-        <input
-          type="date"
-          name="animalLastVax"
-          defaultValue={animal?.lastVax?.toISOString().slice(0, 10)}
-        />
-      </div>
-      <label className="vax-deworm-info" htmlFor="animalPrimeVax">
-        Primo-vaccination ?
-        <input
-          type="checkbox"
-          name="animalPrimeVax"
-          id="animalPrimeVax"
-          defaultChecked={animal?.isPrimoVax}
-        />
-      </label>
-      <div className="birth-vax-deworm">
-        <p>Déparasité(e) le :</p>
-        <input
-          type="date"
-          name="animalLastDeworm"
-          defaultValue={animal?.lastDeworm?.toISOString().slice(0, 10)}
-        />
-      </div>
-      <label className="vax-deworm-info" htmlFor="animalFirstDeworm">
-        Premier déparasitage ?
-        <input
-          type="checkbox"
-          name="animalFirstDeworm"
-          id="animalFirstDeworm"
-          defaultChecked={animal?.isFirstDeworm}
-        />
-      </label>
-      <p>Informations complémentaires :</p>
-      <textarea
-        name="animalInformation"
-        defaultValue={animal?.information ?? ''}
-        onInput={(e) => {
-          const el = e.currentTarget;
-          el.style.height = 'auto';
-          el.style.height = `${el.scrollHeight}px`;
-        }}
-      />
-      <button className="little-button" aria-busy={isLoading} disabled={isLoading}>
-        {' '}
-        {isLoading ? 'Enregistrement...' : 'Enregistrer'}
-      </button>
-    </form>
+      <p className="notice">(Les champs marqués d'un * sont requis.)</p>
+      <form action={action} style={{ minHeight: '50vh', width: '85vw' }}>
+        <div hidden={form !== 'health'}>
+          <div className="form-tab">
+            <div className="name-species-color">
+              <input
+                type="text"
+                name="animalName"
+                placeholder="Nom *"
+                defaultValue={animal?.name}
+              />
+              <input
+                type="text"
+                name="animalSpecies"
+                placeholder="Espèce *"
+                defaultValue={animal?.species}
+              />
+              <input
+                type="text"
+                name="animalColor"
+                placeholder="Couleur"
+                defaultValue={animal?.color ?? ''}
+              />
+            </div>
+            <div className="labeled-checkbox">
+              <p>Sexe * :</p>
+              <select name="animalSex" defaultValue={animal?.sex}>
+                <option value={Sex.M}>Mâle</option>
+                <option value={Sex.F}>Femelle</option>
+              </select>
+              <p>Stérilisé(e) ?</p>
+              <input type="checkbox" name="animalIsNeutered" defaultChecked={animal?.isNeutered} />
+            </div>
+            <div className="labeled-date">
+              <p>Né(e) le * :</p>
+              <input
+                type="date"
+                name="animalBirthDate"
+                defaultValue={animal?.birthDate.toISOString().slice(0, 10)}
+              />
+            </div>
+            <div className="labeled-date">
+              <p>Vacciné(e) le :</p>
+              <input
+                type="date"
+                name="animalLastVax"
+                defaultValue={animal?.lastVax?.toISOString().slice(0, 10)}
+              />
+            </div>
+            <label className="labeled-checkbox" htmlFor="animalPrimeVax">
+              Primo-vaccination ?
+              <input
+                type="checkbox"
+                name="animalPrimeVax"
+                id="animalPrimeVax"
+                defaultChecked={animal?.isPrimoVax}
+              />
+            </label>
+            <div className="labeled-date">
+              <p>Déparasité(e) le :</p>
+              <input
+                type="date"
+                name="animalLastDeworm"
+                defaultValue={animal?.lastDeworm?.toISOString().slice(0, 10)}
+              />
+            </div>
+            <label className="labeled-checkbox" htmlFor="animalFirstDeworm">
+              Premier déparasitage ?
+              <input
+                type="checkbox"
+                name="animalFirstDeworm"
+                id="animalFirstDeworm"
+                defaultChecked={animal?.isFirstDeworm}
+              />
+            </label>
+            <p>Informations complémentaires :</p>
+            <textarea
+              name="animalInformation"
+              defaultValue={animal?.information ?? ''}
+              onInput={(e) => {
+                const el = e.currentTarget;
+                el.style.height = 'auto';
+                el.style.height = `${el.scrollHeight}px`;
+              }}
+            />
+            <button className="little-button" aria-busy={isLoading} disabled={isLoading}>
+              {isLoading ? 'Enregistrement...' : 'Enregistrer'}
+            </button>
+          </div>
+        </div>
+        <div hidden={form !== 'adopt'}>
+          <div className="form-tab">
+            <div className="labeled-select">
+              <p>Statut de l'animal * :</p>
+              <select
+                name="animalStatus"
+                defaultValue={animal?.status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value={AnimalStatus.UNHOSTED}>En attente</option>
+                <option value={AnimalStatus.FOSTERED}>En famille d'accueil</option>
+                <option value={AnimalStatus.ADOPTED}>Adopté</option>
+              </select>
+            </div>
+            <input
+              type="text"
+              name="adopterFullName"
+              placeholder={"Nom et prénom de l'adoptant" + (status === 'ADOPTED' ? ' *' : '')}
+              defaultValue={animal?.adoption?.adopterFullName}
+            />
+            <div className="adopter-address-info">
+              <input
+                type="text"
+                name="adopterAddress"
+                placeholder={'N° et rue' + (status === 'ADOPTED' ? ' *' : '')}
+                defaultValue={animal?.adoption?.adopterAddress}
+              />
+              <div className="adopter-city">
+                <input
+                  type="text"
+                  name="adopterZip"
+                  placeholder={'Code postal' + (status === 'ADOPTED' ? ' *' : '')}
+                  defaultValue={animal?.adoption?.adopterZip}
+                />
+                <input
+                  type="text"
+                  name="adopterCity"
+                  placeholder={'Ville' + (status === 'ADOPTED' ? ' *' : '')}
+                  defaultValue={animal?.adoption?.adopterCity}
+                />
+              </div>
+              <div className="adopter-contact">
+                <input
+                  type="text"
+                  name="adopterEmail"
+                  placeholder="E-mail"
+                  defaultValue={animal?.adoption?.adopterEmail as string}
+                />
+                <input
+                  type="text"
+                  name="adopterPhoneNumber"
+                  placeholder={'Téléphone' + (status === 'ADOPTED' ? ' *' : '')}
+                  defaultValue={animal?.adoption?.adopterPhoneNumber}
+                />
+              </div>
+            </div>
+
+            <label className="labeled-checkbox" htmlFor="homeVisitDone">
+              Visite à domicile faite ?
+              <input
+                type="checkbox"
+                name="homeVisitDone"
+                id="homeVisitDone"
+                defaultChecked={animal?.adoption?.homeVisitDone}
+              />
+            </label>
+            <div className="labeled-date">
+              <p>Certif. engagement signé le :</p>
+              <input
+                type="date"
+                name="knowledgeCertSignedAt"
+                defaultValue={animal?.adoption?.knowledgeCertSignedAt?.toISOString().slice(0, 10)}
+              />
+            </div>
+            <div className="labeled-date">
+              <p>Stérilisation prévue le :</p>
+              <input
+                type="date"
+                name="neuteringPlannedAt"
+                defaultValue={animal?.adoption?.neuteringPlannedAt?.toISOString().slice(0, 10)}
+              />
+            </div>
+            <div className="labeled-date">
+              <p>Contrat d'adoption signé le :</p>
+              <input
+                type="date"
+                name="adoptionContractSignedAt"
+                defaultValue={animal?.adoption?.adoptionContractSignedAt
+                  ?.toISOString()
+                  .slice(0, 10)}
+              />
+            </div>
+            <label className="labeled-checkbox" htmlFor="adoptionFeePaid">
+              Frais d'adoption payés ?
+              <input
+                type="checkbox"
+                name="adoptionFeePaid"
+                id="adoptionFeePaid"
+                defaultChecked={animal?.adoption?.adoptionFeePaid}
+              />
+            </label>
+            <div className="labeled-date">
+              <p>Accueilli chez l'adoptant le :</p>
+              <input
+                type="date"
+                name="legalTransferAt"
+                defaultValue={animal?.adoption?.legalTransferAt?.toISOString().slice(0, 10)}
+              />
+            </div>
+            <button className="little-button" aria-busy={isLoading} disabled={isLoading}>
+              {isLoading ? 'Enregistrement...' : 'Enregistrer'}
+            </button>
+          </div>
+        </div>
+      </form>
+    </>
   );
 };

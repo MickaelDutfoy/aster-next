@@ -32,6 +32,28 @@ header {
   align-items: center;
 }
 
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+  border-bottom: 1px solid vars.$cinereous;
+
+  div {
+    cursor: pointer;
+    font-size: 1.1rem;
+    flex: 1 1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .active {
+    background-color: rgba($color: #000, $alpha: 0.1);
+    font-weight: 700;
+    border-bottom: 3px solid vars.$cinereous;
+  }
+}
+
 .orga-select {
   margin: 10px 0;
   display: flex;
@@ -96,5 +118,15 @@ header {
 
   .pending-list li {
     color: vars.$cinereous;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tabs {
+    border-color: vars.$raw-umber;
+
+    .active {
+      background-color: rgba($color: #fff, $alpha: 0.1);
+    }
   }
 }

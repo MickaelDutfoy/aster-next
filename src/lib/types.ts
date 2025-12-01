@@ -1,4 +1,4 @@
-import { MemberRole, MemberStatus, Sex } from '@prisma/client';
+import { AnimalStatus, MemberRole, MemberStatus, Sex } from '@prisma/client';
 
 export type ActionValidation = {
   ok: boolean;
@@ -18,7 +18,7 @@ export type Animal = {
   color: string | null;
   birthDate: Date;
   isNeutered: boolean;
-  status: string;
+  status: AnimalStatus;
   lastVax: Date | null;
   isPrimoVax: boolean;
   lastDeworm: Date | null;
@@ -26,6 +26,25 @@ export type Animal = {
   information: string | null;
   familyId: number | null;
   orgId: number;
+  adoption?: AnimalAdoption | null;
+};
+
+export type AnimalAdoption = {
+  id: number;
+  animalId: number;
+  adopterFullName: string;
+  adopterEmail: string | null;
+  adopterPhoneNumber: string;
+  adopterAddress: string;
+  adopterZip: string;
+  adopterCity: string;
+  homeVisitDone: boolean;
+  knowledgeCertSignedAt: Date | null;
+  neuteringPlannedAt: Date | null;
+  adoptionContractSignedAt: Date | null;
+  adoptionFeePaid: boolean;
+  legalTransferAt: Date | null;
+  notes: string | null;
 };
 
 export type Organization = {
