@@ -1,16 +1,12 @@
 'use client';
 
+import { AnimalStatus } from '@/lib/enums';
 import { Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import Link from 'next/link';
 import { useState } from 'react';
 
 export const AnimalsList = ({ org }: { org: Organization }) => {
-  const AnimalStatus = {
-    UNHOSTED: 'UNHOSTED',
-    FOSTERED: 'FOSTERED',
-    ADOPTED: 'ADOPTED',
-  };
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
 
   return (
