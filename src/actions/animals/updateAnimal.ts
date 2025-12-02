@@ -60,6 +60,24 @@ export const updateAnimal = async (
   }
 
   try {
+    const previous = await prisma.animal.findUnique({ where: { id: animalId } });
+
+    if (
+      previous &&
+      previous.lastVax &&
+      animal.lastVax?.slice(0, 9) !== previous.lastVax.toISOString().slice(0, 9)
+    ) {
+      previous.vaxHistory.push(previous.lastVax);
+    }
+
+    if (
+      previous &&
+      previous.lastDeworm &&
+      animal.lastDeworm?.slice(0, 9) !== previous.lastDeworm.toISOString().slice(0, 9)
+    ) {
+      previous.dewormHistory.push(previous.lastDeworm);
+    }
+
     await prisma.animal.update({
       where: { id: animalId },
       data: {
@@ -69,7 +87,9 @@ export const updateAnimal = async (
         color: animal.color,
         birthDate: new Date(animal.birthDate),
         lastVax: animal.lastVax ? new Date(animal.lastVax) : undefined,
+        vaxHistory: previous?.vaxHistory,
         lastDeworm: animal.lastDeworm ? new Date(animal.lastDeworm) : undefined,
+        dewormHistory: previous?.dewormHistory,
         isNeutered: animal.isNeutered,
         isPrimoVax: animal.isPrimeVax,
         isFirstDeworm: animal.isFirstDeworm,
@@ -78,9 +98,9 @@ export const updateAnimal = async (
       },
     });
 
-    const exists = await prisma.animalAdoption.findUnique({ where: { animalId } });
+    const adoptSheet = await prisma.animalAdoption.findUnique({ where: { animalId } });
 
-    if (!exists) {
+    if (!adoptSheet) {
       await prisma.animalAdoption.create({
         data: {
           animalId,
