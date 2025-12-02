@@ -1,7 +1,7 @@
 'use client';
 
-import { MemberStatus } from '@/lib/enums';
 import { Member } from '@/lib/types';
+import { MemberStatus } from '@prisma/client';
 import { Cat, FolderOpen, HouseHeart, MapPinned, Settings, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

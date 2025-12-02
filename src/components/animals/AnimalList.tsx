@@ -1,8 +1,8 @@
 'use client';
 
-import { AnimalStatus } from '@/lib/enums';
 import { Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
+import { AnimalStatus } from '@prisma/client';
 import Link from 'next/link';
 import { useState } from 'react';
 

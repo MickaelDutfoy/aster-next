@@ -1,7 +1,7 @@
 'use client';
 
-import { AnimalStatus, Sex } from '@/lib/enums';
 import { Animal } from '@/lib/types';
+import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
 import { useState } from 'react';
 
