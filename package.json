@@ -8,7 +8,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma migrate deploy",
+    "postinstall": "prisma generate && prisma migrate deploy",
     "tsc": "tsc --noEmit",
     "db:migrate:dev": "dotenv -e .env -- prisma migrate dev",
     "db:studio:dev": "dotenv -e .env -- prisma studio",
