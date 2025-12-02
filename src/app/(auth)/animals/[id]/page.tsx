@@ -1,10 +1,8 @@
+import { AnimalDetails } from '@/components/animals/AnimalDetails';
 import { getAnimalById } from '@/lib/animals/getAnimalById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Animal, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import { displayDate } from '@/lib/utils/displayDate';
-import { getAge } from '@/lib/utils/getAge';
-import Link from 'next/link';
 
 const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -28,52 +26,7 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
     (org) => org.id === animal.orgId,
   );
 
-  return (
-    <>
-      <div className="links-box">
-        <Link href={`/animals/${id}/delete`} className="little-button">
-          Supprimer l'animal
-        </Link>
-        <Link href={`/animals/${id}/edit`} className="little-button">
-          Éditer l'animal
-        </Link>
-      </div>
-      <div className="animal-details">
-        <h3>
-          {animal.name} - {animalOrg?.name}
-        </h3>
-        <p>
-          {animal.species} {animal.sex === 'M' ? 'mâle' : 'femelle'} {animal.color?.toLowerCase()}{' '}
-          de {getAge(animal.birthDate, true)}
-          {animal.isNeutered ? `, stérilisé${animal.sex === 'M' ? '' : 'e'}.` : '.'}
-        </p>
-        {animal.lastVax && (
-          <div className="animal-details-section">
-            <h4>Dernier vaccin le :</h4>
-            <p>
-              {displayDate(animal.lastVax)}
-              {animal.isPrimoVax ? ' (primo)' : ''}, il y a {getAge(animal.lastVax, true)}.
-            </p>
-          </div>
-        )}
-        {animal.lastDeworm && (
-          <div className="animal-details-section">
-            <h4>Dernier déparasitage le :</h4>
-            <p>
-              {displayDate(animal.lastDeworm)}
-              {animal.isFirstDeworm ? ' (premier)' : ''}, il y a {getAge(animal.lastDeworm, true)}.
-            </p>
-          </div>
-        )}
-        {animal.information && (
-          <div className="animal-details-section">
-            <h4>Informations complémentaires :</h4>
-            <p>{animal.information}</p>
-          </div>
-        )}
-      </div>
-    </>
-  );
+  return <AnimalDetails animal={animal} animalOrg={animalOrg} />;
 };
 
 export default AnimalDetail;

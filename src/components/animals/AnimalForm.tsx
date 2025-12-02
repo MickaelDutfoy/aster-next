@@ -3,7 +3,8 @@
 import { Animal } from '@/lib/types';
 import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
+import { showToast } from '../providers/ToastProvider';
 
 export const AnimalForm = ({
   animal,
@@ -16,6 +17,44 @@ export const AnimalForm = ({
 }) => {
   const [form, setForm] = useState<'health' | 'adopt'>('health');
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
+
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!e.currentTarget.form) return;
+
+    const formData = new FormData(e.currentTarget.form);
+
+    const name = formData.get('animalName')?.toString().trim();
+    const species = formData.get('animalSpecies')?.toString().trim();
+    const birthDate = formData.get('animalBirthDate')?.toString().trim();
+
+    const statusFromForm = formData.get('animalStatus')?.toString();
+
+    const adopterFullName = formData.get('adopterFullName')?.toString().trim();
+    const adopterEmail = formData.get('adopterEmail')?.toString().trim();
+    const adopterPhoneNumber = formData.get('adopterPhoneNumber')?.toString().trim();
+    const adopterAddress = formData.get('adopterAddress')?.toString().trim();
+    const adopterZip = formData.get('adopterZip')?.toString().trim();
+    const adopterCity = formData.get('adopterCity')?.toString().trim();
+
+    const missingHealth = !name || !species || !birthDate;
+    const missingAdoption =
+      statusFromForm === 'ADOPTED' &&
+      (!adopterFullName ||
+        !adopterPhoneNumber ||
+        !adopterEmail ||
+        !adopterAddress ||
+        !adopterZip ||
+        !adopterCity);
+
+    if (missingHealth || missingAdoption) {
+      e.preventDefault();
+      showToast({
+        ok: false,
+        status: 'error',
+        message: 'Des champs obligatoires sont PALA.',
+      });
+    }
+  };
 
   return (
     <>
@@ -112,7 +151,12 @@ export const AnimalForm = ({
                 el.style.height = `${el.scrollHeight}px`;
               }}
             />
-            <button className="little-button" aria-busy={isLoading} disabled={isLoading}>
+            <button
+              className="little-button"
+              aria-busy={isLoading}
+              disabled={isLoading}
+              onClick={(e) => handleSubmit(e)}
+            >
               {isLoading ? 'Enregistrement...' : 'Enregistrer'}
             </button>
           </div>
@@ -162,7 +206,7 @@ export const AnimalForm = ({
                 <input
                   type="text"
                   name="adopterEmail"
-                  placeholder="E-mail"
+                  placeholder={'E-mail' + (status === 'ADOPTED' ? ' *' : '')}
                   defaultValue={animal?.adoption?.adopterEmail as string}
                 />
                 <input
@@ -219,14 +263,19 @@ export const AnimalForm = ({
               />
             </label>
             <div className="labeled-date">
-              <p>Accueilli chez l'adoptant le :</p>
+              <p>Cession légale faite le :</p>
               <input
                 type="date"
                 name="legalTransferAt"
                 defaultValue={animal?.adoption?.legalTransferAt?.toISOString().slice(0, 10)}
               />
             </div>
-            <button className="little-button" aria-busy={isLoading} disabled={isLoading}>
+            <button
+              className="little-button"
+              aria-busy={isLoading}
+              disabled={isLoading}
+              onClick={(e) => handleSubmit(e)}
+            >
               {isLoading ? 'Enregistrement...' : 'Enregistrer'}
             </button>
           </div>

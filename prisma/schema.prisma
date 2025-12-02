@@ -48,7 +48,7 @@ model AnimalAdoption {
   id                       Int       @id @default(autoincrement())
   animalId                 Int       @unique // <- 0-1 par animal (MVP)
   adopterFullName          String
-  adopterEmail             String?
+  adopterEmail             String
   adopterPhoneNumber       String
   adopterAddress           String
   adopterZip               String

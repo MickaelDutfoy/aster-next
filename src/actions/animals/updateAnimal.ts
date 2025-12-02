@@ -51,6 +51,7 @@ export const updateAnimal = async (
     (animal.status === 'ADOPTED' &&
       (!adopter.fullName ||
         !adopter.phoneNumber ||
+        !adopter.email ||
         !adopter.address ||
         !adopter.zip ||
         !adopter.city))
