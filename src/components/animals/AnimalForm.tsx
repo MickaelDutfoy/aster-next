@@ -26,25 +26,11 @@ export const AnimalForm = ({
     const name = formData.get('animalName')?.toString().trim();
     const species = formData.get('animalSpecies')?.toString().trim();
     const birthDate = formData.get('animalBirthDate')?.toString().trim();
-
     const statusFromForm = formData.get('animalStatus')?.toString();
-
     const adopterFullName = formData.get('adopterFullName')?.toString().trim();
-    const adopterEmail = formData.get('adopterEmail')?.toString().trim();
-    const adopterPhoneNumber = formData.get('adopterPhoneNumber')?.toString().trim();
-    const adopterAddress = formData.get('adopterAddress')?.toString().trim();
-    const adopterZip = formData.get('adopterZip')?.toString().trim();
-    const adopterCity = formData.get('adopterCity')?.toString().trim();
 
     const missingHealth = !name || !species || !birthDate;
-    const missingAdoption =
-      statusFromForm === 'ADOPTED' &&
-      (!adopterFullName ||
-        !adopterPhoneNumber ||
-        !adopterEmail ||
-        !adopterAddress ||
-        !adopterZip ||
-        !adopterCity);
+    const missingAdoption = statusFromForm === 'ADOPTED' && !adopterFullName;
 
     if (missingHealth || missingAdoption) {
       e.preventDefault();
