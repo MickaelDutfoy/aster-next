@@ -1,9 +1,10 @@
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
+import { cache } from 'react';
 import 'server-only';
 import { Member, Organization } from '../types';
 
-export const getUser = async (): Promise<Member | null> => {
+export const getUser = cache(async (): Promise<Member | null> => {
   const session = await auth();
   if (!session?.user?.email) return null;
 
@@ -49,4 +50,4 @@ export const getUser = async (): Promise<Member | null> => {
     console.log(err);
     return null;
   }
-};
+});

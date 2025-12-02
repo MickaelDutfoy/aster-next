@@ -47,10 +47,12 @@ model Animal {
 model AnimalAdoption {
   id                       Int       @id @default(autoincrement())
   animalId                 Int       @unique // <- 0-1 par animal (MVP)
-  adopterName              String
-  adopterEmail             String?
+  adopterFullName          String
+  adopterEmail             String
   adopterPhoneNumber       String
   adopterAddress           String
+  adopterZip               String
+  adopterCity              String
   homeVisitDone            Boolean   @default(false)
   knowledgeCertSignedAt    DateTime? @db.Date
   neuteringPlannedAt       DateTime? @db.Date
@@ -64,13 +66,15 @@ model AnimalAdoption {
 }
 
 model Family {
-  id          Int       @id @default(autoincrement())
-  contactName String    @map("contact_name")
-  email       String?
-  phoneNumber String    @map("phone_number")
-  address     String?
-  orgId       Int       @map("organization_id")
-  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  id              Int       @id @default(autoincrement())
+  contactFullName String    @map("contact_name")
+  email           String?
+  phoneNumber     String    @map("phone_number")
+  address         String
+  zip             String
+  city            String
+  orgId           Int       @map("organization_id")
+  createdAt       DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
 
   animals      Animal[]
   organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)

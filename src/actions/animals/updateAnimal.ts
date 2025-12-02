@@ -3,7 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import { Sex } from '@prisma/client';
+import { AnimalStatus, Sex } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 export const updateAnimal = async (
@@ -26,9 +26,36 @@ export const updateAnimal = async (
     isPrimeVax: formdata.has('animalPrimeVax'),
     isFirstDeworm: formdata.has('animalFirstDeworm'),
     information: formdata.get('animalInformation')?.toString().trim(),
+    status: formdata.get('animalStatus') as AnimalStatus,
   };
 
-  if (!animal.name || !animal.species || !animal.birthDate) {
+  const adopter = {
+    fullName: formdata.get('adopterFullName')?.toString().trim(),
+    email: formdata.get('adopterEmail')?.toString().trim(),
+    phoneNumber: formdata.get('adopterPhoneNumber')?.toString().trim(),
+    address: formdata.get('adopterAddress')?.toString().trim(),
+    zip: formdata.get('adopterZip')?.toString().trim(),
+    city: formdata.get('adopterCity')?.toString().trim(),
+    homeVisitDone: formdata.has('homeVisitDone'),
+    knowledgeCertSignedAt: formdata.get('knowledgeCertSignedAt')?.toString(),
+    neuteringPlannedAt: formdata.get('neuteringPlannedAt')?.toString(),
+    adoptionContractSignedAt: formdata.get('adoptionContractSignedAt')?.toString(),
+    adoptionFeePaid: formdata.has('adoptionFeePaid'),
+    legalTransferAt: formdata.get('legalTransferAt')?.toString(),
+  };
+
+  if (
+    !animal.name ||
+    !animal.species ||
+    !animal.birthDate ||
+    (animal.status === 'ADOPTED' &&
+      (!adopter.fullName ||
+        !adopter.phoneNumber ||
+        !adopter.email ||
+        !adopter.address ||
+        !adopter.zip ||
+        !adopter.city))
+  ) {
     return { ok: false, status: 'error', message: 'Des champs obligatoires sont incomplets.' };
   }
 
@@ -47,8 +74,61 @@ export const updateAnimal = async (
         isPrimoVax: animal.isPrimeVax,
         isFirstDeworm: animal.isFirstDeworm,
         information: animal.information,
+        status: animal.status,
       },
     });
+
+    const exists = await prisma.animalAdoption.findUnique({ where: { animalId } });
+
+    if (!exists) {
+      await prisma.animalAdoption.create({
+        data: {
+          animalId,
+          adopterFullName: adopter.fullName as string,
+          adopterEmail: adopter.email as string,
+          adopterPhoneNumber: adopter.phoneNumber as string,
+          adopterAddress: adopter.address as string,
+          adopterZip: adopter.zip as string,
+          adopterCity: adopter.city as string,
+          homeVisitDone: adopter.homeVisitDone,
+          knowledgeCertSignedAt: adopter.knowledgeCertSignedAt
+            ? new Date(adopter.knowledgeCertSignedAt)
+            : undefined,
+          neuteringPlannedAt: adopter.neuteringPlannedAt
+            ? new Date(adopter.neuteringPlannedAt)
+            : undefined,
+          adoptionContractSignedAt: adopter.adoptionContractSignedAt
+            ? new Date(adopter.adoptionContractSignedAt)
+            : undefined,
+          adoptionFeePaid: adopter.adoptionFeePaid,
+          legalTransferAt: adopter.legalTransferAt ? new Date(adopter.legalTransferAt) : undefined,
+        },
+      });
+    } else {
+      await prisma.animalAdoption.update({
+        where: { animalId },
+        data: {
+          adopterFullName: adopter.fullName,
+          adopterEmail: adopter.email,
+          adopterPhoneNumber: adopter.phoneNumber,
+          adopterAddress: adopter.address,
+          adopterZip: adopter.zip,
+          adopterCity: adopter.city,
+          homeVisitDone: adopter.homeVisitDone,
+          knowledgeCertSignedAt: adopter.knowledgeCertSignedAt
+            ? new Date(adopter.knowledgeCertSignedAt)
+            : undefined,
+          neuteringPlannedAt: adopter.neuteringPlannedAt
+            ? new Date(adopter.neuteringPlannedAt)
+            : undefined,
+          adoptionContractSignedAt: adopter.adoptionContractSignedAt
+            ? new Date(adopter.adoptionContractSignedAt)
+            : undefined,
+          adoptionFeePaid: adopter.adoptionFeePaid,
+          legalTransferAt: adopter.legalTransferAt ? new Date(adopter.legalTransferAt) : undefined,
+        },
+      });
+    }
 
     revalidatePath(`/animals/${animalId}`);
 

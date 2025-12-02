@@ -8,8 +8,12 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate",
-    "tsc": "tsc --noEmit"
+    "postinstall": "prisma generate && prisma migrate deploy",
+    "tsc": "tsc --noEmit",
+    "db:migrate:dev": "dotenv -e .env -- prisma migrate dev",
+    "db:studio:dev": "dotenv -e .env -- prisma studio",
+    "db:migrate:prod": "dotenv -e .env.prod -- prisma migrate deploy",
+    "db:studio:prod": "dotenv -e .env.prod -- prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^6.16.1",
@@ -27,6 +31,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv-cli": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "prettier": "^3.6.2",

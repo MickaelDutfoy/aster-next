@@ -29,6 +29,7 @@ button {
 }
 
 .link {
+  user-select: none;
   color: vars.$raw-umber;
 }
 
@@ -49,9 +50,9 @@ a:active {
 @keyframes spin {
   to {
     transform: rotate(360deg);
-  }
-  
+  } 
 }
+
 .spinner {
   width: 22px;
   height: 22px;
@@ -73,6 +74,12 @@ a:active {
   display: flex;
   gap: 5px;
   justify-content: center;
+}
+
+.collapse-expand {
+  cursor: pointer;
+  user-select: none;
+  color: vars.$raw-umber;
 }
 
 h1,
@@ -171,7 +178,7 @@ hr {
 }
 
 @media (prefers-color-scheme: dark) {
-  .link {
+  .link, .collapse-expand {
     color: vars.$cinereous;
   }
 
