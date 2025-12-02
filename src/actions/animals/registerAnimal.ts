@@ -4,7 +4,7 @@ import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import type { AnimalStatus, Sex } from '@prisma/client';
+import { AnimalStatus, Sex } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 export const registerAnimal = async (
