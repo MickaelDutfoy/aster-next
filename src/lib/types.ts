@@ -20,8 +20,10 @@ export type Animal = {
   isNeutered: boolean;
   status: AnimalStatus;
   lastVax: Date | null;
+  vaxHistory: Date[];
   isPrimoVax: boolean;
   lastDeworm: Date | null;
+  dewormHistory: Date[];
   isFirstDeworm: boolean;
   information: string | null;
   familyId: number | null;

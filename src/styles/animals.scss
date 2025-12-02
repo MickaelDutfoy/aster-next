@@ -91,6 +91,15 @@
       padding-left: 10px;
     }
   }
+
+  .health-historic {
+    margin-top: 5px;
+    font-size: 0.8rem;
+
+    ul {
+      padding-left: 40px;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {

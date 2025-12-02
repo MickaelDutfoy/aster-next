@@ -51,7 +51,7 @@ export const AnimalForm = ({
       showToast({
         ok: false,
         status: 'error',
-        message: 'Des champs obligatoires sont PALA.',
+        message: 'Des champs obligatoires sont incomplets.',
       });
     }
   };
@@ -108,7 +108,7 @@ export const AnimalForm = ({
               />
             </div>
             <div className="labeled-date">
-              <p>Vacciné(e) le :</p>
+              <p>Dernier vaccin le :</p>
               <input
                 type="date"
                 name="animalLastVax"
@@ -125,7 +125,7 @@ export const AnimalForm = ({
               />
             </label>
             <div className="labeled-date">
-              <p>Déparasité(e) le :</p>
+              <p>Dernier déparasitage le :</p>
               <input
                 type="date"
                 name="animalLastDeworm"
@@ -185,20 +185,20 @@ export const AnimalForm = ({
               <input
                 type="text"
                 name="adopterAddress"
-                placeholder={'N° et rue' + (status === 'ADOPTED' ? ' *' : '')}
+                placeholder="N° et rue"
                 defaultValue={animal?.adoption?.adopterAddress}
               />
               <div className="adopter-city">
                 <input
                   type="text"
                   name="adopterZip"
-                  placeholder={'Code postal' + (status === 'ADOPTED' ? ' *' : '')}
+                  placeholder="Code postal"
                   defaultValue={animal?.adoption?.adopterZip}
                 />
                 <input
                   type="text"
                   name="adopterCity"
-                  placeholder={'Ville' + (status === 'ADOPTED' ? ' *' : '')}
+                  placeholder="Ville"
                   defaultValue={animal?.adoption?.adopterCity}
                 />
               </div>
@@ -206,13 +206,13 @@ export const AnimalForm = ({
                 <input
                   type="text"
                   name="adopterEmail"
-                  placeholder={'E-mail' + (status === 'ADOPTED' ? ' *' : '')}
+                  placeholder="E-mail"
                   defaultValue={animal?.adoption?.adopterEmail as string}
                 />
                 <input
                   type="text"
                   name="adopterPhoneNumber"
-                  placeholder={'Téléphone' + (status === 'ADOPTED' ? ' *' : '')}
+                  placeholder="Téléphone"
                   defaultValue={animal?.adoption?.adopterPhoneNumber}
                 />
               </div>

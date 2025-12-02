@@ -60,6 +60,18 @@ export const AnimalDetails = ({
                   {displayDate(animal.lastVax)}
                   {animal.isPrimoVax ? ' (primo)' : ''}, il y a {getAge(animal.lastVax, true)}.
                 </p>
+                {animal.vaxHistory.length > 0 && (
+                  <div className="health-historic">
+                    <p>Historique des vaccins :</p>
+                    <ul>
+                      {animal.vaxHistory.map((date) => (
+                        <li key={Number(date)}>
+                          {displayDate(date)}, il y a {getAge(date, true)}.
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
             {animal.lastDeworm && (
@@ -70,6 +82,18 @@ export const AnimalDetails = ({
                   {animal.isFirstDeworm ? ' (premier)' : ''}, il y a{' '}
                   {getAge(animal.lastDeworm, true)}.
                 </p>
+                {animal.dewormHistory.length > 0 && (
+                  <div className="health-historic">
+                    <p>Historique des déparasitages :</p>
+                    <ul style={{ paddingLeft: 40 }}>
+                      {animal.dewormHistory.map((date) => (
+                        <li key={Number(date)}>
+                          {displayDate(date)}, il y a {getAge(date, true)}.
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
             {animal.information && (
