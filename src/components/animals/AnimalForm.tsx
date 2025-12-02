@@ -186,20 +186,20 @@ export const AnimalForm = ({
                 type="text"
                 name="adopterAddress"
                 placeholder="N° et rue"
-                defaultValue={animal?.adoption?.adopterAddress}
+                defaultValue={animal?.adoption?.adopterAddress as string}
               />
               <div className="adopter-city">
                 <input
                   type="text"
                   name="adopterZip"
                   placeholder="Code postal"
-                  defaultValue={animal?.adoption?.adopterZip}
+                  defaultValue={animal?.adoption?.adopterZip as string}
                 />
                 <input
                   type="text"
                   name="adopterCity"
                   placeholder="Ville"
-                  defaultValue={animal?.adoption?.adopterCity}
+                  defaultValue={animal?.adoption?.adopterCity as string}
                 />
               </div>
               <div className="adopter-contact">
@@ -213,7 +213,7 @@ export const AnimalForm = ({
                   type="text"
                   name="adopterPhoneNumber"
                   placeholder="Téléphone"
-                  defaultValue={animal?.adoption?.adopterPhoneNumber}
+                  defaultValue={animal?.adoption?.adopterPhoneNumber as string}
                 />
               </div>
             </div>
