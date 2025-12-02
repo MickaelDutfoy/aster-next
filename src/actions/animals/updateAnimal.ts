@@ -48,13 +48,7 @@ export const updateAnimal = async (
     !animal.name ||
     !animal.species ||
     !animal.birthDate ||
-    (animal.status === 'ADOPTED' &&
-      (!adopter.fullName ||
-        !adopter.phoneNumber ||
-        !adopter.email ||
-        !adopter.address ||
-        !adopter.zip ||
-        !adopter.city))
+    (animal.status === 'ADOPTED' && !adopter.fullName)
   ) {
     return { ok: false, status: 'error', message: 'Des champs obligatoires sont incomplets.' };
   }
