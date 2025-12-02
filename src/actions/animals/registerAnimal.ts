@@ -84,7 +84,7 @@ export const registerAnimal = async (
       data: {
         animalId: res.id,
         adopterFullName: adopter.fullName as string,
-        adopterEmail: adopter.email,
+        adopterEmail: adopter.email as string,
         adopterPhoneNumber: adopter.phoneNumber as string,
         adopterAddress: adopter.address as string,
         adopterZip: adopter.zip as string,
