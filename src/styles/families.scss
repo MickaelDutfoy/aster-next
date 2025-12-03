@@ -1,0 +1,20 @@
+@use 'vars';
+
+.family-address-info {
+  display: flex;
+  flex-direction: column;
+
+  .family-city,
+  .family-contact {
+    display: flex;
+    justify-content: space-between;
+
+    * {
+      width: 50%;
+    }
+  }
+}
+
+button {
+  align-self: center;
+}

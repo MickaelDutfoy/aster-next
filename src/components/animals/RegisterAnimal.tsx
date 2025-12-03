@@ -18,7 +18,7 @@ export const RegisterAnimal = () => {
   }, [res]);
 
   return (
-    <div className="post-animal-form">
+    <div className="register-form">
       <h3>Ajouter un animal</h3>
       <AnimalForm action={handleRegisterAnimal} isLoading={isLoading} />
     </div>

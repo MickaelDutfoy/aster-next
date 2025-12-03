@@ -71,10 +71,12 @@ model Family {
   id              Int       @id @default(autoincrement())
   contactFullName String    @map("contact_name")
   email           String?
-  phoneNumber     String    @map("phone_number")
+  phoneNumber     String?   @map("phone_number")
   address         String
   zip             String
   city            String
+  hasChildren     Boolean   @default(false)
+  otherAnimals    String?
   orgId           Int       @map("organization_id")
   createdAt       DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
 

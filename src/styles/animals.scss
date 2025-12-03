@@ -1,74 +1,25 @@
 @use 'vars';
 
-.post-animal-form {
-  p, label {
-    font-size: 0.9rem;
-  }
+.name-species-color {
+  display: flex;
+  justify-content: space-between;
 
-  h3 {
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .notice {
-    font-size: 0.8rem;
-    text-align: center;
-    margin-bottom: 5px;
-  }
-
-  .form-tab {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-
-    .name-species-color {
-      display: flex;
-      justify-content: space-between;
-
-      * {
-        width: 33%;
-      }
-    }
-
-    .adopter-address-info {
-      display: flex;
-      flex-direction: column;
-
-      .adopter-city, .adopter-contact {
-        display: flex;
-        justify-content: space-between;
-
-        * {
-          width: 50%;
-        }
-      }
-    }
-
-    .labeled-date, .labeled-select, .labeled-checkbox {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .labeled-checkbox {
-      margin: 0 10px;
-    }
-
-    button {
-      align-self: center;
-    }
+  * {
+    width: 33%;
   }
 }
 
-.animal-list {
-  ul {
-    margin: 5px 25px;
+.adopter-address-info {
+  display: flex;
+  flex-direction: column;
 
-    li {
-      line-height: 1.75;
+  .adopter-city,
+  .adopter-contact {
+    display: flex;
+    justify-content: space-between;
+
+    * {
+      width: 50%;
     }
   }
 }

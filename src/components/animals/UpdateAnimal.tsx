@@ -23,7 +23,7 @@ export const UpdateAnimal = ({ animal }: { animal: Animal }) => {
 
   return (
     <>
-      <div className="post-animal-form">
+      <div className="register-form">
         <h3>Éditer les informations</h3>
         <AnimalForm animal={animal} action={handleUpdateAnimal} isLoading={isLoading} />
       </div>
