@@ -25,6 +25,7 @@ export type Animal = {
   species: string;
   sex: Sex;
   color: string | null;
+  findLocation: string | null;
   birthDate: Date;
   isNeutered: boolean;
   status: AnimalStatus;

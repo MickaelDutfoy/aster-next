@@ -1,13 +1,13 @@
 'use client';
 
-import { Animal } from '@/lib/types';
+import { Animal, Family } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const AnimalDetails = ({ animal }: { animal: Animal }) => {
+export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Family | null }) => {
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
     animal.status === AnimalStatus.ADOPTED ? true : false,
   );
@@ -40,6 +40,9 @@ export const AnimalDetails = ({ animal }: { animal: Animal }) => {
           de {getAge(animal.birthDate, true)}
           {animal.isNeutered ? `, stérilisé${animal.sex === 'M' ? '' : 'e'}.` : '.'}
         </p>
+        {animal.findLocation && (
+          <p className="fixed-p">Lieu de découverte : {animal.findLocation}.</p>
+        )}
         <h4 className="collapse-expand" onClick={() => setHiddenHealth(!hiddenHealth)}>
           Afficher les informations de santé {hiddenHealth ? '▸' : '▾'}
         </h4>
@@ -97,6 +100,14 @@ export const AnimalDetails = ({ animal }: { animal: Animal }) => {
           </div>
         )}
         <p className="fixed-p">Situation actuelle : {statusMap[animal.status]}.</p>
+        {family && (
+          <p className="fixed-p">
+            Famille d'accueil :{' '}
+            <Link className="link" href={`/families/${family.id}`}>
+              {family.contactFullName}
+            </Link>
+          </p>
+        )}
         <h4 className="collapse-expand" onClick={() => setHiddenAdoption(!hiddenAdoption)}>
           Afficher les informations d'adoption {hiddenAdoption ? '▸' : '▾'}
         </h4>

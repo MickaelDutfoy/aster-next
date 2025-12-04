@@ -1,6 +1,6 @@
 'use client';
 
-import { Animal } from '@/lib/types';
+import { Animal, Family } from '@/lib/types';
 import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
 import { MouseEvent, useState } from 'react';
@@ -8,10 +8,12 @@ import { showToast } from '../providers/ToastProvider';
 
 export const AnimalForm = ({
   animal,
+  families,
   action,
   isLoading,
 }: {
   animal?: Animal;
+  families: Family[] | null;
   action: (formdata: FormData) => void;
   isLoading: boolean;
 }) => {
@@ -77,7 +79,7 @@ export const AnimalForm = ({
               />
             </div>
             <div className="labeled-checkbox">
-              <p>Sexe * :</p>
+              <p>Sexe * :</p>
               <select name="animalSex" defaultValue={animal?.sex}>
                 <option value={Sex.M}>Mâle</option>
                 <option value={Sex.F}>Femelle</option>
@@ -85,8 +87,15 @@ export const AnimalForm = ({
               <p>Stérilisé(e) ?</p>
               <input type="checkbox" name="animalIsNeutered" defaultChecked={animal?.isNeutered} />
             </div>
+
+            <input
+              type="text"
+              name="findLocation"
+              placeholder="Lieu de découverte"
+              defaultValue={animal?.findLocation ?? ''}
+            />
             <div className="labeled-date">
-              <p>Né(e) le * :</p>
+              <p>Né(e) le * :</p>
               <input
                 type="date"
                 name="animalBirthDate"
@@ -94,7 +103,7 @@ export const AnimalForm = ({
               />
             </div>
             <div className="labeled-date">
-              <p>Dernier vaccin le :</p>
+              <p>Dernier vaccin le :</p>
               <input
                 type="date"
                 name="animalLastVax"
@@ -102,7 +111,7 @@ export const AnimalForm = ({
               />
             </div>
             <label className="labeled-checkbox" htmlFor="animalPrimeVax">
-              Primo-vaccination ?
+              Primo-vaccination ?
               <input
                 type="checkbox"
                 name="animalPrimeVax"
@@ -111,7 +120,7 @@ export const AnimalForm = ({
               />
             </label>
             <div className="labeled-date">
-              <p>Dernier déparasitage le :</p>
+              <p>Dernier déparasitage le :</p>
               <input
                 type="date"
                 name="animalLastDeworm"
@@ -150,7 +159,7 @@ export const AnimalForm = ({
         <div hidden={form !== 'adopt'}>
           <div className="form-tab">
             <div className="labeled-select">
-              <p>Statut de l'animal * :</p>
+              <p>Statut de l'animal * :</p>
               <select
                 name="animalStatus"
                 defaultValue={animal?.status}
@@ -159,6 +168,16 @@ export const AnimalForm = ({
                 <option value={AnimalStatus.UNHOSTED}>En attente</option>
                 <option value={AnimalStatus.FOSTERED}>En famille d'accueil</option>
                 <option value={AnimalStatus.ADOPTED}>Adopté</option>
+              </select>
+            </div>
+            <div className={`labeled-select ` + clsx(status === 'FOSTERED' ? '' : 'disabled')}>
+              <p>Famille{status === 'FOSTERED' ? ' *' : ''} :</p>
+              <select name="animalFamily" defaultValue={animal?.familyId ?? ''}>
+                {families?.map((family) => (
+                  <option key={family.id} value={family.id}>
+                    {family.contactFullName}
+                  </option>
+                ))}
               </select>
             </div>
             <input
@@ -240,7 +259,7 @@ export const AnimalForm = ({
               />
             </div>
             <label className="labeled-checkbox" htmlFor="adoptionFeePaid">
-              Frais d'adoption payés ?
+              Frais d'adoption payés ?
               <input
                 type="checkbox"
                 name="adoptionFeePaid"
@@ -256,6 +275,7 @@ export const AnimalForm = ({
                 defaultValue={animal?.adoption?.legalTransferAt?.toISOString().slice(0, 10)}
               />
             </div>
+
             <button
               className="little-button"
               aria-busy={isLoading}

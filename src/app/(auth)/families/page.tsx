@@ -15,13 +15,14 @@ const FamiliesPage = async () => {
   if (org.userStatus === 'PENDING') {
     return (
       <h3 className="denied-page">
-        Vous ne pouvez pas voir les familles de cette association car votre adhésion n'a pas encore
-        été approuvée.
+        Vous n'avez pas les autorisations pour accéder à cette ressource.
       </h3>
     );
   }
 
   const families: Family[] | null = await getFamiliesByOrg(org.id);
+
+  console.log(families);
 
   return (
     <>

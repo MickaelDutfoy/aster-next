@@ -1,8 +1,10 @@
 import { FamilyDetails } from '@/components/families/FamilyDetails';
+import { getAnimalsByFamilyId } from '@/lib/animals/getAnimalsByFamilyId';
 import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { Family, Member, Organization } from '@/lib/types';
+import { Animal, Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
+
 const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const family: Family | null = await getFamilyById(Number(id));
@@ -22,7 +24,9 @@ const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
     );
   }
 
-  return <FamilyDetails family={family} />;
+  const animals: Animal[] | null = await getAnimalsByFamilyId(Number(id));
+
+  return <FamilyDetails family={family} animals={animals} />;
 };
 
 export default FamilyDetail;
