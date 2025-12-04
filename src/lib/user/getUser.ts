@@ -26,7 +26,7 @@ export const getUser = cache(async (): Promise<Member | null> => {
     // fetch member's organizations
     const memberOrgs: Organization[] = await prisma.organization.findMany({
       where: { id: { in: res.memberOrganizations?.map((mo) => mo.orgId) } },
-      select: { id: true, name: true, animals: true },
+      select: { id: true, name: true },
     });
 
     // add member role and status for each organization

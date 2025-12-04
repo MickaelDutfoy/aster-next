@@ -18,27 +18,52 @@ export const FamilyForm = ({
             type="text"
             name="contactFullName"
             placeholder="Nom de la famille *"
-            defaultValue=""
+            defaultValue={family?.contactFullName}
           />
           <div className="family-address-info">
-            <input type="text" name="address" placeholder="N° et rue *" defaultValue="" />
+            <input
+              type="text"
+              name="address"
+              placeholder="N° et rue *"
+              defaultValue={family?.address}
+            />
             <div className="family-city">
-              <input type="text" name="zip" placeholder="Code postal *" defaultValue="" />
-              <input type="text" name="city" placeholder="Ville *" defaultValue="" />
+              <input
+                type="text"
+                name="zip"
+                placeholder="Code postal *"
+                defaultValue={family?.zip}
+              />
+              <input type="text" name="city" placeholder="Ville *" defaultValue={family?.city} />
             </div>
             <div className="family-contact">
-              <input type="text" name="email" placeholder="E-mail" defaultValue="" />
-              <input type="text" name="phoneNumber" placeholder="Téléphone" defaultValue="" />
+              <input
+                type="text"
+                name="email"
+                placeholder="E-mail"
+                defaultValue={family?.email as string}
+              />
+              <input
+                type="text"
+                name="phoneNumber"
+                placeholder="Téléphone"
+                defaultValue={family?.phoneNumber as string}
+              />
             </div>
           </div>
           <label className="labeled-checkbox" htmlFor="hasChildren">
             Y a t-il des enfants ?
-            <input type="checkbox" name="hasChildren" id="hasChildren" defaultChecked={false} />
+            <input
+              type="checkbox"
+              name="hasChildren"
+              id="hasChildren"
+              defaultChecked={family?.hasChildren}
+            />
           </label>
           <p>Y a t-il d'autres animaux (précisez lesquels) ?</p>
           <textarea
             name="otherAnimals"
-            defaultValue=""
+            defaultValue={family?.otherAnimals as string}
             onInput={(e) => {
               const el = e.currentTarget;
               el.style.height = 'auto';

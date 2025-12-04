@@ -1,4 +1,5 @@
 import { OrgList } from '@/components/organizations/OrgList';
+import { OrgMembersList } from '@/components/organizations/OrgMembersList';
 import { RegisterOrg } from '@/components/organizations/RegisterOrg';
 import { SearchOrg } from '@/components/organizations/SearchOrg';
 import '@/styles/organizations.scss';
@@ -14,6 +15,9 @@ const Organizations = async () => {
       </div>
       <div className="pending-list">
         <OrgList />
+      </div>
+      <div>
+        <OrgMembersList />
       </div>
     </div>
   );

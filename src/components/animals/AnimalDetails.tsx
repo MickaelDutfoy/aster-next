@@ -1,19 +1,13 @@
 'use client';
 
-import { Animal, Organization } from '@/lib/types';
+import { Animal } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const AnimalDetails = ({
-  animal,
-  animalOrg,
-}: {
-  animal: Animal;
-  animalOrg: Organization | undefined;
-}) => {
+export const AnimalDetails = ({ animal }: { animal: Animal }) => {
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
     animal.status === AnimalStatus.ADOPTED ? true : false,
   );
@@ -39,10 +33,8 @@ export const AnimalDetails = ({
           Éditer l'animal
         </Link>
       </div>
-      <div className="animal-page">
-        <h3>
-          {animal.name} - {animalOrg?.name}
-        </h3>
+      <div>
+        <h3>{animal.name}</h3>
         <p className="fixed-p">
           {animal.species} {animal.sex === 'M' ? 'mâle' : 'femelle'} {animal.color?.toLowerCase()}{' '}
           de {getAge(animal.birthDate, true)}

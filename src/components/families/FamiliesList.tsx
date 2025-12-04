@@ -27,7 +27,7 @@ export const FamiliesList = ({
                 .map((family) => (
                   <li key={family.id}>
                     <Link className="link" href={`/families/${family.id}`}>
-                      <strong>{family.contactFullName}</strong>
+                      <strong>{family.contactFullName}</strong> — {family.city}
                     </Link>
                   </li>
                 ))}
