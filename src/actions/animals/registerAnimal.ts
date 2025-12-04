@@ -22,6 +22,7 @@ export const registerAnimal = async (
     species: formdata.get('animalSpecies')?.toString().trim(),
     sex: formdata.get('animalSex') as Sex,
     color: formdata.get('animalColor')?.toString().trim(),
+    findLocation: formdata.get('findLocation')?.toString().trim(),
     birthDate: formdata.get('animalBirthDate')?.toString(),
     lastVax: formdata.get('animalLastVax')?.toString(),
     lastDeworm: formdata.get('animalLastDeworm')?.toString(),
@@ -31,6 +32,9 @@ export const registerAnimal = async (
     information: formdata.get('animalInformation')?.toString().trim(),
     status: formdata.get('animalStatus') as AnimalStatus,
   };
+
+  const animalFamilyId =
+    animal.status === AnimalStatus.FOSTERED ? Number(formdata.get('animalFamily')) : null;
 
   const adopter = {
     fullName: formdata.get('adopterFullName')?.toString().trim(),
@@ -63,6 +67,7 @@ export const registerAnimal = async (
         species: animal.species,
         sex: animal.sex,
         color: animal.color,
+        findLocation: animal.findLocation,
         birthDate: new Date(animal.birthDate),
         lastVax: animal.lastVax ? new Date(animal.lastVax) : undefined,
         lastDeworm: animal.lastDeworm ? new Date(animal.lastDeworm) : undefined,
@@ -71,6 +76,7 @@ export const registerAnimal = async (
         isFirstDeworm: animal.isFirstDeworm,
         information: animal.information,
         orgId: org.id,
+        familyId: animalFamilyId,
       },
     });
 

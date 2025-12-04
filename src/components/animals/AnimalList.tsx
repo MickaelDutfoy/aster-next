@@ -1,28 +1,23 @@
 'use client';
 
-import { Organization } from '@/lib/types';
+import { Animal, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const AnimalsList = ({ org }: { org: Organization }) => {
+export const AnimalsList = ({ org, animals }: { org: Organization; animals: Animal[] | null }) => {
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
 
   return (
     <>
-      <div className="links-box">
-        <Link href={'/animals/new'} className="little-button">
-          Ajouter un animal
-        </Link>
-      </div>
-      {org.animals && (
-        <div className="animal-list">
+      {animals && (
+        <div className="entities-list">
           <h3>Animaux enregistrés pour {org.name} :</h3>
-          {org.animals.length === 0 && <p style={{ padding: '10px' }}>Aucun animal enregistré.</p>}
-          {org.animals.length > 0 && (
+          {animals.length === 0 && <p style={{ padding: '10px' }}>Aucun animal enregistré.</p>}
+          {animals.length > 0 && (
             <ul>
-              {org.animals
+              {animals
                 .filter((animal) => animal.status !== AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (
@@ -48,7 +43,7 @@ export const AnimalsList = ({ org }: { org: Organization }) => {
           </h4>
           {!hiddenAdopted && (
             <ul>
-              {org.animals
+              {animals
                 .filter((animal) => animal.status === AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (

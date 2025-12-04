@@ -1,0 +1,26 @@
+@use 'vars';
+
+.family-address-info {
+  display: flex;
+  flex-direction: column;
+
+  .family-city,
+  .family-contact {
+    display: flex;
+    justify-content: space-between;
+
+    * {
+      width: 50%;
+    }
+  }
+}
+
+.family-contact-display {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.family-animals {
+  padding-left: 20px;
+}

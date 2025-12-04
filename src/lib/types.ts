@@ -7,7 +7,16 @@ export type ActionValidation = {
 };
 
 export type Family = {
-  id: number; // WIP
+  id: number;
+  contactFullName: string;
+  email: string | null;
+  phoneNumber: string | null;
+  address: string;
+  zip: string;
+  city: string;
+  hasChildren: boolean;
+  otherAnimals: string | null;
+  orgId: number;
 };
 
 export type Animal = {
@@ -16,6 +25,7 @@ export type Animal = {
   species: string;
   sex: Sex;
   color: string | null;
+  findLocation: string | null;
   birthDate: Date;
   isNeutered: boolean;
   status: AnimalStatus;
@@ -55,7 +65,6 @@ export type Organization = {
   superAdmin?: string;
   userRole?: MemberRole;
   userStatus?: MemberStatus;
-  animals?: Animal[];
 };
 
 export type PendingOrgRequest = {
