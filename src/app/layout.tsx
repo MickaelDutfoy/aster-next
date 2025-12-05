@@ -1,3 +1,4 @@
+import ClientLayout from '@/components/ClientLayout';
 import ToastProvider from '@/components/providers/ToastProvider';
 import '@/styles/_global.scss';
 import type { Metadata, Viewport } from 'next';
@@ -36,8 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${nunito.variable} ${comfortaa.variable}`}>
       <body>
-        <ToastProvider />
-        {children}
+        <ClientLayout>
+          <ToastProvider />
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
