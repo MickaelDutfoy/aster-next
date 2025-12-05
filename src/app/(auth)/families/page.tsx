@@ -22,8 +22,6 @@ const FamiliesPage = async () => {
 
   const families: Family[] | null = await getFamiliesByOrg(org.id);
 
-  console.log(families);
-
   return (
     <>
       <div className="links-box">

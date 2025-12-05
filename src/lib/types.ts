@@ -1,7 +1,7 @@
 import { AnimalStatus, MemberRole, MemberStatus, Sex } from '@prisma/client';
 
 export type ActionValidation = {
-  ok: boolean;
+  ok?: boolean;
   status?: 'success' | 'error' | 'info';
   message?: string;
 };
