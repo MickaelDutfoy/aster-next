@@ -12,9 +12,9 @@ export const FamilyForm = ({
   action: (formdata: FormData) => void;
   isLoading: boolean;
 }) => {
-  const [familyName, setFamilyName] = useState<string>(family?.contactFullName as string);
-  const [familyEmail, setFamilyEmail] = useState<string>(family?.email as string);
-  const [familyPhoneNumber, setFamilyPhoneNumber] = useState<string>(family?.phoneNumber as string);
+  const [familyName, setFamilyName] = useState<string>(family?.contactFullName ?? '');
+  const [familyEmail, setFamilyEmail] = useState<string>(family?.email ?? '');
+  const [familyPhoneNumber, setFamilyPhoneNumber] = useState<string>(family?.phoneNumber ?? '');
 
   const fillWithMemberInfo = () => {
     setFamilyName(user.firstName + ' ' + user.lastName);
