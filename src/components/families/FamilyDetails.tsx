@@ -2,15 +2,10 @@
 
 import { Animal, Family } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
+import { SquareArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export const FamilyDetails = ({
-  family,
-  animals,
-}: {
-  family: Family;
-  animals: Animal[] | null;
-}) => {
+export const FamilyDetails = ({ family, animals }: { family: Family; animals: Animal[] }) => {
   return (
     <>
       <div className="links-box">
@@ -34,15 +29,18 @@ export const FamilyDetails = ({
         {family.hasChildren && <p>Cette famille a des enfants.</p>}
       </div>
       {animals && animals.length > 0 && (
-        <div className="entities-list">
+        <div>
           <p>Animaux en charge :</p>
-          <ul>
+          <ul className="animals-list">
             {animals
               .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
               .map((animal) => (
                 <li key={animal.id}>
-                  <Link className="link" href={`/animals/${animal.id}`}>
-                    <strong>{animal.name}</strong> — {animal.species}{' '}
+                  <span>
+                    <strong>{animal.name}</strong>
+                  </span>{' '}
+                  <span>
+                    {animal.species}{' '}
                     <span
                       style={{
                         color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
@@ -50,8 +48,11 @@ export const FamilyDetails = ({
                       }}
                     >
                       {animal.sex === 'M' ? '♂' : '♀'}
-                    </span>{' '}
-                    — {getAge(animal.birthDate)}
+                    </span>
+                  </span>
+                  <span>{getAge(animal.birthDate)}</span>
+                  <Link className="action link" href={`/animals/${animal.id}`}>
+                    <SquareArrowRight size={26} />
                   </Link>
                 </li>
               ))}

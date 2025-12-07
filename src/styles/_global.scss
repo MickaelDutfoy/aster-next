@@ -29,6 +29,7 @@ button {
 }
 
 .link {
+  cursor: pointer;
   user-select: none;
   color: vars.$raw-umber;
 }
@@ -87,6 +88,7 @@ h2,
 h3 {
   font-family: var(--font-comfortaa);
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .main-button {

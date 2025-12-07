@@ -81,3 +81,12 @@ export type Member = {
   email: string;
   organizations: Organization[];
 };
+
+export type MemberOfOrg = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: MemberRole;
+  status: MemberStatus;
+};

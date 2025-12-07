@@ -3,27 +3,31 @@
 import { Animal, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
+import { SquareArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const AnimalsList = ({ org, animals }: { org: Organization; animals: Animal[] | null }) => {
+export const AnimalsList = ({ org, animals }: { org: Organization; animals: Animal[] }) => {
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
 
   return (
     <>
       {animals && (
-        <div className="entities-list">
+        <div>
           <h3>Animaux enregistrés pour {org.name} :</h3>
           {animals.length === 0 && <p style={{ padding: '10px' }}>Aucun animal enregistré.</p>}
           {animals.length > 0 && (
-            <ul>
+            <ul className="animals-list">
               {animals
                 .filter((animal) => animal.status !== AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (
                   <li key={animal.id}>
-                    <Link className="link" href={`/animals/${animal.id}`}>
-                      <strong>{animal.name}</strong> — {animal.species}{' '}
+                    <span>
+                      <strong>{animal.name}</strong>
+                    </span>{' '}
+                    <span>
+                      {animal.species}{' '}
                       <span
                         style={{
                           color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
@@ -31,8 +35,11 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
                         }}
                       >
                         {animal.sex === 'M' ? '♂' : '♀'}
-                      </span>{' '}
-                      — {getAge(animal.birthDate)}
+                      </span>
+                    </span>
+                    <span>{getAge(animal.birthDate)}</span>
+                    <Link className="action link" href={`/animals/${animal.id}`}>
+                      <SquareArrowRight size={26} />
                     </Link>
                   </li>
                 ))}
@@ -42,14 +49,17 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
             Afficher les animaux adoptés {hiddenAdopted ? '▸' : '▾'}
           </h4>
           {!hiddenAdopted && (
-            <ul>
+            <ul className="animals-list">
               {animals
                 .filter((animal) => animal.status === AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (
                   <li key={animal.id}>
-                    <Link className="link" href={`/animals/${animal.id}`}>
-                      <strong>{animal.name}</strong> — {animal.species}{' '}
+                    <span>
+                      <strong>{animal.name}</strong>
+                    </span>{' '}
+                    <span>
+                      {animal.species}{' '}
                       <span
                         style={{
                           color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
@@ -57,8 +67,11 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
                         }}
                       >
                         {animal.sex === 'M' ? '♂' : '♀'}
-                      </span>{' '}
-                      — {getAge(animal.birthDate)}
+                      </span>
+                    </span>
+                    <span>{getAge(animal.birthDate)}</span>
+                    <Link className="action link" href={`/animals/${animal.id}`}>
+                      <SquareArrowRight size={26} />
                     </Link>
                   </li>
                 ))}

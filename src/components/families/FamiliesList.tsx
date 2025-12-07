@@ -1,23 +1,18 @@
 'use client';
 
 import { Family, Organization } from '@/lib/types';
+import { SquareArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export const FamiliesList = ({
-  org,
-  families,
-}: {
-  org: Organization;
-  families: Family[] | null;
-}) => {
+export const FamiliesList = ({ org, families }: { org: Organization; families: Family[] }) => {
   return (
     <>
       {families && (
-        <div className="entities-list">
+        <div>
           <h3>Familles enregistrées pour {org.name} :</h3>
           {families.length === 0 && <p style={{ padding: '10px' }}>Aucune famille enregistrée.</p>}
           {families.length > 0 && (
-            <ul>
+            <ul className="families-list">
               {families
                 .sort((a, b) =>
                   a.contactFullName.localeCompare(b.contactFullName, undefined, {
@@ -26,8 +21,10 @@ export const FamiliesList = ({
                 )
                 .map((family) => (
                   <li key={family.id}>
-                    <Link className="link" href={`/families/${family.id}`}>
-                      <strong>{family.contactFullName}</strong> — {family.city}
+                    <span>{family.contactFullName}</span>
+                    <span>{family.city}</span>
+                    <Link className="action link" href={`/families/${family.id}`}>
+                      <SquareArrowRight size={26} />
                     </Link>
                   </li>
                 ))}

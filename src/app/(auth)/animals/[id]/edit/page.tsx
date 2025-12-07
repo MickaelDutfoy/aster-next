@@ -25,7 +25,7 @@ const UpdateAnimalPage = async ({ params }: { params: Promise<{ id: string }> })
   const animal: Animal | null = await getAnimalById(Number(id));
   if (!animal) return <h3 className="denied-page">Une erreur est survenue.</h3>;
 
-  const families: Family[] | null = await getFamiliesByOrg(org.id);
+  const families: Family[] = await getFamiliesByOrg(org.id);
 
   return <UpdateAnimal animal={animal} families={families} />;
 };

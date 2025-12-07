@@ -7,7 +7,7 @@ import { useActionState, useEffect } from 'react';
 import { showToast } from '../providers/ToastProvider';
 import { AnimalForm } from './AnimalForm';
 
-export const RegisterAnimal = ({ families }: { families: Family[] | null }) => {
+export const RegisterAnimal = ({ families }: { families: Family[] }) => {
   const [res, handleRegisterAnimal, isLoading] = useActionState(registerAnimal, null);
 
   const router = useRouter();

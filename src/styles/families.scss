@@ -24,3 +24,31 @@
 .family-animals {
   padding-left: 20px;
 }
+
+.families-list {
+  margin: 0 5px;
+
+  li {
+    min-height: 36px;
+    display: grid;
+    grid-template-columns: 6fr 6fr auto;
+    align-items: center;
+    border-bottom: 1px solid vars.$cinereous;
+
+    .action {
+      display: flex;
+      justify-self: end;
+      align-self: center;
+    }
+  }
+
+  :last-child {
+    border: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .families-list li {
+    border-color: vars.$raw-umber;
+  }
+}
