@@ -79,6 +79,7 @@ export type Member = {
   firstName: string;
   lastName: string;
   email: string;
+  phoneNumber: string;
   organizations: Organization[];
 };
 
@@ -89,4 +90,10 @@ export type MemberOfOrg = {
   email: string;
   role: MemberRole;
   status: MemberStatus;
+  actions?: Action[];
+};
+
+export type Action = {
+  name: string;
+  handler: () => Promise<void>;
 };

@@ -1,12 +1,13 @@
 'use client';
 
 import { registerFamily } from '@/actions/families/registerFamily';
+import { Member } from '@/lib/types';
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect } from 'react';
 import { showToast } from '../providers/ToastProvider';
 import { FamilyForm } from './FamilyForm';
 
-export const RegisterFamily = () => {
+export const RegisterFamily = ({ user }: { user: Member }) => {
   const [res, handleRegisterAnimal, isLoading] = useActionState(registerFamily, null);
 
   const router = useRouter();
@@ -20,7 +21,7 @@ export const RegisterFamily = () => {
   return (
     <div className="register-form">
       <h3>Ajouter une famille</h3>
-      <FamilyForm action={handleRegisterAnimal} isLoading={isLoading} />
+      <FamilyForm user={user} action={handleRegisterAnimal} isLoading={isLoading} />
     </div>
   );
 };
