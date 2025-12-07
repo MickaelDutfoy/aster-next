@@ -2,8 +2,9 @@
 
 import { approveOrgRequest } from '@/actions/organizations/approveOrgRequest';
 import { cancelOrgRequest } from '@/actions/organizations/cancelOrgRequest';
+import { leaveOrg } from '@/actions/organizations/leaveOrg';
 import { removeMemberFromOrg } from '@/actions/organizations/removeMemberFromOrg';
-import { Member, MemberOfOrg, Organization } from '@/lib/types';
+import { Action, Member, MemberOfOrg, Organization } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import clsx from 'clsx';
 import { EllipsisVertical } from 'lucide-react';
@@ -65,61 +66,94 @@ export const OrgMembersList = ({
     showToast(res);
   };
 
+  const handleLeaveOrg = async (orgId: number) => {
+    const res = await leaveOrg(orgId);
+    setOpenMenuMemberId(null);
+    showToast(res);
+  };
+
   if (!org) {
     return <></>;
   }
 
+  const buildActionsForMember = (
+    member: MemberOfOrg,
+    org: Organization,
+    user: Member,
+  ): Action[] => {
+    const actions: Action[] = [];
+
+    if (org.userRole === MemberRole.SUPERADMIN && member.status === MemberStatus.PENDING) {
+      actions.push({
+        name: 'Valider la demande',
+        handler: () => handleApproveRequest(member.id, org.id),
+      });
+    }
+
+    if (
+      org.userRole === MemberRole.SUPERADMIN &&
+      member.role === MemberRole.MEMBER &&
+      member.status !== MemberStatus.PENDING
+    ) {
+      actions.push({
+        name: 'Supprimer ce membre',
+        handler: () => handleRemoveMember(member.id, org.id),
+      });
+    }
+
+    if (user.id === member.id && member.status === MemberStatus.PENDING) {
+      actions.push({ name: 'Annuler la demande', handler: () => handleCancelRequest(org.id) });
+    }
+
+    if (user.id === member.id && member.status === MemberStatus.VALIDATED) {
+      actions.push({ name: `Quitter l'association`, handler: () => handleLeaveOrg(org.id) });
+    }
+
+    return actions;
+  };
+
   return (
     <>
       <h3>Liste des membres pour {org.name} :</h3>
+
       <ul className="members-list">
-        {members.map((member) => (
-          <li key={member.id}>
-            <span>
-              {member.firstName} {member.lastName}
-            </span>
-            <span>
-              {rolesAndStatusMap[member.role]}
-              {rolesAndStatusMap[member.status]}
-            </span>
+        {members.map((member) => {
+          const actions = buildActionsForMember(member, org, user);
 
-            <span className="action">
-              <EllipsisVertical
-                className={clsx(
-                  member.role === MemberRole.SUPERADMIN ||
-                    (member.id !== user.id && org.userStatus === MemberStatus.PENDING)
-                    ? 'disabled'
-                    : 'link',
+          return (
+            <li key={member.id}>
+              <span>
+                {member.firstName} {member.lastName}
+              </span>
+
+              <span>
+                {rolesAndStatusMap[member.role]}
+                {rolesAndStatusMap[member.status]}
+              </span>
+
+              <span className="action">
+                <EllipsisVertical
+                  className={clsx(actions.length === 0 ? 'disabled' : 'link')}
+                  size={26}
+                  onClick={() =>
+                    actions.length > 0 &&
+                    setOpenMenuMemberId((current) => (current === member.id ? null : member.id))
+                  }
+                />
+
+                {openMenuMemberId === member.id && actions.length > 0 && (
+                  <ul className="action-list" ref={menuRef}>
+                    {actions.map((action) => (
+                      <li key={action.name} onClick={action.handler}>
+                        {action.name}
+                      </li>
+                    ))}
+                  </ul>
                 )}
-                size={26}
-                onClick={() =>
-                  setOpenMenuMemberId((current) => (current === member.id ? null : member.id))
-                }
-              />
-
-              {openMenuMemberId === member.id && (
-                <ul className="action-list" ref={menuRef}>
-                  {org.userRole === MemberRole.SUPERADMIN &&
-                    member.status === MemberStatus.PENDING && (
-                      <li onClick={() => handleApproveRequest(member.id, org.id)}>
-                        Valider la demande
-                      </li>
-                    )}
-                  {org.userRole === MemberRole.SUPERADMIN &&
-                    member.role === MemberRole.MEMBER &&
-                    member.status !== MemberStatus.PENDING && (
-                      <li onClick={() => handleRemoveMember(member.id, org.id)}>
-                        Supprimer ce membre
-                      </li>
-                    )}
-                  {user.id === member.id && member.status === MemberStatus.PENDING && (
-                    <li onClick={() => handleCancelRequest(org.id)}>Annuler la demande</li>
-                  )}
-                </ul>
-              )}
-            </span>
-          </li>
-        ))}
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </>
   );

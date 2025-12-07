@@ -17,6 +17,7 @@ export const getUser = cache(async (): Promise<Member | null> => {
         firstName: true,
         lastName: true,
         email: true,
+        phoneNumber: true,
         memberOrganizations: true,
       },
     });
@@ -42,6 +43,7 @@ export const getUser = cache(async (): Promise<Member | null> => {
       firstName: res.firstName,
       lastName: res.lastName,
       email: res.email,
+      phoneNumber: res.phoneNumber,
       organizations: organizations,
     };
 

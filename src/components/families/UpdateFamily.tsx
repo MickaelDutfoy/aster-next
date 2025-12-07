@@ -1,13 +1,13 @@
 'use client';
 
 import { updateFamily } from '@/actions/families/updateFamily';
-import { Family } from '@/lib/types';
+import { Family, Member } from '@/lib/types';
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect } from 'react';
 import { showToast } from '../providers/ToastProvider';
 import { FamilyForm } from './FamilyForm';
 
-export const UpdateFamily = ({ family }: { family: Family }) => {
+export const UpdateFamily = ({ user, family }: { user: Member; family: Family }) => {
   const [res, handleUpdateFamily, isLoading] = useActionState(
     updateFamily.bind(null, family.id),
     null,
@@ -25,7 +25,7 @@ export const UpdateFamily = ({ family }: { family: Family }) => {
     <>
       <div className="register-form">
         <h3>Éditer les informations</h3>
-        <FamilyForm family={family} action={handleUpdateFamily} isLoading={isLoading} />
+        <FamilyForm user={user} family={family} action={handleUpdateFamily} isLoading={isLoading} />
       </div>
     </>
   );

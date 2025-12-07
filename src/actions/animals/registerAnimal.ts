@@ -63,7 +63,7 @@ export const registerAnimal = async (
   try {
     const res = await prisma.animal.create({
       data: {
-        name: animal.name.charAt(0).toUpperCase() + animal.name.slice(1).toLowerCase(),
+        name: animal.name,
         species: animal.species,
         sex: animal.sex,
         color: animal.color,

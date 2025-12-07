@@ -1,24 +1,44 @@
-import { Family } from '@/lib/types';
+import { Family, Member } from '@/lib/types';
+import { useState } from 'react';
 
 export const FamilyForm = ({
+  user,
   family,
   action,
   isLoading,
 }: {
+  user: Member;
   family?: Family;
   action: (formdata: FormData) => void;
   isLoading: boolean;
 }) => {
+  const [familyName, setFamilyName] = useState<string>(family?.contactFullName as string);
+  const [familyEmail, setFamilyEmail] = useState<string>(family?.email as string);
+  const [familyPhoneNumber, setFamilyPhoneNumber] = useState<string>(family?.phoneNumber as string);
+
+  const fillWithMemberInfo = () => {
+    setFamilyName(user.firstName + ' ' + user.lastName);
+    setFamilyEmail(user.email);
+    setFamilyPhoneNumber(user.phoneNumber);
+  };
+
   return (
     <>
       <p className="notice">(Les champs marqués d'un * sont requis.)</p>
       <form action={action}>
         <div className="form-tab">
+          <div className="prefill-form">
+            <p>C'est moi :</p>{' '}
+            <span className="little-button" onClick={fillWithMemberInfo}>
+              Utiliser mes infos
+            </span>
+          </div>
           <input
             type="text"
             name="contactFullName"
             placeholder="Nom de la famille *"
-            defaultValue={family?.contactFullName}
+            value={familyName}
+            onChange={(e) => setFamilyName(e.target.value)}
           />
           <div className="family-address-info">
             <input
@@ -41,13 +61,15 @@ export const FamilyForm = ({
                 type="text"
                 name="email"
                 placeholder="E-mail"
-                defaultValue={family?.email as string}
+                value={familyEmail}
+                onChange={(e) => setFamilyEmail(e.target.value)}
               />
               <input
                 type="text"
                 name="phoneNumber"
                 placeholder="Téléphone"
-                defaultValue={family?.phoneNumber as string}
+                value={familyPhoneNumber}
+                onChange={(e) => setFamilyPhoneNumber(e.target.value)}
               />
             </div>
           </div>
