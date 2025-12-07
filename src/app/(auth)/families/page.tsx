@@ -20,9 +20,7 @@ const FamiliesPage = async () => {
     );
   }
 
-  const families: Family[] | null = await getFamiliesByOrg(org.id);
-
-  console.log(families);
+  const families: Family[] = await getFamiliesByOrg(org.id);
 
   return (
     <>

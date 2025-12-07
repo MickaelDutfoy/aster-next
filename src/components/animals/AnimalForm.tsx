@@ -13,7 +13,7 @@ export const AnimalForm = ({
   isLoading,
 }: {
   animal?: Animal;
-  families: Family[] | null;
+  families: Family[];
   action: (formdata: FormData) => void;
   isLoading: boolean;
 }) => {

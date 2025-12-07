@@ -2,8 +2,10 @@ import { Logout } from '@/components/auth/Logout';
 
 const SettingsPage = () => {
   return (
-    // page à créer
-    <Logout />
+    <>
+      <Logout />
+      <h3 className="denied-page">Cette fonctionnalité sera bientôt disponible.</h3>
+    </>
   );
 };
 

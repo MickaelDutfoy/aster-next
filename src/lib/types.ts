@@ -1,7 +1,7 @@
 import { AnimalStatus, MemberRole, MemberStatus, Sex } from '@prisma/client';
 
 export type ActionValidation = {
-  ok: boolean;
+  ok?: boolean;
   status?: 'success' | 'error' | 'info';
   message?: string;
 };
@@ -80,4 +80,13 @@ export type Member = {
   lastName: string;
   email: string;
   organizations: Organization[];
+};
+
+export type MemberOfOrg = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: MemberRole;
+  status: MemberStatus;
 };

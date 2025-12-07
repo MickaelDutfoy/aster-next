@@ -12,7 +12,7 @@ export default async function AddAnimalModal() {
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <h3 className="denied-page">Une erreur est survenue.</h3>;
 
-  const families: Family[] | null = await getFamiliesByOrg(org.id);
+  const families: Family[] = await getFamiliesByOrg(org.id);
 
   return (
     <Modal expectedPath="/animals/new">

@@ -22,13 +22,13 @@ export const OrgSelector = () => {
             <div className="orga-select">
               <h4>Vos associations :</h4>
               <select
-                value={org?.id ?? ''}
+                value={org?.id}
                 onChange={(e) => {
                   setOrgCookie(Number(e.target.value));
                   router.refresh();
                 }}
               >
-                {user.organizations.map((org, index) => (
+                {user.organizations.map((org) => (
                   <option key={org.id} value={org.id}>
                     {org.name}
                   </option>

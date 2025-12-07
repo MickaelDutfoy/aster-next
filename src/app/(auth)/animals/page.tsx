@@ -21,7 +21,7 @@ const AnimalsPage = async () => {
     );
   }
 
-  const animals: Animal[] | null = await getAnimalsByOrg(org.id);
+  const animals: Animal[] = await getAnimalsByOrg(org.id);
 
   return (
     <>

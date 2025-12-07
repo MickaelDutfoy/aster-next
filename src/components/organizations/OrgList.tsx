@@ -17,7 +17,7 @@ export const OrgList = () => {
   return (
     <>
       {user.organizations.some((org) => org.userStatus === 'PENDING') && (
-        <div className="pending-list">
+        <div className="clickable-list">
           <p>Vos demandes d'adhésion en attente :</p>
           <ul>
             {user.organizations.map((org) => {
@@ -29,7 +29,6 @@ export const OrgList = () => {
                 );
             })}
           </ul>
-          <p className="notice">(Cliquez sur une demande pour l'annuler)</p>
         </div>
       )}
     </>

@@ -2,7 +2,7 @@
 
 import { Member } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
-import { Cat, FolderOpen, HouseHeart, MapPinned, Settings, Users } from 'lucide-react';
+import { Cat, FolderOpen, HouseHeart, Settings, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useUser } from './providers/UserProvider';
@@ -30,9 +30,9 @@ export const NavBar = () => {
         <Link className={disableMenu()} href="/families">
           <Users size={42} strokeWidth={pathname.startsWith('/families') ? 2.2 : 0.8} />
         </Link>
-        <Link className={disableMenu()} href="/map">
+        {/* <Link className={disableMenu()} href="/map">
           <MapPinned size={42} strokeWidth={pathname.startsWith('/map') ? 2.2 : 0.8} />
-        </Link>
+        </Link> */}
         <Link href="/organizations">
           <FolderOpen size={42} strokeWidth={pathname.startsWith('/organizations') ? 2.2 : 0.8} />
         </Link>

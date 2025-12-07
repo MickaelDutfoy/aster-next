@@ -4,7 +4,7 @@
 .org-page {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .org-wrapper {
@@ -37,16 +37,16 @@
     top: 2px;
     display: flex;
     flex-direction: column;
-    font-size: 1rem;
     list-style: none;
     z-index: 2;
   }
 
   li:first-child {
-    border: 1px solid vars.$outer-space;
+    border-top: 1px solid vars.$outer-space;
   }
 
   li {
+    font-size: 0.8rem;
     cursor: pointer;
     color: vars.$outer-space;
     border-bottom: 1px solid vars.$outer-space;
@@ -56,17 +56,53 @@
   }
 }
 
-.waiting-list {
-  margin-bottom: 10px;
-  padding-left: 20px;
-  background-color: inherit;
-  list-style-type: disc;
+.members-list {
+  margin: 0 5px;
+}
 
-  li {
-    text-decoration: none;
-    color: inherit;
-    font-size: 1rem;
+.members-list > li {
+  min-height: 36px;
+  display: grid;
+  grid-template-columns: 6fr 6fr auto;
+  align-items: center;
+  border-bottom: 1px solid vars.$cinereous;
+
+  .action {
+    position: relative;
+    display: flex;
+    justify-self: end;
+    align-self: center;
+
+    .action-list {
+      width: 50vw;
+      position: absolute;
+      right: 0px;
+      top: 30px;
+      background-color: vars.$snow;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      z-index: 2;
+
+      li:first-child {
+        border-top: 1px solid vars.$outer-space;
+      }
+
+      li {
+        font-size: 0.8rem;
+        cursor: pointer;
+        color: vars.$outer-space;
+        border-bottom: 1px solid vars.$outer-space;
+        border-right: 1px solid vars.$outer-space;
+        border-left: 1px solid vars.$outer-space;
+        padding: 10px;
+      }
+    }
   }
+}
+
+.members-list > li:last-child {
+  border: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -85,5 +121,9 @@
       border-right: 1px solid vars.$outer-space;
       border-left: 1px solid vars.$outer-space;
     }
+  }
+
+  .members-list li {
+    border-color: vars.$raw-umber;
   }
 }
