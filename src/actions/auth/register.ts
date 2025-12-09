@@ -12,6 +12,7 @@ export const register = async (prevstate: any, formdata: FormData): Promise<Acti
     email: formdata.get('userEmail')?.toString(),
     phoneNumber: formdata.get('userPhoneNumber')?.toString(),
     password: formdata.get('userPassword')?.toString(),
+    passwordConfirm: formdata.get('userPasswordConfirm')?.toString(),
   };
 
   if (
@@ -20,8 +21,13 @@ export const register = async (prevstate: any, formdata: FormData): Promise<Acti
     !newUser.email ||
     !newUser.phoneNumber ||
     !newUser.password
-  )
+  ) {
     return { ok: false, status: 'error', message: 'Tous les champs doivent être remplis.' };
+  }
+
+  if (newUser.password !== newUser.passwordConfirm) {
+    return { ok: false, status: 'error', message: 'Les mots de passe ne correspondent pas.' };
+  }
 
   const passwordHash = await bcrypt.hash(newUser.password, 12);
 

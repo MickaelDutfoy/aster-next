@@ -40,12 +40,18 @@ export const Register = () => {
             name="userPassword"
             placeholder="Mot de passe"
           />
+          <input
+            className="auth-field"
+            type="password"
+            name="userPasswordConfirm"
+            placeholder="Confirmer le mot de passe"
+          />
           <p className="disclaimer">
             Le numéro de téléphone n'est requis que par commodité de communication pour les membres
             d'une association. Aster n'utilisera jamais votre numéro.
           </p>
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-              {isLoading ? 'Connexion...' : 'Créer un compte'}
+            {isLoading ? 'Connexion...' : 'Créer un compte'}
           </button>
         </form>
       </div>
