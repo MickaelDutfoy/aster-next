@@ -22,6 +22,7 @@ async function handler(req: NextRequest) {
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/assets') ||
+    pathname.startsWith('/icons') ||
     pathname === '/favicon.ico' ||
     pathname === '/sw.js' ||
     pathname === '/manifest.webmanifest'
@@ -42,7 +43,12 @@ async function handler(req: NextRequest) {
   }
 
   // auth guard
-  const isPublic = pathname.startsWith('/intro') || pathname.startsWith('/login');
+  const isPublic =
+    pathname.startsWith('/intro') ||
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/register') ||
+    pathname.startsWith('/reset-password') ||
+    pathname.startsWith('/new-password');
   // @ts-expect-error: injecté par le wrapper
   const isAuthed = Boolean(req.auth);
 
@@ -53,7 +59,13 @@ async function handler(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (isAuthed && pathname === '/login') {
+  if (
+    isAuthed &&
+    (pathname === '/login' ||
+      pathname === '/register' ||
+      pathname === '/reset-password' ||
+      pathname === '/new-password')
+  ) {
     const url = req.nextUrl.clone();
     url.pathname = '/';
     return NextResponse.redirect(url);
@@ -62,7 +74,6 @@ async function handler(req: NextRequest) {
   return NextResponse.next();
 }
 
-// 👇 on wrappe avec l’overload middleware typé
 export const proxy = authMw(handler, {
   callbacks: { authorized: () => true },
 });

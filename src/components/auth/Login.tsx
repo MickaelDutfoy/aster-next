@@ -37,6 +37,9 @@ export const Login = () => {
             name="userPassword"
             placeholder="Password"
           />
+          <Link className="public-link" href="/reset-password">
+            Mot de passe oublié ?
+          </Link>
           <button className="main-button" aria-busy={isLoading} disabled={isLoading}>
             {isLoading ? 'Connexion...' : 'Se connecter'}
           </button>

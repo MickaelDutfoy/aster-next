@@ -5,7 +5,7 @@ import { ActionValidation } from '@/lib/types';
 
 export const login = async (prevstate: any, formdata: FormData): Promise<ActionValidation> => {
   const user = {
-    email: formdata.get('userEmail')?.toString(),
+    email: formdata.get('userEmail')?.toString().trim(),
     password: formdata.get('userPassword')?.toString(),
   };
 
