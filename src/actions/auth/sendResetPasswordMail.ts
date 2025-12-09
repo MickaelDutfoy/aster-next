@@ -5,7 +5,6 @@ import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { TokenType } from '@prisma/client';
 import crypto from 'crypto';
-import { headers } from 'next/headers';
 
 const RESET_TOKEN_LIFETIME_MS = 1000 * 60 * 60;
 
@@ -13,8 +12,7 @@ export const sendResetPasswordMail = async (
   prevState: any,
   formData: FormData,
 ): Promise<ActionValidation> => {
-  const headersList = await headers();
-  const origin = headersList.get('origin');
+  const origin = process.env.AUTH_URL;
 
   const email = formData.get('userEmail')?.toString().trim();
 
