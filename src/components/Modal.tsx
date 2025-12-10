@@ -4,7 +4,7 @@ import { CircleX } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 
 export const Modal = ({
-  expectedPath, // bloque les réouvertures de modale post-validation
+  expectedPath, // prevents modal from re-opening after validation
   children,
 }: {
   expectedPath: string;

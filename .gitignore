@@ -11,6 +11,7 @@
 !.yarn/versions
 
 # testing
+mail.html
 /coverage
 
 # next.js

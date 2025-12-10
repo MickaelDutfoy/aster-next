@@ -1,29 +1,24 @@
 'use client';
 
+import { registerAnimal } from '@/actions/animals/registerAnimal';
+import { updateAnimal } from '@/actions/animals/updateAnimal';
 import { Animal, Family } from '@/lib/types';
 import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
-import { MouseEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
-export const AnimalForm = ({
-  animal,
-  families,
-  action,
-  isLoading,
-}: {
-  animal?: Animal;
-  families: Family[];
-  action: (formdata: FormData) => void;
-  isLoading: boolean;
-}) => {
+export const AnimalForm = ({ animal, families }: { animal?: Animal; families: Family[] }) => {
+  const router = useRouter();
+
   const [form, setForm] = useState<'health' | 'adopt'>('health');
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-    if (!e.currentTarget.form) return;
-
-    const formData = new FormData(e.currentTarget.form);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
 
     const name = formData.get('animalName')?.toString().trim();
     const species = formData.get('animalSpecies')?.toString().trim();
@@ -31,16 +26,33 @@ export const AnimalForm = ({
     const statusFromForm = formData.get('animalStatus')?.toString();
     const adopterFullName = formData.get('adopterFullName')?.toString().trim();
 
-    const missingHealth = !name || !species || !birthDate;
-    const missingAdoption = statusFromForm === 'ADOPTED' && !adopterFullName;
-
-    if (missingHealth || missingAdoption) {
-      e.preventDefault();
+    if (!name || !species || !birthDate || (statusFromForm === 'ADOPTED' && !adopterFullName)) {
       showToast({
         ok: false,
         status: 'error',
         message: 'Des champs obligatoires sont incomplets.',
       });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = animal ? await updateAnimal(animal.id, formData) : await registerAnimal(formData);
+
+      showToast(res);
+
+      if (res.ok) {
+        router.replace(animal ? `/animals/${animal.id}` : '/animals');
+      }
+    } catch (err) {
+      console.error(err);
+      showToast({
+        ok: false,
+        status: 'error',
+        message: 'Une erreur est survenue.',
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,7 +67,7 @@ export const AnimalForm = ({
         </div>
       </div>
       <p className="notice">(Les champs marqués d'un * sont requis.)</p>
-      <form action={action} style={{ minHeight: '50vh', width: '85vw' }}>
+      <form onSubmit={handleSubmit} style={{ minHeight: '50vh', width: '85vw' }}>
         <div hidden={form !== 'health'}>
           <div className="form-tab">
             <div className="name-species-color">
@@ -147,10 +159,10 @@ export const AnimalForm = ({
               }}
             />
             <button
+              type="submit"
               className="little-button"
               aria-busy={isLoading}
               disabled={isLoading}
-              onClick={(e) => handleSubmit(e)}
             >
               {isLoading ? 'Enregistrement...' : 'Enregistrer'}
             </button>
@@ -277,10 +289,10 @@ export const AnimalForm = ({
             </div>
 
             <button
+              type="submit"
               className="little-button"
               aria-busy={isLoading}
               disabled={isLoading}
-              onClick={(e) => handleSubmit(e)}
             >
               {isLoading ? 'Enregistrement...' : 'Enregistrer'}
             </button>

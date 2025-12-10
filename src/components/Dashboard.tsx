@@ -35,7 +35,7 @@ export const Dashboard = ({
       <div className="contact">
         <p>Un problème ? Une suggestion ?</p>
         <Link className="link" href="mailto:m.dutfoy@gmail.com">
-          Envoyez-moi un message !
+          <u>Envoyez-moi un message</u> !
         </Link>
       </div>
     </div>

@@ -3,19 +3,47 @@
 import { login } from '@/actions/auth/login';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useActionState, useEffect } from 'react';
+import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const Login = () => {
-  const [res, handleLogin, isLoading] = useActionState(login, null);
-
   const router = useRouter();
 
-  useEffect(() => {
-    if (!res) return;
-    showToast(res);
-    if (res.ok) router.replace('/');
-  }, [res]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const user = {
+      email: formData.get('userEmail')?.toString().trim(),
+      password: formData.get('userPassword')?.toString(),
+    };
+
+    if (!user.email || !user.password) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: 'Identifiants invalides.',
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await login(formData);
+      showToast(res);
+      if (res.ok) router.replace('/');
+    } catch (err) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: 'Une erreur est survenue.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="auth-page">
@@ -27,7 +55,7 @@ export const Login = () => {
       </div>
       <div className="auth-block">
         <h2>Déjà membre ?</h2>
-        <form action={handleLogin}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="userEmail">E-mail :</label>
           <input className="auth-field" type="text" name="userEmail" placeholder="E-mail" />
           <label htmlFor="userPassword">Mot de passe :</label>
@@ -38,9 +66,9 @@ export const Login = () => {
             placeholder="Password"
           />
           <Link className="public-link" href="/reset-password">
-            Mot de passe oublié ?
+            <u>Mot de passe oublié</u> ?
           </Link>
-          <button className="main-button" aria-busy={isLoading} disabled={isLoading}>
+          <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
             {isLoading ? 'Connexion...' : 'Se connecter'}
           </button>
         </form>
