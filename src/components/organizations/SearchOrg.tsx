@@ -2,7 +2,7 @@
 import { joinOrg } from '@/actions/organizations/joinOrg';
 import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
-import { useActionState, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const SearchOrg = () => {
@@ -10,7 +10,7 @@ export const SearchOrg = () => {
   const [picked, setPicked] = useState(false);
   const [pickedOrg, setPickedOrg] = useState<number>(0);
   const [matchingOrgs, setMatchingOrgs] = useState<Organization[]>([]);
-  const [res, handleJoinOrg, isLoading] = useActionState(joinOrg.bind(null, pickedOrg), null);
+  const [isLoading, setIsLoading] = useState(false);
   const suppressFetch = useRef(false);
 
   useEffect(() => {
@@ -32,10 +32,32 @@ export const SearchOrg = () => {
     return () => clearTimeout(req);
   }, [query]);
 
-  useEffect(() => {
-    if (!res) return;
-    showToast(res);
-  }, [res]);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!pickedOrg) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: 'Vous devez sélectionner une association existante.',
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await joinOrg(pickedOrg);
+      showToast(res);
+    } catch (err) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: 'Une erreur est survenue.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const fillSearchField = (orgName: string) => {
     suppressFetch.current = true;
@@ -46,7 +68,7 @@ export const SearchOrg = () => {
   return (
     <>
       <h3>Rechercher une association existante ?</h3>
-      <form action={handleJoinOrg}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="orgNameSearch"
@@ -59,6 +81,7 @@ export const SearchOrg = () => {
           }}
         />
         <button
+          type="submit"
           className="little-button"
           aria-busy={!picked || isLoading}
           disabled={!picked || isLoading}

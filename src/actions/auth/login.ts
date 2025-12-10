@@ -3,11 +3,15 @@
 import { signIn } from '@/auth';
 import { ActionValidation } from '@/lib/types';
 
-export const login = async (prevstate: any, formdata: FormData): Promise<ActionValidation> => {
+export const login = async (formData: FormData): Promise<ActionValidation> => {
   const user = {
-    email: formdata.get('userEmail')?.toString().trim(),
-    password: formdata.get('userPassword')?.toString(),
+    email: formData.get('userEmail')?.toString().trim(),
+    password: formData.get('userPassword')?.toString(),
   };
+
+  if (!user.email || !user.password) {
+    return { ok: false, status: 'error', message: 'Identifiants invalides.' };
+  }
 
   try {
     await signIn('credentials', {
@@ -19,6 +23,6 @@ export const login = async (prevstate: any, formdata: FormData): Promise<ActionV
     return { ok: true, status: 'success' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'Identifiants invalides.' };
+    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
   }
 };

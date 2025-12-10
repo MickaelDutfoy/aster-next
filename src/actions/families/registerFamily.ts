@@ -5,44 +5,27 @@ import { prisma } from '@/lib/prisma';
 import { ActionValidation, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 import { revalidatePath } from 'next/cache';
+import { parseFamilyData } from './parseFamilyData';
 
-export const registerFamily = async (
-  prevstate: any,
-  formdata: FormData,
-): Promise<ActionValidation> => {
+export const registerFamily = async (formData: FormData): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
-  if (!user) return { ok: false };
+  if (!user) {
+    return { ok: false, status: 'error', message: 'Utilisateur non authentifié.' };
+  }
 
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return { ok: false };
 
-  const family = {
-    contactFullName: formdata.get('contactFullName')?.toString().trim(),
-    email: formdata.get('email')?.toString().trim(),
-    phoneNumber: formdata.get('phoneNumber')?.toString().trim(),
-    address: formdata.get('address')?.toString().trim(),
-    zip: formdata.get('zip')?.toString().trim(),
-    city: formdata.get('city')?.toString().trim(),
-    hasChildren: formdata.has('hasChildren'),
-    otherAnimals: formdata.get('otherAnimals')?.toString().trim(),
-    // orgId: number;
-  };
+  const family = parseFamilyData(formData);
 
-  if (!family.contactFullName || !family.address || !family.zip || !family.city) {
+  if (!family) {
     return { ok: false, status: 'error', message: 'Des champs obligatoires sont incomplets.' };
   }
 
   try {
     const res = await prisma.family.create({
       data: {
-        contactFullName: family.contactFullName,
-        email: family.email,
-        phoneNumber: family.phoneNumber,
-        address: family.address,
-        zip: family.zip,
-        city: family.city,
-        hasChildren: family.hasChildren,
-        otherAnimals: family.otherAnimals,
+        ...family,
         orgId: org.id,
       },
     });
@@ -51,7 +34,7 @@ export const registerFamily = async (
 
     return { ok: true, status: 'success', message: 'La famille a bien été ajoutée.' };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { ok: false, status: 'error', message: "Une erreur s'est produite." };
   }
 };

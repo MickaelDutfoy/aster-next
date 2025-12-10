@@ -1,25 +1,61 @@
 'use client';
 
 import { register } from '@/actions/auth/register';
+import { registerSchema } from '@/lib/schemas/authSchemas';
+import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
 import { useRouter } from 'next/navigation';
-import { useActionState, useEffect } from 'react';
+import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const Register = () => {
-  const [res, handleRegister, isLoading] = useActionState(register, null);
-
   const router = useRouter();
 
-  useEffect(() => {
-    if (!res) return;
-    showToast(res);
-    if (res.ok) router.replace('/');
-  }, [res]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const newUserForm = {
+      firstName: formData.get('userFirstName')?.toString().trim(),
+      lastName: formData.get('userLastName')?.toString().trim(),
+      email: formData.get('userEmail')?.toString().trim(),
+      phoneNumber: formData.get('userPhoneNumber')?.toString().trim(),
+      password: formData.get('userPassword')?.toString(),
+      passwordConfirm: formData.get('userPasswordConfirm')?.toString(),
+    };
+
+    const parsedNewUser = registerSchema.safeParse(newUserForm);
+
+    if (!parsedNewUser.success) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: zodErrorMessage(parsedNewUser.error),
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await register(formData);
+      showToast(res);
+      if (res.ok) router.replace('/');
+    } catch (err) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: 'Une erreur est survenue.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="auth-page">
       <div className="auth-block">
-        <form action={handleRegister}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="userFirstName">Prénom :</label>
           <input className="auth-field" type="text" name="userFirstName" placeholder="Prénom" />
           <label htmlFor="userLastName">Nom :</label>

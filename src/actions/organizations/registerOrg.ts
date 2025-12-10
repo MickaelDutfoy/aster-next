@@ -6,15 +6,15 @@ import { getUser } from '@/lib/user/getUser';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export const registerOrg = async (prevdata: any, formdata: FormData): Promise<ActionValidation> => {
+export const registerOrg = async (formData: FormData): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
-  if (!user) return { ok: false };
+  if (!user) {
+    return { ok: false, status: 'error', message: 'Utilisateur non authentifié.' };
+  }
 
-  const org = {
-    name: formdata.get('orgName')?.toString(),
-  };
+  const orgName = formData.get('orgName')?.toString().trim();
 
-  if (!org.name) {
+  if (!orgName) {
     return {
       ok: false,
       status: 'error',
@@ -24,7 +24,7 @@ export const registerOrg = async (prevdata: any, formdata: FormData): Promise<Ac
 
   try {
     const res = await prisma.organization.create({
-      data: { name: org.name },
+      data: { name: orgName },
     });
 
     await prisma.memberOrganization.create({

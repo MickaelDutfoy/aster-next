@@ -49,7 +49,7 @@ export const getUser = cache(async (): Promise<Member | null> => {
 
     return member;
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return null;
   }
 });

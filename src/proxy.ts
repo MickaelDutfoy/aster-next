@@ -15,10 +15,24 @@ type AuthMiddleware = (
 // 👇 on caste l’overload vers la variante middleware
 const authMw = auth as unknown as AuthMiddleware;
 
+const PUBLIC_PATH_PREFIXES = [
+  '/intro',
+  '/login',
+  '/register',
+  '/reset-password',
+  '/new-password',
+] as const;
+
+const AUTH_PAGES_PREFIXES = ['/login', '/register', '/reset-password', '/new-password'] as const;
+
+function startsWithOneOf(pathname: string, prefixes: readonly string[]) {
+  return prefixes.some((prefix) => pathname.startsWith(prefix));
+}
+
 async function handler(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // static
+  // static / assets
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/assets') ||
@@ -26,48 +40,43 @@ async function handler(req: NextRequest) {
     pathname === '/favicon.ico' ||
     pathname === '/sw.js' ||
     pathname === '/manifest.webmanifest'
-  )
+  ) {
     return NextResponse.next();
+  }
 
   // intro guard
   const hasIntro = req.cookies.get('intro_seen')?.value === '1';
+
   if (!hasIntro && !pathname.startsWith('/intro')) {
     const url = req.nextUrl.clone();
     url.pathname = '/intro';
+    url.search = '';
     return NextResponse.redirect(url);
   }
-  if (hasIntro && pathname === '/intro') {
+
+  if (hasIntro && pathname.startsWith('/intro')) {
     const url = req.nextUrl.clone();
     url.pathname = '/';
+    url.search = '';
     return NextResponse.redirect(url);
   }
 
   // auth guard
-  const isPublic =
-    pathname.startsWith('/intro') ||
-    pathname.startsWith('/login') ||
-    pathname.startsWith('/register') ||
-    pathname.startsWith('/reset-password') ||
-    pathname.startsWith('/new-password');
+  const isPublic = startsWithOneOf(pathname, PUBLIC_PATH_PREFIXES);
   // @ts-expect-error: injecté par le wrapper
   const isAuthed = Boolean(req.auth);
 
-  if (!isPublic && !pathname.startsWith('/register') && !isAuthed) {
+  if (!isPublic && !isAuthed) {
     const url = req.nextUrl.clone();
     url.pathname = '/login';
     url.searchParams.set('from', pathname);
     return NextResponse.redirect(url);
   }
 
-  if (
-    isAuthed &&
-    (pathname === '/login' ||
-      pathname === '/register' ||
-      pathname === '/reset-password' ||
-      pathname === '/new-password')
-  ) {
+  if (isAuthed && startsWithOneOf(pathname, AUTH_PAGES_PREFIXES)) {
     const url = req.nextUrl.clone();
     url.pathname = '/';
+    url.search = '';
     return NextResponse.redirect(url);
   }
 

@@ -1,20 +1,24 @@
 'use client'
 
-import { usePathname } from "next/navigation"
-
-const titles: Record<string, string> = {
-  "/": "Accueil",
-  "/animals": "Animaux",
-  "/families": "Familles d'accueil",
-  "/map": "Carte",
-  "/organizations": "Associations",
-  "/settings": "Paramètres",
-};
+import { usePathname } from 'next/navigation';
 
 export const Header = () => {
-  const pathname = usePathname() || "/";
-  const keys = Object.keys(titles).sort((a, b) => b.length - a.length);
-  const key = keys.find(k => pathname === k || pathname.startsWith(k + "/"));
+  const pathname = usePathname().split('/')[1];
 
-  return <><header><h2>{key ? titles[key] : ""}</h2></header><hr /></>;
+  const titles: Record<string, string> = {
+    animals: 'Animaux',
+    families: "Familles d'accueil",
+    map: 'Carte',
+    organizations: 'Associations',
+    settings: 'Paramètres',
+  };
+
+  return (
+    <>
+      <header>
+        <h2>{titles[pathname] ?? 'Accueil'}</h2>
+      </header>
+      <hr />
+    </>
+  );
 };

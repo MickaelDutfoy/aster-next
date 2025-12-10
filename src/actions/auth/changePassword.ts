@@ -1,34 +1,38 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
+import { newPasswordSchema } from '@/lib/schemas/authSchemas';
 import { ActionValidation } from '@/lib/types';
+import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
 import { TokenType } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 
-export const changePassword = async (
-  prevstate: any,
-  formdata: FormData,
-): Promise<ActionValidation> => {
-  const password = formdata.get('userPassword')?.toString();
-  const passwordConfirm = formdata.get('userPasswordConfirm')?.toString();
-  const token = formdata.get('token')?.toString();
+export const changePassword = async (formData: FormData): Promise<ActionValidation> => {
+  const token = formData.get('token')?.toString();
 
-  if (!password) {
-    return { ok: false, status: 'error', message: 'Tous les champs doivent être remplis.' };
+  const newPasswordForm = {
+    password: formData.get('userPassword')?.toString(),
+    passwordConfirm: formData.get('userPasswordConfirm')?.toString(),
+  };
+
+  const parsedNewPassword = newPasswordSchema.safeParse(newPasswordForm);
+
+  if (!parsedNewPassword.success) {
+    return {
+      ok: false,
+      status: 'error',
+      message: zodErrorMessage(parsedNewPassword.error),
+    };
   }
 
-  if (password !== passwordConfirm) {
-    return { ok: false, status: 'error', message: 'Les mots de passe ne correspondent pas.' };
-  }
-
-  console.log('=========', token);
+  const newPassword = parsedNewPassword.data;
 
   if (!token) {
     return {
       ok: false,
       status: 'error',
-      message: 'Demande de réinitialisation invalide.',
+      message: 'Demande de réinitialisation invalide ou expirée.',
     };
   }
 
@@ -50,7 +54,7 @@ export const changePassword = async (
     };
   }
 
-  const passwordHash = await bcrypt.hash(password, 12);
+  const passwordHash = await bcrypt.hash(newPassword.password, 12);
 
   try {
     await prisma.member.update({
