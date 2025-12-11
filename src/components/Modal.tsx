@@ -1,7 +1,7 @@
 'use client';
 
+import { usePathname, useRouter } from '@/i18n/routing';
 import { CircleX } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
 
 export const Modal = ({
   expectedPath, // prevents modal from re-opening after validation

@@ -1,8 +1,8 @@
 'use client';
 
+import { Link } from '@/i18n/routing';
 import { Family, Organization } from '@/lib/types';
 import { SquareArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
 export const FamiliesList = ({ org, families }: { org: Organization; families: Family[] }) => {
   return (

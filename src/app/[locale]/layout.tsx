@@ -1,8 +1,13 @@
 import ClientLayout from '@/components/ClientLayout';
 import ToastProvider from '@/components/providers/ToastProvider';
+import { routing } from '@/i18n/routing';
 import '@/styles/_global.scss';
 import type { Metadata, Viewport } from 'next';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Comfortaa, Nunito } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { ReactNode } from 'react';
 
 export const nunito = Nunito({
   subsets: ['latin', 'latin-ext'],
@@ -29,17 +34,35 @@ export const viewport: Viewport = {
   themeColor: '#0ea5e9',
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
+
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className={`${nunito.variable} ${comfortaa.variable}`}>
+    <html className={`${nunito.variable} ${comfortaa.variable}`}>
       <body>
         <ClientLayout>
           <ToastProvider />
-          {children}
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+          </NextIntlClientProvider>
         </ClientLayout>
       </body>
     </html>

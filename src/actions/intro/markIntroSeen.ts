@@ -1,10 +1,11 @@
 'use server';
 
 import { auth } from '@/auth';
+import { redirect } from '@/i18n/routing';
+import type { Language } from '@/lib/types';
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 
-export const markIntroSeen = async () => {
+export const markIntroSeen = async (locale: Language) => {
   const session = await auth();
 
   const cookieStore = await cookies();
@@ -15,9 +16,10 @@ export const markIntroSeen = async () => {
     path: '/',
     maxAge: 60 * 60 * 24 * 365,
   });
+
   if (!session) {
-    redirect('/login');
+    redirect({ href: '/login', locale });
   } else {
-    redirect('/');
+    redirect({ href: '/', locale });
   }
 };

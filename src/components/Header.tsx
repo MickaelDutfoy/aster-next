@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname } from 'next/navigation';
+import { usePathname } from '@/i18n/routing';
 
 export const Header = () => {
   const pathname = usePathname().split('/')[1];

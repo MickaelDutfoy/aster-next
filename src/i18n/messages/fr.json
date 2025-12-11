@@ -1,0 +1,81 @@
+{
+  "Common": {
+    "view": "Voir",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "back": "Retour",
+    "next": "Suivant",
+    "seeMore": "Voir la suite",
+    "close": "Fermer",
+    "letsGo": "C'est parti !"
+  },
+  "Toasts": {
+    "errorGeneric": "Une erreur est survenue. Veuillez réessayer.",
+    "invalidCredentials": "Identifiants invalides."
+  },
+  "Intro": {
+    "selectLanguage": "Sélectionnez la langue :",
+    "welcomeTitle": "Bienvenue sur Aster !",
+    "welcomeSubtitle": "« Aider ceux qui aident. »",
+    "whyTitle": "Pourquoi faire ?",
+    "whyWhatIsAster": "Aster est une application de gestion d'association de protection animale.",
+    "whyHowHelps": "En regroupant votre agenda, la carte de vos familles d'accueil et votre to-do list, Aster est là pour vous simplifier la vie.",
+    "howTitle": "Comment ça fonctionne ?",
+    "howFirstParagraph": "Créez un compte, enregistrez votre association, invitez vos membres, ajoutez vos familles d'accueil et vos animaux.",
+    "howSecondParagraph": "100% gratuite et sans publicité, Aster n'a qu'un objectif : aider ceux qui font tout pour aider les animaux.",
+    "whatsNextTitle": "Et ensuite ?",
+    "whatsNextParagraph1": "Depuis votre bureau, vous pourrez visualiser vos familles d'accueil sur une carte et voir celles vacantes en un clin d'œil.",
+    "whatsNextParagraph2": "Vous pourrez aussi voir vos animaux en attente de placement, ceux prêts à être adoptés, ou accéder à votre agenda pour gérer vos tâches en attente et les répartir avec les autres membres.",
+    "whatsNextQuestion": "Alors, on commence ?"
+  },
+  "Auth": {
+    "emailLabel": "E-mail :",
+    "passwordLabel": "Mot de passe :",
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Mot de passe",
+    "passwordConfirmPlaceholder": "Confirmer le mot de passe",
+    "Register": {
+      "firstNameLabel": "Prénom :",
+      "lastNameLabel": "Nom :",
+      "phoneLabel": "Téléphone :",
+      "firstNamePlaceholder": "Prénom",
+      "lastNamePlaceholder": "Nom",
+      "phonePlaceholder": "Téléphone",
+      "phoneDisclaimer": "Le numéro de téléphone n'est requis que par commodité de communication pour les membres d'une association. Aster n'utilisera jamais votre numéro.",
+      "submit": "Créer un compte",
+      "loading": "Création en cours..."
+    },
+    "Login": {
+      "notMemberTitle": "Pas encore membre ?",
+      "registerCta": "Créer un compte",
+      "memberTitle": "Déjà membre ?",
+      "forgotPasswordLink": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "loading": "Connexion..."
+    },
+    "ResetPassword": {
+      "disclaimer": "Indiquez l'adresse e-mail de votre compte pour réinitialiser votre mot de passe.",
+      "submit": "Envoyer",
+      "loading": "Envoi..."
+    },
+    "NewPassword": {
+      "newPasswordLabel": "Nouveau mot de passe :",
+      "submit": "Enregistrer",
+      "loading": "Enregistrement..."
+    }
+  },
+  "Dashboard": {
+    "welcome": "Bienvenue, {name} !",
+    "noOrg": "Vous devez d'abord ajouter une association ou en rejoindre une.",
+    "adminOf": "Vous êtes admin de l'association {orgName}.",
+    "pendingIntro": "Vous devez valider des demandes d'adhésion.",
+    "pendingSee": "Voir",
+    "contactIntro": "Un problème ? Une suggestion ?",
+    "contactLink": "Envoyez-moi un message !"
+  },
+  "Settings": {
+    "changeLanguage": "Changer la langue :"
+  }
+}

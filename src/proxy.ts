@@ -1,5 +1,6 @@
-// proxy.ts
 import { auth } from '@/auth';
+import { routing } from '@/i18n/routing';
+import { hasLocale } from 'next-intl';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
@@ -12,7 +13,6 @@ type AuthMiddleware = (
   },
 ) => (req: NextRequest) => Promise<Response | NextResponse | void>;
 
-// 👇 on caste l’overload vers la variante middleware
 const authMw = auth as unknown as AuthMiddleware;
 
 const PUBLIC_PATH_PREFIXES = [
@@ -29,10 +29,33 @@ function startsWithOneOf(pathname: string, prefixes: readonly string[]) {
   return prefixes.some((prefix) => pathname.startsWith(prefix));
 }
 
+function extractLocale(pathname: string) {
+  const segments = pathname.split('/');
+  const maybeLocale = segments[1];
+
+  if (hasLocale(routing.locales, maybeLocale)) {
+    const bare = '/' + segments.slice(2).join('/') || '/';
+    return {
+      locale: maybeLocale as (typeof routing.locales)[number],
+      barePath: bare === '//' ? '/' : bare,
+    };
+  }
+
+  return {
+    locale: null as (typeof routing.locales)[number] | null,
+    barePath: pathname || '/',
+  };
+}
+
+function withLocalePath(locale: string | null, barePath: string) {
+  const loc = locale ?? routing.defaultLocale;
+  if (barePath === '/') return `/${loc}`;
+  return `/${loc}${barePath}`;
+}
+
 async function handler(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // static / assets
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/assets') ||
@@ -44,38 +67,56 @@ async function handler(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // intro guard
+  const { locale, barePath } = extractLocale(pathname);
+  let effectiveLocale = locale;
+
+  if (!effectiveLocale) {
+    const header = req.headers.get('accept-language') ?? '';
+    let browserLang = header.slice(0, 2);
+
+    if (browserLang !== 'fr' && browserLang !== 'nb') {
+      browserLang = 'en';
+    }
+
+    effectiveLocale = browserLang as (typeof routing.locales)[number];
+  }
+
+  if (!locale) {
+    const url = req.nextUrl.clone();
+    url.pathname = withLocalePath(effectiveLocale, barePath);
+    return NextResponse.redirect(url);
+  }
+
   const hasIntro = req.cookies.get('intro_seen')?.value === '1';
 
-  if (!hasIntro && !pathname.startsWith('/intro')) {
+  if (!hasIntro && !barePath.startsWith('/intro')) {
     const url = req.nextUrl.clone();
-    url.pathname = '/intro';
+    url.pathname = withLocalePath(effectiveLocale, '/intro');
     url.search = '';
     return NextResponse.redirect(url);
   }
 
-  if (hasIntro && pathname.startsWith('/intro')) {
+  if (hasIntro && barePath.startsWith('/intro')) {
     const url = req.nextUrl.clone();
-    url.pathname = '/';
+    url.pathname = withLocalePath(effectiveLocale, '/');
     url.search = '';
     return NextResponse.redirect(url);
   }
 
-  // auth guard
-  const isPublic = startsWithOneOf(pathname, PUBLIC_PATH_PREFIXES);
-  // @ts-expect-error: injecté par le wrapper
+  const isPublic = startsWithOneOf(barePath, PUBLIC_PATH_PREFIXES);
+  // @ts-expect-error
   const isAuthed = Boolean(req.auth);
 
   if (!isPublic && !isAuthed) {
     const url = req.nextUrl.clone();
-    url.pathname = '/login';
-    url.searchParams.set('from', pathname);
+    url.pathname = withLocalePath(effectiveLocale, '/login');
+    url.searchParams.set('from', barePath);
     return NextResponse.redirect(url);
   }
 
-  if (isAuthed && startsWithOneOf(pathname, AUTH_PAGES_PREFIXES)) {
+  if (isAuthed && startsWithOneOf(barePath, AUTH_PAGES_PREFIXES)) {
     const url = req.nextUrl.clone();
-    url.pathname = '/';
+    url.pathname = withLocalePath(effectiveLocale, '/');
     url.search = '';
     return NextResponse.redirect(url);
   }

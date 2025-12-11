@@ -1,0 +1,81 @@
+{
+  "Common": {
+    "view": "Se",
+    "edit": "Rediger",
+    "delete": "Slett",
+    "save": "Lagre",
+    "cancel": "Avbryt",
+    "back": "Tilbake",
+    "next": "Neste",
+    "seeMore": "Se mer",
+    "close": "Lukk",
+    "letsGo": "La oss starte!"
+  },
+  "Toasts": {
+    "errorGeneric": "Noe gikk galt. Prøv igjen.",
+    "invalidCredentials": "Feil e-post eller passord."
+  },
+  "Intro": {
+    "selectLanguage": "Velg språk:",
+    "welcomeTitle": "Velkommen til Aster!",
+    "welcomeSubtitle": "«Å hjelpe dem som hjelper.»",
+    "whyTitle": "Hva er vitsen?",
+    "whyWhatIsAster": "Aster er en administrasjonsløsning for dyrevernorganisasjoner.",
+    "whyHowHelps": "Ved å samle kalenderen din, kartet over fosterhjem og oppgavelisten din, gjør Aster hverdagen litt enklere.",
+    "howTitle": "Hvordan fungerer det?",
+    "howFirstParagraph": "Opprett en konto, registrer organisasjonen din, inviter medlemmer og legg til fosterhjem og dyr.",
+    "howSecondParagraph": "Aster er 100 % gratis og uten reklame – målet er bare å hjelpe dem som gjør alt for dyrene.",
+    "whatsNextTitle": "Hva skjer videre?",
+    "whatsNextParagraph1": "Fra dashbordet kan du se fosterhjemmene dine på et kart og raskt se hvilke som er ledige.",
+    "whatsNextParagraph2": "Du kan også se dyr som venter på plassering, de som er klare for adopsjon, og gå til kalenderen for å følge opp oppgaver og fordele dem i teamet.",
+    "whatsNextQuestion": "Skal vi sette i gang?"
+  },
+  "Auth": {
+    "emailLabel": "E-post:",
+    "passwordLabel": "Passord:",
+    "emailPlaceholder": "E-post",
+    "passwordPlaceholder": "Passord",
+    "passwordConfirmPlaceholder": "Bekreft passord",
+    "Register": {
+      "firstNameLabel": "Fornavn:",
+      "lastNameLabel": "Etternavn:",
+      "phoneLabel": "Telefonnummer:",
+      "firstNamePlaceholder": "Fornavn",
+      "lastNamePlaceholder": "Etternavn",
+      "phonePlaceholder": "Telefonnummer",
+      "phoneDisclaimer": "Telefonnummeret ditt brukes bare for enklere kommunikasjon mellom medlemmene i organisasjonen. Aster vil aldri misbruke nummeret ditt.",
+      "submit": "Opprett konto",
+      "loading": "Oppretter konto..."
+    },
+    "Login": {
+      "notMemberTitle": "Ikke medlem ennå?",
+      "registerCta": "Opprett konto",
+      "memberTitle": "Allerede medlem?",
+      "forgotPasswordLink": "Glemt passordet ditt?",
+      "submit": "Logg inn",
+      "loading": "Logger inn..."
+    },
+    "ResetPassword": {
+      "disclaimer": "Skriv inn e-postadressen til kontoen din for å tilbakestille passordet.",
+      "submit": "Send",
+      "loading": "Sender..."
+    },
+    "NewPassword": {
+      "newPasswordLabel": "Nytt passord:",
+      "submit": "Lagre nytt passord",
+      "loading": "Lagrer..."
+    }
+  },
+  "Dashboard": {
+    "welcome": "Velkommen, {name}!",
+    "noOrg": "Du må først opprette eller bli med i en organisasjon.",
+    "adminOf": "Du er administrator for {orgName}.",
+    "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
+    "pendingSee": "Se",
+    "contactIntro": "Problem? Forslag?",
+    "contactLink": "Send meg en melding!"
+  },
+  "Settings": {
+    "changeLanguage": "Endre språk:"
+  }
+}

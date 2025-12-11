@@ -1,7 +1,7 @@
 'use client';
 
 import { logout } from '@/actions/auth/logout';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 

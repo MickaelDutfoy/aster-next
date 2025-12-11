@@ -24,6 +24,7 @@
     "lucide-react": "^0.544.0",
     "next": "16.0.7",
     "next-auth": "5.0.0-beta.29",
+    "next-intl": "^4.5.8",
     "pg": "^8.16.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",

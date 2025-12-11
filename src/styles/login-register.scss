@@ -37,6 +37,20 @@
         margin: 5px;
     }
 
+    .password {
+        position: relative;
+
+        .eye {
+            cursor: pointer;
+            color: vars.$smoky-black;
+            position: absolute;
+            right: 12px;
+            top: calc(50% - 11px);
+            background: none;
+            border: none;
+        }
+    }
+
     .disclaimer {
         margin-top: 10px;
         font-size: 0.9rem;

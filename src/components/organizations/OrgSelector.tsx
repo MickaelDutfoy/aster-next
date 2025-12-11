@@ -1,9 +1,9 @@
 'use client';
 
 import { setOrgCookie } from '@/actions/organizations/setOrgCookie';
+import { useRouter } from '@/i18n/routing';
 import { Member, Organization } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
-import { useRouter } from 'next/navigation';
 import { useOrg } from '../providers/OrgProvider';
 import { useUser } from '../providers/UserProvider';
 

@@ -1,10 +1,10 @@
 'use client';
 
+import { Link } from '@/i18n/routing';
 import { Animal, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
 import { SquareArrowRight } from 'lucide-react';
-import Link from 'next/link';
 import { useState } from 'react';
 
 export const AnimalsList = ({ org, animals }: { org: Organization; animals: Animal[] }) => {

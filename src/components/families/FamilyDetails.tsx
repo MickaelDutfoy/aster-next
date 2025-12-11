@@ -1,9 +1,9 @@
 'use client';
 
+import { Link } from '@/i18n/routing';
 import { Animal, Family } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { SquareArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
 export const FamilyDetails = ({ family, animals }: { family: Family; animals: Animal[] }) => {
   return (
