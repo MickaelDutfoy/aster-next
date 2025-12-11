@@ -2,10 +2,12 @@
 
 import { auth } from '@/auth';
 import { redirect } from '@/i18n/routing';
+import { getLocale } from 'next-intl/server';
 import { cookies } from 'next/headers';
 
 export const markIntroSeen = async () => {
   const session = await auth();
+  const locale = await getLocale();
 
   const cookieStore = await cookies();
   cookieStore.set('intro_seen', '1', {
@@ -16,8 +18,8 @@ export const markIntroSeen = async () => {
     maxAge: 60 * 60 * 24 * 365,
   });
   if (!session) {
-    redirect('/login');
+    redirect({ href: '/login', locale });
   } else {
-    redirect('/');
+    redirect({ href: '/', locale });
   }
 };
