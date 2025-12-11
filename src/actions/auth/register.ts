@@ -12,7 +12,7 @@ export const register = async (formdata: FormData): Promise<ActionValidation> =>
   const newUserForm = {
     firstName: formdata.get('userFirstName')?.toString().trim(),
     lastName: formdata.get('userLastName')?.toString().trim(),
-    email: formdata.get('userEmail')?.toString().trim(),
+    email: formdata.get('userEmail')?.toString().trim().toLowerCase(),
     phoneNumber: formdata.get('userPhoneNumber')?.toString().trim(),
     password: formdata.get('userPassword')?.toString(),
     passwordConfirm: formdata.get('userPasswordConfirm')?.toString(),

@@ -13,7 +13,6 @@ type AuthMiddleware = (
   },
 ) => (req: NextRequest) => Promise<Response | NextResponse | void>;
 
-// 👇 on caste l’overload vers la variante middleware
 const authMw = auth as unknown as AuthMiddleware;
 
 const PUBLIC_PATH_PREFIXES = [
@@ -30,22 +29,18 @@ function startsWithOneOf(pathname: string, prefixes: readonly string[]) {
   return prefixes.some((prefix) => pathname.startsWith(prefix));
 }
 
-// --- helpers i18n / routing ---
-
 function extractLocale(pathname: string) {
-  // /en/login -> ['','en','login']
   const segments = pathname.split('/');
   const maybeLocale = segments[1];
 
   if (hasLocale(routing.locales, maybeLocale)) {
-    const bare = '/' + segments.slice(2).join('/') || '/'; // '/login' ou '/'
+    const bare = '/' + segments.slice(2).join('/') || '/';
     return {
       locale: maybeLocale as (typeof routing.locales)[number],
       barePath: bare === '//' ? '/' : bare,
     };
   }
 
-  // Pas de locale dans l'URL
   return {
     locale: null as (typeof routing.locales)[number] | null,
     barePath: pathname || '/',
@@ -61,7 +56,6 @@ function withLocalePath(locale: string | null, barePath: string) {
 async function handler(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // static / assets -> on sort direct
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/assets') ||
@@ -73,19 +67,26 @@ async function handler(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // On sépare locale + chemin nu
   const { locale, barePath } = extractLocale(pathname);
-  const effectiveLocale = locale ?? routing.defaultLocale;
+  let effectiveLocale = locale;
 
-  // Si pas de locale dans l’URL, on normalise :
-  // /login -> /en/login, /intro -> /en/intro, / -> /en
+  if (!effectiveLocale) {
+    const header = req.headers.get('accept-language') ?? '';
+    let browserLang = header.slice(0, 2);
+
+    if (browserLang !== 'fr' && browserLang !== 'nb') {
+      browserLang = 'en';
+    }
+
+    effectiveLocale = browserLang as (typeof routing.locales)[number];
+  }
+
   if (!locale) {
     const url = req.nextUrl.clone();
     url.pathname = withLocalePath(effectiveLocale, barePath);
     return NextResponse.redirect(url);
   }
 
-  // intro guard (sur le chemin nu)
   const hasIntro = req.cookies.get('intro_seen')?.value === '1';
 
   if (!hasIntro && !barePath.startsWith('/intro')) {
@@ -102,9 +103,8 @@ async function handler(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // auth guard (toujours sur le chemin nu)
   const isPublic = startsWithOneOf(barePath, PUBLIC_PATH_PREFIXES);
-  // @ts-expect-error: injecté par le wrapper
+  // @ts-expect-error
   const isAuthed = Boolean(req.auth);
 
   if (!isPublic && !isAuthed) {

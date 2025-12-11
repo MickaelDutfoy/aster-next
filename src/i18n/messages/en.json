@@ -1,11 +1,70 @@
 {
-  "Intro": {
-    "title": "Welcome to Aster",
-    "subtitle": "A web app for animal protection associations"
+  "Common": {
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "seeMore": "See more",
+    "close": "Close",
+    "letsGo": "Let's go!"
   },
-  "Settings": {
-    "title": "Settings",
-    "languageLabel": "App language"
+  "Toasts": {
+    "errorGeneric": "An error occurred. Please try again.",
+    "invalidCredentials": "Invalid credentials."
+  },
+  "Intro": {
+    "selectLanguage": "Select language:",
+    "welcomeTitle": "Welcome to Aster!",
+    "welcomeSubtitle": "\"Helping those who help.\"",
+    "whyTitle": "What is it for?",
+    "whyWhatIsAster": "Aster is a management app for animal welfare organizations.",
+    "whyHowHelps": "By bringing together your schedule, your foster families map and your to-do list, Aster is here to make your work easier.",
+    "howTitle": "How does it work?",
+    "howFirstParagraph": "Create an account, register your organization, invite your members, and add your foster families and animals.",
+    "howSecondParagraph": "100% free and ad-free, Aster has only one goal: helping the people who do everything to help animals.",
+    "whatsNextTitle": "What’s next?",
+    "whatsNextParagraph1": "From your dashboard, you can see your foster families on a map and instantly spot which ones are available.",
+    "whatsNextParagraph2": "You can also see animals waiting for placement, those ready for adoption, and access your schedule to manage your tasks and share them with the rest of the team.",
+    "whatsNextQuestion": "Ready to get started?"
+  },
+  "Auth": {
+    "emailLabel": "Email:",
+    "passwordLabel": "Password:",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "passwordConfirmPlaceholder": "Confirm password",
+    "Register": {
+      "firstNameLabel": "First name:",
+      "lastNameLabel": "Last name:",
+      "phoneLabel": "Phone number:",
+      "firstNamePlaceholder": "First name",
+      "lastNamePlaceholder": "Last name",
+      "phonePlaceholder": "Phone number",
+      "phoneDisclaimer": "Your phone number is only used to help communication within your organization. Aster will never use it for anything else.",
+      "submit": "Create account",
+      "loading": "Creating account..."
+    },
+    "Login": {
+      "notMemberTitle": "Not a member yet?",
+      "registerCta": "Create an account",
+      "memberTitle": "Already a member?",
+      "forgotPasswordLink": "Forgot your password?",
+      "submit": "Log in",
+      "loading": "Logging in..."
+    },
+    "ResetPassword": {
+      "disclaimer": "Enter the email address of your account to reset your password.",
+      "submit": "Send",
+      "loading": "Sending..."
+    },
+    "NewPassword": {
+      "newPasswordLabel": "New password:",
+      "submit": "Save new password",
+      "loading": "Saving..."
+    }
   },
   "Dashboard": {
     "welcome": "Welcome, {name}!",
@@ -15,5 +74,8 @@
     "pendingSee": "View",
     "contactIntro": "Issue? Suggestion?",
     "contactLink": "Send me a message!"
+  },
+  "Settings": {
+    "changeLanguage": "Change language:"
   }
 }

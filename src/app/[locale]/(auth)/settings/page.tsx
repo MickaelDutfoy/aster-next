@@ -1,12 +1,7 @@
-import { Logout } from '@/components/auth/Logout';
+import { Settings } from '@/components/Settings';
 
 const SettingsPage = () => {
-  return (
-    <>
-      <Logout />
-      <h3 className="denied-page">Cette fonctionnalité sera bientôt disponible.</h3>
-    </>
-  );
+  return <Settings />;
 };
 
 export default SettingsPage;

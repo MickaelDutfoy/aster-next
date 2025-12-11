@@ -2,11 +2,17 @@
 
 import { login } from '@/actions/auth/login';
 import { Link, useRouter } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
+import { PasswordInput } from './PasswordInput';
 
 export const Login = () => {
   const router = useRouter();
+
+  const tAuth = useTranslations('Auth');
+  const t = useTranslations('Auth.Login');
+  const tToasts = useTranslations('Toasts');
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,7 +21,7 @@ export const Login = () => {
     const formData = new FormData(e.currentTarget);
 
     const user = {
-      email: formData.get('userEmail')?.toString().trim(),
+      email: formData.get('userEmail')?.toString().trim().toLowerCase(),
       password: formData.get('userPassword')?.toString(),
     };
 
@@ -23,7 +29,7 @@ export const Login = () => {
       showToast({
         ok: false,
         status: 'error',
-        message: 'Identifiants invalides.',
+        message: tToasts('invalidCredentials'),
       });
       return;
     }
@@ -37,7 +43,7 @@ export const Login = () => {
       showToast({
         ok: false,
         status: 'error',
-        message: 'Une erreur est survenue.',
+        message: tToasts('errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -47,28 +53,31 @@ export const Login = () => {
   return (
     <div className="auth-page">
       <div className="auth-block">
-        <h2>Pas encore membre ?</h2>
+        <h2>{t('notMemberTitle')}</h2>
         <Link href="/register" className="main-button">
-          Créer un compte
+          {t('registerCta')}
         </Link>
       </div>
       <div className="auth-block">
-        <h2>Déjà membre ?</h2>
+        <h2>{t('memberTitle')}</h2>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="userEmail">E-mail :</label>
-          <input className="auth-field" type="text" name="userEmail" placeholder="E-mail" />
-          <label htmlFor="userPassword">Mot de passe :</label>
+          <label htmlFor="userEmail">{tAuth('emailLabel')}</label>
           <input
             className="auth-field"
-            type="password"
-            name="userPassword"
-            placeholder="Password"
+            type="text"
+            name="userEmail"
+            placeholder={tAuth('emailPlaceholder')}
           />
+
+          <label htmlFor="userPassword">{tAuth('passwordLabel')}</label>
+          <PasswordInput name="userPassword" placeholder={tAuth('passwordPlaceholder')} />
+
           <Link className="public-link" href="/reset-password">
-            <u>Mot de passe oublié</u> ?
+            <u>{t('forgotPasswordLink')}</u>
           </Link>
+
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? 'Connexion...' : 'Se connecter'}
+            {isLoading ? t('loading') : t('submit')}
           </button>
         </form>
       </div>

@@ -11,7 +11,7 @@ import crypto from 'crypto';
 const RESET_TOKEN_LIFETIME_MS = 1000 * 60 * 60;
 
 export const sendResetPasswordMail = async (formData: FormData): Promise<ActionValidation> => {
-  const emailForm = formData.get('userEmail')?.toString().trim();
+  const emailForm = formData.get('userEmail')?.toString().trim().toLowerCase();
   const parsedEmail = resetPasswordSchema.safeParse(emailForm);
 
   if (!parsedEmail.success) {
