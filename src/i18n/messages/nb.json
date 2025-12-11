@@ -1,0 +1,10 @@
+{
+  "Intro": {
+    "title": "Velkommen til Aster",
+    "subtitle": "En nettapp for dyrevernorganisasjoner"
+  },
+  "Settings": {
+    "title": "Innstillinger",
+    "languageLabel": "Appspråk"
+  }
+}

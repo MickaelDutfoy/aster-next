@@ -1,10 +1,9 @@
 'use client';
 
+import { Link, usePathname } from '@/i18n/routing';
 import { Member } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { Cat, FolderOpen, HouseHeart, Settings, Users } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useUser } from './providers/UserProvider';
 
 export const NavBar = () => {

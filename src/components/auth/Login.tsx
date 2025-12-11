@@ -1,8 +1,7 @@
 'use client';
 
 import { login } from '@/actions/auth/login';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { Link, useRouter } from '@/i18n/routing';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 

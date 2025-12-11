@@ -1,9 +1,9 @@
 'use client';
 
 import { changePassword } from '@/actions/auth/changePassword';
+import { useRouter } from '@/i18n/routing';
 import { newPasswordSchema } from '@/lib/schemas/authSchemas';
 import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 

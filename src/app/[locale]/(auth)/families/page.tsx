@@ -1,9 +1,9 @@
 import { FamiliesList } from '@/components/families/FamiliesList';
+import { Link } from '@/i18n/routing';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import Link from 'next/link';
 
 const FamiliesPage = async () => {
   const user: Member | null = await getUser();

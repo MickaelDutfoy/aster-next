@@ -1,10 +1,10 @@
 'use client';
 
+import { Link } from '@/i18n/routing';
 import { Animal, Family } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
-import Link from 'next/link';
 import { useState } from 'react';
 
 export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Family | null }) => {

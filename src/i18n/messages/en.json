@@ -1,0 +1,19 @@
+{
+  "Intro": {
+    "title": "Welcome to Aster",
+    "subtitle": "A web app for animal protection associations"
+  },
+  "Settings": {
+    "title": "Settings",
+    "languageLabel": "App language"
+  },
+  "Dashboard": {
+    "welcome": "Welcome, {name}!",
+    "noOrg": "You need to add or join an organization first.",
+    "adminOf": "You are admin of {orgName}.",
+    "pendingIntro": "You have membership requests to review.",
+    "pendingSee": "View",
+    "contactIntro": "Issue? Suggestion?",
+    "contactLink": "Send me a message!"
+  }
+}

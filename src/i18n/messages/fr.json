@@ -1,0 +1,19 @@
+{
+  "Intro": {
+    "title": "Bienvenue sur Aster",
+    "subtitle": "Une application web pour les associations de protection animale"
+  },
+  "Settings": {
+    "title": "Paramètres",
+    "languageLabel": "Langue de l’application"
+  },
+  "Dashboard": {
+    "welcome": "Bienvenue, {name} !",
+    "noOrg": "Vous devez d'abord ajouter une association ou en rejoindre une.",
+    "adminOf": "Vous êtes admin de l'association {orgName}.",
+    "pendingIntro": "Vous devez valider des demandes d'adhésion.",
+    "pendingSee": "Voir",
+    "contactIntro": "Un problème ? Une suggestion ?",
+    "contactLink": "Envoyez-moi un message !"
+  }
+}

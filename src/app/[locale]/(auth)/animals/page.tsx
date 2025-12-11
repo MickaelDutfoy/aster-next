@@ -1,9 +1,9 @@
 import { AnimalsList } from '@/components/animals/AnimalList';
+import { Link } from '@/i18n/routing';
 import { getAnimalsByOrg } from '@/lib/animals/getAnimalsByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Animal, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import Link from 'next/link';
 
 const AnimalsPage = async () => {
   const user: Member | null = await getUser();

@@ -2,10 +2,10 @@
 
 import { registerAnimal } from '@/actions/animals/registerAnimal';
 import { updateAnimal } from '@/actions/animals/updateAnimal';
+import { useRouter } from '@/i18n/routing';
 import { Animal, Family } from '@/lib/types';
 import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 

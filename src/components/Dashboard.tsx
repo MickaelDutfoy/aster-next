@@ -1,8 +1,9 @@
 'use client';
 
+import { Link } from '@/i18n/routing';
 import { Member, Organization, PendingOrgRequest } from '@/lib/types';
 import { SquareArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export const Dashboard = ({
   user,
@@ -13,29 +14,35 @@ export const Dashboard = ({
   org: Organization | null;
   pending: PendingOrgRequest[];
 }) => {
+  const t = useTranslations('Dashboard');
+
   return (
     <div className="dash-content">
-      <h3>Bienvenue, {user.firstName} !</h3>
-      {!org && <p>Vous devez d'abord ajouter une association ou en rejoindre une.</p>}
+      <h3>{t('welcome', { name: user.firstName })}</h3>
+
+      {!org && <p>{t('noOrg')}</p>}
+
       {org?.userRole === 'SUPERADMIN' && (
         <>
-          <p>Vous êtes admin de l'association {org.name}.</p>
+          <p>{t('adminOf', { orgName: org.name })}</p>
+
           {pending && pending.length > 0 && (
             <div className="text-with-link">
-              <p>Vous devez valider des demandes d'adhésion.</p>
+              <p>{t('pendingIntro')}</p>
 
               <Link href="/organizations" className="link">
-                Voir
+                {t('pendingSee')}
                 <SquareArrowRight />
               </Link>
             </div>
           )}
         </>
       )}
+
       <div className="contact">
-        <p>Un problème ? Une suggestion ?</p>
+        <p>{t('contactIntro')}</p>
         <Link className="link" href="mailto:m.dutfoy@gmail.com">
-          <u>Envoyez-moi un message</u> !
+          <u>{t('contactLink')}</u>
         </Link>
       </div>
     </div>

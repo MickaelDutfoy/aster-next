@@ -1,8 +1,8 @@
 'use server';
 
 import { auth } from '@/auth';
+import { redirect } from '@/i18n/routing';
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 
 export const markIntroSeen = async () => {
   const session = await auth();

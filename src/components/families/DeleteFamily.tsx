@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteFamily } from '@/actions/families/deleteFamily';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
