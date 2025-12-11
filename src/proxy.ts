@@ -70,18 +70,22 @@ async function handler(req: NextRequest) {
   const { locale, barePath } = extractLocale(pathname);
   let effectiveLocale = locale;
 
-  if (!effectiveLocale) {
-    const header = req.headers.get('accept-language') ?? '';
-    let browserLang = header.slice(0, 2);
+  if (!locale) {
+    const cookieLocale = req.cookies.get('aster_locale')?.value;
 
-    if (browserLang !== 'fr' && browserLang !== 'nb') {
-      browserLang = 'en';
+    if (cookieLocale && routing.locales.includes(cookieLocale as any)) {
+      effectiveLocale = cookieLocale as (typeof routing.locales)[number];
+    } else {
+      const header = req.headers.get('accept-language') ?? '';
+      let browserLang = header.slice(0, 2);
+
+      if (!routing.locales.includes(browserLang as any)) {
+        browserLang = routing.defaultLocale;
+      }
+
+      effectiveLocale = browserLang as (typeof routing.locales)[number];
     }
 
-    effectiveLocale = browserLang as (typeof routing.locales)[number];
-  }
-
-  if (!locale) {
     const url = req.nextUrl.clone();
     url.pathname = withLocalePath(effectiveLocale, barePath);
     return NextResponse.redirect(url);
