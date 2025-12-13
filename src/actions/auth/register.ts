@@ -86,7 +86,7 @@ export const register = async (formdata: FormData): Promise<ActionValidation> =>
             `,
     });
 
-    return { ok: true, status: 'success', message: 'Compte créé avec succès !' };
+    return { ok: true, status: 'success', message: 'auth.register.success' };
   } catch (err: any) {
     console.error(err);
 
@@ -94,10 +94,14 @@ export const register = async (formdata: FormData): Promise<ActionValidation> =>
       return {
         ok: false,
         status: 'error',
-        message: 'Un compte existe déjà avec cette adresse e-mail.',
+        message: 'auth.register.alreadyExists',
       };
     }
 
-    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.errorGeneric',
+        };
   }
 };

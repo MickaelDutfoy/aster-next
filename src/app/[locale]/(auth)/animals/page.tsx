@@ -1,5 +1,6 @@
 import { AnimalsList } from '@/components/animals/AnimalList';
-import { Link } from '@/i18n/routing';
+import { AnimalsPageActions } from '@/components/animals/AnimalsPageActions';
+import { DeniedPage } from '@/components/DeniedPage';
 import { getAnimalsByOrg } from '@/lib/animals/getAnimalsByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Animal, Member, Organization } from '@/lib/types';
@@ -7,29 +8,18 @@ import { getUser } from '@/lib/user/getUser';
 
 const AnimalsPage = async () => {
   const user: Member | null = await getUser();
-  if (!user) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);
-  if (!org) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!org) return <DeniedPage cause="error" />;
 
-  if (org.userStatus === 'PENDING') {
-    return (
-      <h3 className="denied-page">
-        Vous ne pouvez pas voir les animaux de cette association car votre adhésion n'a pas encore
-        été approuvée.
-      </h3>
-    );
-  }
+  if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
   const animals: Animal[] = await getAnimalsByOrg(org.id);
 
   return (
     <>
-      <div className="links-box">
-        <Link href={'/animals/new'} className="little-button">
-          Ajouter un animal
-        </Link>
-      </div>
+      <AnimalsPageActions />
       <AnimalsList org={org} animals={animals} />
     </>
   );

@@ -1,10 +1,11 @@
+import { DeniedPage } from '@/components/DeniedPage';
 import { RegisterFamily } from '@/components/families/RegisterFamily';
 import { Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
 const RegisterFamilyPage = async () => {
   const user: Member | null = await getUser();
-  if (!user) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!user) return <DeniedPage cause="error" />;
 
   return <RegisterFamily user={user} />;
 };

@@ -1,5 +1,7 @@
+import { DeniedPage } from '@/components/DeniedPage';
+
 const Map = () => {
-    return <h3 className="denied-page">Cette fonctionnalité sera bientôt disponible.</h3>;
-}
+  return <DeniedPage cause="soon" />;
+};
 
 export default Map;

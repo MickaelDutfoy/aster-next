@@ -9,8 +9,7 @@ import { useState } from 'react';
 
 export const Intro = () => {
   const locale = useLocale() as Language;
-  const t = useTranslations('Intro');
-  const tCommon = useTranslations('Common');
+  const t = useTranslations();
   const [step, setStep] = useState(0);
 
   const nextFrame = () => {
@@ -25,50 +24,50 @@ export const Intro = () => {
     <div className="intro">
       {step === 0 && (
         <div>
-          <h2>{t('selectLanguage')}</h2>
+          <h2>{t('intro.selectLanguage')}</h2>
           <LanguageSelector size={44} />
           <button className="main-button" onClick={nextFrame}>
-            {tCommon('seeMore')}
+            {t('common.seeMore')}
           </button>
         </div>
       )}
       {step === 1 && (
         <div>
-          <h2>{t('welcomeTitle')}</h2>
-          <p>{t('welcomeSubtitle')}</p>
+          <h2>{t('intro.welcomeTitle')}</h2>
+          <p>{t('intro.welcomeSubtitle')}</p>
           <button className="main-button" onClick={nextFrame}>
-            {tCommon('seeMore')}
+            {t('common.seeMore')}
           </button>
         </div>
       )}
       {step === 2 && (
         <div>
-          <h2>{t('whyTitle')}</h2>
-          <p>{t('whyWhatIsAster')}</p>
-          <p>{t('whyHowHelps')}</p>
+          <h2>{t('intro.whyTitle')}</h2>
+          <p>{t('intro.whyWhatIsAster')}</p>
+          <p>{t('intro.whyHowHelps')}</p>
           <button className="main-button" onClick={nextFrame}>
-            {tCommon('seeMore')}
+            {t('common.seeMore')}
           </button>
         </div>
       )}
       {step === 3 && (
         <div>
-          <h2>{t('howTitle')}</h2>
-          <p>{t('howFirstParagraph')}</p>
-          <p>{t('howSecondParagraph')}</p>
+          <h2>{t('intro.howTitle')}</h2>
+          <p>{t('intro.howFirstParagraph')}</p>
+          <p>{t('intro.howSecondParagraph')}</p>
           <button className="main-button" onClick={nextFrame}>
-            {tCommon('seeMore')}
+            {t('common.seeMore')}
           </button>
         </div>
       )}
       {step === 4 && (
         <div>
-          <h2>{t('whatsNextTitle')}</h2>
-          <p>{t('whatsNextParagraph1')}</p>
-          <p>{t('whatsNextParagraph2')}</p>
-          <p>{t('whatsNextQuestion')}</p>
+          <h2>{t('intro.whatsNextTitle')}</h2>
+          <p>{t('intro.whatsNextParagraph1')}</p>
+          <p>{t('intro.whatsNextParagraph2')}</p>
+          <p>{t('intro.whatsNextQuestion')}</p>
           <button className="main-button" onClick={nextFrame}>
-            {tCommon('letsGo')}
+            {t('common.letsGo')}
           </button>
         </div>
       )}

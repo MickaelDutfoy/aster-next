@@ -4,20 +4,26 @@ import { Link } from '@/i18n/routing';
 import { Animal, Family } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { SquareArrowRight } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 
 export const FamilyDetails = ({ family, animals }: { family: Family; animals: Animal[] }) => {
+  const t = useTranslations();
+  const locale = useLocale();
+
   return (
     <>
       <div className="links-box">
         <Link href={`/families/${family.id}/delete`} className="little-button">
-          Supprimer la famille
+          {t('families.deleteTitle')}
         </Link>
         <Link href={`/families/${family.id}/edit`} className="little-button">
-          Éditer la famille
+          {t('families.editInfoTitle')}
         </Link>
       </div>
+
       <div>
         <h3>{family.contactFullName}</h3>
+
         <div className="family-contact-display">
           <p>
             {family.address} {family.zip} {family.city}
@@ -26,11 +32,12 @@ export const FamilyDetails = ({ family, animals }: { family: Family; animals: An
           {family.phoneNumber && <p>{family.phoneNumber}</p>}
         </div>
 
-        {family.hasChildren && <p>Cette famille a des enfants.</p>}
+        {family.hasChildren && <p>{t('families.hasChildren')}</p>}
       </div>
+
       {animals && animals.length > 0 && (
         <div>
-          <p>Animaux en charge :</p>
+          <p>{t('families.animalsInCareLabel')}</p>
           <ul className="animals-list">
             {animals
               .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
@@ -50,7 +57,7 @@ export const FamilyDetails = ({ family, animals }: { family: Family; animals: An
                       {animal.sex === 'M' ? '♂' : '♀'}
                     </span>
                   </span>
-                  <span>{getAge(animal.birthDate)}</span>
+                  <span>{getAge(animal.birthDate, locale)}</span>
                   <Link className="action link" href={`/animals/${animal.id}`}>
                     <SquareArrowRight size={26} />
                   </Link>
@@ -59,9 +66,10 @@ export const FamilyDetails = ({ family, animals }: { family: Family; animals: An
           </ul>
         </div>
       )}
+
       {family.otherAnimals && (
         <>
-          <p>Autres animaux :</p>
+          <p>{t('families.otherAnimalsLabel')}</p>
           <p className="family-animals">{family.otherAnimals}</p>
         </>
       )}

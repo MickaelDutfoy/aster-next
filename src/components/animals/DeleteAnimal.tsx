@@ -2,11 +2,13 @@
 
 import { deleteAnimal } from '@/actions/animals/deleteAnimal';
 import { useRouter } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const DeleteAnimal = ({ id }: { id: string }) => {
   const animalId = Number(id);
+  const t = useTranslations();
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +17,10 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
     setIsLoading(true);
     try {
       const res = await deleteAnimal(animalId);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
       if (res.ok) router.replace('/animals');
     } catch (err) {
       console.error(err);
@@ -31,8 +36,8 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
 
   return (
     <>
-      <h3 style={{ paddingBottom: 10 }}>Supprimer l'animal</h3>
-      <p>Êtes-vous sûr(e) ?</p>
+      <h3 style={{ paddingBottom: 10 }}>{t('animals.deleteTitle')}</h3>
+      <p>{t('common.areYouSure')}</p>
       <div className="yes-no">
         <button
           onClick={handleSubmit}
@@ -40,10 +45,10 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
           aria-busy={isLoading}
           disabled={isLoading}
         >
-          {isLoading ? 'Suppression...' : 'Confirmer'}
+          {isLoading ? t('common.deleting') : t('common.confirm')}
         </button>
         <button className="little-button" onClick={() => router.back()}>
-          Annuler
+          {t('common.cancel')}
         </button>
       </div>
     </>

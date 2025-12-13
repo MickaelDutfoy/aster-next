@@ -1,5 +1,5 @@
 {
-  "Common": {
+  "common": {
     "view": "Voir",
     "edit": "Modifier",
     "delete": "Supprimer",
@@ -9,13 +9,35 @@
     "next": "Suivant",
     "seeMore": "Voir la suite",
     "close": "Fermer",
-    "letsGo": "C'est parti !"
+    "letsGo": "C'est parti !",
+    "submit": "Enregistrer",
+    "loading": "Enregistrement...",
+    "confirm": "Confirmer",
+    "deleting": "Suppression...",
+    "areYouSure": "Êtes-vous sûr(e) ?",
+    "agoPrefix": "il y a ",
+    "agoSuffix": "",
+    "errorOccurred": "Une erreur est survenue.",
+    "requiredFieldsNotice": "(Les champs marqués d'un * sont requis.)",
+    "accessDenied": "Vous n'avez pas les autorisations pour accéder à cette ressource.",
+    "soonToCome": "Cette fonctionnalité sera bientôt disponible."
   },
-  "Toasts": {
-    "errorGeneric": "Une erreur est survenue. Veuillez réessayer.",
-    "invalidCredentials": "Identifiants invalides."
+  "toasts": {
+    "errorGeneric": "Une erreur est survenue.",
+    "requiredFieldsMissing": "Des champs obligatoires sont incomplets.",
+    "noUser": "Utilisateur non authentifié.",
+    "modifySuccess": "Les informations ont été modifiées.",
+    "animalDelete": "L'animal a bien été supprimé.",
+    "animalAdd": "L'animal a bien été ajouté.",
+    "familyDelete": "La famille a bien été supprimée.",
+    "familyAdd": "La famille a bien été ajoutée.",
+    "alreadyMemberOfOrg": "Vous faites déjà partie de cette association.",
+    "orgRequestSent": "Votre demande d'adhésion a été envoyée.",
+    "orgRegisterSuccess": "Votre association a bien été enregistrée.",
+    "mustPickOrg": "Vous devez sélectionner une association existante.",
+    "mobileAlert": "Aster est optimisé pour mobile — pensez au mode responsive (Ctrl+Shift+M)."
   },
-  "Intro": {
+  "intro": {
     "selectLanguage": "Sélectionnez la langue :",
     "welcomeTitle": "Bienvenue sur Aster !",
     "welcomeSubtitle": "« Aider ceux qui aident. »",
@@ -30,13 +52,16 @@
     "whatsNextParagraph2": "Vous pourrez aussi voir vos animaux en attente de placement, ceux prêts à être adoptés, ou accéder à votre agenda pour gérer vos tâches en attente et les répartir avec les autres membres.",
     "whatsNextQuestion": "Alors, on commence ?"
   },
-  "Auth": {
+  "auth": {
     "emailLabel": "E-mail :",
     "passwordLabel": "Mot de passe :",
     "emailPlaceholder": "E-mail",
     "passwordPlaceholder": "Mot de passe",
     "passwordConfirmPlaceholder": "Confirmer le mot de passe",
-    "Register": {
+    "newPasswordLabel": "Nouveau mot de passe :",
+    "register": {
+      "success": "Compte créé avec succès !",
+      "alreadyExists": "Un compte existe déjà avec cette adresse e-mail.",
       "firstNameLabel": "Prénom :",
       "lastNameLabel": "Nom :",
       "phoneLabel": "Téléphone :",
@@ -47,26 +72,64 @@
       "submit": "Créer un compte",
       "loading": "Création en cours..."
     },
-    "Login": {
+    "login": {
+      "invalid": "Identifiants invalides.",
       "notMemberTitle": "Pas encore membre ?",
-      "registerCta": "Créer un compte",
+      "register": "Créer un compte",
       "memberTitle": "Déjà membre ?",
       "forgotPasswordLink": "Mot de passe oublié ?",
       "submit": "Se connecter",
       "loading": "Connexion..."
     },
-    "ResetPassword": {
+    "logout": {
+      "success": "Vous avez été déconnecté(e).",
+      "submit": "Se déconnecter",
+      "loading": "Déconnexion..."
+    },
+    "resetPassword": {
+      "sent": "Si un compte existe avec cet e-mail, un message vient de lui être envoyé.",
+      "error": "Une erreur est survenue lors de l'envoi de l'e-mail.",
       "disclaimer": "Indiquez l'adresse e-mail de votre compte pour réinitialiser votre mot de passe.",
       "submit": "Envoyer",
       "loading": "Envoi..."
     },
-    "NewPassword": {
-      "newPasswordLabel": "Nouveau mot de passe :",
-      "submit": "Enregistrer",
-      "loading": "Enregistrement..."
+    "changePassword": {
+      "invalidOrExpired": "Demande de réinitialisation invalide ou expirée.",
+      "success": "Votre mot de passe a été mis à jour."
+    },
+    "zod": {
+      "genericInvalid": "Certains champs sont invalides.",
+      "firstName": {
+        "minLength": "Le prénom doit contenir au moins 2 caractères."
+      },
+      "lastName": {
+        "minLength": "Le nom doit contenir au moins 2 caractères."
+      },
+      "email": {
+        "invalid": "L'adresse e-mail n'est pas valide."
+      },
+      "phone": {
+        "minLength": "Le numéro de téléphone doit contenir au moins 6 caractères.",
+        "maxLength": "Le numéro de téléphone est trop long.",
+        "invalid": "Le numéro de téléphone ne semble pas valide."
+      },
+      "password": {
+        "minLength": "Le mot de passe doit contenir au moins 8 caractères."
+      },
+      "passwordConfirm": {
+        "mismatch": "Les mots de passe ne correspondent pas."
+      }
     }
   },
-  "Dashboard": {
+  "header": {
+    "home": "Accueil",
+    "animals": "Animaux",
+    "families": "Familles d'accueil",
+    "map": "Carte",
+    "organizations": "Associations",
+    "settings": "Paramètres"
+  },
+  "dashboard": {
     "welcome": "Bienvenue, {name} !",
     "noOrg": "Vous devez d'abord ajouter une association ou en rejoindre une.",
     "adminOf": "Vous êtes admin de l'association {orgName}.",
@@ -75,7 +138,118 @@
     "contactIntro": "Un problème ? Une suggestion ?",
     "contactLink": "Envoyez-moi un message !"
   },
-  "Settings": {
-    "changeLanguage": "Changer la langue :"
+  "animals": {
+    "editInfoTitle": "Éditer l'animal",
+    "addTitle": "Ajouter un animal",
+    "deleteTitle": "Supprimer l'animal",
+    "sex": {
+      "M": "Mâle",
+      "F": "Femelle"
+    },
+    "neuteredSuffix": ", stérilisé(e)",
+    "findLocationLabel": "Lieu de découverte :",
+    "toggleHealth": "Afficher les informations de santé",
+    "lastVaxLabel": "Dernier vaccin le :",
+    "primoShort": " (primo)",
+    "vaxHistoryLabel": "Historique des vaccins :",
+    "lastDewormLabel": "Dernier déparasitage le :",
+    "firstDewormShort": " (premier)",
+    "dewormHistoryLabel": "Historique des déparasitages :",
+    "additionalInfoLabel": "Informations complémentaires :",
+    "currentStatusLabel": "Situation actuelle :",
+    "listTitle": "Animaux enregistrés pour {orgName} :",
+    "none": "Aucun animal enregistré.",
+    "toggleAdopted": "Afficher les animaux adoptés",
+    "status": {
+      "UNHOSTED": "En attente",
+      "FOSTERED": "En famille d'accueil",
+      "ADOPTED": "Adopté(e)"
+    },
+    "fosterFamilyLabel": "Famille d'accueil : ",
+    "toggleAdoption": "Afficher les informations d'adoption",
+    "adopterLabel": "Adoptant :",
+    "aboutAdoption": "À propos de l'adoption :",
+    "homeVisitDone": "Une visite à domicile a été faite.",
+    "neuteringPlannedLabel": "Stérilisation prévue le : ",
+    "contractSignedLabel": "Contrat d'adoption signé le : ",
+    "feesPaid": "Les frais d'adoption ont été payés.",
+    "feesNotPaid": "Les frais d'adoption n'ont pas été payés.",
+    "legalTransferLabel": "Cession légale effectuée le : ",
+    "tabs": {
+      "health": "Santé",
+      "adoption": "Adoption"
+    },
+    "fields": {
+      "namePlaceholder": "Nom *",
+      "speciesPlaceholder": "Espèce *",
+      "colorPlaceholder": "Couleur",
+      "sexLabel": "Sexe * :",
+      "neuteredQuestion": "Stérilisé(e) ?",
+      "findLocationPlaceholder": "Lieu de découverte",
+      "birthDateLabel": "Né(e) le * :",
+      "primeVaxQuestion": "Primo-vaccination ?",
+      "firstDewormQuestion": "Premier déparasitage ?",
+      "statusLabel": "Statut de l'animal * :",
+      "familyLabel": "Famille",
+      "adopterFullNamePlaceholder": "Nom et prénom de l'adoptant",
+      "addressPlaceholder": "N° et rue",
+      "zipPlaceholder": "Code postal",
+      "cityPlaceholder": "Ville",
+      "homeVisitQuestion": "Visite à domicile faite ?",
+      "feesPaidQuestion": "Frais d'adoption payés ?"
+    }
+  },
+  "families": {
+    "editInfoTitle": "Éditer la famille",
+    "addTitle": "Ajouter une famille",
+    "deleteTitle": "Supprimer la famille",
+    "hasChildren": "Cette famille a des enfants.",
+    "animalsInCareLabel": "Animaux en charge :",
+    "otherAnimalsLabel": "Autres animaux :",
+    "prefillMeLabel": "C'est moi :",
+    "prefillMeButton": "Utiliser mes infos",
+    "listTitle": "Familles enregistrées pour {orgName} :",
+    "none": "Aucune famille enregistrée.",
+    "fields": {
+      "contactFullNamePlaceholder": "Nom de la famille *",
+      "addressPlaceholderRequired": "N° et rue *",
+      "zipPlaceholderRequired": "Code postal *",
+      "cityPlaceholderRequired": "Ville *"
+    },
+    "questions": {
+      "hasChildren": "Y a-t-il des enfants ?",
+      "otherAnimals": "Y a-t-il d'autres animaux (précisez lesquels) ?"
+    }
+  },
+  "organizations": {
+    "yourOrganizations": "Vos associations :",
+    "pendingRequests": "Vos demandes d'adhésion en attente :",
+    "membersListTitle": "Liste des membres pour {orgName} :",
+    "registerTitle": "Enregistrer une nouvelle association ?",
+    "orgNamePlaceholder": "Nom de l'association",
+    "searchExistingTitle": "Rechercher une association existante ?",
+    "joinSubmit": "Rejoindre",
+    "joinLoading": "Envoi...",
+    "roles": {
+      "SUPERADMIN": "Admin",
+      "MEMBER": "",
+      "VALIDATED": "",
+      "PENDING": "En attente"
+    },
+    "status": {
+      "PENDING": "En attente",
+      "VALIDATED": "",
+      "MEMBER": "",
+      "SUPERADMIN": "Admin"
+    },
+    "actions": {
+      "approveRequest": "Valider la demande",
+      "removeMember": "Supprimer ce membre",
+      "cancelRequest": "Annuler la demande",
+      "leaveOrg": "Quitter l'association"
+    }
+  },
+  "settings": {
+    "changeLanguage": "Changer la langue :"
   }
 }

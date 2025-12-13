@@ -1,22 +1,17 @@
-'use client'
+'use client';
 
 import { usePathname } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export const Header = () => {
-  const pathname = usePathname().split('/')[1];
+  const t = useTranslations();
 
-  const titles: Record<string, string> = {
-    animals: 'Animaux',
-    families: "Familles d'accueil",
-    map: 'Carte',
-    organizations: 'Associations',
-    settings: 'Paramètres',
-  };
+  const pathname = usePathname().split('/')[1] || 'home';
 
   return (
     <>
       <header>
-        <h2>{titles[pathname] ?? 'Accueil'}</h2>
+        <h2>{t(`header.${pathname}`)}</h2>
       </header>
       <hr />
     </>

@@ -1,4 +1,5 @@
 import { Dashboard } from '@/components/Dashboard';
+import { DeniedPage } from '@/components/DeniedPage';
 import { getPendingOrgRequests } from '@/lib/organizations/getPendingOrgRequests';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization, PendingOrgRequest } from '@/lib/types';
@@ -6,7 +7,7 @@ import { getUser } from '@/lib/user/getUser';
 
 const DashboardPage = async () => {
   const user: Member | null = await getUser();
-  if (!user) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);
 

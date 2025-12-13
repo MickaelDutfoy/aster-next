@@ -15,7 +15,7 @@ export const joinOrg = async (orgId: number): Promise<ActionValidation> => {
       return {
         ok: false,
         status: 'error',
-        message: 'Vous faites déjà partie de cette association.',
+        message: 'toasts.alreadyMemberOfOrg',
       };
     }
 
@@ -30,9 +30,9 @@ export const joinOrg = async (orgId: number): Promise<ActionValidation> => {
 
     revalidatePath('/organizations');
 
-    return { ok: true, status: 'success', message: "Votre demande d'adhésion a été envoyée." };
+    return { ok: true, status: 'success', message: 'toasts.orgRequestSent' };
   } catch (err) {
     console.error(err);
-    return { ok: false, message: 'Une erreur est survenue.' };
+    return { ok: false, message: 'toasts.genericError' };
   }
 };

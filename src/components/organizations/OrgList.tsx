@@ -2,23 +2,30 @@
 
 import { cancelOrgRequest } from '@/actions/organizations/cancelOrgRequest';
 import { Member } from '@/lib/types';
+import { useTranslations } from 'next-intl';
+import { DeniedPage } from '../DeniedPage';
 import { showToast } from '../providers/ToastProvider';
 import { useUser } from '../providers/UserProvider';
 
 export const OrgList = () => {
   const user: Member | null = useUser();
-  if (!user) return;
+  if (!user) return <DeniedPage cause="error" />;
+
+  const t = useTranslations();
 
   const handleCancelOrgRequest = async (orgId: number) => {
     const res = await cancelOrgRequest(orgId);
-    showToast(res);
+    showToast({
+      ...res,
+      message: res.message ? t(res.message) : undefined,
+    });
   };
 
   return (
     <>
       {user.organizations.some((org) => org.userStatus === 'PENDING') && (
         <div className="clickable-list">
-          <p>Vos demandes d'adhésion en attente :</p>
+          <p>{t('organizations.pendingRequests')}</p>
           <ul>
             {user.organizations.map((org) => {
               if (org.userStatus === 'PENDING')

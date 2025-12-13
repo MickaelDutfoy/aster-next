@@ -33,7 +33,7 @@ export const sendResetPasswordMail = async (formData: FormData): Promise<ActionV
       return {
         ok: true,
         status: 'success',
-        message: 'Si un compte existe avec cet e-mail, un message vient de lui être envoyé.',
+        message: 'auth.resetPassword.sent',
       };
     }
 
@@ -106,14 +106,14 @@ export const sendResetPasswordMail = async (formData: FormData): Promise<ActionV
     return {
       ok: true,
       status: 'success',
-      message: 'Si un compte existe avec cet e-mail, un message vient de lui être envoyé.',
+      message: 'auth.resetPassword.sent',
     };
   } catch (err) {
     console.error(err);
     return {
       ok: false,
       status: 'error',
-      message: "Une erreur est survenue lors de l'envoi de l'e-mail.",
+      message: 'auth.resetPassword.error',
     };
   }
 };

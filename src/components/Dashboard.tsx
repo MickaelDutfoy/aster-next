@@ -14,24 +14,24 @@ export const Dashboard = ({
   org: Organization | null;
   pending: PendingOrgRequest[];
 }) => {
-  const t = useTranslations('Dashboard');
+  const t = useTranslations();
 
   return (
     <div className="dash-content">
-      <h3>{t('welcome', { name: user.firstName })}</h3>
+      <h3>{t('dashboard.welcome', { name: user.firstName })}</h3>
 
-      {!org && <p>{t('noOrg')}</p>}
+      {!org && <p>{t('dashboard.noOrg')}</p>}
 
       {org?.userRole === 'SUPERADMIN' && (
         <>
-          <p>{t('adminOf', { orgName: org.name })}</p>
+          <p>{t('dashboard.adminOf', { orgName: org.name })}</p>
 
           {pending && pending.length > 0 && (
             <div className="text-with-link">
-              <p>{t('pendingIntro')}</p>
+              <p>{t('dashboard.pendingIntro')}</p>
 
               <Link href="/organizations" className="link">
-                {t('pendingSee')}
+                {t('dashboard.pendingSee')}
                 <SquareArrowRight />
               </Link>
             </div>
@@ -40,9 +40,9 @@ export const Dashboard = ({
       )}
 
       <div className="contact">
-        <p>{t('contactIntro')}</p>
+        <p>{t('dashboard.contactIntro')}</p>
         <Link className="link" href="mailto:m.dutfoy@gmail.com">
-          <u>{t('contactLink')}</u>
+          <u>{t('dashboard.contactLink')}</u>
         </Link>
       </div>
     </div>

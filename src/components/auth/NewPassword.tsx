@@ -10,11 +10,8 @@ import { showToast } from '../providers/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const NewPassword = ({ token }: { token: string }) => {
+  const t = useTranslations();
   const router = useRouter();
-
-  const tAuth = useTranslations('Auth');
-  const t = useTranslations('Auth.NewPassword');
-  const tToasts = useTranslations('Toasts');
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,7 +30,7 @@ export const NewPassword = ({ token }: { token: string }) => {
       showToast({
         ok: false,
         status: 'error',
-        message: zodErrorMessage(parsedNewPassword.error),
+        message: t(zodErrorMessage(parsedNewPassword.error)),
       });
       return;
     }
@@ -41,13 +38,16 @@ export const NewPassword = ({ token }: { token: string }) => {
     setIsLoading(true);
     try {
       const res = await changePassword(formData);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
       if (res.ok) router.replace('/login');
     } catch (err) {
       showToast({
         ok: false,
         status: 'error',
-        message: tToasts('errorGeneric'),
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -59,14 +59,14 @@ export const NewPassword = ({ token }: { token: string }) => {
       <div className="auth-block">
         <form onSubmit={handleSubmit}>
           <input type="hidden" name="token" value={token} />
-          <label htmlFor="userPassword">{t('newPasswordLabel')}</label>
-          <PasswordInput name="userPassword" placeholder={tAuth('passwordPlaceholder')} />
+          <label htmlFor="userPassword">{t('auth.newPasswordLabel')}</label>
+          <PasswordInput name="userPassword" placeholder={t('auth.passwordPlaceholder')} />
           <PasswordInput
             name="userPasswordConfirm"
-            placeholder={tAuth('passwordConfirmPlaceholder')}
+            placeholder={t('auth.passwordConfirmPlaceholder')}
           />
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? t('loading') : t('submit')}
+            {isLoading ? t('common.loading') : t('common.ubmit')}
           </button>
         </form>
       </div>

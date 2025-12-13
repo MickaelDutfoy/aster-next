@@ -1,5 +1,6 @@
+import { DeniedPage } from '@/components/DeniedPage';
 import { FamiliesList } from '@/components/families/FamiliesList';
-import { Link } from '@/i18n/routing';
+import { FamiliesPageActions } from '@/components/families/FamiliesPageActions';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';
@@ -7,28 +8,18 @@ import { getUser } from '@/lib/user/getUser';
 
 const FamiliesPage = async () => {
   const user: Member | null = await getUser();
-  if (!user) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);
-  if (!org) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!org) return <DeniedPage cause="error" />;
 
-  if (org.userStatus === 'PENDING') {
-    return (
-      <h3 className="denied-page">
-        Vous n'avez pas les autorisations pour accéder à cette ressource.
-      </h3>
-    );
-  }
+  if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
   const families: Family[] = await getFamiliesByOrg(org.id);
 
   return (
     <>
-      <div className="links-box">
-        <Link href={'/families/new'} className="little-button">
-          Ajouter une famille
-        </Link>
-      </div>
+      <FamiliesPageActions />
       <FamiliesList org={org} families={families} />
     </>
   );

@@ -58,12 +58,12 @@ export default async function LocaleLayout({
   return (
     <html className={`${nunito.variable} ${comfortaa.variable}`}>
       <body>
-        <ClientLayout>
-          <ToastProvider />
-          <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ClientLayout>
+            <ToastProvider />
             {children}
-          </NextIntlClientProvider>
-        </ClientLayout>
+          </ClientLayout>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -9,9 +9,9 @@ export const logout = async (): Promise<ActionValidation> => {
   try {
     await signOut({ redirect: false });
 
-    return { ok: true, message: 'Vous avez été déconnecté(e).' };
+    return { ok: true, message: 'auth.logout.success' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

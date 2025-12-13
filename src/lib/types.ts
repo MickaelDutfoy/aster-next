@@ -53,7 +53,6 @@ export type AnimalAdoption = {
   adopterZip: string | null;
   adopterCity: string | null;
   homeVisitDone: boolean;
-  knowledgeCertSignedAt: Date | null;
   neuteringPlannedAt: Date | null;
   adoptionContractSignedAt: Date | null;
   adoptionFeePaid: boolean;

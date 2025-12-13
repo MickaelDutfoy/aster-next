@@ -7,9 +7,9 @@ export const deleteAnimal = async (animalId: number): Promise<ActionValidation> 
   try {
     await prisma.animal.delete({ where: { id: animalId } });
 
-    return { ok: true, status: 'success', message: "L'animal a bien été supprimé." };
+    return { ok: true, status: 'success', message: 'toasts.animalDelete' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: "Une erreur s'est produite." };
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 };

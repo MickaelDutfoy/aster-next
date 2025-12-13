@@ -5,17 +5,22 @@ import { Animal, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
 import { SquareArrowRight } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 export const AnimalsList = ({ org, animals }: { org: Organization; animals: Animal[] }) => {
+  const t = useTranslations();
+  const locale = useLocale();
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
 
   return (
     <>
       {animals && (
         <div>
-          <h3>Animaux enregistrés pour {org.name} :</h3>
-          {animals.length === 0 && <p style={{ padding: '10px' }}>Aucun animal enregistré.</p>}
+          <h3>{t('animals.listTitle', { orgName: org.name })}</h3>
+
+          {animals.length === 0 && <p style={{ padding: '10px' }}>{t('animals.none')}</p>}
+
           {animals.length > 0 && (
             <ul className="animals-list">
               {animals
@@ -37,7 +42,7 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
                         {animal.sex === 'M' ? '♂' : '♀'}
                       </span>
                     </span>
-                    <span>{getAge(animal.birthDate)}</span>
+                    <span>{getAge(animal.birthDate, locale)}</span>
                     <Link className="action link" href={`/animals/${animal.id}`}>
                       <SquareArrowRight size={26} />
                     </Link>
@@ -45,9 +50,11 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
                 ))}
             </ul>
           )}
+
           <h4 className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
-            Afficher les animaux adoptés {hiddenAdopted ? '▸' : '▾'}
+            {t('animals.toggleAdopted')} {hiddenAdopted ? '▸' : '▾'}
           </h4>
+
           {!hiddenAdopted && (
             <ul className="animals-list">
               {animals
@@ -69,7 +76,7 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
                         {animal.sex === 'M' ? '♂' : '♀'}
                       </span>
                     </span>
-                    <span>{getAge(animal.birthDate)}</span>
+                    <span>{getAge(animal.birthDate, locale)}</span>
                     <Link className="action link" href={`/animals/${animal.id}`}>
                       <SquareArrowRight size={26} />
                     </Link>

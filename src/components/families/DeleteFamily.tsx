@@ -2,10 +2,12 @@
 
 import { deleteFamily } from '@/actions/families/deleteFamily';
 import { useRouter } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const DeleteFamily = ({ id }: { id: string }) => {
+  const t = useTranslations();
   const familyId = Number(id);
   const router = useRouter();
 
@@ -15,14 +17,17 @@ export const DeleteFamily = ({ id }: { id: string }) => {
     setIsLoading(true);
     try {
       const res = await deleteFamily(familyId);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
       if (res.ok) router.replace('/families');
     } catch (err) {
       console.error(err);
       showToast({
         ok: false,
         status: 'error',
-        message: 'Une erreur est survenue.',
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -31,8 +36,8 @@ export const DeleteFamily = ({ id }: { id: string }) => {
 
   return (
     <>
-      <h3 style={{ paddingBottom: 10 }}>Supprimer la famille</h3>
-      <p>Êtes-vous sûr(e) ?</p>
+      <h3 style={{ paddingBottom: 10 }}>{t('families.deleteTitle')}</h3>
+      <p>{t('common.areYouSure')}</p>
       <div className="yes-no">
         <button
           onClick={handleSubmit}
@@ -40,10 +45,10 @@ export const DeleteFamily = ({ id }: { id: string }) => {
           aria-busy={isLoading}
           disabled={isLoading}
         >
-          {isLoading ? 'Suppression...' : 'Confirmer'}
+          {isLoading ? t('common.deleting') : t('common.confirm')}
         </button>
         <button className="little-button" onClick={() => router.back()}>
-          Annuler
+          {t('common.cancel')}
         </button>
       </div>
     </>

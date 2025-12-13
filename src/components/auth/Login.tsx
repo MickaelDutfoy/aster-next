@@ -8,11 +8,8 @@ import { showToast } from '../providers/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const Login = () => {
+  const t = useTranslations();
   const router = useRouter();
-
-  const tAuth = useTranslations('Auth');
-  const t = useTranslations('Auth.Login');
-  const tToasts = useTranslations('Toasts');
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,7 +26,7 @@ export const Login = () => {
       showToast({
         ok: false,
         status: 'error',
-        message: tToasts('invalidCredentials'),
+        message: t('auth.login.invalid'),
       });
       return;
     }
@@ -37,13 +34,16 @@ export const Login = () => {
     setIsLoading(true);
     try {
       const res = await login(formData);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
       if (res.ok) router.replace('/');
     } catch (err) {
       showToast({
         ok: false,
         status: 'error',
-        message: tToasts('errorGeneric'),
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -53,31 +53,31 @@ export const Login = () => {
   return (
     <div className="auth-page">
       <div className="auth-block">
-        <h2>{t('notMemberTitle')}</h2>
+        <h2>{t('auth.login.notMemberTitle')}</h2>
         <Link href="/register" className="main-button">
-          {t('registerCta')}
+          {t('auth.login.register')}
         </Link>
       </div>
       <div className="auth-block">
-        <h2>{t('memberTitle')}</h2>
+        <h2>{t('auth.login.memberTitle')}</h2>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="userEmail">{tAuth('emailLabel')}</label>
+          <label htmlFor="userEmail">{t('auth.emailLabel')}</label>
           <input
             className="auth-field"
             type="text"
             name="userEmail"
-            placeholder={tAuth('emailPlaceholder')}
+            placeholder={t('auth.emailPlaceholder')}
           />
 
-          <label htmlFor="userPassword">{tAuth('passwordLabel')}</label>
-          <PasswordInput name="userPassword" placeholder={tAuth('passwordPlaceholder')} />
+          <label htmlFor="userPassword">{t('auth.passwordLabel')}</label>
+          <PasswordInput name="userPassword" placeholder={t('auth.passwordPlaceholder')} />
 
           <Link className="public-link" href="/reset-password">
-            <u>{t('forgotPasswordLink')}</u>
+            <u>{t('auth.login.forgotPasswordLink')}</u>
           </Link>
 
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? t('loading') : t('submit')}
+            {isLoading ? t('auth.login.loading') : t('auth.login.submit')}
           </button>
         </form>
       </div>

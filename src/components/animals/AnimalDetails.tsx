@@ -5,9 +5,12 @@ import { Animal, Family } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Family | null }) => {
+  const t = useTranslations();
+  const locale = useLocale();
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
     animal.status === AnimalStatus.ADOPTED ? true : false,
   );
@@ -15,53 +18,53 @@ export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Fami
     animal.status === AnimalStatus.ADOPTED ? false : true,
   );
 
-  const statusMap = {
-    UNHOSTED: 'En attente',
-    FOSTERED: "En famille d'accueil",
-    ADOPTED: `Adopté${animal.sex === 'M' ? '' : 'e'}`,
-  };
-
   const hasHealthInfo = !!animal.lastVax || !!animal.lastDeworm || !!animal.information;
 
   return (
     <>
       <div className="links-box">
         <Link href={`/animals/${animal.id}/delete`} className="little-button">
-          Supprimer l'animal
+          {t('animals.deleteTitle')}
         </Link>
         <Link href={`/animals/${animal.id}/edit`} className="little-button">
-          Éditer l'animal
+          {t('animals.editInfoTitle')}
         </Link>
       </div>
       <div>
         <h3>{animal.name}</h3>
         <p className="fixed-p">
-          {animal.species} {animal.sex === 'M' ? 'mâle' : 'femelle'} {animal.color?.toLowerCase()}{' '}
-          de {getAge(animal.birthDate, true)}
-          {animal.isNeutered ? `, stérilisé${animal.sex === 'M' ? '' : 'e'}.` : '.'}
+          {animal.species}, {t(`animals.sex.${animal.sex}`).toLowerCase()},{' '}
+          {animal.color?.toLowerCase()}, {getAge(animal.birthDate, locale, true)}
+          {animal.isNeutered ? t('animals.neuteredSuffix') : ''}.
         </p>
         {animal.findLocation && (
-          <p className="fixed-p">Lieu de découverte : {animal.findLocation}.</p>
+          <p className="fixed-p">
+            {t('animals.findLocationLabel')} {animal.findLocation}.
+          </p>
         )}
         <h4 className="collapse-expand" onClick={() => setHiddenHealth(!hiddenHealth)}>
-          Afficher les informations de santé {hiddenHealth ? '▸' : '▾'}
+          {t('animals.toggleHealth')} {hiddenHealth ? '▸' : '▾'}
         </h4>
         {!hiddenHealth && hasHealthInfo && (
           <div className="animal-details">
             {animal.lastVax && (
               <div className="animal-details-section">
-                <h4>Dernier vaccin le :</h4>
+                <h4>{t('animals.lastVaxLabel')}</h4>
                 <p>
                   {displayDate(animal.lastVax)}
-                  {animal.isPrimoVax ? ' (primo)' : ''}, il y a {getAge(animal.lastVax, true)}.
+                  {animal.isPrimoVax ? t('animals.primoShort') : ''}, {t('common.agoPrefix')}
+                  {getAge(animal.lastVax, locale, true)}
+                  {t('common.agoSuffix')}.
                 </p>
                 {animal.vaxHistory.length > 0 && (
                   <div className="health-historic">
-                    <p>Historique des vaccins :</p>
+                    <p>{t('animals.vaxHistoryLabel')}</p>
                     <ul>
                       {animal.vaxHistory.map((date) => (
                         <li key={Number(date)}>
-                          {displayDate(date)}, il y a {getAge(date, true)}.
+                          {displayDate(date)}, {t('common.agoPrefix')}
+                          {getAge(date, locale, true)}
+                          {t('common.agoSuffix')}.
                         </li>
                       ))}
                     </ul>
@@ -71,19 +74,23 @@ export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Fami
             )}
             {animal.lastDeworm && (
               <div className="animal-details-section">
-                <h4>Dernier déparasitage le :</h4>
+                <h4>{t('animals.lastDewormLabel')}</h4>
                 <p>
                   {displayDate(animal.lastDeworm)}
-                  {animal.isFirstDeworm ? ' (premier)' : ''}, il y a{' '}
-                  {getAge(animal.lastDeworm, true)}.
+                  {animal.isFirstDeworm ? t('animals.firstDewormShort') : ''},{' '}
+                  {t('common.agoPrefix')}
+                  {getAge(animal.lastDeworm, locale, true)}
+                  {t('common.agoSuffix')}.
                 </p>
                 {animal.dewormHistory.length > 0 && (
                   <div className="health-historic">
-                    <p>Historique des déparasitages :</p>
+                    <p>{t('animals.dewormHistoryLabel')}</p>
                     <ul style={{ paddingLeft: 40 }}>
                       {animal.dewormHistory.map((date) => (
                         <li key={Number(date)}>
-                          {displayDate(date)}, il y a {getAge(date, true)}.
+                          {displayDate(date)}, {t('common.agoPrefix')}
+                          {getAge(date, locale, true)}
+                          {t('common.agoSuffix')}.
                         </li>
                       ))}
                     </ul>
@@ -93,29 +100,31 @@ export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Fami
             )}
             {animal.information && (
               <div className="animal-details-section">
-                <h4>Informations complémentaires :</h4>
+                <h4>{t('animals.additionalInfoLabel')}</h4>
                 <p>{animal.information}</p>
               </div>
             )}
           </div>
         )}
-        <p className="fixed-p">Situation actuelle : {statusMap[animal.status]}.</p>
+        <p className="fixed-p">
+          {t('animals.currentStatusLabel')} {t(`animals.status.${animal.status}`)}.
+        </p>
         {family && (
           <p className="fixed-p">
-            Famille d'accueil :{' '}
+            {t('animals.fosterFamilyLabel')}
             <Link className="link" href={`/families/${family.id}`}>
               {family.contactFullName}
             </Link>
           </p>
         )}
         <h4 className="collapse-expand" onClick={() => setHiddenAdoption(!hiddenAdoption)}>
-          Afficher les informations d'adoption {hiddenAdoption ? '▸' : '▾'}
+          {t('animals.toggleAdoption')} {hiddenAdoption ? '▸' : '▾'}
         </h4>
         {!hiddenAdoption && (
           <div className="animal-details">
             {animal.adoption?.adopterFullName && (
               <div className="animal-details-section">
-                <h4>Adoptant :</h4>
+                <h4>{t('animals.adopterLabel')}</h4>
                 <p>{animal.adoption.adopterFullName}</p>
                 <p>{animal.adoption.adopterAddress}</p>
                 <p>
@@ -126,30 +135,29 @@ export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Fami
               </div>
             )}
             <div className="animal-details-section">
-              <h4>À propos de l'adoption :</h4>
-              {animal.adoption?.homeVisitDone && <p>Une visite à domicile a été faite.</p>}
-              {animal.adoption?.knowledgeCertSignedAt && (
-                <p>
-                  Contrat d'engagement et de connaissance signé le :{' '}
-                  {displayDate(animal.adoption.knowledgeCertSignedAt)}
-                </p>
-              )}
+              <h4>{t('animals.aboutAdoption')}</h4>
+              {animal.adoption?.homeVisitDone && <p>{t('animals.homeVisitDone')}</p>}
               {animal.adoption?.neuteringPlannedAt && (
-                <p>Stérilisation prévue le : {displayDate(animal.adoption.neuteringPlannedAt)}</p>
+                <p>
+                  {t('animals.neuteringPlannedLabel')}
+                  {displayDate(animal.adoption.neuteringPlannedAt)}
+                </p>
               )}
               {animal.adoption?.adoptionContractSignedAt && (
                 <p>
-                  Contrat d'adoption signé le :{' '}
+                  {t('animals.contractSignedLabel')}
                   {displayDate(animal.adoption.adoptionContractSignedAt)}
                 </p>
               )}
               {animal.adoption?.adoptionFeePaid ? (
-                <p>Les frais d'adoption ont été payés.</p>
+                <p>{t('animals.feesPaid')}</p>
               ) : (
-                <p>Les frais d'adoption n'ont pas été payés.</p>
+                <p>{t('animals.feesNotPaid')}</p>
               )}
               {animal.adoption?.legalTransferAt && (
-                <p>Cession légale effectuée le : {displayDate(animal.adoption.legalTransferAt)}</p>
+                <p>
+                  {t('animals.legalTransferLabel')} {displayDate(animal.adoption.legalTransferAt)}
+                </p>
               )}
             </div>
           </div>
