@@ -10,10 +10,8 @@ import { showToast } from '../providers/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const Register = () => {
+  const t = useTranslations();
   const router = useRouter();
-  const tAuth = useTranslations('Auth');
-  const t = useTranslations('Auth.Register');
-  const tToasts = useTranslations('Toasts');
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,7 +34,7 @@ export const Register = () => {
       showToast({
         ok: false,
         status: 'error',
-        message: zodErrorMessage(parsedNewUser.error),
+        message: t(zodErrorMessage(parsedNewUser.error)),
       });
       return;
     }
@@ -44,13 +42,16 @@ export const Register = () => {
     setIsLoading(true);
     try {
       const res = await register(formData);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
       if (res.ok) router.replace('/');
     } catch (err) {
       showToast({
         ok: false,
         status: 'error',
-        message: tToasts('errorGeneric'),
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -61,50 +62,50 @@ export const Register = () => {
     <div className="auth-page">
       <div className="auth-block">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="userFirstName">{t('firstNameLabel')}</label>
+          <label htmlFor="userFirstName">{t('auth.register.firstNameLabel')}</label>
           <input
             className="auth-field"
             type="text"
             name="userFirstName"
-            placeholder={t('firstNamePlaceholder')}
+            placeholder={t('auth.register.firstNamePlaceholder')}
           />
 
-          <label htmlFor="userLastName">{t('lastNameLabel')}</label>
+          <label htmlFor="userLastName">{t('auth.register.lastNameLabel')}</label>
           <input
             className="auth-field"
             type="text"
             name="userLastName"
-            placeholder={t('lastNamePlaceholder')}
+            placeholder={t('auth.register.lastNamePlaceholder')}
           />
 
-          <label htmlFor="userEmail">{tAuth('emailLabel')}</label>
+          <label htmlFor="userEmail">{t('auth.emailLabel')}</label>
           <input
             className="auth-field"
             type="text"
             name="userEmail"
-            placeholder={tAuth('emailPlaceholder')}
+            placeholder={t('auth.emailPlaceholder')}
           />
 
-          <label htmlFor="userPhoneNumber">{t('phoneLabel')}</label>
+          <label htmlFor="userPhoneNumber">{t('auth.register.phoneLabel')}</label>
           <input
             className="auth-field"
             type="text"
             name="userPhoneNumber"
-            placeholder={t('phonePlaceholder')}
+            placeholder={t('auth.register.phonePlaceholder')}
           />
 
-          <label htmlFor="userPassword">{tAuth('passwordLabel')}</label>
-          <PasswordInput name="userPassword" placeholder={tAuth('passwordPlaceholder')} />
+          <label htmlFor="userPassword">{t('auth.passwordLabel')}</label>
+          <PasswordInput name="userPassword" placeholder={t('auth.passwordPlaceholder')} />
 
           <PasswordInput
             name="userPasswordConfirm"
-            placeholder={tAuth('passwordConfirmPlaceholder')}
+            placeholder={t('auth.passwordConfirmPlaceholder')}
           />
 
-          <p className="disclaimer">{t('phoneDisclaimer')}</p>
+          <p className="disclaimer">{t('auth.register.phoneDisclaimer')}</p>
 
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? t('loading') : t('submit')}
+            {isLoading ? t('auth.register.loading') : t('auth.register.submit')}
           </button>
         </form>
       </div>

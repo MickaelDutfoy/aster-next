@@ -22,6 +22,10 @@ export const removeMemberFromOrg = async (
     return { ok: true, status: 'success', message: "Ce membre a été retiré de l'association." };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.errorGeneric',
+        };
   }
 };

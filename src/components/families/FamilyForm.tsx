@@ -1,11 +1,15 @@
+'use client';
+
 import { registerFamily } from '@/actions/families/registerFamily';
 import { updateFamily } from '@/actions/families/updateFamily';
 import { useRouter } from '@/i18n/routing';
 import { Family, Member } from '@/lib/types';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) => {
+  const t = useTranslations();
   const router = useRouter();
 
   const [familyName, setFamilyName] = useState<string>(family?.contactFullName ?? '');
@@ -14,7 +18,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
   const [isLoading, setIsLoading] = useState(false);
 
   const fillWithMemberInfo = () => {
-    setFamilyName(user.firstName + ' ' + user.lastName);
+    setFamilyName(`${user.firstName} ${user.lastName}`);
     setFamilyEmail(user.email);
     setFamilyPhoneNumber(user.phoneNumber);
   };
@@ -32,7 +36,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
       showToast({
         ok: false,
         status: 'error',
-        message: 'Des champs obligatoires sont incomplets.',
+        message: t('toasts.requiredFieldsMissing'),
       });
       return;
     }
@@ -41,7 +45,10 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
     try {
       const res = family ? await updateFamily(family.id, formData) : await registerFamily(formData);
 
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
 
       if (res.ok) {
         router.replace(family ? `/families/${family.id}` : '/families');
@@ -51,7 +58,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
       showToast({
         ok: false,
         status: 'error',
-        message: 'Une erreur est survenue.',
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -60,57 +67,67 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
 
   return (
     <>
-      <p className="notice">(Les champs marqués d'un * sont requis.)</p>
+      <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <form onSubmit={handleSubmit}>
         <div className="form-tab">
           <div className="prefill-form">
-            <p>C'est moi :</p>{' '}
+            <p>{t('families.prefillMeLabel')}</p>{' '}
             <span className="little-button" onClick={fillWithMemberInfo}>
-              Utiliser mes infos
+              {t('families.prefillMeButton')}
             </span>
           </div>
+
           <input
             type="text"
             name="contactFullName"
-            placeholder="Nom de la famille *"
+            placeholder={t('families.fields.contactFullNamePlaceholder')}
             value={familyName}
             onChange={(e) => setFamilyName(e.target.value)}
           />
+
           <div className="family-address-info">
             <input
               type="text"
               name="address"
-              placeholder="N° et rue *"
+              placeholder={t('families.fields.addressPlaceholderRequired')}
               defaultValue={family?.address}
             />
+
             <div className="family-city">
               <input
                 type="text"
                 name="zip"
-                placeholder="Code postal *"
+                placeholder={t('families.fields.zipPlaceholderRequired')}
                 defaultValue={family?.zip}
               />
-              <input type="text" name="city" placeholder="Ville *" defaultValue={family?.city} />
+              <input
+                type="text"
+                name="city"
+                placeholder={t('families.fields.cityPlaceholderRequired')}
+                defaultValue={family?.city}
+              />
             </div>
+
             <div className="family-contact">
               <input
                 type="text"
                 name="email"
-                placeholder="E-mail"
+                placeholder={t('auth.emailPlaceholder')}
                 value={familyEmail}
                 onChange={(e) => setFamilyEmail(e.target.value)}
               />
               <input
                 type="text"
                 name="phoneNumber"
-                placeholder="Téléphone"
+                placeholder={t('auth.register.phonePlaceholder')}
                 value={familyPhoneNumber}
                 onChange={(e) => setFamilyPhoneNumber(e.target.value)}
               />
             </div>
           </div>
+
           <label className="labeled-checkbox" htmlFor="hasChildren">
-            Y a t-il des enfants ?
+            {t('families.questions.hasChildren')}
             <input
               type="checkbox"
               name="hasChildren"
@@ -118,7 +135,8 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               defaultChecked={family?.hasChildren}
             />
           </label>
-          <p>Y a t-il d'autres animaux (précisez lesquels) ?</p>
+
+          <p>{t('families.questions.otherAnimals')}</p>
           <textarea
             name="otherAnimals"
             defaultValue={family?.otherAnimals as string}
@@ -128,13 +146,14 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               el.style.height = `${el.scrollHeight}px`;
             }}
           />
+
           <button
             type="submit"
             className="little-button"
             aria-busy={isLoading}
             disabled={isLoading}
           >
-            {isLoading ? 'Enregistrement...' : 'Enregistrer'}
+            {isLoading ? t('common.loading') : t('common.submit')}
           </button>
         </div>
       </form>

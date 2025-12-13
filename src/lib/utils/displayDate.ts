@@ -3,5 +3,5 @@ export const displayDate = (date: Date): string => {
     .toISOString()
     .split('T')[0]
     .split('-')
-    .reduceRight((acc, cur) => `${acc}/${cur}`);
+    .reduceRight((acc, cur) => `${acc}.${cur}`);
 };

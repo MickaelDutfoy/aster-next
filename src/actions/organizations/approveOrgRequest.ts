@@ -24,6 +24,10 @@ export const approveOrgRequest = async (
     return { ok: true, status: 'success', message: "Cette demande d'adhésion a été approuvée." };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.errorGeneric',
+        };
   }
 };

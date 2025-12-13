@@ -10,7 +10,7 @@ import { parseFamilyData } from './parseFamilyData';
 export const registerFamily = async (formData: FormData): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
   if (!user) {
-    return { ok: false, status: 'error', message: 'Utilisateur non authentifié.' };
+    return { ok: false, status: 'error', message: 'toasts.noUser' };
   }
 
   const org: Organization | null = await getSelectedOrg(user);
@@ -19,7 +19,7 @@ export const registerFamily = async (formData: FormData): Promise<ActionValidati
   const family = parseFamilyData(formData);
 
   if (!family) {
-    return { ok: false, status: 'error', message: 'Des champs obligatoires sont incomplets.' };
+    return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };
   }
 
   try {
@@ -32,9 +32,9 @@ export const registerFamily = async (formData: FormData): Promise<ActionValidati
 
     revalidatePath('/families');
 
-    return { ok: true, status: 'success', message: 'La famille a bien été ajoutée.' };
+    return { ok: true, status: 'success', message: 'toasts.familyAdd' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: "Une erreur s'est produite." };
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 };

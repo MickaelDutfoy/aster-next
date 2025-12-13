@@ -1,15 +1,18 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { showToast } from './providers/ToastProvider';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  const t = useTranslations();
+
   useEffect(() => {
     if (window.innerWidth > 768) {
       showToast(
         {
           status: 'info',
-          message: 'Aster est optimisé pour mobile — pensez au mode responsive (Ctrl+Shift+M).',
+          message: t('toasts.mobileAlert'),
         },
         30000,
       );

@@ -1,10 +1,12 @@
 'use client';
 
 import { registerOrg } from '@/actions/organizations/registerOrg';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const RegisterOrg = () => {
+  const t = useTranslations();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,7 +19,7 @@ export const RegisterOrg = () => {
       showToast({
         ok: false,
         status: 'error',
-        message: "Vous devez saisir un nom d'association.",
+        message: t('toasts.orgNameRequired'),
       });
       return;
     }
@@ -25,12 +27,15 @@ export const RegisterOrg = () => {
     setIsLoading(true);
     try {
       const res = await registerOrg(formData);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
     } catch (err) {
       showToast({
         ok: false,
         status: 'error',
-        message: 'Une erreur est survenue.',
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -39,11 +44,13 @@ export const RegisterOrg = () => {
 
   return (
     <>
-      <h3>Enregistrer une nouvelle association ?</h3>
+      <h3>{t('organizations.registerTitle')}</h3>
+
       <form onSubmit={handleSubmit}>
-        <input type="text" name="orgName" placeholder="Nom de l'association" />
+        <input type="text" name="orgName" placeholder={t('organizations.orgNamePlaceholder')} />
+
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
-          {isLoading ? 'Enregistrement...' : 'Enregistrer'}
+          {isLoading ? t('common.loading') : t('common.submit')}
         </button>
       </form>
     </>

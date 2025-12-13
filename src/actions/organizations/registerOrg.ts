@@ -9,7 +9,7 @@ import { revalidatePath } from 'next/cache';
 export const registerOrg = async (formData: FormData): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
   if (!user) {
-    return { ok: false, status: 'error', message: 'Utilisateur non authentifié.' };
+    return { ok: false, status: 'error', message: 'toasts.noUser' };
   }
 
   const orgName = formData.get('orgName')?.toString().trim();
@@ -18,7 +18,7 @@ export const registerOrg = async (formData: FormData): Promise<ActionValidation>
     return {
       ok: false,
       status: 'error',
-      message: "Vous devez saisir un nom d'association.",
+      message: 'toasts.orgNameRequired',
     };
   }
 
@@ -38,9 +38,9 @@ export const registerOrg = async (formData: FormData): Promise<ActionValidation>
 
     revalidatePath('/organizations');
 
-    return { ok: true, status: 'success', message: 'Votre association a bien été enregistrée.' };
+    return { ok: true, status: 'success', message: 'toasts.orgRegisterSuccess' };
   } catch (err) {
     console.error(err);
-    return { ok: false, message: 'Une erreur est survenue.' };
+    return { ok: false, message: 'toasts.genericError' };
   }
 };

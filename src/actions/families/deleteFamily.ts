@@ -7,9 +7,9 @@ export const deleteFamily = async (familyId: number): Promise<ActionValidation> 
   try {
     await prisma.family.delete({ where: { id: familyId } });
 
-    return { ok: true, status: 'success', message: 'La famille a bien été supprimée.' };
+    return { ok: true, status: 'success', message: 'toasts.familyDelete' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: "Une erreur s'est produite." };
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 };

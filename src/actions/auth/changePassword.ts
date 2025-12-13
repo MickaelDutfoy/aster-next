@@ -22,17 +22,16 @@ export const changePassword = async (formData: FormData): Promise<ActionValidati
     return {
       ok: false,
       status: 'error',
+      // Zod renvoie déjà une clé i18n (auth.zod.*)
       message: zodErrorMessage(parsedNewPassword.error),
     };
   }
-
-  const newPassword = parsedNewPassword.data;
 
   if (!token) {
     return {
       ok: false,
       status: 'error',
-      message: 'Demande de réinitialisation invalide ou expirée.',
+      message: 'auth.changePassword.invalidOrExpired',
     };
   }
 
@@ -50,10 +49,11 @@ export const changePassword = async (formData: FormData): Promise<ActionValidati
     return {
       ok: false,
       status: 'error',
-      message: 'Demande de réinitialisation invalide ou expirée.',
+      message: 'auth.changePassword.invalidOrExpired',
     };
   }
 
+  const newPassword = parsedNewPassword.data;
   const passwordHash = await bcrypt.hash(newPassword.password, 12);
 
   try {
@@ -69,10 +69,14 @@ export const changePassword = async (formData: FormData): Promise<ActionValidati
     return {
       ok: true,
       status: 'success',
-      message: 'Votre mot de passe a été mis à jour.',
+      message: 'auth.changePassword.success',
     };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
+    return {
+      ok: false,
+      status: 'error',
+      message: 'toasts.errorGeneric',
+    };
   }
 };

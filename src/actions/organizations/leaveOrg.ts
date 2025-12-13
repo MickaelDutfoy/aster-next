@@ -19,6 +19,10 @@ export const leaveOrg = async (orgId: number): Promise<ActionValidation> => {
     return { ok: true, message: "Vous avez quitté cette association." };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.errorGeneric',
+        };
   }
 };

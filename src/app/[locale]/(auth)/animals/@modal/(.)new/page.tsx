@@ -1,3 +1,4 @@
+import { DeniedPage } from '@/components/DeniedPage';
 import { Modal } from '@/components/Modal';
 import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
@@ -7,10 +8,10 @@ import { getUser } from '@/lib/user/getUser';
 
 export default async function AddAnimalModal() {
   const user: Member | null = await getUser();
-  if (!user) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);
-  if (!org) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!org) return <DeniedPage cause="error" />;
 
   const families: Family[] = await getFamiliesByOrg(org.id);
 

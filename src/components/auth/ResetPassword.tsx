@@ -8,11 +8,8 @@ import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const ResetPassword = () => {
+  const t = useTranslations();
   const [isLoading, setIsLoading] = useState(false);
-
-  const tAuth = useTranslations('Auth');
-  const t = useTranslations('Auth.ResetPassword');
-  const tToasts = useTranslations('Toasts');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +22,7 @@ export const ResetPassword = () => {
       showToast({
         ok: false,
         status: 'error',
-        message: zodErrorMessage(parsedEmail.error),
+        message: t(zodErrorMessage(parsedEmail.error)),
       });
       return;
     }
@@ -33,12 +30,15 @@ export const ResetPassword = () => {
     setIsLoading(true);
     try {
       const res = await sendResetPasswordMail(formData);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
     } catch (err) {
       showToast({
         ok: false,
         status: 'error',
-        message: tToasts('errorGeneric'),
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -49,16 +49,16 @@ export const ResetPassword = () => {
     <div className="auth-page">
       <div className="auth-block">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="userEmail">{tAuth('emailLabel')}</label>
+          <label htmlFor="userEmail">{t('auth.emailLabel')}</label>
           <input
             className="auth-field"
             type="text"
             name="userEmail"
-            placeholder={tAuth('emailPlaceholder')}
+            placeholder={t('auth.emailPlaceholder')}
           />
           <p className="disclaimer">{t('disclaimer')}</p>
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? t('loading') : t('submit')}
+            {isLoading ? t('auth.resetPassword.loading') : t('auth.resetPassword.submit')}
           </button>
         </form>
       </div>

@@ -23,6 +23,10 @@ export const login = async (formData: FormData): Promise<ActionValidation> => {
     return { ok: true, status: 'success' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'Une erreur est survenue.' };
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.errorGeneric',
+        };
   }
 };

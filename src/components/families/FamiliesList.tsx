@@ -3,14 +3,19 @@
 import { Link } from '@/i18n/routing';
 import { Family, Organization } from '@/lib/types';
 import { SquareArrowRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const FamiliesList = ({ org, families }: { org: Organization; families: Family[] }) => {
+  const t = useTranslations();
+
   return (
     <>
       {families && (
         <div>
-          <h3>Familles enregistrées pour {org.name} :</h3>
-          {families.length === 0 && <p style={{ padding: '10px' }}>Aucune famille enregistrée.</p>}
+          <h3>{t('families.listTitle', { orgName: org.name })}</h3>
+
+          {families.length === 0 && <p style={{ padding: '10px' }}>{t('families.none')}</p>}
+
           {families.length > 0 && (
             <ul className="families-list">
               {families

@@ -2,10 +2,12 @@
 import { joinOrg } from '@/actions/organizations/joinOrg';
 import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const SearchOrg = () => {
+  const t = useTranslations();
   const [query, setQuery] = useState('');
   const [picked, setPicked] = useState(false);
   const [pickedOrg, setPickedOrg] = useState<number>(0);
@@ -39,7 +41,7 @@ export const SearchOrg = () => {
       showToast({
         ok: false,
         status: 'error',
-        message: 'Vous devez sélectionner une association existante.',
+        message: t('toasts.mustPickOrg'),
       });
       return;
     }
@@ -47,12 +49,15 @@ export const SearchOrg = () => {
     setIsLoading(true);
     try {
       const res = await joinOrg(pickedOrg);
-      showToast(res);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
     } catch (err) {
       showToast({
         ok: false,
         status: 'error',
-        message: 'Une erreur est survenue.',
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -67,12 +72,12 @@ export const SearchOrg = () => {
 
   return (
     <>
-      <h3>Rechercher une association existante ?</h3>
+      <h3>{t('organizations.searchExistingTitle')}</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="orgNameSearch"
-          placeholder="Nom de l'association"
+          placeholder={t('organizations.orgNamePlaceholder')}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -86,7 +91,7 @@ export const SearchOrg = () => {
           aria-busy={!picked || isLoading}
           disabled={!picked || isLoading}
         >
-          {isLoading ? 'Envoi...' : 'Rejoindre'}
+          {isLoading ? t('organizations.joinLoading') : t('organizations.joinSubmit')}
         </button>
       </form>
       <div className="org-results">

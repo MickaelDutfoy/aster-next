@@ -1,5 +1,6 @@
 'use server';
 
+import { MemberRole } from '@prisma/client';
 import { prisma } from '../prisma';
 import { Organization } from '../types';
 
@@ -10,7 +11,7 @@ export const getMatchingOrgs = async (input: string): Promise<Organization[]> =>
       id: true,
       name: true,
       memberOrganizations: {
-        where: { role: 'SUPERADMIN' },
+        where: { role: MemberRole.SUPERADMIN },
         select: {
           member: { select: { firstName: true, lastName: true } },
         },

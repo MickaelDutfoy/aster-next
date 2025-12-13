@@ -1,3 +1,4 @@
+import { DeniedPage } from '@/components/DeniedPage';
 import { OrgList } from '@/components/organizations/OrgList';
 import { OrgMembersList } from '@/components/organizations/OrgMembersList';
 import { RegisterOrg } from '@/components/organizations/RegisterOrg';
@@ -10,7 +11,7 @@ import '@/styles/organizations.scss';
 
 const Organizations = async () => {
   const user: Member | null = await getUser();
-  if (!user) return <h3 className="denied-page">Une erreur est survenue.</h3>;
+  if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);
 

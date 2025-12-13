@@ -1,5 +1,5 @@
 {
-  "Common": {
+  "common": {
     "view": "Se",
     "edit": "Rediger",
     "delete": "Slett",
@@ -9,13 +9,36 @@
     "next": "Neste",
     "seeMore": "Se mer",
     "close": "Lukk",
-    "letsGo": "La oss starte!"
+    "letsGo": "La oss starte!",
+    "submit": "Lagre",
+    "loading": "Lagrer...",
+    "confirm": "Bekreft",
+    "deleting": "Sletter...",
+    "areYouSure": "Er du sikker?",
+    "agoPrefix": "",
+    "agoSuffix": " siden",
+    "errorOccurred": "Det oppstod en feil.",
+    "requiredFieldsNotice": "(Felt merket med * er obligatoriske.)",
+    "accessDenied": "Du har ikke tilgang til denne ressursen.",
+    "soonToCome": "Denne funksjonen blir snart tilgjengelig."
   },
-  "Toasts": {
-    "errorGeneric": "Noe gikk galt. Prøv igjen.",
-    "invalidCredentials": "Feil e-post eller passord."
+  "toasts": {
+    "errorGeneric": "Noe gikk galt.",
+    "requiredFieldsMissing": "Noen obligatoriske felt mangler.",
+    "noUser": "Bruker ikke autentisert.",
+    "modifySuccess": "Informasjonen er oppdatert.",
+    "animalDelete": "Dyret ble slettet.",
+    "animalAdd": "Dyret ble lagt til.",
+    "familyDelete": "Fosterfamilien ble slettet.",
+    "familyAdd": "Fosterfamilien ble lagt til.",
+    "alreadyMemberOfOrg": "Du er allerede medlem av denne organisasjonen.",
+    "orgRequestSent": "Din forespørsel om medlemskap er sendt.",
+    "orgRegisterSuccess": "Organisasjonen din ble registrert.",
+    "orgNameRequired": "Du må skrive inn et organisasjonsnavn.",
+    "mustPickOrg": "Du må velge en eksisterende organisasjon.",
+    "mobileAlert": "Aster er optimalisert for mobil — prøv responsivt visning (Ctrl+Shift+M)."
   },
-  "Intro": {
+  "intro": {
     "selectLanguage": "Velg språk:",
     "welcomeTitle": "Velkommen til Aster!",
     "welcomeSubtitle": "«Å hjelpe dem som hjelper.»",
@@ -30,13 +53,16 @@
     "whatsNextParagraph2": "Du kan også se dyr som venter på plassering, de som er klare for adopsjon, og gå til kalenderen for å følge opp oppgaver og fordele dem i teamet.",
     "whatsNextQuestion": "Skal vi sette i gang?"
   },
-  "Auth": {
+  "auth": {
     "emailLabel": "E-post:",
     "passwordLabel": "Passord:",
     "emailPlaceholder": "E-post",
     "passwordPlaceholder": "Passord",
     "passwordConfirmPlaceholder": "Bekreft passord",
-    "Register": {
+    "newPasswordLabel": "Nytt passord:",
+    "register": {
+      "success": "Kontoen ble opprettet!",
+      "alreadyExists": "Det finnes allerede en konto med denne e-postadressen.",
       "firstNameLabel": "Fornavn:",
       "lastNameLabel": "Etternavn:",
       "phoneLabel": "Telefonnummer:",
@@ -47,26 +73,64 @@
       "submit": "Opprett konto",
       "loading": "Oppretter konto..."
     },
-    "Login": {
+    "login": {
+      "invalid": "Ugyldige påloggingsopplysninger.",
       "notMemberTitle": "Ikke medlem ennå?",
-      "registerCta": "Opprett konto",
+      "register": "Opprett konto",
       "memberTitle": "Allerede medlem?",
       "forgotPasswordLink": "Glemt passordet ditt?",
       "submit": "Logg inn",
       "loading": "Logger inn..."
     },
-    "ResetPassword": {
+    "logout": {
+      "success": "Du har blitt logget ut.",
+      "submit": "Logg ut",
+      "loading": "Logger ut..."
+    },
+    "resetPassword": {
+      "sent": "Hvis det finnes en konto med denne e-postadressen, er en melding sendt.",
+      "error": "Det oppstod en feil under sending av e-posten.",
       "disclaimer": "Skriv inn e-postadressen til kontoen din for å tilbakestille passordet.",
       "submit": "Send",
       "loading": "Sender..."
     },
-    "NewPassword": {
-      "newPasswordLabel": "Nytt passord:",
-      "submit": "Lagre nytt passord",
-      "loading": "Lagrer..."
+    "changePassword": {
+      "invalidOrExpired": "Forespørselen om tilbakestilling er ugyldig eller har utløpt.",
+      "success": "Passordet ditt er oppdatert."
+    },
+    "zod": {
+      "genericInvalid": "Noen felt er ugyldige.",
+      "firstName": {
+        "minLength": "Fornavn må inneholde minst 2 tegn."
+      },
+      "lastName": {
+        "minLength": "Etternavn må inneholde minst 2 tegn."
+      },
+      "email": {
+        "invalid": "E-postadressen er ikke gyldig."
+      },
+      "phone": {
+        "minLength": "Telefonnummeret må ha minst 6 tegn.",
+        "maxLength": "Telefonnummeret er for langt.",
+        "invalid": "Telefonnummeret ser ikke gyldig ut."
+      },
+      "password": {
+        "minLength": "Passordet må være minst 8 tegn."
+      },
+      "passwordConfirm": {
+        "mismatch": "Passordene er ikke like."
+      }
     }
   },
-  "Dashboard": {
+  "header": {
+    "home": "Hjem",
+    "animals": "Dyr",
+    "families": "Fosterhjem",
+    "map": "Kart",
+    "organizations": "Organisasjoner",
+    "settings": "Innstillinger"
+  },
+  "dashboard": {
     "welcome": "Velkommen, {name}!",
     "noOrg": "Du må først opprette eller bli med i en organisasjon.",
     "adminOf": "Du er administrator for {orgName}.",
@@ -75,7 +139,118 @@
     "contactIntro": "Problem? Forslag?",
     "contactLink": "Send meg en melding!"
   },
-  "Settings": {
+  "animals": {
+    "editInfoTitle": "Rediger dyret",
+    "addTitle": "Legg til et dyr",
+    "deleteTitle": "Slett dyret",
+    "sex": {
+      "M": "Hann",
+      "F": "Hunn"
+    },
+    "neuteredSuffix": ", kastrert/sterilisert",
+    "findLocationLabel": "Funnet ved:",
+    "toggleHealth": "Vis helseinformasjon",
+    "lastVaxLabel": "Siste vaksine den:",
+    "primoShort": " (grunnvaksine)",
+    "vaxHistoryLabel": "Vaksinasjonshistorikk:",
+    "lastDewormLabel": "Siste ormekur den:",
+    "firstDewormShort": " (første)",
+    "dewormHistoryLabel": "Historikk for ormekur:",
+    "additionalInfoLabel": "Tilleggsinformasjon:",
+    "currentStatusLabel": "Nåværende status:",
+    "listTitle": "Registrerte dyr for {orgName}:",
+    "none": "Ingen dyr registrert.",
+    "toggleAdopted": "Vis adopterte dyr",
+    "status": {
+      "UNHOSTED": "Venter på plassering",
+      "FOSTERED": "I fosterhjem",
+      "ADOPTED": "Adoptert"
+    },
+    "fosterFamilyLabel": "Fosterhjem: ",
+    "toggleAdoption": "Vis adopsjonsinformasjon",
+    "adopterLabel": "Adopter:",
+    "aboutAdoption": "Om adopsjonen:",
+    "homeVisitDone": "Et hjemmebesøk er gjennomført.",
+    "neuteringPlannedLabel": "Sterilisering planlagt den: ",
+    "contractSignedLabel": "Adopsjonskontrakt signert den: ",
+    "feesPaid": "Adopsjonsgebyret er betalt.",
+    "feesNotPaid": "Adopsjonsgebyret er ikke betalt.",
+    "legalTransferLabel": "Juridisk overføring gjennomført den: ",
+    "tabs": {
+      "health": "Helse",
+      "adoption": "Adopsjon"
+    },
+    "fields": {
+      "namePlaceholder": "Navn *",
+      "speciesPlaceholder": "Art *",
+      "colorPlaceholder": "Farge",
+      "sexLabel": "Kjønn *:",
+      "neuteredQuestion": "Kastrert/sterilisert?",
+      "findLocationPlaceholder": "Funnet ved",
+      "birthDateLabel": "Født den *:",
+      "primeVaxQuestion": "Grunnvaksine?",
+      "firstDewormQuestion": "Første ormekur?",
+      "statusLabel": "Status for dyret *:",
+      "familyLabel": "Fosterhjem",
+      "adopterFullNamePlaceholder": "Fullt navn på adopter",
+      "addressPlaceholder": "Gate og nummer",
+      "zipPlaceholder": "Postnummer",
+      "cityPlaceholder": "Sted",
+      "homeVisitQuestion": "Hjemmebesøk gjennomført?",
+      "feesPaidQuestion": "Adopsjonsgebyr betalt?"
+    }
+  },
+  "families": {
+    "editInfoTitle": "Rediger fosterhjem",
+    "addTitle": "Legg til et fosterhjem",
+    "deleteTitle": "Slett fosterhjem",
+    "hasChildren": "Dette fosterhjemmet har barn.",
+    "animalsInCareLabel": "Dyr i fosterhjemmet:",
+    "otherAnimalsLabel": "Andre dyr:",
+    "prefillMeLabel": "Det er meg:",
+    "prefillMeButton": "Bruk mine opplysninger",
+    "listTitle": "Registrerte fosterhjem for {orgName}:",
+    "none": "Ingen fosterhjem registrert.",
+    "fields": {
+      "contactFullNamePlaceholder": "Navn på fosterhjemmet *",
+      "addressPlaceholderRequired": "Gate og nummer *",
+      "zipPlaceholderRequired": "Postnummer *",
+      "cityPlaceholderRequired": "Sted *"
+    },
+    "questions": {
+      "hasChildren": "Er det barn i hjemmet?",
+      "otherAnimals": "Er det andre dyr (oppgi hvilke)?"
+    }
+  },
+  "organizations": {
+    "yourOrganizations": "Dine organisasjoner:",
+    "pendingRequests": "Ventende medlemsforespørsler:",
+    "membersListTitle": "Medlemsliste for {orgName}:",
+    "registerTitle": "Registrer en ny organisasjon?",
+    "orgNamePlaceholder": "Navn på organisasjonen",
+    "searchExistingTitle": "Søk etter en eksisterende organisasjon?",
+    "joinSubmit": "Bli med",
+    "joinLoading": "Sender...",
+    "roles": {
+      "SUPERADMIN": "Admin",
+      "MEMBER": "",
+      "VALIDATED": "",
+      "PENDING": "Avventer"
+    },
+    "status": {
+      "PENDING": "Avventer",
+      "VALIDATED": "",
+      "MEMBER": "",
+      "SUPERADMIN": "Admin"
+    },
+    "actions": {
+      "approveRequest": "Godkjenn forespørsel",
+      "removeMember": "Fjern medlem",
+      "cancelRequest": "Avbryt forespørsel",
+      "leaveOrg": "Forlat organisasjonen"
+    }
+  },
+  "settings": {
     "changeLanguage": "Endre språk:"
   }
 }
