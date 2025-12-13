@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'A mobile app for your animal welfare organizations',
     start_url: '/',
     display: 'standalone',
-    background_color: '#ffffff',
-    theme_color: '#000000',
+    background_color: '#FAF6F5',
+    theme_color: '#FAF6F5',
     icons: [
       {
         src: '/icons/aster-icon-192.png',
