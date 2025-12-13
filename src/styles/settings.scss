@@ -1,7 +1,19 @@
 @use 'vars';
 
-.lang-change {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.settings {
+position: relative;
+
+  .version {
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+
+  .lang-change {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

@@ -24,7 +24,6 @@ export const OrgSelector = () => {
           <>
             <div className="orga-select">
               <h4>{t('organizations.yourOrganizations')}</h4>
-
               <select
                 value={org?.id}
                 onChange={(e) => {
@@ -32,11 +31,13 @@ export const OrgSelector = () => {
                   router.refresh();
                 }}
               >
-                {user.organizations.map((org) => (
-                  <option key={org.id} value={org.id}>
-                    {org.name}
-                  </option>
-                ))}
+                {user.organizations
+                  .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
+                  .map((org) => (
+                    <option key={org.id} value={org.id}>
+                      {org.name}
+                    </option>
+                  ))}
               </select>
             </div>
             <hr />
