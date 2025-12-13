@@ -21,22 +21,47 @@ export const NavBar = () => {
     <>
       <nav>
         <Link href="/">
-          <HouseHeart size={42} strokeWidth={pathname === '/' ? 2.2 : 0.8} />
+          <HouseHeart
+            fill={pathname === '/' ? '#999' : '"000'}
+            fillOpacity={pathname === '/' ? 0.5 : 0}
+            size={42}
+            strokeWidth={pathname === '/' ? 2.2 : 0.8}
+          />
         </Link>
         <Link className={disableMenu()} href="/animals">
-          <Cat size={42} strokeWidth={pathname.startsWith('/animals') ? 2.2 : 0.8} />
+          <Cat
+            fill={pathname.startsWith('/animals') ? '#999' : '"000'}
+            fillOpacity={pathname.startsWith('/animals') ? 0.5 : 0}
+            size={42}
+            strokeWidth={pathname.startsWith('/animals') ? 2.2 : 0.8}
+          />
         </Link>
         <Link className={disableMenu()} href="/families">
-          <Users size={42} strokeWidth={pathname.startsWith('/families') ? 2.2 : 0.8} />
+          <Users
+            fill={pathname.startsWith('/families') ? '#999' : '"000'}
+            fillOpacity={pathname.startsWith('/families') ? 0.5 : 0}
+            size={42}
+            strokeWidth={pathname.startsWith('/families') ? 2.2 : 0.8}
+          />
         </Link>
         {/* <Link className={disableMenu()} href="/map">
           <MapPinned size={42} strokeWidth={pathname.startsWith('/map') ? 2.2 : 0.8} />
         </Link> */}
         <Link href="/organizations">
-          <FolderOpen size={42} strokeWidth={pathname.startsWith('/organizations') ? 2.2 : 0.8} />
+          <FolderOpen
+            fill={pathname.startsWith('/organizations') ? '#999' : '"000'}
+            fillOpacity={pathname.startsWith('/organizations') ? 0.5 : 0}
+            size={42}
+            strokeWidth={pathname.startsWith('/organizations') ? 2.2 : 0.8}
+          />
         </Link>
         <Link href="/settings">
-          <Settings size={42} strokeWidth={pathname.startsWith('/settings') ? 2.2 : 0.8} />
+          <Settings
+            fill={pathname.startsWith('/settings') ? '#999' : '"000'}
+            fillOpacity={pathname.startsWith('/settings') ? 0.5 : 0}
+            size={42}
+            strokeWidth={pathname.startsWith('/settings') ? 2.2 : 0.8}
+          />
         </Link>
       </nav>
       <hr />

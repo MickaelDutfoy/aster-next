@@ -24,9 +24,14 @@ nav {
   align-items: center;
 }
 
+.lucide * {
+  vector-effect: non-scaling-stroke;
+}
+
 header {
   min-height: 50px;
   font-weight: 700;
+  text-shadow: 2px 2px 4px vars.$outer-space;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,6 +187,10 @@ header {
 }
 
 @media (prefers-color-scheme: dark) {
+  header {
+    text-shadow: 2px 2px 2px vars.$smoky-black;
+  }
+
   .dashboard {
     background-color: vars.$outer-space;
     color: vars.$isabelline;
