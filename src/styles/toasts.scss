@@ -17,27 +17,18 @@
   border: none;
   outline: none;
   cursor: pointer;
-
   min-width: min(92vw, 480px);
   max-width: min(92vw, 600px);
   width: max-content;
-
   padding: 10px 14px;
   border-radius: 10px;
-
   color: #fff;
   text-align: left;
-
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-
   transform: translateY(8px);
   opacity: 0;
   animation: toast-in 160ms ease-out forwards;
-
-  // tactile friendly
   -webkit-tap-highlight-color: transparent;
-
-  // légère transparence pour lisibilité sur fonds variés
   backdrop-filter: saturate(120%) blur(4px);
 }
 

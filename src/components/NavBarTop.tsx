@@ -36,7 +36,7 @@ export const NavBarTop = () => {
             strokeWidth={pathname.startsWith('/families') ? 2.2 : 0.8}
           />
         </Link>
-        <Link className={disableMenu()} href="/map">
+        <Link style={{ display: 'none' }} className={disableMenu()} href="/map">
           <MapPinned
             fill={pathname.startsWith('/map') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/map') ? 0.5 : 0}
