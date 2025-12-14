@@ -27,6 +27,7 @@
   "toasts": {
     "errorGeneric": "An error occurred.",
     "requiredFieldsMissing": "Some required fields are missing.",
+    "termsNotAccepted": "You must accept the terms.",
     "noUser": "User not authenticated.",
     "modifySuccess": "The information has been updated.",
     "animalDelete": "The animal has been successfully deleted.",
@@ -251,6 +252,13 @@
       "cancelRequest": "Cancel request",
       "leaveOrg": "Leave organization"
     }
+  },
+  "contact": {
+    "topic": "What is this about? *",
+    "content": "Tell me what’s going on: *",
+    "notice": "A bug, a question, an idea, an issue with using the app... Don’t hesitate: I read everything!",
+    "accept": "By sending this message, I consent to sharing my email address with the developer so they can contact me. *",
+    "success": "Your message has been sent successfully!"
   },
   "settings": {
     "changeLanguage": "Change language:"

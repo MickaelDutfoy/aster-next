@@ -3,12 +3,22 @@
 import { sendEmail } from '@/lib/email';
 import { ActionValidation } from '@/lib/types';
 
+const escapeHtml = (s: string) =>
+  s
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+
+
 export const sendContactForm = async (
   formData: FormData,
   userEmail: string,
 ): Promise<ActionValidation> => {
   const contactTopic = formData.get('contactTopic')?.toString().trim();
-  const contactContent = formData.get('contactContent')?.toString().trim().split('\n').join('<br>');
+  const raw = formData.get('contactContent')?.toString().trim() ?? '';
+  const contactContent = escapeHtml(raw).replaceAll('\n', '<br>');
 
   try {
     await sendEmail({

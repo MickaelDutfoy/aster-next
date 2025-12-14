@@ -27,6 +27,7 @@
   "toasts": {
     "errorGeneric": "Noe gikk galt.",
     "requiredFieldsMissing": "Noen obligatoriske felt mangler.",
+    "termsNotAccepted": "Du må godta vilkårene.",
     "noUser": "Bruker ikke autentisert.",
     "modifySuccess": "Informasjonen er oppdatert.",
     "animalDelete": "Dyret ble slettet.",
@@ -251,6 +252,13 @@
       "cancelRequest": "Avbryt forespørsel",
       "leaveOrg": "Forlat organisasjonen"
     }
+  },
+  "contact": {
+    "topic": "Hva gjelder det? *",
+    "content": "Fortell meg hva som skjer: *",
+    "notice": "En feil, et spørsmål, en idé eller et problem med bruken av appen... Ikke nøl: Jeg leser alt!",
+    "accept": "Ved å sende denne meldingen samtykker jeg til at e-postadressen min deles med utvikleren, slik at de kan kontakte meg. *",
+    "success": "Meldingen din er sendt!"
   },
   "settings": {
     "changeLanguage": "Endre språk:"
