@@ -28,7 +28,7 @@ export const NavBarBottom = () => {
             strokeWidth={pathname === '/' ? 2.2 : 0.8}
           />
         </Link>
-        <Link href="/contact">
+        <Link style={{ display: 'none' }} href="/contact">
           <MailQuestionMark
             fill={pathname.startsWith('/contact') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/contact') ? 0.5 : 0}
@@ -36,7 +36,7 @@ export const NavBarBottom = () => {
             strokeWidth={pathname.startsWith('/contact') ? 2.2 : 0.8}
           />
         </Link>
-        <Link href="/notifications">
+        <Link style={{ display: 'none' }} href="/notifications">
           <Bell
             fill={pathname.startsWith('/notifications') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/notifications') ? 0.5 : 0}
