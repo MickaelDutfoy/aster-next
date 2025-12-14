@@ -17,7 +17,7 @@ export default async function AddAnimalModal() {
 
   return (
     <Modal expectedPath="/animals/new">
-      <RegisterAnimal families={families} />
+      <RegisterAnimal user={user} families={families} />
     </Modal>
   );
 }

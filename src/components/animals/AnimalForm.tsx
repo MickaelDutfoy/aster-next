@@ -3,20 +3,38 @@
 import { registerAnimal } from '@/actions/animals/registerAnimal';
 import { updateAnimal } from '@/actions/animals/updateAnimal';
 import { useRouter } from '@/i18n/routing';
-import { Animal, Family } from '@/lib/types';
+import { Animal, Family, Member } from '@/lib/types';
 import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
-export const AnimalForm = ({ animal, families }: { animal?: Animal; families: Family[] }) => {
+export const AnimalForm = ({
+  user,
+  animal,
+  families,
+}: {
+  user: Member;
+  animal?: Animal;
+  families: Family[];
+}) => {
   const t = useTranslations();
   const router = useRouter();
 
   const [form, setForm] = useState<'health' | 'adopt'>('health');
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
+  const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (animal) return;
+    let defaultFamily = families.find((family) => family.memberId === user.id);
+    if (defaultFamily) {
+      setStatus(AnimalStatus.FOSTERED);
+      setFamilyId(defaultFamily.id);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,7 +90,7 @@ export const AnimalForm = ({ animal, families }: { animal?: Animal; families: Fa
         </div>
       </div>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
-      <form onSubmit={handleSubmit} style={{ minHeight: '50vh', width: '85vw' }}>
+      <form onSubmit={handleSubmit}>
         <div hidden={form !== 'health'}>
           <div className="form-tab">
             <div className="name-species-color">
@@ -153,34 +171,16 @@ export const AnimalForm = ({ animal, families }: { animal?: Animal; families: Fa
                 defaultChecked={animal?.isFirstDeworm}
               />
             </label>
-            <p>{t('animals.additionalInfoLabel')}</p>
-            <textarea
-              name="animalInformation"
-              defaultValue={animal?.information ?? ''}
-              onInput={(e) => {
-                const el = e.currentTarget;
-                el.style.height = 'auto';
-                el.style.height = `${el.scrollHeight}px`;
-              }}
-            />
-            <button
-              type="submit"
-              className="little-button"
-              aria-busy={isLoading}
-              disabled={isLoading}
-            >
-              {isLoading ? t('common.loading') : t('common.submit')}
-            </button>
-          </div>
-        </div>
-        <div hidden={form !== 'adopt'}>
-          <div className="form-tab">
             <div className="labeled-select">
               <p>{t('animals.fields.statusLabel')}</p>
               <select
                 name="animalStatus"
-                defaultValue={animal?.status}
-                onChange={(e) => setStatus(e.target.value)}
+                value={status}
+                onChange={(e) => {
+                  const next = e.target.value as AnimalStatus;
+                  setStatus(next);
+                  if (next !== AnimalStatus.FOSTERED) setFamilyId(undefined);
+                }}
               >
                 <option value={AnimalStatus.UNHOSTED}>{t('animals.status.UNHOSTED')}</option>
                 <option value={AnimalStatus.FOSTERED}>{t('animals.status.FOSTERED')}</option>
@@ -192,7 +192,14 @@ export const AnimalForm = ({ animal, families }: { animal?: Animal; families: Fa
                 {t('animals.fields.familyLabel')}
                 {status === 'FOSTERED' ? ' *' : ''} :
               </p>
-              <select name="animalFamily" defaultValue={animal?.familyId ?? ''}>
+              <select
+                name="animalFamily"
+                value={familyId}
+                onChange={(e) =>
+                  setFamilyId(e.target.value === '' ? undefined : Number(e.target.value))
+                }
+                disabled={status !== AnimalStatus.FOSTERED}
+              >
                 {families?.map((family) => (
                   <option key={family.id} value={family.id}>
                     {family.contactFullName}
@@ -200,6 +207,20 @@ export const AnimalForm = ({ animal, families }: { animal?: Animal; families: Fa
                 ))}
               </select>
             </div>
+            <p>{t('animals.additionalInfoLabel')}</p>
+            <textarea
+              name="animalInformation"
+              defaultValue={animal?.information ?? ''}
+              onInput={(e) => {
+                const el = e.currentTarget;
+                el.style.height = 'auto';
+                el.style.height = `${el.scrollHeight}px`;
+              }}
+            />
+          </div>
+        </div>
+        <div hidden={form !== 'adopt'}>
+          <div className="form-tab">
             <input
               type="text"
               name="adopterFullName"
@@ -289,17 +310,11 @@ export const AnimalForm = ({ animal, families }: { animal?: Animal; families: Fa
                 defaultValue={animal?.adoption?.legalTransferAt?.toISOString().slice(0, 10)}
               />
             </div>
-
-            <button
-              type="submit"
-              className="little-button"
-              aria-busy={isLoading}
-              disabled={isLoading}
-            >
-              {isLoading ? t('common.loading') : t('common.submit')}
-            </button>
           </div>
         </div>
+        <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
+          {isLoading ? t('common.loading') : t('common.submit')}
+        </button>
       </form>
     </>
   );

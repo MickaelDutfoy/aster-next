@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 
 export const setOrgCookie = async (orgId: number) => {
@@ -10,4 +11,6 @@ export const setOrgCookie = async (orgId: number) => {
     sameSite: 'lax',
     secure: process.env.NODE_ENV === 'production', // clé : pas de Secure en dev
   });
+
+  revalidatePath('/');
 };

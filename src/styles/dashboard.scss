@@ -6,34 +6,58 @@
   right: 10px;
   bottom: 10px;
   left: 10px;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   background-color: vars.$isabelline;
   color: vars.$smoky-black;
   border: 3px solid vars.$cinereous;
   border-radius: 10px;
-  z-index: 2;
   overflow-y: auto;
+  z-index: 2;
   opacity: 0.9;
+
+  main {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+.top-menu > nav {
+  border-bottom: 2px solid vars.$cinereous;
+}
+
+footer > nav {
+  border-top: 2px solid vars.$cinereous;
+
+  a {
+    padding-top: 15px;
+  }
 }
 
 nav {
-  padding: 0 10px;
-  min-height: 50px;
+  height: 55px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
-.lucide * {
-  vector-effect: non-scaling-stroke;
-}
-
 header {
-  min-height: 50px;
+  height: 50px;
   font-weight: 700;
   text-shadow: 2px 2px 4px vars.$outer-space;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.orga-select {
+  padding: 10px 0;
+  border-top: 2px solid vars.$cinereous;
+  border-bottom: 2px solid vars.$cinereous;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -86,11 +110,22 @@ header {
     margin-bottom: 5px;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      align-self: center;
+    }
+  }
+
   .form-tab {
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 500px;
     gap: 10px;
 
     .labeled-date,
@@ -105,19 +140,7 @@ header {
     .labeled-checkbox {
       margin: 0 10px;
     }
-
-    button {
-      align-self: center;
-    }
   }
-}
-
-.orga-select {
-  margin: 10px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .disabled {
@@ -187,6 +210,19 @@ header {
 }
 
 @media (prefers-color-scheme: dark) {
+  .top-menu > nav {
+    border-bottom: 2px solid vars.$raw-umber;
+  }
+
+  footer > nav {
+    border-top: 2px solid vars.$raw-umber;
+  }
+
+  .orga-select {
+    border-top: 2px solid vars.$raw-umber;
+    border-bottom: 2px solid vars.$raw-umber;
+  }
+
   header {
     text-shadow: 2px 2px 2px vars.$smoky-black;
   }

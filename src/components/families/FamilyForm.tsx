@@ -17,16 +17,23 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
   const [familyPhoneNumber, setFamilyPhoneNumber] = useState<string>(family?.phoneNumber ?? '');
   const [isLoading, setIsLoading] = useState(false);
 
-  const fillWithMemberInfo = () => {
-    setFamilyName(`${user.firstName} ${user.lastName}`);
-    setFamilyEmail(user.email);
-    setFamilyPhoneNumber(user.phoneNumber);
+  const fillWithMemberInfo = (checked: boolean) => {
+    if (checked) {
+      setFamilyName(`${user.firstName} ${user.lastName}`);
+      setFamilyEmail(user.email);
+      setFamilyPhoneNumber(user.phoneNumber);
+    } else {
+      setFamilyName('');
+      setFamilyEmail('');
+      setFamilyPhoneNumber('');
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
+    const isMember = formData.has('isMember');
     const contactFullName = formData.get('contactFullName')?.toString().trim();
     const address = formData.get('address')?.toString().trim();
     const zip = formData.get('zip')?.toString().trim();
@@ -43,7 +50,9 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
 
     setIsLoading(true);
     try {
-      const res = family ? await updateFamily(family.id, formData) : await registerFamily(formData);
+      const res = family
+        ? await updateFamily(family.id, formData, isMember ? user.id : null)
+        : await registerFamily(formData, isMember ? user.id : null);
 
       showToast({
         ...res,
@@ -70,11 +79,14 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <form onSubmit={handleSubmit}>
         <div className="form-tab">
-          <div className="prefill-form">
-            <p>{t('families.prefillMeLabel')}</p>{' '}
-            <span className="little-button" onClick={fillWithMemberInfo}>
-              {t('families.prefillMeButton')}
-            </span>
+          <div className="labeled-checkbox">
+            <p>{t('families.prefillMeLabel')}</p>
+            <input
+              type="checkbox"
+              name="isMember"
+              id="isMember"
+              onChange={(e) => fillWithMemberInfo(e.target.checked)}
+            />
           </div>
 
           <input
@@ -146,16 +158,10 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               el.style.height = `${el.scrollHeight}px`;
             }}
           />
-
-          <button
-            type="submit"
-            className="little-button"
-            aria-busy={isLoading}
-            disabled={isLoading}
-          >
-            {isLoading ? t('common.loading') : t('common.submit')}
-          </button>
         </div>
+        <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
+          {isLoading ? t('common.loading') : t('common.submit')}
+        </button>
       </form>
     </>
   );

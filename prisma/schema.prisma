@@ -19,25 +19,28 @@ enum AnimalStatus {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model Animal {
-  id            Int          @id @default(autoincrement())
-  name          String
-  species       String
-  sex           Sex
-  color         String?
-  findLocation  String?
-  birthDate     DateTime     @map("birth_date") @db.Date
-  isNeutered    Boolean      @map("is_neutered")
-  status        AnimalStatus @default(UNHOSTED)
-  lastVax       DateTime?    @map("last_vax") @db.Date
-  vaxHistory    DateTime[]   @default([])
-  isPrimoVax    Boolean      @default(false) @map("is_primo_vax")
-  lastDeworm    DateTime?    @map("last_deworm") @db.Date
-  dewormHistory DateTime[]   @default([])
-  isFirstDeworm Boolean      @default(false) @map("is_first_deworm")
-  information   String?
-  familyId      Int?         @map("family_id")
-  orgId         Int          @map("organization_id")
-  createdAt     DateTime    @default(now()) @map("created_at")
+  id                Int          @id @default(autoincrement())
+  name              String
+  species           String
+  sex               Sex
+  color             String?
+  findLocation      String?
+  birthDate         DateTime     @map("birth_date") @db.Date
+  isNeutered        Boolean      @map("is_neutered")
+  status            AnimalStatus @default(UNHOSTED)
+  lastVax           DateTime?    @map("last_vax") @db.Date
+  vaxHistory        DateTime[]   @default([])
+  isPrimoVax        Boolean      @default(false) @map("is_primo_vax")
+  lastDeworm        DateTime?    @map("last_deworm") @db.Date
+  dewormHistory     DateTime[]   @default([])
+  isFirstDeworm     Boolean      @default(false) @map("is_first_deworm")
+  information       String?
+  familyId          Int?         @map("family_id")
+  orgId             Int          @map("organization_id")
+  createdAt         DateTime     @default(now()) @map("created_at")
+  createdByMemberId Int?
+  updatedAt         DateTime     @updatedAt
+  updatedByMemberId Int?
 
   family       Family?         @relation(fields: [familyId], references: [id], onUpdate: NoAction)
   organization Organization    @relation(fields: [orgId], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -48,7 +51,7 @@ model Animal {
 
 model AnimalAdoption {
   id                       Int       @id @default(autoincrement())
-  animalId                 Int       @unique // <- 0-1 par animal (MVP)
+  animalId                 Int       @unique
   adopterFullName          String
   adopterEmail             String?
   adopterPhoneNumber       String?
@@ -60,37 +63,40 @@ model AnimalAdoption {
   adoptionContractSignedAt DateTime? @db.Date
   adoptionFeePaid          Boolean   @default(false)
   legalTransferAt          DateTime? @db.Date
-  notes                    String?
-  createdAt                DateTime @default(now())
 
   animal Animal @relation(fields: [animalId], references: [id], onDelete: Cascade)
 }
 
 model Family {
-  id              Int       @id @default(autoincrement())
-  contactFullName String    @map("contact_name")
+  id              Int      @id @default(autoincrement())
+  contactFullName String   @map("contact_name")
   email           String?
-  phoneNumber     String?   @map("phone_number")
+  phoneNumber     String?  @map("phone_number")
   address         String
   zip             String
   city            String
-  hasChildren     Boolean   @default(false)
+  hasChildren     Boolean  @default(false)
   otherAnimals    String?
-  orgId           Int       @map("organization_id")
+  orgId           Int      @map("organization_id")
+  memberId        Int?
   createdAt       DateTime @default(now()) @map("created_at")
 
   animals      Animal[]
   organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  member       Member?      @relation(fields: [memberId], references: [id])
 
   @@map("families")
 }
 
 enum MemberRole {
   MEMBER
+  FOSTER_FAMILY
+  ADMIN
   SUPERADMIN
 }
 
 enum MemberStatus {
+  BANNED
   PENDING
   VALIDATED
 }
@@ -100,7 +106,7 @@ model MemberOrganization {
   orgId    Int          @map("organization_id")
   role     MemberRole
   status   MemberStatus
-  joinedAt DateTime    @default(now()) @map("joined_at")
+  joinedAt DateTime     @default(now()) @map("joined_at")
 
   member       Member       @relation(fields: [memberId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
@@ -110,22 +116,23 @@ model MemberOrganization {
 }
 
 model Member {
-  id           Int       @id @default(autoincrement())
-  firstName    String    @map("first_name")
-  lastName     String    @map("last_name")
-  email        String    @unique
-  phoneNumber  String    @unique @map("phone_number")
-  passwordHash String    @map("password_hash")
+  id           Int      @id @default(autoincrement())
+  firstName    String   @map("first_name")
+  lastName     String   @map("last_name")
+  email        String   @unique
+  phoneNumber  String   @unique @map("phone_number")
+  passwordHash String   @map("password_hash")
   createdAt    DateTime @default(now()) @map("created_at")
 
   memberOrganizations MemberOrganization[]
   resetPasswordTokens AuthToken[]
+  families            Family[]
 
   @@map("members")
 }
 
 model Organization {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   name      String
   createdAt DateTime @default(now()) @map("created_at")
 
@@ -144,11 +151,11 @@ model AuthToken {
   id        Int       @id @default(autoincrement())
   memberId  Int
   tokenHash String
-  type      TokenType 
-  createdAt DateTime @default(now())
+  type      TokenType
+  createdAt DateTime  @default(now())
   expiresAt DateTime
 
   member Member @relation(fields: [memberId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  
+
   @@unique([tokenHash])
 }

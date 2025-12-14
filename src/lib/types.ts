@@ -19,6 +19,7 @@ export type Family = {
   hasChildren: boolean;
   otherAnimals: string | null;
   orgId: number;
+  memberId: number | null;
 };
 
 export type Animal = {
@@ -57,7 +58,6 @@ export type AnimalAdoption = {
   adoptionContractSignedAt: Date | null;
   adoptionFeePaid: boolean;
   legalTransferAt: Date | null;
-  notes: string | null;
 };
 
 export type Organization = {

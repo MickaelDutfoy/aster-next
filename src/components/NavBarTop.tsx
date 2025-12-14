@@ -3,10 +3,10 @@
 import { Link, usePathname } from '@/i18n/routing';
 import { Member } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
-import { Cat, FolderOpen, HouseHeart, Settings, Users } from 'lucide-react';
+import { Cat, FolderOpen, MapPinned, Users } from 'lucide-react';
 import { useUser } from './providers/UserProvider';
 
-export const NavBar = () => {
+export const NavBarTop = () => {
   const user: Member | null = useUser();
   const pathname = usePathname();
 
@@ -18,16 +18,8 @@ export const NavBar = () => {
   };
 
   return (
-    <>
+    <div className="top-menu">
       <nav>
-        <Link href="/">
-          <HouseHeart
-            fill={pathname === '/' ? '#999' : '"000'}
-            fillOpacity={pathname === '/' ? 0.5 : 0}
-            size={42}
-            strokeWidth={pathname === '/' ? 2.2 : 0.8}
-          />
-        </Link>
         <Link className={disableMenu()} href="/animals">
           <Cat
             fill={pathname.startsWith('/animals') ? '#999' : '"000'}
@@ -44,9 +36,14 @@ export const NavBar = () => {
             strokeWidth={pathname.startsWith('/families') ? 2.2 : 0.8}
           />
         </Link>
-        {/* <Link className={disableMenu()} href="/map">
-          <MapPinned size={42} strokeWidth={pathname.startsWith('/map') ? 2.2 : 0.8} />
-        </Link> */}
+        <Link className={disableMenu()} href="/map">
+          <MapPinned
+            fill={pathname.startsWith('/map') ? '#999' : '"000'}
+            fillOpacity={pathname.startsWith('/map') ? 0.5 : 0}
+            size={42}
+            strokeWidth={pathname.startsWith('/map') ? 2.2 : 0.8}
+          />
+        </Link>
         <Link href="/organizations">
           <FolderOpen
             fill={pathname.startsWith('/organizations') ? '#999' : '"000'}
@@ -55,16 +52,7 @@ export const NavBar = () => {
             strokeWidth={pathname.startsWith('/organizations') ? 2.2 : 0.8}
           />
         </Link>
-        <Link href="/settings">
-          <Settings
-            fill={pathname.startsWith('/settings') ? '#999' : '"000'}
-            fillOpacity={pathname.startsWith('/settings') ? 0.5 : 0}
-            size={42}
-            strokeWidth={pathname.startsWith('/settings') ? 2.2 : 0.8}
-          />
-        </Link>
       </nav>
-      <hr />
-    </>
+    </div>
   );
 };

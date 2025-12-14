@@ -1,5 +1,7 @@
+import { DeniedPage } from '@/components/DeniedPage';
 import { Header } from '@/components/Header';
-import { NavBar } from '@/components/NavBar';
+import { NavBarBottom } from '@/components/NavBarBottom';
+import { NavBarTop } from '@/components/NavBarTop';
 import { OrgSelector } from '@/components/organizations/OrgSelector';
 import { OrgProvider } from '@/components/providers/OrgProvider';
 import { UserProvider } from '@/components/providers/UserProvider';
@@ -10,21 +12,22 @@ import '@/styles/dashboard.scss';
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const user: Member | null = await getUser();
-  if (!user) return null;
+  if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);
 
   return (
-    <div className="dashboard">
-      <UserProvider value={user}>
-        <OrgProvider value={org}>
-          <NavBar />
+    <UserProvider value={user}>
+      <OrgProvider value={org}>
+        <div className="dashboard">
+          <NavBarTop />
           <Header />
           <OrgSelector />
-          {children}
-        </OrgProvider>
-      </UserProvider>
-    </div>
+          <main>{children}</main>
+          <NavBarBottom />
+        </div>
+      </OrgProvider>
+    </UserProvider>
   );
 };
 

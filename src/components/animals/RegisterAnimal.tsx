@@ -1,16 +1,16 @@
 'use client';
 
-import { Family } from '@/lib/types';
+import { Family, Member } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { AnimalForm } from './AnimalForm';
 
-export const RegisterAnimal = ({ families }: { families: Family[] }) => {
+export const RegisterAnimal = ({ user, families }: { user: Member; families: Family[] }) => {
   const t = useTranslations();
 
   return (
     <div className="register-form">
       <h3>{t('animals.addTitle')}</h3>
-      <AnimalForm families={families} />
+      <AnimalForm user={user} families={families} />
     </div>
   );
 };

@@ -14,7 +14,7 @@ const RegisterAnimalPage = async () => {
 
   const families: Family[] = await getFamiliesByOrg(org.id);
 
-  return <RegisterAnimal families={families} />;
+  return <RegisterAnimal user={user} families={families} />;
 };
 
 export default RegisterAnimalPage;
