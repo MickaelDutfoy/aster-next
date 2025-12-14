@@ -1,17 +1,19 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import { Member, Organization, PendingOrgRequest } from '@/lib/types';
+import { Family, Member, Organization, PendingOrgRequest } from '@/lib/types';
 import { SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export const Dashboard = ({
   user,
   org,
+  families,
   pending,
 }: {
   user: Member;
   org: Organization | null;
+  families: Family[];
   pending: PendingOrgRequest[];
 }) => {
   const t = useTranslations();
@@ -30,7 +32,7 @@ export const Dashboard = ({
             <div className="text-with-link">
               <p>{t('dashboard.pendingIntro')}</p>
 
-              <Link href="/organizations" className="link">
+              <Link href="/organizations" className="little-button">
                 {t('dashboard.pendingSee')}
                 <SquareArrowRight />
               </Link>
@@ -39,10 +41,19 @@ export const Dashboard = ({
         </>
       )}
 
+      {org && families.every((family) => family.memberId !== user.id) && (
+        <div className="text-with-link">
+          <p>{t('dashboard.notFoster', { orgName: org.name })}</p>
+          <Link href="/families" className="little-button">
+            {t('common.submitSelf')}
+          </Link>
+        </div>
+      )}
+
       <div className="contact">
         <p>{t('dashboard.contactIntro')}</p>
-        <Link className="link" href="mailto:m.dutfoy@gmail.com">
-          <u>{t('dashboard.contactLink')}</u>
+        <Link className="link" href="/contact">
+          {t('dashboard.contactLink')}
         </Link>
       </div>
     </div>

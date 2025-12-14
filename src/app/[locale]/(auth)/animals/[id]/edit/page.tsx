@@ -22,7 +22,7 @@ const UpdateAnimalPage = async ({ params }: { params: Promise<{ id: string }> })
 
   const families: Family[] = await getFamiliesByOrg(org.id);
 
-  return <UpdateAnimal animal={animal} families={families} />;
+  return <UpdateAnimal user={user} animal={animal} families={families} />;
 };
 
 export default UpdateAnimalPage;

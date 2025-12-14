@@ -7,7 +7,9 @@ import { revalidatePath } from 'next/cache';
 
 export const leaveOrg = async (orgId: number): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
-  if (!user) return { ok: false };
+  if (!user) {
+    return { ok: false, status: 'error', message: 'toasts.noUser' };
+  }
 
   try {
     await prisma.memberOrganization.delete({

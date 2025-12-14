@@ -7,7 +7,10 @@ import { getUser } from '@/lib/user/getUser';
 import { revalidatePath } from 'next/cache';
 import { parseFamilyData } from './parseFamilyData';
 
-export const registerFamily = async (formData: FormData): Promise<ActionValidation> => {
+export const registerFamily = async (
+  formData: FormData,
+  memberId: number | null,
+): Promise<ActionValidation> => {
   const user: Member | null = await getUser();
   if (!user) {
     return { ok: false, status: 'error', message: 'toasts.noUser' };
@@ -27,6 +30,7 @@ export const registerFamily = async (formData: FormData): Promise<ActionValidati
       data: {
         ...family,
         orgId: org.id,
+        memberId,
       },
     });
 

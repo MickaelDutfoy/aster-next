@@ -24,7 +24,7 @@ export default async function UpdateAnimalModal({ params }: { params: Promise<{ 
 
   return (
     <Modal expectedPath={`/animals/${animal.id}/edit`}>
-      <UpdateAnimal animal={animal} families={families} />
+      <UpdateAnimal user={user} animal={animal} families={families} />
     </Modal>
   );
 }

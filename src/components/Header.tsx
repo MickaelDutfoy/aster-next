@@ -9,11 +9,10 @@ export const Header = () => {
   const pathname = usePathname().split('/')[1] || 'home';
 
   return (
-    <>
+    <div>
       <header>
         <h2>{t(`header.${pathname}`)}</h2>
       </header>
-      <hr />
-    </>
+    </div>
   );
 };

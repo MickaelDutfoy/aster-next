@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.lucide * {
+  vector-effect: non-scaling-stroke;
+}
+
 html {
   font-family: var(--font-nunito);
   font-size: 18px;
