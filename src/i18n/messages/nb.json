@@ -14,6 +14,8 @@
     "loading": "Lagrer...",
     "confirm": "Bekreft",
     "deleting": "Sletter...",
+    "send": "Send",
+    "sending": "Sender...",
     "areYouSure": "Er du sikker?",
     "agoPrefix": "",
     "agoSuffix": " siden",
@@ -25,6 +27,7 @@
   "toasts": {
     "errorGeneric": "Noe gikk galt.",
     "requiredFieldsMissing": "Noen obligatoriske felt mangler.",
+    "termsNotAccepted": "Du må godta vilkårene.",
     "noUser": "Bruker ikke autentisert.",
     "modifySuccess": "Informasjonen er oppdatert.",
     "animalDelete": "Dyret ble slettet.",
@@ -90,9 +93,7 @@
     "resetPassword": {
       "sent": "Hvis det finnes en konto med denne e-postadressen, er en melding sendt.",
       "error": "Det oppstod en feil under sending av e-posten.",
-      "disclaimer": "Skriv inn e-postadressen til kontoen din for å tilbakestille passordet.",
-      "submit": "Send",
-      "loading": "Sender..."
+      "disclaimer": "Skriv inn e-postadressen til kontoen din for å tilbakestille passordet."
     },
     "changePassword": {
       "invalidOrExpired": "Forespørselen om tilbakestilling er ugyldig eller har utløpt.",
@@ -139,8 +140,8 @@
     "notFoster": "Du er ikke fosterhjem for {orgName}.",
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
-    "contactIntro": "Problem? Forslag?",
-    "contactLink": "Send meg en melding!"
+    "contactIntro": "Problem? Forslag? Send meg en melding!",
+    "contactLink": "Kontakt"
   },
   "animals": {
     "editInfoTitle": "Rediger dyret",
@@ -251,6 +252,13 @@
       "cancelRequest": "Avbryt forespørsel",
       "leaveOrg": "Forlat organisasjonen"
     }
+  },
+  "contact": {
+    "topic": "Hva gjelder det? *",
+    "content": "Fortell meg hva som skjer: *",
+    "notice": "En feil, et spørsmål, en idé eller et problem med bruken av appen... Ikke nøl: Jeg leser alt!",
+    "accept": "Ved å sende denne meldingen samtykker jeg til at e-postadressen min deles med utvikleren, slik at de kan kontakte meg. *",
+    "success": "Meldingen din er sendt!"
   },
   "settings": {
     "changeLanguage": "Endre språk:"

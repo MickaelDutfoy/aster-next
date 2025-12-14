@@ -88,7 +88,6 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               onChange={(e) => fillWithMemberInfo(e.target.checked)}
             />
           </div>
-
           <input
             type="text"
             name="contactFullName"
@@ -96,7 +95,6 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
             value={familyName}
             onChange={(e) => setFamilyName(e.target.value)}
           />
-
           <div className="family-address-info">
             <input
               type="text"
@@ -119,7 +117,6 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
                 defaultValue={family?.city}
               />
             </div>
-
             <div className="family-contact">
               <input
                 type="text"
@@ -137,7 +134,6 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               />
             </div>
           </div>
-
           <label className="labeled-checkbox" htmlFor="hasChildren">
             {t('families.questions.hasChildren')}
             <input
@@ -147,7 +143,6 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               defaultChecked={family?.hasChildren}
             />
           </label>
-
           <p>{t('families.questions.otherAnimals')}</p>
           <textarea
             name="otherAnimals"

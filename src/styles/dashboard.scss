@@ -32,7 +32,7 @@ footer > nav {
   border-top: 2px solid vars.$cinereous;
 
   a {
-    padding-top: 15px;
+    margin-top: 15px;
   }
 }
 
@@ -89,8 +89,40 @@ header {
 .text-with-link > a {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   text-decoration: none;
+}
+
+.accept-terms {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+
+  input {
+    flex: 20%;
+  }
+}
+
+.contact-form {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  input {
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+    height: 30vh;
+  }
+
+  .notice {
+    text-align: center;
+  }
 }
 
 .register-form {
@@ -155,13 +187,6 @@ header {
   flex-direction: column;
   margin: 10px 0;
   gap: 10px;
-}
-
-.contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px 0;
 }
 
 .notice {

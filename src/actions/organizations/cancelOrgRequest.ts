@@ -21,10 +21,10 @@ export const cancelOrgRequest = async (orgId: number): Promise<ActionValidation>
     return { ok: true, message: "Votre demande d'adhésion a été annulée." };
   } catch (err) {
     console.error(err);
-        return {
-          ok: false,
-          status: 'error',
-          message: 'toasts.errorGeneric',
-        };
+    return {
+      ok: false,
+      status: 'error',
+      message: 'toasts.errorGeneric',
+    };
   }
 };
