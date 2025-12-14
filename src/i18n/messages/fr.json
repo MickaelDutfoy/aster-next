@@ -14,6 +14,8 @@
     "loading": "Enregistrement...",
     "confirm": "Confirmer",
     "deleting": "Suppression...",
+    "send": "Envoyer",
+    "sending": "Envoi...",
     "areYouSure": "Êtes-vous sûr(e) ?",
     "agoPrefix": "il y a ",
     "agoSuffix": "",
@@ -25,6 +27,7 @@
   "toasts": {
     "errorGeneric": "Une erreur est survenue.",
     "requiredFieldsMissing": "Des champs obligatoires sont incomplets.",
+    "termsNotAccepted": "Vous devez accepter les conditions.",
     "noUser": "Utilisateur non authentifié.",
     "modifySuccess": "Les informations ont été modifiées.",
     "animalDelete": "L'animal a bien été supprimé.",
@@ -89,9 +92,7 @@
     "resetPassword": {
       "sent": "Si un compte existe avec cet e-mail, un message vient de lui être envoyé.",
       "error": "Une erreur est survenue lors de l'envoi de l'e-mail.",
-      "disclaimer": "Indiquez l'adresse e-mail de votre compte pour réinitialiser votre mot de passe.",
-      "submit": "Envoyer",
-      "loading": "Envoi..."
+      "disclaimer": "Indiquez l'adresse e-mail de votre compte pour réinitialiser votre mot de passe."
     },
     "changePassword": {
       "invalidOrExpired": "Demande de réinitialisation invalide ou expirée.",
@@ -138,8 +139,8 @@
     "notFoster": "Vous n'êtes pas famille d'accueil pour {orgName}.",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
-    "contactIntro": "Un problème ? Une suggestion ?",
-    "contactLink": "Envoyez-moi un message !"
+    "contactIntro": "Un problème ? Une suggestion ? Envoyez-moi un message !",
+    "contactLink": "Contact"
   },
   "animals": {
     "editInfoTitle": "Éditer l'animal",
@@ -250,6 +251,13 @@
       "cancelRequest": "Annuler la demande",
       "leaveOrg": "Quitter l'association"
     }
+  },
+  "contact": {
+    "topic": "De quoi s’agit-il ? *",
+    "content": "Dites-moi ce qu'il se passe : *",
+    "notice": "Un bug, une question, une idée, un souci avec l'utilisation de l'app... N'hésitez pas : je lis tout !",
+    "accept": "En envoyant ce message, je consens à transmettre au développeur mon e-mail afin qu'il puisse me recontacter. *",
+    "success": "Votre message a bien été envoyé !"
   },
   "settings": {
     "changeLanguage": "Changer la langue :"

@@ -56,9 +56,9 @@ export const ResetPassword = () => {
             name="userEmail"
             placeholder={t('auth.emailPlaceholder')}
           />
-          <p className="disclaimer">{t('disclaimer')}</p>
+          <p className="disclaimer">{t('auth.resetPassword.disclaimer')}</p>
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? t('auth.resetPassword.loading') : t('auth.resetPassword.submit')}
+            {isLoading ? t('common.sending') : t('common.send')}
           </button>
         </form>
       </div>

@@ -31,7 +31,7 @@ export const Dashboard = ({
             <div className="text-with-link">
               <p>{t('dashboard.pendingIntro')}</p>
 
-              <Link href="/organizations" className="little-button">
+              <Link className="little-button" href="/organizations">
                 {t('dashboard.pendingSee')}
               </Link>
             </div>
@@ -42,15 +42,15 @@ export const Dashboard = ({
       {org && families.every((family) => family.memberId !== user.id) && (
         <div className="text-with-link">
           <p>{t('dashboard.notFoster', { orgName: org.name })}</p>
-          <Link href="/families" className="little-button">
+          <Link className="little-button" href="/families">
             {t('common.submitSelf')}
           </Link>
         </div>
       )}
 
-      <div className="contact">
+      <div className="text-with-link">
         <p>{t('dashboard.contactIntro')}</p>
-        <Link className="link" href="/contact">
+        <Link className="little-button" href="/contact">
           {t('dashboard.contactLink')}
         </Link>
       </div>

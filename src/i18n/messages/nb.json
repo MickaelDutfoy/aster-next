@@ -14,6 +14,8 @@
     "loading": "Lagrer...",
     "confirm": "Bekreft",
     "deleting": "Sletter...",
+    "send": "Send",
+    "sending": "Sender...",
     "areYouSure": "Er du sikker?",
     "agoPrefix": "",
     "agoSuffix": " siden",
@@ -90,9 +92,7 @@
     "resetPassword": {
       "sent": "Hvis det finnes en konto med denne e-postadressen, er en melding sendt.",
       "error": "Det oppstod en feil under sending av e-posten.",
-      "disclaimer": "Skriv inn e-postadressen til kontoen din for å tilbakestille passordet.",
-      "submit": "Send",
-      "loading": "Sender..."
+      "disclaimer": "Skriv inn e-postadressen til kontoen din for å tilbakestille passordet."
     },
     "changePassword": {
       "invalidOrExpired": "Forespørselen om tilbakestilling er ugyldig eller har utløpt.",
@@ -139,8 +139,8 @@
     "notFoster": "Du er ikke fosterhjem for {orgName}.",
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
-    "contactIntro": "Problem? Forslag?",
-    "contactLink": "Send meg en melding!"
+    "contactIntro": "Problem? Forslag? Send meg en melding!",
+    "contactLink": "Kontakt"
   },
   "animals": {
     "editInfoTitle": "Rediger dyret",

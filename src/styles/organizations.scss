@@ -79,6 +79,7 @@
       position: absolute;
       right: 0px;
       top: 30px;
+      user-select: none;
       background-color: vars.$snow;
       display: flex;
       flex-direction: column;

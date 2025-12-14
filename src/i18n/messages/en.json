@@ -14,6 +14,8 @@
     "loading": "Saving...",
     "confirm": "Confirm",
     "deleting": "Deleting...",
+    "send": "Send",
+    "sending": "Sending...",
     "areYouSure": "Are you sure?",
     "agoPrefix": "",
     "agoSuffix": " ago",
@@ -90,9 +92,7 @@
     "resetPassword": {
       "sent": "If an account exists with this email, a message has just been sent.",
       "error": "An error occurred while sending the email.",
-      "disclaimer": "Enter the email address of your account to reset your password.",
-      "submit": "Send",
-      "loading": "Sending..."
+      "disclaimer": "Enter the email address of your account to reset your password."
     },
     "changePassword": {
       "invalidOrExpired": "The reset request is invalid or has expired.",
@@ -139,8 +139,8 @@
     "notFoster": "You are not a foster family for {orgName}.",
     "pendingIntro": "You have membership requests to review.",
     "pendingSee": "View",
-    "contactIntro": "Issue? Suggestion?",
-    "contactLink": "Send me a message!"
+    "contactIntro": "Issue? Suggestion? Send me a message!",
+    "contactLink": "Contact"
   },
   "animals": {
     "editInfoTitle": "Edit animal",

@@ -1,21 +1,10 @@
 'use client';
 
 import { Link, usePathname } from '@/i18n/routing';
-import { Member } from '@/lib/types';
-import { MemberStatus } from '@prisma/client';
 import { Bell, HouseHeart, MailQuestionMark, Settings } from 'lucide-react';
-import { useUser } from './providers/UserProvider';
 
 export const NavBarBottom = () => {
-  const user: Member | null = useUser();
   const pathname = usePathname();
-
-  const disableMenu = (): string => {
-    return user?.organizations?.length === 0 ||
-      user?.organizations.every((org) => org.userStatus === MemberStatus.PENDING)
-      ? 'disabled'
-      : '';
-  };
 
   return (
     <footer>
@@ -28,7 +17,7 @@ export const NavBarBottom = () => {
             strokeWidth={pathname === '/' ? 2.2 : 0.8}
           />
         </Link>
-        <Link style={{ display: 'none' }} href="/contact">
+        <Link href="/contact">
           <MailQuestionMark
             fill={pathname.startsWith('/contact') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/contact') ? 0.5 : 0}
