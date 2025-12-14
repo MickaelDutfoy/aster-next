@@ -2,7 +2,6 @@
 
 import { Link } from '@/i18n/routing';
 import { Family, Member, Organization, PendingOrgRequest } from '@/lib/types';
-import { SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export const Dashboard = ({
@@ -34,7 +33,6 @@ export const Dashboard = ({
 
               <Link href="/organizations" className="little-button">
                 {t('dashboard.pendingSee')}
-                <SquareArrowRight />
               </Link>
             </div>
           )}
