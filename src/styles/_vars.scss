@@ -6,3 +6,17 @@ $isabelline: #ece5df;
 $raw-umber: #875e45;
 $brown-bark: #653d24;
 $smoky-black: #16110e;
+
+:root {
+    --app-bg: #{$isabelline};
+  }
+  
+  :root[data-theme='dark'] {
+    --app-bg: #{$outer-space};
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']):not([data-theme='dark']) {
+      --app-bg: #{$outer-space};
+    }
+  }

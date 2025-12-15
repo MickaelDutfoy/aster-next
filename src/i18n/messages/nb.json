@@ -137,7 +137,7 @@
     "welcome": "Velkommen, {name}!",
     "noOrg": "Du må først opprette eller bli med i en organisasjon.",
     "adminOf": "Du er administrator for {orgName}.",
-    "notFoster": "Du er ikke fosterhjem for {orgName}.",
+    "notFoster": "Er du fosterhjem for {orgName}?",
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
     "contactIntro": "Problem? Forslag? Send meg en melding!",
@@ -254,10 +254,10 @@
     }
   },
   "contact": {
-    "topic": "Hva gjelder det? *",
-    "content": "Fortell meg hva som skjer: *",
+    "topic": "Hva gjelder det? *",
+    "content": "Fortell meg hva som skjer: *",
     "notice": "En feil, et spørsmål, en idé eller et problem med bruken av appen... Ikke nøl: Jeg leser alt!",
-    "accept": "Ved å sende denne meldingen samtykker jeg til at e-postadressen min deles med utvikleren, slik at de kan kontakte meg. *",
+    "accept": "Ved å sende denne meldingen samtykker jeg til at e-postadressen min deles med utvikleren, slik at de kan kontakte meg. *",
     "success": "Meldingen din er sendt!"
   },
   "settings": {

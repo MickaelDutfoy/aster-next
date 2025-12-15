@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background-color: vars.$isabelline;
+  background-color: var(--app-bg);
   color: vars.$smoky-black;
   border: 3px solid vars.$cinereous;
   border-radius: 10px;
@@ -94,34 +94,34 @@ header {
 }
 
 .accept-terms {
+  margin-right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5px;
-
-  input {
-    flex: 20%;
-  }
 }
 
 .contact-form {
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   gap: 10px;
 
-  input {
+  input[type='text'] {
     width: 100%;
   }
 
   textarea {
     width: 100%;
-    height: 30vh;
+    height: 20vh;
   }
 
   .notice {
     text-align: center;
+  }
+
+  p, button {
+    align-self: center;
   }
 }
 
@@ -154,7 +154,6 @@ header {
   }
 
   .form-tab {
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -255,7 +254,6 @@ header {
   }
 
   .dashboard {
-    background-color: vars.$outer-space;
     color: vars.$isabelline;
     border: 3px solid vars.$smoky-black;
   }
