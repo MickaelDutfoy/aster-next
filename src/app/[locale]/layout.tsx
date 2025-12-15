@@ -56,7 +56,21 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html className={`${nunito.variable} ${comfortaa.variable}`}>
+    <html suppressHydrationWarning className={`${nunito.variable} ${comfortaa.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                    (function () {
+                      try {
+                        var t = localStorage.getItem('theme'); // 'light' | 'dark' | 'system' | null
+                        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+                        else document.documentElement.removeAttribute('data-theme');
+                      } catch (e) {}
+                    })();`,
+          }}
+        />
+      </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ClientLayout>

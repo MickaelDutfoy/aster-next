@@ -31,8 +31,8 @@
   }
 
   ul {
-    width: 90vw;
-    background-color: vars.$snow;
+    width: 85vw;
+    background-color: var(--input-bg);
     position: absolute;
     top: 2px;
     display: flex;
@@ -48,7 +48,7 @@
   li {
     font-size: 0.8rem;
     cursor: pointer;
-    color: vars.$outer-space;
+    color: var(--input-text);
     border-bottom: 1px solid vars.$outer-space;
     border-right: 1px solid vars.$outer-space;
     border-left: 1px solid vars.$outer-space;
@@ -66,7 +66,7 @@
   display: grid;
   grid-template-columns: 6fr 6fr auto;
   align-items: center;
-  border-bottom: 1px solid vars.$cinereous;
+  border-bottom: 1px solid var(--button);
 
   .action {
     position: relative;
@@ -105,27 +105,4 @@
 
 .members-list > li:last-child {
   border: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .org-search {
-    ul {
-      background-color: vars.$isabelline;
-    }
-
-    li:first-child {
-      border: 1px solid vars.$outer-space;
-    }
-
-    li {
-      color: vars.$smoky-black;
-      border-bottom: 1px solid vars.$outer-space;
-      border-right: 1px solid vars.$outer-space;
-      border-left: 1px solid vars.$outer-space;
-    }
-  }
-
-  .members-list li {
-    border-color: vars.$raw-umber;
-  }
 }

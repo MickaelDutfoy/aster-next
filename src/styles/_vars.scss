@@ -9,14 +9,35 @@ $smoky-black: #16110e;
 
 :root {
     --app-bg: #{$isabelline};
+    --text: #{$smoky-black};
+    --button: #{$cinereous};
+    --border-button: #{$raw-umber};
+    --link: #{$raw-umber};
+    --input-bg: #{$snow};
+    --input-text: #{$outer-space};
+    --active-tab: rgba($color: #000, $alpha: 0.1);
   }
   
   :root[data-theme='dark'] {
     --app-bg: #{$outer-space};
+    --text: #{$isabelline};
+    --button: #{$raw-umber};
+    --border-button: #{$smoky-black};
+    --link: #{$cinereous};
+    --input-bg: #{$isabelline};
+    --input-text: #{$smoky-black};
+    --active-tab: rgba($color: #fff, $alpha: 0.1);
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']):not([data-theme='dark']) {
       --app-bg: #{$outer-space};
+      --text: #{$isabelline};
+      --button: #{$raw-umber};
+      --border-button: #{$smoky-black};
+      --link: #{$cinereous};
+      --input-bg: #{$isabelline};
+      --input-text: #{$smoky-black};
+      --active-tab: rgba($color: #fff, $alpha: 0.1);
     }
   }

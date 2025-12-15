@@ -261,6 +261,10 @@
     "success": "Meldingen din er sendt!"
   },
   "settings": {
-    "changeLanguage": "Endre språk:"
+    "changeLanguage": "Endre språk:",
+    "theme": "Tema:",
+    "system": "System",
+    "dark": "Mørk",
+    "light": "Lys"
   }
 }

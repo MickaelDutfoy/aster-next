@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="page-loading" aria-busy="true" aria-live="polite">
+    <div className="public-loading" aria-busy="true" aria-live="polite">
       <span className="spinner" aria-label="Loading" />
     </div>
   );

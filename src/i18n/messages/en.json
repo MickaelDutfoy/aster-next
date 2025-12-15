@@ -261,6 +261,10 @@
     "success": "Your message has been sent successfully!"
   },
   "settings": {
-    "changeLanguage": "Change language:"
+    "changeLanguage": "Change language:",
+    "theme": "Theme:",
+    "system": "System",
+    "dark": "Dark",
+    "light": "Light"
   }
 }

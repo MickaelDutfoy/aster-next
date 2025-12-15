@@ -25,7 +25,7 @@
 }
 
 .animal-details {
-  border: 1px solid vars.$raw-umber;
+  border: 1px solid var(--link);
   border-top: none;
   border-radius: 8px;
 
@@ -44,11 +44,5 @@
     ul {
       padding-left: 40px;
     }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .animal-details {
-    border-color: vars.$cinereous;
   }
 }

@@ -37,6 +37,7 @@
     "alreadyMemberOfOrg": "Vous faites déjà partie de cette association.",
     "orgRequestSent": "Votre demande d'adhésion a été envoyée.",
     "orgRegisterSuccess": "Votre association a bien été enregistrée.",
+    "orgNameRequired": "Vous devez choisir un nom d'association.",
     "mustPickOrg": "Vous devez sélectionner une association existante.",
     "mobileAlert": "Aster est optimisé pour mobile — pensez au mode responsive (Ctrl+Shift+M)."
   },
@@ -136,7 +137,7 @@
     "welcome": "Bienvenue, {name} !",
     "noOrg": "Vous devez d'abord ajouter une association ou en rejoindre une.",
     "adminOf": "Vous êtes admin de l'association {orgName}.",
-    "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?.",
+    "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
     "contactIntro": "Un problème ? Une suggestion ? Envoyez-moi un message !",
@@ -227,10 +228,10 @@
   "organizations": {
     "yourOrganizations": "Vos associations :",
     "pendingRequests": "Vos demandes d'adhésion en attente :",
-    "membersListTitle": "Liste des membres pour {orgName} :",
-    "registerTitle": "Enregistrer une nouvelle association ?",
+    "membersListTitle": "Liste des membres pour {orgName} :",
+    "registerTitle": "Enregistrer une nouvelle association ?",
     "orgNamePlaceholder": "Nom de l'association",
-    "searchExistingTitle": "Rechercher une association existante ?",
+    "searchExistingTitle": "Rechercher une association existante ?",
     "joinSubmit": "Rejoindre",
     "joinLoading": "Envoi...",
     "roles": {
@@ -260,6 +261,10 @@
     "success": "Votre message a bien été envoyé !"
   },
   "settings": {
-    "changeLanguage": "Changer la langue :"
+    "changeLanguage": "Changer la langue :",
+    "theme": "Thème :",
+    "system": "Système",
+    "dark": "Sombre",
+    "light": "Clair"
   }
 }
