@@ -3,8 +3,8 @@
 import { sendEmail } from '@/lib/email';
 import { ActionValidation } from '@/lib/types';
 
-const escapeHtml = (s: string) =>
-  s
+const escapeHtml = (input: string) =>
+  input
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')

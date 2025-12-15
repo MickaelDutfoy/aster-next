@@ -67,10 +67,10 @@ export const ContactForm = ({ user }: { user: Member }) => {
       <p>{t('contact.content')}</p>
       <textarea name="contactContent" />
       <p className="notice">{t('contact.notice')}</p>
-      <div className="accept-terms">
-        <p>{t('contact.accept')}</p>
-        <input type="checkbox" name="contactAccept" />
-      </div>
+      <label className="accept-terms" htmlFor="contactAccept">
+        {t('contact.accept')}
+        <input type="checkbox" name="contactAccept" id="contactAccept" />
+      </label>
       <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
         {isLoading ? t('common.sending') : t('common.send')}
       </button>

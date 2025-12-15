@@ -136,7 +136,7 @@
     "welcome": "Bienvenue, {name} !",
     "noOrg": "Vous devez d'abord ajouter une association ou en rejoindre une.",
     "adminOf": "Vous êtes admin de l'association {orgName}.",
-    "notFoster": "Vous n'êtes pas famille d'accueil pour {orgName}.",
+    "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?.",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
     "contactIntro": "Un problème ? Une suggestion ? Envoyez-moi un message !",
@@ -254,7 +254,7 @@
   },
   "contact": {
     "topic": "De quoi s’agit-il ? *",
-    "content": "Dites-moi ce qu'il se passe : *",
+    "content": "Dites-moi ce qu'il se passe : *",
     "notice": "Un bug, une question, une idée, un souci avec l'utilisation de l'app... N'hésitez pas : je lis tout !",
     "accept": "En envoyant ce message, je consens à transmettre au développeur mon e-mail afin qu'il puisse me recontacter. *",
     "success": "Votre message a bien été envoyé !"

@@ -137,7 +137,7 @@
     "welcome": "Welcome, {name}!",
     "noOrg": "You need to add or join an organization first.",
     "adminOf": "You are admin of {orgName}.",
-    "notFoster": "You are not a foster family for {orgName}.",
+    "notFoster": "Are you foster family for {orgName}?",
     "pendingIntro": "You have membership requests to review.",
     "pendingSee": "View",
     "contactIntro": "Issue? Suggestion? Send me a message!",
@@ -254,10 +254,10 @@
     }
   },
   "contact": {
-    "topic": "What is this about? *",
-    "content": "Tell me what’s going on: *",
+    "topic": "What is this about? *",
+    "content": "Tell me what’s going on: *",
     "notice": "A bug, a question, an idea, an issue with using the app... Don’t hesitate: I read everything!",
-    "accept": "By sending this message, I consent to sharing my email address with the developer so they can contact me. *",
+    "accept": "By sending this message, I consent to sharing my email address with the developer so they can contact me. *",
     "success": "Your message has been sent successfully!"
   },
   "settings": {
