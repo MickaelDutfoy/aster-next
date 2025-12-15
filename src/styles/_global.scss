@@ -35,7 +35,7 @@ button {
 .link {
   cursor: pointer;
   user-select: none;
-  color: vars.$raw-umber;
+  color: var(--link);
 }
 
 .public-link {
@@ -55,7 +55,15 @@ a:active {
 }
 
 .page-loading {
-  min-height: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.public-loading {
+  height: 100vh;
   display: grid;
   place-items: center;
   font-size: 2rem;
@@ -94,7 +102,7 @@ a:active {
 .collapse-expand {
   cursor: pointer;
   user-select: none;
-  color: vars.$raw-umber;
+  color: var(--link);
 }
 
 h1,
@@ -119,11 +127,11 @@ h3 {
 
 .little-button {
   cursor: pointer;
-  background-color: vars.$cinereous;
+  background-color: var(--button);
   color: vars.$smoky-black;
   box-shadow: 1px 1px 4px vars.$smoky-black;
   padding: 7px;
-  border: 1px solid vars.$raw-umber;
+  border: 1px solid var(--border-button);
   border-radius: 5px;
   font-size: 0.9rem;
 }
@@ -141,17 +149,17 @@ h3 {
 input[type='checkbox'] {
   cursor: pointer;
   transform: scale(1.5);
-  accent-color: vars.$cinereous;
+  accent-color: var(--button);
 }
 
 input,
 select,
 textarea {
   font-family: var(--font-nunito);
-  background-color: vars.$snow;
+  background-color: var(--input-bg);
+  color: var(--input-text);
   border: 1px solid vars.$outer-space;
   border-radius: 3px;
-  color: vars.$outer-space;
   box-shadow: 1px 1px 4px vars.$smoky-black;
   padding: 5px;
 }
@@ -172,12 +180,12 @@ textarea {
 
 .modal {
   max-width: 90vw;
-  background-color: vars.$isabelline;
+  background-color: var(--app-bg);
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid vars.$cinereous;
+  border: 2px solid var(--button);
   border-radius: 5px;
 
   .close {
@@ -203,42 +211,5 @@ textarea {
     border: 1px solid vars.$smoky-black;
     border-radius: 5px;
     box-shadow: 2px 2px 4px vars.$smoky-black;
-  }
-}
-
-hr {
-  color: vars.$cinereous;
-  margin: 5px 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .link, .collapse-expand {
-    color: vars.$cinereous;
-  }
-
-  input[type='checkbox'] {
-    accent-color: vars.$raw-umber;
-  }
-
-  input,
-  select,
-  textarea {
-    background-color: vars.$isabelline;
-    color: vars.$smoky-black;
-  }
-
-  .little-button {
-    background-color: vars.$raw-umber;
-    color: vars.$smoky-black;
-    border: 1px solid vars.$smoky-black;
-  }
-
-  .modal {
-    background-color: vars.$outer-space;
-    border: 2px solid vars.$raw-umber;
-  }
-
-  hr {
-    color: vars.$raw-umber;
   }
 }

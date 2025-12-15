@@ -17,14 +17,14 @@ export const sendContactForm = async (
   userEmail: string,
 ): Promise<ActionValidation> => {
   const contactTopic = formData.get('contactTopic')?.toString().trim();
-  const raw = formData.get('contactContent')?.toString().trim() ?? '';
-  const contactContent = escapeHtml(raw).replaceAll('\n', '<br>');
+  const contactContent = formData.get('contactContent')?.toString().trim() ?? '';
+  const normalizedContent = escapeHtml(contactContent).replaceAll('\n', '<br>');
 
   try {
     await sendEmail({
       to: 'm.dutfoy@gmail.com',
       subject: `Contact Aster :  ${contactTopic}`,
-      html: `<p><strong>De :</strong> ${userEmail}</p><p><strong>Contenu :</strong><br><br> ${contactContent}</p>`,
+      html: `<p><strong>De :</strong> ${userEmail}</p><p><strong>Contenu :</strong><br><br> ${normalizedContent}</p>`,
     });
 
     return {

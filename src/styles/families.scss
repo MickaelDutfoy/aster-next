@@ -35,7 +35,7 @@
     display: grid;
     grid-template-columns: 6fr 6fr auto;
     align-items: center;
-    border-bottom: 1px solid vars.$cinereous;
+    border-bottom: 1px solid var(--button);
 
     .action {
       display: flex;
@@ -46,11 +46,5 @@
 
   :last-child {
     border: none;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .families-list li {
-    border-color: vars.$raw-umber;
   }
 }
