@@ -8,7 +8,7 @@ export const UpdateFamily = ({ user, family }: { user: Member; family: Family })
   const t = useTranslations();
 
   return (
-    <div className="register-form">
+    <div className="family-form">
       <h3>{t('families.editInfoTitle')}</h3>
       <FamilyForm user={user} family={family} />
     </div>

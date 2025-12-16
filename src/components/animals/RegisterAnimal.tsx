@@ -8,7 +8,7 @@ export const RegisterAnimal = ({ user, families }: { user: Member; families: Fam
   const t = useTranslations();
 
   return (
-    <div className="register-form">
+    <div className="animal-form">
       <h3>{t('animals.addTitle')}</h3>
       <AnimalForm user={user} families={families} />
     </div>

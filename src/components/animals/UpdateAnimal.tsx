@@ -16,7 +16,7 @@ export const UpdateAnimal = ({
   const t = useTranslations();
 
   return (
-    <div className="register-form">
+    <div className="animal-form">
       <h3>{t('animals.editInfoTitle')}</h3>
       <AnimalForm user={user} animal={animal} families={families} />
     </div>

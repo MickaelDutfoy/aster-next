@@ -8,7 +8,7 @@ export const RegisterFamily = ({ user }: { user: Member }) => {
   const t = useTranslations();
 
   return (
-    <div className="register-form">
+    <div className="family-form">
       <h3>{t('families.addTitle')}</h3>
       <FamilyForm user={user} />
     </div>

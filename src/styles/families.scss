@@ -48,3 +48,54 @@
     border: none;
   }
 }
+
+.family-form {
+  p,
+  label {
+    font-size: 0.9rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .notice {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      align-self: center;
+      margin-bottom: 5px;
+    }
+  }
+
+  .form-tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 350px;
+    gap: 10px;
+
+    .labeled-date,
+    .labeled-select,
+    .labeled-checkbox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .labeled-checkbox {
+      margin: 0 10px;
+    }
+  }
+}
