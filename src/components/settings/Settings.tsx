@@ -10,7 +10,7 @@ export const Settings = () => {
 
   return (
     <div className="settings">
-      <p className="version">Aster v0.11.1</p>
+      <p className="version">Aster v0.11.2</p>
       <Logout />
       <div className="lang-change">
         <p>{t('settings.changeLanguage')}</p>

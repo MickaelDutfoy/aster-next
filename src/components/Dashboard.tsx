@@ -2,6 +2,7 @@
 
 import { Link } from '@/i18n/routing';
 import { Family, Member, Organization, PendingOrgRequest } from '@/lib/types';
+import { MemberRole, MemberStatus } from '@prisma/client';
 import { useTranslations } from 'next-intl';
 
 export const Dashboard = ({
@@ -23,7 +24,7 @@ export const Dashboard = ({
 
       {!org && <p>{t('dashboard.noOrg')}</p>}
 
-      {org?.userRole === 'SUPERADMIN' && (
+      {org?.userRole === MemberRole.SUPERADMIN && (
         <>
           <p>{t('dashboard.adminOf', { orgName: org.name })}</p>
 
@@ -39,14 +40,16 @@ export const Dashboard = ({
         </>
       )}
 
-      {org && families.every((family) => family.memberId !== user.id) && (
-        <div className="text-with-link">
-          <p>{t('dashboard.notFoster', { orgName: org.name })}</p>
-          <Link className="little-button" href="/families/new">
-            {t('common.submitSelf')}
-          </Link>
-        </div>
-      )}
+      {org &&
+        org.userStatus !== MemberStatus.PENDING &&
+        families.every((family) => family.memberId !== user.id) && (
+          <div className="text-with-link">
+            <p>{t('dashboard.notFoster', { orgName: org.name })}</p>
+            <Link className="little-button" href="/families/new">
+              {t('common.submitSelf')}
+            </Link>
+          </div>
+        )}
 
       <div className="text-with-link">
         <p>{t('dashboard.contactIntro')}</p>

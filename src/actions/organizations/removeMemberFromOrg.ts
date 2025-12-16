@@ -21,7 +21,7 @@ export const removeMemberFromOrg = async (
 
     revalidatePath('/organizations');
 
-    return { ok: true, status: 'success', message: "Ce membre a été retiré de l'association." };
+    return { ok: true, status: 'success', message: 'toasts.orgMemberRemoved' };
   } catch (err) {
     console.error(err);
         return {

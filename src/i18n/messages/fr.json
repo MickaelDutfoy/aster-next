@@ -36,7 +36,11 @@
     "familyAdd": "La famille a bien été ajoutée.",
     "alreadyMemberOfOrg": "Vous faites déjà partie de cette association.",
     "orgRequestSent": "Votre demande d'adhésion a été envoyée.",
+    "orgRequestCanceled": "Votre demande d'adhésion a été annulée.",
     "orgRegisterSuccess": "Votre association a bien été enregistrée.",
+    "orgRequestApproved": "Cette demande d'adhésion a été approuvée.",
+    "orgMemberRemoved": "Ce membre a été retiré de l'association.",
+    "orgLeft": "Vous avez quitté cette association.",
     "orgNameRequired": "Vous devez choisir un nom d'association.",
     "mustPickOrg": "Vous devez sélectionner une association existante.",
     "mobileAlert": "Aster est optimisé pour mobile — pensez au mode responsive (Ctrl+Shift+M)."

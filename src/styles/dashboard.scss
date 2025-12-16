@@ -47,6 +47,7 @@ header {
   height: 50px;
   font-weight: 700;
   text-shadow: 2px 2px 4px var(--input-text);
+  border-bottom: 2px solid var(--button);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +55,6 @@ header {
 
 .orga-select {
   padding: 10px 2px;
-  border-top: 2px solid var(--button);
   border-bottom: 2px solid var(--button);
   display: flex;
   flex-direction: row;

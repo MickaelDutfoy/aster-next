@@ -18,7 +18,7 @@ export const cancelOrgRequest = async (orgId: number): Promise<ActionValidation>
 
     revalidatePath('/organizations');
 
-    return { ok: true, message: "Votre demande d'adhésion a été annulée." };
+    return { ok: true, message: 'toasts.orgRequestCanceled' };
   } catch (err) {
     console.error(err);
     return {

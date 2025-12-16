@@ -5,10 +5,8 @@ import { Member } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { DeniedPage } from '../DeniedPage';
 import { showToast } from '../providers/ToastProvider';
-import { useUser } from '../providers/UserProvider';
 
-export const OrgList = () => {
-  const user: Member | null = useUser();
+export const OrgList = ({ user }: { user: Member }) => {
   if (!user) return <DeniedPage cause="error" />;
 
   const t = useTranslations();

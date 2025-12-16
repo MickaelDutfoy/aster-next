@@ -3,8 +3,6 @@ import { Header } from '@/components/Header';
 import { NavBarBottom } from '@/components/NavBarBottom';
 import { NavBarTop } from '@/components/NavBarTop';
 import { OrgSelector } from '@/components/organizations/OrgSelector';
-import { OrgProvider } from '@/components/providers/OrgProvider';
-import { UserProvider } from '@/components/providers/UserProvider';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
@@ -17,17 +15,15 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   const org: Organization | null = await getSelectedOrg(user);
 
   return (
-    <UserProvider value={user}>
-      <OrgProvider value={org}>
-        <div className="dashboard">
-          <NavBarTop />
-          <Header />
-          <OrgSelector />
-          <main>{children}</main>
-          <NavBarBottom />
-        </div>
-      </OrgProvider>
-    </UserProvider>
+    <>
+      <div className="dashboard">
+        <NavBarTop user={user} />
+        <Header />
+        <OrgSelector user={user} org={org} />
+        <main>{children}</main>
+        <NavBarBottom />
+      </div>
+    </>
   );
 };
 

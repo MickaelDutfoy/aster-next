@@ -21,9 +21,7 @@ export const OrgMembersList = ({
   org: Organization | null;
   members: MemberOfOrg[];
 }) => {
-  if (!org) {
-    return;
-  }
+
 
   const t = useTranslations();
 
@@ -132,6 +130,10 @@ export const OrgMembersList = ({
 
     return actions;
   };
+
+  if (!org || org.userStatus === MemberStatus.PENDING) {
+    return;
+  }
 
   return (
     <>
