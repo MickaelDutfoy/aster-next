@@ -36,7 +36,11 @@
     "familyAdd": "Fosterfamilien ble lagt til.",
     "alreadyMemberOfOrg": "Du er allerede medlem av denne organisasjonen.",
     "orgRequestSent": "Din forespørsel om medlemskap er sendt.",
+    "orgRequestCanceled": "Din forespørsel om medlemskap er kansellert.",
     "orgRegisterSuccess": "Organisasjonen din ble registrert.",
+    "orgRequestApproved": "Denne forespørselen ble godkjent.",
+    "orgMemberRemoved": "Dette medlemmet er fjernet fra organisasjonen.",
+    "orgLeft": "Du har forlot denne organisasjonen.",
     "orgNameRequired": "Du må skrive inn et organisasjonsnavn.",
     "mustPickOrg": "Du må velge en eksisterende organisasjon.",
     "mobileAlert": "Aster er optimalisert for mobil — prøv responsivt visning (Ctrl+Shift+M)."

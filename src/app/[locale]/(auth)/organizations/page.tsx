@@ -26,7 +26,7 @@ const Organizations = async () => {
         <SearchOrg />
       </div>
       <div className="pending-list">
-        <OrgList />
+        <OrgList user={user} />
       </div>
       <div>
         <OrgMembersList user={user} org={org} members={members} />

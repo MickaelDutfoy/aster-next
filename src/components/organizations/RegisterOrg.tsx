@@ -2,11 +2,12 @@
 
 import { registerOrg } from '@/actions/organizations/registerOrg';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const RegisterOrg = () => {
   const t = useTranslations();
+  const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,6 +32,9 @@ export const RegisterOrg = () => {
         ...res,
         message: res.message ? t(res.message) : undefined,
       });
+      if (res.ok) {
+        formRef.current?.reset();
+      }
     } catch (err) {
       showToast({
         ok: false,
@@ -46,7 +50,7 @@ export const RegisterOrg = () => {
     <>
       <h3>{t('organizations.registerTitle')}</h3>
 
-      <form onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <input type="text" name="orgName" placeholder={t('organizations.orgNamePlaceholder')} />
 
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>

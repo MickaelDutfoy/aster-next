@@ -1,7 +1,7 @@
 'use client';
 
 import { markIntroSeen } from '@/actions/intro/markIntroSeen';
-import { LanguageSelector } from '@/components/LanguageSelector';
+import { LanguageSelector } from '@/components/settings/LanguageSelector';
 import { Language } from '@/lib/types';
 import '@/styles/intro.scss';
 import { useLocale, useTranslations } from 'next-intl';

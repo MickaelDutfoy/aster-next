@@ -5,17 +5,12 @@ import { useRouter } from '@/i18n/routing';
 import { Member, Organization } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { useTranslations } from 'next-intl';
-import { useOrg } from '../providers/OrgProvider';
-import { useUser } from '../providers/UserProvider';
 
-export const OrgSelector = () => {
-  const user: Member | null = useUser();
+export const OrgSelector = ({ user, org }: { user: Member; org: Organization | null }) => {
   const router = useRouter();
-  const org: Organization | null = useOrg();
-
   const t = useTranslations();
 
-  if (!user || !user.organizations?.length) return null;
+  if (!user || !org) return null;
 
   return (
     <>

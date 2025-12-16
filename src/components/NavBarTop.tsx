@@ -4,10 +4,8 @@ import { Link, usePathname } from '@/i18n/routing';
 import { Member } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { Cat, FolderOpen, MapPinned, Users } from 'lucide-react';
-import { useUser } from './providers/UserProvider';
 
-export const NavBarTop = () => {
-  const user: Member | null = useUser();
+export const NavBarTop = ({ user }: { user: Member }) => {
   const pathname = usePathname();
 
   const disableMenu = (): string => {

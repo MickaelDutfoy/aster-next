@@ -43,7 +43,8 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     !animalForm.name ||
     !animalForm.species ||
     !animalForm.birthDate ||
-    (animalForm.status === 'ADOPTED' && !adopterForm.fullName)
+    (animalForm.status === AnimalStatus.ADOPTED && !adopterForm.fullName) ||
+    (animalForm.status === AnimalStatus.FOSTERED && !animalFamilyId)
   ) {
     return { animal: undefined, adopter: undefined };
   }

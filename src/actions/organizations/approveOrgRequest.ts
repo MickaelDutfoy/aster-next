@@ -23,7 +23,7 @@ export const approveOrgRequest = async (
 
     revalidatePath('/organizations');
 
-    return { ok: true, status: 'success', message: "Cette demande d'adhésion a été approuvée." };
+    return { ok: true, status: 'success', message: 'toasts.orgRequestApproved' };
   } catch (err) {
     console.error(err);
         return {

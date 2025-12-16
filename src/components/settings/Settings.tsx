@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Logout } from './auth/Logout';
+import { Logout } from '../auth/Logout';
 import { LanguageSelector } from './LanguageSelector';
 import { ThemeSelector } from './ThemeSelector';
 
@@ -10,11 +10,11 @@ export const Settings = () => {
 
   return (
     <div className="settings">
-      <p className="version">Aster v0.11.1</p>
+      <p className="version">Aster v0.11.2</p>
       <Logout />
       <div className="lang-change">
         <p>{t('settings.changeLanguage')}</p>
-        <LanguageSelector size={32} />
+        <LanguageSelector size={26} />
       </div>
       <ThemeSelector />
     </div>

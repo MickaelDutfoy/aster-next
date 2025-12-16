@@ -36,7 +36,11 @@
     "familyAdd": "The family has been successfully added.",
     "alreadyMemberOfOrg": "You are already a member of this organization.",
     "orgRequestSent": "Your membership request has been sent.",
+    "orgRequestCanceled": "Your membership request has been cancelled.",
     "orgRegisterSuccess": "Your organization has been successfully registered.",
+    "orgRequestApproved": "This request has been approved.",
+    "orgMemberRemoved": "This member has been removed from this organization.",
+    "orgLeft": "You have left this organization.",
     "orgNameRequired": "You must enter an organization name.",
     "mustPickOrg": "You must select an existing organization.",
     "mobileAlert": "Aster is optimized for mobile — consider using responsive mode (Ctrl+Shift+M)."

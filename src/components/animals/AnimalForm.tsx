@@ -44,9 +44,16 @@ export const AnimalForm = ({
     const species = formData.get('animalSpecies')?.toString().trim();
     const birthDate = formData.get('animalBirthDate')?.toString().trim();
     const statusFromForm = formData.get('animalStatus')?.toString();
+    const animalFamily = Number(formData.get('animalFamily'));
     const adopterFullName = formData.get('adopterFullName')?.toString().trim();
 
-    if (!name || !species || !birthDate || (statusFromForm === 'ADOPTED' && !adopterFullName)) {
+    if (
+      !name ||
+      !species ||
+      !birthDate ||
+      (statusFromForm === AnimalStatus.ADOPTED && !adopterFullName) ||
+      (statusFromForm === AnimalStatus.FOSTERED && !animalFamily)
+    ) {
       showToast({
         ok: false,
         status: 'error',

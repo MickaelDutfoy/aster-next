@@ -18,7 +18,7 @@ export const leaveOrg = async (orgId: number): Promise<ActionValidation> => {
 
     revalidatePath('/organizations');
 
-    return { ok: true, message: "Vous avez quitté cette association." };
+    return { ok: true, message: 'toasts.orgLeft' };
   } catch (err) {
     console.error(err);
         return {
