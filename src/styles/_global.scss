@@ -197,8 +197,10 @@ textarea {
 }
 
 .lang-select {
+  padding-top: 4px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
 
   button {

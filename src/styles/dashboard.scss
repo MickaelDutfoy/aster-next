@@ -89,7 +89,7 @@ header {
 .text-with-link > a {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   text-decoration: none;
 }
 
@@ -155,10 +155,11 @@ header {
   }
 
   .form-tab {
+    margin: 5px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 500px;
+    min-height: 450px;
     gap: 10px;
 
     .labeled-date,

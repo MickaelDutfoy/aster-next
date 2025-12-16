@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Logout } from './auth/Logout';
+import { Logout } from '../auth/Logout';
 import { LanguageSelector } from './LanguageSelector';
 import { ThemeSelector } from './ThemeSelector';
 
@@ -14,7 +14,7 @@ export const Settings = () => {
       <Logout />
       <div className="lang-change">
         <p>{t('settings.changeLanguage')}</p>
-        <LanguageSelector size={32} />
+        <LanguageSelector size={26} />
       </div>
       <ThemeSelector />
     </div>

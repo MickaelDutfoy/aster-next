@@ -42,7 +42,7 @@ export const Dashboard = ({
       {org && families.every((family) => family.memberId !== user.id) && (
         <div className="text-with-link">
           <p>{t('dashboard.notFoster', { orgName: org.name })}</p>
-          <Link className="little-button" href="/families">
+          <Link className="little-button" href="/families/new">
             {t('common.submitSelf')}
           </Link>
         </div>
