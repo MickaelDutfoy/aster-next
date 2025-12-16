@@ -121,7 +121,11 @@ export const OrgMembersList = ({
       });
     }
 
-    if (user.id === member.id && member.status === MemberStatus.VALIDATED) {
+    if (
+      user.id === member.id &&
+      member.status === MemberStatus.VALIDATED &&
+      member.role !== MemberRole.SUPERADMIN
+    ) {
       actions.push({
         name: t('organizations.actions.leaveOrg'),
         handler: () => handleLeaveOrg(org.id),
@@ -138,7 +142,6 @@ export const OrgMembersList = ({
   return (
     <>
       <h3>{t('organizations.membersListTitle', { orgName: org.name })}</h3>
-
       <ul className="members-list">
         {members
           .sort((a, b) =>
@@ -148,7 +151,6 @@ export const OrgMembersList = ({
           )
           .map((member) => {
             const actions = buildActionsForMember(member, org, user);
-
             return (
               <li key={member.id}>
                 <span>
