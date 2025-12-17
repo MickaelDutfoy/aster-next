@@ -7,8 +7,11 @@ import { registerSchema } from '@/lib/schemas/authSchemas';
 import { ActionValidation } from '@/lib/types';
 import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
 import bcrypt from 'bcryptjs';
+import { getTranslations } from 'next-intl/server';
 
-export const register = async (formdata: FormData): Promise<ActionValidation> => {
+export const register = async (formdata: FormData, locale: string): Promise<ActionValidation> => {
+  const t = await getTranslations({ locale, namespace: 'emails' });
+
   const newUserForm = {
     firstName: formdata.get('userFirstName')?.toString().trim(),
     lastName: formdata.get('userLastName')?.toString().trim(),
@@ -51,39 +54,15 @@ export const register = async (formdata: FormData): Promise<ActionValidation> =>
 
     await sendEmail({
       to: newUser.email,
-      subject: 'Bienvenue sur Aster !',
+      subject: t('register.subject'),
       html: `
-              <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 24px">
-                <div style="text-align: center; margin-bottom: 24px">
-                  <img
-                    src="https://aster-pearl.vercel.app/icons/aster-icon-192.png"
-                    alt="Logo Aster"
-                    width="64"
-                    style="border-radius: 8px"
-                  />
-                  <h1 style="font-size: 20px; margin: 16px 0 0">Aster</h1>
-                </div>
-
-                <p>Bonjour,</p>
-                <p>Votre compte sur Aster a bien été créé !</p>
-
-                <p>
-                  Aster est une application open-source, gratuite et sans publicité, pensée pour simplifier le
-                  travail des associations de protection animale.
-                </p>
-                <p>
-                  Développée par une seule personne, elle évolue progressivement : certaines fonctionnalités
-                  arriveront avec le temps et quelques imperfections peuvent subsister — merci pour votre patience
-                  et votre indulgence.
-                </p>
-                <p>
-                  Que vous soyez bénévole, famille d’accueil ou membre d’une association, j’espère qu’Aster vous
-                  aidera à gagner du temps pour vous concentrer sur l’essentiel : les animaux.
-                </p>
-
-                <p>À bientôt sur Aster 🐾</p>
-              </div>
-            `,
+        <p>${t('common.hello')}</p>
+        <p>${t('register.accountCreated')}</p>
+        <p>${t('register.p1')}</p>
+        <p>${t('register.p2')}</p>
+        <p>${t('register.p3')}</p>
+        <p>${t('common.footer')}</p>
+      `,
     });
 
     return { ok: true, status: 'success', message: 'auth.register.success' };
@@ -98,10 +77,10 @@ export const register = async (formdata: FormData): Promise<ActionValidation> =>
       };
     }
 
-        return {
-          ok: false,
-          status: 'error',
-          message: 'toasts.errorGeneric',
-        };
+    return {
+      ok: false,
+      status: 'error',
+      message: 'toasts.errorGeneric',
+    };
   }
 };

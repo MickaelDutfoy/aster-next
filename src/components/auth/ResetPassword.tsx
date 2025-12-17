@@ -3,12 +3,13 @@
 import { sendResetPasswordMail } from '@/actions/auth/sendResetPasswordMail';
 import { resetPasswordSchema } from '@/lib/schemas/authSchemas';
 import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 
 export const ResetPassword = () => {
   const t = useTranslations();
+  const locale = useLocale();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,7 +30,7 @@ export const ResetPassword = () => {
 
     setIsLoading(true);
     try {
-      const res = await sendResetPasswordMail(formData);
+      const res = await sendResetPasswordMail(formData, locale);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,

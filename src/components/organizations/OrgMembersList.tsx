@@ -21,12 +21,13 @@ export const OrgMembersList = ({
   org: Organization | null;
   members: MemberOfOrg[];
 }) => {
-
+  const BOTTOM_NO_GO = 80;
 
   const t = useTranslations();
-
+  const [menuDirection, setMenuDirection] = useState<'down' | 'up'>('down');
   const [openMenuMemberId, setOpenMenuMemberId] = useState<number | null>(null);
   const menuRef = useRef<HTMLUListElement | null>(null);
+  const triggerRefs = useRef(new Map<number, SVGSVGElement>());
 
   useEffect(() => {
     if (!openMenuMemberId) return;
@@ -46,12 +47,24 @@ export const OrgMembersList = ({
     };
   }, [openMenuMemberId]);
 
-  const rolesAndStatusMap = {
-    PENDING: 'En attente',
-    VALIDATED: '',
-    MEMBER: '',
-    SUPERADMIN: 'Admin',
-  };
+  useEffect(() => {
+    if (!openMenuMemberId) return;
+
+    requestAnimationFrame(() => {
+      const menu = menuRef.current;
+      const trigger = triggerRefs.current.get(openMenuMemberId);
+      if (!menu || !trigger) return;
+
+      const triggerRect = trigger.getBoundingClientRect();
+
+      const menuHeight = menu.offsetHeight;
+
+      const bottomLimit = window.innerHeight - BOTTOM_NO_GO;
+      const wouldOverflowBottom = triggerRect.bottom + 30 + menuHeight > bottomLimit;
+
+      setMenuDirection(wouldOverflowBottom ? 'up' : 'down');
+    });
+  }, [openMenuMemberId]);
 
   const handleApproveRequest = async (memberId: number, orgId: number) => {
     const res = await approveOrgRequest(memberId, orgId);
@@ -136,7 +149,7 @@ export const OrgMembersList = ({
   };
 
   if (!org || org.userStatus === MemberStatus.PENDING) {
-    return;
+    return null;
   }
 
   return (
@@ -156,24 +169,29 @@ export const OrgMembersList = ({
                 <span>
                   {member.firstName} {member.lastName}
                 </span>
-
                 <span>
                   {t(`organizations.roles.${member.role}`)}
                   {t(`organizations.status.${member.status}`)}
                 </span>
-
                 <span className="action">
                   <EllipsisVertical
+                    ref={(el) => {
+                      if (el) triggerRefs.current.set(member.id, el);
+                      else triggerRefs.current.delete(member.id);
+                    }}
                     className={clsx(actions.length === 0 ? 'disabled' : 'link')}
                     size={26}
-                    onClick={() =>
-                      actions.length > 0 &&
-                      setOpenMenuMemberId((current) => (current === member.id ? null : member.id))
-                    }
+                    onClick={() => {
+                      if (actions.length === 0) return;
+                      setMenuDirection('down');
+                      setOpenMenuMemberId((current) => (current === member.id ? null : member.id));
+                    }}
                   />
-
                   {openMenuMemberId === member.id && actions.length > 0 && (
-                    <ul className="action-list" ref={menuRef}>
+                    <ul
+                      className={clsx('action-list', menuDirection === 'up' && 'up')}
+                      ref={menuRef}
+                    >
                       {actions.map((action) => (
                         <li key={action.name} onClick={action.handler}>
                           {action.name}

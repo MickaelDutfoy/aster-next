@@ -4,13 +4,14 @@ import { register } from '@/actions/auth/register';
 import { useRouter } from '@/i18n/routing';
 import { registerSchema } from '@/lib/schemas/authSchemas';
 import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../providers/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const Register = () => {
   const t = useTranslations();
+  const locale = useLocale();
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +42,7 @@ export const Register = () => {
 
     setIsLoading(true);
     try {
-      const res = await register(formData);
+      const res = await register(formData, locale);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,

@@ -270,5 +270,27 @@
     "system": "System",
     "dark": "Mørk",
     "light": "Lys"
+  },
+
+  "emails": {
+    "common": {
+      "hello": "Hei,",
+      "footer": "Sees snart på Aster 🐾"
+    },
+    "register": {
+      "subject": "Velkommen til Aster!",
+      "accountCreated": "Kontoen din på Aster er opprettet!",
+      "p1": "Aster er en åpen kildekode-app, gratis og uten reklame, laget for å forenkle arbeidet til dyrevernorganisasjoner.",
+      "p2": "Den er utviklet av én person og forbedres gradvis: noen funksjoner kommer etter hvert, og det kan fortsatt finnes små feil — takk for tålmodigheten og forståelsen.",
+      "p3": "Enten du er frivillig, fosterhjem eller medlem av en organisasjon, håper jeg at Aster hjelper deg å spare tid slik at du kan fokusere på det viktigste: dyrene."
+    },
+    "resetPassword": {
+      "subject": "Aster – tilbakestill passordet ditt",
+      "intro": "Du ba om å tilbakestille passordet ditt på Aster.",
+      "ctaIntro": "For å velge et nytt passord, klikk på lenken nedenfor:",
+      "cta": "Angi nytt passord",
+      "expiry": "Denne lenken er gyldig i 1 time. Etter det må du be om en ny tilbakestillingslenke.",
+      "ignore": "Hvis du ikke ba om dette, kan du se bort fra denne e-posten."
+    }
   }
 }
