@@ -13,14 +13,14 @@
   color: var(--text);
   border: 3px solid var(--input-text);
   border-radius: 10px;
-  overflow-y: auto;
+
   z-index: 2;
   opacity: 0.9;
 
   main {
     padding: 2px;
     flex: 1;
-    overflow: auto;
+      overflow-y: auto;
   }
 }
 
@@ -81,7 +81,7 @@ header {
   .active {
     background-color: var(--active-tab);
     font-weight: 700;
-    border-bottom: 3px solid vars.$cinereous;
+    border-bottom: 3px solid var(--link);
   }
 }
 

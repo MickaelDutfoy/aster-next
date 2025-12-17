@@ -270,5 +270,27 @@
     "system": "Système",
     "dark": "Sombre",
     "light": "Clair"
+  },
+  "emails": {
+    "common": {
+      "hello": "Bonjour,",
+      "footer": "À bientôt sur Aster 🐾"
+    },
+    "register": {
+      "subject": "Bienvenue sur Aster !",
+      "accountCreated": "Votre compte sur Aster a bien été créé !",
+      "p1": "Aster est une application open-source, gratuite et sans publicité, pensée pour simplifier le travail des associations de protection animale.",
+      "p2": "Développée par une seule personne, elle évolue progressivement : certaines fonctionnalités arriveront avec le temps et quelques imperfections peuvent subsister — merci pour votre patience et votre indulgence.",
+      "p3": "Que vous soyez bénévole, famille d’accueil ou membre d’une association, j’espère qu’Aster vous aidera à gagner du temps pour vous concentrer sur l’essentiel : les animaux."
+    },
+    "resetPassword": {
+      "subject": "Aster – réinitialisation de votre mot de passe",
+      "intro": "Vous avez demandé à réinitialiser votre mot de passe Aster.",
+      "ctaIntro": "Pour choisir un nouveau mot de passe, cliquez sur le lien ci-dessous :",
+      "cta": "Définir un nouveau mot de passe",
+      "expiry": "Ce lien est valable pendant 1 heure. Passé ce délai, il faudra refaire une demande de réinitialisation.",
+      "ignore": "Si vous n’êtes pas à l’origine de cette demande, vous pouvez ignorer ce message."
+    }
   }
 }
+

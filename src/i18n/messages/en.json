@@ -270,5 +270,26 @@
     "system": "System",
     "dark": "Dark",
     "light": "Light"
+  },
+  "emails": {
+    "common": {
+      "hello": "Hello,",
+      "footer": "See you soon on Aster 🐾"
+    },
+    "register": {
+      "subject": "Welcome to Aster!",
+      "accountCreated": "Your Aster account has been created!",
+      "p1": "Aster is an open-source app, free and ad-free, designed to simplify the work of animal welfare associations.",
+      "p2": "Built by a single person, it evolves gradually: some features will come over time and a few imperfections may remain — thanks for your patience and understanding.",
+      "p3": "Whether you are a volunteer, a foster family, or a member of an association, I hope Aster helps you save time so you can focus on what matters most: the animals."
+    },
+    "resetPassword": {
+      "subject": "Aster – reset your password",
+      "intro": "You requested to reset your Aster password.",
+      "ctaIntro": "To choose a new password, click the link below:",
+      "cta": "Set a new password",
+      "expiry": "This link is valid for 1 hour. After that, you’ll need to request a new reset link.",
+      "ignore": "If you didn’t request this, you can ignore this email."
+    }
   }
 }
