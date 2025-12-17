@@ -65,6 +65,7 @@ export const Intro = () => {
           <h2>{t('intro.whatsNextTitle')}</h2>
           <p>{t('intro.whatsNextParagraph1')}</p>
           <p>{t('intro.whatsNextParagraph2')}</p>
+          <p>{t('intro.whatsNextParagraph3')}</p>
           <p>{t('intro.whatsNextQuestion')}</p>
           <button className="main-button" onClick={nextFrame}>
             {t('common.letsGo')}
