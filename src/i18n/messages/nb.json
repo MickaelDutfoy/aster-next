@@ -48,17 +48,18 @@
   "intro": {
     "selectLanguage": "Velg språk:",
     "welcomeTitle": "Velkommen til Aster!",
-    "welcomeSubtitle": "«Å hjelpe dem som hjelper.»",
-    "whyTitle": "Hva er vitsen?",
-    "whyWhatIsAster": "Aster er en administrasjonsløsning for dyrevernorganisasjoner.",
-    "whyHowHelps": "Ved å samle kalenderen din, kartet over fosterhjem og oppgavelisten din, gjør Aster hverdagen litt enklere.",
+    "welcomeSubtitle": "« Å hjelpe dem som hjelper. »",
+    "whyTitle": "Hvorfor?",
+    "whyWhatIsAster": "Aster er en administrasjonsapp for dyrevernorganisasjoner.",
+    "whyHowHelps": "Ved å samle frivillige og sentralisere data om dyr og fosterhjem, blir Aster det felles, digitale minnet til organisasjonen din.",
     "howTitle": "Hvordan fungerer det?",
-    "howFirstParagraph": "Opprett en konto, registrer organisasjonen din, inviter medlemmer og legg til fosterhjem og dyr.",
-    "howSecondParagraph": "Aster er 100 % gratis og uten reklame – målet er bare å hjelpe dem som gjør alt for dyrene.",
+    "howFirstParagraph": "Opprett en konto, registrer organisasjonen din, inviter medlemmer til å bli med, og legg deretter til fosterhjem og dyr.",
+    "howSecondParagraph": "Aster er 100 % gratis og uten reklame, og har ett mål: å hjelpe dem som gjør alt for å hjelpe dyr.",
     "whatsNextTitle": "Hva skjer videre?",
-    "whatsNextParagraph1": "Fra dashbordet kan du se fosterhjemmene dine på et kart og raskt se hvilke som er ledige.",
-    "whatsNextParagraph2": "Du kan også se dyr som venter på plassering, de som er klare for adopsjon, og gå til kalenderen for å følge opp oppgaver og fordele dem i teamet.",
-    "whatsNextQuestion": "Skal vi sette i gang?"
+    "whatsNextParagraph1": "Når fosterhjem og dyr er registrert, kan du enkelt følge med på vaksinepåminnelser, ledige fosterhjem og pågående adopsjoner.",
+    "whatsNextParagraph2": "Aster er laget for å hjelpe uten å legge føringer, derfor er de fleste opplysninger valgfrie – du bestemmer selv hva som er viktig for deg.",
+    "whatsNextParagraph3": "Appen er i kontinuerlig utvikling, og nye funksjoner er stadig på vei!",
+    "whatsNextQuestion": "Så… skal vi sette i gang?"
   },
   "auth": {
     "emailLabel": "E-post:",
@@ -271,7 +272,6 @@
     "dark": "Mørk",
     "light": "Lys"
   },
-
   "emails": {
     "common": {
       "hello": "Hei,",

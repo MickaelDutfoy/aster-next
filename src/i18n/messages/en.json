@@ -48,17 +48,18 @@
   "intro": {
     "selectLanguage": "Select language:",
     "welcomeTitle": "Welcome to Aster!",
-    "welcomeSubtitle": "\"Helping those who help.\"",
-    "whyTitle": "What is it for?",
-    "whyWhatIsAster": "Aster is a management app for animal welfare organizations.",
-    "whyHowHelps": "By bringing together your schedule, your foster families map and your to-do list, Aster is here to make your work easier.",
+    "welcomeSubtitle": "“Helping those who help.”",
+    "whyTitle": "Why?",
+    "whyWhatIsAster": "Aster is a management app for animal welfare associations.",
+    "whyHowHelps": "By bringing your volunteers together and centralizing data about your animals and foster families, Aster becomes the shared, connected memory of your association.",
     "howTitle": "How does it work?",
-    "howFirstParagraph": "Create an account, register your organization, invite your members, and add your foster families and animals.",
-    "howSecondParagraph": "100% free and ad-free, Aster has only one goal: helping the people who do everything to help animals.",
+    "howFirstParagraph": "Create an account, register your association, invite members to join, then add your foster families and animals.",
+    "howSecondParagraph": "100% free and ad-free, Aster has a single goal: helping those who do everything they can to help animals.",
     "whatsNextTitle": "What’s next?",
-    "whatsNextParagraph1": "From your dashboard, you can see your foster families on a map and instantly spot which ones are available.",
-    "whatsNextParagraph2": "You can also see animals waiting for placement, those ready for adoption, and access your schedule to manage your tasks and share them with the rest of the team.",
-    "whatsNextQuestion": "Ready to get started?"
+    "whatsNextParagraph1": "Once your foster families and animals are listed, you can easily track vaccine reminders, available foster homes, and ongoing adoptions.",
+    "whatsNextParagraph2": "Aster aims to help without constraining, which is why most information is optional: you decide what matters to you.",
+    "whatsNextParagraph3": "The app is constantly evolving, with new features regularly on the way!",
+    "whatsNextQuestion": "So… shall we get started?"
   },
   "auth": {
     "emailLabel": "Email:",
