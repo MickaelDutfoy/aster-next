@@ -2,15 +2,16 @@
 import { joinOrg } from '@/actions/organizations/joinOrg';
 import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
-import { showToast } from '../providers/ToastProvider';
+import { showToast } from '../app/ToastProvider';
 
 export const SearchOrg = () => {
   const t = useTranslations();
+  const locale = useLocale();
   const [query, setQuery] = useState('');
   const [picked, setPicked] = useState(false);
-  const [pickedOrg, setPickedOrg] = useState<number>(0);
+  const [pickedOrg, setPickedOrg] = useState<Organization | null>(null);
   const [matchingOrgs, setMatchingOrgs] = useState<Organization[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const suppressFetch = useRef(false);
@@ -48,7 +49,7 @@ export const SearchOrg = () => {
 
     setIsLoading(true);
     try {
-      const res = await joinOrg(pickedOrg);
+      const res = await joinOrg(pickedOrg, locale);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,
@@ -82,7 +83,7 @@ export const SearchOrg = () => {
           onChange={(e) => {
             setQuery(e.target.value);
             setPicked(false);
-            setPickedOrg(0);
+            setPickedOrg(null);
           }}
         />
         <button
@@ -102,7 +103,7 @@ export const SearchOrg = () => {
               onClick={() => {
                 fillSearchField(org.name);
                 setPicked(true);
-                setPickedOrg(org.id);
+                setPickedOrg(org);
               }}
             >
               {org.name} {org.superAdmin && <span>({org.superAdmin})</span>}

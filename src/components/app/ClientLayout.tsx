@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
-import { showToast } from './providers/ToastProvider';
+import { showToast } from './ToastProvider';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const t = useTranslations();

@@ -1,4 +1,4 @@
-import { DeniedPage } from '@/components/DeniedPage';
+import { DeniedPage } from '@/components/layout/DeniedPage';
 
 const Map = () => {
   return <DeniedPage cause="soon" />;

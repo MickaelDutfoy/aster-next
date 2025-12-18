@@ -1,6 +1,6 @@
-import { DeniedPage } from '@/components/DeniedPage';
-import { Modal } from '@/components/Modal';
 import { DeleteAnimal } from '@/components/animals/DeleteAnimal';
+import { Modal } from '@/components/app/Modal';
+import { DeniedPage } from '@/components/layout/DeniedPage';
 import { getAnimalById } from '@/lib/animals/getAnimalById';
 import { Animal } from '@/lib/types';
 
