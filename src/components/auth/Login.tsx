@@ -4,7 +4,7 @@ import { login } from '@/actions/auth/login';
 import { Link, useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../providers/ToastProvider';
+import { showToast } from '../app/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const Login = () => {

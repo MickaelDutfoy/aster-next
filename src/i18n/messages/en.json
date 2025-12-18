@@ -29,6 +29,7 @@
     "requiredFieldsMissing": "Some required fields are missing.",
     "termsNotAccepted": "You must accept the terms.",
     "noUser": "User not authenticated.",
+    "notAllowed": "Unauthorized access.",
     "modifySuccess": "The information has been updated.",
     "animalDelete": "The animal has been successfully deleted.",
     "animalAdd": "The animal has been successfully added.",
@@ -146,7 +147,14 @@
     "pendingIntro": "You have membership requests to review.",
     "pendingSee": "View",
     "contactIntro": "Issue? Suggestion? Send me a message!",
-    "contactLink": "Contact"
+    "contactLink": "Contact",
+    "changelog": {
+      "title": "What’s new in Aster?",
+      "items": [
+        "Improved security when editing an animal or a foster family.",
+        "Email notifications are now sent when a member requests to join an association, and when that request is approved."
+      ]
+    }
   },
   "animals": {
     "editInfoTitle": "Edit animal",
@@ -291,6 +299,18 @@
       "cta": "Set a new password",
       "expiry": "This link is valid for 1 hour. After that, you’ll need to request a new reset link.",
       "ignore": "If you didn’t request this, you can ignore this email."
+    },
+    "orgRequestApproved": {
+      "subject": "Aster – membership to {orgName} approved",
+      "content1": "You are receiving this message because you submitted a membership request to {orgName} in the application.",
+      "content2": "This request has just been approved by the association administrator.",
+      "content3": "You can now access the association’s features in Aster."
+    },
+    "orgRequestSend": {
+      "subject": "Aster – membership request to {orgName}",
+      "content1": "You are receiving this message because a membership request has been submitted to {orgName}, where you are an administrator.",
+      "content2": "This request was submitted by {memberFullName}.",
+      "content3": "To approve or reject this request, open the app and go to the \"Organizations\" section."
     }
   }
 }

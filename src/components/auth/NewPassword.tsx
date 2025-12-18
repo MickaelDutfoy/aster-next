@@ -6,7 +6,7 @@ import { newPasswordSchema } from '@/lib/schemas/authSchemas';
 import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../providers/ToastProvider';
+import { showToast } from '../app/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const NewPassword = ({ token }: { token: string }) => {

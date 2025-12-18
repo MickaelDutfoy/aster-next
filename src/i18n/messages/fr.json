@@ -29,6 +29,7 @@
     "requiredFieldsMissing": "Des champs obligatoires sont incomplets.",
     "termsNotAccepted": "Vous devez accepter les conditions.",
     "noUser": "Utilisateur non authentifié.",
+    "notAllowed": "Accès non autorisé.",
     "modifySuccess": "Les informations ont été modifiées.",
     "animalDelete": "L'animal a bien été supprimé.",
     "animalAdd": "L'animal a bien été ajouté.",
@@ -146,7 +147,14 @@
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
     "contactIntro": "Un problème ? Une suggestion ? Envoyez-moi un message !",
-    "contactLink": "Contact"
+    "contactLink": "Contact",
+    "changelog": {
+      "title": "Quoi de neuf dans Aster ?",
+      "items": [
+        "Renforcement de la sécurité pour l'édition d'un animal ou d'une famille.",
+        "Envoi d'un e-mail lorsqu'un membre demande à rejoindre une association, et quand cette demande est validée."
+      ]
+    }
   },
   "animals": {
     "editInfoTitle": "Éditer l'animal",
@@ -291,6 +299,18 @@
       "cta": "Définir un nouveau mot de passe",
       "expiry": "Ce lien est valable pendant 1 heure. Passé ce délai, il faudra refaire une demande de réinitialisation.",
       "ignore": "Si vous n’êtes pas à l’origine de cette demande, vous pouvez ignorer ce message."
+    },
+    "orgRequestApproved": {
+      "subject": "Aster – adhésion à {orgName} approuvée",
+      "content1": "Vous recevez ce message car vous avez fait une demande d'adhésion à {orgName} dans l'application.",
+      "content2": "Celle-ci vient d'être validée par l'administrateur de l'association.",
+      "content3": "Vous pouvez maintenant accéder aux fonctionnalités de l’association dans Aster."
+    },
+    "orgRequestSend": {
+      "subject": "Aster – demande d'adhésion à {orgName}",
+      "content1": "Vous recevez ce message car une demande d'adhésion a été faite à {orgName}, dont vous êtes administrateur.",
+      "content2": "Cette demande a été formulée par {memberFullName}.",
+      "content3": "Pour approuver ou refuser cette demande, ouvrez l'application et rendez-vous dans la section \"Associations\"."
     }
   }
 }

@@ -4,7 +4,7 @@ import { deleteFamily } from '@/actions/families/deleteFamily';
 import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../providers/ToastProvider';
+import { showToast } from '../app/ToastProvider';
 
 export const DeleteFamily = ({ id }: { id: string }) => {
   const t = useTranslations();

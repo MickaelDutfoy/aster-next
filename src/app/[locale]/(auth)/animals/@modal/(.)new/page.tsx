@@ -1,6 +1,6 @@
-import { DeniedPage } from '@/components/DeniedPage';
-import { Modal } from '@/components/Modal';
 import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
+import { Modal } from '@/components/app/Modal';
+import { DeniedPage } from '@/components/layout/DeniedPage';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';

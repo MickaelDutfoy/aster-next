@@ -5,7 +5,7 @@ import { resetPasswordSchema } from '@/lib/schemas/authSchemas';
 import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../providers/ToastProvider';
+import { showToast } from '../app/ToastProvider';
 
 export const ResetPassword = () => {
   const t = useTranslations();

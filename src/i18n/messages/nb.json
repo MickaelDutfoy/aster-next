@@ -29,6 +29,7 @@
     "requiredFieldsMissing": "Noen obligatoriske felt mangler.",
     "termsNotAccepted": "Du må godta vilkårene.",
     "noUser": "Bruker ikke autentisert.",
+    "notAllowed": "Uautorisert tilgang.",
     "modifySuccess": "Informasjonen er oppdatert.",
     "animalDelete": "Dyret ble slettet.",
     "animalAdd": "Dyret ble lagt til.",
@@ -146,7 +147,14 @@
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
     "contactIntro": "Problem? Forslag? Send meg en melding!",
-    "contactLink": "Kontakt"
+    "contactLink": "Kontakt",
+    "changelog": {
+      "title": "Hva er nytt i Aster?",
+      "items": [
+        "Forbedret sikkerhet ved redigering av et dyr eller en fosterfamilie.",
+        "E-postvarsler sendes nå når et medlem ber om å bli med i en organisasjon, og når forespørselen blir godkjent."
+      ]
+    }
   },
   "animals": {
     "editInfoTitle": "Rediger dyret",
@@ -291,6 +299,18 @@
       "cta": "Angi nytt passord",
       "expiry": "Denne lenken er gyldig i 1 time. Etter det må du be om en ny tilbakestillingslenke.",
       "ignore": "Hvis du ikke ba om dette, kan du se bort fra denne e-posten."
+    },
+    "orgRequestApproved": {
+      "subject": "Aster – medlemskap i {orgName} godkjent",
+      "content1": "Du mottar denne meldingen fordi du har sendt en forespørsel om medlemskap i {orgName} i applikasjonen.",
+      "content2": "Forespørselen er nå godkjent av administratoren for organisasjonen.",
+      "content3": "Du har nå tilgang til organisasjonens funksjoner i Aster."
+    },
+    "orgRequestSend": {
+      "subject": "Aster – forespørsel om medlemskap i {orgName}",
+      "content1": "Du mottar denne meldingen fordi det er sendt en forespørsel om medlemskap i {orgName}, der du er administrator.",
+      "content2": "Forespørselen ble sendt av {memberFullName}.",
+      "content3": "For å godkjenne eller avslå denne forespørselen, åpne appen og gå til \"Organisasjoner\"."
     }
   }
 }

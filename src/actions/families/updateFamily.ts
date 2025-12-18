@@ -16,6 +16,20 @@ export const updateFamily = async (
   if (!user) {
     return { ok: false, status: 'error', message: 'toasts.noUser' };
   }
+  //
+  const animalPrev = await prisma.family.findUnique({
+    where: { id: familyId },
+    select: { orgId: true },
+  });
+
+  if (!animalPrev) {
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
+  }
+
+  const isMember = user.organizations?.some((org) => org.id === animalPrev.orgId);
+  if (!isMember) {
+    return { ok: false, status: 'error', message: 'toasts.notAllowed' };
+  }
 
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return { ok: false };

@@ -1,5 +1,5 @@
 import { AnimalDetails } from '@/components/animals/AnimalDetails';
-import { DeniedPage } from '@/components/DeniedPage';
+import { DeniedPage } from '@/components/layout/DeniedPage';
 import { getAnimalById } from '@/lib/animals/getAnimalById';
 import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';

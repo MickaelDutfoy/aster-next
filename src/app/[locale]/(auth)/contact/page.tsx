@@ -1,5 +1,5 @@
 import { ContactForm } from '@/components/ContactForm';
-import { DeniedPage } from '@/components/DeniedPage';
+import { DeniedPage } from '@/components/layout/DeniedPage';
 import { Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 

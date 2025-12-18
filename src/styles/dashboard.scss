@@ -13,14 +13,14 @@
   color: var(--text);
   border: 3px solid var(--input-text);
   border-radius: 10px;
-
   z-index: 2;
   opacity: 0.9;
 
   main {
     padding: 2px;
+    height: 100dvh;
     flex: 1;
-      overflow-y: auto;
+    overflow-y: auto;
   }
 }
 
@@ -121,7 +121,8 @@ header {
     text-align: center;
   }
 
-  p, button {
+  p,
+  button {
     align-self: center;
   }
 }
@@ -132,11 +133,33 @@ header {
   cursor: default;
 }
 
-.dash-content {
+.dash-contents {
+  height: 100%;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
-  gap: 10px;
+  justify-content: space-between;
+
+  .dash-links {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    gap: 10px;
+  }
+
+  .whats-new {
+    padding: 5px;
+    border: 1px solid var(--button);
+    border-radius: 5px;
+    font-size: 0.8rem;
+    max-height: 200px;
+    overflow-y: auto;
+
+    li {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  }
 }
 
 .notice {

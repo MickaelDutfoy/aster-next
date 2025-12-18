@@ -3,7 +3,7 @@
 import { registerOrg } from '@/actions/organizations/registerOrg';
 import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
-import { showToast } from '../providers/ToastProvider';
+import { showToast } from '../app/ToastProvider';
 
 export const RegisterOrg = () => {
   const t = useTranslations();

@@ -4,7 +4,7 @@ import { deleteAnimal } from '@/actions/animals/deleteAnimal';
 import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../providers/ToastProvider';
+import { showToast } from '../app/ToastProvider';
 
 export const DeleteAnimal = ({ id }: { id: string }) => {
   const animalId = Number(id);

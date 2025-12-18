@@ -1,6 +1,6 @@
-import { DeniedPage } from '@/components/DeniedPage';
 import { FamiliesList } from '@/components/families/FamiliesList';
 import { FamiliesPageActions } from '@/components/families/FamiliesPageActions';
+import { DeniedPage } from '@/components/layout/DeniedPage';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';

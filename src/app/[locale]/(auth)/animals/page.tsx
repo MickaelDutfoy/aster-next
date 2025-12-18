@@ -1,6 +1,6 @@
 import { AnimalsList } from '@/components/animals/AnimalList';
 import { AnimalsPageActions } from '@/components/animals/AnimalsPageActions';
-import { DeniedPage } from '@/components/DeniedPage';
+import { DeniedPage } from '@/components/layout/DeniedPage';
 import { getAnimalsByOrg } from '@/lib/animals/getAnimalsByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Animal, Member, Organization } from '@/lib/types';
