@@ -1,12 +1,25 @@
-import { cookies } from 'next/headers';
+import { prisma } from '../prisma';
 import { Member, Organization } from '../types';
 
 export const getSelectedOrg = async (user: Member): Promise<Organization | null> => {
-  const cookieStore = await cookies();
-  const orgIdCookie = Number(cookieStore.get('orgId')?.value);
-
   const org: Organization | null =
-    user?.organizations.find((org) => org.id === orgIdCookie) ?? user.organizations[0];
+    user.organizations.find((org) => org.id === user.selectedOrgId) ?? null;
+
+  if (!org) return null;
+
+  const memberId = user.id;
+  const orgId = org.id;
+
+  const memberOrg = await prisma.memberOrganization.findUnique({
+    where: { memberId_orgId: { memberId, orgId } },
+    select: {
+      status: true,
+      role: true,
+    },
+  });
+
+  org.userRole = memberOrg?.role;
+  org.userStatus = memberOrg?.status;
 
   return org;
 };

@@ -35,8 +35,8 @@ export const DeleteFamily = ({ id }: { id: string }) => {
   };
 
   return (
-    <>
-      <h3 style={{ paddingBottom: 10 }}>{t('families.deleteTitle')}</h3>
+    <div className="delete-popup">
+      <h3>{t('families.deleteTitle')}</h3>
       <p>{t('common.areYouSure')}</p>
       <div className="yes-no">
         <button
@@ -51,6 +51,6 @@ export const DeleteFamily = ({ id }: { id: string }) => {
           {t('common.cancel')}
         </button>
       </div>
-    </>
+    </div>
   );
 };

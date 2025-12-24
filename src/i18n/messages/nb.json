@@ -1,5 +1,6 @@
 {
   "common": {
+    "none": "Ingen",
     "view": "Se",
     "edit": "Rediger",
     "delete": "Slett",
@@ -41,6 +42,7 @@
     "orgRegisterSuccess": "Organisasjonen din ble registrert.",
     "orgRequestApproved": "Denne forespørselen ble godkjent.",
     "orgMemberRemoved": "Dette medlemmet er fjernet fra organisasjonen.",
+    "orgAdminTransfered": "Administratorrollen er overført.",
     "orgLeft": "Du har forlot denne organisasjonen.",
     "orgNameRequired": "Du må skrive inn et organisasjonsnavn.",
     "mustPickOrg": "Du må velge en eksisterende organisasjon.",
@@ -142,6 +144,7 @@
   "dashboard": {
     "welcome": "Velkommen, {name}!",
     "noOrg": "Du må først opprette eller bli med i en organisasjon.",
+    "orgPending": "Din forespørsel om medlemskap i {orgName} er fortsatt under behandling.",
     "adminOf": "Du er administrator for {orgName}.",
     "notFoster": "Er du fosterhjem for {orgName}?",
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
@@ -150,9 +153,13 @@
     "contactLink": "Kontakt",
     "changelog": {
       "title": "Hva er nytt i Aster?",
-      "items": [
+      "items0123": [
         "Forbedret sikkerhet ved redigering av et dyr eller en fosterfamilie.",
         "E-postvarsler sendes nå når et medlem ber om å bli med i en organisasjon, og når forespørselen blir godkjent."
+      ],
+      "items0130": [
+        "Forbedret grensesnitt for seksjonen «Organisasjoner».",
+        "Det er nå mulig å overføre administratorrollen i en organisasjon til et annet godkjent medlem."
       ]
     }
   },
@@ -227,11 +234,12 @@
     "prefillMeLabel": "Det er meg, bruk mine opplysninger:",
     "listTitle": "Registrerte fosterhjem for {orgName}:",
     "none": "Ingen fosterhjem registrert.",
+    "tips": "Du kan bruke en familie til å representere et dyretilfluktssted, et rom i et kattehus eller et annet oppholdssted.",
     "fields": {
-      "contactFullNamePlaceholder": "Navn på fosterhjemmet *",
-      "addressPlaceholderRequired": "Gate og nummer *",
-      "zipPlaceholderRequired": "Postnummer *",
-      "cityPlaceholderRequired": "Sted *"
+      "contactFullNamePlaceholder": "Navn på fosterhjemmet *",
+      "addressPlaceholderRequired": "Gate og nummer *",
+      "zipPlaceholderRequired": "Postnummer *",
+      "cityPlaceholderRequired": "Sted *"
     },
     "questions": {
       "hasChildren": "Er det barn i hjemmet?",
@@ -240,11 +248,16 @@
   },
   "organizations": {
     "yourOrganizations": "Dine organisasjoner:",
-    "pendingRequests": "Ventende medlemsforespørsler:",
     "membersListTitle": "Medlemsliste for {orgName}:",
+    "hiddenOrgMembers": "Forespørselen din om medlemskap er under behandling. Av hensyn til konfidensialitet kan du ikke se de andre medlemmene.",
     "registerTitle": "Registrer en ny organisasjon?",
     "orgNamePlaceholder": "Navn på organisasjonen",
     "searchExistingTitle": "Søk etter en eksisterende organisasjon?",
+    "seeDetails": "Se detaljer for {orgName}?",
+    "goToOrg": "Gå til organisasjonssiden",
+    "pickNewAdminTitle": "Utnevn en ny administrator",
+    "nobodyToTransferTo": "Det finnes ingen medlemmer å overføre rollen til.",
+    "pickAMember": "Velg et medlem:",
     "joinSubmit": "Bli med",
     "joinLoading": "Sender...",
     "roles": {
@@ -263,7 +276,8 @@
       "approveRequest": "Godkjenn forespørsel",
       "removeMember": "Fjern medlem",
       "cancelRequest": "Avbryt forespørsel",
-      "leaveOrg": "Forlat organisasjonen"
+      "leaveOrg": "Forlat organisasjonen",
+      "transferAdmin": "Overfør administratorrollen"
     }
   },
   "contact": {

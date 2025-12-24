@@ -51,9 +51,9 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
             </ul>
           )}
 
-          <h4 className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
+          <button className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
             {t('animals.toggleAdopted')} {hiddenAdopted ? '▸' : '▾'}
-          </h4>
+          </button>
 
           {!hiddenAdopted && (
             <ul className="animals-list">

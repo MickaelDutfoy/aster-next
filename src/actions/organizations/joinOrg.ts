@@ -33,6 +33,11 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
       },
     });
 
+    await prisma.member.update({
+      where: { id: user.id },
+      data: { selectedOrgId: org.id },
+    });
+
     try {
       const adminLink = await prisma.memberOrganization.findFirst({
         where: { orgId: org.id, role: MemberRole.SUPERADMIN },

@@ -31,7 +31,7 @@
 footer > nav {
   border-top: 2px solid var(--button);
 
-  a {
+  button {
     margin-top: 15px;
   }
 }
@@ -41,6 +41,12 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
 }
 
 header {
@@ -57,9 +63,64 @@ header {
   padding: 10px 2px;
   border-bottom: 2px solid var(--button);
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  p {
+    text-align: right;
+  }
+}
+
+.notice {
+  font-size: 0.85rem;
+}
+
+.long-notice {
+  padding-top: 5px;
+  font-size: 0.8rem;
+  text-align: justify;
+}
+
+.delete-popup {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.yes-no {
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.collapse-expand {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  user-select: none;
+  color: var(--link);
+}
+
+.tips {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  p {
+    font-size: 0.8rem;
+    text-align: justify;
+  }
+}
+
+.denied-page {
+  height: 100%;
+  margin: 0 20px;
+  display: grid;
+  place-items: center;
+  text-align: justify;
 }
 
 .tabs {
@@ -88,6 +149,7 @@ header {
 .text-with-link,
 .text-with-link > a {
   display: inline-flex;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   text-decoration: none;
@@ -147,10 +209,13 @@ header {
     gap: 10px;
   }
 
-  .whats-new {
+  .changelog {
+    margin: 5px;
     padding: 5px;
-    border: 1px solid var(--button);
+    background-color: var(--active-tab);
+    border: 2px solid var(--button);
     border-radius: 5px;
+    box-shadow: 2px 2px 8px vars.$smoky-black;
     font-size: 0.8rem;
     max-height: 200px;
     overflow-y: auto;
@@ -160,19 +225,6 @@ header {
       list-style: disc;
     }
   }
-}
-
-.notice {
-  font-size: 0.85rem;
-}
-
-.fixed-p {
-  padding: 5px 0;
-}
-
-.denied-page {
-  margin: 40px 30px;
-  text-align: center;
 }
 
 .clickable-list {
@@ -193,6 +245,7 @@ header {
   li {
     min-height: 36px;
     display: grid;
+    gap: 10px;
     grid-template-columns: 4fr 4fr 4fr auto;
     align-items: center;
     border-bottom: 1px solid var(--button);

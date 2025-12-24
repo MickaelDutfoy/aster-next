@@ -33,6 +33,7 @@
   li {
     min-height: 36px;
     display: grid;
+    gap: 10px;
     grid-template-columns: 6fr 6fr auto;
     align-items: center;
     border-bottom: 1px solid var(--button);

@@ -1,3 +1,5 @@
+import '@/styles/organizations.scss';
+
 export default function Layout({
   children,
   modal,

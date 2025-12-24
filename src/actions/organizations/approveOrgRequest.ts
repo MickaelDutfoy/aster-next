@@ -14,18 +14,14 @@ export const approveOrgRequest = async (
   locale: string,
 ): Promise<ActionValidation> => {
   const t = await getTranslations({ locale, namespace: 'emails' });
-
   const user: Member | null = await getUser();
   if (!user) {
     return { ok: false, status: 'error', message: 'toasts.noUser' };
   }
 
-  const memberId = member.id;
-  const orgId = org.id;
-
   try {
     await prisma.memberOrganization.update({
-      where: { memberId_orgId: { memberId, orgId } },
+      where: { memberId_orgId: { memberId: member.id, orgId: org.id } },
       data: { status: MemberStatus.VALIDATED },
     });
 

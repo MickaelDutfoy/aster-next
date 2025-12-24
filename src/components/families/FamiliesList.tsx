@@ -2,7 +2,7 @@
 
 import { Link } from '@/i18n/routing';
 import { Family, Organization } from '@/lib/types';
-import { SquareArrowRight } from 'lucide-react';
+import { Lightbulb, SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export const FamiliesList = ({ org, families }: { org: Organization; families: Family[] }) => {
@@ -14,7 +14,15 @@ export const FamiliesList = ({ org, families }: { org: Organization; families: F
         <div>
           <h3>{t('families.listTitle', { orgName: org.name })}</h3>
 
-          {families.length === 0 && <p style={{ padding: '10px' }}>{t('families.none')}</p>}
+          {families.length === 0 && (
+            <div style={{ padding: '10px' }}>
+              <p>{t('families.none')}</p>
+              <div className="tips">
+                <Lightbulb size={46} />
+                <p>{t('families.tips')}</p>
+              </div>
+            </div>
+          )}
 
           {families.length > 0 && (
             <ul className="families-list">
