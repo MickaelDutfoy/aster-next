@@ -30,6 +30,16 @@ export const Dashboard = ({
             </Link>
           </div>
         )}
+        {org?.userStatus === MemberStatus.PENDING && (
+          <>
+            <div className="text-with-link">
+              <p>{t('dashboard.orgPending', { orgName: org.name })}</p>
+              <Link className="little-button" href={`/organizations/${org.id}`}>
+                {t('dashboard.pendingSee')}
+              </Link>
+            </div>
+          </>
+        )}
         {org?.userRole === MemberRole.SUPERADMIN && (
           <>
             <p>{t('dashboard.adminOf', { orgName: org.name })}</p>
@@ -37,7 +47,7 @@ export const Dashboard = ({
             {pending && pending.length > 0 && (
               <div className="text-with-link">
                 <p>{t('dashboard.pendingIntro')}</p>
-                <Link className="little-button" href="/organizations">
+                <Link className="little-button" href={`/organizations/${org.id}`}>
                   {t('dashboard.pendingSee')}
                 </Link>
               </div>
@@ -61,11 +71,17 @@ export const Dashboard = ({
           </Link>
         </div>
       </div>
-      <div className="whats-new">
+      <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>
         <ul>
+          v0.13.0:
+          {t.raw('dashboard.changelog.items0130').map((item: string, index: number) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <ul>
           v0.12.3:
-          {t.raw('dashboard.changelog.items').map((item: string, index: number) => (
+          {t.raw('dashboard.changelog.items0123').map((item: string, index: number) => (
             <li key={index}>{item}</li>
           ))}
         </ul>

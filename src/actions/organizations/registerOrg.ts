@@ -36,6 +36,11 @@ export const registerOrg = async (formData: FormData): Promise<ActionValidation>
       },
     });
 
+    await prisma.member.update({
+      where: { id: user.id },
+      data: { selectedOrgId: res.id },
+    });
+
     revalidatePath('/organizations');
 
     return { ok: true, status: 'success', message: 'toasts.orgRegisterSuccess' };

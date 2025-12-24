@@ -1,5 +1,6 @@
 {
   "common": {
+    "none": "Aucune",
     "view": "Voir",
     "edit": "Modifier",
     "delete": "Supprimer",
@@ -41,6 +42,7 @@
     "orgRegisterSuccess": "Votre association a bien été enregistrée.",
     "orgRequestApproved": "Cette demande d'adhésion a été approuvée.",
     "orgMemberRemoved": "Ce membre a été retiré de l'association.",
+    "orgAdminTransfered": "Le rôle d'admin a bien été transféré.",
     "orgLeft": "Vous avez quitté cette association.",
     "orgNameRequired": "Vous devez choisir un nom d'association.",
     "mustPickOrg": "Vous devez sélectionner une association existante.",
@@ -142,6 +144,7 @@
   "dashboard": {
     "welcome": "Bienvenue, {name} !",
     "noOrg": "Vous devez d'abord ajouter une association ou en rejoindre une.",
+    "orgPending": "Votre demande d'adhésion à {orgName} est toujours en attente.",
     "adminOf": "Vous êtes admin de l'association {orgName}.",
     "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
@@ -150,9 +153,13 @@
     "contactLink": "Contact",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
-      "items": [
+      "items0123": [
         "Renforcement de la sécurité pour l'édition d'un animal ou d'une famille.",
         "Envoi d'un e-mail lorsqu'un membre demande à rejoindre une association, et quand cette demande est validée."
+      ],
+      "items0130": [
+        "Amélioration de l'interface pour la section \"Associations\".",
+        "Possibilité de transférer le statut d'admin d'une association à un autre membre validé."
       ]
     }
   },
@@ -224,27 +231,33 @@
     "hasChildren": "Cette famille a des enfants.",
     "animalsInCareLabel": "Animaux en charge :",
     "otherAnimalsLabel": "Autres animaux :",
-    "prefillMeLabel": "C'est moi, utiliser mes infos :",
-    "listTitle": "Familles enregistrées pour {orgName} :",
+    "prefillMeLabel": "C'est moi, utiliser mes infos :",
+    "listTitle": "Familles enregistrées pour {orgName} :",
     "none": "Aucune famille enregistrée.",
+    "tips": "Vous pouvez utiliser une famille pour représenter un refuge, une pièce de chatterie, ou tout autre lieu d'accueil.",
     "fields": {
-      "contactFullNamePlaceholder": "Nom de la famille *",
-      "addressPlaceholderRequired": "N° et rue *",
-      "zipPlaceholderRequired": "Code postal *",
-      "cityPlaceholderRequired": "Ville *"
+      "contactFullNamePlaceholder": "Nom de la famille *",
+      "addressPlaceholderRequired": "N° et rue *",
+      "zipPlaceholderRequired": "Code postal *",
+      "cityPlaceholderRequired": "Ville *"
     },
     "questions": {
-      "hasChildren": "Y a-t-il des enfants ?",
-      "otherAnimals": "Y a-t-il d'autres animaux (précisez lesquels) ?"
+      "hasChildren": "Y a-t-il des enfants ?",
+      "otherAnimals": "Y a-t-il d'autres animaux (précisez lesquels) ?"
     }
   },
   "organizations": {
     "yourOrganizations": "Vos associations :",
-    "pendingRequests": "Vos demandes d'adhésion en attente :",
     "membersListTitle": "Liste des membres pour {orgName} :",
+    "hiddenOrgMembers": "Votre demande d'adhésion est en attente. Pour des raisons de confidentialité, vous ne pouvez pas voir le reste des membres.",
     "registerTitle": "Enregistrer une nouvelle association ?",
     "orgNamePlaceholder": "Nom de l'association",
     "searchExistingTitle": "Rechercher une association existante ?",
+    "seeDetails": "Voir les détails de {orgName} ?",
+    "goToOrg": "Accéder à la fiche",
+    "pickNewAdminTitle": "Nommer un nouvel admin",
+    "nobodyToTransferTo": "Il n'y a aucun membre à qui transférer le rôle.",
+    "pickAMember": "Choisir un membre :",
     "joinSubmit": "Rejoindre",
     "joinLoading": "Envoi...",
     "roles": {
@@ -263,7 +276,8 @@
       "approveRequest": "Valider la demande",
       "removeMember": "Supprimer ce membre",
       "cancelRequest": "Annuler la demande",
-      "leaveOrg": "Quitter l'association"
+      "leaveOrg": "Quitter l'association",
+      "transferAdmin": "Transférer le rôle d'admin"
     }
   },
   "contact": {

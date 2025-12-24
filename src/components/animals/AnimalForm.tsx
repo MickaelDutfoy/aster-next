@@ -40,19 +40,21 @@ export const AnimalForm = ({
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    const name = formData.get('animalName')?.toString().trim();
-    const species = formData.get('animalSpecies')?.toString().trim();
-    const birthDate = formData.get('animalBirthDate')?.toString().trim();
-    const statusFromForm = formData.get('animalStatus')?.toString();
-    const animalFamily = Number(formData.get('animalFamily'));
-    const adopterFullName = formData.get('adopterFullName')?.toString().trim();
+    const animalForm = {
+      name: formData.get('animalName')?.toString().trim(),
+      species: formData.get('animalSpecies')?.toString().trim(),
+      birthDate: formData.get('animalBirthDate')?.toString().trim(),
+      statusFromForm: formData.get('animalStatus')?.toString(),
+      animalFamily: Number(formData.get('animalFamily')),
+      adopterFullName: formData.get('adopterFullName')?.toString().trim(),
+    };
 
     if (
-      !name ||
-      !species ||
-      !birthDate ||
-      (statusFromForm === AnimalStatus.ADOPTED && !adopterFullName) ||
-      (statusFromForm === AnimalStatus.FOSTERED && !animalFamily)
+      !animalForm.name ||
+      !animalForm.species ||
+      !animalForm.birthDate ||
+      (animalForm.statusFromForm === AnimalStatus.ADOPTED && !animalForm.adopterFullName) ||
+      (animalForm.statusFromForm === AnimalStatus.FOSTERED && !animalForm.animalFamily)
     ) {
       showToast({
         ok: false,
@@ -65,7 +67,6 @@ export const AnimalForm = ({
     setIsLoading(true);
     try {
       const res = animal ? await updateAnimal(animal.id, formData) : await registerAnimal(formData);
-
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,

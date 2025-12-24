@@ -17,7 +17,6 @@ enum AnimalStatus {
   ADOPTED
 }
 
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model Animal {
   id                Int          @id @default(autoincrement())
   name              String
@@ -116,13 +115,14 @@ model MemberOrganization {
 }
 
 model Member {
-  id           Int      @id @default(autoincrement())
-  firstName    String   @map("first_name")
-  lastName     String   @map("last_name")
-  email        String   @unique
-  phoneNumber  String   @unique @map("phone_number")
-  passwordHash String   @map("password_hash")
-  createdAt    DateTime @default(now()) @map("created_at")
+  id            Int      @id @default(autoincrement())
+  firstName     String   @map("first_name")
+  lastName      String   @map("last_name")
+  email         String   @unique
+  phoneNumber   String   @unique @map("phone_number")
+  passwordHash  String   @map("password_hash")
+  selectedOrgId Int?
+  createdAt     DateTime @default(now()) @map("created_at")
 
   memberOrganizations MemberOrganization[]
   resetPasswordTokens AuthToken[]

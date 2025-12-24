@@ -5,18 +5,48 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  div {
+    h3 {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      gap: 10px;
+    }
+  }
 }
 
-.org-wrapper {
-  h3 {
+.org-picker {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    align-self: center;
+  }
+}
+
+.admin-transfer {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  p {
     text-align: center;
-    margin: 10px 0;
   }
 
-  form {
+  .labeled-checkbox {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
   }
 }
@@ -42,18 +72,22 @@
   }
 
   li:first-child {
-    border-top: 1px solid vars.$outer-space;
+    border-top: 1px solid var(--input-text);
   }
 
   li {
     font-size: 0.8rem;
     cursor: pointer;
     color: var(--input-text);
-    border-bottom: 1px solid vars.$outer-space;
-    border-right: 1px solid vars.$outer-space;
-    border-left: 1px solid vars.$outer-space;
+    border-bottom: 1px solid var(--input-text);
+    border-right: 1px solid var(--input-text);
+    border-left: 1px solid var(--input-text);
     padding: 10px;
   }
+}
+
+.org-details {
+  padding-top: 10px;
 }
 
 .members-list {
@@ -64,6 +98,7 @@
 .members-list > li {
   min-height: 36px;
   display: grid;
+  gap: 10px;
   grid-template-columns: 6fr 6fr auto;
   align-items: center;
   border-bottom: 1px solid var(--button);
@@ -78,8 +113,7 @@
       width: 50vw;
       position: absolute;
       right: 0px;
-      top: 30px;
-      bottom: auto;
+      bottom: 30px;
       user-select: none;
       background-color: vars.$snow;
       display: flex;
@@ -88,23 +122,18 @@
       z-index: 2;
 
       li:first-child {
-        border-top: 1px solid vars.$outer-space;
+        border-top: 1px solid var(--input-text);
       }
 
       li {
         font-size: 0.8rem;
         cursor: pointer;
         color: vars.$outer-space;
-        border-bottom: 1px solid vars.$outer-space;
-        border-right: 1px solid vars.$outer-space;
-        border-left: 1px solid vars.$outer-space;
+        border-bottom: 1px solid var(--input-text);
+        border-right: 1px solid var(--input-text);
+        border-left: 1px solid var(--input-text);
         padding: 10px;
       }
-    }
-
-    .action-list.up {
-      top: auto;
-      bottom: 30px;
     }
   }
 }

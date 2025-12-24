@@ -83,6 +83,7 @@ export type Member = {
   lastName: string;
   email: string;
   phoneNumber: string;
+  selectedOrgId?: number;
   organizations: Organization[];
 };
 

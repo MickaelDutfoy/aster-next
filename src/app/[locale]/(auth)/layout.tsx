@@ -15,15 +15,13 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   const org: Organization | null = await getSelectedOrg(user);
 
   return (
-    <>
-      <div className="dashboard">
-        <NavBarTop user={user} />
-        <Header />
-        <OrgSelector user={user} org={org} />
-        <main>{children}</main>
-        <NavBarBottom />
-      </div>
-    </>
+    <div className="dashboard">
+      <NavBarTop user={user} />
+      <Header />
+      <OrgSelector user={user} org={org} />
+      <main>{children}</main>
+      <NavBarBottom />
+    </div>
   );
 };
 

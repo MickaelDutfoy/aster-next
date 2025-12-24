@@ -15,7 +15,7 @@ $smoky-black: #16110e;
     --link: #{$raw-umber};
     --input-bg: #{$snow};
     --input-text: #{$outer-space};
-    --active-tab: rgba($color: #000, $alpha: 0.1);
+    --active-tab: rgba(0,0,0,0.1);
   }
   
   :root[data-theme='dark'] {
@@ -26,7 +26,7 @@ $smoky-black: #16110e;
     --link: #{$cinereous};
     --input-bg: #{$isabelline};
     --input-text: #{$smoky-black};
-    --active-tab: rgba($color: #fff, $alpha: 0.1);
+    --active-tab: rgba(255,255,255,0.1);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -38,6 +38,6 @@ $smoky-black: #16110e;
       --link: #{$cinereous};
       --input-bg: #{$isabelline};
       --input-text: #{$smoky-black};
-      --active-tab: rgba($color: #fff, $alpha: 0.1);
+      --active-tab: rgba(255,255,255,0.1);
     }
   }

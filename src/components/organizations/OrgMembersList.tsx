@@ -4,6 +4,7 @@ import { approveOrgRequest } from '@/actions/organizations/approveOrgRequest';
 import { cancelOrgRequest } from '@/actions/organizations/cancelOrgRequest';
 import { leaveOrg } from '@/actions/organizations/leaveOrg';
 import { removeMemberFromOrg } from '@/actions/organizations/removeMemberFromOrg';
+import { useRouter } from '@/i18n/routing';
 import { Action, Member, MemberOfOrg, Organization } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import clsx from 'clsx';
@@ -23,12 +24,19 @@ export const OrgMembersList = ({
 }) => {
   const t = useTranslations();
   const locale = useLocale();
-  const [menuDirection, setMenuDirection] = useState<'down' | 'up'>('down');
+  const router = useRouter();
   const [openMenuMemberId, setOpenMenuMemberId] = useState<number | null>(null);
   const menuRef = useRef<HTMLUListElement | null>(null);
-  const triggerRefs = useRef(new Map<number, SVGSVGElement>());
 
-  const BOTTOM_NO_GO = 80;
+  const isMemberPending = members.some(
+    (member) => member.id === user.id && member.status === MemberStatus.PENDING,
+  );
+  const isMemberSuperadmin = members.some(
+    (member) => member.id === user.id && member.role === MemberRole.SUPERADMIN,
+  );
+  const membersFiltered: MemberOfOrg[] = isMemberPending
+    ? members.filter((member) => member.role === MemberRole.SUPERADMIN || member.id === user.id)
+    : members;
 
   useEffect(() => {
     if (!openMenuMemberId) return;
@@ -46,25 +54,6 @@ export const OrgMembersList = ({
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, [openMenuMemberId]);
-
-  useEffect(() => {
-    if (!openMenuMemberId) return;
-
-    requestAnimationFrame(() => {
-      const menu = menuRef.current;
-      const trigger = triggerRefs.current.get(openMenuMemberId);
-      if (!menu || !trigger) return;
-
-      const triggerRect = trigger.getBoundingClientRect();
-
-      const menuHeight = menu.offsetHeight;
-
-      const bottomLimit = window.innerHeight - BOTTOM_NO_GO;
-      const wouldOverflowBottom = triggerRect.bottom + 30 + menuHeight > bottomLimit;
-
-      setMenuDirection(wouldOverflowBottom ? 'up' : 'down');
-    });
   }, [openMenuMemberId]);
 
   const handleApproveRequest = async (member: MemberOfOrg, org: Organization, locale: string) => {
@@ -97,10 +86,16 @@ export const OrgMembersList = ({
   const handleLeaveOrg = async (orgId: number) => {
     const res = await leaveOrg(orgId);
     setOpenMenuMemberId(null);
+    router.replace(`/organizations`);
     showToast({
       ...res,
       message: res.message ? t(res.message) : undefined,
     });
+  };
+
+  const handleTransferAdmin = async () => {
+    setOpenMenuMemberId(null);
+    router.push(`/organizations/${org?.id}/transfer-admin`);
   };
 
   const buildActionsForMember = (
@@ -110,7 +105,7 @@ export const OrgMembersList = ({
   ): Action[] => {
     const actions: Action[] = [];
 
-    if (org.userRole === MemberRole.SUPERADMIN && member.status === MemberStatus.PENDING) {
+    if (isMemberSuperadmin && member.status === MemberStatus.PENDING) {
       actions.push({
         name: t('organizations.actions.approveRequest'),
         handler: () => handleApproveRequest(member, org, locale),
@@ -118,7 +113,7 @@ export const OrgMembersList = ({
     }
 
     if (
-      org.userRole === MemberRole.SUPERADMIN &&
+      isMemberSuperadmin &&
       member.role === MemberRole.MEMBER &&
       member.status !== MemberStatus.PENDING
     ) {
@@ -146,10 +141,17 @@ export const OrgMembersList = ({
       });
     }
 
+    if (user.id === member.id && member.role === MemberRole.SUPERADMIN) {
+      actions.push({
+        name: t('organizations.actions.transferAdmin'),
+        handler: () => handleTransferAdmin(),
+      });
+    }
+
     return actions;
   };
 
-  if (!org || org.userStatus === MemberStatus.PENDING) {
+  if (!org) {
     return null;
   }
 
@@ -157,7 +159,7 @@ export const OrgMembersList = ({
     <>
       <h3>{t('organizations.membersListTitle', { orgName: org.name })}</h3>
       <ul className="members-list">
-        {members
+        {membersFiltered
           .sort((a, b) =>
             a.firstName.localeCompare(b.firstName, undefined, {
               sensitivity: 'base',
@@ -176,23 +178,15 @@ export const OrgMembersList = ({
                 </span>
                 <span className="action">
                   <EllipsisVertical
-                    ref={(el) => {
-                      if (el) triggerRefs.current.set(member.id, el);
-                      else triggerRefs.current.delete(member.id);
-                    }}
                     className={clsx(actions.length === 0 ? 'disabled' : 'link')}
                     size={26}
                     onClick={() => {
                       if (actions.length === 0) return;
-                      setMenuDirection('down');
                       setOpenMenuMemberId((current) => (current === member.id ? null : member.id));
                     }}
                   />
                   {openMenuMemberId === member.id && actions.length > 0 && (
-                    <ul
-                      className={clsx('action-list', menuDirection === 'up' && 'up')}
-                      ref={menuRef}
-                    >
+                    <ul className="action-list" ref={menuRef}>
                       {actions.map((action) => (
                         <li key={action.name} onClick={action.handler}>
                           {action.name}
@@ -205,6 +199,7 @@ export const OrgMembersList = ({
             );
           })}
       </ul>
+      {isMemberPending && <p className="long-notice">{t('organizations.hiddenOrgMembers')}</p>}
     </>
   );
 };

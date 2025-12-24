@@ -1,5 +1,6 @@
 {
   "common": {
+    "none": "None",
     "view": "View",
     "edit": "Edit",
     "delete": "Delete",
@@ -41,6 +42,7 @@
     "orgRegisterSuccess": "Your organization has been successfully registered.",
     "orgRequestApproved": "This request has been approved.",
     "orgMemberRemoved": "This member has been removed from this organization.",
+    "orgAdminTransfered": "The admin role has been successfully transferred.",
     "orgLeft": "You have left this organization.",
     "orgNameRequired": "You must enter an organization name.",
     "mustPickOrg": "You must select an existing organization.",
@@ -142,6 +144,7 @@
   "dashboard": {
     "welcome": "Welcome, {name}!",
     "noOrg": "You need to add or join an organization first.",
+    "orgPending": "Your membership request to {orgName} is still pending.",
     "adminOf": "You are admin of {orgName}.",
     "notFoster": "Are you foster family for {orgName}?",
     "pendingIntro": "You have membership requests to review.",
@@ -150,9 +153,13 @@
     "contactLink": "Contact",
     "changelog": {
       "title": "What’s new in Aster?",
-      "items": [
+      "items0123": [
         "Improved security when editing an animal or a foster family.",
         "Email notifications are now sent when a member requests to join an association, and when that request is approved."
+      ],
+      "items0130": [
+        "Improved interface for the \"Organizations\" section.",
+        "You can now transfer the admin role of an organization to another approved member."
       ]
     }
   },
@@ -227,11 +234,12 @@
     "prefillMeLabel": "It's men use my info:",
     "listTitle": "Foster families registered for {orgName}:",
     "none": "No foster families registered.",
+    "tips": "You can use a family to represent a shelter, a cattery room, or any other hosting place.",
     "fields": {
-      "contactFullNamePlaceholder": "Foster family name *",
-      "addressPlaceholderRequired": "Street and number *",
-      "zipPlaceholderRequired": "Postal code *",
-      "cityPlaceholderRequired": "City *"
+      "contactFullNamePlaceholder": "Foster family name *",
+      "addressPlaceholderRequired": "Street and number *",
+      "zipPlaceholderRequired": "Postal code *",
+      "cityPlaceholderRequired": "City *"
     },
     "questions": {
       "hasChildren": "Are there children?",
@@ -240,11 +248,16 @@
   },
   "organizations": {
     "yourOrganizations": "Your organizations:",
-    "pendingRequests": "Your pending membership requests:",
     "membersListTitle": "Member list for {orgName}:",
+    "hiddenOrgMembers": "Your membership request is pending. For confidentiality reasons, you cannot see the other members.",
     "registerTitle": "Register a new organization?",
     "orgNamePlaceholder": "Organization name",
     "searchExistingTitle": "Search for an existing organization?",
+    "seeDetails": "View details for {orgName}?",
+    "goToOrg": "Go to organization page",
+    "pickNewAdminTitle": "Assign a new admin",
+    "nobodyToTransferTo": "There is no member to transfer the role to.",
+    "pickAMember": "Choose a member:",
     "joinSubmit": "Join",
     "joinLoading": "Sending...",
     "roles": {
@@ -263,7 +276,8 @@
       "approveRequest": "Approve request",
       "removeMember": "Remove this member",
       "cancelRequest": "Cancel request",
-      "leaveOrg": "Leave organization"
+      "leaveOrg": "Leave organization",
+      "transferAdmin": "Transfer admin role"
     }
   },
   "contact": {

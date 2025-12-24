@@ -30,21 +30,21 @@ export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Fami
           {t('animals.editInfoTitle')}
         </Link>
       </div>
-      <div>
+      <div className="animal-page">
         <h3>{animal.name}</h3>
-        <p className="fixed-p">
+        <p>
           {animal.species}, {t(`animals.sex.${animal.sex}`).toLowerCase()},{' '}
           {animal.color?.toLowerCase()}, {getAge(animal.birthDate, locale, true)}
           {animal.isNeutered ? t('animals.neuteredSuffix') : ''}.
         </p>
         {animal.findLocation && (
-          <p className="fixed-p">
+          <p>
             {t('animals.findLocationLabel')} {animal.findLocation}.
           </p>
         )}
-        <h4 className="collapse-expand" onClick={() => setHiddenHealth(!hiddenHealth)}>
+        <button className="collapse-expand" onClick={() => setHiddenHealth(!hiddenHealth)}>
           {t('animals.toggleHealth')} {hiddenHealth ? '▸' : '▾'}
-        </h4>
+        </button>
         {!hiddenHealth && hasHealthInfo && (
           <div className="animal-details">
             {animal.lastVax && (
@@ -106,20 +106,20 @@ export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Fami
             )}
           </div>
         )}
-        <p className="fixed-p">
+        <p>
           {t('animals.currentStatusLabel')} {t(`animals.status.${animal.status}`)}.
         </p>
         {family && (
-          <p className="fixed-p">
+          <p>
             {t('animals.fosterFamilyLabel')}
             <Link className="link" href={`/families/${family.id}`}>
               {family.contactFullName}
             </Link>
           </p>
         )}
-        <h4 className="collapse-expand" onClick={() => setHiddenAdoption(!hiddenAdoption)}>
+        <button className="collapse-expand" onClick={() => setHiddenAdoption(!hiddenAdoption)}>
           {t('animals.toggleAdoption')} {hiddenAdoption ? '▸' : '▾'}
-        </h4>
+        </button>
         {!hiddenAdoption && (
           <div className="animal-details">
             {animal.adoption?.adopterFullName && (
