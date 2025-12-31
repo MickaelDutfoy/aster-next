@@ -1,5 +1,5 @@
-import ClientLayout from '@/components/app/ClientLayout';
-import ToastProvider from '@/components/app/ToastProvider';
+import ClientLayout from '@/components/tools/ClientLayout';
+import ToastProvider from '@/components/tools/ToastProvider';
 import { routing } from '@/i18n/routing';
 import '@/styles/_global.scss';
 import type { Metadata, Viewport } from 'next';

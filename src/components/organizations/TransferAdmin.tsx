@@ -6,8 +6,8 @@ import { Member, MemberOfOrg, Organization } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../app/ToastProvider';
-import { DeniedPage } from '../layout/DeniedPage';
+import { DeniedPage } from '../main/DeniedPage';
+import { showToast } from '../tools/ToastProvider';
 
 export const TransferAdmin = ({
   user,

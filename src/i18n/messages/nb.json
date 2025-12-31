@@ -326,5 +326,124 @@
       "content2": "Forespørselen ble sendt av {memberFullName}.",
       "content3": "For å godkjenne eller avslå denne forespørselen, åpne appen og gå til \"Organisasjoner\"."
     }
+  },
+  "privacy": {
+    "title": "Personvernerklæring — Aster",
+    "lastUpdated": "Sist oppdatert:",
+    "controller": {
+      "title": "1) Hvem er ansvarlig for behandlingen?",
+      "intro": "Aster er en webapplikasjon (PWA) som hjelper dyrevernorganisasjoner med å organisere informasjon (medlemmer, dyr, fosterhjem osv.).",
+      "responsibleLabel": "Behandlingsansvarlig:",
+      "responsibleValue": "Mickaël Dutfoy",
+      "contactLabel": "Kontakt:",
+      "contactEmail": "m.dutfoy@gmail.com",
+      "siteLabel": "Nettsted:",
+      "siteUrl": "https://aster-pearl.vercel.app/",
+      "note": "Merk: Aster er et uavhengig prosjekt uten kommersielt formål."
+    },
+    "data": {
+      "title": "2) Hvilke data samles inn?",
+      "intro": "Aster samler kun inn data som er nødvendig for at applikasjonen skal fungere, samt data som brukere frivillig legger inn.",
+      "account": {
+        "title": "Kontorelaterte data",
+        "items": [
+          "E-postadresse (påkrevd): opprettelse av konto, innlogging og teknisk kommunikasjon (f.eks. varsler).",
+          "Passord: lagres aldri i klartekst (lagres som en hash).",
+          "Telefonnummer: brukt for å gjøre det enklere for medlemmer i samme organisasjon å kontakte hverandre (intern kontaktliste). Telefonnummeret ditt skal aldri brukes til kommersielle eller reklamerelaterte formål av applikasjonen eller utvikleren."
+        ]
+      },
+      "app": {
+        "title": "Data som legges inn i applikasjonen",
+        "lead": "Avhengig av bruk kan applikasjonen inneholde:",
+        "items": [
+          "informasjon om organisasjonen (navn, beskrivelse osv.)",
+          "medlemsdata (navn / kallenavn, rolle i organisasjonen osv.)",
+          "data om dyr (identifikasjon, status, notater osv.)",
+          "fosterhjem: beskrivende informasjon som kan inkludere en adresse"
+        ],
+        "funNote": "Fosterhjem-informasjon kan også gjelde noen som ikke bruker appen (f.eks. «Bestemor Ginette, 91 år, fosterhjem — Nokia 3310 master race»)."
+      },
+      "noHiddenCollection": "Aster samler ikke inn «skjulte» data: ingen mikrofon, ingen GPS, ingen tilgang til kontaktene dine osv."
+    },
+    "purposes": {
+      "title": "3) Hvorfor brukes disse dataene?",
+      "intro": "Data brukes for å:",
+      "items": [
+        "opprette og administrere brukerkontoer",
+        "sikre tilgang til private områder (data som kun er synlig for relevante medlemmer)",
+        "hjelpe organisasjoner med å organisere informasjon (medlemmer / dyr / fosterhjem)",
+        "gi support og vedlikehold (f.eks. feilsøking av tekniske problemer)"
+      ]
+    },
+    "legalBases": {
+      "title": "4) Rettslig grunnlag (GDPR)",
+      "intro": "Avhengig av situasjonen baseres behandlingen på:",
+      "items": [
+        "avtale: levere den tjenesten som er forespurt (konto, tilgang, funksjoner)",
+        "berettiget interesse: sikkerhet, forebygging av misbruk, vedlikehold",
+        "samtykke: når brukeren frivillig legger inn enkelte opplysninger (f.eks. notater, ekstra detaljer)"
+      ]
+    },
+    "visibility": {
+      "title": "5) Hvem kan se dataene?",
+      "items": [
+        "Data er private som standard: tilgang avhenger av medlemskap i en organisasjon og dine rettigheter der.",
+        "Data selges ikke og deles ikke for kommersielle formål."
+      ]
+    },
+    "vendors": {
+      "title": "Tekniske leverandører (hosting / e-post)",
+      "intro": "Aster bruker tekniske tjenester for å fungere:",
+      "items": [
+        "Vercel: hosting av applikasjonen",
+        "Neon: hosting av PostgreSQL-databasen",
+        "Resend: sending av transaksjons-e-post"
+      ],
+      "note": "Disse leverandørene fungerer som tekniske databehandlere: de behandler data kun for å levere tjenesten."
+    },
+    "cookies": {
+      "title": "6) Informasjonskapsler og sporing",
+      "necessary": "Aster bruker informasjonskapsler/lagring som er strengt nødvendig for drift (f.eks. innloggingsøkt, språk).",
+      "noMarketing": "Aster inkluderer ikke målrettet reklame, videresalg av data eller påtrengende markedsføringsanalyse.",
+      "changeNote": "Hvis dette endres i fremtiden, vil denne siden oppdateres, og appen vil informere tydelig."
+    },
+    "security": {
+      "title": "7) Sikkerhet",
+      "intro": "Aster bruker rimelige sikkerhetstiltak, blant annet:",
+      "items": [
+        "hashing av passord",
+        "autentisert tilgang til private data",
+        "kryptert kommunikasjon via HTTPS",
+        "rollebaserte rettigheter (medlem / admin osv.)"
+      ],
+      "note": "Ingen sikkerhet er absolutt, men målet er å beskytte data mot uautorisert tilgang."
+    },
+    "retention": {
+      "title": "8) Lagringstid",
+      "p1": "Data lagres så lenge kontoen er aktiv og/eller så lenge det er nødvendig for en organisasjon som bruker Aster.",
+      "p2": "Når en konto slettes, slettes eller anonymiseres tilknyttede data når det er mulig. Noe informasjon kan likevel beholdes hvis det er nødvendig for dataintegritet (f.eks. intern historikk i en organisasjon), avhengig av situasjonen."
+    },
+    "rights": {
+      "title": "9) Dine rettigheter (innsyn, retting, sletting)",
+      "intro": "I henhold til GDPR kan du be om:",
+      "items": [
+        "innsyn i dine data",
+        "retting",
+        "sletting (der det er relevant)",
+        "begrensning / protest (avhengig av situasjonen)"
+      ],
+      "contactLabel": "Kontakt:",
+      "selfServiceNote": "Etter hvert som applikasjonen utvikler seg, vil enkelte av disse handlingene kunne utføres direkte i grensesnittet, uten å måtte sende en manuell forespørsel (for eksempel: redigering av brukerprofil, sletting av konto)."
+    },
+    "changes": {
+      "title": "10) Endringer",
+      "p1": "Denne erklæringen kan endres når Aster utvikles videre. Oppdateringsdatoen vises øverst på siden."
+    },
+    "links": {
+      "registerPrefix": "Ved å opprette en konto godtar du implisitt",
+      "settingsPrefix": "Du kan lese",
+      "link": "personvernerklæringen",
+      "suffix": " til Aster på nytt."
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { UpdateFamily } from '@/components/families/UpdateFamily';
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { DeniedPage } from '@/components/main/DeniedPage';
 import { getFamilyById } from '@/lib/families/getFamilyById';
 import { Family, Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';

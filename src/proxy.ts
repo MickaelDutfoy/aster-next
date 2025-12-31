@@ -21,6 +21,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/register',
   '/reset-password',
   '/new-password',
+  '/privacy',
 ] as const;
 
 const AUTH_PAGES_PREFIXES = ['/login', '/register', '/reset-password', '/new-password'] as const;

@@ -4,7 +4,7 @@ import { getMatchingOrgs } from '@/lib/organizations/getMatchingOrgs';
 import { Organization } from '@/lib/types';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
-import { showToast } from '../app/ToastProvider';
+import { showToast } from '../tools/ToastProvider';
 
 export const SearchOrg = () => {
   const t = useTranslations();

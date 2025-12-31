@@ -326,5 +326,124 @@
       "content2": "Cette demande a été formulée par {memberFullName}.",
       "content3": "Pour approuver ou refuser cette demande, ouvrez l'application et rendez-vous dans la section \"Associations\"."
     }
+  },
+  "privacy": {
+    "title": "Politique de confidentialité — Aster",
+    "lastUpdated": "Dernière mise à jour :",
+    "controller": {
+      "title": "1) Qui est responsable du traitement ?",
+      "intro": "Aster est une application web (PWA) destinée à aider des associations de protection animale à organiser leurs informations (membres, animaux, familles d’accueil, etc.).",
+      "responsibleLabel": "Responsable du traitement :",
+      "responsibleValue": "Mickaël Dutfoy",
+      "contactLabel": "Contact :",
+      "contactEmail": "m.dutfoy@gmail.com",
+      "siteLabel": "Site :",
+      "siteUrl": "https://aster-pearl.vercel.app/",
+      "note": "Remarque : Aster est un projet indépendant, sans objectif commercial."
+    },
+    "data": {
+      "title": "2) Quelles données sont collectées ?",
+      "intro": "Aster collecte uniquement les données nécessaires au fonctionnement de l’application, ainsi que celles que les utilisateurs saisissent volontairement.",
+      "account": {
+        "title": "Données liées au compte",
+        "items": [
+          "Adresse e-mail (obligatoire) : création de compte, connexion, et communications techniques (ex : notifications).",
+          "Mot de passe : jamais stocké en clair (stockage sous forme de hash).",
+          "Numéro de téléphone : pour faciliter la mise en relation entre membres d’une même association (annuaire interne). Votre numéro ne sera jamais utilisé à des fins commerciales ou publicitaires par l’application ou son développeur."
+        ]
+      },
+      "app": {
+        "title": "Données saisies dans l’application",
+        "lead": "Selon l’usage, l’application peut contenir :",
+        "items": [
+          "informations d’association (nom, description, etc.)",
+          "données de membres (nom/prénom/pseudo, rôle dans l’association, etc.)",
+          "données liées aux animaux (identification, statut, notes, etc.)",
+          "familles d’accueil : informations descriptives, pouvant inclure une adresse"
+        ],
+        "funNote": "Les informations “famille d’accueil” peuvent représenter une personne qui n’utilise pas l’application (ex : “Mamie Ginette, 91 ans, famille d’accueil — Nokia 3310 master race”)."
+      },
+      "noHiddenCollection": "Aster ne collecte pas de données “cachées” : pas de micro, pas de GPS, pas d’accès à vos contacts, etc."
+    },
+    "purposes": {
+      "title": "3) Pourquoi ces données sont-elles utilisées ?",
+      "intro": "Les données sont utilisées pour :",
+      "items": [
+        "créer et gérer les comptes utilisateurs",
+        "sécuriser l’accès aux espaces privés (données visibles uniquement par les membres concernés)",
+        "permettre aux associations d’organiser leurs informations (membres / animaux / familles d’accueil)",
+        "assurer le support et la maintenance (ex : diagnostic d’erreurs techniques)"
+      ]
+    },
+    "legalBases": {
+      "title": "4) Base légale (RGPD)",
+      "intro": "Selon les cas, les traitements reposent sur :",
+      "items": [
+        "l’exécution du contrat : fournir le service demandé (compte, accès, fonctionnalités)",
+        "l’intérêt légitime : sécurité, prévention des abus, maintenance",
+        "le consentement : lorsque l’utilisateur saisit volontairement certaines informations (ex : notes, infos complémentaires)"
+      ]
+    },
+    "visibility": {
+      "title": "5) Qui peut voir les données ?",
+      "items": [
+        "Les données sont privées par défaut : l’accès dépend de votre appartenance à une association et de vos droits dans celle-ci.",
+        "Les données ne sont pas revendues et ne font l’objet d’aucun partage commercial."
+      ]
+    },
+    "vendors": {
+      "title": "Prestataires techniques (hébergement / e-mails)",
+      "intro": "Aster s’appuie sur des services techniques pour fonctionner :",
+      "items": [
+        "Vercel : hébergement de l’application",
+        "Neon : hébergement de la base de données PostgreSQL",
+        "Resend : envoi d’e-mails transactionnels"
+      ],
+      "note": "Ces prestataires agissent comme sous-traitants techniques : ils traitent les données uniquement pour fournir le service."
+    },
+    "cookies": {
+      "title": "6) Cookies et traceurs",
+      "necessary": "Aster utilise des cookies/stockages strictement nécessaires au fonctionnement (ex : session de connexion, langue).",
+      "noMarketing": "Aster n’intègre pas de publicité ciblée, revente de données, ni outils d’analytics marketing intrusifs.",
+      "changeNote": "Si cela change un jour, cette page sera mise à jour et l’application l’indiquera clairement."
+    },
+    "security": {
+      "title": "7) Sécurité",
+      "intro": "Aster met en œuvre des mesures de sécurité raisonnables, notamment :",
+      "items": [
+        "mots de passe hachés",
+        "accès aux données privées protégé par authentification",
+        "communications chiffrées via HTTPS",
+        "séparation des droits selon les rôles (membre / admin, etc.)"
+      ],
+      "note": "Aucune sécurité n’est absolue, mais l’objectif est de protéger les données contre les accès non autorisés."
+    },
+    "retention": {
+      "title": "8) Durée de conservation",
+      "p1": "Les données sont conservées tant que le compte est actif et/ou tant qu’elles sont nécessaires au fonctionnement d’une association utilisant Aster.",
+      "p2": "Lorsqu’un compte est supprimé, les données associées sont supprimées ou anonymisées dans la mesure du possible, tout en conservant éventuellement certaines informations nécessaires à l’intégrité des données (ex : historique interne d’une association), selon les cas."
+    },
+    "rights": {
+      "title": "9) Vos droits (accès, rectification, suppression)",
+      "intro": "Conformément au RGPD, vous pouvez demander :",
+      "items": [
+        "accès à vos données",
+        "rectification",
+        "suppression (“droit à l’oubli”) dans la mesure applicable",
+        "limitation / opposition (selon les situations)"
+      ],
+      "contactLabel": "Contact :",
+      "selfServiceNote": "À mesure que l’application évolue, certaines de ces actions pourront être effectuées directement depuis l’interface, sans passer par une demande manuelle (par exemple : modification du profil utilisateur, suppression du compte)."
+    },
+    "changes": {
+      "title": "10) Modifications",
+      "p1": "Cette politique peut évoluer si Aster évolue. La date de mise à jour est indiquée en haut de page."
+    },
+    "links": {
+      "registerPrefix": "En créant votre compte, vous acceptez implicitement la",
+      "settingsPrefix": "Vous pouvez relire la",
+      "link": "politique de confidentialité",
+      "suffix": " d’Aster."
+    }
   }
 }

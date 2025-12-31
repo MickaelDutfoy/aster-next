@@ -1,6 +1,6 @@
-import { Modal } from '@/components/app/Modal';
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { DeniedPage } from '@/components/main/DeniedPage';
 import { TransferAdmin } from '@/components/organizations/TransferAdmin';
+import { Modal } from '@/components/tools/Modal';
 import { getMembersByOrg } from '@/lib/members/getMembersByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, MemberOfOrg, Organization } from '@/lib/types';

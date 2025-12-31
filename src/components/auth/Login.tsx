@@ -4,7 +4,7 @@ import { login } from '@/actions/auth/login';
 import { Link, useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../app/ToastProvider';
+import { showToast } from '../tools/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const Login = () => {
@@ -73,7 +73,7 @@ export const Login = () => {
           <PasswordInput name="userPassword" placeholder={t('auth.passwordPlaceholder')} />
 
           <Link className="public-link" href="/reset-password">
-            <u>{t('auth.login.forgotPasswordLink')}</u>
+            {t('auth.login.forgotPasswordLink')}
           </Link>
 
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
