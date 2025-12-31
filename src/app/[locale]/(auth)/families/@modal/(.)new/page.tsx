@@ -1,6 +1,6 @@
-import { Modal } from '@/components/app/Modal';
 import { RegisterFamily } from '@/components/families/RegisterFamily';
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { DeniedPage } from '@/components/main/DeniedPage';
+import { Modal } from '@/components/tools/Modal';
 import { Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 

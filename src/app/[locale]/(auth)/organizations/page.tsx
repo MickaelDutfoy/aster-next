@@ -1,4 +1,4 @@
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { DeniedPage } from '@/components/main/DeniedPage';
 import { OrgPicker } from '@/components/organizations/OrgPicker';
 import { RegisterOrg } from '@/components/organizations/RegisterOrg';
 import { SearchOrg } from '@/components/organizations/SearchOrg';

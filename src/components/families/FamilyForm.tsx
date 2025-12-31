@@ -6,7 +6,7 @@ import { useRouter } from '@/i18n/routing';
 import { Family, Member } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../app/ToastProvider';
+import { showToast } from '../tools/ToastProvider';
 
 export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) => {
   const t = useTranslations();

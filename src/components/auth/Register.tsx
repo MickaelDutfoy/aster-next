@@ -1,12 +1,12 @@
 'use client';
 
 import { register } from '@/actions/auth/register';
-import { useRouter } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { registerSchema } from '@/lib/schemas/authSchemas';
 import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../app/ToastProvider';
+import { showToast } from '../tools/ToastProvider';
 import { PasswordInput } from './PasswordInput';
 
 export const Register = () => {
@@ -103,7 +103,13 @@ export const Register = () => {
             placeholder={t('auth.passwordConfirmPlaceholder')}
           />
 
-          <p className="disclaimer">{t('auth.register.phoneDisclaimer')}</p>
+          <p className="disclaimer">
+            {t('privacy.links.registerPrefix')}{' '}
+            <Link className="public-link" href="/privacy">
+              {t('privacy.links.link')}
+            </Link>
+            {t('privacy.links.suffix')}
+          </p>
 
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
             {isLoading ? t('auth.register.loading') : t('auth.register.submit')}

@@ -3,7 +3,7 @@
 import { Link } from '@/i18n/routing';
 import { Family, Member, Organization, PendingOrgRequest } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export const Dashboard = ({
   user,
@@ -17,6 +17,7 @@ export const Dashboard = ({
   pending: PendingOrgRequest[];
 }) => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <div className="dash-contents">
@@ -74,13 +75,13 @@ export const Dashboard = ({
       <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>
         <ul>
-          v0.13.0:
+          v0.13.0{locale === 'fr' ? ' ' : ''}:
           {t.raw('dashboard.changelog.items0130').map((item: string, index: number) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
         <ul>
-          v0.12.3:
+          v0.12.3{locale === 'fr' ? ' ' : ''}:
           {t.raw('dashboard.changelog.items0123').map((item: string, index: number) => (
             <li key={index}>{item}</li>
           ))}

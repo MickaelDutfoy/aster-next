@@ -1,10 +1,10 @@
 'use client';
 
 import { logout } from '@/actions/auth/logout';
-import { useRouter } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { showToast } from '../app/ToastProvider';
+import { showToast } from '../tools/ToastProvider';
 
 export const Logout = () => {
   const router = useRouter();
@@ -35,15 +35,24 @@ export const Logout = () => {
   };
 
   return (
-    <div className="links-box">
-      <button
-        onClick={handleLogout}
-        className="little-button"
-        aria-busy={isLoading}
-        disabled={isLoading}
-      >
-        {isLoading ? t('auth.logout.loading') : t('auth.logout.submit')}
-      </button>
-    </div>
+    <>
+      <div className="links-box">
+        <button
+          onClick={handleLogout}
+          className="little-button"
+          aria-busy={isLoading}
+          disabled={isLoading}
+        >
+          {isLoading ? t('auth.logout.loading') : t('auth.logout.submit')}
+        </button>
+      </div>
+      <p className="notice" style={{ textAlign: 'justify' }}>
+        {t('privacy.links.settingsPrefix')}{' '}
+        <Link className="link" href="/privacy">
+          {t('privacy.links.link')}
+        </Link>
+        {t('privacy.links.suffix')}
+      </p>
+    </>
   );
 };

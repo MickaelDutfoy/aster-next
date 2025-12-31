@@ -41,6 +41,7 @@ button {
 .public-link {
   cursor: pointer;
   user-select: none;
+  text-decoration: underline;
   color: vars.$brown-bark;
 }
 

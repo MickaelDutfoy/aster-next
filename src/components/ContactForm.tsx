@@ -4,7 +4,7 @@ import { sendContactForm } from '@/actions/sendContactForm';
 import { Member } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
-import { showToast } from './app/ToastProvider';
+import { showToast } from './tools/ToastProvider';
 
 export const ContactForm = ({ user }: { user: Member }) => {
   const t = useTranslations();

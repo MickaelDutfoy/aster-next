@@ -1,5 +1,5 @@
-import { Dashboard } from '@/components/layout/Dashboard';
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { Dashboard } from '@/components/main/Dashboard';
+import { DeniedPage } from '@/components/main/DeniedPage';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getPendingOrgRequests } from '@/lib/organizations/getPendingOrgRequests';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';

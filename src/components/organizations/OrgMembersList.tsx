@@ -11,7 +11,7 @@ import clsx from 'clsx';
 import { EllipsisVertical } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
-import { showToast } from '../app/ToastProvider';
+import { showToast } from '../tools/ToastProvider';
 
 export const OrgMembersList = ({
   user,

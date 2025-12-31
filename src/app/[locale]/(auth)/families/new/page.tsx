@@ -1,5 +1,5 @@
 import { RegisterFamily } from '@/components/families/RegisterFamily';
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { DeniedPage } from '@/components/main/DeniedPage';
 import { Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 

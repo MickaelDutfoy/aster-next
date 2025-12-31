@@ -1,0 +1,38 @@
+@use 'vars';
+
+.privacy-page {
+  margin: 10px;
+
+  .privacy-section {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    padding-top: 5px;
+  }
+
+  p {
+    padding: 3px 0;
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  li {
+    margin-left: 25px;
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+}

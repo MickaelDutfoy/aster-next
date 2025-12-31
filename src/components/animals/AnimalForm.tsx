@@ -8,7 +8,7 @@ import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import { showToast } from '../app/ToastProvider';
+import { showToast } from '../tools/ToastProvider';
 
 export const AnimalForm = ({
   user,

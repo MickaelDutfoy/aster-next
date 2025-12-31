@@ -1,5 +1,5 @@
 import { UpdateAnimal } from '@/components/animals/UpdateAnimal';
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { DeniedPage } from '@/components/main/DeniedPage';
 import { getAnimalById } from '@/lib/animals/getAnimalById';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';

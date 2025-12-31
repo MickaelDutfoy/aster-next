@@ -1,4 +1,4 @@
-import { DeniedPage } from '@/components/layout/DeniedPage';
+import { DeniedPage } from '@/components/main/DeniedPage';
 import { OrgMembersList } from '@/components/organizations/OrgMembersList';
 import { getMembersByOrg } from '@/lib/members/getMembersByOrg';
 import { getOrgById } from '@/lib/organizations/getOrgById';

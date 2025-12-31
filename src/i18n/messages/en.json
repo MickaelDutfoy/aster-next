@@ -326,5 +326,124 @@
       "content2": "This request was submitted by {memberFullName}.",
       "content3": "To approve or reject this request, open the app and go to the \"Organizations\" section."
     }
+  },
+  "privacy": {
+    "title": "Privacy Policy — Aster",
+    "lastUpdated": "Last updated:",
+    "controller": {
+      "title": "1) Who is responsible for data processing?",
+      "intro": "Aster is a web application (PWA) designed to help animal welfare organizations organize their information (members, animals, foster families, etc.).",
+      "responsibleLabel": "Data controller:",
+      "responsibleValue": "Mickaël Dutfoy",
+      "contactLabel": "Contact:",
+      "contactEmail": "m.dutfoy@gmail.com",
+      "siteLabel": "Website:",
+      "siteUrl": "https://aster-pearl.vercel.app/",
+      "note": "Note: Aster is an independent project with no commercial goal."
+    },
+    "data": {
+      "title": "2) What data is collected?",
+      "intro": "Aster collects only the data necessary for the application to work, as well as the data users voluntarily enter.",
+      "account": {
+        "title": "Account-related data",
+        "items": [
+          "Email address (required): account creation, sign-in, and technical communications (e.g., notifications).",
+          "Password: never stored in plain text (stored as a hash).",
+          "Phone number: to help members of the same organization contact each other (internal directory). Your phone number will never be used for commercial or advertising purposes by the application or its developer."
+        ]
+      },
+      "app": {
+        "title": "Data entered in the application",
+        "lead": "Depending on how it is used, the application may contain:",
+        "items": [
+          "organization information (name, description, etc.)",
+          "member data (name / nickname, role in the organization, etc.)",
+          "animal data (identification, status, notes, etc.)",
+          "foster families: descriptive information, which may include an address"
+        ],
+        "funNote": "Foster-family information may refer to someone who does not use the app (e.g., “Granny Ginette, 91, foster family — Nokia 3310 master race”)."
+      },
+      "noHiddenCollection": "Aster does not collect “hidden” data: no microphone, no GPS, no access to your contacts, etc."
+    },
+    "purposes": {
+      "title": "3) Why is this data used?",
+      "intro": "Data is used to:",
+      "items": [
+        "create and manage user accounts",
+        "secure access to private areas (data visible only to relevant members)",
+        "help organizations organize their information (members / animals / foster families)",
+        "provide support and maintenance (e.g., diagnosing technical issues)"
+      ]
+    },
+    "legalBases": {
+      "title": "4) Legal basis (GDPR)",
+      "intro": "Depending on the situation, processing is based on:",
+      "items": [
+        "performance of a contract: providing the requested service (account, access, features)",
+        "legitimate interest: security, abuse prevention, maintenance",
+        "consent: when users voluntarily enter certain information (e.g., notes, extra details)"
+      ]
+    },
+    "visibility": {
+      "title": "5) Who can see the data?",
+      "items": [
+        "Data is private by default: access depends on your membership in an organization and your permissions within it.",
+        "Data is not sold and is not shared for commercial purposes."
+      ]
+    },
+    "vendors": {
+      "title": "Technical providers (hosting / emails)",
+      "intro": "Aster relies on technical services to operate:",
+      "items": [
+        "Vercel: application hosting",
+        "Neon: PostgreSQL database hosting",
+        "Resend: transactional email delivery"
+      ],
+      "note": "These providers act as technical processors: they process data only to provide the service."
+    },
+    "cookies": {
+      "title": "6) Cookies and trackers",
+      "necessary": "Aster uses cookies/storage strictly necessary for operation (e.g., sign-in session, language).",
+      "noMarketing": "Aster does not include targeted ads, data resale, or intrusive marketing analytics tools.",
+      "changeNote": "If this changes in the future, this page will be updated and the app will clearly inform users."
+    },
+    "security": {
+      "title": "7) Security",
+      "intro": "Aster implements reasonable security measures, including:",
+      "items": [
+        "hashed passwords",
+        "authenticated access to private data",
+        "HTTPS encrypted communications",
+        "role-based permissions (member / admin, etc.)"
+      ],
+      "note": "No security is absolute, but the goal is to protect data from unauthorized access."
+    },
+    "retention": {
+      "title": "8) Retention period",
+      "p1": "Data is kept as long as the account is active and/or as long as it is needed for an organization using Aster.",
+      "p2": "When an account is deleted, related data is deleted or anonymized when possible, while some information may be retained if needed for data integrity (e.g., an organization’s internal history), depending on the case."
+    },
+    "rights": {
+      "title": "9) Your rights (access, correction, deletion)",
+      "intro": "Under the GDPR, you may request:",
+      "items": [
+        "access to your data",
+        "correction",
+        "deletion (“right to be forgotten”) where applicable",
+        "restriction / objection (depending on the situation)"
+      ],
+      "contactLabel": "Contact:",
+      "selfServiceNote": "As the application evolves, some of these actions will be available directly from the interface, without requiring a manual request (for example: editing the user profile, deleting the account)."
+    },
+    "changes": {
+      "title": "10) Changes",
+      "p1": "This policy may change as Aster evolves. The update date is shown at the top of the page."
+    },
+    "links": {
+      "registerPrefix": "By creating your account, you implicitly agree to Aster’s",
+      "settingsPrefix": "You can review Aster’s",
+      "link": "privacy policy",
+      "suffix": "."
+    }
   }
 }
