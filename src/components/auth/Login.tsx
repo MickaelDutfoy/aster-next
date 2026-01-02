@@ -79,6 +79,7 @@ export const Login = () => {
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
             {isLoading ? t('auth.login.loading') : t('auth.login.submit')}
           </button>
+          <p className="version-login">Aster v0.13.0</p>
         </form>
       </div>
     </div>

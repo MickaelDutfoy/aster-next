@@ -1,13 +1,13 @@
-import { ContactForm } from '@/components/main/ContactForm';
 import { DeniedPage } from '@/components/main/DeniedPage';
+import { DeleteAccount } from '@/components/settings/DeleteAccount';
 import { Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-const Contact = async () => {
+const RegisterAnimalPage = async () => {
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
 
-  return <ContactForm user={user} />;
+  return <DeleteAccount />;
 };
 
-export default Contact;
+export default RegisterAnimalPage;

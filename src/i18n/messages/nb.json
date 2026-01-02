@@ -292,7 +292,21 @@
     "theme": "Tema:",
     "system": "System",
     "dark": "Mørk",
-    "light": "Lys"
+    "light": "Lys",
+    "deleteAccount": {
+      "title": "Slett kontoen min",
+      "explainIntro": "Sletting av kontoen din innebærer at:",
+      "items": [
+        "Du blir automatisk logget ut og vil ikke kunne logge inn igjen.",
+        "Dine personopplysninger (fornavn, etternavn, e-post, telefonnummer) vil bli slettet fra Asters database.",
+        "Du vil ikke lenger vises i listen over organisasjonene du tilhørte."
+      ],
+      "fosterExplain1": "Merk: som beskrevet i personvernerklæringen kan noen av kontaktopplysningene dine fortsatt vises i applikasjonen som fosterhjem, selv etter at kontoen er slettet.",
+      "fosterRequest": "Slett også fosterhjem-oppføringer knyttet til kontoen min:",
+      "fosterExplain2": "Dette alternativet sletter kun oppføringer knyttet til kontoen din, ikke oppføringer som er opprettet uavhengig av en organisasjon og som kan gjelde deg.",
+      "hasConfirmed": "Jeg forstår at denne slettingen er irreversibel *:",
+      "success": "Kontoen din ble slettet."
+    }
   },
   "emails": {
     "common": {

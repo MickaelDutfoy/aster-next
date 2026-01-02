@@ -33,5 +33,4 @@ export const authOptions: NextAuthConfig = {
   ],
 };
 
-// ⬇️ v5: expose a single NextAuth instance with helpers
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
