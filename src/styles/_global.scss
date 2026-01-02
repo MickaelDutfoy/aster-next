@@ -121,7 +121,7 @@ h3 {
   padding: 7px;
   border: 1px solid var(--border-button);
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 [aria-busy='true'] {
@@ -168,6 +168,7 @@ textarea {
 
 .modal {
   max-width: 90vw;
+  max-height: 90vh;
   background-color: var(--app-bg);
   padding: 10px;
   display: flex;
@@ -175,6 +176,7 @@ textarea {
   align-items: center;
   border: 2px solid var(--button);
   border-radius: 5px;
+  overflow-y: auto;
 
   .close {
     align-self: flex-end;

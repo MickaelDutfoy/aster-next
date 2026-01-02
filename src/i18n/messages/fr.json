@@ -292,7 +292,21 @@
     "theme": "Thème :",
     "system": "Système",
     "dark": "Sombre",
-    "light": "Clair"
+    "light": "Clair",
+    "deleteAccount": {
+      "title": "Supprimer mon compte",
+      "explainIntro": "La suppression de votre compte implique que :",
+      "items": [
+        "Vous serez automatiquement déconnecté et ne pourrez pas vous reconnecter.",
+        "Vos données personnelles (nom, prénom, mail, téléphone) seront effacées de la base de données d'Aster.",
+        "Vous n'apparaîtrez plus dans la liste des associations auxquelles vous apparteniez."
+      ],
+      "fosterExplain1": "Attention : comme inscrit dans la politique de confidentialité, certaines de vos coordonnées peuvent continuer à apparaître dans l'application en tant que famille d'accueil, même après la suppression de votre compte.",
+      "fosterRequest": "Supprimer également les fiches famille d'accueil liées à mon compte :",
+      "fosterExplain2": "Cette option ne supprime que les fiches liées à votre compte, pas les fiches créées indépendamment par une association qui pourraient vous concerner.",
+      "hasConfirmed": "Je comprends que cette suppression est irréversible * :",
+      "success": "Votre compte a été supprimé."
+    }
   },
   "emails": {
     "common": {

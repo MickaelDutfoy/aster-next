@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 
-export const Logout = () => {
+export const ManageAccount = () => {
   const router = useRouter();
 
   const t = useTranslations();
@@ -45,7 +45,11 @@ export const Logout = () => {
         >
           {isLoading ? t('auth.logout.loading') : t('auth.logout.submit')}
         </button>
+        <Link href={`/settings/delete-account`} className="little-button">
+          {t('settings.deleteAccount.title')}
+        </Link>
       </div>
+      <p className="version">Aster v0.13.0</p>
       <p className="notice" style={{ textAlign: 'justify' }}>
         {t('privacy.links.settingsPrefix')}{' '}
         <Link className="link" href="/privacy">

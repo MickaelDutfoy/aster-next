@@ -22,9 +22,15 @@ const PUBLIC_PATH_PREFIXES = [
   '/reset-password',
   '/new-password',
   '/privacy',
-] as const;
+];
 
-const AUTH_PAGES_PREFIXES = ['/login', '/register', '/reset-password', '/new-password'] as const;
+const AUTH_PAGES_PREFIXES = [
+  // routes which cannot be reached while logged in
+  '/login',
+  '/register',
+  '/reset-password',
+  '/new-password',
+];
 
 function startsWithOneOf(pathname: string, prefixes: readonly string[]) {
   return prefixes.some((prefix) => pathname.startsWith(prefix));

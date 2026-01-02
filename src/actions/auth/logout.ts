@@ -4,8 +4,6 @@ import { signOut } from '@/auth';
 import { ActionValidation } from '@/lib/types';
 
 export const logout = async (): Promise<ActionValidation> => {
-  'use server';
-
   try {
     await signOut({ redirect: false });
 

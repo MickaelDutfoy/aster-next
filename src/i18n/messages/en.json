@@ -292,7 +292,21 @@
     "theme": "Theme:",
     "system": "System",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "deleteAccount": {
+      "title": "Delete my account",
+      "explainIntro": "Deleting your account means that:",
+      "items": [
+        "You will be automatically signed out and will no longer be able to log in.",
+        "Your personal data (first name, last name, email, phone number) will be removed from Aster’s database.",
+        "You will no longer appear in the list of associations you belonged to."
+      ],
+      "fosterExplain1": "Warning: as stated in the privacy policy, some of your contact details may continue to appear in the application as a foster family, even after your account is deleted.",
+      "fosterRequest": "Also delete foster family records linked to my account:",
+      "fosterExplain2": "This option only deletes records linked to your account, not records independently created by an association that may concern you.",
+      "hasConfirmed": "I understand that this deletion is irreversible *:",
+      "success": "Your account has been deleted."
+    }
   },
   "emails": {
     "common": {
