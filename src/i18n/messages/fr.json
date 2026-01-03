@@ -40,6 +40,7 @@
     "orgRequestSent": "Votre demande d'adhésion a été envoyée.",
     "orgRequestCanceled": "Votre demande d'adhésion a été annulée.",
     "orgRegisterSuccess": "Votre association a bien été enregistrée.",
+    "orgEditSuccess": "Votre association a bien été éditée.",
     "orgRequestApproved": "Cette demande d'adhésion a été approuvée.",
     "orgMemberRemoved": "Ce membre a été retiré de l'association.",
     "orgAdminTransfered": "Le rôle d'admin a bien été transféré.",
@@ -160,6 +161,11 @@
       "items0130": [
         "Amélioration de l'interface pour la section \"Associations\".",
         "Possibilité de transférer le statut d'admin d'une association à un autre membre validé."
+      ],
+      "items100": [
+        "Nouvelles fonctionnalités : supprimer son compte, supprimer ou éditer une association...",
+        "Améliorations de sécurité et de flux utilisateur.",
+        "La politique de confidentialité est disponible et peut être lue depuis les options."
       ]
     }
   },
@@ -247,10 +253,21 @@
     }
   },
   "organizations": {
-    "yourOrganizations": "Vos associations :",
+    "editInfoTitle": "Éditer l'assocation",
+    "deleteTitle": "Supprimer l'association",
+    "deleteOrg": {
+      "readBefore": "Vous êtes sur le point de supprimer l'association {orgName}. Avant de procéder, veuillez prendre connaissance de toutes les implications de cette action.",
+      "items": [
+        "Tous les membres liés à cette association en seront détachés et ne la verront plus dans leur liste d'associations actives.",
+        "Tous les animaux et toutes les familles d'accueil liés à cette association seront supprimés et ne pourront être récupérés."
+      ],
+      "mustWriteOrgName": "Pour confirmer cette action, vous devez saisir le nom de l'association en toutes lettres :"
+    },
+    "yourOrganizations": "Association active :",
     "membersListTitle": "Liste des membres pour {orgName} :",
     "hiddenOrgMembers": "Votre demande d'adhésion est en attente. Pour des raisons de confidentialité, vous ne pouvez pas voir le reste des membres.",
     "registerTitle": "Enregistrer une nouvelle association ?",
+    "orgNameLabel": "Nom de l'association * :",
     "orgNamePlaceholder": "Nom de l'association",
     "searchExistingTitle": "Rechercher une association existante ?",
     "seeDetails": "Voir les détails de {orgName} ?",

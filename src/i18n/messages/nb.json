@@ -40,6 +40,7 @@
     "orgRequestSent": "Din forespørsel om medlemskap er sendt.",
     "orgRequestCanceled": "Din forespørsel om medlemskap er kansellert.",
     "orgRegisterSuccess": "Organisasjonen din ble registrert.",
+    "orgEditSuccess": "Organisasjonen din ble redigert.",
     "orgRequestApproved": "Denne forespørselen ble godkjent.",
     "orgMemberRemoved": "Dette medlemmet er fjernet fra organisasjonen.",
     "orgAdminTransfered": "Administratorrollen er overført.",
@@ -160,6 +161,11 @@
       "items0130": [
         "Forbedret grensesnitt for seksjonen «Organisasjoner».",
         "Det er nå mulig å overføre administratorrollen i en organisasjon til et annet godkjent medlem."
+      ],
+      "items100": [
+        "Nye funksjoner: sletting av konto, sletting eller redigering av en organisasjon...",
+        "Forbedringer innen sikkerhet og brukerflyt.",
+        "Personvernerklæringen er tilgjengelig og kan leses fra innstillingene."
       ]
     }
   },
@@ -247,10 +253,21 @@
     }
   },
   "organizations": {
-    "yourOrganizations": "Dine organisasjoner:",
+    "editInfoTitle": "Rediger organisasjonen",
+    "deleteTitle": "Slett organisasjonen",
+    "deleteOrg": {
+      "readBefore": "Du er i ferd med å slette organisasjonen {orgName}. Før du fortsetter, vennligst sett deg inn i alle konsekvensene av denne handlingen.",
+      "items": [
+        "Alle medlemmer knyttet til denne organisasjonen vil bli fjernet og vil ikke lenger se den i listen over aktive organisasjoner.",
+        "Alle dyr og alle fosterhjem knyttet til denne organisasjonen vil bli slettet og kan ikke gjenopprettes."
+      ],
+      "mustWriteOrgName": "For å bekrefte denne handlingen må du skrive inn organisasjonens navn i sin helhet:"
+    },
+    "yourOrganizations": "Aktiv organisasjon:",
     "membersListTitle": "Medlemsliste for {orgName}:",
     "hiddenOrgMembers": "Forespørselen din om medlemskap er under behandling. Av hensyn til konfidensialitet kan du ikke se de andre medlemmene.",
     "registerTitle": "Registrer en ny organisasjon?",
+    "orgNameLabel": "Navn på organisasjonen *:",
     "orgNamePlaceholder": "Navn på organisasjonen",
     "searchExistingTitle": "Søk etter en eksisterende organisasjon?",
     "seeDetails": "Se detaljer for {orgName}?",

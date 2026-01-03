@@ -1,40 +1,41 @@
 'use client';
 
-import { deleteAccount } from '@/actions/auth/deleteAccount';
+import { deleteOrg } from '@/actions/organizations/deleteOrg';
 import { useRouter } from '@/i18n/routing';
+import { Organization } from '@/lib/types';
+import { MemberRole } from '@prisma/client';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { DeniedPage } from '../main/DeniedPage';
 import { showToast } from '../tools/ToastProvider';
 
-export const DeleteAccount = () => {
+export const DeleteOrg = ({ org }: { org: Organization }) => {
   const t = useTranslations();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [isAccepted, setIsAccepted] = useState(false);
+  const [orgNameCheck, setOrgNameCheck] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    const deleteFosterFamilies = formData.has('deleteFosterFamilies');
-
-    if (!isAccepted) {
+    if (orgNameCheck !== org.name) {
       showToast({
         ok: false,
         status: 'error',
-        message: t('toasts.termsNotAccepted'),
+        message: t('toasts.orgNameRequired'),
       });
       return;
     }
 
     setIsLoading(true);
     try {
-      const res = await deleteAccount(deleteFosterFamilies);
+      const res = await deleteOrg(org.id, formData);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,
       });
-      if (res.ok) router.replace(`/login`);
+      if (res.ok) router.replace(`/organizations`);
     } catch (err) {
       console.error(err);
       showToast({
@@ -47,39 +48,30 @@ export const DeleteAccount = () => {
     }
   };
 
+  if (org.userRole !== MemberRole.SUPERADMIN) {
+    return <DeniedPage cause="refused" />;
+  }
+
   return (
     <form className="delete-account-or-org" onSubmit={handleSubmit}>
-      <h3>{t('settings.deleteAccount.title')}</h3>
+      <h3>{t('organizations.deleteTitle')}</h3>
       <p className="notice" style={{ fontSize: '0.8rem' }}>
         {t('common.requiredFieldsNotice')}
       </p>
-      <p>{t('settings.deleteAccount.explainIntro')}</p>
+      <p>{t('organizations.deleteOrg.readBefore', { orgName: org.name })}</p>
       <ul>
-        {t.raw('settings.deleteAccount.items').map((item: string, index: number) => (
+        {t.raw('organizations.deleteOrg.items').map((item: string, index: number) => (
           <li key={index}>{item}</li>
         ))}
       </ul>
-      <p>{t('settings.deleteAccount.fosterExplain1')}</p>
-      <div className="labeled-checkbox">
-        <p>{t('settings.deleteAccount.fosterRequest')}</p>
-        <input type="checkbox" name="deleteFosterFamilies" id="deleteFosterFamilies" />
-      </div>
-      <p>{t('settings.deleteAccount.fosterExplain2')}</p>
-      <div className="labeled-checkbox">
-        <p>{t('settings.deleteAccount.hasConfirmed')}</p>
-        <input
-          type="checkbox"
-          name="isAccepted"
-          id="isAccepted"
-          onChange={(e) => setIsAccepted(e.target.checked)}
-        />
-      </div>
+      <p>{t('organizations.deleteOrg.mustWriteOrgName')}</p>
+      <input type="text" name="verifyOrgName" onChange={(e) => setOrgNameCheck(e.target.value)} />
       <div className="yes-no">
         <button
           type="submit"
           className="little-button"
-          aria-busy={isLoading || !isAccepted}
-          disabled={isLoading || !isAccepted}
+          aria-busy={isLoading || orgNameCheck !== org.name}
+          disabled={isLoading || orgNameCheck !== org.name}
         >
           {isLoading ? t('common.deleting') : t('common.confirm')}
         </button>

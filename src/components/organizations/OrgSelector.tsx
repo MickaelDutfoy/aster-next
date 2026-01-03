@@ -14,26 +14,36 @@ export const OrgSelector = ({ user, org }: { user: Member; org: Organization | n
   const t = useTranslations();
 
   const handleOrgChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const orgId = Number(e.target.value);
+    const orgId = Number(e.target.value) !== 0 ? Number(e.target.value) : null;
+
     await setSelectedOrg(orgId);
+
     if (pathname.startsWith('/organizations') && params.id && Number(params.id) !== orgId) {
+      if (!orgId) {
+        router.replace(`/organizations`);
+        return;
+      }
       router.replace(`/organizations/${orgId}`);
       return;
+    } else if ((pathname.startsWith('/animals') || pathname.startsWith('/families')) && !orgId) {
+      router.replace(`/`);
+      return;
+    } else {
+      router.refresh();
     }
-    router.refresh();
   };
 
   if (!user) return null;
 
   return (
-    <div className="orga-select">
+    <div className="org-select">
       <h4>{t('organizations.yourOrganizations')}</h4>
       <select
-        value={org?.id}
+        value={org?.id ?? 0}
         onChange={handleOrgChange}
         className={clsx(user.organizations.length === 0 ? 'disabled' : '')}
       >
-        {user.organizations.length === 0 && <option>{t('common.none')}</option>}
+        <option value={0}>{t('common.none')}</option>
         {user.organizations.length > 0 &&
           user.organizations
             .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))

@@ -1,20 +1,18 @@
 'use server';
 
-import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
+import { canCreateAnimalOrFamily } from '@/lib/permissions/canCreateAnimalOrFamily';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member, Organization } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 import { parseAnimalData } from './parseAnimalData';
 
 export const registerAnimal = async (formData: FormData): Promise<ActionValidation> => {
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
-  }
+  const guard = await canCreateAnimalOrFamily();
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.orgId) return { ok: false, status: 'error', message: 'toasts.genericError' };
 
-  const org: Organization | null = await getSelectedOrg(user);
-  if (!org) return { ok: false };
+  const orgId = guard.orgId;
+  const memberId = guard.memberId;
 
   const { animal, adopter } = await parseAnimalData(formData);
 
@@ -23,18 +21,21 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   }
 
   try {
-    const res = await prisma.animal.create({
-      data: {
-        ...animal,
-        orgId: org.id,
-      },
-    });
+    await prisma.$transaction(async (prismaTransaction) => {
+      const res = await prismaTransaction.animal.create({
+        data: {
+          ...animal,
+          orgId,
+          createdByMemberId: memberId,
+        },
+      });
 
-    await prisma.animalAdoption.create({
-      data: {
-        ...adopter,
-        animalId: res.id,
-      },
+      await prismaTransaction.animalAdoption.create({
+        data: {
+          ...adopter,
+          animalId: res.id,
+        },
+      });
     });
 
     revalidatePath('/animals');

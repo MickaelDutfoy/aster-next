@@ -19,11 +19,7 @@ const OrganizationPage = async ({ params }: { params: Promise<{ id: string }> })
 
   const members: MemberOfOrg[] = await getMembersByOrg(org.id);
 
-  return (
-    <div className="org-details">
-      <OrgMembersList user={user} org={org} members={members} />
-    </div>
-  );
+  return <OrgMembersList user={user} org={org} members={members} />;
 };
 
 export default OrganizationPage;

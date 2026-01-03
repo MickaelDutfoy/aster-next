@@ -4,7 +4,7 @@ import { approveOrgRequest } from '@/actions/organizations/approveOrgRequest';
 import { cancelOrgRequest } from '@/actions/organizations/cancelOrgRequest';
 import { leaveOrg } from '@/actions/organizations/leaveOrg';
 import { removeMemberFromOrg } from '@/actions/organizations/removeMemberFromOrg';
-import { useRouter } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { Action, Member, MemberOfOrg, Organization } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import clsx from 'clsx';
@@ -157,6 +157,14 @@ export const OrgMembersList = ({
 
   return (
     <>
+      <div className={clsx(isMemberSuperadmin ? 'links-box' : 'links-box disabled')}>
+        <Link href={`/organizations/${org.id}/delete`} className="little-button">
+          {t('organizations.deleteTitle')}
+        </Link>
+        <Link href={`/organizations/${org.id}/edit`} className="little-button">
+          {t('organizations.editInfoTitle')}
+        </Link>
+      </div>
       <h3>{t('organizations.membersListTitle', { orgName: org.name })}</h3>
       <ul className="members-list">
         {membersFiltered

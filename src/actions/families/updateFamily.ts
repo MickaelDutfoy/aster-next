@@ -1,39 +1,23 @@
 'use server';
 
-import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
+import { canEditOrDeleteFamily } from '@/lib/permissions/canEditOrDeleteFamily';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member, Organization } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 import { parseFamilyData } from './parseFamilyData';
 
 export const updateFamily = async (
   familyId: number,
   formData: FormData,
-  memberId: number | null,
+  bindToMember: boolean,
 ): Promise<ActionValidation> => {
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
-  }
-  //
-  const animalPrev = await prisma.family.findUnique({
-    where: { id: familyId },
-    select: { orgId: true },
-  });
-
-  if (!animalPrev) {
+  const guard = await canEditOrDeleteFamily(familyId);
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.memberId) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 
-  const isMember = user.organizations?.some((org) => org.id === animalPrev.orgId);
-  if (!isMember) {
-    return { ok: false, status: 'error', message: 'toasts.notAllowed' };
-  }
-
-  const org: Organization | null = await getSelectedOrg(user);
-  if (!org) return { ok: false };
-
+  const memberId = bindToMember ? guard.memberId : null;
   const family = parseFamilyData(formData);
 
   if (!family) {
