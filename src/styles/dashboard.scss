@@ -59,15 +59,15 @@ header {
   align-items: center;
 }
 
-.orga-select {
+.org-select {
   padding: 10px 2px;
   border-bottom: 2px solid var(--button);
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  p {
-    text-align: right;
+  select {
+    text-align: center;
   }
 }
 
@@ -116,7 +116,7 @@ header {
 }
 
 .denied-page {
-  height: 100vh;
+  height: 100%;
   margin: 0 20px;
   display: grid;
   place-items: center;
@@ -259,5 +259,33 @@ header {
 
   :last-child {
     border: none;
+  }
+}
+
+.delete-account-or-org {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h3, .notice {
+    text-align: center;
+  }
+
+  li {
+    margin-left: 25px;
+  }
+
+  p, li {
+    font-size: 0.85rem;
+    text-align: justify;
+  }
+
+  .labeled-checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
   }
 }

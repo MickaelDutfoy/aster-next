@@ -11,7 +11,8 @@ export const NavBarTop = ({ user }: { user: Member }) => {
 
   const disableMenu = (): string => {
     return user?.organizations?.length === 0 ||
-      user?.organizations.every((org) => org.userStatus === MemberStatus.PENDING)
+      user?.organizations.every((org) => org.userStatus === MemberStatus.PENDING) ||
+      !user.selectedOrgId
       ? 'disabled'
       : '';
   };

@@ -23,7 +23,7 @@ export const Dashboard = ({
     <div className="dash-contents">
       <div className="dash-links">
         <h3>{t('dashboard.welcome', { name: user.firstName })}</h3>
-        {!org && (
+        {user.organizations.length === 0 && (
           <div className="text-with-link">
             <p>{t('dashboard.noOrg')}</p>
             <Link className="little-button" href="/organizations">
@@ -74,6 +74,12 @@ export const Dashboard = ({
       </div>
       <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>
+        <ul>
+          v1.0.0{locale === 'fr' ? ' ' : ''}:
+          {t.raw('dashboard.changelog.items100').map((item: string, index: number) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
         <ul>
           v0.13.0{locale === 'fr' ? ' ' : ''}:
           {t.raw('dashboard.changelog.items0130').map((item: string, index: number) => (

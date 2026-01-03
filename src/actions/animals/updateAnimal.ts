@@ -1,30 +1,22 @@
 'use server';
 
+import { canEditOrDeleteAnimal } from '@/lib/permissions/canEditOrDeleteAnimal';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 import { parseAnimalData } from './parseAnimalData';
 
-export const updateAnimal = async (animalId: number, formData: FormData): Promise<ActionValidation> => {
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
-  }
-
-  const animalPrev = await prisma.animal.findUnique({
-    where: { id: animalId },
-    select: { orgId: true },
-  });
-
-  if (!animalPrev) {
+export const updateAnimal = async (
+  animalId: number,
+  formData: FormData,
+): Promise<ActionValidation> => {
+  const guard = await canEditOrDeleteAnimal(animalId);
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.memberId) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 
-  const isMember = user.organizations?.some((org) => org.id === animalPrev.orgId);
-  if (!isMember) {
-    return { ok: false, status: 'error', message: 'toasts.notAllowed' };
-  }
+  const memberId = guard.memberId;
 
   const { animal, adopter } = await parseAnimalData(formData, animalId);
 
@@ -37,6 +29,7 @@ export const updateAnimal = async (animalId: number, formData: FormData): Promis
       where: { id: animalId },
       data: {
         ...animal,
+        updatedByMemberId: memberId,
       },
     });
 

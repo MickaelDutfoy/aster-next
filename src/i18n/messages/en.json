@@ -40,6 +40,7 @@
     "orgRequestSent": "Your membership request has been sent.",
     "orgRequestCanceled": "Your membership request has been cancelled.",
     "orgRegisterSuccess": "Your organization has been successfully registered.",
+    "orgEditSuccess": "Your organization has been successfully edited.",
     "orgRequestApproved": "This request has been approved.",
     "orgMemberRemoved": "This member has been removed from this organization.",
     "orgAdminTransfered": "The admin role has been successfully transferred.",
@@ -160,6 +161,11 @@
       "items0130": [
         "Improved interface for the \"Organizations\" section.",
         "You can now transfer the admin role of an organization to another approved member."
+      ],
+      "items100": [
+        "New features: delete your account, delete or edit an association...",
+        "Security improvements and smoother user flows.",
+        "The privacy policy is now available and can be accessed from the settings."
       ]
     }
   },
@@ -247,10 +253,21 @@
     }
   },
   "organizations": {
-    "yourOrganizations": "Your organizations:",
+    "editInfoTitle": "Edit organization",
+    "deleteTitle": "Delete organization",
+    "deleteOrg": {
+      "readBefore": "You are about to delete the association {orgName}. Before proceeding, please make sure you understand all the implications of this action.",
+      "items": [
+        "All members linked to this association will be detached and will no longer see it in their list of active associations.",
+        "All animals and all foster families linked to this association will be deleted and cannot be recovered."
+      ],
+      "mustWriteOrgName": "To confirm this action, you must enter the full name of the association:"
+    },
+    "yourOrganizations": "Active association:",
     "membersListTitle": "Member list for {orgName}:",
     "hiddenOrgMembers": "Your membership request is pending. For confidentiality reasons, you cannot see the other members.",
     "registerTitle": "Register a new organization?",
+    "orgNameLabel": "Organization name *:",
     "orgNamePlaceholder": "Organization name",
     "searchExistingTitle": "Search for an existing organization?",
     "seeDetails": "View details for {orgName}?",
