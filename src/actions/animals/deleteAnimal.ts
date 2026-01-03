@@ -6,7 +6,7 @@ import { ActionValidation } from '@/lib/types';
 
 export const deleteAnimal = async (animalId: number): Promise<ActionValidation> => {
   const guard = await canEditOrDeleteAnimal(animalId);
-  if (!guard.ok) return guard;
+  if (!guard.validation.ok) return guard.validation;
 
   try {
     await prisma.animal.delete({ where: { id: animalId } });
