@@ -22,7 +22,7 @@ const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
 
   const animals: Animal[] = await getAnimalsByFamily(Number(id));
 
-  return <FamilyDetails family={family} animals={animals} />;
+  return <FamilyDetails user={user} org={org} family={family} animals={animals} />;
 };
 
 export default FamilyDetail;

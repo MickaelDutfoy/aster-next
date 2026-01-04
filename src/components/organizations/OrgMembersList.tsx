@@ -166,7 +166,7 @@ export const OrgMembersList = ({
           {t('organizations.editInfoTitle')}
         </Link>
       </div>
-      <h3>{t('organizations.membersListTitle', { orgName: org.name })}</h3>
+      <h3>{t('organizations.membersListTitle', { orgName: org.name, count: members.length })}</h3>
       <ul className="members-list">
         {membersFiltered
           .sort((a, b) =>

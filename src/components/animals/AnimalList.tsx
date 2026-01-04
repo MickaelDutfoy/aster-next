@@ -13,11 +13,14 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
   const locale = useLocale();
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
 
+  const activeAnimals = animals.filter((animal) => animal.status !== AnimalStatus.ADOPTED).length;
+  const adoptedAnimals = animals.filter((animal) => animal.status === AnimalStatus.ADOPTED).length;
+
   return (
     <>
       {animals && (
         <div>
-          <h3>{t('animals.listTitle', { orgName: org.name })}</h3>
+          <h3>{t('animals.listTitle', { orgName: org.name, count: activeAnimals })}</h3>
 
           {animals.length === 0 && <p style={{ padding: '10px' }}>{t('animals.none')}</p>}
 
@@ -52,7 +55,7 @@ export const AnimalsList = ({ org, animals }: { org: Organization; animals: Anim
           )}
 
           <button className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
-            {t('animals.toggleAdopted')} {hiddenAdopted ? '▸' : '▾'}
+            {t('animals.toggleAdopted', { count: adoptedAnimals })} {hiddenAdopted ? '▸' : '▾'}
           </button>
 
           {!hiddenAdopted && (

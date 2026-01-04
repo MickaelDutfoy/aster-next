@@ -19,6 +19,14 @@ export const registerFamily = async (
   const orgId = guard.org.id;
   const userId = bindToMember ? guard.user.id : null;
 
+  if (bindToMember) {
+    const checkUnique = await prisma.family.findFirst({ where: { orgId, memberId: userId } });
+
+    if (checkUnique) {
+      return { ok: false, status: 'error', message: 'families.fosterInOrgToast' };
+    }
+  }
+
   const family = parseFamilyData(formData);
 
   if (!family) {

@@ -4,11 +4,20 @@ import { registerFamily } from '@/actions/families/registerFamily';
 import { updateFamily } from '@/actions/families/updateFamily';
 import { useRouter } from '@/i18n/routing';
 import { Family, Member } from '@/lib/types';
+import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 
-export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) => {
+export const FamilyForm = ({
+  user,
+  family,
+  orgFamilies,
+}: {
+  user: Member;
+  family?: Family;
+  orgFamilies?: Family[];
+}) => {
   const t = useTranslations();
   const router = useRouter();
 
@@ -16,6 +25,8 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
   const [familyEmail, setFamilyEmail] = useState<string>(family?.email ?? '');
   const [familyPhoneNumber, setFamilyPhoneNumber] = useState<string>(family?.phoneNumber ?? '');
   const [isLoading, setIsLoading] = useState(false);
+
+  const isAlreadyFamily = orgFamilies?.some((family) => family.memberId === user.id);
 
   const fillWithMemberInfo = (checked: boolean) => {
     if (checked) {
@@ -79,15 +90,21 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <form onSubmit={handleSubmit}>
         <div className="form-tab">
-          <div className="labeled-checkbox">
+          <div className={'labeled-checkbox ' + clsx(isAlreadyFamily ? 'disabled' : '')}>
             <p>{t('families.prefillMeLabel')}</p>
             <input
               type="checkbox"
               name="isMember"
               id="isMember"
+              defaultChecked={family?.memberId === user.id}
               onChange={(e) => fillWithMemberInfo(e.target.checked)}
             />
           </div>
+          {isAlreadyFamily ? (
+            <p className="notice">{t('families.alreadyFosterInOrg')}</p>
+          ) : (
+            <p className="notice">{t('families.familyBindNotice')}</p>
+          )}
           <input
             type="text"
             name="contactFullName"

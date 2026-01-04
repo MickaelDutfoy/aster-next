@@ -1,6 +1,6 @@
 import { Dashboard } from '@/components/main/Dashboard';
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
+import { getFamiliesByOrgId } from '@/lib/families/getFamiliesByOrgId';
 import { getPendingOrgRequests } from '@/lib/organizations/getPendingOrgRequests';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization, PendingOrgRequest } from '@/lib/types';
@@ -12,7 +12,7 @@ const DashboardPage = async () => {
 
   const org: Organization | null = await getSelectedOrg(user);
   let families: Family[] = [];
-  if (org) families = await getFamiliesByOrg(org.id);
+  if (org) families = await getFamiliesByOrgId(org.id);
 
   const pending: PendingOrgRequest[] = await getPendingOrgRequests(org?.id);
 
