@@ -37,7 +37,7 @@ model Animal {
   familyId          Int?         @map("family_id")
   orgId             Int          @map("organization_id")
   createdAt         DateTime     @default(now()) @map("created_at")
-  createdByMemberId Int?
+  createdByMemberId Int
   updatedAt         DateTime     @updatedAt
   updatedByMemberId Int?
 

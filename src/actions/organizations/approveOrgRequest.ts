@@ -1,9 +1,9 @@
 'use server';
 
 import { sendEmail } from '@/lib/email';
+import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member, MemberOfOrg, Organization } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation, MemberOfOrg, Organization } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { revalidatePath } from 'next/cache';
@@ -14,27 +14,28 @@ export const approveOrgRequest = async (
   locale: string,
 ): Promise<ActionValidation> => {
   const t = await getTranslations({ locale, namespace: 'emails' });
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
-  }
+
+  const guard = await isOrgAdmin(org.id);
+  if (!guard.validation.ok) return guard.validation;
 
   try {
-    await prisma.memberOrganization.update({
-      where: { memberId_orgId: { memberId: member.id, orgId: org.id } },
-      data: { status: MemberStatus.VALIDATED },
-    });
+    await prisma.$transaction(async (prismaTransaction) => {
+      await prismaTransaction.memberOrganization.update({
+        where: { memberId_orgId: { memberId: member.id, orgId: org.id } },
+        data: { status: MemberStatus.VALIDATED },
+      });
 
-    await sendEmail({
-      to: member.email,
-      subject: t('orgRequestApproved.subject', { orgName: org.name }),
-      html: `
+      await sendEmail({
+        to: member.email,
+        subject: t('orgRequestApproved.subject', { orgName: org.name }),
+        html: `
           <p>${t('common.hello')}</p>
           <p>${t('orgRequestApproved.content1', { orgName: org.name })}</p>
           <p>${t('orgRequestApproved.content2')}</p>
           <p>${t('orgRequestApproved.content3')}</p>
           <p>${t('common.footer')}</p>
-      `,
+        `,
+      });
     });
 
     revalidatePath('/organizations');

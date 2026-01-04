@@ -3,13 +3,14 @@ import { prisma } from '../prisma';
 import { ActionValidation, Member } from '../types';
 import { getUser } from '../user/getUser';
 
-export const canEditOrDeleteOrg = async (orgId: number): Promise<ActionValidation> => {
+export const isOrgAdmin = async (
+  orgId: number,
+): Promise<{ validation: ActionValidation; user: Member | null }> => {
   const user: Member | null = await getUser();
   if (!user) {
     return {
-      ok: false,
-      status: 'error',
-      message: 'toasts.noUser',
+      validation: { ok: false, status: 'error', message: 'toasts.noUser' },
+      user: null,
     };
   }
 
@@ -20,11 +21,10 @@ export const canEditOrDeleteOrg = async (orgId: number): Promise<ActionValidatio
 
   if (membership?.role !== MemberRole.SUPERADMIN) {
     return {
-      ok: false,
-      status: 'error',
-      message: 'toasts.notAllowed',
+      validation: { ok: false, status: 'error', message: 'toasts.notAllowed' },
+      user: null,
     };
   }
 
-  return { ok: true };
+  return { validation: { ok: true }, user };
 };

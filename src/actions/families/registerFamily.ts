@@ -1,6 +1,6 @@
 'use server';
 
-import { canCreateAnimalOrFamily } from '@/lib/permissions/canCreateAnimalOrFamily';
+import { isOrgMember } from '@/lib/permissions/isOrgMember';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
@@ -10,14 +10,14 @@ export const registerFamily = async (
   formData: FormData,
   bindToMember: boolean,
 ): Promise<ActionValidation> => {
-  const guard = await canCreateAnimalOrFamily();
+  const guard = await isOrgMember();
   if (!guard.validation.ok) return guard.validation;
-  if (!guard.orgId || !guard.memberId) {
+  if (!guard.org || !guard.user) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 
-  const orgId = guard.orgId;
-  const memberId = bindToMember ? guard.memberId : null;
+  const orgId = guard.org.id;
+  const userId = bindToMember ? guard.user.id : null;
 
   const family = parseFamilyData(formData);
 
@@ -30,7 +30,7 @@ export const registerFamily = async (
       data: {
         ...family,
         orgId,
-        memberId,
+        memberId: userId,
       },
     });
 

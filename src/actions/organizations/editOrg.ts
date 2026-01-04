@@ -1,13 +1,13 @@
 'use server';
 
-import { canEditOrDeleteOrg } from '@/lib/permissions/canEditOrDeleteOrg';
+import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
 export const editOrg = async (orgId: number, formData: FormData): Promise<ActionValidation> => {
-  const guard = await canEditOrDeleteOrg(orgId);
-  if (!guard.ok) return guard;
+  const guard = await isOrgAdmin(orgId);
+  if (!guard.validation.ok) return guard.validation;
 
   const newOrgName = formData.get('newOrgName')?.toString().trim();
 

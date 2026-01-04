@@ -1,19 +1,23 @@
 'use server';
 
 import { sendEmail } from '@/lib/email';
+import { isUser } from '@/lib/permissions/isUser';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member, Organization } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation, Organization } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { revalidatePath } from 'next/cache';
 
 export const joinOrg = async (org: Organization, locale: string): Promise<ActionValidation> => {
   const t = await getTranslations({ locale, namespace: 'emails' });
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
+
+  const guard = await isUser();
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.user) {
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
+
+  const user = guard.user;
 
   try {
     if (user.organizations.some((orga) => orga.id === org.id)) {

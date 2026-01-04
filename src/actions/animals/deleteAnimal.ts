@@ -1,11 +1,11 @@
 'use server';
 
-import { canEditOrDeleteAnimal } from '@/lib/permissions/canEditOrDeleteAnimal';
+import { isAnimalOrgMember } from '@/lib/permissions/isAnimalOrgMember';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 
 export const deleteAnimal = async (animalId: number): Promise<ActionValidation> => {
-  const guard = await canEditOrDeleteAnimal(animalId);
+  const guard = await isAnimalOrgMember(animalId);
   if (!guard.validation.ok) return guard.validation;
 
   try {

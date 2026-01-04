@@ -18,6 +18,7 @@
     "send": "Send",
     "sending": "Sending...",
     "areYouSure": "Are you sure?",
+    "actionWarning": "Warning: this action is irreversible.",
     "agoPrefix": "",
     "agoSuffix": " ago",
     "errorOccurred": "An error occurred.",

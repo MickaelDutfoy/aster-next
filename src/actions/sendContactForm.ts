@@ -1,14 +1,17 @@
 'use server';
 
 import { sendEmail } from '@/lib/email';
-import { ActionValidation, Member } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { isUser } from '@/lib/permissions/isUser';
+import { ActionValidation } from '@/lib/types';
 
 export const sendContactForm = async (formData: FormData): Promise<ActionValidation> => {
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
+  const guard = await isUser();
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.user) {
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
+
+  const user = guard.user;
 
   const escapeHtml = (input: string) =>
     input

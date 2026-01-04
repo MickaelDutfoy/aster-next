@@ -1,23 +1,26 @@
 'use server';
 
 import { signOut } from '@/auth';
+import { isUser } from '@/lib/permissions/isUser';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation } from '@/lib/types';
 
 export const deleteAccount = async (deleteFosterFamilies: boolean): Promise<ActionValidation> => {
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
+  const guard = await isUser();
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.user) {
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
+
+  const userId = guard.user.id;
 
   try {
     await prisma.$transaction(async (prismaTransaction) => {
       if (deleteFosterFamilies) {
-        await prismaTransaction.family.deleteMany({ where: { memberId: user.id } });
+        await prismaTransaction.family.deleteMany({ where: { memberId: userId } });
       }
 
-      await prismaTransaction.member.delete({ where: { id: user.id } });
+      await prismaTransaction.member.delete({ where: { id: userId } });
     });
 
     await signOut({ redirect: false });

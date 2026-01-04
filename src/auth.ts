@@ -15,13 +15,13 @@ export const authOptions: NextAuthConfig = {
       async authorize(creds) {
         const email = creds?.email?.toString().toLowerCase();
         const password = creds?.password?.toString() ?? '';
-        if (!email || !password) return null;
+        if (!email || !password) throw new Error('INVALID_CREDENTIALS');
 
         const user = await prisma.member.findUnique({ where: { email } });
-        if (!user) return null;
+        if (!user) throw new Error('INVALID_CREDENTIALS');
 
         const ok = await bcrypt.compare(password, user.passwordHash);
-        if (!ok) return null;
+        if (!ok) throw new Error('INVALID_CREDENTIALS');
 
         return {
           id: String(user.id),

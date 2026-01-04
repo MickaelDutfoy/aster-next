@@ -1,14 +1,14 @@
 'use server';
 
-import { canEditOrDeleteFamily } from '@/lib/permissions/canEditOrDeleteFamily';
+import { isFamilyOrgMember } from '@/lib/permissions/isFamilyOrgMember';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { AnimalStatus } from '@prisma/client';
 
 export const deleteFamily = async (familyId: number): Promise<ActionValidation> => {
-  const guard = await canEditOrDeleteFamily(familyId);
+  const guard = await isFamilyOrgMember(familyId);
   if (!guard.validation.ok) return guard.validation;
-  if (!guard.memberId) {
+  if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 

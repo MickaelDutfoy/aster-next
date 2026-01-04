@@ -77,6 +77,7 @@ export const OrgMembersList = ({
   const handleCancelRequest = async (orgId: number) => {
     const res = await cancelOrgRequest(orgId);
     setOpenMenuMemberId(null);
+    router.replace(`/organizations`);
     showToast({
       ...res,
       message: res.message ? t(res.message) : undefined,

@@ -1,18 +1,16 @@
 'use server';
 
+import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
 export const removeMemberFromOrg = async (
   memberId: number,
   orgId: number,
 ): Promise<ActionValidation> => {
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
-  }
+  const guard = await isOrgAdmin(orgId);
+  if (!guard.validation.ok) return guard.validation;
 
   try {
     await prisma.memberOrganization.delete({
@@ -24,10 +22,10 @@ export const removeMemberFromOrg = async (
     return { ok: true, status: 'success', message: 'toasts.orgMemberRemoved' };
   } catch (err) {
     console.error(err);
-        return {
-          ok: false,
-          status: 'error',
-          message: 'toasts.errorGeneric',
-        };
+    return {
+      ok: false,
+      status: 'error',
+      message: 'toasts.errorGeneric',
+    };
   }
 };
