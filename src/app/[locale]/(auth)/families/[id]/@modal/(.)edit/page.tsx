@@ -7,11 +7,11 @@ import { getUser } from '@/lib/user/getUser';
 
 export default async function UpdateFamilyModal({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const user: Member | null = await getUser();
-  if (!user) return <DeniedPage cause="error" />;
-
   const family: Family | null = await getFamilyById(Number(id));
   if (!family) return <DeniedPage cause="error" />;
+
+  const user: Member | null = await getUser();
+  if (!user) return <DeniedPage cause="error" />;
 
   return (
     <Modal expectedPath={`/families/${family.id}/edit`}>

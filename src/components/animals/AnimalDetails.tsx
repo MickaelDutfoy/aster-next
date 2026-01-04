@@ -1,14 +1,25 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import { Animal, Family } from '@/lib/types';
+import { Animal, Family, Member, Organization } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
-import { AnimalStatus } from '@prisma/client';
+import { AnimalStatus, MemberRole } from '@prisma/client';
+import clsx from 'clsx';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Family | null }) => {
+export const AnimalDetails = ({
+  user,
+  org,
+  animal,
+  family,
+}: {
+  user: Member;
+  org: Organization;
+  animal: Animal;
+  family: Family | null;
+}) => {
   const t = useTranslations();
   const locale = useLocale();
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
@@ -23,7 +34,17 @@ export const AnimalDetails = ({ animal, family }: { animal: Animal; family: Fami
   return (
     <>
       <div className="links-box">
-        <Link href={`/animals/${animal.id}/delete`} className="little-button">
+        <Link
+          href={`/animals/${animal.id}/delete`}
+          className={
+            'little-button ' +
+            clsx(
+              animal.createdByMemberId !== user.id && org.userRole !== MemberRole.SUPERADMIN
+                ? 'disabled'
+                : '',
+            )
+          }
+        >
           {t('animals.deleteTitle')}
         </Link>
         <Link href={`/animals/${animal.id}/edit`} className="little-button">

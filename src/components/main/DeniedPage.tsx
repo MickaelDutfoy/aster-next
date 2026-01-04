@@ -1,3 +1,5 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 
 export const DeniedPage = ({ cause }: { cause: 'error' | 'refused' | 'soon' }) => {

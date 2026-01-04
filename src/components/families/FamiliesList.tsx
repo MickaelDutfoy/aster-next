@@ -12,7 +12,7 @@ export const FamiliesList = ({ org, families }: { org: Organization; families: F
     <>
       {families && (
         <div>
-          <h3>{t('families.listTitle', { orgName: org.name })}</h3>
+          <h3>{t('families.listTitle', { orgName: org.name, count: families.length })}</h3>
 
           {families.length === 0 && (
             <div style={{ padding: '10px' }}>

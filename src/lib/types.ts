@@ -43,6 +43,7 @@ export type Animal = {
   information: string | null;
   familyId: number | null;
   orgId: number;
+  createdByMemberId: number;
   adoption?: AnimalAdoption | null;
 };
 

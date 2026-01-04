@@ -2,13 +2,23 @@
 
 import { deleteFamily } from '@/actions/families/deleteFamily';
 import { useRouter } from '@/i18n/routing';
+import { Family, Member, Organization } from '@/lib/types';
+import { MemberRole } from '@prisma/client';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { DeniedPage } from '../main/DeniedPage';
 import { showToast } from '../tools/ToastProvider';
 
-export const DeleteFamily = ({ id }: { id: string }) => {
+export const DeleteFamily = ({
+  user,
+  org,
+  family,
+}: {
+  user: Member;
+  org: Organization;
+  family: Family;
+}) => {
   const t = useTranslations();
-  const familyId = Number(id);
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +26,7 @@ export const DeleteFamily = ({ id }: { id: string }) => {
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
-      const res = await deleteFamily(familyId);
+      const res = await deleteFamily(family.id);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,
@@ -33,6 +43,10 @@ export const DeleteFamily = ({ id }: { id: string }) => {
       setIsLoading(false);
     }
   };
+
+  if (family.memberId && family.memberId !== user.id && org.userRole !== MemberRole.SUPERADMIN) {
+    return <DeniedPage cause="refused" />;
+  }
 
   return (
     <div className="delete-popup">

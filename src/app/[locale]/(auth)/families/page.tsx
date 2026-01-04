@@ -1,7 +1,7 @@
 import { FamiliesList } from '@/components/families/FamiliesList';
 import { FamiliesPageActions } from '@/components/families/FamiliesPageActions';
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
+import { getFamiliesByOrgId } from '@/lib/families/getFamiliesByOrgId';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
@@ -15,7 +15,7 @@ const FamiliesPage = async () => {
 
   if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
-  const families: Family[] = await getFamiliesByOrg(org.id);
+  const families: Family[] = await getFamiliesByOrgId(org.id);
 
   return (
     <>
