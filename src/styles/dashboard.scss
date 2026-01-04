@@ -87,6 +87,10 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+
+  p {
+    text-align: center;
+  }
 }
 
 .yes-no {

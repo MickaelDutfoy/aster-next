@@ -18,6 +18,7 @@
     "send": "Envoyer",
     "sending": "Envoi...",
     "areYouSure": "Êtes-vous sûr(e) ?",
+    "actionWarning": "Attention : cette action est irréversible.",
     "agoPrefix": "il y a ",
     "agoSuffix": "",
     "errorOccurred": "Une erreur est survenue.",
@@ -259,7 +260,7 @@
       "readBefore": "Vous êtes sur le point de supprimer l'association {orgName}. Avant de procéder, veuillez prendre connaissance de toutes les implications de cette action.",
       "items": [
         "Tous les membres liés à cette association en seront détachés et ne la verront plus dans leur liste d'associations actives.",
-        "Tous les animaux et toutes les familles d'accueil liés à cette association seront supprimés et ne pourront être récupérés."
+        "Tous les animaux et toutes les familles d'accueil liés à cette association seront supprimés et ne pourront pas être récupérés."
       ],
       "mustWriteOrgName": "Pour confirmer cette action, vous devez saisir le nom de l'association en toutes lettres :"
     },

@@ -38,7 +38,7 @@ export const TransferAdmin = ({
 
     setIsLoading(true);
     try {
-      const res = await transferOrgAdmin(org.id, user.id, newAdminId);
+      const res = await transferOrgAdmin(org.id, newAdminId);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,

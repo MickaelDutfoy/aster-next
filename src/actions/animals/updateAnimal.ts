@@ -1,6 +1,6 @@
 'use server';
 
-import { canEditOrDeleteAnimal } from '@/lib/permissions/canEditOrDeleteAnimal';
+import { isAnimalOrgMember } from '@/lib/permissions/isAnimalOrgMember';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
@@ -10,13 +10,13 @@ export const updateAnimal = async (
   animalId: number,
   formData: FormData,
 ): Promise<ActionValidation> => {
-  const guard = await canEditOrDeleteAnimal(animalId);
+  const guard = await isAnimalOrgMember(animalId);
   if (!guard.validation.ok) return guard.validation;
-  if (!guard.memberId) {
+  if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 
-  const memberId = guard.memberId;
+  const userId = guard.user.id;
 
   const { animal, adopter } = await parseAnimalData(formData, animalId);
 
@@ -29,7 +29,7 @@ export const updateAnimal = async (
       where: { id: animalId },
       data: {
         ...animal,
-        updatedByMemberId: memberId,
+        updatedByMemberId: userId,
       },
     });
 

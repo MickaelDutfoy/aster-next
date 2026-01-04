@@ -1,17 +1,21 @@
 'use server';
 
+import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export const transferOrgAdmin = async (
-  orgId: number,
-  previousAdminId: number,
-  newAdminId: number,
-): Promise<ActionValidation> => {
-  if (previousAdminId === newAdminId) {
+export const transferOrgAdmin = async (orgId: number, newAdminId: number): Promise<ActionValidation> => {
+  const guard = await isOrgAdmin(orgId);
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.user) {
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
+  }
+
+  const userId = guard.user.id;
+
+  if (userId === newAdminId) {
     return {
       ok: false,
       status: 'error',
@@ -19,23 +23,10 @@ export const transferOrgAdmin = async (
     };
   }
 
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
-  }
-
-  const checkAdmin = await prisma.memberOrganization.findUnique({
-    where: { memberId_orgId: { memberId: previousAdminId, orgId } },
-  });
-
-  if (!checkAdmin || checkAdmin.role !== MemberRole.SUPERADMIN) {
-    return { ok: false, status: 'error', message: 'toasts.notAllowed' };
-  }
-
   try {
     await prisma.$transaction(async (prismaTransaction) => {
       await prismaTransaction.memberOrganization.update({
-        where: { memberId_orgId: { memberId: previousAdminId, orgId } },
+        where: { memberId_orgId: { memberId: userId, orgId } },
         data: { role: MemberRole.MEMBER },
       });
       await prismaTransaction.memberOrganization.update({

@@ -1,23 +1,26 @@
 'use server';
 
+import { isUser } from '@/lib/permissions/isUser';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, Member } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
 export const setSelectedOrg = async (orgId: number | null): Promise<ActionValidation> => {
-  const user: Member | null = await getUser();
-  if (!user) {
-    return { ok: false, status: 'error', message: 'toasts.noUser' };
+  const guard = await isUser();
+  if (!guard.validation.ok) return guard.validation;
+  if (!guard.user) {
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
+
+  const userId = guard.user.id;
 
   try {
     await prisma.member.update({
-      where: { id: user.id },
+      where: { id: userId },
       data: { selectedOrgId: orgId },
     });
 
-    revalidatePath('/', 'layout'); // invalide large, marche partout
+    revalidatePath('/', 'layout');
 
     return { ok: true };
   } catch (err) {

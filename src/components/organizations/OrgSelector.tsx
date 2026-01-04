@@ -28,6 +28,12 @@ export const OrgSelector = ({ user, org }: { user: Member; org: Organization | n
     } else if ((pathname.startsWith('/animals') || pathname.startsWith('/families')) && !orgId) {
       router.replace(`/`);
       return;
+    } else if (pathname.startsWith('/animals') && params.id) {
+      router.replace(`/animals`);
+      return;
+    } else if (pathname.startsWith('/families') && params.id) {
+      router.replace(`/families`);
+      return;
     } else {
       router.refresh();
     }

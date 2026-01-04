@@ -38,6 +38,7 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
     <div className="delete-popup">
       <h3>{t('animals.deleteTitle')}</h3>
       <p>{t('common.areYouSure')}</p>
+      <p>{t('common.actionWarning')}</p>
       <div className="yes-no">
         <button
           onClick={handleSubmit}

@@ -2,6 +2,7 @@
 
 import { signIn } from '@/auth';
 import { ActionValidation } from '@/lib/types';
+import { getAuthErrorCode } from '@/lib/utils/getAuthErrorCode';
 
 export const login = async (formData: FormData): Promise<ActionValidation> => {
   const user = {
@@ -10,7 +11,7 @@ export const login = async (formData: FormData): Promise<ActionValidation> => {
   };
 
   if (!user.email || !user.password) {
-    return { ok: false, status: 'error', message: 'Identifiants invalides.' };
+    return { ok: false, status: 'error', message: 'auth.login.invalid' };
   }
 
   try {
@@ -21,12 +22,19 @@ export const login = async (formData: FormData): Promise<ActionValidation> => {
     });
 
     return { ok: true, status: 'success' };
-  } catch (err) {
+  } catch (err: any) {
     console.error(err);
-        return {
-          ok: false,
-          status: 'error',
-          message: 'toasts.errorGeneric',
-        };
+
+    const code = getAuthErrorCode(err);
+
+    if (code === 'INVALID_CREDENTIALS') {
+      return { ok: false, status: 'error', message: 'auth.login.invalid' };
+    }
+
+    return {
+      ok: false,
+      status: 'error',
+      message: 'toasts.errorGeneric',
+    };
   }
 };
