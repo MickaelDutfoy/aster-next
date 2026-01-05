@@ -32,6 +32,8 @@ const AUTH_PAGES_PREFIXES = [
   '/new-password',
 ];
 
+const INTRO_BYPASS_PREFIXES = ['/privacy'];
+
 function startsWithOneOf(pathname: string, prefixes: readonly string[]) {
   return prefixes.some((prefix) => pathname.startsWith(prefix));
 }
@@ -100,7 +102,11 @@ async function handler(req: NextRequest) {
 
   const hasIntro = req.cookies.get('intro_seen')?.value === '1';
 
-  if (!hasIntro && !barePath.startsWith('/intro')) {
+  if (
+    !hasIntro &&
+    !barePath.startsWith('/intro') &&
+    !startsWithOneOf(barePath, INTRO_BYPASS_PREFIXES)
+  ) {
     const url = req.nextUrl.clone();
     url.pathname = withLocalePath(effectiveLocale, '/intro');
     url.search = '';
