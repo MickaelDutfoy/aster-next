@@ -49,7 +49,7 @@ export const ManageAccount = () => {
           {t('settings.deleteAccount.title')}
         </Link>
       </div>
-      <p className="version">Aster v1.0.0</p>
+      <p className="version">Aster v0.14.0</p>
       <p className="notice" style={{ textAlign: 'justify' }}>
         {t('privacy.links.settingsPrefix')}{' '}
         <Link className="link" href="/privacy">
