@@ -75,7 +75,13 @@ export const DeleteOrg = ({ org }: { org: Organization }) => {
         >
           {isLoading ? t('common.deleting') : t('common.confirm')}
         </button>
-        <button type="button" className="little-button" onClick={() => router.back()}>
+        <button
+          type="button"
+          className="little-button"
+          onClick={() => router.back()}
+          aria-busy={isLoading}
+          disabled={isLoading}
+        >
           {t('common.cancel')}
         </button>
       </div>

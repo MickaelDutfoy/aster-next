@@ -1,6 +1,6 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { DeleteOrg } from '@/components/organizations/DeleteOrg';
-import { Modal } from '@/components/tools/Modal';
+import { RouteModal } from '@/components/tools/RouteModal';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
@@ -16,9 +16,9 @@ const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }
   if (org.id !== Number(id)) return <DeniedPage cause="refused" />;
 
   return (
-    <Modal expectedPath={`/organizations/${id}/delete`}>
+    <RouteModal expectedPath={`/organizations/${id}/delete`}>
       <DeleteOrg org={org} />
-    </Modal>
+    </RouteModal>
   );
 };
 

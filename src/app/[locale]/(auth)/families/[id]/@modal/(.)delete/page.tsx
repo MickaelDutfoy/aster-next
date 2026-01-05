@@ -1,12 +1,16 @@
 import { DeleteFamily } from '@/components/families/DeleteFamily';
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { Modal } from '@/components/tools/Modal';
+import { RouteModal } from '@/components/tools/RouteModal';
 import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-export default async function DeleteFamilyModal({ params }: { params: Promise<{ id: string }> }) {
+export default async function DeleteFamilyRouteModal({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const family: Family | null = await getFamilyById(Number(id));
   if (!family) return <DeniedPage cause="error" />;
@@ -18,8 +22,8 @@ export default async function DeleteFamilyModal({ params }: { params: Promise<{ 
   if (!org) return <DeniedPage cause="error" />;
 
   return (
-    <Modal expectedPath={`/families/${family.id}/delete`}>
+    <RouteModal expectedPath={`/families/${family.id}/delete`}>
       <DeleteFamily user={user} org={org} family={family} />
-    </Modal>
+    </RouteModal>
   );
 }

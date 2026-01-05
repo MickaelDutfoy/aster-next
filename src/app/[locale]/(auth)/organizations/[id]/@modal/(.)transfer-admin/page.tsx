@@ -1,12 +1,12 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { TransferAdmin } from '@/components/organizations/TransferAdmin';
-import { Modal } from '@/components/tools/Modal';
+import { RouteModal } from '@/components/tools/RouteModal';
 import { getMembersByOrg } from '@/lib/members/getMembersByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, MemberOfOrg, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-const transferAdminModal = async ({ params }: { params: Promise<{ id: string }> }) => {
+const transferAdminRouteModal = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
@@ -19,10 +19,10 @@ const transferAdminModal = async ({ params }: { params: Promise<{ id: string }> 
   const members: MemberOfOrg[] = await getMembersByOrg(org?.id);
 
   return (
-    <Modal expectedPath={`/organizations/${id}/transfer-admin`}>
+    <RouteModal expectedPath={`/organizations/${id}/transfer-admin`}>
       <TransferAdmin user={user} org={org} members={members} />
-    </Modal>
+    </RouteModal>
   );
 };
 
-export default transferAdminModal;
+export default transferAdminRouteModal;

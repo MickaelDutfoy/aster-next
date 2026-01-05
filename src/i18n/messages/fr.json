@@ -1,9 +1,13 @@
 {
   "common": {
+    "yes": "Oui",
+    "no": "Non",
     "none": "Aucune",
     "view": "Voir",
     "edit": "Modifier",
     "delete": "Supprimer",
+    "validate": "Valider",
+    "validating": "Validation...",
     "cancel": "Annuler",
     "back": "Retour",
     "next": "Suivant",
@@ -174,6 +178,9 @@
     "editInfoTitle": "Éditer l'animal",
     "addTitle": "Ajouter un animal",
     "deleteTitle": "Supprimer l'animal",
+    "commonSpecies": ["Chat", "Chien", "Furet", "Lapin"],
+    "otherSpecies": "Autre",
+    "setSpecies": "Précisez",
     "sex": {
       "M": "Mâle",
       "F": "Femelle"
@@ -213,7 +220,7 @@
     },
     "fields": {
       "namePlaceholder": "Nom *",
-      "speciesPlaceholder": "Espèce *",
+      "speciesPlaceholder": "Espèce * :",
       "colorPlaceholder": "Couleur",
       "sexLabel": "Sexe * :",
       "neuteredQuestion": "Stérilisé(e) ?",
@@ -228,7 +235,8 @@
       "zipPlaceholder": "Code postal",
       "cityPlaceholder": "Ville",
       "homeVisitQuestion": "Visite à domicile faite ?",
-      "feesPaidQuestion": "Frais d'adoption payés ?"
+      "feesPaidQuestion": "Frais d'adoption payés ?",
+      "adoptionNotes": "Notes à propos de l'adoption :"
     }
   },
   "families": {

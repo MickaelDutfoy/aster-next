@@ -2,9 +2,18 @@ import { prisma } from '@/lib/prisma';
 import { AnimalStatus, Sex } from '@prisma/client';
 
 export const parseAnimalData = async (formData: FormData, animalId?: number) => {
+  const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
+
+  const otherSpeciesFromForm = formData.get('animalSpecies')?.toString().trim();
+
+  const speciesToSave =
+    selectedSpeciesFromForm === 'other'
+      ? otherSpeciesFromForm || undefined
+      : selectedSpeciesFromForm;
+
   const animalForm = {
     name: formData.get('animalName')?.toString().trim(),
-    species: formData.get('animalSpecies')?.toString().trim(),
+    species: speciesToSave,
     sex: formData.get('animalSex') as Sex,
     color: formData.get('animalColor')?.toString().trim(),
     findLocation: formData.get('findLocation')?.toString().trim(),
@@ -37,6 +46,7 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     adoptionContractSignedAt: formData.get('adoptionContractSignedAt')?.toString(),
     adoptionFeePaid: formData.has('adoptionFeePaid'),
     legalTransferAt: formData.get('legalTransferAt')?.toString(),
+    adoptInformation: formData.get('animalInformation')?.toString().trim(),
   };
 
   if (
@@ -70,6 +80,7 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     legalTransferAt: adopterForm.legalTransferAt
       ? new Date(adopterForm.legalTransferAt)
       : undefined,
+    information: adopterForm.adoptInformation,
   };
 
   if (animalId) {

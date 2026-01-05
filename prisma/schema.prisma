@@ -62,6 +62,7 @@ model AnimalAdoption {
   adoptionContractSignedAt DateTime? @db.Date
   adoptionFeePaid          Boolean   @default(false)
   legalTransferAt          DateTime? @db.Date
+  information              String?
 
   animal Animal @relation(fields: [animalId], references: [id], onDelete: Cascade)
 }

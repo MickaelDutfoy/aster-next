@@ -1,12 +1,12 @@
 import { RegisterFamily } from '@/components/families/RegisterFamily';
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { Modal } from '@/components/tools/Modal';
+import { RouteModal } from '@/components/tools/RouteModal';
 import { getFamiliesByOrgId } from '@/lib/families/getFamiliesByOrgId';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-export default async function AddFamilyModal() {
+export default async function AddFamilyRouteModal() {
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
 
@@ -18,8 +18,8 @@ export default async function AddFamilyModal() {
   const orgFamilies: Family[] = await getFamiliesByOrgId(org.id);
 
   return (
-    <Modal expectedPath="/families/new">
+    <RouteModal expectedPath="/families/new">
       <RegisterFamily user={user} orgFamilies={orgFamilies} />
-    </Modal>
+    </RouteModal>
   );
 }

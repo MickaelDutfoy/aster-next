@@ -1,12 +1,12 @@
 import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { Modal } from '@/components/tools/Modal';
+import { RouteModal } from '@/components/tools/RouteModal';
 import { getFamiliesByOrgId } from '@/lib/families/getFamiliesByOrgId';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-export default async function AddAnimalModal() {
+export default async function AddAnimalRouteModal() {
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
 
@@ -16,8 +16,8 @@ export default async function AddAnimalModal() {
   const families: Family[] = await getFamiliesByOrgId(org.id);
 
   return (
-    <Modal expectedPath="/animals/new">
+    <RouteModal expectedPath="/animals/new">
       <RegisterAnimal user={user} families={families} />
-    </Modal>
+    </RouteModal>
   );
 }
