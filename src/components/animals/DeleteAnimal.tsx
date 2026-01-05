@@ -41,6 +41,7 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
       <p>{t('common.actionWarning')}</p>
       <div className="yes-no">
         <button
+          type="submit"
           onClick={handleSubmit}
           className="little-button"
           aria-busy={isLoading}
@@ -48,7 +49,13 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
         >
           {isLoading ? t('common.deleting') : t('common.confirm')}
         </button>
-        <button className="little-button" onClick={() => router.back()}>
+        <button
+          type="button"
+          className="little-button"
+          onClick={() => router.back()}
+          aria-busy={isLoading}
+          disabled={isLoading}
+        >
           {t('common.cancel')}
         </button>
       </div>

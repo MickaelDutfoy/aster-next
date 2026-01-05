@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from '@/i18n/routing';
 import { CircleX } from 'lucide-react';
 
-export const Modal = ({
+export const RouteModal = ({
   expectedPath, // prevents modal from re-opening after validation
   children,
 }: {

@@ -11,6 +11,8 @@ import clsx from 'clsx';
 import { EllipsisVertical } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
+import { DeniedPage } from '../main/DeniedPage';
+import { ConfirmModal } from '../tools/ConfirmModal';
 import { showToast } from '../tools/ToastProvider';
 
 export const OrgMembersList = ({
@@ -25,7 +27,10 @@ export const OrgMembersList = ({
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
+
   const [openMenuMemberId, setOpenMenuMemberId] = useState<number | null>(null);
+  const [actionConfirm, setActionConfirm] = useState<Action | null>(null);
+
   const menuRef = useRef<HTMLUListElement | null>(null);
 
   const isMemberPending = members.some(
@@ -59,6 +64,7 @@ export const OrgMembersList = ({
   const handleApproveRequest = async (member: MemberOfOrg, org: Organization, locale: string) => {
     const res = await approveOrgRequest(member, org, locale);
     setOpenMenuMemberId(null);
+    setActionConfirm(null);
     showToast({
       ...res,
       message: res.message ? t(res.message) : undefined,
@@ -68,6 +74,7 @@ export const OrgMembersList = ({
   const handleRemoveMember = async (memberId: number, orgId: number) => {
     const res = await removeMemberFromOrg(memberId, orgId);
     setOpenMenuMemberId(null);
+    setActionConfirm(null);
     showToast({
       ...res,
       message: res.message ? t(res.message) : undefined,
@@ -77,6 +84,7 @@ export const OrgMembersList = ({
   const handleCancelRequest = async (orgId: number) => {
     const res = await cancelOrgRequest(orgId);
     setOpenMenuMemberId(null);
+    setActionConfirm(null);
     router.replace(`/organizations`);
     showToast({
       ...res,
@@ -87,6 +95,7 @@ export const OrgMembersList = ({
   const handleLeaveOrg = async (orgId: number) => {
     const res = await leaveOrg(orgId);
     setOpenMenuMemberId(null);
+    setActionConfirm(null);
     router.replace(`/organizations`);
     showToast({
       ...res,
@@ -96,6 +105,7 @@ export const OrgMembersList = ({
 
   const handleTransferAdmin = async () => {
     setOpenMenuMemberId(null);
+    setActionConfirm(null);
     router.push(`/organizations/${org?.id}/transfer-admin`);
   };
 
@@ -108,6 +118,7 @@ export const OrgMembersList = ({
 
     if (isMemberSuperadmin && member.status === MemberStatus.PENDING) {
       actions.push({
+        id: 'approveRequest',
         name: t('organizations.actions.approveRequest'),
         handler: () => handleApproveRequest(member, org, locale),
       });
@@ -119,6 +130,7 @@ export const OrgMembersList = ({
       member.status !== MemberStatus.PENDING
     ) {
       actions.push({
+        id: 'removeMember',
         name: t('organizations.actions.removeMember'),
         handler: () => handleRemoveMember(member.id, org.id),
       });
@@ -126,6 +138,7 @@ export const OrgMembersList = ({
 
     if (user.id === member.id && member.status === MemberStatus.PENDING) {
       actions.push({
+        id: 'cancelRequest',
         name: t('organizations.actions.cancelRequest'),
         handler: () => handleCancelRequest(org.id),
       });
@@ -137,6 +150,7 @@ export const OrgMembersList = ({
       member.role !== MemberRole.SUPERADMIN
     ) {
       actions.push({
+        id: 'leaveOrg',
         name: t('organizations.actions.leaveOrg'),
         handler: () => handleLeaveOrg(org.id),
       });
@@ -144,6 +158,7 @@ export const OrgMembersList = ({
 
     if (user.id === member.id && member.role === MemberRole.SUPERADMIN) {
       actions.push({
+        id: 'transferAdmin',
         name: t('organizations.actions.transferAdmin'),
         handler: () => handleTransferAdmin(),
       });
@@ -153,11 +168,14 @@ export const OrgMembersList = ({
   };
 
   if (!org) {
-    return null;
+    return <DeniedPage cause="error" />;
   }
 
   return (
     <>
+      {actionConfirm && (
+        <ConfirmModal onCancel={() => setActionConfirm(null)} action={actionConfirm} />
+      )}
       <div className={clsx(isMemberSuperadmin ? 'links-box' : 'links-box disabled')}>
         <Link href={`/organizations/${org.id}/delete`} className="little-button">
           {t('organizations.deleteTitle')}
@@ -197,7 +215,17 @@ export const OrgMembersList = ({
                   {openMenuMemberId === member.id && actions.length > 0 && (
                     <ul className="action-list" ref={menuRef}>
                       {actions.map((action) => (
-                        <li key={action.name} onClick={action.handler}>
+                        <li
+                          key={action.name}
+                          onClick={
+                            action.id === 'transferAdmin'
+                              ? action.handler
+                              : () => {
+                                  setOpenMenuMemberId(null);
+                                  setActionConfirm(action);
+                                }
+                          }
+                        >
                           {action.name}
                         </li>
                       ))}

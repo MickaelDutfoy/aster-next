@@ -1,9 +1,13 @@
 {
   "common": {
+    "yes": "Ja",
+    "no": "Nei",
     "none": "Ingen",
     "view": "Se",
     "edit": "Rediger",
     "delete": "Slett",
+    "validate": "Bekreft",
+    "validating": "Bekrefter...",
     "cancel": "Avbryt",
     "back": "Tilbake",
     "next": "Neste",
@@ -174,6 +178,9 @@
     "editInfoTitle": "Rediger dyret",
     "addTitle": "Legg til et dyr",
     "deleteTitle": "Slett dyret",
+    "commonSpecies": ["Hund", "Ilder", "Kanin", "Katt"],
+    "otherSpecies": "Annet",
+    "setSpecies": "Vennligst spesifiser",
     "sex": {
       "M": "Hann",
       "F": "Hunn"
@@ -213,7 +220,7 @@
     },
     "fields": {
       "namePlaceholder": "Navn *",
-      "speciesPlaceholder": "Art *",
+      "speciesPlaceholder": "Art *:",
       "colorPlaceholder": "Farge",
       "sexLabel": "Kjønn *:",
       "neuteredQuestion": "Kastrert/sterilisert?",
@@ -228,7 +235,8 @@
       "zipPlaceholder": "Postnummer",
       "cityPlaceholder": "Sted",
       "homeVisitQuestion": "Hjemmebesøk gjennomført?",
-      "feesPaidQuestion": "Adopsjonsgebyr betalt?"
+      "feesPaidQuestion": "Adopsjonsgebyr betalt?",
+      "adoptionNotes": "Notater om adopsjonen:"
     }
   },
   "families": {

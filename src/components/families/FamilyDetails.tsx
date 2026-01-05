@@ -32,9 +32,8 @@ export const FamilyDetails = ({
             clsx(
               family.memberId &&
                 family.memberId !== user.id &&
-                org.userRole !== MemberRole.SUPERADMIN
-                ? 'disabled'
-                : '',
+                org.userRole !== MemberRole.SUPERADMIN &&
+                'disabled',
             )
           }
         >
@@ -43,8 +42,7 @@ export const FamilyDetails = ({
         <Link
           href={`/families/${family.id}/edit`}
           className={
-            'little-button ' +
-            clsx(family.memberId && family.memberId !== user.id ? 'disabled' : '')
+            'little-button ' + clsx(family.memberId && family.memberId !== user.id && 'disabled')
           }
         >
           {t('families.editInfoTitle')}

@@ -61,6 +61,7 @@ export type AnimalAdoption = {
   adoptionContractSignedAt: Date | null;
   adoptionFeePaid: boolean;
   legalTransferAt: Date | null;
+  information: string | null;
 };
 
 export type Organization = {
@@ -99,6 +100,7 @@ export type MemberOfOrg = {
 };
 
 export type Action = {
+  id: string;
   name: string;
   handler: () => Promise<void>;
 };

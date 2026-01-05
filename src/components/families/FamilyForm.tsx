@@ -90,7 +90,7 @@ export const FamilyForm = ({
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <form onSubmit={handleSubmit}>
         <div className="form-tab">
-          <div className={'labeled-checkbox ' + clsx(isAlreadyFamily ? 'disabled' : '')}>
+          <div className={'labeled-checkbox ' + clsx(isAlreadyFamily && 'disabled')}>
             <p>{t('families.prefillMeLabel')}</p>
             <input
               type="checkbox"

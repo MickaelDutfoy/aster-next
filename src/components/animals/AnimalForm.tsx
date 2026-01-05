@@ -27,6 +27,18 @@ export const AnimalForm = ({
   const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
   const [isLoading, setIsLoading] = useState(false);
 
+  const commonSpecies = t.raw('animals.commonSpecies') as string[];
+
+  const initialSelectedSpecies = (() => {
+    if (animal?.species) {
+      return commonSpecies.includes(animal.species) ? animal.species : 'other';
+    }
+
+    return commonSpecies[0];
+  })();
+
+  const [selectedSpecies, setSelectedSpecies] = useState<string>(initialSelectedSpecies);
+
   useEffect(() => {
     if (animal) return;
     let defaultFamily = families.find((family) => family.memberId === user.id);
@@ -40,9 +52,18 @@ export const AnimalForm = ({
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
+    const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
+
+    const otherSpeciesFromForm = formData.get('animalSpecies')?.toString().trim();
+
+    const speciesToSave =
+      selectedSpeciesFromForm === 'other'
+        ? otherSpeciesFromForm || undefined
+        : selectedSpeciesFromForm;
+
     const animalForm = {
       name: formData.get('animalName')?.toString().trim(),
-      species: formData.get('animalSpecies')?.toString().trim(),
+      species: speciesToSave,
       birthDate: formData.get('animalBirthDate')?.toString().trim(),
       statusFromForm: formData.get('animalStatus')?.toString(),
       animalFamily: Number(formData.get('animalFamily')),
@@ -90,10 +111,10 @@ export const AnimalForm = ({
   return (
     <>
       <div className="tabs">
-        <div className={clsx(form === 'health' ? 'active' : '')} onClick={() => setForm('health')}>
+        <div className={clsx(form === 'health' && 'active')} onClick={() => setForm('health')}>
           {t('animals.tabs.health')}
         </div>
-        <div className={clsx(form === 'adopt' ? 'active' : '')} onClick={() => setForm('adopt')}>
+        <div className={clsx(form === 'adopt' && 'active')} onClick={() => setForm('adopt')}>
           {t('animals.tabs.adoption')}
         </div>
       </div>
@@ -101,7 +122,41 @@ export const AnimalForm = ({
       <form onSubmit={handleSubmit}>
         <div hidden={form !== 'health'}>
           <div className="form-tab">
-            <div className="name-species-color">
+            <div className="species">
+              <p>{t('animals.fields.speciesPlaceholder')}</p>
+              <select
+                name="animalSpeciesSelector"
+                value={selectedSpecies}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setSelectedSpecies(value);
+                  if (value !== 'other') {
+                    const input = document.querySelector(
+                      'input[name="animalSpecies"]',
+                    ) as HTMLInputElement | null;
+                    if (input) input.value = '';
+                  }
+                }}
+              >
+                {t.raw('animals.commonSpecies').map((item: string, index: number) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
+
+                <option value="other">{t('animals.otherSpecies')}</option>
+              </select>
+              <input
+                type="text"
+                name="animalSpecies"
+                disabled={selectedSpecies !== 'other'}
+                className={clsx(selectedSpecies !== 'other' && 'disabled')}
+                placeholder={t('animals.setSpecies') + (selectedSpecies === 'other' ? ' *' : '')}
+                defaultValue={selectedSpecies === 'other' ? animal?.species : ''}
+              />
+            </div>
+
+            <div className="name-color">
               <input
                 type="text"
                 name="animalName"
@@ -110,17 +165,12 @@ export const AnimalForm = ({
               />
               <input
                 type="text"
-                name="animalSpecies"
-                placeholder={t('animals.fields.speciesPlaceholder')}
-                defaultValue={animal?.species}
-              />
-              <input
-                type="text"
                 name="animalColor"
                 placeholder={t('animals.fields.colorPlaceholder')}
                 defaultValue={animal?.color ?? ''}
               />
             </div>
+
             <div className="labeled-checkbox">
               <p>{t('animals.fields.sexLabel')}</p>
               <select name="animalSex" defaultValue={animal?.sex}>
@@ -198,7 +248,7 @@ export const AnimalForm = ({
             <div className={`labeled-select ` + clsx(status === 'FOSTERED' ? '' : 'disabled')}>
               <p>
                 {t('animals.fields.familyLabel')}
-                {status === 'FOSTERED' ? ' *' : ''} :
+                {status === 'FOSTERED' && ' *'} :
               </p>
               <select
                 name="animalFamily"
@@ -318,6 +368,16 @@ export const AnimalForm = ({
                 defaultValue={animal?.adoption?.legalTransferAt?.toISOString().slice(0, 10)}
               />
             </div>
+            <p>{t('animals.fields.adoptionNotes')}</p>
+            <textarea
+              name="adoptInformation"
+              defaultValue={animal?.adoption?.information ?? ''}
+              onInput={(e) => {
+                const el = e.currentTarget;
+                el.style.height = 'auto';
+                el.style.height = `${el.scrollHeight}px`;
+              }}
+            />
           </div>
         </div>
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>

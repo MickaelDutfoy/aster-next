@@ -39,9 +39,9 @@ export const AnimalDetails = ({
           className={
             'little-button ' +
             clsx(
-              animal.createdByMemberId !== user.id && org.userRole !== MemberRole.SUPERADMIN
-                ? 'disabled'
-                : '',
+              animal.createdByMemberId !== user.id &&
+                org.userRole !== MemberRole.SUPERADMIN &&
+                'disabled',
             )
           }
         >
@@ -56,7 +56,7 @@ export const AnimalDetails = ({
         <p>
           {animal.species}, {t(`animals.sex.${animal.sex}`).toLowerCase()},{' '}
           {animal.color?.toLowerCase()}, {getAge(animal.birthDate, locale, true)}
-          {animal.isNeutered ? t('animals.neuteredSuffix') : ''}.
+          {animal.isNeutered && t('animals.neuteredSuffix')}.
         </p>
         {animal.findLocation && (
           <p>
@@ -73,7 +73,7 @@ export const AnimalDetails = ({
                 <h4>{t('animals.lastVaxLabel')}</h4>
                 <p>
                   {displayDate(animal.lastVax)}
-                  {animal.isPrimoVax ? t('animals.primoShort') : ''}, {t('common.agoPrefix')}
+                  {animal.isPrimoVax && t('animals.primoShort')}, {t('common.agoPrefix')}
                   {getAge(animal.lastVax, locale, true)}
                   {t('common.agoSuffix')}.
                 </p>
@@ -98,8 +98,7 @@ export const AnimalDetails = ({
                 <h4>{t('animals.lastDewormLabel')}</h4>
                 <p>
                   {displayDate(animal.lastDeworm)}
-                  {animal.isFirstDeworm ? t('animals.firstDewormShort') : ''},{' '}
-                  {t('common.agoPrefix')}
+                  {animal.isFirstDeworm && t('animals.firstDewormShort')}, {t('common.agoPrefix')}
                   {getAge(animal.lastDeworm, locale, true)}
                   {t('common.agoSuffix')}.
                 </p>

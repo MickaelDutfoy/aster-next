@@ -1,9 +1,13 @@
 {
   "common": {
+    "yes": "Yes",
+    "no": "No",
     "none": "None",
     "view": "View",
     "edit": "Edit",
     "delete": "Delete",
+    "validate": "Confirm",
+    "validating": "Confirming...",
     "cancel": "Cancel",
     "back": "Back",
     "next": "Next",
@@ -174,6 +178,9 @@
     "editInfoTitle": "Edit animal",
     "addTitle": "Add an animal",
     "deleteTitle": "Delete animal",
+    "commonSpecies": ["Cat", "Dog", "Ferret", "Rabbit"],
+    "otherSpecies": "Other",
+    "setSpecies": "Please specify",
     "sex": {
       "M": "Male",
       "F": "Female"
@@ -213,7 +220,7 @@
     },
     "fields": {
       "namePlaceholder": "Name *",
-      "speciesPlaceholder": "Species *",
+      "speciesPlaceholder": "Species *:",
       "colorPlaceholder": "Color",
       "sexLabel": "Sex *:",
       "neuteredQuestion": "Neutered?",
@@ -228,7 +235,8 @@
       "zipPlaceholder": "Postal code",
       "cityPlaceholder": "City",
       "homeVisitQuestion": "Home visit done?",
-      "feesPaidQuestion": "Adoption fee paid?"
+      "feesPaidQuestion": "Adoption fee paid?",
+      "adoptionNotes": "Notes about the adoption:"
     }
   },
   "families": {
