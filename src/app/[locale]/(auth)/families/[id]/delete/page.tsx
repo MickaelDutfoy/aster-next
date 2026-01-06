@@ -16,7 +16,11 @@ const DeleteFamilyPage = async ({ params }: { params: Promise<{ id: string }> })
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
-  return <DeleteFamily user={user} org={org} family={family} />;
+  return (
+    <div className="full-page-form">
+      <DeleteFamily user={user} org={org} family={family} />;
+    </div>
+  );
 };
 
 export default DeleteFamilyPage;

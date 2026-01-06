@@ -30,7 +30,7 @@ export const ResetPassword = () => {
 
     setIsLoading(true);
     try {
-      const res = await sendResetPasswordMail(formData, locale);
+      const res = await sendResetPasswordMail(parsedEmail.data, locale);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,

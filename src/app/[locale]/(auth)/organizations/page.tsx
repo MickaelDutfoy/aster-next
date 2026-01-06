@@ -20,7 +20,7 @@ const Organizations = async () => {
       <div>
         <SearchOrg />
       </div>
-      {org && <OrgPicker user={user} org={org} />}
+      {org && <OrgPicker org={org} />}
     </div>
   );
 };

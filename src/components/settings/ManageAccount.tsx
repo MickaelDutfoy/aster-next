@@ -7,9 +7,8 @@ import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 
 export const ManageAccount = () => {
-  const router = useRouter();
-
   const t = useTranslations();
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,6 +36,12 @@ export const ManageAccount = () => {
   return (
     <>
       <div className="links-box">
+        <button onClick={() => router.push(`/settings/edit-account`)} className="little-button">
+          {t('settings.editAccount.title')}
+        </button>
+        <button onClick={() => router.push(`/settings/delete-account`)} className="little-button">
+          {t('settings.deleteAccount.title')}
+        </button>
         <button
           onClick={handleLogout}
           className="little-button"
@@ -45,9 +50,6 @@ export const ManageAccount = () => {
         >
           {isLoading ? t('auth.logout.loading') : t('auth.logout.submit')}
         </button>
-        <Link href={`/settings/delete-account`} className="little-button">
-          {t('settings.deleteAccount.title')}
-        </Link>
       </div>
       <p className="version">Aster v0.14.0</p>
       <p className="notice" style={{ textAlign: 'justify' }}>

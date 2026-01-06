@@ -12,13 +12,13 @@ import { getTranslations } from 'next-intl/server';
 const RESET_TOKEN_LIFETIME_MS = 1000 * 60 * 60;
 
 export const sendResetPasswordMail = async (
-  formData: FormData,
+  email: string,
   locale: string,
+  fromEditAccount?: boolean,
 ): Promise<ActionValidation> => {
   const t = await getTranslations({ locale, namespace: 'emails' });
 
-  const emailForm = formData.get('userEmail')?.toString().trim().toLowerCase();
-  const parsedEmail = resetPasswordSchema.safeParse(emailForm);
+  const parsedEmail = resetPasswordSchema.safeParse(email);
 
   if (!parsedEmail.success) {
     return {
@@ -28,11 +28,9 @@ export const sendResetPasswordMail = async (
     };
   }
 
-  const email = parsedEmail.data;
-
   try {
     const member = await prisma.member.findUnique({
-      where: { email },
+      where: { email: parsedEmail.data },
     });
 
     if (!member) {
@@ -99,7 +97,7 @@ export const sendResetPasswordMail = async (
     return {
       ok: true,
       status: 'success',
-      message: 'auth.resetPassword.sent',
+      message: fromEditAccount ? 'settings.editAccount.resetPassword' : 'auth.resetPassword.sent',
     };
   } catch (err) {
     console.error(err);

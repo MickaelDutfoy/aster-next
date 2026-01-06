@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { Animal, Family, Member, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { MemberRole } from '@prisma/client';
@@ -21,12 +21,13 @@ export const FamilyDetails = ({
 }) => {
   const t = useTranslations();
   const locale = useLocale();
+  const router = useRouter();
 
   return (
     <>
       <div className="links-box">
-        <Link
-          href={`/families/${family.id}/delete`}
+        <button
+          onClick={() => router.push(`/families/${family.id}/delete`)}
           className={
             'little-button ' +
             clsx(
@@ -38,15 +39,15 @@ export const FamilyDetails = ({
           }
         >
           {t('families.deleteTitle')}
-        </Link>
-        <Link
-          href={`/families/${family.id}/edit`}
+        </button>
+        <button
+          onClick={() => router.push(`/families/${family.id}/edit`)}
           className={
             'little-button ' + clsx(family.memberId && family.memberId !== user.id && 'disabled')
           }
         >
           {t('families.editInfoTitle')}
-        </Link>
+        </button>
       </div>
 
       <div>

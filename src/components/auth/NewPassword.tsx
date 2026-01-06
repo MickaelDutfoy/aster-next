@@ -66,7 +66,7 @@ export const NewPassword = ({ token }: { token: string }) => {
             placeholder={t('auth.passwordConfirmPlaceholder')}
           />
           <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? t('common.loading') : t('common.ubmit')}
+            {isLoading ? t('common.loading') : t('common.submit')}
           </button>
         </form>
       </div>

@@ -17,7 +17,11 @@ const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }
 
   const members: MemberOfOrg[] = await getMembersByOrg(org?.id);
 
-  return <TransferAdmin user={user} org={org} members={members} />;
+  return (
+    <div className="full-page-form">
+      <TransferAdmin user={user} org={org} members={members} />
+    </div>
+  );
 };
 
 export default transferAdminPage;

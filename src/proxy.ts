@@ -28,8 +28,6 @@ const AUTH_PAGES_PREFIXES = [
   // routes which cannot be reached while logged in
   '/login',
   '/register',
-  '/reset-password',
-  '/new-password',
 ];
 
 const INTRO_BYPASS_PREFIXES = ['/privacy'];

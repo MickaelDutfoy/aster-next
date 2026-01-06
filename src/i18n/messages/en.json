@@ -79,7 +79,7 @@
     "newPasswordLabel": "New password:",
     "register": {
       "success": "Account created successfully!",
-      "alreadyExists": "An account already exists with this email address.",
+      "alreadyExists": "An account already exists with this email address or this phone number.",
       "firstNameLabel": "First name:",
       "lastNameLabel": "Last name:",
       "phoneLabel": "Phone number:",
@@ -246,7 +246,7 @@
     "hasChildren": "This foster family has children.",
     "animalsInCareLabel": "Animals in care ({count}):",
     "otherAnimalsLabel": "Other animals:",
-    "prefillMeLabel": "It's men use my info:",
+    "prefillMeLabel": "It's me, use my info:",
     "familyBindNotice": "By checking this box, animals you add later will be linked to your foster family by default.",
     "isSelf": "You’ve indicated that you are this foster family.",
     "alreadyFosterInOrg": "You’ve already defined yourself as a foster family in this organization: you can’t do it again.",
@@ -324,6 +324,13 @@
     "system": "System",
     "dark": "Dark",
     "light": "Light",
+    "editAccount": {
+      "title": "Edit my account",
+      "phoneLabel": "Phone number *:",
+      "noticeCredentials": "It is not currently possible to modify your login credentials, but you can reset your password by clicking below.",
+      "changePasswordButton": "Change my password",
+      "resetPassword": "An email containing a password reset link has just been sent to you."
+    },
     "deleteAccount": {
       "title": "Delete my account",
       "explainIntro": "Deleting your account means that:",

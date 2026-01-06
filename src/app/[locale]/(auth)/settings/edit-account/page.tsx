@@ -1,5 +1,5 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { DeleteAccount } from '@/components/settings/DeleteAccount';
+import { EditAccount } from '@/components/settings/EditAccount';
 import { Member } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
@@ -9,7 +9,7 @@ const RegisterAnimalPage = async () => {
 
   return (
     <div className="full-page-form">
-      <DeleteAccount />
+      <EditAccount user={user} />
     </div>
   );
 };

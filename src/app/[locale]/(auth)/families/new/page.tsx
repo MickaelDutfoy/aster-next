@@ -16,7 +16,11 @@ const RegisterFamilyPage = async () => {
 
   const orgFamilies: Family[] = await getFamiliesByOrgId(org.id);
 
-  return <RegisterFamily user={user} orgFamilies={orgFamilies} />;
+  return (
+    <div className="full-page-form">
+      <RegisterFamily user={user} orgFamilies={orgFamilies} />
+    </div>
+  );
 };
 
 export default RegisterFamilyPage;

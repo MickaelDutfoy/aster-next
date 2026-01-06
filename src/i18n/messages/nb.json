@@ -79,7 +79,7 @@
     "newPasswordLabel": "Nytt passord:",
     "register": {
       "success": "Kontoen ble opprettet!",
-      "alreadyExists": "Det finnes allerede en konto med denne e-postadressen.",
+      "alreadyExists": "Det finnes allerede en konto med denne e-postadressen eller dette telefonnummeret.",
       "firstNameLabel": "Fornavn:",
       "lastNameLabel": "Etternavn:",
       "phoneLabel": "Telefonnummer:",
@@ -324,6 +324,13 @@
     "system": "System",
     "dark": "Mørk",
     "light": "Lys",
+    "editAccount": {
+      "title": "Rediger kontoen min",
+      "phoneLabel": "Telefonnummer *:",
+      "noticeCredentials": "Det er for øyeblikket ikke mulig å endre påloggingsinformasjonen din, men du kan tilbakestille passordet ditt ved å klikke nedenfor.",
+      "changePasswordButton": "Endre passord",
+      "resetPassword": "En e-post med en lenke for å tilbakestille passordet ditt har nettopp blitt sendt."
+    },
     "deleteAccount": {
       "title": "Slett kontoen min",
       "explainIntro": "Sletting av kontoen din innebærer at:",

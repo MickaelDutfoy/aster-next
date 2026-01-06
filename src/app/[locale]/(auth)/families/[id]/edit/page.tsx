@@ -12,7 +12,11 @@ const UpdateFamilyPage = async ({ params }: { params: Promise<{ id: string }> })
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
 
-  return <UpdateFamily user={user} family={family} />;
+  return (
+    <div className="full-page-form">
+      <UpdateFamily user={user} family={family} />
+    </div>
+  );
 };
 
 export default UpdateFamilyPage;

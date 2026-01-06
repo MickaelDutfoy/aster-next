@@ -30,3 +30,14 @@ export const newPasswordSchema = z
     path: ['passwordConfirm'],
     message: 'auth.zod.passwordConfirm.mismatch',
   });
+
+export const editProfileSchema = z.object({
+  firstName: z.string().trim().min(2, { message: 'auth.zod.firstName.minLength' }),
+  lastName: z.string().trim().min(2, { message: 'auth.zod.lastName.minLength' }),
+  phoneNumber: z
+    .string()
+    .trim()
+    .min(6, { message: 'auth.zod.phone.minLength' })
+    .max(20, { message: 'auth.zod.phone.maxLength' })
+    .refine((val) => /^[0-9+().\s-]+$/.test(val), { message: 'auth.zod.phone.invalid' }),
+});

@@ -27,26 +27,28 @@ export const ConfirmModal = ({ onCancel, action }: { onCancel: () => void; actio
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <CircleX className="close" size={35} onClick={onCancel} />
         <h3>{action.name}</h3>
-        <p>{t('common.areYouSure')}</p>
-        <div className="yes-no">
-          <button
-            type="submit"
-            onClick={onConfirm}
-            className="little-button"
-            aria-busy={isLoading}
-            disabled={isLoading}
-          >
-            {isLoading ? t('common.validating') : t('common.validate')}
-          </button>
-          <button
-            type="button"
-            className="little-button"
-            onClick={onCancel}
-            aria-busy={isLoading}
-            disabled={isLoading}
-          >
-            {t('common.cancel')}
-          </button>
+        <div className="confirm-modal-content">
+          <p>{t('common.areYouSure')}</p>
+          <div className="yes-no">
+            <button
+              type="submit"
+              onClick={onConfirm}
+              className="little-button"
+              aria-busy={isLoading}
+              disabled={isLoading}
+            >
+              {isLoading ? t('common.validating') : t('common.validate')}
+            </button>
+            <button
+              type="button"
+              className="little-button"
+              onClick={onCancel}
+              aria-busy={isLoading}
+              disabled={isLoading}
+            >
+              {t('common.cancel')}
+            </button>
+          </div>
         </div>
       </div>
     </div>

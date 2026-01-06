@@ -79,7 +79,7 @@
     "newPasswordLabel": "Nouveau mot de passe :",
     "register": {
       "success": "Compte créé avec succès !",
-      "alreadyExists": "Un compte existe déjà avec cette adresse e-mail.",
+      "alreadyExists": "Un compte existe déjà avec cette adresse e-mail ou ce numéro de téléphone.",
       "firstNameLabel": "Prénom :",
       "lastNameLabel": "Nom :",
       "phoneLabel": "Téléphone :",
@@ -324,6 +324,13 @@
     "system": "Système",
     "dark": "Sombre",
     "light": "Clair",
+    "editAccount": {
+      "title": "Éditer mon compte",
+      "phoneLabel": "Téléphone * :",
+      "noticeCredentials": "Il n'est pas actuellement pas possible de modifier vos identifiants de connexion, mais vous pouvez faire une réinitialisation de votre mot de passe en cliquant ci-dessous.",
+      "changePasswordButton": "Changer mon mot de passe",
+      "resetPassword": "Un e-mail pour réinitialiser votre mot de passe vient de vous être envoyé."
+    },
     "deleteAccount": {
       "title": "Supprimer mon compte",
       "explainIntro": "La suppression de votre compte implique que :",

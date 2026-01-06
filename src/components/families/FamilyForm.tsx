@@ -87,7 +87,9 @@ export const FamilyForm = ({
 
   return (
     <>
-      <p className="notice">{t('common.requiredFieldsNotice')}</p>
+      <p className="notice" style={{ paddingTop: '10px' }}>
+        {t('common.requiredFieldsNotice')}
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="form-tab">
           <div className={'labeled-checkbox ' + clsx(isAlreadyFamily && 'disabled')}>
