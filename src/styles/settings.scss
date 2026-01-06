@@ -1,7 +1,7 @@
 @use 'vars';
 
 .settings {
-position: relative;
+  position: relative;
 
   .version {
     padding: 2px 5px 5px 5px;
@@ -10,10 +10,50 @@ position: relative;
     text-align: right;
   }
 
-  .lang-change, .theme-select {
+  .lang-change,
+  .theme-select {
     margin: 5px 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+.edit-account {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  .creds-info {
+    padding: 10px 5px 0 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .full-name {
+    display: flex;
+
+    * {
+      width: 50%;
+    }
+  }
+
+  .email,
+  .password,
+  .phone-number {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 }

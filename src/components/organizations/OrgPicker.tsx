@@ -1,10 +1,10 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import { Member, Organization } from '@/lib/types';
+import { Organization } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 
-export const OrgPicker = ({ user, org }: { user: Member; org: Organization }) => {
+export const OrgPicker = ({ org }: { org: Organization }) => {
   const t = useTranslations();
 
   return (

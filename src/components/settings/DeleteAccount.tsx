@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteAccount } from '@/actions/auth/deleteAccount';
+import { deleteAccount } from '@/actions/settings/deleteAccount';
 import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';

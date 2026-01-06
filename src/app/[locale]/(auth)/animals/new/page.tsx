@@ -14,7 +14,11 @@ const RegisterAnimalPage = async () => {
 
   const families: Family[] = await getFamiliesByOrgId(org.id);
 
-  return <RegisterAnimal user={user} families={families} />;
+  return (
+    <div className="full-page-form">
+      <RegisterAnimal user={user} families={families} />
+    </div>
+  );
 };
 
 export default RegisterAnimalPage;

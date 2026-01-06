@@ -120,17 +120,18 @@ header {
 }
 
 .denied-page {
-  height: 100%;
-  margin: 0 20px;
-  display: grid;
-  place-items: center;
-  text-align: justify;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  text-align: center;
 }
 
 .tabs {
   display: flex;
   justify-content: space-evenly;
-  margin: 10px;
+  margin: 5px;
   border-bottom: 1px solid var(--button);
 
   div {

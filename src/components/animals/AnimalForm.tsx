@@ -118,7 +118,9 @@ export const AnimalForm = ({
           {t('animals.tabs.adoption')}
         </div>
       </div>
-      <p className="notice">{t('common.requiredFieldsNotice')}</p>
+      <p className="notice" style={{ paddingTop: '5px' }}>
+        {t('common.requiredFieldsNotice')}
+      </p>
       <form onSubmit={handleSubmit}>
         <div hidden={form !== 'health'}>
           <div className="form-tab">

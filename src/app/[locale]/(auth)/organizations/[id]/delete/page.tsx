@@ -14,7 +14,11 @@ const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }
 
   if (org.id !== Number(id)) return <DeniedPage cause="refused" />;
 
-  return <DeleteOrg org={org} />;
+  return (
+    <div className="full-page-form">
+      <DeleteOrg org={org} />
+    </div>
+  );
 };
 
 export default transferAdminPage;

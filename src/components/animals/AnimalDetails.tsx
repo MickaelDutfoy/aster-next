@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { Animal, Family, Member, Organization } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
@@ -22,6 +22,7 @@ export const AnimalDetails = ({
 }) => {
   const t = useTranslations();
   const locale = useLocale();
+  const router = useRouter();
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
     animal.status === AnimalStatus.ADOPTED ? true : false,
   );
@@ -34,8 +35,8 @@ export const AnimalDetails = ({
   return (
     <>
       <div className="links-box">
-        <Link
-          href={`/animals/${animal.id}/delete`}
+        <button
+          onClick={() => router.push(`/animals/${animal.id}/delete`)}
           className={
             'little-button ' +
             clsx(
@@ -46,10 +47,10 @@ export const AnimalDetails = ({
           }
         >
           {t('animals.deleteTitle')}
-        </Link>
-        <Link href={`/animals/${animal.id}/edit`} className="little-button">
+        </button>
+        <button onClick={() => router.push(`/animals/${animal.id}/edit`)} className="little-button">
           {t('animals.editInfoTitle')}
-        </Link>
+        </button>
       </div>
       <div className="animal-page">
         <h3>{animal.name}</h3>

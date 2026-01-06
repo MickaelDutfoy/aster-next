@@ -19,7 +19,11 @@ const DeleteAnimalPage = async ({ params }: { params: Promise<{ id: string }> })
   const animal: Animal | null = await getAnimalById(Number(id));
   if (!animal) return <DeniedPage cause="error" />;
 
-  return <DeleteAnimal id={id} />;
+  return (
+    <div className="full-page-form">
+      <DeleteAnimal id={id} />
+    </div>
+  );
 };
 
 export default DeleteAnimalPage;
