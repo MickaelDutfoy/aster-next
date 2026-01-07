@@ -59,10 +59,10 @@
     "welcomeTitle": "Welcome to Aster!",
     "welcomeSubtitle": "“Helping those who help.”",
     "whyTitle": "Why?",
-    "whyWhatIsAster": "Aster is a management app for animal welfare associations.",
-    "whyHowHelps": "By bringing your volunteers together and centralizing data about your animals and foster families, Aster becomes the shared, connected memory of your association.",
+    "whyWhatIsAster": "Aster is a management app for animal welfare organizations.",
+    "whyHowHelps": "By bringing your volunteers together and centralizing data about your animals and foster families, Aster becomes the shared, connected memory of your organization.",
     "howTitle": "How does it work?",
-    "howFirstParagraph": "Create an account, register your association, invite members to join, then add your foster families and animals.",
+    "howFirstParagraph": "Create an account, register your organization, invite members to join, then add your foster families and animals.",
     "howSecondParagraph": "100% free and ad-free, Aster has a single goal: helping those who do everything they can to help animals.",
     "whatsNextTitle": "What’s next?",
     "whatsNextParagraph1": "Once your foster families and animals are listed, you can easily track vaccine reminders, available foster homes, and ongoing adoptions.",
@@ -161,14 +161,14 @@
       "title": "What’s new in Aster?",
       "items0123": [
         "Improved security when editing an animal or a foster family.",
-        "Email notifications are now sent when a member requests to join an association, and when that request is approved."
+        "Email notifications are now sent when a member requests to join an organization, and when that request is approved."
       ],
       "items0130": [
         "Improved interface for the \"Organizations\" section.",
         "You can now transfer the admin role of an organization to another approved member."
       ],
       "items0140": [
-        "New features: delete your account, delete or edit an association...",
+        "New features: edit or delete your account, edit or delete an organization...",
         "Security improvements and smoother user flows.",
         "The privacy policy is now available and can be accessed from the settings."
       ]
@@ -270,14 +270,14 @@
     "editInfoTitle": "Edit organization",
     "deleteTitle": "Delete organization",
     "deleteOrg": {
-      "readBefore": "You are about to delete the association {orgName}. Before proceeding, please make sure you understand all the implications of this action.",
+      "readBefore": "You are about to delete the organization {orgName}. Before proceeding, please make sure you understand all the implications of this action.",
       "items": [
-        "All members linked to this association will be detached and will no longer see it in their list of active associations.",
-        "All animals and all foster families linked to this association will be deleted and cannot be recovered."
+        "All members linked to this organization will be detached and will no longer see it in their list of active organizations.",
+        "All animals and all foster families linked to this organization will be deleted and cannot be recovered."
       ],
-      "mustWriteOrgName": "To confirm this action, you must enter the full name of the association:"
+      "mustWriteOrgName": "To confirm this action, you must enter the full name of the organization:"
     },
-    "yourOrganizations": "Active association:",
+    "yourOrganizations": "Active organization:",
     "membersListTitle": "Member list for {orgName} ({count}):",
     "hiddenOrgMembers": "Your membership request is pending. For confidentiality reasons, you cannot see the other members.",
     "registerTitle": "Register a new organization?",
@@ -337,11 +337,11 @@
       "items": [
         "You will be automatically signed out and will no longer be able to log in.",
         "Your personal data (first name, last name, email, phone number) will be removed from Aster’s database.",
-        "You will no longer appear in the list of associations you belonged to."
+        "You will no longer appear in the list of organizations you belonged to."
       ],
       "fosterExplain1": "Warning: as stated in the privacy policy, some of your contact details may continue to appear in the application as a foster family, even after your account is deleted.",
       "fosterRequest": "Also delete foster family records linked to my account:",
-      "fosterExplain2": "This option only deletes records linked to your account, not records independently created by an association that may concern you.",
+      "fosterExplain2": "This option only deletes records linked to your account, not records independently created by an organization that may concern you.",
       "hasConfirmed": "I understand that this deletion is irreversible *:",
       "success": "Your account has been deleted."
     }
@@ -354,9 +354,9 @@
     "register": {
       "subject": "Welcome to Aster!",
       "accountCreated": "Your Aster account has been created!",
-      "p1": "Aster is an open-source app, free and ad-free, designed to simplify the work of animal welfare associations.",
+      "p1": "Aster is an open-source app, free and ad-free, designed to simplify the work of animal welfare organizations.",
       "p2": "Built by a single person, it evolves gradually: some features will come over time and a few imperfections may remain — thanks for your patience and understanding.",
-      "p3": "Whether you are a volunteer, a foster family, or a member of an association, I hope Aster helps you save time so you can focus on what matters most: the animals."
+      "p3": "Whether you are a volunteer, a foster family, or a member of an organization, I hope Aster helps you save time so you can focus on what matters most: the animals."
     },
     "resetPassword": {
       "subject": "Aster – reset your password",
@@ -369,8 +369,8 @@
     "orgRequestApproved": {
       "subject": "Aster – membership to {orgName} approved",
       "content1": "You are receiving this message because you submitted a membership request to {orgName} in the application.",
-      "content2": "This request has just been approved by the association administrator.",
-      "content3": "You can now access the association’s features in Aster."
+      "content2": "This request has just been approved by the organization administrator.",
+      "content3": "You can now access the organization’s features in Aster."
     },
     "orgRequestSend": {
       "subject": "Aster – membership request to {orgName}",

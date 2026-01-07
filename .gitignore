@@ -34,6 +34,17 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# android.keystore
+*.jks
+*.keystore
+build/
+app/
+.gradle/
+app/build/
+app-release-*.apk
+app-release-*.aab
+manifest-checksum.txt
+
 # vercel
 .vercel
 
