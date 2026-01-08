@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.quietforge.aster",
       "sha256_cert_fingerprints": [
-        "D5:9C:07:06:C2:26:45:C4:D5:7B:4C:DA:D0:E9:B3:C3:A9:E4:58:1C:15:40:AD:36:A8:9C:C2:1B:85:87:B8:A1"
+        "D5:9C:07:06:C2:26:45:C4:D5:7B:4C:DA:D0:E9:B3:C3:A9:E4:58:1C:15:40:AD:36:A8:9C:C2:1B:85:87:B8:A1",
+        "E8:62:B9:0D:CA:4F:29:3B:29:E1:60:08:BB:49:97:7F:84:7D:51:B2:CF:FE:CA:1F:37:E5:09:A3:25:51:67:CF"
       ]
     }
   }
