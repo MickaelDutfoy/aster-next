@@ -94,6 +94,20 @@ a:active {
   gap: 5px;
 }
 
+.links-box-wrap {
+  padding: 5px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  div {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+
 h1,
 h2,
 h3 {
