@@ -35,21 +35,25 @@ export const ManageAccount = () => {
 
   return (
     <>
-      <div className="links-box">
-        <button onClick={() => router.push(`/settings/edit-account`)} className="little-button">
-          {t('settings.editAccount.title')}
-        </button>
-        <button onClick={() => router.push(`/settings/delete-account`)} className="little-button">
-          {t('settings.deleteAccount.title')}
-        </button>
-        <button
-          onClick={handleLogout}
-          className="little-button"
-          aria-busy={isLoading}
-          disabled={isLoading}
-        >
-          {isLoading ? t('auth.logout.loading') : t('auth.logout.submit')}
-        </button>
+      <div className="links-box-wrap">
+        <div>
+          <button onClick={() => router.push(`/settings/edit-account`)} className="little-button">
+            {t('settings.editAccount.title')}
+          </button>
+          <button onClick={() => router.push(`/settings/delete-account`)} className="little-button">
+            {t('settings.deleteAccount.title')}
+          </button>
+        </div>
+        <div>
+          <button
+            onClick={handleLogout}
+            className="little-button"
+            aria-busy={isLoading}
+            disabled={isLoading}
+          >
+            {isLoading ? t('auth.logout.loading') : t('auth.logout.submit')}
+          </button>
+        </div>
       </div>
       <p className="version">Aster v0.14.0</p>
       <p className="notice" style={{ textAlign: 'justify' }}>
