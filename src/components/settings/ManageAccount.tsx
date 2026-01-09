@@ -55,7 +55,7 @@ export const ManageAccount = () => {
           </button>
         </div>
       </div>
-      <p className="version">Aster v0.14.0</p>
+      <p className="version">Aster v0.15.0</p>
       <p className="notice" style={{ textAlign: 'justify' }}>
         {t('privacy.links.settingsPrefix')}{' '}
         <Link className="link" href="/privacy">

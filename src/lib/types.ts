@@ -4,6 +4,8 @@ export type Language = 'fr' | 'en' | 'nb';
 
 export type ThemeChoice = 'system' | 'light' | 'dark';
 
+export type AnimalHealthActType = 'VACCINATION' | 'DEWORM' | 'ANTIFLEA';
+
 export type ActionValidation = {
   ok?: boolean;
   status?: 'success' | 'error' | 'info';
@@ -34,23 +36,42 @@ export type Animal = {
   birthDate: Date;
   isNeutered: boolean;
   status: AnimalStatus;
+
+  healthActs?: AnimalHealthAct[];
+
   lastVax: Date | null;
   vaxHistory: Date[];
   isPrimoVax: boolean;
   lastDeworm: Date | null;
   dewormHistory: Date[];
   isFirstDeworm: boolean;
+
   information: string | null;
+  healthInformation: string | null;
   familyId: number | null;
   orgId: number;
   createdByMemberId: number;
   adoption?: AnimalAdoption | null;
 };
 
+export type AnimalHealthAct = {
+  id?: number;
+  animalId?: number;
+  type: AnimalHealthActType;
+  date: Date;
+  isFirst: boolean;
+};
+
+export type AnimalHealthDraft = {
+  type: AnimalHealthActType;
+  date: string;
+  isFirst: boolean;
+};
+
 export type AnimalAdoption = {
-  id: number;
-  animalId: number;
-  adopterFullName: string;
+  id?: number;
+  animalId?: number;
+  adopterFullName: string | null;
   adopterEmail: string | null;
   adopterPhoneNumber: string | null;
   adopterAddress: string | null;

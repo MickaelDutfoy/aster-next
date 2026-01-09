@@ -3,9 +3,11 @@
 import { registerAnimal } from '@/actions/animals/registerAnimal';
 import { updateAnimal } from '@/actions/animals/updateAnimal';
 import { useRouter } from '@/i18n/routing';
-import { Animal, Family, Member } from '@/lib/types';
+import { Animal, AnimalHealthActType, AnimalHealthDraft, Family, Member } from '@/lib/types';
+import { displayDate } from '@/lib/utils/displayDate';
 import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
+import { Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
@@ -22,10 +24,28 @@ export const AnimalForm = ({
   const t = useTranslations();
   const router = useRouter();
 
-  const [form, setForm] = useState<'health' | 'adopt'>('health');
+  const [form, setForm] = useState<'general' | 'health' | 'adopt'>('general');
+  const [isNeutered, setIsNeutered] = useState<boolean>(animal?.isNeutered ?? false);
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
   const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [healthActsDraft, setHealthActsDraft] = useState<AnimalHealthDraft[]>(() => {
+    const acts = animal?.healthActs ?? [];
+    return acts
+      .slice()
+      .sort((a, b) => b.date.getTime() - a.date.getTime())
+      .map((act) => ({
+        type: act.type as AnimalHealthActType,
+        date: act.date.toISOString().slice(0, 10),
+        isFirst: act.isFirst,
+      }));
+  });
+
+  const [newAct, setNewAct] = useState<AnimalHealthDraft>({
+    type: 'VACCINATION',
+    date: '',
+    isFirst: false,
+  });
 
   const commonSpecies = t.raw('animals.commonSpecies') as string[];
 
@@ -47,6 +67,23 @@ export const AnimalForm = ({
       setFamilyId(defaultFamily.id);
     }
   }, []);
+
+  const addHealthAct = () => {
+    if (!newAct.date) return;
+
+    setHealthActsDraft((prev) => {
+      const next = [...prev, newAct];
+
+      next.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+      return next;
+    });
+
+    setNewAct((prev) => ({ ...prev, dateISO: '', isFirst: false }));
+  };
+
+  const removeHealthActAt = (index: number) => {
+    setHealthActsDraft((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,7 +111,6 @@ export const AnimalForm = ({
       !animalForm.name ||
       !animalForm.species ||
       !animalForm.birthDate ||
-      (animalForm.statusFromForm === AnimalStatus.ADOPTED && !animalForm.adopterFullName) ||
       (animalForm.statusFromForm === AnimalStatus.FOSTERED && !animalForm.animalFamily)
     ) {
       showToast({
@@ -111,6 +147,9 @@ export const AnimalForm = ({
   return (
     <>
       <div className="tabs">
+        <div className={clsx(form === 'general' && 'active')} onClick={() => setForm('general')}>
+          {t('animals.tabs.general')}
+        </div>
         <div className={clsx(form === 'health' && 'active')} onClick={() => setForm('health')}>
           {t('animals.tabs.health')}
         </div>
@@ -122,7 +161,7 @@ export const AnimalForm = ({
         {t('common.requiredFieldsNotice')}
       </p>
       <form onSubmit={handleSubmit}>
-        <div hidden={form !== 'health'}>
+        <div hidden={form !== 'general'}>
           <div className="form-tab">
             <div className="species">
               <p>{t('animals.fields.speciesPlaceholder')}</p>
@@ -180,7 +219,12 @@ export const AnimalForm = ({
                 <option value={Sex.F}>{t('animals.sex.F')}</option>
               </select>
               <p>{t('animals.fields.neuteredQuestion')}</p>
-              <input type="checkbox" name="animalIsNeutered" defaultChecked={animal?.isNeutered} />
+              <input
+                type="checkbox"
+                name="animalIsNeutered"
+                checked={isNeutered}
+                onChange={(e) => setIsNeutered(e.target.checked)}
+              />
             </div>
 
             <input
@@ -197,40 +241,6 @@ export const AnimalForm = ({
                 defaultValue={animal?.birthDate.toISOString().slice(0, 10)}
               />
             </div>
-            <div className="labeled-date">
-              <p>{t('animals.lastVaxLabel')}</p>
-              <input
-                type="date"
-                name="animalLastVax"
-                defaultValue={animal?.lastVax?.toISOString().slice(0, 10)}
-              />
-            </div>
-            <label className="labeled-checkbox" htmlFor="animalPrimeVax">
-              {t('animals.fields.primeVaxQuestion')}
-              <input
-                type="checkbox"
-                name="animalPrimeVax"
-                id="animalPrimeVax"
-                defaultChecked={animal?.isPrimoVax}
-              />
-            </label>
-            <div className="labeled-date">
-              <p>{t('animals.lastDewormLabel')}</p>
-              <input
-                type="date"
-                name="animalLastDeworm"
-                defaultValue={animal?.lastDeworm?.toISOString().slice(0, 10)}
-              />
-            </div>
-            <label className="labeled-checkbox" htmlFor="animalFirstDeworm">
-              {t('animals.fields.firstDewormQuestion')}
-              <input
-                type="checkbox"
-                name="animalFirstDeworm"
-                id="animalFirstDeworm"
-                defaultChecked={animal?.isFirstDeworm}
-              />
-            </label>
             <div className="labeled-select">
               <p>{t('animals.fields.statusLabel')}</p>
               <select
@@ -279,15 +289,110 @@ export const AnimalForm = ({
             />
           </div>
         </div>
+        <div hidden={form !== 'health'}>
+          <div className="health-tab">
+            <p>{t('animals.healthActsTitle')}</p>
+
+            {/* LISTE des soins */}
+            {healthActsDraft.length === 0 ? (
+              <p style={{ opacity: 0.8 }}>{t('animals.healthActsNone')}</p>
+            ) : (
+              <ul className="acts-list">
+                {healthActsDraft.map((act, index) => (
+                  <li key={`${act.type}-${act.date}-${index}`}>
+                    <span>{t(`animals.healthActTypes.${act.type}`)}</span>
+
+                    <span>
+                      <span>{displayDate(new Date(act.date))}</span>{' '}
+                      {act.isFirst && (
+                        <span style={{ opacity: 0.85 }}>({t('animals.healthActFirstShort')})</span>
+                      )}
+                    </span>
+
+                    <button
+                      className="action link"
+                      type="button"
+                      onClick={() => removeHealthActAt(index)}
+                      aria-label={t('animals.removeHealthAct')}
+                    >
+                      <Trash2 style={{ transform: 'translateY(2px)' }} size={26} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* AJOUT inline */}
+            <p>{t('animals.addHealthAct')}</p>
+            <div className="add-act">
+              <select
+                value={newAct.type}
+                onChange={(e) =>
+                  setNewAct((prev) => ({ ...prev, type: e.target.value as AnimalHealthActType }))
+                }
+              >
+                <option value="VACCINATION">{t('animals.healthActTypes.VACCINATION')}</option>
+                <option value="DEWORM">{t('animals.healthActTypes.DEWORM')}</option>
+                <option value="ANTIFLEA">{t('animals.healthActTypes.ANTIFLEA')}</option>
+              </select>
+
+              <label>
+                {t('animals.healthActFirstShortPrompt')}
+                <input
+                  type="checkbox"
+                  style={{ marginLeft: 10 }}
+                  checked={newAct.isFirst}
+                  onChange={(e) => setNewAct((prev) => ({ ...prev, isFirst: e.target.checked }))}
+                />
+              </label>
+
+              <input
+                type="date"
+                value={newAct.date}
+                onChange={(e) => setNewAct((prev) => ({ ...prev, date: e.target.value }))}
+              />
+              <button
+                className="little-button"
+                type="button"
+                onClick={addHealthAct}
+                disabled={!newAct.date}
+                style={{ margin: 0, cursor: newAct.date ? 'pointer' : 'not-allowed' }}
+              >
+                {t('common.add')}
+              </button>
+            </div>
+
+            {healthActsDraft.map(
+              // hidden input for FormData + server actions
+              (act, index) => (
+                <div key={`hidden-${index}`} style={{ display: 'none' }}>
+                  <input name="healthType[]" value={act.type} readOnly />
+                  <input name="healthDate[]" value={act.date} readOnly />
+                  <input name="healthIsFirst[]" value={act.isFirst ? '1' : '0'} readOnly />
+                </div>
+              ),
+            )}
+
+            <p>{t('animals.healthNotes')}</p>
+            <textarea
+              name="healthInformation"
+              defaultValue={animal?.healthInformation ?? ''}
+              onInput={(e) => {
+                const el = e.currentTarget;
+                el.style.height = 'auto';
+                el.style.height = `${el.scrollHeight}px`;
+              }}
+            />
+          </div>
+        </div>
+
         <div hidden={form !== 'adopt'}>
           <div className="form-tab">
             <input
               type="text"
               name="adopterFullName"
-              placeholder={
-                t('animals.fields.adopterFullNamePlaceholder') + (status === 'ADOPTED' ? ' *' : '')
-              }
-              defaultValue={animal?.adoption?.adopterFullName}
+              placeholder={t('animals.fields.adopterFullNamePlaceholder')}
+              defaultValue={animal?.adoption?.adopterFullName as string}
             />
             <div className="adopter-address-info">
               <input
@@ -335,7 +440,7 @@ export const AnimalForm = ({
                 defaultChecked={animal?.adoption?.homeVisitDone}
               />
             </label>
-            <div className="labeled-date">
+            <div className={'labeled-date' + clsx(isNeutered ? ' disabled' : '')}>
               <p>{t('animals.neuteringPlannedLabel')}</p>
               <input
                 type="date"
@@ -370,7 +475,7 @@ export const AnimalForm = ({
                 defaultValue={animal?.adoption?.legalTransferAt?.toISOString().slice(0, 10)}
               />
             </div>
-            <p>{t('animals.fields.adoptionNotes')}</p>
+            <p>{t('animals.adoptionNotes')}</p>
             <textarea
               name="adoptInformation"
               defaultValue={animal?.adoption?.information ?? ''}

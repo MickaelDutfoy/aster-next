@@ -24,7 +24,8 @@
   }
 }
 
-.name-color, .adopter-city,
+.name-color,
+.adopter-city,
 .adopter-contact {
   display: flex;
   justify-content: space-between;
@@ -44,7 +45,7 @@
   border-radius: 8px;
 
   .animal-details-section {
-    padding: 10px;
+    padding: 5px 10px;
 
     p {
       padding-left: 10px;
@@ -61,8 +62,17 @@
   }
 }
 
+.animal-general-info {
+  padding: 5px 0;
+
+  p {
+    padding-left: 10px;
+  }
+}
+
 .animal-form {
   p,
+  span,
   label {
     font-size: 0.9rem;
   }
@@ -85,10 +95,11 @@
   }
 
   .form-tab {
+    width: 86vw;
+    min-height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 500px;
     gap: 10px;
 
     .labeled-date,
@@ -102,6 +113,52 @@
 
     .labeled-checkbox {
       margin: 0 10px;
+    }
+  }
+
+  .health-tab {
+    width: 86vw;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    .acts-list {
+      display: flex;
+      flex-direction: column;
+      margin: 0 10px;
+
+      li {
+        min-height: 36px;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 3fr 4fr auto;
+        align-items: center;
+
+        .action {
+          background: transparent;
+          border: none;
+          display: flex;
+          justify-self: end;
+          align-self: center;
+        }
+      }
+    }
+
+    .add-act {
+      margin: 0 5px;
+      padding: 5px 0 10px 0;
+      border: 1px solid var(--link);
+      border-top: none;
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 5px;
+      place-items: center;
+      justify-items: center;
+      align-items: center;
     }
   }
 }

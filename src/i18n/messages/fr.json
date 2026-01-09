@@ -17,6 +17,7 @@
     "submit": "Enregistrer",
     "submitSelf": "S'enregistrer",
     "loading": "Enregistrement...",
+    "add": "Ajouter",
     "confirm": "Confirmer",
     "deleting": "Suppression...",
     "send": "Envoyer",
@@ -171,6 +172,9 @@
         "Nouvelles fonctionnalités : éditer ou supprimer son compte, éditer ou supprimer une association...",
         "Améliorations de sécurité et de flux utilisateur.",
         "La politique de confidentialité est disponible et peut être lue depuis les options."
+      ],
+      "items0150": [
+        "Refonte du formulaire de création et d’édition des animaux, avec une nouvelle section \"Santé\" pour un suivi plus clair."
       ]
     }
   },
@@ -191,9 +195,24 @@
     "lastVaxLabel": "Dernier vaccin le :",
     "primoShort": " (primo)",
     "vaxHistoryLabel": "Historique des vaccins :",
-    "lastDewormLabel": "Dernier déparasitage le :",
+    "lastDewormLabel": "Dernier vermifuge le :",
     "firstDewormShort": " (premier)",
-    "dewormHistoryLabel": "Historique des déparasitages :",
+    "dewormHistoryLabel": "Historique des vermifuges :",
+    "lastFleaTreatmentLabel": "Dernier antiparasitaire externe le :",
+    "antifleaHistoryLabel": "Historique des déparasitages externes :",
+    "healthActsTitle": "Soins effectués :",
+    "healthActsNone": "Aucun soin enregistré pour le moment.",
+    "addHealthAct": "Ajouter un soin :",
+    "healthActFirstLabel": "Premier",
+    "healthActFirstShort": "1er",
+    "healthActFirstShortPrompt": "1er ?",
+    "removeHealthAct": "Supprimer ce soin",
+    "healthActTypes": {
+      "VACCINATION": "Vaccination",
+      "DEWORM": "Vermifuge",
+      "ANTIFLEA": "Antiparasitaire externe"
+    },
+    "healthNotes": "Autres informations de santé :",
     "additionalInfoLabel": "Informations complémentaires :",
     "currentStatusLabel": "Situation actuelle :",
     "listTitle": "Animaux enregistrés pour {orgName} ({count}) :",
@@ -214,7 +233,9 @@
     "feesPaid": "Les frais d'adoption ont été payés.",
     "feesNotPaid": "Les frais d'adoption n'ont pas été payés.",
     "legalTransferLabel": "Cession légale effectuée le : ",
+    "adoptionNotes": "Notes à propos de l'adoption :",
     "tabs": {
+      "general": "Général",
       "health": "Santé",
       "adoption": "Adoption"
     },
@@ -235,8 +256,7 @@
       "zipPlaceholder": "Code postal",
       "cityPlaceholder": "Ville",
       "homeVisitQuestion": "Visite à domicile faite ?",
-      "feesPaidQuestion": "Frais d'adoption payés ?",
-      "adoptionNotes": "Notes à propos de l'adoption :"
+      "feesPaidQuestion": "Frais d'adoption payés ?"
     }
   },
   "families": {

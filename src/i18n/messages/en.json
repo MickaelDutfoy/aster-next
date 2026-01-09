@@ -17,6 +17,7 @@
     "submit": "Save",
     "submitSelf": "Register",
     "loading": "Saving...",
+    "add": "Add",
     "confirm": "Confirm",
     "deleting": "Deleting...",
     "send": "Send",
@@ -171,6 +172,9 @@
         "New features: edit or delete your account, edit or delete an organization...",
         "Security improvements and smoother user flows.",
         "The privacy policy is now available and can be accessed from the settings."
+      ],
+      "items0150": [
+        "Redesigned animal creation and editing form, including a new \"Health\" section for clearer tracking."
       ]
     }
   },
@@ -194,6 +198,21 @@
     "lastDewormLabel": "Last deworming on:",
     "firstDewormShort": " (first)",
     "dewormHistoryLabel": "Deworming history:",
+    "lastFleaTreatmentLabel": "Last external antiparasitic treatment on:",
+    "antifleaHistoryLabel": "External parasite treatments history:",
+    "healthActsTitle": "Treatments performed:",
+    "healthActsNone": "No treatment recorded yet.",
+    "addHealthAct": "Add a treatment:",
+    "healthActFirstLabel": "First",
+    "healthActFirstShort": "1st",
+    "healthActFirstShortPrompt": "1st?",
+    "removeHealthAct": "Remove this treatment",
+    "healthActTypes": {
+      "VACCINATION": "Vaccination",
+      "DEWORM": "Deworming",
+      "ANTIFLEA": "External antiparasitic"
+    },
+    "healthNotes": "Additional health information:",
     "additionalInfoLabel": "Additional information:",
     "currentStatusLabel": "Current status:",
     "listTitle": "Animals registered for {orgName} ({count}):",
@@ -214,7 +233,9 @@
     "feesPaid": "The adoption fee has been paid.",
     "feesNotPaid": "The adoption fee has not been paid.",
     "legalTransferLabel": "Legal transfer completed on: ",
+    "adoptionNotes": "Adoption notes:",
     "tabs": {
+      "general": "General",
       "health": "Health",
       "adoption": "Adoption"
     },
