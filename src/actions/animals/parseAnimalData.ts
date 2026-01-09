@@ -1,9 +1,9 @@
-import { prisma } from '@/lib/prisma';
+import { isAdoptionSheetEmpty } from '@/lib/animals/isAdoptionSheetEmpty';
+import { AnimalHealthAct } from '@/lib/types';
 import { AnimalStatus, Sex } from '@prisma/client';
 
 export const parseAnimalData = async (formData: FormData, animalId?: number) => {
   const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
-
   const otherSpeciesFromForm = formData.get('animalSpecies')?.toString().trim();
 
   const speciesToSave =
@@ -18,17 +18,35 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     color: formData.get('animalColor')?.toString().trim(),
     findLocation: formData.get('findLocation')?.toString().trim(),
     birthDate: formData.get('animalBirthDate')?.toString(),
-    lastVax: formData.get('animalLastVax')?.toString(),
-    lastDeworm: formData.get('animalLastDeworm')?.toString(),
     isNeutered: formData.has('animalIsNeutered'),
-    isPrimeVax: formData.has('animalPrimeVax'),
-    isFirstDeworm: formData.has('animalFirstDeworm'),
     information: formData.get('animalInformation')?.toString().trim(),
+    healthInformation: formData.get('healthInformation')?.toString().trim(),
     status: formData.get('animalStatus') as AnimalStatus,
   };
 
-  let animalFamilyId: number | null = null;
+  // ✅ Health acts via inputs cachés
+  const healthTypes = formData.getAll('healthType[]').map((v) => v.toString());
+  const healthDates = formData.getAll('healthDate[]').map((v) => v.toString());
+  const healthIsFirsts = formData.getAll('healthIsFirst[]').map((v) => v.toString());
 
+  const health: AnimalHealthAct[] = [];
+  const count = Math.min(healthTypes.length, healthDates.length, healthIsFirsts.length);
+
+  for (let i = 0; i < count; i++) {
+    const type = healthTypes[i] as AnimalHealthAct['type'];
+    const dateISO = healthDates[i];
+    const isFirst = healthIsFirsts[i] === '1';
+
+    // ignore lignes vides / broken
+    if (!type || !dateISO) continue;
+
+    const date = new Date(dateISO);
+    if (Number.isNaN(date.getTime())) continue;
+
+    health.push({ type, date, isFirst });
+  }
+
+  let animalFamilyId: number | null = null;
   if (animalForm.status === AnimalStatus.FOSTERED) {
     animalFamilyId = formData.get('animalFamily') ? Number(formData.get('animalFamily')) : null;
   }
@@ -46,17 +64,16 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     adoptionContractSignedAt: formData.get('adoptionContractSignedAt')?.toString(),
     adoptionFeePaid: formData.has('adoptionFeePaid'),
     legalTransferAt: formData.get('legalTransferAt')?.toString(),
-    adoptInformation: formData.get('animalInformation')?.toString().trim(),
+    adoptInformation: formData.get('adoptInformation')?.toString().trim(),
   };
 
   if (
     !animalForm.name ||
     !animalForm.species ||
     !animalForm.birthDate ||
-    (animalForm.status === AnimalStatus.ADOPTED && !adopterForm.fullName) ||
     (animalForm.status === AnimalStatus.FOSTERED && !animalFamilyId)
   ) {
-    return { animal: undefined, adopter: undefined };
+    return { animal: undefined, adopter: undefined, health: undefined };
   }
 
   const adopter = {
@@ -67,67 +84,16 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     adopterZip: adopterForm.zip as string,
     adopterCity: adopterForm.city as string,
     homeVisitDone: adopterForm.homeVisitDone,
-    knowledgeCertSignedAt: adopterForm.knowledgeCertSignedAt
-      ? new Date(adopterForm.knowledgeCertSignedAt)
-      : undefined,
     neuteringPlannedAt: adopterForm.neuteringPlannedAt
       ? new Date(adopterForm.neuteringPlannedAt)
-      : undefined,
+      : null,
     adoptionContractSignedAt: adopterForm.adoptionContractSignedAt
       ? new Date(adopterForm.adoptionContractSignedAt)
-      : undefined,
+      : null,
     adoptionFeePaid: adopterForm.adoptionFeePaid,
-    legalTransferAt: adopterForm.legalTransferAt
-      ? new Date(adopterForm.legalTransferAt)
-      : undefined,
-    information: adopterForm.adoptInformation,
+    legalTransferAt: adopterForm.legalTransferAt ? new Date(adopterForm.legalTransferAt) : null,
+    information: adopterForm.adoptInformation ?? null,
   };
-
-  if (animalId) {
-    try {
-      const data = await prisma.animal.findUnique({ where: { id: animalId } });
-
-      if (
-        data &&
-        data.lastVax &&
-        animalForm.lastVax?.slice(0, 10) !== data.lastVax.toISOString().slice(0, 10)
-      ) {
-        data.vaxHistory.push(data.lastVax);
-      }
-
-      if (
-        data &&
-        data.lastDeworm &&
-        animalForm.lastDeworm?.slice(0, 10) !== data.lastDeworm.toISOString().slice(0, 10)
-      ) {
-        data.dewormHistory.push(data.lastDeworm);
-      }
-
-      const animal = {
-        name: animalForm.name,
-        species: animalForm.species,
-        sex: animalForm.sex,
-        color: animalForm.color,
-        findLocation: animalForm.findLocation,
-        birthDate: new Date(animalForm.birthDate),
-        lastVax: animalForm.lastVax ? new Date(animalForm.lastVax) : undefined,
-        vaxHistory: data?.vaxHistory,
-        lastDeworm: animalForm.lastDeworm ? new Date(animalForm.lastDeworm) : undefined,
-        dewormHistory: data?.dewormHistory,
-        isNeutered: animalForm.isNeutered,
-        isPrimoVax: animalForm.isPrimeVax,
-        isFirstDeworm: animalForm.isFirstDeworm,
-        information: animalForm.information,
-        status: animalForm.status,
-        familyId: animalFamilyId,
-      };
-
-      return { animal, adopter };
-    } catch (err) {
-      console.error(err);
-      return { animal: undefined, adopter: undefined };
-    }
-  }
 
   const animal = {
     name: animalForm.name,
@@ -136,15 +102,12 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     color: animalForm.color,
     findLocation: animalForm.findLocation,
     birthDate: new Date(animalForm.birthDate),
-    lastVax: animalForm.lastVax ? new Date(animalForm.lastVax) : undefined,
-    lastDeworm: animalForm.lastDeworm ? new Date(animalForm.lastDeworm) : undefined,
     isNeutered: animalForm.isNeutered,
-    isPrimoVax: animalForm.isPrimeVax,
-    isFirstDeworm: animalForm.isFirstDeworm,
-    information: animalForm.information,
+    information: animalForm.information ?? null,
+    healthInformation: animalForm.healthInformation ?? null,
     status: animalForm.status,
     familyId: animalFamilyId,
   };
 
-  return { animal, adopter };
+  return { animal, adopter: isAdoptionSheetEmpty(adopter) ? undefined : adopter, health };
 };

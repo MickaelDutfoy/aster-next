@@ -17,6 +17,7 @@
     "submit": "Lagre",
     "submitSelf": "Registrer",
     "loading": "Lagrer...",
+    "add": "Legg til",
     "confirm": "Bekreft",
     "deleting": "Sletter...",
     "send": "Send",
@@ -171,6 +172,9 @@
         "Nye funksjoner: redigering eller sletting av konto, redigering eller sletting av en organisasjon...",
         "Forbedringer innen sikkerhet og brukerflyt.",
         "Personvernerklæringen er tilgjengelig og kan leses fra innstillingene."
+      ],
+      "items0150": [
+        "Ny utforming av skjemaet for opprettelse og redigering av dyr, med en ny \"Helse\"-seksjon for bedre oversikt."
       ]
     }
   },
@@ -191,9 +195,24 @@
     "lastVaxLabel": "Siste vaksine den:",
     "primoShort": " (grunnvaksine)",
     "vaxHistoryLabel": "Vaksinasjonshistorikk:",
-    "lastDewormLabel": "Siste ormekur den:",
+    "lastDewormLabel": "Siste ormekur:",
     "firstDewormShort": " (første)",
-    "dewormHistoryLabel": "Historikk for ormekur:",
+    "dewormHistoryLabel": "Historikk for ormekurer:",
+    "lastFleaTreatmentLabel": "Siste utvortes parasittbehandling:",
+    "antifleaHistoryLabel": "Historikk for utvortes parasittbehandlinger:",
+    "healthActsTitle": "Utførte behandlinger:",
+    "healthActsNone": "Ingen behandlinger registrert ennå.",
+    "addHealthAct": "Legg til behandling:",
+    "healthActFirstLabel": "Første",
+    "healthActFirstShort": "1.",
+    "healthActFirstShortPrompt": "1.?",
+    "removeHealthAct": "Fjern denne behandlingen",
+    "healthActTypes": {
+      "VACCINATION": "Vaksinasjon",
+      "DEWORM": "Ormekur",
+      "ANTIFLEA": "Utvortes parasittbehandling"
+    },
+    "healthNotes": "Andre helseopplysninger:",
     "additionalInfoLabel": "Tilleggsinformasjon:",
     "currentStatusLabel": "Nåværende status:",
     "listTitle": "Registrerte dyr for {orgName} ({count}):",
@@ -214,7 +233,9 @@
     "feesPaid": "Adopsjonsgebyret er betalt.",
     "feesNotPaid": "Adopsjonsgebyret er ikke betalt.",
     "legalTransferLabel": "Juridisk overføring gjennomført den: ",
+    "adoptionNotes": "Notater om adopsjon:",
     "tabs": {
+      "general": "Generelt",
       "health": "Helse",
       "adoption": "Adopsjon"
     },

@@ -18,38 +18,59 @@ export const updateAnimal = async (
 
   const userId = guard.user.id;
 
-  const { animal, adopter } = await parseAnimalData(formData, animalId);
+  const { animal, adopter, health } = await parseAnimalData(formData, animalId);
 
-  if (!animal || !adopter) {
+  if (!animal) {
     return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };
   }
 
   try {
-    await prisma.animal.update({
-      where: { id: animalId },
-      data: {
-        ...animal,
-        updatedByMemberId: userId,
-      },
-    });
-
-    const adoptSheet = await prisma.animalAdoption.findUnique({ where: { animalId } });
-
-    if (!adoptSheet) {
-      await prisma.animalAdoption.create({
+    await prisma.$transaction(async (prismaTransaction) => {
+      await prismaTransaction.animal.update({
+        where: { id: animalId },
         data: {
+          ...animal,
+          updatedByMemberId: userId,
+        },
+      });
+
+      await prismaTransaction.animalHealthAct.deleteMany({
+        where: {
           animalId,
-          ...adopter,
         },
       });
-    } else {
-      await prisma.animalAdoption.update({
-        where: { animalId },
-        data: {
-          ...adopter,
-        },
-      });
-    }
+
+      if (health && health.length > 0) {
+        await prismaTransaction.animalHealthAct.createMany({
+          data: health.map((act) => ({
+            ...act,
+            animalId,
+          })),
+        });
+      }
+
+      const adoptSheet = await prisma.animalAdoption.findUnique({ where: { animalId } });
+
+      if (!adoptSheet && adopter) {
+        await prismaTransaction.animalAdoption.create({
+          data: {
+            animalId,
+            ...adopter,
+          },
+        });
+      } else if (!adopter) {
+        await prismaTransaction.animalAdoption.deleteMany({
+          where: { animalId },
+        });
+      } else {
+        await prismaTransaction.animalAdoption.update({
+          where: { animalId },
+          data: {
+            ...adopter,
+          },
+        });
+      }
+    });
 
     revalidatePath(`/animals/${animalId}`);
 

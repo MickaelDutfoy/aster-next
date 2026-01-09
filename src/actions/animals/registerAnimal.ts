@@ -15,9 +15,9 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   const orgId = guard.org.id;
   const userId = guard.user.id;
 
-  const { animal, adopter } = await parseAnimalData(formData);
+  const { animal, adopter, health } = await parseAnimalData(formData);
 
-  if (!animal || !adopter) {
+  if (!animal) {
     return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };
   }
 
@@ -31,12 +31,23 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
         },
       });
 
-      await prismaTransaction.animalAdoption.create({
-        data: {
-          ...adopter,
-          animalId: res.id,
-        },
-      });
+      if (health && health.length > 0) {
+        await prismaTransaction.animalHealthAct.createMany({
+          data: health.map((act) => ({
+            ...act,
+            animalId: res.id,
+          })),
+        });
+      }
+
+      if (adopter) {
+        await prismaTransaction.animalAdoption.create({
+          data: {
+            ...adopter,
+            animalId: res.id,
+          },
+        });
+      }
     });
 
     revalidatePath('/animals');

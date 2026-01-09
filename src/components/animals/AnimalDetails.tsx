@@ -30,7 +30,17 @@ export const AnimalDetails = ({
     animal.status === AnimalStatus.ADOPTED ? false : true,
   );
 
-  const hasHealthInfo = !!animal.lastVax || !!animal.lastDeworm || !!animal.information;
+  const acts = animal.healthActs ?? [];
+
+  const lastVaxAct = acts.find((act) => act.type === 'VACCINATION') ?? null;
+  const lastDewormAct = acts.find((act) => act.type === 'DEWORM') ?? null;
+  const lastAntifleaAct = acts.find((act) => act.type === 'ANTIFLEA') ?? null;
+  const vaxHistory = acts.filter((act) => act.type === 'VACCINATION').slice(1);
+  const dewormHistory = acts.filter((act) => act.type === 'DEWORM').slice(1);
+  const antifleaHistory = acts.filter((act) => act.type === 'ANTIFLEA').slice(1);
+
+  const hasHealthInfo =
+    !!lastVaxAct || !!lastDewormAct || !!lastAntifleaAct || !!animal.healthInformation;
 
   return (
     <>
@@ -69,23 +79,24 @@ export const AnimalDetails = ({
         </button>
         {!hiddenHealth && hasHealthInfo && (
           <div className="animal-details">
-            {animal.lastVax && (
+            {lastVaxAct && (
               <div className="animal-details-section">
                 <h4>{t('animals.lastVaxLabel')}</h4>
                 <p>
-                  {displayDate(animal.lastVax)}
-                  {animal.isPrimoVax && t('animals.primoShort')}, {t('common.agoPrefix')}
-                  {getAge(animal.lastVax, locale, true)}
+                  {displayDate(lastVaxAct.date)}
+                  {lastVaxAct.isFirst && t('animals.primoShort')}, {t('common.agoPrefix')}
+                  {getAge(lastVaxAct.date, locale, true)}
                   {t('common.agoSuffix')}.
                 </p>
-                {animal.vaxHistory.length > 0 && (
+
+                {vaxHistory.length > 0 && (
                   <div className="health-historic">
                     <p>{t('animals.vaxHistoryLabel')}</p>
                     <ul>
-                      {animal.vaxHistory.map((date) => (
-                        <li key={Number(date)}>
-                          {displayDate(date)}, {t('common.agoPrefix')}
-                          {getAge(date, locale, true)}
+                      {vaxHistory.map((act) => (
+                        <li key={act.id}>
+                          {displayDate(act.date)}, {t('common.agoPrefix')}
+                          {getAge(act.date, locale, true)}
                           {t('common.agoSuffix')}.
                         </li>
                       ))}
@@ -94,23 +105,25 @@ export const AnimalDetails = ({
                 )}
               </div>
             )}
-            {animal.lastDeworm && (
+
+            {lastDewormAct && (
               <div className="animal-details-section">
                 <h4>{t('animals.lastDewormLabel')}</h4>
                 <p>
-                  {displayDate(animal.lastDeworm)}
-                  {animal.isFirstDeworm && t('animals.firstDewormShort')}, {t('common.agoPrefix')}
-                  {getAge(animal.lastDeworm, locale, true)}
+                  {displayDate(lastDewormAct.date)}
+                  {lastDewormAct.isFirst && t('animals.firstDewormShort')}, {t('common.agoPrefix')}
+                  {getAge(lastDewormAct.date, locale, true)}
                   {t('common.agoSuffix')}.
                 </p>
-                {animal.dewormHistory.length > 0 && (
+
+                {dewormHistory.length > 0 && (
                   <div className="health-historic">
                     <p>{t('animals.dewormHistoryLabel')}</p>
                     <ul style={{ paddingLeft: 40 }}>
-                      {animal.dewormHistory.map((date) => (
-                        <li key={Number(date)}>
-                          {displayDate(date)}, {t('common.agoPrefix')}
-                          {getAge(date, locale, true)}
+                      {dewormHistory.map((act) => (
+                        <li key={act.id}>
+                          {displayDate(act.date)}, {t('common.agoPrefix')}
+                          {getAge(act.date, locale, true)}
                           {t('common.agoSuffix')}.
                         </li>
                       ))}
@@ -119,10 +132,39 @@ export const AnimalDetails = ({
                 )}
               </div>
             )}
-            {animal.information && (
+
+            {lastAntifleaAct && (
+              <div className="animal-details-section">
+                <h4>{t('animals.lastFleaTreatmentLabel')}</h4>
+                <p>
+                  {displayDate(lastAntifleaAct.date)}
+                  {lastAntifleaAct.isFirst && t('animals.firstDewormShort')},{' '}
+                  {t('common.agoPrefix')}
+                  {getAge(lastAntifleaAct.date, locale, true)}
+                  {t('common.agoSuffix')}.
+                </p>
+
+                {antifleaHistory.length > 0 && (
+                  <div className="health-historic">
+                    <p>{t('animals.antifleaHistoryLabel')}</p>
+                    <ul style={{ paddingLeft: 40 }}>
+                      {antifleaHistory.map((act) => (
+                        <li key={act.id}>
+                          {displayDate(act.date)}, {t('common.agoPrefix')}
+                          {getAge(act.date, locale, true)}
+                          {t('common.agoSuffix')}.
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {animal.healthInformation && (
               <div className="animal-details-section">
                 <h4>{t('animals.additionalInfoLabel')}</h4>
-                <p>{animal.information}</p>
+                <p>{animal.healthInformation}</p>
               </div>
             )}
           </div>
@@ -181,6 +223,18 @@ export const AnimalDetails = ({
                 </p>
               )}
             </div>
+            {animal.adoption?.information && (
+              <div className="animal-details-section">
+                <h4>{t('animals.adoptionNotes')}</h4>
+                <p>{animal.adoption?.information}</p>
+              </div>
+            )}
+          </div>
+        )}
+        {animal.information && (
+          <div className="animal-general-info">
+            <h4>{t('animals.additionalInfoLabel')}</h4>
+            <p>{animal.information}</p>
           </div>
         )}
       </div>
