@@ -205,7 +205,7 @@
     "addHealthAct": "Ajouter un soin :",
     "healthActFirstLabel": "Premier",
     "healthActFirstShort": "1er",
-    "healthActFirstShortPrompt": "1er ?",
+    "healthActFirstPrompt": "Premier ?",
     "removeHealthAct": "Supprimer ce soin",
     "healthActTypes": {
       "VACCINATION": "Vaccination",

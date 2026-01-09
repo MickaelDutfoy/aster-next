@@ -205,7 +205,7 @@
     "addHealthAct": "Add a treatment:",
     "healthActFirstLabel": "First",
     "healthActFirstShort": "1st",
-    "healthActFirstShortPrompt": "1st?",
+    "healthActFirstPrompt": "First?",
     "removeHealthAct": "Remove this treatment",
     "healthActTypes": {
       "VACCINATION": "Vaccination",

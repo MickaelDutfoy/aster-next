@@ -295,7 +295,7 @@ export const AnimalForm = ({
 
             {/* LISTE des soins */}
             {healthActsDraft.length === 0 ? (
-              <p style={{ opacity: 0.8 }}>{t('animals.healthActsNone')}</p>
+              <p className="no-health-data">{t('animals.healthActsNone')}</p>
             ) : (
               <ul className="acts-list">
                 {healthActsDraft.map((act, index) => (
@@ -337,7 +337,7 @@ export const AnimalForm = ({
               </select>
 
               <label>
-                {t('animals.healthActFirstShortPrompt')}
+                {t('animals.healthActFirstPrompt')}
                 <input
                   type="checkbox"
                   style={{ marginLeft: 10 }}

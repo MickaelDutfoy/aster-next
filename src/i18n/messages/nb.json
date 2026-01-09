@@ -205,7 +205,7 @@
     "addHealthAct": "Legg til behandling:",
     "healthActFirstLabel": "Første",
     "healthActFirstShort": "1.",
-    "healthActFirstShortPrompt": "1.?",
+    "healthActFirstPrompt": "Første?",
     "removeHealthAct": "Fjern denne behandlingen",
     "healthActTypes": {
       "VACCINATION": "Vaksinasjon",
