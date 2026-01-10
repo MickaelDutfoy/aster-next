@@ -11,6 +11,7 @@ const DashboardPage = async () => {
   if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);
+
   let families: Family[] = [];
   if (org) families = await getFamiliesByOrgId(org.id);
 
