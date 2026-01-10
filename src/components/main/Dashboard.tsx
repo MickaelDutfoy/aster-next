@@ -1,7 +1,7 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import { Family, Member, Organization, PendingOrgRequest } from '@/lib/types';
+import { FamilyWithoutDetails, Member, Organization, PendingOrgRequest } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -13,7 +13,7 @@ export const Dashboard = ({
 }: {
   user: Member;
   org: Organization | null;
-  families: Family[];
+  families: FamilyWithoutDetails[];
   pending: PendingOrgRequest[];
 }) => {
   const t = useTranslations();

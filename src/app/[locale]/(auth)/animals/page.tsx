@@ -3,7 +3,7 @@ import { AnimalsPageActions } from '@/components/animals/AnimalsPageActions';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { getAnimalsByOrg } from '@/lib/animals/getAnimalsByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { Animal, Member, Organization } from '@/lib/types';
+import { AnimalWithoutDetails, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
 const AnimalsPage = async () => {
@@ -15,7 +15,7 @@ const AnimalsPage = async () => {
 
   if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
-  const animals: Animal[] = await getAnimalsByOrg(org.id);
+  const animals: AnimalWithoutDetails[] = await getAnimalsByOrg(org.id);
 
   return (
     <>

@@ -1,14 +1,20 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import { Animal, Organization } from '@/lib/types';
+import { AnimalWithoutDetails, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
 import { SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-export const AnimalsList = ({ org, animals }: { org: Organization; animals: Animal[] }) => {
+export const AnimalsList = ({
+  org,
+  animals,
+}: {
+  org: Organization;
+  animals: AnimalWithoutDetails[];
+}) => {
   const t = useTranslations();
   const locale = useLocale();
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);

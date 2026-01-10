@@ -1,10 +1,16 @@
 'use client';
 
-import { Family, Member } from '@/lib/types';
+import { FamilyWithoutDetails, Member } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { AnimalForm } from './AnimalForm';
 
-export const RegisterAnimal = ({ user, families }: { user: Member; families: Family[] }) => {
+export const RegisterAnimal = ({
+  user,
+  families,
+}: {
+  user: Member;
+  families: FamilyWithoutDetails[];
+}) => {
   const t = useTranslations();
 
   return (

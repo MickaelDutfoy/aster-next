@@ -1,11 +1,17 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import { Family, Organization } from '@/lib/types';
+import { FamilyWithoutDetails, Organization } from '@/lib/types';
 import { Lightbulb, SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export const FamiliesList = ({ org, families }: { org: Organization; families: Family[] }) => {
+export const FamiliesList = ({
+  org,
+  families,
+}: {
+  org: Organization;
+  families: FamilyWithoutDetails[];
+}) => {
   const t = useTranslations();
 
   return (

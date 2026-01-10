@@ -106,7 +106,7 @@ export const SearchOrg = () => {
                 setPickedOrg(org);
               }}
             >
-              {org.name} {org.superAdmin && <span>({org.superAdmin})</span>}
+              {org.name} {org.superAdminName && <span>({org.superAdminName})</span>}
             </li>
           ))}
         </ul>
