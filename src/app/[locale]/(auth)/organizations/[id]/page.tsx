@@ -13,7 +13,7 @@ const OrganizationPage = async ({ params }: { params: Promise<{ id: string }> })
   const org: Organization | null = await getOrgById(Number(id));
   if (!org) return <DeniedPage cause="error" />;
 
-  if (user.organizations.every((org) => org.id !== Number(id))) {
+  if (user.selectedOrgId !== Number(id)) {
     return <DeniedPage cause="refused" />;
   }
 

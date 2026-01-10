@@ -1,63 +1,62 @@
 'use client';
 
 import { sendContactForm } from '@/actions/sendContactForm';
-import { Member } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 
-export const ContactForm = ({ user }: { user: Member }) => {
+export const ContactForm = () => {
   const t = useTranslations();
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
-    const [isAccepted, setIsAccepted] = useState(false);
+  const [isAccepted, setIsAccepted] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-      const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
 
-      const contactTopic = formData.get('contactTopic')?.toString().trim();
-      const contactContent = formData.get('contactContent')?.toString().trim();
+    const contactTopic = formData.get('contactTopic')?.toString().trim();
+    const contactContent = formData.get('contactContent')?.toString().trim();
 
-      if (!contactTopic || !contactContent) {
-        showToast({
-          ok: false,
-          status: 'error',
-          message: t('toasts.requiredFieldsMissing'),
-        });
-        return;
+    if (!contactTopic || !contactContent) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: t('toasts.requiredFieldsMissing'),
+      });
+      return;
+    }
+
+    if (!isAccepted) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: t('toasts.termsNotAccepted'),
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const res = await sendContactForm(formData);
+      showToast({
+        ...res,
+        message: res.message ? t(res.message) : undefined,
+      });
+      if (res.ok) {
+        formRef.current?.reset();
       }
-
-      if (!isAccepted) {
-        showToast({
-          ok: false,
-          status: 'error',
-          message: t('toasts.termsNotAccepted'),
-        });
-        return;
-      }
-
-      setIsLoading(true);
-      try {
-        const res = await sendContactForm(formData);
-        showToast({
-          ...res,
-          message: res.message ? t(res.message) : undefined,
-        });
-        if (res.ok) {
-          formRef.current?.reset();
-        }
-      } catch (err) {
-        showToast({
-          ok: false,
-          status: 'error',
-          message: t('toasts.errorGeneric'),
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    } catch (err) {
+      showToast({
+        ok: false,
+        status: 'error',
+        message: t('toasts.errorGeneric'),
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>

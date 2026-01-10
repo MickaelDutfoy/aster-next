@@ -3,7 +3,13 @@
 import { registerAnimal } from '@/actions/animals/registerAnimal';
 import { updateAnimal } from '@/actions/animals/updateAnimal';
 import { useRouter } from '@/i18n/routing';
-import { Animal, AnimalHealthActType, AnimalHealthDraft, Family, Member } from '@/lib/types';
+import {
+  Animal,
+  AnimalHealthActType,
+  AnimalHealthDraft,
+  FamilyWithoutDetails,
+  Member,
+} from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { AnimalStatus, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
@@ -19,7 +25,7 @@ export const AnimalForm = ({
 }: {
   user: Member;
   animal?: Animal;
-  families: Family[];
+  families: FamilyWithoutDetails[];
 }) => {
   const t = useTranslations();
   const router = useRouter();

@@ -3,7 +3,7 @@
 import { registerFamily } from '@/actions/families/registerFamily';
 import { updateFamily } from '@/actions/families/updateFamily';
 import { useRouter } from '@/i18n/routing';
-import { Family, Member } from '@/lib/types';
+import { Family, FamilyWithoutDetails, Member } from '@/lib/types';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -16,7 +16,7 @@ export const FamilyForm = ({
 }: {
   user: Member;
   family?: Family;
-  orgFamilies?: Family[];
+  orgFamilies?: FamilyWithoutDetails[];
 }) => {
   const t = useTranslations();
   const router = useRouter();

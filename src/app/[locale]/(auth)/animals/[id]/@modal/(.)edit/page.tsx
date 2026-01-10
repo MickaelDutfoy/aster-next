@@ -2,9 +2,9 @@ import { UpdateAnimal } from '@/components/animals/UpdateAnimal';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { getAnimalById } from '@/lib/animals/getAnimalById';
-import { getFamiliesByOrgId } from '@/lib/families/getFamiliesByOrgId';
+import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { Animal, Family, Member, Organization } from '@/lib/types';
+import { Animal, FamilyWithoutDetails, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 import { MemberStatus } from '@prisma/client';
 
@@ -25,7 +25,7 @@ export default async function UpdateAnimalRouteModal({
   const animal: Animal | null = await getAnimalById(Number(id));
   if (!animal) return <DeniedPage cause="error" />;
 
-  const families: Family[] = await getFamiliesByOrgId(org.id);
+  const families: FamilyWithoutDetails[] = await getFamiliesByOrg(org.id);
 
   return (
     <RouteModal expectedPath={`/animals/${animal.id}/edit`}>

@@ -30,7 +30,7 @@ export const getMatchingOrgs = async (input: string): Promise<Organization[]> =>
     return {
       id: org.id,
       name: org.name,
-      superAdmin: admin,
+      superAdminName: admin,
     };
   });
 

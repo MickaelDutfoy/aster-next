@@ -47,10 +47,11 @@ export const OrgSelector = ({ user, org }: { user: Member; org: Organization | n
       <select
         value={org?.id ?? 0}
         onChange={handleOrgChange}
-        className={clsx(user.organizations.length === 0 && 'disabled')}
+        className={clsx(user.organizations?.length === 0 && 'disabled')}
       >
         <option value={0}>{t('common.none')}</option>
-        {user.organizations.length > 0 &&
+        {user.organizations &&
+          user.organizations.length > 0 &&
           user.organizations
             .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
             .map((org) => (

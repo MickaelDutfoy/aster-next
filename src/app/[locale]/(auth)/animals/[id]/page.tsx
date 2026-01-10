@@ -5,7 +5,6 @@ import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Animal, Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import { MemberStatus } from '@prisma/client';
 
 const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -18,13 +17,9 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
-  if (
-    user.organizations.every((org) => org.id !== animal.orgId) ||
-    org.userStatus === MemberStatus.PENDING
-  ) {
+  if (animal.orgId !== user.selectedOrgId) {
     return <DeniedPage cause="refused" />;
   }
-
 
   const family: Family | null = await getFamilyById(animal.familyId);
 

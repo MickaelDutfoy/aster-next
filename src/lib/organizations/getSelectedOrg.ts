@@ -2,8 +2,9 @@ import { prisma } from '../prisma';
 import { Member, Organization } from '../types';
 
 export const getSelectedOrg = async (user: Member): Promise<Organization | null> => {
-  const org: Organization | null =
-    user.organizations.find((org) => org.id === user.selectedOrgId) ?? null;
+  const org: Organization | null = await prisma.organization.findUnique({
+    where: { id: user.selectedOrgId },
+  });
 
   if (!org) return null;
 

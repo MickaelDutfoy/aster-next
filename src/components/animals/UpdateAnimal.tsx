@@ -1,6 +1,6 @@
 'use client';
 
-import { Animal, Family, Member } from '@/lib/types';
+import { Animal, FamilyWithoutDetails, Member } from '@/lib/types';
 import { useTranslations } from 'next-intl';
 import { AnimalForm } from './AnimalForm';
 
@@ -11,7 +11,7 @@ export const UpdateAnimal = ({
 }: {
   user: Member;
   animal: Animal;
-  families: Family[];
+  families: FamilyWithoutDetails[];
 }) => {
   const t = useTranslations();
 

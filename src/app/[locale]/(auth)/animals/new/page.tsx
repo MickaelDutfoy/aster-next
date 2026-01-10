@@ -1,8 +1,8 @@
 import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { getFamiliesByOrgId } from '@/lib/families/getFamiliesByOrgId';
+import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { Family, Member, Organization } from '@/lib/types';
+import { FamilyWithoutDetails, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
 const RegisterAnimalPage = async () => {
@@ -12,7 +12,7 @@ const RegisterAnimalPage = async () => {
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
-  const families: Family[] = await getFamiliesByOrgId(org.id);
+  const families: FamilyWithoutDetails[] = await getFamiliesByOrg(org.id);
 
   return (
     <div className="full-page-form">

@@ -26,6 +26,13 @@ export type Family = {
   memberId: number | null;
 };
 
+export type FamilyWithoutDetails = {
+  id: number;
+  contactFullName: string;
+  city: string;
+  memberId: number | null;
+};
+
 export type Animal = {
   id: number;
   name: string;
@@ -36,22 +43,22 @@ export type Animal = {
   birthDate: Date;
   isNeutered: boolean;
   status: AnimalStatus;
-
   healthActs?: AnimalHealthAct[];
-
-  lastVax: Date | null;
-  vaxHistory: Date[];
-  isPrimoVax: boolean;
-  lastDeworm: Date | null;
-  dewormHistory: Date[];
-  isFirstDeworm: boolean;
-
   information: string | null;
   healthInformation: string | null;
   familyId: number | null;
   orgId: number;
   createdByMemberId: number;
   adoption?: AnimalAdoption | null;
+};
+
+export type AnimalWithoutDetails = {
+  id: number;
+  name: string;
+  species: string;
+  sex: Sex;
+  birthDate: Date;
+  status: AnimalStatus;
 };
 
 export type AnimalHealthAct = {
@@ -88,7 +95,7 @@ export type AnimalAdoption = {
 export type Organization = {
   id: number;
   name: string;
-  superAdmin?: string;
+  superAdminName?: string;
   userRole?: MemberRole;
   userStatus?: MemberStatus;
 };
@@ -107,7 +114,7 @@ export type Member = {
   email: string;
   phoneNumber: string;
   selectedOrgId?: number;
-  organizations: Organization[];
+  organizations?: Organization[];
 };
 
 export type MemberOfOrg = {
