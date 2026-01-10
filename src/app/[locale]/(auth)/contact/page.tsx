@@ -7,7 +7,7 @@ const Contact = async () => {
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
 
-  return <ContactForm user={user} />;
+  return <ContactForm />;
 };
 
 export default Contact;

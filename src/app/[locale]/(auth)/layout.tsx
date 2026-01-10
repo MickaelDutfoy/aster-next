@@ -5,11 +5,11 @@ import { NavBarTop } from '@/components/main/NavBarTop';
 import { OrgSelector } from '@/components/organizations/OrgSelector';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
-import { getUser } from '@/lib/user/getUser';
+import { getUserWithOrgs } from '@/lib/user/getUserWithOrgs';
 import '@/styles/dashboard.scss';
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const user: Member | null = await getUser();
+  const user: Member | null = await getUserWithOrgs();
   if (!user) return <DeniedPage cause="error" />;
 
   const org: Organization | null = await getSelectedOrg(user);

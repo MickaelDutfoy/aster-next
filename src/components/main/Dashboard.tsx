@@ -23,7 +23,7 @@ export const Dashboard = ({
     <div className="dash-contents">
       <div className="dash-links">
         <h3>{t('dashboard.welcome', { name: user.firstName })}</h3>
-        {user.organizations.length === 0 && (
+        {user.organizations?.length === 0 && (
           <div className="text-with-link">
             <p>{t('dashboard.noOrg')}</p>
             <Link className="little-button" href="/organizations">

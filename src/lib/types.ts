@@ -107,7 +107,7 @@ export type Member = {
   email: string;
   phoneNumber: string;
   selectedOrgId?: number;
-  organizations: Organization[];
+  organizations?: Organization[];
 };
 
 export type MemberOfOrg = {

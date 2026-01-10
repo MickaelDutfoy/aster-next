@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import 'server-only';
 import { Member } from '../types';
 
-export const getUser = async (): Promise<Member | null> => {
+export const getUserWithOrgs = async (): Promise<Member | null> => {
   const session = await auth();
   const email = session?.user?.email;
   if (!email) return null;
@@ -17,6 +17,13 @@ export const getUser = async (): Promise<Member | null> => {
         lastName: true,
         phoneNumber: true,
         selectedOrgId: true,
+        memberOrganizations: {
+          select: {
+            role: true,
+            status: true,
+            organization: { select: { id: true, name: true } },
+          },
+        },
       },
     });
 
@@ -29,6 +36,11 @@ export const getUser = async (): Promise<Member | null> => {
       email,
       phoneNumber: member.phoneNumber,
       selectedOrgId: member.selectedOrgId ?? undefined,
+      organizations: member.memberOrganizations.map((memOrg) => ({
+        ...memOrg.organization,
+        userRole: memOrg.role,
+        userStatus: memOrg.status,
+      })),
     };
   } catch (err) {
     console.error(err);

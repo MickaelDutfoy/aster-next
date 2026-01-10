@@ -20,7 +20,7 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
   const user = guard.user;
 
   try {
-    if (user.organizations.some((orga) => orga.id === org.id)) {
+    if (user.organizations?.some((orga) => orga.id === org.id)) {
       return {
         ok: false,
         status: 'error',

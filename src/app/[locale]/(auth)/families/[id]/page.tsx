@@ -17,8 +17,9 @@ const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
-  if (user.organizations.every((org) => org.id !== family.orgId))
+  if (family.orgId !== user.selectedOrgId) {
     return <DeniedPage cause="refused" />;
+  }
 
   const animals: Animal[] = await getAnimalsByFamily(Number(id));
 
