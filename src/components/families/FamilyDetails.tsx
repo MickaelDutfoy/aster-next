@@ -58,9 +58,12 @@ export const FamilyDetails = ({
           <p className="notice">{t('families.cantEdit')}</p>
         )}
         <div className="family-contact-display">
-          <p>
-            {family.address} {family.zip} {family.city}
-          </p>
+          <address>
+            <p>{family.address}</p>
+            <p>
+              {family.zip} {family.city}
+            </p>
+          </address>
           {family.email && <p>{family.email}</p>}
           {family.phoneNumber && <p>{family.phoneNumber}</p>}
         </div>
