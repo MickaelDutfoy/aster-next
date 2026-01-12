@@ -165,7 +165,7 @@ export const AnimalDetails = ({
 
             {animal.healthInformation && (
               <div className="animal-details-section">
-                <h4>{t('animals.additionalInfoLabel')}</h4>
+                <h4>{t('animals.healthNotes')}</h4>
                 <p>{animal.healthInformation}</p>
               </div>
             )}
