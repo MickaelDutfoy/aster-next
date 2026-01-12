@@ -1,6 +1,7 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
+import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import { AnimalWithoutDetails, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus } from '@prisma/client';
@@ -41,7 +42,7 @@ export const AnimalsList = ({
                       <strong>{animal.name}</strong>
                     </span>{' '}
                     <span>
-                      {animal.species}{' '}
+                      {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
                       <span
                         style={{
                           color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
@@ -75,7 +76,7 @@ export const AnimalsList = ({
                       <strong>{animal.name}</strong>
                     </span>{' '}
                     <span>
-                      {animal.species}{' '}
+                      {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
                       <span
                         style={{
                           color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',

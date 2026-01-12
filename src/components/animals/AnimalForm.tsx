@@ -3,6 +3,7 @@
 import { registerAnimal } from '@/actions/animals/registerAnimal';
 import { updateAnimal } from '@/actions/animals/updateAnimal';
 import { useRouter } from '@/i18n/routing';
+import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import {
   Animal,
   AnimalHealthActType,
@@ -57,7 +58,8 @@ export const AnimalForm = ({
 
   const initialSelectedSpecies = (() => {
     if (animal?.species) {
-      return commonSpecies.includes(animal.species) ? animal.species : 'other';
+      const normalized = normalizeSpeciesToLocale(animal.species, commonSpecies);
+      return normalized === 'other' ? 'other' : normalized;
     }
 
     return commonSpecies[0];
