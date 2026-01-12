@@ -1,6 +1,7 @@
 'use client';
 
 import { Link, useRouter } from '@/i18n/routing';
+import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import { Animal, Family, Member, Organization } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
 import { getAge } from '@/lib/utils/getAge';
@@ -65,8 +66,9 @@ export const AnimalDetails = ({
       <div className="animal-page">
         <h3>{animal.name}</h3>
         <p>
-          {animal.species}, {t(`animals.sex.${animal.sex}`).toLowerCase()},{' '}
-          {animal.color?.toLowerCase()}, {getAge(animal.birthDate, locale, true)}
+          {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))},{' '}
+          {t(`animals.sex.${animal.sex}`).toLowerCase()}, {animal.color?.toLowerCase()},{' '}
+          {getAge(animal.birthDate, locale, true)}
           {animal.isNeutered && t('animals.neuteredSuffix')}.
         </p>
         {animal.findLocation && (
