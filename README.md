@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aster
 
-## Getting Started
+Aster is a web application built for animal welfare organizations with **Next.js**, **TypeScript**, and **Prisma**.
 
-First, run the development server:
+It is developed as a single codebase covering frontend, backend, database, and deployment.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The application is free to use and contains no advertising.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Aster is an authenticated application used to manage structured data involving:
+- multiple entities
+- explicit relationships
+- role-based access control
 
-## Learn More
+The project serves both as:
+- a real, usable application
+- a factual representation of my current development skills
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project characteristics
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Single-developer project  
+- Deployed in production  
+- Limited but evolving feature scope  
+- Free to use  
+- No advertising  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js (App Router / Server Actions)
+- TypeScript
+- React
+- Prisma ORM
+- PostgreSQL
+- next-intl (internationalization)
+- Resend (transactional emails)
+- Vercel (hosting and deployment)
+- Neon (database)
+
+---
+
+## Application structure
+
+- Routing, data loading, and access checks are handled server-side using Next.js
+- Data mutations are implemented through **server actions**
+- No public REST or RPC API is exposed
+- Client-side code is limited to UI state and user interactions
+
+---
+
+## Data layer
+
+- Relational PostgreSQL database
+- Schema defined and versioned using Prisma
+- Explicit modeling of:
+  - users
+  - organizations
+  - memberships (roles, status)
+  - domain entities and their relationships
+- All database writes are executed server-side
+
+---
+
+## Access control
+
+- Authentication required for all private routes
+- Authorization based on organization membership and role
+- Permission checks performed:
+  - before page rendering
+  - before executing server actions
+- Unauthorized access is blocked
+
+---
+
+## Security considerations
+
+- No unauthenticated access to private data
+- Server-side validation for all mutations
+- No sensitive error details exposed to the client
+- Database access handled through Prisma (no raw SQL)
+
+---
+
+## Internationalization
+
+- Aster is available in:
+  - English
+  - French
+  - Norwegian
+
+---
+
+## Mobile usage and installation
+
+Aster is designed for mobile use.
+
+### Web access
+
+The application can be accessed via a web browser at:  
+https://aster-pearl.vercel.app/
+(You can view the authenticated part of the app with those demo credentials : demo@aster.app / AsterDemo2026!)
+
+### Android
+
+Aster is available on Google Play:  
+https://play.google.com/store/apps/details?id=com.quietforge.aster
+
+The Android version is distributed using a Trusted Web Activity (TWA) and runs the same web codebase.
+
+### iOS
+
+When accessed from Safari on an iPhone, the application can be installed as a Progressive Web App (PWA):
+
+- Open the application in Safari  
+- Use “Add to Home Screen”  
+
+In this mode, the application runs fullscreen and independently from Safari.
+
+---
+
+## Repository note
+
+This repository is not intended as a framework or starter template.
+
+It reflects the current state of the application, including its implementation choices, constraints, and trade-offs.
