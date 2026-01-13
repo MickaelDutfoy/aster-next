@@ -1,6 +1,6 @@
 # Aster
 
-Aster is a web application built for animal welfare organizations with **Next.js**, **TypeScript**, and **Prisma**.
+Aster is a web application built for animal welfare organizations with `**Next.js**`, `**TypeScript**`, and `**Prisma**`.
 
 It is developed as a single codebase covering frontend, backend, database, and deployment.
 
@@ -33,6 +33,7 @@ The project serves both as:
 
 ## Tech stack
 
+```bash
 - Next.js (App Router / Server Actions)
 - TypeScript
 - React
@@ -42,6 +43,7 @@ The project serves both as:
 - Resend (transactional emails)
 - Vercel (hosting and deployment)
 - Neon (database)
+```
 
 ---
 
@@ -103,13 +105,14 @@ Aster is designed for mobile use.
 ### Web access
 
 The application can be accessed via a web browser at:  
-https://aster-pearl.vercel.app/
+[https://aster-pearl.vercel.app/]https://aster-pearl.vercel.app/
+
 (You can view the authenticated part of the app with those demo credentials : demo@aster.app / AsterDemo2026!)
 
 ### Android
 
 Aster is available on Google Play:  
-https://play.google.com/store/apps/details?id=com.quietforge.aster
+[https://play.google.com/store/apps/details?id=com.quietforge.aster]https://play.google.com/store/apps/details?id=com.quietforge.aster
 
 The Android version is distributed using a Trusted Web Activity (TWA) and runs the same web codebase.
 
