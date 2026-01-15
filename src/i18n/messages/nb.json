@@ -28,6 +28,7 @@
     "agoSuffix": " siden",
     "errorOccurred": "Det oppstod en feil.",
     "requiredFieldsNotice": "(Felt merket med * er obligatoriske.)",
+    "copiedToClipboard": "Lenken er kopiert til utklippstavlen!",
     "accessDenied": "Du har ikke tilgang til denne ressursen.",
     "soonToCome": "Denne funksjonen blir snart tilgjengelig."
   },

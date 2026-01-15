@@ -9,6 +9,7 @@ import { AnimalStatus, MemberRole } from '@prisma/client';
 import clsx from 'clsx';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { ShareButton } from '../tools/ShareButton';
 
 export const AnimalDetails = ({
   user,
@@ -45,23 +46,29 @@ export const AnimalDetails = ({
 
   return (
     <>
-      <div className="links-box">
-        <button
-          onClick={() => router.push(`/animals/${animal.id}/delete`)}
-          className={
-            'little-button ' +
-            clsx(
-              animal.createdByMemberId !== user.id &&
-                org.userRole !== MemberRole.SUPERADMIN &&
-                'disabled',
-            )
-          }
-        >
-          {t('animals.deleteTitle')}
-        </button>
-        <button onClick={() => router.push(`/animals/${animal.id}/edit`)} className="little-button">
-          {t('animals.editInfoTitle')}
-        </button>
+      <div className="share-and-links-box">
+        <ShareButton />
+        <div>
+          <button
+            onClick={() => router.push(`/animals/${animal.id}/delete`)}
+            className={
+              'little-button ' +
+              clsx(
+                animal.createdByMemberId !== user.id &&
+                  org.userRole !== MemberRole.SUPERADMIN &&
+                  'disabled',
+              )
+            }
+          >
+            {t('animals.deleteTitle')}
+          </button>
+          <button
+            onClick={() => router.push(`/animals/${animal.id}/edit`)}
+            className="little-button"
+          >
+            {t('animals.editInfoTitle')}
+          </button>
+        </div>
       </div>
       <div className="animal-page">
         <h3>{animal.name}</h3>

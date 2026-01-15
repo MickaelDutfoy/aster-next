@@ -28,6 +28,7 @@
     "agoSuffix": " ago",
     "errorOccurred": "An error occurred.",
     "requiredFieldsNotice": "(Fields marked with * are required.)",
+    "copiedToClipboard": "Link copied to clipboard!",
     "accessDenied": "You do not have permission to access this resource.",
     "soonToCome": "This feature will be available soon."
   },

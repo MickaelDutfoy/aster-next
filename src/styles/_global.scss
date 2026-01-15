@@ -108,6 +108,28 @@ a:active {
   }
 }
 
+.share-and-links-box {
+  padding: 3px 0 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .share-button {
+    color: var(--link);
+    padding-top: 6px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+
 h1,
 h2,
 h3 {

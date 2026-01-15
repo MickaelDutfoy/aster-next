@@ -28,6 +28,7 @@
     "agoSuffix": "",
     "errorOccurred": "Une erreur est survenue.",
     "requiredFieldsNotice": "(Les champs marqués d'un * sont requis.)",
+    "copiedToClipboard": "Lien copié dans le presse-papiers !",
     "accessDenied": "Vous n'avez pas les autorisations pour accéder à cette ressource.",
     "soonToCome": "Cette fonctionnalité sera bientôt disponible."
   },
