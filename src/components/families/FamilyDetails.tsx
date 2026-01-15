@@ -6,8 +6,9 @@ import { Animal, Family, Member, Organization } from '@/lib/types';
 import { getAge } from '@/lib/utils/getAge';
 import { MemberRole } from '@prisma/client';
 import clsx from 'clsx';
-import { SquareArrowRight } from 'lucide-react';
+import { MailOpen, Phone, SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { ShareButton } from '../tools/ShareButton';
 
 export const FamilyDetails = ({
   user,
@@ -26,29 +27,32 @@ export const FamilyDetails = ({
 
   return (
     <>
-      <div className="links-box">
-        <button
-          onClick={() => router.push(`/families/${family.id}/delete`)}
-          className={
-            'little-button ' +
-            clsx(
-              family.memberId &&
-                family.memberId !== user.id &&
-                org.userRole !== MemberRole.SUPERADMIN &&
-                'disabled',
-            )
-          }
-        >
-          {t('families.deleteTitle')}
-        </button>
-        <button
-          onClick={() => router.push(`/families/${family.id}/edit`)}
-          className={
-            'little-button ' + clsx(family.memberId && family.memberId !== user.id && 'disabled')
-          }
-        >
-          {t('families.editInfoTitle')}
-        </button>
+      <div className="share-and-links-box">
+        <ShareButton />
+        <div>
+          <button
+            onClick={() => router.push(`/families/${family.id}/delete`)}
+            className={
+              'little-button ' +
+              clsx(
+                family.memberId &&
+                  family.memberId !== user.id &&
+                  org.userRole !== MemberRole.SUPERADMIN &&
+                  'disabled',
+              )
+            }
+          >
+            {t('families.deleteTitle')}
+          </button>
+          <button
+            onClick={() => router.push(`/families/${family.id}/edit`)}
+            className={
+              'little-button ' + clsx(family.memberId && family.memberId !== user.id && 'disabled')
+            }
+          >
+            {t('families.editInfoTitle')}
+          </button>
+        </div>
       </div>
 
       <div>
@@ -64,8 +68,24 @@ export const FamilyDetails = ({
               {family.zip} {family.city}
             </p>
           </address>
-          {family.email && <p>{family.email}</p>}
-          {family.phoneNumber && <p>{family.phoneNumber}</p>}
+          {family.email && (
+            <div className="contact-item">
+              <MailOpen size={18} />
+              <span>:</span>
+              <a className="link" href={`mailto:${family.email}`}>
+                {family.email}
+              </a>
+            </div>
+          )}
+          {family.phoneNumber && (
+            <div className="contact-item">
+              <Phone size={18} />
+              <span>:</span>
+              <a className="link" href={`tel:${family.phoneNumber}`}>
+                {family.phoneNumber}
+              </a>
+            </div>
+          )}
         </div>
 
         {family.hasChildren && <p>{t('families.hasChildren')}</p>}

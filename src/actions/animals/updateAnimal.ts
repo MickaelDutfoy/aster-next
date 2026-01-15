@@ -49,7 +49,7 @@ export const updateAnimal = async (
         });
       }
 
-      const adoptSheet = await prisma.animalAdoption.findUnique({ where: { animalId } });
+      const adoptSheet = await prismaTransaction.animalAdoption.findUnique({ where: { animalId } });
 
       if (!adoptSheet && adopter) {
         await prismaTransaction.animalAdoption.create({
