@@ -22,7 +22,7 @@ export const Dashboard = ({
   return (
     <div className="dash-contents">
       <div className="dash-links">
-        <h3>{t('dashboard.welcome', { name: user.firstName })}</h3>
+        <h2>{t('dashboard.welcome', { name: user.firstName })}</h2>
         {user.organizations?.length === 0 && (
           <div className="text-with-link">
             <p>{t('dashboard.noOrg')}</p>
@@ -65,12 +65,6 @@ export const Dashboard = ({
               </Link>
             </div>
           )}
-        <div className="text-with-link">
-          <p>{t('dashboard.contactIntro')}</p>
-          <Link className="little-button" href="/contact">
-            {t('dashboard.contactLink')}
-          </Link>
-        </div>
       </div>
       <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>

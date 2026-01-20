@@ -157,7 +157,6 @@
     "notFoster": "Are you foster family for {orgName}?",
     "pendingIntro": "You have membership requests to review.",
     "pendingSee": "View",
-    "contactIntro": "Issue? Suggestion? Send me a message!",
     "contactLink": "Contact",
     "changelog": {
       "title": "What’s new in Aster?",
@@ -346,6 +345,7 @@
     "system": "System",
     "dark": "Dark",
     "light": "Light",
+    "contactIntro": "Need help? Let me know:",
     "editAccount": {
       "title": "Edit my account",
       "phoneLabel": "Phone number *:",

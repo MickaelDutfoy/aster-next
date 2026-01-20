@@ -25,17 +25,28 @@ export const approveOrgRequest = async (
         data: { status: MemberStatus.VALIDATED },
       });
 
-      await sendEmail({
-        to: member.email,
-        subject: t('orgRequestApproved.subject', { orgName: org.name }),
-        html: `
-          <p>${t('common.hello')}</p>
-          <p>${t('orgRequestApproved.content1', { orgName: org.name })}</p>
-          <p>${t('orgRequestApproved.content2')}</p>
-          <p>${t('orgRequestApproved.content3')}</p>
-          <p>${t('common.footer')}</p>
-        `,
+      await prismaTransaction.notification.create({
+        data: {
+          memberId: member.id,
+          messageKey: 'notifications.organizations.approvedRequest',
+          messageParams: {
+            orgName: org.name,
+          },
+          href: `/organizations/${org.id}`,
+        },
       });
+    });
+
+    await sendEmail({
+      to: member.email,
+      subject: t('orgRequestApproved.subject', { orgName: org.name }),
+      html: `
+            <p>${t('common.hello')}</p>
+            <p>${t('orgRequestApproved.content1', { orgName: org.name })}</p>
+            <p>${t('orgRequestApproved.content2')}</p>
+            <p>${t('orgRequestApproved.content3')}</p>
+            <p>${t('common.footer')}</p>
+          `,
     });
 
     revalidatePath('/organizations');

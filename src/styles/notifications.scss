@@ -1,0 +1,38 @@
+@use 'vars';
+
+.notif-list {
+  display: flex;
+  flex-direction: column;
+
+  .notif:not(:first-child) {
+    border-top: 1px solid var(--button);
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: var(--box);
+    border: 1px solid var(--link);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    opacity: 0.5;
+
+    p {
+      font-size: 0.9rem;
+      flex: 80%;
+    }
+  }
+
+  .unread {
+    cursor: pointer;
+    opacity: 1;
+    font-weight: 700;
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+}

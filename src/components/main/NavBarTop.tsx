@@ -3,9 +3,9 @@
 import { usePathname, useRouter } from '@/i18n/routing';
 import { Member } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
-import { Cat, FolderOpen, MapPinned, Users } from 'lucide-react';
+import { Bell, Cat, HouseHeart, MapPinned } from 'lucide-react';
 
-export const NavBarTop = ({ user }: { user: Member }) => {
+export const NavBarTop = ({ user, notifications }: { user: Member; notifications: number }) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -29,7 +29,7 @@ export const NavBarTop = ({ user }: { user: Member }) => {
           />
         </button>
         <button className={disableMenu()} onClick={() => router.replace('/families')}>
-          <Users
+          <HouseHeart
             fill={pathname.startsWith('/families') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/families') ? 0.5 : 0}
             size={42}
@@ -48,13 +48,21 @@ export const NavBarTop = ({ user }: { user: Member }) => {
             strokeWidth={pathname.startsWith('/map') ? 2.2 : 0.8}
           />
         </button>
-        <button onClick={() => router.replace('/organizations')}>
-          <FolderOpen
-            fill={pathname.startsWith('/organizations') ? '#999' : '"000'}
-            fillOpacity={pathname.startsWith('/organizations') ? 0.5 : 0}
+
+        <button className="notif-bell" onClick={() => router.replace('/notifications')}>
+          <Bell
+            fill={pathname.startsWith('/notifications') ? '#999' : '"000'}
+            fillOpacity={pathname.startsWith('/notifications') ? 0.5 : 0}
             size={42}
-            strokeWidth={pathname.startsWith('/organizations') ? 2.2 : 0.8}
+            strokeWidth={pathname.startsWith('/notifications') ? 2.2 : 0.8}
           />
+          {notifications > 0 && (
+            <div className="notif-counter">
+              <p style={{ fontSize: notifications < 10 ? '0.9rem' : '0.8rem' }}>
+                {notifications <= 99 ? notifications : '99+'}
+              </p>
+            </div>
+          )}
         </button>
       </nav>
     </div>

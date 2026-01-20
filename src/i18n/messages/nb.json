@@ -157,7 +157,6 @@
     "notFoster": "Er du fosterhjem for {orgName}?",
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
-    "contactIntro": "Problem? Forslag? Send meg en melding!",
     "contactLink": "Kontakt",
     "changelog": {
       "title": "Hva er nytt i Aster?",
@@ -346,6 +345,7 @@
     "system": "System",
     "dark": "Mørk",
     "light": "Lys",
+    "contactIntro": "Trenger hjelp? Si ifra:",
     "editAccount": {
       "title": "Rediger kontoen min",
       "phoneLabel": "Telefonnummer *:",

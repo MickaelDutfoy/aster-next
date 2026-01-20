@@ -49,6 +49,30 @@ nav {
   }
 }
 
+.notif-bell {
+  position: relative;
+
+  .notif-counter {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--input-text);
+    box-shadow: 1px 1px 1px var(--input-text);
+    background-color: var(--alert);
+
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 700;
+    }
+  }
+}
+
 header {
   height: 50px;
   font-weight: 700;
@@ -145,7 +169,7 @@ header {
   }
 
   .active {
-    background-color: var(--active-tab);
+    background-color: var(--emphasized);
     font-weight: 700;
     border-bottom: 3px solid var(--link);
   }
@@ -212,12 +236,16 @@ header {
     flex-direction: column;
     margin: 10px 0;
     gap: 10px;
+
+    h2 {
+      align-self: center;
+    }
   }
 
   .changelog {
     margin: 5px;
     padding: 5px;
-    background-color: var(--active-tab);
+    background-color: var(--emphasized);
     border: 2px solid var(--button);
     border-radius: 5px;
     box-shadow: 2px 2px 8px vars.$smoky-black;
@@ -274,7 +302,8 @@ header {
   flex-direction: column;
   gap: 10px;
 
-  h3, .notice {
+  h3,
+  .notice {
     text-align: center;
   }
 
@@ -282,7 +311,8 @@ header {
     margin-left: 25px;
   }
 
-  p, li {
+  p,
+  li {
     font-size: 0.85rem;
     text-align: justify;
   }

@@ -2,9 +2,9 @@
 
 import { Link, useRouter } from '@/i18n/routing';
 import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
-import { Animal, Family, Member, Organization } from '@/lib/types';
+import { Animal, AnimalHealthAct, Family, Member, Organization } from '@/lib/types';
+import { displayAge } from '@/lib/utils/displayAge';
 import { displayDate } from '@/lib/utils/displayDate';
-import { getAge } from '@/lib/utils/getAge';
 import { AnimalStatus, MemberRole } from '@prisma/client';
 import clsx from 'clsx';
 import { useLocale, useTranslations } from 'next-intl';
@@ -32,11 +32,11 @@ export const AnimalDetails = ({
     animal.status === AnimalStatus.ADOPTED ? false : true,
   );
 
-  const acts = animal.healthActs ?? [];
+  const acts: AnimalHealthAct[] = animal.healthActs ?? [];
 
-  const lastVaxAct = acts.find((act) => act.type === 'VACCINATION') ?? null;
-  const lastDewormAct = acts.find((act) => act.type === 'DEWORM') ?? null;
-  const lastAntifleaAct = acts.find((act) => act.type === 'ANTIFLEA') ?? null;
+  const lastVaxAct = acts.find((act) => act.type === 'VACCINATION');
+  const lastDewormAct = acts.find((act) => act.type === 'DEWORM');
+  const lastAntifleaAct = acts.find((act) => act.type === 'ANTIFLEA');
   const vaxHistory = acts.filter((act) => act.type === 'VACCINATION').slice(1);
   const dewormHistory = acts.filter((act) => act.type === 'DEWORM').slice(1);
   const antifleaHistory = acts.filter((act) => act.type === 'ANTIFLEA').slice(1);
@@ -75,7 +75,7 @@ export const AnimalDetails = ({
         <p>
           {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))},{' '}
           {t(`animals.sex.${animal.sex}`).toLowerCase()}, {animal.color?.toLowerCase()},{' '}
-          {getAge(animal.birthDate, locale, true)}
+          {displayAge(animal.birthDate, locale, true)}
           {animal.isNeutered && t('animals.neuteredSuffix')}.
         </p>
         {animal.findLocation && (
@@ -94,7 +94,7 @@ export const AnimalDetails = ({
                 <p>
                   {displayDate(lastVaxAct.date)}
                   {lastVaxAct.isFirst && t('animals.primoShort')}, {t('common.agoPrefix')}
-                  {getAge(lastVaxAct.date, locale, true)}
+                  {displayAge(lastVaxAct.date, locale, true)}
                   {t('common.agoSuffix')}.
                 </p>
 
@@ -105,7 +105,7 @@ export const AnimalDetails = ({
                       {vaxHistory.map((act) => (
                         <li key={act.id}>
                           {displayDate(act.date)}, {t('common.agoPrefix')}
-                          {getAge(act.date, locale, true)}
+                          {displayAge(act.date, locale, true)}
                           {t('common.agoSuffix')}.
                         </li>
                       ))}
@@ -121,7 +121,7 @@ export const AnimalDetails = ({
                 <p>
                   {displayDate(lastDewormAct.date)}
                   {lastDewormAct.isFirst && t('animals.firstDewormShort')}, {t('common.agoPrefix')}
-                  {getAge(lastDewormAct.date, locale, true)}
+                  {displayAge(lastDewormAct.date, locale, true)}
                   {t('common.agoSuffix')}.
                 </p>
 
@@ -132,7 +132,7 @@ export const AnimalDetails = ({
                       {dewormHistory.map((act) => (
                         <li key={act.id}>
                           {displayDate(act.date)}, {t('common.agoPrefix')}
-                          {getAge(act.date, locale, true)}
+                          {displayAge(act.date, locale, true)}
                           {t('common.agoSuffix')}.
                         </li>
                       ))}
@@ -149,7 +149,7 @@ export const AnimalDetails = ({
                   {displayDate(lastAntifleaAct.date)}
                   {lastAntifleaAct.isFirst && t('animals.firstDewormShort')},{' '}
                   {t('common.agoPrefix')}
-                  {getAge(lastAntifleaAct.date, locale, true)}
+                  {displayAge(lastAntifleaAct.date, locale, true)}
                   {t('common.agoSuffix')}.
                 </p>
 
@@ -160,7 +160,7 @@ export const AnimalDetails = ({
                       {antifleaHistory.map((act) => (
                         <li key={act.id}>
                           {displayDate(act.date)}, {t('common.agoPrefix')}
-                          {getAge(act.date, locale, true)}
+                          {displayAge(act.date, locale, true)}
                           {t('common.agoSuffix')}.
                         </li>
                       ))}

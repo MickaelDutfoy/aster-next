@@ -157,8 +157,6 @@
     "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
-    "contactIntro": "Un problème ? Une suggestion ? Envoyez-moi un message !",
-    "contactLink": "Contact",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
       "items0123": [
@@ -345,6 +343,7 @@
     "system": "Système",
     "dark": "Sombre",
     "light": "Clair",
+    "contactIntro": "Besoin d'aide ? Contactez-moi :",
     "editAccount": {
       "title": "Éditer mon compte",
       "phoneLabel": "Téléphone * :",
@@ -365,6 +364,17 @@
       "fosterExplain2": "Cette option ne supprime que les fiches liées à votre compte, pas les fiches créées indépendamment par une association qui pourraient vous concerner.",
       "hasConfirmed": "Je comprends que cette suppression est irréversible * :",
       "success": "Votre compte a été supprimé."
+    }
+  },
+  "notifications": {
+    "noNotif": "Pas de nouvelle notification pour l'instant.",
+    "markAsReadButton": "Tout marquer comme lu",
+    "organizations": {
+      "joinRequest": "{memberFullName} a demandé à rejoindre votre association {orgName}.",
+      "approvedRequest": "Votre adhésion à {orgName} a été validée par l'admin."
+    },
+    "animals": {
+      "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin."
     }
   },
   "emails": {
