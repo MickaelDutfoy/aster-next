@@ -45,7 +45,7 @@ export const NotificationCenter = ({
           showToast({
             ok: false,
             status: 'error',
-            message: t('toasts.requiredFieldsMissing'),
+            message: t('toasts.errorGeneric'),
           });
           return;
         }

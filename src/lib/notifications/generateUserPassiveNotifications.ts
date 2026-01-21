@@ -1,16 +1,12 @@
+'use server';
+
 import { AnimalHealthActType, AnimalStatus } from '@prisma/client';
 import { getAnimalsRelatedToUser } from '../animals/getAnimalsRelatedToUser';
 import { prisma } from '../prisma';
-import { Animal, AnimalHealthAct } from '../types';
+import { Animal, AnimalHealthAct, Member } from '../types';
 import { isOlderThan } from '../utils/isOlderThan';
 
-export const generateUserPassiveNotifications = async (userEmail: string) => {
-  const user = await prisma.member.findUnique({
-    where: { email: userEmail },
-    select: { id: true },
-  });
-  if (!user) return;
-
+export const generateUserPassiveNotifications = async (user: Member) => {
   const PRIME_VAX_REMINDER_DAYS = 21; // later, can use user.settings.preferences
   const VAX_REMINDER_DAYS = 335;
 

@@ -1,7 +1,6 @@
 'use server';
 
 import { signIn } from '@/auth';
-import { generateUserPassiveNotifications } from '@/lib/notifications/generateUserPassiveNotifications';
 import { ActionValidation } from '@/lib/types';
 import { getAuthErrorCode } from '@/lib/utils/getAuthErrorCode';
 
@@ -22,7 +21,7 @@ export const login = async (formData: FormData): Promise<ActionValidation> => {
       password: user.password,
     });
 
-    await generateUserPassiveNotifications(user.email);
+
 
     return { ok: true, status: 'success' };
   } catch (err: any) {

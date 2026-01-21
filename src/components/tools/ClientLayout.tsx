@@ -8,7 +8,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const t = useTranslations();
 
   useEffect(() => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 1024) {
       showToast(
         {
           status: 'info',

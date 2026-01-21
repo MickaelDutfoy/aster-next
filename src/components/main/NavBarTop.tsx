@@ -5,7 +5,7 @@ import { Member } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { Bell, Cat, HouseHeart, MapPinned } from 'lucide-react';
 
-export const NavBarTop = ({ user, notifications }: { user: Member; notifications: number }) => {
+export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: number }) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -56,10 +56,10 @@ export const NavBarTop = ({ user, notifications }: { user: Member; notifications
             size={42}
             strokeWidth={pathname.startsWith('/notifications') ? 2.2 : 0.8}
           />
-          {notifications > 0 && (
+          {notifCounter > 0 && (
             <div className="notif-counter">
-              <p style={{ fontSize: notifications < 10 ? '0.9rem' : '0.8rem' }}>
-                {notifications <= 99 ? notifications : '99+'}
+              <p style={{ fontSize: notifCounter < 10 ? '0.9rem' : '0.8rem' }}>
+                {notifCounter <= 99 ? notifCounter : '99+'}
               </p>
             </div>
           )}
