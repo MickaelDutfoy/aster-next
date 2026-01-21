@@ -157,7 +157,6 @@
     "notFoster": "Er du fosterhjem for {orgName}?",
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
-    "contactIntro": "Problem? Forslag? Send meg en melding!",
     "contactLink": "Kontakt",
     "changelog": {
       "title": "Hva er nytt i Aster?",
@@ -176,6 +175,11 @@
       ],
       "items0150": [
         "Ny utforming av skjemaet for opprettelse og redigering av dyr, med en ny \"Helse\"-seksjon for bedre oversikt."
+      ],
+      "items100": [
+        "Nytt varslingssystem er lagt til.",
+        "Foreløpig gjelder varsler forespørsel/godkjenning av medlemskap i organisasjon samt opprettelse/redigering og vaksinepåminnelser for dyr.",
+        "Lagt til en \"Del\"-knapp på sidene \"Dyr\" og \"Fosterhjem\"."
       ]
     }
   },
@@ -346,6 +350,7 @@
     "system": "System",
     "dark": "Mørk",
     "light": "Lys",
+    "contactIntro": "Trenger hjelp? Si ifra:",
     "editAccount": {
       "title": "Rediger kontoen min",
       "phoneLabel": "Telefonnummer *:",
@@ -366,6 +371,19 @@
       "fosterExplain2": "Dette alternativet sletter kun oppføringer knyttet til kontoen din, ikke oppføringer som er opprettet uavhengig av en organisasjon og som kan gjelde deg.",
       "hasConfirmed": "Jeg forstår at denne slettingen er irreversibel *:",
       "success": "Kontoen din ble slettet."
+    }
+  },
+  "notifications": {
+    "noNotif": "Ingen nye varsler for øyeblikket.",
+    "markAsReadButton": "Merk alle som lest",
+    "organizations": {
+      "joinRequest": "{memberFullName} har bedt om å bli med i organisasjonen {orgName}.",
+      "approvedRequest": "Medlemskapet ditt i {orgName} er godkjent av administrator."
+    },
+    "animals": {
+      "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
+      "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",
+      "createAnimal": "{memberFullName} har opprettet en profil for {animalName}."
     }
   },
   "emails": {

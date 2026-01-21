@@ -5,22 +5,21 @@ import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
-export const setSelectedOrg = async (orgId: number | null): Promise<ActionValidation> => {
+export const markAllAsRead = async (): Promise<ActionValidation> => {
   const guard = await isUser();
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
-    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 
   const userId = guard.user.id;
 
-  try {
-    await prisma.member.update({
-      where: { id: userId },
-      data: { selectedOrgId: orgId },
-    });
+  const now = new Date();
 
-    revalidatePath('/', 'layout');
+  try {
+    await prisma.notification.updateMany({ where: { memberId: userId }, data: { readAt: now } });
+
+    revalidatePath('/notifications');
 
     return { ok: true };
   } catch (err) {

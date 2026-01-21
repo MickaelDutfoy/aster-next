@@ -6,19 +6,39 @@ $isabelline: #ece5df;
 $raw-umber: #875e45;
 $brown-bark: #653d24;
 $smoky-black: #16110e;
+$graphite: #2c2e30;
+$carbon-black: #161a1b;
+$light-coral: #ef8e8e;
+$mahogamy-red: #ac1717;
 
 :root {
-    --app-bg: #{$isabelline};
-    --text: #{$smoky-black};
-    --button: #{$cinereous};
-    --border-button: #{$raw-umber};
-    --link: #{$raw-umber};
-    --input-bg: #{$snow};
-    --input-text: #{$outer-space};
-    --active-tab: rgba(0,0,0,0.1);
-  }
-  
-  :root[data-theme='dark'] {
+  --app-bg: #{$isabelline};
+  --text: #{$smoky-black};
+  --button: #{$cinereous};
+  --border-button: #{$raw-umber};
+  --link: #{$raw-umber};
+  --input-bg: #{$snow};
+  --input-text: #{$outer-space};
+  --alert: #{$light-coral};
+  --box: #{$snow};
+  --emphasized: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme='dark'] {
+  --app-bg: #{$outer-space};
+  --text: #{$isabelline};
+  --button: #{$raw-umber};
+  --border-button: #{$smoky-black};
+  --link: #{$cinereous};
+  --input-bg: #{$isabelline};
+  --input-text: #{$smoky-black};
+  --alert: #{$mahogamy-red};
+  --box: #{$graphite};
+  --emphasized: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
     --app-bg: #{$outer-space};
     --text: #{$isabelline};
     --button: #{$raw-umber};
@@ -26,18 +46,8 @@ $smoky-black: #16110e;
     --link: #{$cinereous};
     --input-bg: #{$isabelline};
     --input-text: #{$smoky-black};
-    --active-tab: rgba(255,255,255,0.1);
+    --alert: #{$mahogamy-red};
+    --box: #{$graphite};
+    --emphasized: rgba(255, 255, 255, 0.1);
   }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme='light']):not([data-theme='dark']) {
-      --app-bg: #{$outer-space};
-      --text: #{$isabelline};
-      --button: #{$raw-umber};
-      --border-button: #{$smoky-black};
-      --link: #{$cinereous};
-      --input-bg: #{$isabelline};
-      --input-text: #{$smoky-black};
-      --active-tab: rgba(255,255,255,0.1);
-    }
-  }
+}

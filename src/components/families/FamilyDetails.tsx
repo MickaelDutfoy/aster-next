@@ -3,7 +3,7 @@
 import { Link, useRouter } from '@/i18n/routing';
 import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import { Animal, Family, Member, Organization } from '@/lib/types';
-import { getAge } from '@/lib/utils/getAge';
+import { displayAge } from '@/lib/utils/displayAge';
 import { MemberRole } from '@prisma/client';
 import clsx from 'clsx';
 import { MailOpen, Phone, SquareArrowRight } from 'lucide-react';
@@ -113,7 +113,7 @@ export const FamilyDetails = ({
                       {animal.sex === 'M' ? '♂' : '♀'}
                     </span>
                   </span>
-                  <span>{getAge(animal.birthDate, locale)}</span>
+                  <span>{displayAge(animal.birthDate, locale)}</span>
                   <Link className="action link" href={`/animals/${animal.id}`}>
                     <SquareArrowRight size={26} />
                   </Link>

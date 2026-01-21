@@ -157,8 +157,6 @@
     "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
-    "contactIntro": "Un problème ? Une suggestion ? Envoyez-moi un message !",
-    "contactLink": "Contact",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
       "items0123": [
@@ -176,6 +174,11 @@
       ],
       "items0150": [
         "Refonte du formulaire de création et d’édition des animaux, avec une nouvelle section \"Santé\" pour un suivi plus clair."
+      ],
+      "items100": [
+        "Ajout du système de notifications.",
+        "Pour l'instant, les notifications concernent demande/validation d'adhésion à une association et création/édition ou rappels de vaccins des animaux.",
+        "Ajout d'un bouton \"Partager\" sur les pages \"Animal\" et \"Famille d'accueil\"."
       ]
     }
   },
@@ -345,6 +348,7 @@
     "system": "Système",
     "dark": "Sombre",
     "light": "Clair",
+    "contactIntro": "Besoin d'aide ? Contactez-moi :",
     "editAccount": {
       "title": "Éditer mon compte",
       "phoneLabel": "Téléphone * :",
@@ -365,6 +369,19 @@
       "fosterExplain2": "Cette option ne supprime que les fiches liées à votre compte, pas les fiches créées indépendamment par une association qui pourraient vous concerner.",
       "hasConfirmed": "Je comprends que cette suppression est irréversible * :",
       "success": "Votre compte a été supprimé."
+    }
+  },
+  "notifications": {
+    "noNotif": "Pas de nouvelle notification pour l'instant.",
+    "markAsReadButton": "Tout marquer comme lu",
+    "organizations": {
+      "joinRequest": "{memberFullName} a demandé à rejoindre votre association {orgName}.",
+      "approvedRequest": "Votre adhésion à {orgName} a été validée par l'admin."
+    },
+    "animals": {
+      "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin.",
+      "editedAnimal": "{memberFullName} a édité la fiche de {animalName}.",
+      "createAnimal": "{memberFullName} a créé une fiche pour {animalName}."
     }
   },
   "emails": {

@@ -1,6 +1,7 @@
 'use server';
 
 import { sendEmail } from '@/lib/email';
+import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
 import { isUser } from '@/lib/permissions/isUser';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Organization } from '@/lib/types';
@@ -28,45 +29,50 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
       };
     }
 
-    await prisma.memberOrganization.create({
-      data: {
-        orgId: org.id,
-        memberId: user.id,
-        role: MemberRole.MEMBER,
-        status: MemberStatus.PENDING,
-      },
+    await prisma.$transaction(async (prismaTransaction) => {
+      await prismaTransaction.memberOrganization.create({
+        data: {
+          orgId: org.id,
+          memberId: user.id,
+          role: MemberRole.MEMBER,
+          status: MemberStatus.PENDING,
+        },
+      });
+
+      if (!user.selectedOrgId) {
+        await prismaTransaction.member.update({
+          where: { id: user.id },
+          data: { selectedOrgId: org.id },
+        });
+      }
     });
 
-    if (!user.selectedOrgId) {
-      await prisma.member.update({
-        where: { id: user.id },
-        data: { selectedOrgId: org.id },
+    const admin = await getOrgAdmin(org.id);
+
+    if (admin) {
+      await prisma.notification.create({
+        data: {
+          memberId: admin.id,
+          messageKey: 'notifications.organizations.joinRequest',
+          messageParams: {
+            memberFullName: `${user.firstName} ${user.lastName}`,
+            orgName: org.name,
+          },
+          href: `/organizations/${org.id}`,
+        },
       });
-    }
 
-    try {
-      const adminLink = await prisma.memberOrganization.findFirst({
-        where: { orgId: org.id, role: MemberRole.SUPERADMIN },
-        select: { member: { select: { email: true } } },
-      });
-
-      const adminEmail = adminLink?.member.email;
-
-      if (adminEmail) {
-        await sendEmail({
-          to: adminEmail,
-          subject: t('orgRequestSend.subject', { orgName: org.name }),
-          html: `
+      await sendEmail({
+        to: admin.email,
+        subject: t('orgRequestSend.subject', { orgName: org.name }),
+        html: `
               <p>${t('common.hello')}</p>
               <p>${t('orgRequestSend.content1', { orgName: org.name })}</p>
               <p>${t('orgRequestSend.content2', { memberFullName: user.firstName + ' ' + user.lastName })}</p>
               <p>${t('orgRequestSend.content3')}</p>
               <p>${t('common.footer')}</p>
-          `,
-        });
-      }
-    } catch (err) {
-      console.error(err);
+            `,
+      });
     }
 
     revalidatePath('/organizations');

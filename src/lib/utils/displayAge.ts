@@ -1,4 +1,4 @@
-export const getAge = (birthDate: Date, lang: string, full = false): string => {
+export const displayAge = (birthDate: Date, lang: string, full = false): string => {
   type Language = 'fr' | 'en' | 'nb';
 
   const AGE_LABELS = {

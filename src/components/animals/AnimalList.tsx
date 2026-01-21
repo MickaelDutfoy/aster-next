@@ -3,7 +3,7 @@
 import { Link } from '@/i18n/routing';
 import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import { AnimalWithoutDetails, Organization } from '@/lib/types';
-import { getAge } from '@/lib/utils/getAge';
+import { displayAge } from '@/lib/utils/displayAge';
 import { AnimalStatus } from '@prisma/client';
 import { SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -52,7 +52,7 @@ export const AnimalsList = ({
                         {animal.sex === 'M' ? '♂' : '♀'}
                       </span>
                     </span>
-                    <span>{getAge(animal.birthDate, locale)}</span>
+                    <span>{displayAge(animal.birthDate, locale)}</span>
                     <Link className="action link" href={`/animals/${animal.id}`}>
                       <SquareArrowRight size={26} />
                     </Link>
@@ -86,7 +86,7 @@ export const AnimalsList = ({
                         {animal.sex === 'M' ? '♂' : '♀'}
                       </span>
                     </span>
-                    <span>{getAge(animal.birthDate, locale)}</span>
+                    <span>{displayAge(animal.birthDate, locale)}</span>
                     <Link className="action link" href={`/animals/${animal.id}`}>
                       <SquareArrowRight size={26} />
                     </Link>

@@ -27,12 +27,6 @@ model Animal {
   status            AnimalStatus @default(UNHOSTED)
   birthDate         DateTime     @map("birth_date") @db.Date
   isNeutered        Boolean      @map("is_neutered")
-  lastVax           DateTime?    @map("last_vax") @db.Date
-  vaxHistory        DateTime[]   @default([])
-  isPrimoVax        Boolean      @default(false) @map("is_primo_vax")
-  lastDeworm        DateTime?    @map("last_deworm") @db.Date
-  dewormHistory     DateTime[]   @default([])
-  isFirstDeworm     Boolean      @default(false) @map("is_first_deworm")
   information       String?
   healthInformation String?
   familyId          Int?         @map("family_id")
@@ -151,6 +145,7 @@ model Member {
   memberOrganizations MemberOrganization[]
   resetPasswordTokens AuthToken[]
   families            Family[]
+  notifications       Notification[]
 
   @@map("members")
 }
@@ -182,4 +177,21 @@ model AuthToken {
   member Member @relation(fields: [memberId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@unique([tokenHash])
+}
+
+model Notification {
+  id            Int       @id @default(autoincrement())
+  memberId      Int
+  messageKey    String
+  messageParams Json?
+  href          String?
+  sourceKey     String?
+  createdAt     DateTime  @default(now())
+  readAt        DateTime?
+  expiresAt     DateTime?
+
+  member        Member    @relation(fields: [memberId], references: [id])
+
+  @@index([memberId, createdAt])
+  @@unique([memberId, sourceKey])
 }
