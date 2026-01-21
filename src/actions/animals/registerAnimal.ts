@@ -1,5 +1,6 @@
 'use server';
 
+import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
 import { isOrgMember } from '@/lib/permissions/isOrgMember';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
@@ -12,8 +13,8 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   if (!guard.org || !guard.user)
     return { ok: false, status: 'error', message: 'toasts.genericError' };
 
-  const orgId = guard.org.id;
-  const userId = guard.user.id;
+  const org = guard.org;
+  const user = guard.user;
 
   const { animal, adopter, health } = await parseAnimalData(formData);
 
@@ -22,20 +23,24 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   }
 
   try {
+    let animalId: number = 0;
+
     await prisma.$transaction(async (prismaTransaction) => {
       const res = await prismaTransaction.animal.create({
         data: {
           ...animal,
-          orgId,
-          createdByMemberId: userId,
+          orgId: org.id,
+          createdByMemberId: user.id,
         },
       });
+
+      animalId = res.id;
 
       if (health && health.length > 0) {
         await prismaTransaction.animalHealthAct.createMany({
           data: health.map((act) => ({
             ...act,
-            animalId: res.id,
+            animalId,
           })),
         });
       }
@@ -44,11 +49,31 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
         await prismaTransaction.animalAdoption.create({
           data: {
             ...adopter,
-            animalId: res.id,
+            animalId,
           },
         });
       }
     });
+
+    const admin = await getOrgAdmin(org.id);
+
+    if (admin && admin.id !== user.id) {
+      try {
+        await prisma.notification.create({
+          data: {
+            memberId: admin.id,
+            messageKey: 'notifications.animals.createAnimal',
+            messageParams: {
+              memberFullName: `${user.firstName} ${user.lastName}`,
+              animalName: animal.name,
+            },
+            href: animalId !== 0 ? `/animals/${animalId}` : null,
+          },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
 
     revalidatePath('/animals');
 

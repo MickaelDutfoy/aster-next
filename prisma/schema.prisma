@@ -185,11 +185,13 @@ model Notification {
   messageKey    String
   messageParams Json?
   href          String?
+  sourceKey     String?
   createdAt     DateTime  @default(now())
   readAt        DateTime?
   expiresAt     DateTime?
 
-  member Member @relation(fields: [memberId], references: [id])
+  member        Member    @relation(fields: [memberId], references: [id])
 
   @@index([memberId, createdAt])
+  @@unique([memberId, sourceKey])
 }

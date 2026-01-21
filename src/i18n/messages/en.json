@@ -175,6 +175,11 @@
       ],
       "items0150": [
         "Redesigned animal creation and editing form, including a new \"Health\" section for clearer tracking."
+      ],
+      "items100": [
+        "Added a notification system.",
+        "For now, notifications include organization join requests/approvals and animal creation/edits or vaccination reminders.",
+        "Added a \"Share\" button on \"Animal\" and \"Foster family\" pages."
       ]
     }
   },
@@ -366,6 +371,19 @@
       "fosterExplain2": "This option only deletes records linked to your account, not records independently created by an organization that may concern you.",
       "hasConfirmed": "I understand that this deletion is irreversible *:",
       "success": "Your account has been deleted."
+    }
+  },
+  "notifications": {
+    "noNotif": "No new notifications at the moment.",
+    "markAsReadButton": "Mark all as read",
+    "organizations": {
+      "joinRequest": "{memberFullName} has requested to join your organization {orgName}.",
+      "approvedRequest": "Your membership in {orgName} has been approved by the administrator."
+    },
+    "animals": {
+      "vaxReminder": "{animalName} will soon need a vaccination booster.",
+      "editedAnimal": "{memberFullName} edited the record for {animalName}.",
+      "createAnimal": "{memberFullName} created a record for {animalName}."
     }
   },
   "emails": {

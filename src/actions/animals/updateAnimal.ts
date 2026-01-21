@@ -1,5 +1,7 @@
 'use server';
 
+import { getAnimalOrg } from '@/lib/organizations/getAnimalOrg';
+import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
 import { isAnimalOrgMember } from '@/lib/permissions/isAnimalOrgMember';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
@@ -16,7 +18,7 @@ export const updateAnimal = async (
     return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 
-  const userId = guard.user.id;
+  const user = guard.user;
 
   const { animal, adopter, health } = await parseAnimalData(formData, animalId);
 
@@ -30,7 +32,7 @@ export const updateAnimal = async (
         where: { id: animalId },
         data: {
           ...animal,
-          updatedByMemberId: userId,
+          updatedByMemberId: user.id,
         },
       });
 
@@ -71,6 +73,33 @@ export const updateAnimal = async (
         });
       }
     });
+
+    const org = await getAnimalOrg(animalId);
+
+    if (org) {
+      const admin = await getOrgAdmin(org.id);
+
+      if (admin && admin.id !== user.id) {
+        try {
+          await prisma.notification.create({
+            data: {
+              memberId: admin.id,
+              messageKey: 'notifications.animals.editedAnimal',
+              messageParams: {
+                memberFullName: `${user.firstName} ${user.lastName}`,
+                animalName: animal.name,
+              },
+              href: `/animals/${animalId}`,
+              sourceKey: `animal:${animalId}:edited:${new Date().toISOString().slice(0, 10)}`,
+            },
+          });
+        } catch (err: any) {
+          if (err?.code !== 'P2002') {
+            console.error(err);
+          }
+        }
+      }
+    }
 
     revalidatePath(`/animals/${animalId}`);
 

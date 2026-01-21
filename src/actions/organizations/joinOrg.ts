@@ -1,6 +1,7 @@
 'use server';
 
 import { sendEmail } from '@/lib/email';
+import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
 import { isUser } from '@/lib/permissions/isUser';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Organization } from '@/lib/types';
@@ -28,14 +29,6 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
       };
     }
 
-    const adminLink = await prisma.memberOrganization.findFirst({
-      where: { orgId: org.id, role: MemberRole.SUPERADMIN },
-      select: { member: { select: { id: true, email: true } } },
-    });
-
-    const adminId = adminLink?.member.id;
-    const adminEmail = adminLink?.member.email;
-
     await prisma.$transaction(async (prismaTransaction) => {
       await prismaTransaction.memberOrganization.create({
         data: {
@@ -52,25 +45,25 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
           data: { selectedOrgId: org.id },
         });
       }
-
-      if (adminId) {
-        await prismaTransaction.notification.create({
-          data: {
-            memberId: adminId,
-            messageKey: 'notifications.organizations.joinRequest',
-            messageParams: {
-              memberFullName: `${user.firstName} ${user.lastName}`,
-              orgName: org.name,
-            },
-            href: `/organizations/${org.id}`,
-          },
-        });
-      }
     });
 
-    if (adminEmail) {
+    const admin = await getOrgAdmin(org.id);
+
+    if (admin) {
+      await prisma.notification.create({
+        data: {
+          memberId: admin.id,
+          messageKey: 'notifications.organizations.joinRequest',
+          messageParams: {
+            memberFullName: `${user.firstName} ${user.lastName}`,
+            orgName: org.name,
+          },
+          href: `/organizations/${org.id}`,
+        },
+      });
+
       await sendEmail({
-        to: adminEmail,
+        to: admin.email,
         subject: t('orgRequestSend.subject', { orgName: org.name }),
         html: `
               <p>${t('common.hello')}</p>
