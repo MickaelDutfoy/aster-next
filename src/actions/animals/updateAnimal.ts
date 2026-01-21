@@ -81,8 +81,17 @@ export const updateAnimal = async (
 
       if (admin && admin.id !== user.id) {
         try {
-          await prisma.notification.create({
-            data: {
+          const dayKey = new Date().toISOString().slice(0, 10);
+          const sourceKey = `animal:${animalId}:edited:${dayKey}`;
+
+          await prisma.notification.upsert({
+            where: {
+              memberId_sourceKey: {
+                memberId: admin.id,
+                sourceKey,
+              },
+            },
+            create: {
               memberId: admin.id,
               messageKey: 'notifications.animals.editedAnimal',
               messageParams: {
@@ -90,13 +99,12 @@ export const updateAnimal = async (
                 animalName: animal.name,
               },
               href: `/animals/${animalId}`,
-              sourceKey: `animal:${animalId}:edited:${new Date().toISOString().slice(0, 10)}`,
+              sourceKey,
             },
+            update: {},
           });
-        } catch (err: any) {
-          if (err?.code !== 'P2002') {
-            console.error(err);
-          }
+        } catch (err) {
+          console.error(err);
         }
       }
     }

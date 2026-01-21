@@ -27,21 +27,24 @@ export const generateUserPassiveNotifications = async (user: Member) => {
     if (!needsReminder) continue;
 
     try {
-      await prisma.notification.create({
-        data: {
+      await prisma.notification.upsert({
+        where: {
+          memberId_sourceKey: {
+            memberId: user.id,
+            sourceKey: `animal:${animal.id}:vax:act:${lastVaxAct.date}`,
+          },
+        },
+        create: {
           memberId: user.id,
           messageKey: 'notifications.animals.vaxReminder',
-          messageParams: {
-            animalName: animal.name,
-          },
+          messageParams: { animalName: animal.name },
           href: `/animals/${animal.id}`,
           sourceKey: `animal:${animal.id}:vax:act:${lastVaxAct.date}`,
         },
+        update: {},
       });
-    } catch (err: any) {
-      if (err?.code !== 'P2002') {
-        console.error(err);
-      }
+    } catch (err) {
+      console.error(err);
     }
   }
 };
