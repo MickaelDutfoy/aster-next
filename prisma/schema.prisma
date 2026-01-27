@@ -36,7 +36,7 @@ model Animal {
   updatedAt         DateTime     @updatedAt
   updatedByMemberId Int?
 
-  family       Family?           @relation(fields: [familyId], references: [id], onUpdate: NoAction)
+  family       Family?           @relation(fields: [familyId], references: [id], onDelete: SetNull, onUpdate: NoAction)
   organization Organization      @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   healthActs   AnimalHealthAct[]
   adoption     AnimalAdoption?
@@ -84,30 +84,39 @@ model AnimalAdoption {
 }
 
 model Family {
-  id              Int      @id @default(autoincrement())
-  contactFullName String   @map("contact_name")
-  email           String?
-  phoneNumber     String?  @map("phone_number")
-  address         String
-  zip             String
-  city            String
-  hasChildren     Boolean  @default(false)
-  otherAnimals    String?
-  orgId           Int      @map("organization_id")
-  memberId        Int?
-  createdAt       DateTime @default(now()) @map("created_at")
+  id                Int      @id @default(autoincrement())
+  contactFullName   String   @map("contact_name")
+  email             String?
+  phoneNumber       String?  @map("phone_number")
+  address           String
+  zip               String
+  city              String
+  hasChildren       Boolean  @default(false)
+  otherAnimals      String?
+  orgId             Int      @map("organization_id")
+  createdByMemberId Int? // remove nullable once every family has a creator
+  createdAt         DateTime @default(now())
 
-  animals      Animal[]
-  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  member       Member?      @relation(fields: [memberId], references: [id])
+  animals       Animal[]
+  organization  Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  familyMembers FamilyMember[]
 
-  @@unique([orgId, memberId])
   @@map("families")
+}
+
+model FamilyMember {
+  familyId  Int
+  memberId  Int
+  createdAt DateTime @default(now())
+
+  family Family @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@id([familyId, memberId])
 }
 
 enum MemberRole {
   MEMBER
-  FOSTER_FAMILY
   ADMIN
   SUPERADMIN
 }
@@ -144,8 +153,8 @@ model Member {
 
   memberOrganizations MemberOrganization[]
   resetPasswordTokens AuthToken[]
-  families            Family[]
   notifications       Notification[]
+  familyMembers       FamilyMember[]
 
   @@map("members")
 }
@@ -190,8 +199,8 @@ model Notification {
   readAt        DateTime?
   expiresAt     DateTime?
 
-  member        Member    @relation(fields: [memberId], references: [id])
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
 
-  @@index([memberId, createdAt])
   @@unique([memberId, sourceKey])
+  @@index([memberId, createdAt])
 }

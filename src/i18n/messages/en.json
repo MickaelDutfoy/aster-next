@@ -41,8 +41,8 @@
     "modifySuccess": "The information has been updated.",
     "animalDelete": "The animal has been successfully deleted.",
     "animalAdd": "The animal has been successfully added.",
-    "familyDelete": "The family has been successfully deleted.",
-    "familyAdd": "The family has been successfully added.",
+    "familyDelete": "The foster location has been successfully deleted.",
+    "familyAdd": "The foster location has been successfully added.",
     "alreadyMemberOfOrg": "You are already a member of this organization.",
     "orgRequestSent": "Your membership request has been sent.",
     "orgRequestCanceled": "Your membership request has been cancelled.",
@@ -60,17 +60,17 @@
     "selectLanguage": "Select language:",
     "welcomeTitle": "Welcome to Aster!",
     "welcomeSubtitle": "“Helping those who help.”",
-    "whyTitle": "Why?",
-    "whyWhatIsAster": "Aster is a management app for animal welfare organizations.",
-    "whyHowHelps": "By bringing your volunteers together and centralizing data about your animals and foster families, Aster becomes the shared, connected memory of your organization.",
+    "whyTitle": "Why use it?",
+    "whyWhatIsAster": "Aster is a management application for animal welfare organizations.",
+    "whyHowHelps": "By bringing your volunteers together and centralizing data about your animals and foster locations, Aster becomes the collective, connected memory of your organization.",
     "howTitle": "How does it work?",
-    "howFirstParagraph": "Create an account, register your organization, invite members to join, then add your foster families and animals.",
-    "howSecondParagraph": "100% free and ad-free, Aster has a single goal: helping those who do everything they can to help animals.",
+    "howFirstParagraph": "Create an account, register your organization, invite your members, then add your foster locations (families, shelter, cattery...) and link your animals to them.",
+    "howSecondParagraph": "100% free and ad-free, Aster has a single goal: helping those who do everything to help animals.",
     "whatsNextTitle": "What’s next?",
-    "whatsNextParagraph1": "Once your foster families and animals are listed, you can easily track vaccine reminders, available foster homes, and ongoing adoptions.",
-    "whatsNextParagraph2": "Aster aims to help without constraining, which is why most information is optional: you decide what matters to you.",
-    "whatsNextParagraph3": "The app is constantly evolving, with new features regularly on the way!",
-    "whatsNextQuestion": "So… shall we get started?"
+    "whatsNextParagraph1": "Once your foster locations and animals are listed, you can easily track vaccine reminders, available foster families, and ongoing adoptions.",
+    "whatsNextParagraph2": "Aster aims to help without imposing constraints, which is why most information is optional: it’s up to you to choose what matters.",
+    "whatsNextParagraph3": "The application is constantly evolving, with new features regularly planned!",
+    "whatsNextQuestion": "So, shall we get started?"
   },
   "auth": {
     "emailLabel": "Email:",
@@ -142,7 +142,7 @@
   "header": {
     "home": "Home",
     "animals": "Animals",
-    "families": "Foster families",
+    "families": "Foster locations",
     "map": "Map",
     "contact": "Contact",
     "organizations": "Organizations",
@@ -180,6 +180,10 @@
         "Added a notification system.",
         "For now, notifications include organization join requests/approvals and animal creation/edits or vaccination reminders.",
         "Added a \"Share\" button on \"Animal\" and \"Foster family\" pages."
+      ],
+      "items110": [
+        "Foster families can now include multiple members. They are now referred to as “Foster locations” to better represent the possibility of registering a shelter, cattery, or other collective care structure.",
+        "The notification system has been extended to all members involved in the same foster location."
       ]
     }
   },
@@ -204,7 +208,7 @@
     "firstDewormShort": " (first)",
     "dewormHistoryLabel": "Deworming history:",
     "lastFleaTreatmentLabel": "Last external antiparasitic treatment on:",
-    "antifleaHistoryLabel": "External parasite treatments history:",
+    "antifleaHistoryLabel": "External parasite treatment history:",
     "healthActsTitle": "Treatments performed:",
     "healthActsNone": "No treatment recorded yet.",
     "addHealthAct": "Add a treatment:",
@@ -225,14 +229,14 @@
     "toggleAdopted": "Show adopted animals ({count})",
     "status": {
       "UNHOSTED": "Waiting for placement",
-      "FOSTERED": "In foster care",
+      "FOSTERED": "In a foster location",
       "ADOPTED": "Adopted"
     },
-    "fosterFamilyLabel": "Foster family: ",
+    "fosterFamilyLabel": "Foster location: ",
     "toggleAdoption": "Show adoption information",
     "adopterLabel": "Adopter:",
     "aboutAdoption": "About the adoption:",
-    "homeVisitDone": "A home visit has been done.",
+    "homeVisitDone": "A home visit has been completed.",
     "neuteringPlannedLabel": "Neutering planned on: ",
     "contractSignedLabel": "Adoption contract signed on: ",
     "feesPaid": "The adoption fee has been paid.",
@@ -245,51 +249,49 @@
       "adoption": "Adoption"
     },
     "fields": {
-      "namePlaceholder": "Name *",
-      "speciesPlaceholder": "Species *:",
+      "namePlaceholder": "Name *",
+      "speciesPlaceholder": "Species *:",
       "colorPlaceholder": "Color",
-      "sexLabel": "Sex *:",
+      "sexLabel": "Sex *:",
       "neuteredQuestion": "Neutered?",
       "findLocationPlaceholder": "Found at",
-      "birthDateLabel": "Born on *:",
+      "birthDateLabel": "Born on *:",
       "primeVaxQuestion": "First vaccination?",
       "firstDewormQuestion": "First deworming?",
-      "statusLabel": "Animal status *:",
-      "familyLabel": "Family",
+      "statusLabel": "Animal status *:",
+      "familyLabel": "Foster location",
       "adopterFullNamePlaceholder": "Adopter’s full name",
       "addressPlaceholder": "Street and number",
       "zipPlaceholder": "Postal code",
       "cityPlaceholder": "City",
-      "homeVisitQuestion": "Home visit done?",
-      "feesPaidQuestion": "Adoption fee paid?",
-      "adoptionNotes": "Notes about the adoption:"
+      "homeVisitQuestion": "Home visit completed?",
+      "feesPaidQuestion": "Adoption fee paid?"
     }
   },
   "families": {
-    "editInfoTitle": "Edit family",
-    "addTitle": "Add a family",
-    "deleteTitle": "Delete family",
+    "editInfoTitle": "Edit location",
+    "addTitle": "Add location",
+    "deleteTitle": "Delete location",
     "hasChildren": "This foster family has children.",
     "animalsInCareLabel": "Animals in care ({count}):",
     "otherAnimalsLabel": "Other animals:",
-    "prefillMeLabel": "It's me, use my info:",
-    "familyBindNotice": "By checking this box, animals you add later will be linked to your foster family by default.",
-    "isSelf": "You’ve indicated that you are this foster family.",
-    "alreadyFosterInOrg": "You’ve already defined yourself as a foster family in this organization: you can’t do it again.",
-    "fosterInOrgToast": "You’re already a foster family in this organization.",
-    "cantEdit": "This foster family is linked to another member: you can’t edit it.",
-    "listTitle": "Foster families registered for {orgName} ({count}):",
-    "none": "No foster families registered.",
-    "tips": "You can use a family to represent a shelter, a cattery room, or any other hosting place.",
+    "prefillMeLabel": "This is me, use my details:",
+    "familyMember": "You are a member of this foster location.",
+    "manageMembers": "Manage members",
+    "currentMembersTitle": "Current members of this location:",
+    "elligibleMembersTitle": "Members who can be added to this location:",
+    "notFamilyMember": "You are not a member of this foster location.",
+    "listTitle": "Foster locations registered for {orgName} ({count}):",
+    "none": "No foster locations registered.",
     "fields": {
-      "contactFullNamePlaceholder": "Foster family name *",
-      "addressPlaceholderRequired": "Street and number *",
-      "zipPlaceholderRequired": "Postal code *",
-      "cityPlaceholderRequired": "City *"
+      "contactFullNamePlaceholder": "Location name *",
+      "addressPlaceholderRequired": "Street and number *",
+      "zipPlaceholderRequired": "Postal code *",
+      "cityPlaceholderRequired": "City *"
     },
     "questions": {
-      "hasChildren": "Are there children?",
-      "otherAnimals": "Are there other animals (please specify)?"
+      "hasChildren": "Is this a foster family with children?",
+      "otherAnimals": "Are there other animals besides those from the organization? (please specify)"
     }
   },
   "organizations": {
@@ -298,23 +300,23 @@
     "deleteOrg": {
       "readBefore": "You are about to delete the organization {orgName}. Before proceeding, please make sure you understand all the implications of this action.",
       "items": [
-        "All members linked to this organization will be detached and will no longer see it in their list of active organizations.",
-        "All animals and all foster families linked to this organization will be deleted and cannot be recovered."
+        "All members linked to this organization will be removed and will no longer see it in their list of active organizations.",
+        "All animals and all foster locations linked to this organization will be deleted and cannot be recovered."
       ],
       "mustWriteOrgName": "To confirm this action, you must enter the full name of the organization:"
     },
     "yourOrganizations": "Active organization:",
     "membersListTitle": "Member list for {orgName} ({count}):",
-    "hiddenOrgMembers": "Your membership request is pending. For confidentiality reasons, you cannot see the other members.",
+    "hiddenOrgMembers": "Your membership request is pending. For confidentiality reasons, you cannot view the other members.",
     "registerTitle": "Register a new organization?",
-    "orgNameLabel": "Organization name *:",
+    "orgNameLabel": "Organization name *:",
     "orgNamePlaceholder": "Organization name",
     "searchExistingTitle": "Search for an existing organization?",
     "seeDetails": "View details for {orgName}?",
     "goToOrg": "Go to organization page",
-    "pickNewAdminTitle": "Assign a new admin",
-    "nobodyToTransferTo": "There is no member to transfer the role to.",
-    "pickAMember": "Choose a member:",
+    "pickNewAdminTitle": "Appoint a new admin",
+    "nobodyToTransferTo": "There are no members to transfer the role to.",
+    "pickAMember": "Select a member:",
     "joinSubmit": "Join",
     "joinLoading": "Sending...",
     "roles": {
@@ -331,7 +333,7 @@
     },
     "actions": {
       "approveRequest": "Approve request",
-      "removeMember": "Remove this member",
+      "removeMember": "Remove member",
       "cancelRequest": "Cancel request",
       "leaveOrg": "Leave organization",
       "transferAdmin": "Transfer admin role"
@@ -350,40 +352,44 @@
     "system": "System",
     "dark": "Dark",
     "light": "Light",
-    "contactIntro": "Need help? Let me know:",
+    "contactIntro": "Need help? Get in touch:",
     "editAccount": {
       "title": "Edit my account",
-      "phoneLabel": "Phone number *:",
-      "noticeCredentials": "It is not currently possible to modify your login credentials, but you can reset your password by clicking below.",
+      "phoneLabel": "Phone number *:",
+      "noticeCredentials": "It is currently not possible to change your login credentials, but you can reset your password by clicking below.",
       "changePasswordButton": "Change my password",
-      "resetPassword": "An email containing a password reset link has just been sent to you."
+      "resetPassword": "An email to reset your password has just been sent."
     },
     "deleteAccount": {
       "title": "Delete my account",
       "explainIntro": "Deleting your account means that:",
       "items": [
-        "You will be automatically signed out and will no longer be able to log in.",
+        "You will be automatically logged out and will not be able to log in again.",
         "Your personal data (first name, last name, email, phone number) will be removed from Aster’s database.",
-        "You will no longer appear in the list of organizations you belonged to."
+        "You will no longer appear in the list of organizations you were a member of."
       ],
-      "fosterExplain1": "Warning: as stated in the privacy policy, some of your contact details may continue to appear in the application as a foster family, even after your account is deleted.",
-      "fosterRequest": "Also delete foster family records linked to my account:",
-      "fosterExplain2": "This option only deletes records linked to your account, not records independently created by an organization that may concern you.",
-      "hasConfirmed": "I understand that this deletion is irreversible *:",
+      "fosterExplain1": "Warning: as stated in the privacy policy, some of your contact details may still appear in the application as part of a foster location, even after your account has been deleted.",
+      "fosterRequest": "Also delete foster location records where I am the only member:",
+      "fosterExplain2": "This option only deletes records linked to your account. It does not delete animals associated with them, nor records created independently by an organization that may involve you.",
+      "hasConfirmed": "I understand that this deletion is irreversible *:",
       "success": "Your account has been deleted."
     }
   },
   "notifications": {
     "noNotif": "No new notifications at the moment.",
     "markAsReadButton": "Mark all as read",
-    "organizations": {
-      "joinRequest": "{memberFullName} has requested to join your organization {orgName}.",
-      "approvedRequest": "Your membership in {orgName} has been approved by the administrator."
-    },
+
     "animals": {
       "vaxReminder": "{animalName} will soon need a vaccination booster.",
       "editedAnimal": "{memberFullName} edited the record for {animalName}.",
       "createAnimal": "{memberFullName} created a record for {animalName}."
+    },
+    "families": {
+      "addedToFamily": "{memberFullName} added you to the foster location {familyName}."
+    },
+    "organizations": {
+      "joinRequest": "{memberFullName} has requested to join your organization {orgName}.",
+      "approvedRequest": "Your membership in {orgName} has been approved by the administrator."
     }
   },
   "emails": {

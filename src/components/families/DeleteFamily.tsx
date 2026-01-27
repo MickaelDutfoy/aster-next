@@ -44,7 +44,11 @@ export const DeleteFamily = ({
     }
   };
 
-  if (family.memberId && family.memberId !== user.id && org.userRole !== MemberRole.SUPERADMIN) {
+  if (
+    family.members.length > 0 &&
+    family.members.every((member) => member.id !== user.id) &&
+    org.userRole !== MemberRole.SUPERADMIN
+  ) {
     return <DeniedPage cause="refused" />;
   }
 

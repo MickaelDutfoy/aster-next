@@ -35,8 +35,8 @@ export const FamilyDetails = ({
             className={
               'little-button ' +
               clsx(
-                family.memberId &&
-                  family.memberId !== user.id &&
+                family.members.length > 0 &&
+                  family.members.every((member) => member.id !== user.id) &&
                   org.userRole !== MemberRole.SUPERADMIN &&
                   'disabled',
               )
@@ -47,7 +47,13 @@ export const FamilyDetails = ({
           <button
             onClick={() => router.push(`/families/${family.id}/edit`)}
             className={
-              'little-button ' + clsx(family.memberId && family.memberId !== user.id && 'disabled')
+              'little-button ' +
+              clsx(
+                family.members.length > 0 &&
+                  family.members.every((member) => member.id !== user.id) &&
+                  org.userRole !== MemberRole.SUPERADMIN &&
+                  'disabled',
+              )
             }
           >
             {t('families.editInfoTitle')}
@@ -57,10 +63,25 @@ export const FamilyDetails = ({
 
       <div>
         <h3>{family.contactFullName}</h3>
-        {family.memberId === user.id && <p className="notice">{t('families.isSelf')}</p>}
-        {family.memberId && family.memberId !== user.id && (
-          <p className="notice">{t('families.cantEdit')}</p>
+        {family.members.some((member) => member.id === user.id) && (
+          <div className="text-with-link">
+            <p>{t('families.familyMember')}</p>
+            <Link className="little-button" href={`/families/${family.id}/add-members`}>
+              {t('families.manageMembers')}
+            </Link>
+          </div>
         )}
+        {family.members.every((member) => member.id !== user.id) &&
+          (org.userRole === MemberRole.SUPERADMIN ? (
+            <div className="text-with-link">
+              <p>{t('families.notFamilyMember')}</p>
+              <Link className="little-button" href={`/families/${family.id}/add-members`}>
+                {t('families.manageMembers')}
+              </Link>
+            </div>
+          ) : (
+            <p className="notice">{t('families.notFamilyMember')}</p>
+          ))}
         <div className="family-contact-display">
           <address>
             <p>{family.address}</p>

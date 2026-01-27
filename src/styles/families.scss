@@ -62,7 +62,7 @@
   label {
     font-size: 0.9rem;
   }
-  
+
   .notice {
     font-size: 0.8rem;
     text-align: center;
@@ -98,6 +98,36 @@
 
     .labeled-checkbox {
       margin: 0 10px;
+    }
+  }
+}
+
+.families-member-manage {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  ul {
+    margin-top: 5px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      padding: 0 10px;
+      min-height: 36px;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--button);
+    }
+
+    :last-child {
+      border: none;
     }
   }
 }

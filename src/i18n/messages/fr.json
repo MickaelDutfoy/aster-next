@@ -41,8 +41,8 @@
     "modifySuccess": "Les informations ont été modifiées.",
     "animalDelete": "L'animal a bien été supprimé.",
     "animalAdd": "L'animal a bien été ajouté.",
-    "familyDelete": "La famille a bien été supprimée.",
-    "familyAdd": "La famille a bien été ajoutée.",
+    "familyDelete": "Le lieu d'accueil a bien été supprimé.",
+    "familyAdd": "Le lieu d'accueil a bien été ajouté.",
     "alreadyMemberOfOrg": "Vous faites déjà partie de cette association.",
     "orgRequestSent": "Votre demande d'adhésion a été envoyée.",
     "orgRequestCanceled": "Votre demande d'adhésion a été annulée.",
@@ -62,12 +62,12 @@
     "welcomeSubtitle": "« Aider ceux qui aident. »",
     "whyTitle": "Pourquoi faire ?",
     "whyWhatIsAster": "Aster est une application de gestion d'association de protection animale.",
-    "whyHowHelps": "En regroupant vos bénévoles et en centralisant les données de vos animaux et de vos familles d'accueil, Aster est la mémoire collective et connectée de votre association.",
+    "whyHowHelps": "En regroupant vos bénévoles et en centralisant les données de vos animaux et de vos lieux d'accueil, Aster est la mémoire collective et connectée de votre association.",
     "howTitle": "Comment ça fonctionne ?",
-    "howFirstParagraph": "Créez un compte, enregistrez votre association, invitez vos membres à la rejoindre, ajoutez vos familles d'accueil et vos animaux.",
+    "howFirstParagraph": "Créez un compte, enregistrez votre association, invitez vos membres, puis ajoutez vos lieux d'accueil (familles, refuge, chatterie...) et associez-y vos animaux.",
     "howSecondParagraph": "100% gratuite et sans publicité, Aster n'a qu'un objectif : aider ceux qui font tout pour aider les animaux.",
     "whatsNextTitle": "Et ensuite ?",
-    "whatsNextParagraph1": "Une fois vos familles d'accueil et vos animaux listés, vous pouvez facilement suivre les rappels de vaccins, les familles vacantes et les adoptions en cours.",
+    "whatsNextParagraph1": "Une fois vos lieux d'accueil et vos animaux listés, vous pouvez facilement suivre les rappels de vaccins, les familles vacantes et les adoptions en cours.",
     "whatsNextParagraph2": "Aster veut aider sans contraindre, c'est pourquoi la plupart des informations sont optionnelles : à vous de choisir celles qui comptent pour vous.",
     "whatsNextParagraph3": "L'application est en constante évolution et de nouvelles fonctionnalités sont sans cesse au programme !",
     "whatsNextQuestion": "Alors, on commence ?"
@@ -142,7 +142,7 @@
   "header": {
     "home": "Accueil",
     "animals": "Animaux",
-    "families": "Familles d'accueil",
+    "families": "Lieux d'accueil",
     "map": "Carte",
     "contact": "Contact",
     "organizations": "Associations",
@@ -158,27 +158,31 @@
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
     "changelog": {
-      "title": "Quoi de neuf dans Aster ?",
+      "title": "Quoi de neuf dans Aster ?",
       "items0123": [
         "Renforcement de la sécurité pour l'édition d'un animal ou d'une famille.",
         "Envoi d'un e-mail lorsqu'un membre demande à rejoindre une association, et quand cette demande est validée."
       ],
       "items0130": [
-        "Amélioration de l'interface pour la section \"Associations\".",
+        "Amélioration de l'interface pour la section « Associations ».",
         "Possibilité de transférer le statut d'admin d'une association à un autre membre validé."
       ],
       "items0140": [
-        "Nouvelles fonctionnalités : éditer ou supprimer son compte, éditer ou supprimer une association...",
+        "Nouvelles fonctionnalités : éditer ou supprimer son compte, éditer ou supprimer une association...",
         "Améliorations de sécurité et de flux utilisateur.",
         "La politique de confidentialité est disponible et peut être lue depuis les options."
       ],
       "items0150": [
-        "Refonte du formulaire de création et d’édition des animaux, avec une nouvelle section \"Santé\" pour un suivi plus clair."
+        "Refonte du formulaire de création et d’édition des animaux, avec une nouvelle section « Santé » pour un suivi plus clair."
       ],
       "items100": [
         "Ajout du système de notifications.",
         "Pour l'instant, les notifications concernent demande/validation d'adhésion à une association et création/édition ou rappels de vaccins des animaux.",
-        "Ajout d'un bouton \"Partager\" sur les pages \"Animal\" et \"Famille d'accueil\"."
+        "Ajout d'un bouton « Partager » sur les pages « Animal » et « Famille d'accueil »."
+      ],
+      "items110": [
+        "Les familles d'accueil peuvent compter plusieurs membres. Elles sont désormais renommées « Lieux d'accueil » afin de mieux représenter la possibilité d'enregistrer un refuge, une chatterie ou toute autre structure collective.",
+        "Extension du système de notifications aux membres concernés par un même lieu d'accueil."
       ]
     }
   },
@@ -224,10 +228,10 @@
     "toggleAdopted": "Afficher les animaux adoptés ({count})",
     "status": {
       "UNHOSTED": "En attente",
-      "FOSTERED": "En famille d'accueil",
+      "FOSTERED": "Dans un lieu d'accueil",
       "ADOPTED": "Adopté(e)"
     },
-    "fosterFamilyLabel": "Famille d'accueil : ",
+    "fosterFamilyLabel": "Lieu d'accueil : ",
     "toggleAdoption": "Afficher les informations d'adoption",
     "adopterLabel": "Adoptant :",
     "aboutAdoption": "À propos de l'adoption :",
@@ -254,7 +258,7 @@
       "primeVaxQuestion": "Primo-vaccination ?",
       "firstDewormQuestion": "Premier déparasitage ?",
       "statusLabel": "Statut de l'animal * :",
-      "familyLabel": "Famille",
+      "familyLabel": "Lieu d'accueil",
       "adopterFullNamePlaceholder": "Nom et prénom de l'adoptant",
       "addressPlaceholder": "N° et rue",
       "zipPlaceholder": "Code postal",
@@ -264,40 +268,39 @@
     }
   },
   "families": {
-    "editInfoTitle": "Éditer la famille",
-    "addTitle": "Ajouter une famille",
-    "deleteTitle": "Supprimer la famille",
+    "editInfoTitle": "Éditer le lieu",
+    "addTitle": "Ajouter un lieu",
+    "deleteTitle": "Supprimer le lieu",
     "hasChildren": "Cette famille a des enfants.",
     "animalsInCareLabel": "Animaux en charge ({count}) :",
     "otherAnimalsLabel": "Autres animaux :",
     "prefillMeLabel": "C'est moi, utiliser mes infos :",
-    "familyBindNotice": "En cochant cette case, les animaux que vous enregistrerez ensuite seront par défaut liés à votre famille d'accueil.",
-    "isSelf": "Vous avez déclaré que vous étiez cette famille d'accueil.",
-    "alreadyFosterInOrg": "Vous vous êtes déjà défini comme famille d'accueil dans cette association : vous ne pouvez pas le faire à nouveau.",
-    "fosterInOrgToast": "Vous êtes déjà famille d'accueil dans cette association.",
-    "cantEdit": "Cette famille d'accueil est liée à un autre membre : vous ne pouvez pas l'éditer.",
-    "listTitle": "Familles enregistrées pour {orgName} ({count}) :",
-    "none": "Aucune famille enregistrée.",
-    "tips": "Vous pouvez utiliser une famille pour représenter un refuge, une pièce de chatterie, ou tout autre lieu d'accueil.",
+    "familyMember": "Vous êtes membre de ce lieu d'accueil.",
+    "manageMembers": "Gérer les membres",
+    "currentMembersTitle": "Membres actuels de ce lieu :",
+    "elligibleMembersTitle": "Membres pouvant être ajoutés à ce lieu :",
+    "notFamilyMember": "Vous n'êtes pas membre de ce lieu d'accueil.",
+    "listTitle": "Lieux d'accueil enregistrés pour {orgName} ({count}) :",
+    "none": "Aucun lieu d'accueil enregistré.",
     "fields": {
-      "contactFullNamePlaceholder": "Nom de la famille *",
+      "contactFullNamePlaceholder": "Nom du lieu *",
       "addressPlaceholderRequired": "N° et rue *",
       "zipPlaceholderRequired": "Code postal *",
       "cityPlaceholderRequired": "Ville *"
     },
     "questions": {
-      "hasChildren": "Y a-t-il des enfants ?",
-      "otherAnimals": "Y a-t-il d'autres animaux (précisez lesquels) ?"
+      "hasChildren": "S'agit-il d'une famille avec des enfants ?",
+      "otherAnimals": "Y a-t-il d'autres animaux que ceux de l'association (précisez lesquels) ?"
     }
   },
   "organizations": {
-    "editInfoTitle": "Éditer l'assocation",
+    "editInfoTitle": "Éditer l'association",
     "deleteTitle": "Supprimer l'association",
     "deleteOrg": {
       "readBefore": "Vous êtes sur le point de supprimer l'association {orgName}. Avant de procéder, veuillez prendre connaissance de toutes les implications de cette action.",
       "items": [
         "Tous les membres liés à cette association en seront détachés et ne la verront plus dans leur liste d'associations actives.",
-        "Tous les animaux et toutes les familles d'accueil liés à cette association seront supprimés et ne pourront pas être récupérés."
+        "Tous les animaux et toutes les lieux d'accueil liés à cette association seront supprimés et ne pourront pas être récupérés."
       ],
       "mustWriteOrgName": "Pour confirmer cette action, vous devez saisir le nom de l'association en toutes lettres :"
     },
@@ -365,8 +368,8 @@
         "Vous n'apparaîtrez plus dans la liste des associations auxquelles vous apparteniez."
       ],
       "fosterExplain1": "Attention : comme inscrit dans la politique de confidentialité, certaines de vos coordonnées peuvent continuer à apparaître dans l'application en tant que famille d'accueil, même après la suppression de votre compte.",
-      "fosterRequest": "Supprimer également les fiches famille d'accueil liées à mon compte :",
-      "fosterExplain2": "Cette option ne supprime que les fiches liées à votre compte, pas les fiches créées indépendamment par une association qui pourraient vous concerner.",
+      "fosterRequest": "Supprimer également les fiches famille d'accueil dont je suis l'unique membre :",
+      "fosterExplain2": "Cette option ne supprime que les fiches liées à votre compte, pas les animaux liées à elles, ni les fiches créées indépendamment par une association qui pourraient vous concerner.",
       "hasConfirmed": "Je comprends que cette suppression est irréversible * :",
       "success": "Votre compte a été supprimé."
     }
@@ -374,14 +377,17 @@
   "notifications": {
     "noNotif": "Pas de nouvelle notification pour l'instant.",
     "markAsReadButton": "Tout marquer comme lu",
-    "organizations": {
-      "joinRequest": "{memberFullName} a demandé à rejoindre votre association {orgName}.",
-      "approvedRequest": "Votre adhésion à {orgName} a été validée par l'admin."
-    },
     "animals": {
       "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin.",
       "editedAnimal": "{memberFullName} a édité la fiche de {animalName}.",
       "createAnimal": "{memberFullName} a créé une fiche pour {animalName}."
+    },
+    "families": {
+      "addedToFamily": "{memberFullName} vous a ajouté au lieu d'accueil {familyName}."
+    },
+    "organizations": {
+      "joinRequest": "{memberFullName} a demandé à rejoindre votre association {orgName}.",
+      "approvedRequest": "Votre adhésion à {orgName} a été validée par l'admin."
     }
   },
   "emails": {

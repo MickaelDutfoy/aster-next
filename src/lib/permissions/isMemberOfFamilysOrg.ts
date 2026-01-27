@@ -4,7 +4,7 @@ import { prisma } from '../prisma';
 import { ActionValidation, Member, Organization } from '../types';
 import { getUser } from '../user/getUser';
 
-export const isFamilyOrgMember = async (
+export const isMemberOfFamilysOrg = async (
   familyId: number,
 ): Promise<{ validation: ActionValidation; org: Organization | null; user: Member | null }> => {
   const user: Member | null = await getUser();

@@ -17,7 +17,14 @@ export const deleteAccount = async (deleteFosterFamilies: boolean): Promise<Acti
   try {
     await prisma.$transaction(async (prismaTransaction) => {
       if (deleteFosterFamilies) {
-        await prismaTransaction.family.deleteMany({ where: { memberId: userId } });
+        await prismaTransaction.family.deleteMany({
+          where: {
+            familyMembers: {
+              some: { memberId: userId },
+              every: { memberId: userId },
+            },
+          },
+        });
       }
 
       await prismaTransaction.member.delete({ where: { id: userId } });

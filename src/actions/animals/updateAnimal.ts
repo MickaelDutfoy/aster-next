@@ -1,8 +1,9 @@
 'use server';
 
+import { getFamilyOfAnimal } from '@/lib/families/getFamilyOfAnimal';
 import { getAnimalOrg } from '@/lib/organizations/getAnimalOrg';
 import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
-import { isAnimalOrgMember } from '@/lib/permissions/isAnimalOrgMember';
+import { isMemberOfAnimalsOrg } from '@/lib/permissions/isMemberOfAnimalsOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
@@ -12,7 +13,7 @@ export const updateAnimal = async (
   animalId: number,
   formData: FormData,
 ): Promise<ActionValidation> => {
-  const guard = await isAnimalOrgMember(animalId);
+  const guard = await isMemberOfAnimalsOrg(animalId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
@@ -93,6 +94,41 @@ export const updateAnimal = async (
             },
             create: {
               memberId: admin.id,
+              messageKey: 'notifications.animals.editedAnimal',
+              messageParams: {
+                memberFullName: `${user.firstName} ${user.lastName}`,
+                animalName: animal.name,
+              },
+              href: `/animals/${animalId}`,
+              sourceKey,
+            },
+            update: {},
+          });
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    }
+
+    const family = await getFamilyOfAnimal(animalId);
+
+    if (family) {
+      for (const member of family.members) {
+        if (member.id === user.id) continue;
+
+        try {
+          const dayKey = new Date().toISOString().slice(0, 10);
+          const sourceKey = `animal:${animalId}:edited:${dayKey}`;
+
+          await prisma.notification.upsert({
+            where: {
+              memberId_sourceKey: {
+                memberId: member.id,
+                sourceKey,
+              },
+            },
+            create: {
+              memberId: member.id,
               messageKey: 'notifications.animals.editedAnimal',
               messageParams: {
                 memberFullName: `${user.firstName} ${user.lastName}`,

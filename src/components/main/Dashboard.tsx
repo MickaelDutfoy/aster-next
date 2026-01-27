@@ -57,7 +57,7 @@ export const Dashboard = ({
         )}
         {org &&
           org.userStatus !== MemberStatus.PENDING &&
-          families.every((family) => family.memberId !== user.id) && (
+          families.every((family) => !family.members.some((member) => member.id === user.id)) && (
             <div className="text-with-link">
               <p>{t('dashboard.notFoster', { orgName: org.name })}</p>
               <Link className="little-button" href="/families/new">
@@ -68,6 +68,12 @@ export const Dashboard = ({
       </div>
       <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>
+        <ul>
+          v1.1.0{locale === 'fr' && ' '}:
+          {t.raw('dashboard.changelog.items110').map((item: string, index: number) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
         <ul style={{ fontWeight: 700 }}>
           v1.0.0{locale === 'fr' && ' '}:
           {t.raw('dashboard.changelog.items100').map((item: string, index: number) => (
