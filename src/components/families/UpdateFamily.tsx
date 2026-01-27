@@ -1,14 +1,27 @@
 'use client';
 
-import { Family, Member } from '@/lib/types';
+import { Family, Member, Organization } from '@/lib/types';
+import { MemberRole } from '@prisma/client';
 import { useTranslations } from 'next-intl';
 import { DeniedPage } from '../main/DeniedPage';
 import { FamilyForm } from './FamilyForm';
 
-export const UpdateFamily = ({ user, family }: { user: Member; family: Family }) => {
+export const UpdateFamily = ({
+  user,
+  org,
+  family,
+}: {
+  user: Member;
+  org: Organization;
+  family: Family;
+}) => {
   const t = useTranslations();
 
-  if (family.memberId && family.memberId !== user.id) {
+  if (
+    family.members.length > 0 &&
+    family.members.every((member) => member.id !== user.id) &&
+    org.userRole !== MemberRole.SUPERADMIN
+  ) {
     return <DeniedPage cause="refused" />;
   }
 

@@ -41,8 +41,8 @@
     "modifySuccess": "Informasjonen er oppdatert.",
     "animalDelete": "Dyret ble slettet.",
     "animalAdd": "Dyret ble lagt til.",
-    "familyDelete": "Fosterfamilien ble slettet.",
-    "familyAdd": "Fosterfamilien ble lagt til.",
+    "familyDelete": "Omsorgsstedet ble slettet.",
+    "familyAdd": "Omsorgsstedet ble lagt til.",
     "alreadyMemberOfOrg": "Du er allerede medlem av denne organisasjonen.",
     "orgRequestSent": "Din forespørsel om medlemskap er sendt.",
     "orgRequestCanceled": "Din forespørsel om medlemskap er kansellert.",
@@ -59,18 +59,18 @@
   "intro": {
     "selectLanguage": "Velg språk:",
     "welcomeTitle": "Velkommen til Aster!",
-    "welcomeSubtitle": "« Å hjelpe dem som hjelper. »",
-    "whyTitle": "Hvorfor?",
-    "whyWhatIsAster": "Aster er en administrasjonsapp for dyrevernorganisasjoner.",
-    "whyHowHelps": "Ved å samle frivillige og sentralisere data om dyr og fosterhjem, blir Aster det felles, digitale minnet til organisasjonen din.",
+    "welcomeSubtitle": "«Å hjelpe dem som hjelper.»",
+    "whyTitle": "Hvorfor bruke det?",
+    "whyWhatIsAster": "Aster er en administrasjonsapplikasjon for dyrevernorganisasjoner.",
+    "whyHowHelps": "Ved å samle frivillige og sentralisere data om dyr og omsorgssteder, blir Aster organisasjonens kollektive og tilkoblede hukommelse.",
     "howTitle": "Hvordan fungerer det?",
-    "howFirstParagraph": "Opprett en konto, registrer organisasjonen din, inviter medlemmer til å bli med, og legg deretter til fosterhjem og dyr.",
-    "howSecondParagraph": "Aster er 100 % gratis og uten reklame, og har ett mål: å hjelpe dem som gjør alt for å hjelpe dyr.",
+    "howFirstParagraph": "Opprett en konto, registrer organisasjonen din, inviter medlemmer, og legg deretter til omsorgsstedene dine (familier, dyreinternat, kattehjem ...) og knytt dyrene til dem.",
+    "howSecondParagraph": "100 % gratis og uten reklame har Aster ett mål: å hjelpe dem som gjør alt for å hjelpe dyr.",
     "whatsNextTitle": "Hva skjer videre?",
-    "whatsNextParagraph1": "Når fosterhjem og dyr er registrert, kan du enkelt følge med på vaksinepåminnelser, ledige fosterhjem og pågående adopsjoner.",
-    "whatsNextParagraph2": "Aster er laget for å hjelpe uten å legge føringer, derfor er de fleste opplysninger valgfrie – du bestemmer selv hva som er viktig for deg.",
-    "whatsNextParagraph3": "Appen er i kontinuerlig utvikling, og nye funksjoner er stadig på vei!",
-    "whatsNextQuestion": "Så… skal vi sette i gang?"
+    "whatsNextParagraph1": "Når omsorgssteder og dyr er registrert, kan du enkelt følge opp vaksinepåminnelser, ledige fosterhjem og pågående adopsjoner.",
+    "whatsNextParagraph2": "Aster ønsker å hjelpe uten å pålegge begrensninger, og derfor er de fleste opplysninger valgfrie: du bestemmer hva som er viktig.",
+    "whatsNextParagraph3": "Applikasjonen er i stadig utvikling, med nye funksjoner jevnlig på vei!",
+    "whatsNextQuestion": "Skal vi komme i gang?"
   },
   "auth": {
     "emailLabel": "E-post:",
@@ -142,7 +142,7 @@
   "header": {
     "home": "Hjem",
     "animals": "Dyr",
-    "families": "Fosterhjem",
+    "families": "Omsorgssteder",
     "map": "Kart",
     "contact": "Kontakt",
     "organizations": "Organisasjoner",
@@ -180,6 +180,10 @@
         "Nytt varslingssystem er lagt til.",
         "Foreløpig gjelder varsler forespørsel/godkjenning av medlemskap i organisasjon samt opprettelse/redigering og vaksinepåminnelser for dyr.",
         "Lagt til en \"Del\"-knapp på sidene \"Dyr\" og \"Fosterhjem\"."
+      ],
+      "items110": [
+        "Fosterfamilier kan nå bestå av flere medlemmer. De omtales nå som «Omsorgssteder» for bedre å gjenspeile muligheten til å registrere et dyrehjem, en kattegård eller andre kollektive omsorgsstrukturer.",
+        "Varslingssystemet er utvidet til alle medlemmer som er knyttet til samme omsorgssted."
       ]
     }
   },
@@ -200,14 +204,14 @@
     "lastVaxLabel": "Siste vaksine den:",
     "primoShort": " (grunnvaksine)",
     "vaxHistoryLabel": "Vaksinasjonshistorikk:",
-    "lastDewormLabel": "Siste ormekur:",
+    "lastDewormLabel": "Siste ormekur den:",
     "firstDewormShort": " (første)",
     "dewormHistoryLabel": "Historikk for ormekurer:",
-    "lastFleaTreatmentLabel": "Siste utvortes parasittbehandling:",
-    "antifleaHistoryLabel": "Historikk for utvortes parasittbehandlinger:",
+    "lastFleaTreatmentLabel": "Siste utvortes parasittbehandling den:",
+    "antifleaHistoryLabel": "Historikk for utvortes parasittbehandling:",
     "healthActsTitle": "Utførte behandlinger:",
     "healthActsNone": "Ingen behandlinger registrert ennå.",
-    "addHealthAct": "Legg til behandling:",
+    "addHealthAct": "Legg til en behandling:",
     "healthActFirstLabel": "Første",
     "healthActFirstShort": "1.",
     "healthActFirstPrompt": "Første?",
@@ -225,12 +229,12 @@
     "toggleAdopted": "Vis adopterte dyr ({count})",
     "status": {
       "UNHOSTED": "Venter på plassering",
-      "FOSTERED": "I fosterhjem",
+      "FOSTERED": "I et omsorgssted",
       "ADOPTED": "Adoptert"
     },
-    "fosterFamilyLabel": "Fosterhjem: ",
+    "fosterFamilyLabel": "Omsorgssted: ",
     "toggleAdoption": "Vis adopsjonsinformasjon",
-    "adopterLabel": "Adopter:",
+    "adopterLabel": "Adoptant:",
     "aboutAdoption": "Om adopsjonen:",
     "homeVisitDone": "Et hjemmebesøk er gjennomført.",
     "neuteringPlannedLabel": "Sterilisering planlagt den: ",
@@ -238,58 +242,56 @@
     "feesPaid": "Adopsjonsgebyret er betalt.",
     "feesNotPaid": "Adopsjonsgebyret er ikke betalt.",
     "legalTransferLabel": "Juridisk overføring gjennomført den: ",
-    "adoptionNotes": "Notater om adopsjon:",
+    "adoptionNotes": "Notater om adopsjonen:",
     "tabs": {
       "general": "Generelt",
       "health": "Helse",
       "adoption": "Adopsjon"
     },
     "fields": {
-      "namePlaceholder": "Navn *",
-      "speciesPlaceholder": "Art *:",
+      "namePlaceholder": "Navn *",
+      "speciesPlaceholder": "Art *:",
       "colorPlaceholder": "Farge",
-      "sexLabel": "Kjønn *:",
+      "sexLabel": "Kjønn *:",
       "neuteredQuestion": "Kastrert/sterilisert?",
       "findLocationPlaceholder": "Funnet ved",
-      "birthDateLabel": "Født den *:",
+      "birthDateLabel": "Født den *:",
       "primeVaxQuestion": "Grunnvaksine?",
       "firstDewormQuestion": "Første ormekur?",
-      "statusLabel": "Status for dyret *:",
-      "familyLabel": "Fosterhjem",
-      "adopterFullNamePlaceholder": "Fullt navn på adopter",
+      "statusLabel": "Dyrets status *:",
+      "familyLabel": "Omsorgssted",
+      "adopterFullNamePlaceholder": "Adoptantens fulle navn",
       "addressPlaceholder": "Gate og nummer",
       "zipPlaceholder": "Postnummer",
       "cityPlaceholder": "Sted",
       "homeVisitQuestion": "Hjemmebesøk gjennomført?",
-      "feesPaidQuestion": "Adopsjonsgebyr betalt?",
-      "adoptionNotes": "Notater om adopsjonen:"
+      "feesPaidQuestion": "Adopsjonsgebyr betalt?"
     }
   },
   "families": {
-    "editInfoTitle": "Rediger fosterhjem",
-    "addTitle": "Legg til et fosterhjem",
-    "deleteTitle": "Slett fosterhjem",
+    "editInfoTitle": "Rediger omsorgssted",
+    "addTitle": "Legg til omsorgssted",
+    "deleteTitle": "Slett omsorgssted",
     "hasChildren": "Dette fosterhjemmet har barn.",
-    "animalsInCareLabel": "Dyr i fosterhjemmet ({count}):",
+    "animalsInCareLabel": "Dyr i omsorg ({count}):",
     "otherAnimalsLabel": "Andre dyr:",
     "prefillMeLabel": "Det er meg, bruk mine opplysninger:",
-    "familyBindNotice": "Ved å krysse av i denne boksen vil dyr du registrerer senere automatisk bli knyttet til fosterhjemmet ditt.",
-    "isSelf": "Du har oppgitt at du er dette fosterhjemmet.",
-    "alreadyFosterInOrg": "Du har allerede registrert deg som fosterhjem i denne organisasjonen: du kan ikke gjøre det på nytt.",
-    "fosterInOrgToast": "Du er allerede fosterhjem i denne organisasjonen.",
-    "cantEdit": "Dette fosterhjemmet er knyttet til et annet medlem: du kan ikke redigere den.",
-    "listTitle": "Registrerte fosterhjem for {orgName} ({count}):",
-    "none": "Ingen fosterhjem registrert.",
-    "tips": "Du kan bruke en familie til å representere et dyretilfluktssted, et rom i et kattehus eller et annet oppholdssted.",
+    "familyMember": "Du er medlem av dette omsorgsstedet.",
+    "manageMembers": "Administrer medlemmer",
+    "currentMembersTitle": "Nåværende medlemmer av dette omsorgsstedet:",
+    "elligibleMembersTitle": "Medlemmer som kan legges til dette omsorgsstedet:",
+    "notFamilyMember": "Du er ikke medlem av dette omsorgsstedet.",
+    "listTitle": "Registrerte omsorgssteder for {orgName} ({count}):",
+    "none": "Ingen omsorgssteder registrert.",
     "fields": {
-      "contactFullNamePlaceholder": "Navn på fosterhjemmet *",
-      "addressPlaceholderRequired": "Gate og nummer *",
-      "zipPlaceholderRequired": "Postnummer *",
-      "cityPlaceholderRequired": "Sted *"
+      "contactFullNamePlaceholder": "Navn på omsorgssted *",
+      "addressPlaceholderRequired": "Gateadresse *",
+      "zipPlaceholderRequired": "Postnummer *",
+      "cityPlaceholderRequired": "Poststed *"
     },
     "questions": {
-      "hasChildren": "Er det barn i hjemmet?",
-      "otherAnimals": "Er det andre dyr (oppgi hvilke)?"
+      "hasChildren": "Er dette et fosterhjem med barn?",
+      "otherAnimals": "Er det andre dyr enn organisasjonens? (vennligst spesifiser)"
     }
   },
   "organizations": {
@@ -299,15 +301,15 @@
       "readBefore": "Du er i ferd med å slette organisasjonen {orgName}. Før du fortsetter, vennligst sett deg inn i alle konsekvensene av denne handlingen.",
       "items": [
         "Alle medlemmer knyttet til denne organisasjonen vil bli fjernet og vil ikke lenger se den i listen over aktive organisasjoner.",
-        "Alle dyr og alle fosterhjem knyttet til denne organisasjonen vil bli slettet og kan ikke gjenopprettes."
+        "Alle dyr og alle omsorgssteder knyttet til denne organisasjonen vil bli slettet og kan ikke gjenopprettes."
       ],
       "mustWriteOrgName": "For å bekrefte denne handlingen må du skrive inn organisasjonens navn i sin helhet:"
     },
     "yourOrganizations": "Aktiv organisasjon:",
     "membersListTitle": "Medlemsliste for {orgName} ({count}):",
-    "hiddenOrgMembers": "Forespørselen din om medlemskap er under behandling. Av hensyn til konfidensialitet kan du ikke se de andre medlemmene.",
+    "hiddenOrgMembers": "Din forespørsel om medlemskap er under behandling. Av hensyn til konfidensialitet kan du ikke se de andre medlemmene.",
     "registerTitle": "Registrer en ny organisasjon?",
-    "orgNameLabel": "Navn på organisasjonen *:",
+    "orgNameLabel": "Navn på organisasjonen *:",
     "orgNamePlaceholder": "Navn på organisasjonen",
     "searchExistingTitle": "Søk etter en eksisterende organisasjon?",
     "seeDetails": "Se detaljer for {orgName}?",
@@ -350,40 +352,43 @@
     "system": "System",
     "dark": "Mørk",
     "light": "Lys",
-    "contactIntro": "Trenger hjelp? Si ifra:",
+    "contactIntro": "Trenger du hjelp? Ta kontakt:",
     "editAccount": {
       "title": "Rediger kontoen min",
-      "phoneLabel": "Telefonnummer *:",
+      "phoneLabel": "Telefonnummer *:",
       "noticeCredentials": "Det er for øyeblikket ikke mulig å endre påloggingsinformasjonen din, men du kan tilbakestille passordet ditt ved å klikke nedenfor.",
       "changePasswordButton": "Endre passord",
-      "resetPassword": "En e-post med en lenke for å tilbakestille passordet ditt har nettopp blitt sendt."
+      "resetPassword": "En e-post for å tilbakestille passordet ditt har nettopp blitt sendt."
     },
     "deleteAccount": {
       "title": "Slett kontoen min",
       "explainIntro": "Sletting av kontoen din innebærer at:",
       "items": [
         "Du blir automatisk logget ut og vil ikke kunne logge inn igjen.",
-        "Dine personopplysninger (fornavn, etternavn, e-post, telefonnummer) vil bli slettet fra Asters database.",
-        "Du vil ikke lenger vises i listen over organisasjonene du tilhørte."
+        "Personopplysningene dine (fornavn, etternavn, e-post, telefonnummer) blir slettet fra Asters database.",
+        "Du vil ikke lenger vises i listen over organisasjonene du var medlem av."
       ],
-      "fosterExplain1": "Merk: som beskrevet i personvernerklæringen kan noen av kontaktopplysningene dine fortsatt vises i applikasjonen som fosterhjem, selv etter at kontoen er slettet.",
-      "fosterRequest": "Slett også fosterhjem-oppføringer knyttet til kontoen min:",
-      "fosterExplain2": "Dette alternativet sletter kun oppføringer knyttet til kontoen din, ikke oppføringer som er opprettet uavhengig av en organisasjon og som kan gjelde deg.",
-      "hasConfirmed": "Jeg forstår at denne slettingen er irreversibel *:",
-      "success": "Kontoen din ble slettet."
+      "fosterExplain1": "Merk: som beskrevet i personvernerklæringen kan enkelte av kontaktopplysningene dine fortsatt vises i applikasjonen som del av et omsorgssted, selv etter at kontoen er slettet.",
+      "fosterRequest": "Slett også omsorgssted-oppføringer der jeg er eneste medlem:",
+      "fosterExplain2": "Dette alternativet sletter kun oppføringer knyttet til kontoen din. Det sletter ikke dyr som er knyttet til dem, eller oppføringer som er opprettet uavhengig av en organisasjon og som kan gjelde deg.",
+      "hasConfirmed": "Jeg forstår at denne slettingen er irreversibel *:",
+      "success": "Kontoen din er slettet."
     }
   },
   "notifications": {
     "noNotif": "Ingen nye varsler for øyeblikket.",
     "markAsReadButton": "Merk alle som lest",
-    "organizations": {
-      "joinRequest": "{memberFullName} har bedt om å bli med i organisasjonen {orgName}.",
-      "approvedRequest": "Medlemskapet ditt i {orgName} er godkjent av administrator."
-    },
     "animals": {
       "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
       "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",
       "createAnimal": "{memberFullName} har opprettet en profil for {animalName}."
+    },
+    "families": {
+      "addedToFamily": "{memberFullName} la deg til i omsorgsstedet {familyName}."
+    },
+    "organizations": {
+      "joinRequest": "{memberFullName} har bedt om å bli med i organisasjonen {orgName}.",
+      "approvedRequest": "Medlemskapet ditt i {orgName} er godkjent av administrator."
     }
   },
   "emails": {

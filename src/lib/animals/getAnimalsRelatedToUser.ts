@@ -3,7 +3,7 @@ import { prisma } from '../prisma';
 import { Animal } from '../types';
 
 export const getAnimalsRelatedToUser = async (userId: number): Promise<Animal[]> => {
-  const relatedAnimals: Animal[] = await prisma.animal.findMany({
+  return prisma.animal.findMany({
     where: {
       OR: [
         {
@@ -17,7 +17,6 @@ export const getAnimalsRelatedToUser = async (userId: number): Promise<Animal[]>
           },
         },
         {
-          family: { memberId: userId },
           organization: {
             memberOrganizations: {
               some: {
@@ -27,11 +26,16 @@ export const getAnimalsRelatedToUser = async (userId: number): Promise<Animal[]>
               },
             },
           },
+          family: {
+            is: {
+              familyMembers: {
+                some: { memberId: userId },
+              },
+            },
+          },
         },
       ],
     },
     include: { healthActs: true },
   });
-
-  return relatedAnimals;
 };

@@ -69,10 +69,14 @@ export const AnimalForm = ({
 
   useEffect(() => {
     if (animal) return;
-    let defaultFamily = families.find((family) => family.memberId === user.id);
-    if (defaultFamily) {
+
+    const userFamilies = families.filter((family) =>
+      family.members.some((member) => member.id === user.id),
+    );
+
+    if (userFamilies.length === 1) {
       setStatus(AnimalStatus.FOSTERED);
-      setFamilyId(defaultFamily.id);
+      setFamilyId(userFamilies[0].id);
     }
   }, []);
 
@@ -272,13 +276,14 @@ export const AnimalForm = ({
               </p>
               <select
                 name="animalFamily"
-                value={familyId}
+                value={familyId ?? ''}
                 onChange={(e) =>
                   setFamilyId(e.target.value === '' ? undefined : Number(e.target.value))
                 }
                 disabled={status !== AnimalStatus.FOSTERED}
               >
-                {families?.map((family) => (
+                <option value="">{t('common.none')}</option>
+                {families.map((family) => (
                   <option key={family.id} value={family.id}>
                     {family.contactFullName}
                   </option>

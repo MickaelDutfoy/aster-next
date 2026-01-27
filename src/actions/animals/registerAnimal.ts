@@ -1,5 +1,6 @@
 'use server';
 
+import { getFamilyOfAnimal } from '@/lib/families/getFamilyOfAnimal';
 import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
 import { isOrgMember } from '@/lib/permissions/isOrgMember';
 import { prisma } from '@/lib/prisma';
@@ -72,6 +73,30 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
         });
       } catch (err) {
         console.error(err);
+      }
+    }
+
+    const family = await getFamilyOfAnimal(animalId);
+
+    if (family) {
+      for (const member of family.members) {
+        if (member.id === user.id) continue;
+
+        try {
+          await prisma.notification.create({
+            data: {
+              memberId: member.id,
+              messageKey: 'notifications.animals.createAnimal',
+              messageParams: {
+                memberFullName: `${user.firstName} ${user.lastName}`,
+                animalName: animal.name,
+              },
+              href: animalId !== 0 ? `/animals/${animalId}` : null,
+            },
+          });
+        } catch (err) {
+          console.error(err);
+        }
       }
     }
 

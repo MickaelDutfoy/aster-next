@@ -17,15 +17,7 @@ export const registerFamily = async (
   }
 
   const orgId = guard.org.id;
-  const userId = bindToMember ? guard.user.id : null;
-
-  if (bindToMember) {
-    const checkUnique = await prisma.family.findFirst({ where: { orgId, memberId: userId } });
-
-    if (checkUnique) {
-      return { ok: false, status: 'error', message: 'families.fosterInOrgToast' };
-    }
-  }
+  const userId = guard.user.id;
 
   const family = parseFamilyData(formData);
 
@@ -34,12 +26,23 @@ export const registerFamily = async (
   }
 
   try {
-    await prisma.family.create({
-      data: {
-        ...family,
-        orgId,
-        memberId: userId,
-      },
+    await prisma.$transaction(async (prismaTransaction) => {
+      const newFamily = await prismaTransaction.family.create({
+        data: {
+          ...family,
+          orgId,
+          createdByMemberId: userId,
+        },
+      });
+
+      if (bindToMember) {
+        await prismaTransaction.familyMember.create({
+          data: {
+            familyId: newFamily.id,
+            memberId: userId,
+          },
+        });
+      }
     });
 
     revalidatePath('/families');

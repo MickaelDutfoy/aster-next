@@ -38,10 +38,9 @@ yarn-error.log*
 # android.keystore
 *.jks
 *.keystore
-build/
-app/
+aster-twa/build/
+aster-twa/app/
 .gradle/
-app/build/
 app-release-*.apk
 app-release-*.aab
 manifest-checksum.txt
@@ -59,6 +58,3 @@ next-env.d.ts
 
 # prisma
 /src/generated/prisma
-
-# perso
-src/styles/to_refactor
