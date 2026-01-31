@@ -1,4 +1,3 @@
-// speciesMapper.ts
 export const SPECIES_MAP: Record<string, string[]> = {
   cat: ['Chat', 'Cat', 'Katt'],
   dog: ['Chien', 'Dog', 'Hund'],

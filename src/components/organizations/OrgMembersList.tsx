@@ -2,7 +2,9 @@
 
 import { approveOrgRequest } from '@/actions/organizations/approveOrgRequest';
 import { cancelOrgRequest } from '@/actions/organizations/cancelOrgRequest';
+import { downgradeToMember } from '@/actions/organizations/downgradeToMember';
 import { leaveOrg } from '@/actions/organizations/leaveOrg';
+import { promoteAdminOfOrg } from '@/actions/organizations/promoteAdminOfOrg';
 import { removeMemberFromOrg } from '@/actions/organizations/removeMemberFromOrg';
 import { Link, useRouter } from '@/i18n/routing';
 import { Action, Member, MemberOfOrg, Organization } from '@/lib/types';
@@ -11,7 +13,6 @@ import clsx from 'clsx';
 import { EllipsisVertical } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
-import { DeniedPage } from '../main/DeniedPage';
 import { ConfirmModal } from '../tools/ConfirmModal';
 import { showToast } from '../tools/ToastProvider';
 
@@ -21,25 +22,32 @@ export const OrgMembersList = ({
   members,
 }: {
   user: Member;
-  org: Organization | null;
+  org: Organization;
   members: MemberOfOrg[];
 }) => {
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
 
+  const [hiddenRolesInfo, setHiddenRolesInfo] = useState<boolean>(true);
   const [openMenuMemberId, setOpenMenuMemberId] = useState<number | null>(null);
   const [actionConfirm, setActionConfirm] = useState<Action | null>(null);
 
   const menuRef = useRef<HTMLUListElement | null>(null);
 
-  const isMemberPending = members.some(
+  const isUserPending = members.some(
     (member) => member.id === user.id && member.status === MemberStatus.PENDING,
   );
-  const isMemberSuperadmin = members.some(
+  const isUserSuperAdmin = members.some(
     (member) => member.id === user.id && member.role === MemberRole.SUPERADMIN,
   );
-  const membersFiltered: MemberOfOrg[] = isMemberPending
+  const isUserAdmin =
+    members.some((member) => member.id === user.id && member.role === MemberRole.ADMIN) ||
+    isUserSuperAdmin;
+
+  console.log(isUserSuperAdmin);
+
+  const membersFiltered: MemberOfOrg[] = isUserPending
     ? members.filter((member) => member.role === MemberRole.SUPERADMIN || member.id === user.id)
     : members;
 
@@ -103,10 +111,30 @@ export const OrgMembersList = ({
     });
   };
 
-  const handleTransferAdmin = async () => {
+  const handlePromoteAdmin = async (memberId: number, orgId: number) => {
+    const res = await promoteAdminOfOrg(memberId, orgId);
     setOpenMenuMemberId(null);
     setActionConfirm(null);
-    router.push(`/organizations/${org?.id}/transfer-admin`);
+    showToast({
+      ...res,
+      message: res.message ? t(res.message) : undefined,
+    });
+  };
+
+  const handleDowngradeMember = async (memberId: number, orgId: number) => {
+    const res = await downgradeToMember(memberId, orgId);
+    setOpenMenuMemberId(null);
+    setActionConfirm(null);
+    showToast({
+      ...res,
+      message: res.message ? t(res.message) : undefined,
+    });
+  };
+
+  const handleTransferSuperAdmin = async () => {
+    setOpenMenuMemberId(null);
+    setActionConfirm(null);
+    router.push(`/organizations/${org?.id}/transfer-superadmin`);
   };
 
   const buildActionsForMember = (
@@ -116,7 +144,7 @@ export const OrgMembersList = ({
   ): Action[] => {
     const actions: Action[] = [];
 
-    if (isMemberSuperadmin && member.status === MemberStatus.PENDING) {
+    if (isUserAdmin && member.status === MemberStatus.PENDING) {
       actions.push({
         id: 'approveRequest',
         name: t('organizations.actions.approveRequest'),
@@ -125,8 +153,8 @@ export const OrgMembersList = ({
     }
 
     if (
-      isMemberSuperadmin &&
-      member.role === MemberRole.MEMBER &&
+      isUserSuperAdmin &&
+      member.role !== MemberRole.SUPERADMIN &&
       member.status !== MemberStatus.PENDING
     ) {
       actions.push({
@@ -156,27 +184,43 @@ export const OrgMembersList = ({
       });
     }
 
+    if (
+      isUserSuperAdmin &&
+      member.role === MemberRole.MEMBER &&
+      member.status !== MemberStatus.PENDING
+    ) {
+      actions.push({
+        id: 'promoteAdmin',
+        name: t('organizations.actions.promoteAdmin'),
+        handler: () => handlePromoteAdmin(member.id, org.id),
+      });
+    }
+
+    if (isUserSuperAdmin && member.role === MemberRole.ADMIN) {
+      actions.push({
+        id: 'downgradeMember',
+        name: t('organizations.actions.downgradeMember'),
+        handler: () => handleDowngradeMember(member.id, org.id),
+      });
+    }
+
     if (user.id === member.id && member.role === MemberRole.SUPERADMIN) {
       actions.push({
-        id: 'transferAdmin',
-        name: t('organizations.actions.transferAdmin'),
-        handler: () => handleTransferAdmin(),
+        id: 'transferSuperAdmin',
+        name: t('organizations.actions.transferSuperAdmin'),
+        handler: () => handleTransferSuperAdmin(),
       });
     }
 
     return actions;
   };
 
-  if (!org) {
-    return <DeniedPage cause="error" />;
-  }
-
   return (
     <>
       {actionConfirm && (
         <ConfirmModal onCancel={() => setActionConfirm(null)} action={actionConfirm} />
       )}
-      <div className={clsx(isMemberSuperadmin ? 'links-box' : 'links-box disabled')}>
+      <div className={clsx(isUserSuperAdmin ? 'links-box' : 'links-box disabled')}>
         <Link href={`/organizations/${org.id}/delete`} className="little-button">
           {t('organizations.deleteTitle')}
         </Link>
@@ -184,6 +228,26 @@ export const OrgMembersList = ({
           {t('organizations.editInfoTitle')}
         </Link>
       </div>
+
+      <button className="collapse-expand" onClick={() => setHiddenRolesInfo(!hiddenRolesInfo)}>
+        {t('organizations.rolesDefinitions')} {hiddenRolesInfo ? '▸' : '▾'}
+      </button>
+      {!hiddenRolesInfo && (
+        <ul className="roles-reminder">
+          <li>
+            <strong>{t('organizations.member')}</strong>
+            {t('organizations.memberDescription')}
+          </li>
+          <li>
+            <strong>{t('organizations.roles.ADMIN')}</strong>
+            {t('organizations.adminDescription')}
+          </li>
+          <li>
+            <strong>{t('organizations.roles.SUPERADMIN')}</strong>
+            {t('organizations.superAdminDescription')}
+          </li>
+        </ul>
+      )}
       <h3>{t('organizations.membersListTitle', { orgName: org.name, count: members.length })}</h3>
       <ul className="members-list">
         {membersFiltered
@@ -200,8 +264,9 @@ export const OrgMembersList = ({
                   {member.firstName} {member.lastName}
                 </span>
                 <span>
-                  {t(`organizations.roles.${member.role}`)}
-                  {t(`organizations.status.${member.status}`)}
+                  {t(`organizations.roles.${member.role}`) +
+                    ' ' +
+                    t(`organizations.status.${member.status}`)}
                 </span>
                 <span className="action">
                   <EllipsisVertical
@@ -218,7 +283,7 @@ export const OrgMembersList = ({
                         <li
                           key={action.name}
                           onClick={
-                            action.id === 'transferAdmin'
+                            action.id === 'transferSuperAdmin'
                               ? action.handler
                               : () => {
                                   setOpenMenuMemberId(null);
@@ -236,7 +301,7 @@ export const OrgMembersList = ({
             );
           })}
       </ul>
-      {isMemberPending && <p className="long-notice">{t('organizations.hiddenOrgMembers')}</p>}
+      {isUserPending && <p className="long-notice">{t('organizations.hiddenOrgMembers')}</p>}
     </>
   );
 };

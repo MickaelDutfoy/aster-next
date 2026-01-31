@@ -1,13 +1,15 @@
 'use server';
 
 import { sendEmail } from '@/lib/email';
-import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
+import { getOrgAdmins } from '@/lib/organizations/getOrgAdmins';
 import { isUser } from '@/lib/permissions/isUser';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Organization } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { revalidatePath } from 'next/cache';
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const joinOrg = async (org: Organization, locale: string): Promise<ActionValidation> => {
   const t = await getTranslations({ locale, namespace: 'emails' });
@@ -47,9 +49,9 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
       }
     });
 
-    const admin = await getOrgAdmin(org.id);
+    const admins = await getOrgAdmins(org.id);
 
-    if (admin) {
+    for (const admin of admins) {
       await prisma.notification.create({
         data: {
           memberId: admin.id,
@@ -73,6 +75,8 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
               <p>${t('common.footer')}</p>
             `,
       });
+
+      await sleep(1100);
     }
 
     revalidatePath('/organizations');

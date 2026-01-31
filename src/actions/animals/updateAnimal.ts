@@ -2,8 +2,8 @@
 
 import { getFamilyOfAnimal } from '@/lib/families/getFamilyOfAnimal';
 import { getAnimalOrg } from '@/lib/organizations/getAnimalOrg';
-import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
-import { isMemberOfAnimalsOrg } from '@/lib/permissions/isMemberOfAnimalsOrg';
+import { getOrgAdmins } from '@/lib/organizations/getOrgAdmins';
+import { isRelatedToAnimal } from '@/lib/permissions/isRelatedToAnimal';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
@@ -13,7 +13,7 @@ export const updateAnimal = async (
   animalId: number,
   formData: FormData,
 ): Promise<ActionValidation> => {
-  const guard = await isMemberOfAnimalsOrg(animalId);
+  const guard = await isRelatedToAnimal(animalId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
@@ -78,9 +78,11 @@ export const updateAnimal = async (
     const org = await getAnimalOrg(animalId);
 
     if (org) {
-      const admin = await getOrgAdmin(org.id);
+      const admins = await getOrgAdmins(org.id);
 
-      if (admin && admin.id !== user.id) {
+      for (const admin of admins) {
+        if (admin.id === user.id) continue;
+
         try {
           const dayKey = new Date().toISOString().slice(0, 10);
           const sourceKey = `animal:${animalId}:edited:${dayKey}`;

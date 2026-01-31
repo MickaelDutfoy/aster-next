@@ -27,7 +27,7 @@ export const switchUserToOrg = async (orgId: number): Promise<ActionValidation> 
 
       return { ok: true };
     } else {
-      return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
+      return { ok: false, status: 'error', message: 'toasts.cantAccess' };
     }
   } catch (err) {
     console.error(err);

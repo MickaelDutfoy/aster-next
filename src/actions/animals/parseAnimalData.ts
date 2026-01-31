@@ -16,6 +16,7 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     species: speciesToSave,
     sex: formData.get('animalSex') as Sex,
     color: formData.get('animalColor')?.toString().trim(),
+    legalId: formData.get('legalId')?.toString().trim(),
     findLocation: formData.get('findLocation')?.toString().trim(),
     birthDate: formData.get('animalBirthDate')?.toString(),
     isNeutered: formData.has('animalIsNeutered'),
@@ -24,10 +25,9 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     status: formData.get('animalStatus') as AnimalStatus,
   };
 
-  // ✅ Health acts via inputs cachés
-  const healthTypes = formData.getAll('healthType[]').map((v) => v.toString());
-  const healthDates = formData.getAll('healthDate[]').map((v) => v.toString());
-  const healthIsFirsts = formData.getAll('healthIsFirst[]').map((v) => v.toString());
+  const healthTypes = formData.getAll('healthType[]').map((value) => value.toString());
+  const healthDates = formData.getAll('healthDate[]').map((value) => value.toString());
+  const healthIsFirsts = formData.getAll('healthIsFirst[]').map((value) => value.toString());
 
   const health: AnimalHealthAct[] = [];
   const count = Math.min(healthTypes.length, healthDates.length, healthIsFirsts.length);
@@ -100,6 +100,7 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     species: animalForm.species,
     sex: animalForm.sex,
     color: animalForm.color,
+    legalId: animalForm.legalId,
     findLocation: animalForm.findLocation,
     birthDate: new Date(animalForm.birthDate),
     isNeutered: animalForm.isNeutered,

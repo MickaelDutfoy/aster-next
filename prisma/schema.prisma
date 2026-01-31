@@ -19,6 +19,7 @@ enum AnimalStatus {
 
 model Animal {
   id                Int          @id @default(autoincrement())
+  legalId           String?
   name              String
   species           String
   sex               Sex

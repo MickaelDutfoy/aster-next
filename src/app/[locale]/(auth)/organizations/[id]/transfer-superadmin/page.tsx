@@ -1,5 +1,5 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { TransferAdmin } from '@/components/organizations/TransferAdmin';
+import { TransferSuperAdmin } from '@/components/organizations/TransferSuperAdmin';
 import { getMembersByOrg } from '@/lib/members/getMembersByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, MemberOfOrg, Organization } from '@/lib/types';
@@ -19,7 +19,7 @@ const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }
 
   return (
     <div className="full-page-form">
-      <TransferAdmin user={user} org={org} members={members} />
+      <TransferSuperAdmin user={user} org={org} members={members} />
     </div>
   );
 };

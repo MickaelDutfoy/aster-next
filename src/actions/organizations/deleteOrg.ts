@@ -1,12 +1,12 @@
 'use server';
 
-import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
+import { isOrgSuperAdmin } from '@/lib/permissions/isOrgSuperAdmin';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
 export const deleteOrg = async (orgId: number, formData: FormData): Promise<ActionValidation> => {
-  const guard = await isOrgAdmin(orgId);
+  const guard = await isOrgSuperAdmin(orgId);
   if (!guard.validation.ok) return guard.validation;
 
   const verifyOrgName = formData.get('verifyOrgName')?.toString().trim();

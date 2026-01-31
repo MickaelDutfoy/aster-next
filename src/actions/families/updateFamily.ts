@@ -1,17 +1,13 @@
 'use server';
 
-import { isMemberOfFamilysOrg } from '@/lib/permissions/isMemberOfFamilysOrg';
+import { isRelatedToFamily } from '@/lib/permissions/isRelatedToFamily';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 import { parseFamilyData } from './parseFamilyData';
 
-export const updateFamily = async (
-  familyId: number,
-  formData: FormData,
-  bindToMember: boolean,
-): Promise<ActionValidation> => {
-  const guard = await isMemberOfFamilysOrg(familyId);
+export const updateFamily = async (familyId: number, formData: FormData): Promise<ActionValidation> => {
+  const guard = await isRelatedToFamily(familyId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user || !guard.org) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };
@@ -33,18 +29,6 @@ export const updateFamily = async (
           ...family,
         },
       });
-
-      if (bindToMember) {
-        await prismaTransaction.familyMember.upsert({
-          where: { familyId_memberId: { familyId, memberId: userId } },
-          create: { familyId, memberId: userId },
-          update: {},
-        });
-      } else {
-        await prismaTransaction.familyMember.deleteMany({
-          where: { familyId, memberId: userId },
-        });
-      }
     });
 
     revalidatePath(`/families/${familyId}`);

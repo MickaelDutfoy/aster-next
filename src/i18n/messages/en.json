@@ -34,6 +34,7 @@
   },
   "toasts": {
     "errorGeneric": "An error occurred.",
+    "cantAccess": "Unable to access content.",
     "requiredFieldsMissing": "Some required fields are missing.",
     "termsNotAccepted": "You must accept the terms.",
     "noUser": "User not authenticated.",
@@ -43,6 +44,7 @@
     "animalAdd": "The animal has been successfully added.",
     "familyDelete": "The foster location has been successfully deleted.",
     "familyAdd": "The foster location has been successfully added.",
+    "cannotRemoveAdminsFromFamily": "You cannot remove an admin or a manager from a location.",
     "alreadyMemberOfOrg": "You are already a member of this organization.",
     "orgRequestSent": "Your membership request has been sent.",
     "orgRequestCanceled": "Your membership request has been cancelled.",
@@ -50,6 +52,8 @@
     "orgEditSuccess": "Your organization has been successfully edited.",
     "orgRequestApproved": "This request has been approved.",
     "orgMemberRemoved": "This member has been removed from this organization.",
+    "memberPromotedToAdmin": "This member has been appointed as an organization manager.",
+    "adminDowngradedToMember": "This member no longer has the manager role.",
     "orgAdminTransfered": "The admin role has been successfully transferred.",
     "orgLeft": "You have left this organization.",
     "orgNameRequired": "You must enter an organization name.",
@@ -184,6 +188,11 @@
       "items110": [
         "Foster families can now include multiple members. They are now referred to as “Foster locations” to better represent the possibility of registering a shelter, cattery, or other collective care structure.",
         "The notification system has been extended to all members involved in the same foster location."
+      ],
+      "items120": [
+        "Added the \"Manager\" role for organization members. Details of the permissions associated with each role are available on the organization page, alongside the member list.",
+        "Added notifications for cat neutering at 6 months.",
+        "You can now enter an identification number on animal records."
       ]
     }
   },
@@ -199,6 +208,8 @@
       "F": "Female"
     },
     "neuteredSuffix": ", neutered",
+    "legalIdLabel": "ID:",
+    "detailedLegalIdLabel": "Identification number:",
     "findLocationLabel": "Found at:",
     "toggleHealth": "Show health information",
     "lastVaxLabel": "Last vaccination on:",
@@ -254,7 +265,8 @@
       "colorPlaceholder": "Color",
       "sexLabel": "Sex *:",
       "neuteredQuestion": "Neutered?",
-      "findLocationPlaceholder": "Found at",
+      "legalIdPlaceholder": "Number",
+      "findLocationPlaceholder": "Location",
       "birthDateLabel": "Born on *:",
       "primeVaxQuestion": "First vaccination?",
       "firstDewormQuestion": "First deworming?",
@@ -314,6 +326,7 @@
     "searchExistingTitle": "Search for an existing organization?",
     "seeDetails": "View details for {orgName}?",
     "goToOrg": "Go to organization page",
+    "rolesDefinitions": "Show role definitions",
     "pickNewAdminTitle": "Appoint a new admin",
     "nobodyToTransferTo": "There are no members to transfer the role to.",
     "pickAMember": "Select a member:",
@@ -321,15 +334,16 @@
     "joinLoading": "Sending...",
     "roles": {
       "SUPERADMIN": "Admin",
-      "MEMBER": "",
-      "VALIDATED": "",
-      "PENDING": "Pending"
+      "ADMIN": "Manager",
+      "MEMBER": ""
     },
+    "member": "Member",
+    "memberDescription": ": Can create foster locations and take part in them. Can edit the location details and add or remove members from locations they belong to. Can create animal records and edit animals they created or currently host. Receives notifications only for animals they host.",
+    "adminDescription": ": In addition to member permissions, can edit all animals and foster locations within the organization, as well as their participants. Can approve organization membership requests. Receives notifications related to membership requests and all animals.",
+    "superAdminDescription": ": In addition to manager permissions, can delete animals or foster locations and manage the organization itself (edit or delete it, appoint managers, or remove members). Each organization has a single admin, who can transfer this role.",
     "status": {
       "PENDING": "Pending",
-      "VALIDATED": "",
-      "MEMBER": "",
-      "SUPERADMIN": "Admin"
+      "VALIDATED": ""
     },
     "actions": {
       "approveRequest": "Approve request",
@@ -381,6 +395,7 @@
 
     "animals": {
       "vaxReminder": "{animalName} will soon need a vaccination booster.",
+      "neutralizeReminder": "{animalName} is old enough to be neutered.",
       "editedAnimal": "{memberFullName} edited the record for {animalName}.",
       "createAnimal": "{memberFullName} created a record for {animalName}."
     },

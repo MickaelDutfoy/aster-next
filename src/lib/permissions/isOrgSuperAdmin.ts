@@ -1,10 +1,10 @@
-import { MemberStatus } from '@prisma/client';
+import { MemberRole } from '@prisma/client';
 import { prisma } from '../prisma';
 import { ActionValidation, Member } from '../types';
 import { getUser } from '../user/getUser';
 
-export const isMemberOfAnimalsOrg = async (
-  animalId: number,
+export const isOrgSuperAdmin = async (
+  orgId: number,
 ): Promise<{ validation: ActionValidation; user: Member | null }> => {
   const user: Member | null = await getUser();
   if (!user) {
@@ -14,24 +14,12 @@ export const isMemberOfAnimalsOrg = async (
     };
   }
 
-  const animalPrev = await prisma.animal.findUnique({
-    where: { id: animalId },
-    select: { orgId: true },
-  });
-
-  if (!animalPrev) {
-    return {
-      validation: { ok: false, status: 'error', message: 'toasts.genericError' },
-      user: null,
-    };
-  }
-
   const membership = await prisma.memberOrganization.findUnique({
-    where: { memberId_orgId: { memberId: user.id, orgId: animalPrev.orgId } },
-    select: { status: true },
+    where: { memberId_orgId: { memberId: user.id, orgId } },
+    select: { role: true },
   });
 
-  if (membership?.status !== MemberStatus.VALIDATED) {
+  if (membership?.role !== MemberRole.SUPERADMIN) {
     return {
       validation: { ok: false, status: 'error', message: 'toasts.notAllowed' },
       user: null,

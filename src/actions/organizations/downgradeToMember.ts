@@ -3,9 +3,10 @@
 import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
+import { MemberRole } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export const removeMemberFromOrg = async (
+export const downgradeToMember = async (
   memberId: number,
   orgId: number,
 ): Promise<ActionValidation> => {
@@ -13,20 +14,14 @@ export const removeMemberFromOrg = async (
   if (!guard.validation.ok) return guard.validation;
 
   try {
-    await prisma.$transaction(async (prismaTransaction) => {
-      await prismaTransaction.member.update({
-        where: { id: memberId },
-        data: { selectedOrgId: null },
-      });
-
-      await prismaTransaction.memberOrganization.delete({
-        where: { memberId_orgId: { memberId, orgId } },
-      });
+    await prisma.memberOrganization.update({
+      where: { memberId_orgId: { memberId, orgId } },
+      data: { role: MemberRole.MEMBER },
     });
 
     revalidatePath(`/organizations/${orgId}`);
 
-    return { ok: true, status: 'success', message: 'toasts.orgMemberRemoved' };
+    return { ok: true, status: 'success', message: 'toasts.adminDowngradedToMember' };
   } catch (err) {
     console.error(err);
     return {

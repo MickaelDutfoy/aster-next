@@ -31,7 +31,7 @@
   }
 }
 
-.admin-transfer {
+.superadmin-transfer {
   padding: 10px;
   width: 100%;
   display: flex;
@@ -136,4 +136,18 @@
 
 .members-list > li:last-child {
   border: none;
+}
+
+.roles-reminder {
+  padding: 10px 10px;
+  margin-bottom: 5px;
+  border: 1px solid var(--link);
+  border-top: none;
+  border-radius: 8px;
+
+  li {
+    margin-left: 10px;
+    text-align: justify;
+    font-size: 0.8rem;
+  }
 }

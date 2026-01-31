@@ -19,7 +19,7 @@ export const isOrgAdmin = async (
     select: { role: true },
   });
 
-  if (membership?.role !== MemberRole.SUPERADMIN) {
+  if (membership?.role !== MemberRole.SUPERADMIN && membership?.role !== MemberRole.ADMIN) {
     return {
       validation: { ok: false, status: 'error', message: 'toasts.notAllowed' },
       user: null,

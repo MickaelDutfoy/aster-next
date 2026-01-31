@@ -111,6 +111,13 @@
       gap: 5px;
     }
 
+    .labeled-text {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      align-items: center;
+      gap: 5px;
+    }
+
     .labeled-checkbox {
       margin: 0 10px;
     }

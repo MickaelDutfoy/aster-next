@@ -1,5 +1,5 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { TransferAdmin } from '@/components/organizations/TransferAdmin';
+import { TransferSuperAdmin } from '@/components/organizations/TransferSuperAdmin';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { getMembersByOrg } from '@/lib/members/getMembersByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
@@ -19,8 +19,8 @@ const transferAdminRouteModal = async ({ params }: { params: Promise<{ id: strin
   const members: MemberOfOrg[] = await getMembersByOrg(org?.id);
 
   return (
-    <RouteModal expectedPath={`/organizations/${id}/transfer-admin`}>
-      <TransferAdmin user={user} org={org} members={members} />
+    <RouteModal expectedPath={`/organizations/${id}/transfer-superadmin`}>
+      <TransferSuperAdmin user={user} org={org} members={members} />
     </RouteModal>
   );
 };

@@ -239,12 +239,26 @@ export const AnimalForm = ({
               />
             </div>
 
-            <input
-              type="text"
-              name="findLocation"
-              placeholder={t('animals.fields.findLocationPlaceholder')}
-              defaultValue={animal?.findLocation ?? ''}
-            />
+            <div className="labeled-text">
+              <p>{t('animals.legalIdLabel')}</p>
+              <input
+                type="text"
+                name="legalId"
+                placeholder={t('animals.fields.legalIdPlaceholder')}
+                defaultValue={animal?.legalId ?? ''}
+              />
+            </div>
+
+            <div className="labeled-text">
+              <p>{t('animals.findLocationLabel')}</p>
+              <input
+                type="text"
+                name="findLocation"
+                placeholder={t('animals.fields.findLocationPlaceholder')}
+                defaultValue={animal?.findLocation ?? ''}
+              />
+            </div>
+
             <div className="labeled-date">
               <p>{t('animals.fields.birthDateLabel')}</p>
               <input
