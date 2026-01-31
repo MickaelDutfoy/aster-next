@@ -28,13 +28,39 @@ export const updateFamilyMembers = async (
     return { ok: false, status: 'error', message: 'toasts.genericError' };
   }
 
-  const memberGuard = await isFamilyMember(familyId);
-  if (!memberGuard.validation.ok) {
-    const adminGuard = await isOrgAdmin(family.orgId);
-    if (!adminGuard.validation.ok) return adminGuard.validation;
-  }
+  const adminGuard = await isOrgAdmin(family.orgId);
 
-  const user = memberGuard.user as Member;
+  let user: Member;
+
+  if (adminGuard.validation.ok) {
+    user = adminGuard.user as Member;
+  } else {
+    const memberGuard = await isFamilyMember(familyId);
+    if (!memberGuard.validation.ok) return memberGuard.validation;
+
+    user = memberGuard.user as Member;
+
+    const removedMemberIds = previousMembersIds.filter((id) => !newMembersIds.includes(id));
+
+    if (removedMemberIds.length > 0) {
+      const removedAdmin = await prisma.memberOrganization.findFirst({
+        where: {
+          orgId: family.orgId,
+          memberId: { in: removedMemberIds },
+          role: { in: ['ADMIN', 'SUPERADMIN'] },
+        },
+        select: { memberId: true },
+      });
+
+      if (removedAdmin) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.cannotRemoveAdminsFromFamily',
+        };
+      }
+    }
+  }
 
   try {
     await prisma.$transaction(async (prismaTransaction) => {

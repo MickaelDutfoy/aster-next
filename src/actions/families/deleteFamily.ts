@@ -1,12 +1,21 @@
 'use server';
 
-import { isMemberOfFamilysOrg } from '@/lib/permissions/isMemberOfFamilysOrg';
+import { isOrgSuperAdmin } from '@/lib/permissions/isOrgSuperAdmin';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { AnimalStatus } from '@prisma/client';
 
 export const deleteFamily = async (familyId: number): Promise<ActionValidation> => {
-  const guard = await isMemberOfFamilysOrg(familyId);
+  const family = await prisma.family.findUnique({
+    where: { id: familyId },
+    select: { orgId: true },
+  });
+
+  if (!family) {
+    return { ok: false, status: 'error', message: 'toasts.genericError' };
+  }
+
+  const guard = await isOrgSuperAdmin(family.orgId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.genericError' };

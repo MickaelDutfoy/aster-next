@@ -34,6 +34,7 @@
   },
   "toasts": {
     "errorGeneric": "Une erreur est survenue.",
+    "cantAccess": "Impossible d'accéder au contenu.",
     "requiredFieldsMissing": "Des champs obligatoires sont incomplets.",
     "termsNotAccepted": "Vous devez accepter les conditions.",
     "noUser": "Utilisateur non authentifié.",
@@ -43,6 +44,7 @@
     "animalAdd": "L'animal a bien été ajouté.",
     "familyDelete": "Le lieu d'accueil a bien été supprimé.",
     "familyAdd": "Le lieu d'accueil a bien été ajouté.",
+    "cannotRemoveAdminsFromFamily": "Vous ne pouvez pas retirer un admin ou responsable d'un lieu.",
     "alreadyMemberOfOrg": "Vous faites déjà partie de cette association.",
     "orgRequestSent": "Votre demande d'adhésion a été envoyée.",
     "orgRequestCanceled": "Votre demande d'adhésion a été annulée.",
@@ -50,6 +52,8 @@
     "orgEditSuccess": "Votre association a bien été éditée.",
     "orgRequestApproved": "Cette demande d'adhésion a été approuvée.",
     "orgMemberRemoved": "Ce membre a été retiré de l'association.",
+    "memberPromotedToAdmin": "Ce membre a été nommé responsable de l'association.",
+    "adminDowngradedToMember": "Ce membre n'a plus le rôle de responsable.",
     "orgAdminTransfered": "Le rôle d'admin a bien été transféré.",
     "orgLeft": "Vous avez quitté cette association.",
     "orgNameRequired": "Vous devez choisir un nom d'association.",
@@ -183,6 +187,11 @@
       "items110": [
         "Les familles d'accueil peuvent compter plusieurs membres. Elles sont désormais renommées « Lieux d'accueil » afin de mieux représenter la possibilité d'enregistrer un refuge, une chatterie ou toute autre structure collective.",
         "Extension du système de notifications aux membres concernés par un même lieu d'accueil."
+      ],
+      "items120": [
+        "Ajout du rôle « Responsable » pour les membres d'association. Le détail des fonctionnalités associées à chaque rôle est accessible dans la fiche d'association, avec la liste des membres.",
+        "Ajout de notifications pour la stérilisation des chats à 6 mois.",
+        "Possibilité de renseigner le numéro d'identification des animaux sur leurs fiches."
       ]
     }
   },
@@ -198,7 +207,9 @@
       "F": "Femelle"
     },
     "neuteredSuffix": ", stérilisé(e)",
-    "findLocationLabel": "Lieu de découverte :",
+    "legalIdLabel": "Identification :",
+    "detailedLegalIdLabel": "Numéro d'identification :",
+    "findLocationLabel": "Découvert à :",
     "toggleHealth": "Afficher les informations de santé",
     "lastVaxLabel": "Dernier vaccin le :",
     "primoShort": " (primo)",
@@ -253,7 +264,8 @@
       "colorPlaceholder": "Couleur",
       "sexLabel": "Sexe * :",
       "neuteredQuestion": "Stérilisé(e) ?",
-      "findLocationPlaceholder": "Lieu de découverte",
+      "legalIdPlaceholder": "Numéro",
+      "findLocationPlaceholder": "Lieu",
       "birthDateLabel": "Né(e) le * :",
       "primeVaxQuestion": "Primo-vaccination ?",
       "firstDewormQuestion": "Premier déparasitage ?",
@@ -313,6 +325,7 @@
     "searchExistingTitle": "Rechercher une association existante ?",
     "seeDetails": "Voir les détails de {orgName} ?",
     "goToOrg": "Accéder à la fiche",
+    "rolesDefinitions": "Afficher les définitions des rôles",
     "pickNewAdminTitle": "Nommer un nouvel admin",
     "nobodyToTransferTo": "Il n'y a aucun membre à qui transférer le rôle.",
     "pickAMember": "Choisir un membre :",
@@ -320,22 +333,25 @@
     "joinLoading": "Envoi...",
     "roles": {
       "SUPERADMIN": "Admin",
-      "MEMBER": "",
-      "VALIDATED": "",
-      "PENDING": "En attente"
+      "ADMIN": "Responsable",
+      "MEMBER": ""
     },
+    "member": "Membre",
+    "memberDescription": " : Peut créer des lieux d’accueil et y participer. Peut éditer la fiche, ajouter ou retirer des membres sur les lieux dont il fait partie. Peut créer des fiches d’animaux et éditer les animaux qu’il a créés ou qu’il accueille. Reçoit des notifications uniquement sur les animaux qu’il accueille.",
+    "adminDescription": " : En plus des droits de membre, peut éditer l’ensemble des animaux et des lieux d’accueil de l’association, ainsi que leurs participants. Peut valider les demandes d’adhésion à l’association. Reçoit les notifications liées aux demandes d’adhésion et à tous les animaux.",
+    "superAdminDescription": " : En plus des droits de responsable, peut supprimer des animaux ou des lieux d’accueil et gérer l’association elle-même (édition et suppression, nommer des reponsables ou supprimer des membres). Chaque association possède un seul admin, qui peut transférer ce rôle.",
     "status": {
       "PENDING": "En attente",
-      "VALIDATED": "",
-      "MEMBER": "",
-      "SUPERADMIN": "Admin"
+      "VALIDATED": ""
     },
     "actions": {
       "approveRequest": "Valider la demande",
       "removeMember": "Supprimer ce membre",
       "cancelRequest": "Annuler la demande",
       "leaveOrg": "Quitter l'association",
-      "transferAdmin": "Transférer le rôle d'admin"
+      "promoteAdmin": "Nommer responsable",
+      "downgradeMember": "Retirer le rôle de reponsable",
+      "transferSuperAdmin": "Transférer le rôle d'admin"
     }
   },
   "contact": {
@@ -379,6 +395,7 @@
     "markAsReadButton": "Tout marquer comme lu",
     "animals": {
       "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin.",
+      "neutralizeReminder": "{animalName} est en âge d'être stérilisé(e).",
       "editedAnimal": "{memberFullName} a édité la fiche de {animalName}.",
       "createAnimal": "{memberFullName} a créé une fiche pour {animalName}."
     },

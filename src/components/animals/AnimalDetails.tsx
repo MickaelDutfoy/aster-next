@@ -32,6 +32,15 @@ export const AnimalDetails = ({
     animal.status === AnimalStatus.ADOPTED ? false : true,
   );
 
+  const isAnimalSheetCreator = animal.createdByMemberId === user.id;
+  const isRelatedToAnimal = family?.members.some((member) => member.id === user.id);
+  const canEditAnimal =
+    org.userRole === MemberRole.SUPERADMIN ||
+    org.userRole === MemberRole.ADMIN ||
+    isAnimalSheetCreator ||
+    isRelatedToAnimal;
+  const canDeleteAnimal = org.userRole === MemberRole.SUPERADMIN;
+
   const acts: AnimalHealthAct[] = animal.healthActs ?? [];
 
   const lastVaxAct = acts.find((act) => act.type === 'VACCINATION');
@@ -51,20 +60,13 @@ export const AnimalDetails = ({
         <div>
           <button
             onClick={() => router.push(`/animals/${animal.id}/delete`)}
-            className={
-              'little-button ' +
-              clsx(
-                animal.createdByMemberId !== user.id &&
-                  org.userRole !== MemberRole.SUPERADMIN &&
-                  'disabled',
-              )
-            }
+            className={'little-button' + clsx(!canDeleteAnimal && ' disabled')}
           >
             {t('animals.deleteTitle')}
           </button>
           <button
             onClick={() => router.push(`/animals/${animal.id}/edit`)}
-            className="little-button"
+            className={'little-button' + clsx(!canEditAnimal && ' disabled')}
           >
             {t('animals.editInfoTitle')}
           </button>
@@ -74,10 +76,16 @@ export const AnimalDetails = ({
         <h3>{animal.name}</h3>
         <p>
           {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))},{' '}
-          {t(`animals.sex.${animal.sex}`).toLowerCase()}, {animal.color?.toLowerCase()},{' '}
+          {t(`animals.sex.${animal.sex}`).toLowerCase()}, {animal.color?.toLowerCase()}
+          {animal.color ? ', ' : ' '}
           {displayAge(animal.birthDate, locale, true)}
           {animal.isNeutered && t('animals.neuteredSuffix')}.
         </p>
+        {animal.legalId && (
+          <p>
+            {t('animals.detailedLegalIdLabel')} {animal.legalId}.
+          </p>
+        )}
         {animal.findLocation && (
           <p>
             {t('animals.findLocationLabel')} {animal.findLocation}.

@@ -23,18 +23,19 @@ export type Family = {
   hasChildren: boolean;
   otherAnimals: string | null;
   orgId: number;
-  members: Member[];
+  members: MemberOfFamily[];
 };
 
 export type FamilyWithoutDetails = {
   id: number;
   contactFullName: string;
   city: string;
-  members: Member[];
+  members: MemberOfFamily[];
 };
 
 export type Animal = {
   id: number;
+  legalId: string | null;
   name: string;
   species: string;
   sex: Sex;
@@ -126,6 +127,15 @@ export type MemberOfOrg = {
   role: MemberRole;
   status: MemberStatus;
   actions?: Action[];
+};
+
+export type MemberOfFamily = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  role?: MemberRole;
 };
 
 export type Action = {

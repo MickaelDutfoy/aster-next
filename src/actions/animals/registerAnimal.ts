@@ -1,7 +1,7 @@
 'use server';
 
 import { getFamilyOfAnimal } from '@/lib/families/getFamilyOfAnimal';
-import { getOrgAdmin } from '@/lib/organizations/getOrgAdmin';
+import { getOrgAdmins } from '@/lib/organizations/getOrgAdmins';
 import { isOrgMember } from '@/lib/permissions/isOrgMember';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
@@ -56,9 +56,11 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
       }
     });
 
-    const admin = await getOrgAdmin(org.id);
+    const admins = await getOrgAdmins(org.id);
 
-    if (admin && admin.id !== user.id) {
+    for (const admin of admins) {
+      if (admin.id === user.id) continue;
+
       try {
         await prisma.notification.create({
           data: {

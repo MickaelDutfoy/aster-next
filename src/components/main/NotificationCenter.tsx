@@ -45,7 +45,7 @@ export const NotificationCenter = ({
           showToast({
             ok: false,
             status: 'error',
-            message: t('toasts.errorGeneric'),
+            message: t('toasts.cantAccess'),
           });
           return;
         }

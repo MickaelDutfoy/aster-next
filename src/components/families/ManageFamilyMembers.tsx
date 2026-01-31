@@ -2,7 +2,7 @@
 
 import { updateFamilyMembers } from '@/actions/families/updateFamilyMembers';
 import { useRouter } from '@/i18n/routing';
-import { Family, Member, MemberOfOrg } from '@/lib/types';
+import { Family, MemberOfFamily, MemberOfOrg } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { CircleMinus, CirclePlus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -20,30 +20,38 @@ export const ManageFamilyMembers = ({
   const router = useRouter();
 
   const familyMembersIds = family.members.map((member) => member.id);
+  const initialAdminMemberIds = family.members
+    .filter((member) => member.role !== 'MEMBER')
+    .map((member) => member.id);
+
 
   const [isLoading, setIsLoading] = useState(false);
-  const [actualMembers, setActualMembers] = useState<Member[]>(family.members);
-  const [elligibleMembers, setElligibleMembers] = useState<Member[]>(
+  const [actualMembers, setActualMembers] = useState<MemberOfFamily[]>(family.members);
+  const [elligibleMembers, setElligibleMembers] = useState<MemberOfFamily[]>(
     orgMembers
       .filter((member) => member.status === MemberStatus.VALIDATED)
       .filter((member) => !familyMembersIds.includes(member.id)),
   );
 
-  const removeMember = (memberToRemove: Member) => {
+  const removeMember = (memberToRemove: MemberOfFamily) => {
     setActualMembers(actualMembers.filter((member) => member.id !== memberToRemove.id));
     setElligibleMembers([...elligibleMembers, memberToRemove]);
   };
 
-  const addMember = (memberToAdd: Member) => {
+  const addMember = (memberToAdd: MemberOfFamily) => {
     setElligibleMembers(elligibleMembers.filter((member) => member.id !== memberToAdd.id));
     setActualMembers([...actualMembers, memberToAdd]);
   };
 
+  const canRemoveMember = (member: MemberOfFamily) => {
+    if (initialAdminMemberIds.includes(member.id)) return false;
+
+    return true;
+  };
+
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-
-    const newAdminId = Number(formData.get('newAdminId'));
 
     setIsLoading(true);
     try {
@@ -77,7 +85,9 @@ export const ManageFamilyMembers = ({
           {actualMembers.map((member) => (
             <li key={member.id}>
               <p>{member.firstName + ' ' + member.lastName}</p>
-              <CircleMinus onClick={() => removeMember(member)} className="link" size={26} />
+              {canRemoveMember(member) && (
+                <CircleMinus onClick={() => removeMember(member)} className="link" size={26} />
+              )}
             </li>
           ))}
         </ul>

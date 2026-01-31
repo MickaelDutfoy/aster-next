@@ -51,7 +51,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
     setIsLoading(true);
     try {
       const res = family
-        ? await updateFamily(family.id, formData, isMember)
+        ? await updateFamily(family.id, formData)
         : await registerFamily(formData, isMember);
 
       showToast({

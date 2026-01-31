@@ -54,7 +54,7 @@ export const EditOrg = ({ org }: { org: Organization }) => {
   }
 
   return (
-    <form className="admin-transfer" onSubmit={handleSubmit}>
+    <form className="superadmin-transfer" onSubmit={handleSubmit}>
       <h3>{t('organizations.editInfoTitle')}</h3>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <p>{t('organizations.orgNameLabel')}</p>

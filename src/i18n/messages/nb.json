@@ -34,6 +34,7 @@
   },
   "toasts": {
     "errorGeneric": "Noe gikk galt.",
+    "cantAccess": "Ingen tilgang til innholdet.",
     "requiredFieldsMissing": "Noen obligatoriske felt mangler.",
     "termsNotAccepted": "Du må godta vilkårene.",
     "noUser": "Bruker ikke autentisert.",
@@ -43,6 +44,7 @@
     "animalAdd": "Dyret ble lagt til.",
     "familyDelete": "Omsorgsstedet ble slettet.",
     "familyAdd": "Omsorgsstedet ble lagt til.",
+    "cannotRemoveAdminsFromFamily": "Du kan ikke fjerne en admin eller ansvarlig fra et omsorgssted.",
     "alreadyMemberOfOrg": "Du er allerede medlem av denne organisasjonen.",
     "orgRequestSent": "Din forespørsel om medlemskap er sendt.",
     "orgRequestCanceled": "Din forespørsel om medlemskap er kansellert.",
@@ -50,6 +52,8 @@
     "orgEditSuccess": "Organisasjonen din ble redigert.",
     "orgRequestApproved": "Denne forespørselen ble godkjent.",
     "orgMemberRemoved": "Dette medlemmet er fjernet fra organisasjonen.",
+    "memberPromotedToAdmin": "Dette medlemmet er utnevnt til ansvarlig i organisasjonen.",
+    "adminDowngradedToMember": "Dette medlemmet har ikke lenger rollen som ansvarlig.",
     "orgAdminTransfered": "Administratorrollen er overført.",
     "orgLeft": "Du har forlot denne organisasjonen.",
     "orgNameRequired": "Du må skrive inn et organisasjonsnavn.",
@@ -165,7 +169,7 @@
         "E-postvarsler sendes nå når et medlem ber om å bli med i en organisasjon, og når forespørselen blir godkjent."
       ],
       "items0130": [
-        "Forbedret grensesnitt for seksjonen «Organisasjoner».",
+        "Forbedret grensesnitt for seksjonen \"Organisasjoner\".",
         "Det er nå mulig å overføre administratorrollen i en organisasjon til et annet godkjent medlem."
       ],
       "items0140": [
@@ -184,6 +188,11 @@
       "items110": [
         "Fosterfamilier kan nå bestå av flere medlemmer. De omtales nå som «Omsorgssteder» for bedre å gjenspeile muligheten til å registrere et dyrehjem, en kattegård eller andre kollektive omsorgsstrukturer.",
         "Varslingssystemet er utvidet til alle medlemmer som er knyttet til samme omsorgssted."
+      ],
+      "items120": [
+        "Rollen \"Ansvarlig\" er lagt til for organisasjonsmedlemmer. Detaljer om rettighetene knyttet til hver rolle er tilgjengelige på organisasjonssiden sammen med medlemslisten.",
+        "Varsler for sterilisering av katter ved 6 måneders alder er lagt til.",
+        "Det er nå mulig å registrere identifikasjonsnummer på dyrenes oppføringer."
       ]
     }
   },
@@ -199,6 +208,8 @@
       "F": "Hunn"
     },
     "neuteredSuffix": ", kastrert/sterilisert",
+    "legalIdLabel": "ID:",
+    "detailedLegalIdLabel": "Identifikasjonsnummer:",
     "findLocationLabel": "Funnet ved:",
     "toggleHealth": "Vis helseinformasjon",
     "lastVaxLabel": "Siste vaksine den:",
@@ -254,7 +265,8 @@
       "colorPlaceholder": "Farge",
       "sexLabel": "Kjønn *:",
       "neuteredQuestion": "Kastrert/sterilisert?",
-      "findLocationPlaceholder": "Funnet ved",
+      "legalIdPlaceholder": "Nummer",
+      "findLocationPlaceholder": "Sted",
       "birthDateLabel": "Født den *:",
       "primeVaxQuestion": "Grunnvaksine?",
       "firstDewormQuestion": "Første ormekur?",
@@ -314,6 +326,7 @@
     "searchExistingTitle": "Søk etter en eksisterende organisasjon?",
     "seeDetails": "Se detaljer for {orgName}?",
     "goToOrg": "Gå til organisasjonssiden",
+    "rolesDefinitions": "Vis rolledefinisjoner",
     "pickNewAdminTitle": "Utnevn en ny administrator",
     "nobodyToTransferTo": "Det finnes ingen medlemmer å overføre rollen til.",
     "pickAMember": "Velg et medlem:",
@@ -321,15 +334,16 @@
     "joinLoading": "Sender...",
     "roles": {
       "SUPERADMIN": "Admin",
-      "MEMBER": "",
-      "VALIDATED": "",
-      "PENDING": "Avventer"
+      "ADMIN": "Ansvarlig",
+      "MEMBER": ""
     },
+    "member": "Medlem",
+    "memberDescription": ": Kan opprette omsorgssteder og delta i dem. Kan redigere oppføringen og legge til eller fjerne medlemmer fra omsorgssteder de er en del av. Kan opprette dyreoppføringer og redigere dyr de selv har opprettet eller har i omsorg. Mottar kun varsler for dyr de har i omsorg.",
+    "adminDescription": ": I tillegg til medlemsrettigheter kan redigere alle dyr og omsorgssteder i organisasjonen, samt deres deltakere. Kan godkjenne forespørsler om medlemskap i organisasjonen. Mottar varsler knyttet til medlemskapsforespørsler og alle dyr.",
+    "superAdminDescription": ": I tillegg til rettighetene til ansvarlig kan slette dyr eller omsorgssteder og administrere selve organisasjonen (redigering og sletting, utnevne ansvarlige eller fjerne medlemmer). Hver organisasjon har én admin, som kan overføre denne rollen.",
     "status": {
       "PENDING": "Avventer",
-      "VALIDATED": "",
-      "MEMBER": "",
-      "SUPERADMIN": "Admin"
+      "VALIDATED": ""
     },
     "actions": {
       "approveRequest": "Godkjenn forespørsel",
@@ -380,6 +394,7 @@
     "markAsReadButton": "Merk alle som lest",
     "animals": {
       "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
+      "neutralizeReminder": "{animalName} er gammel nok til å steriliseres.",
       "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",
       "createAnimal": "{memberFullName} har opprettet en profil for {animalName}."
     },

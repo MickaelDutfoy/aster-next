@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { DeniedPage } from '../main/DeniedPage';
 import { showToast } from '../tools/ToastProvider';
 
-export const TransferAdmin = ({
+export const TransferSuperAdmin = ({
   user,
   org,
   members,
@@ -61,7 +61,7 @@ export const TransferAdmin = ({
   }
 
   return (
-    <form className="admin-transfer" onSubmit={handleSubmit}>
+    <form className="superadmin-transfer" onSubmit={handleSubmit}>
       <h3>{t('organizations.pickNewAdminTitle')}</h3>
       {membersFiltered.length === 0 && <p>{t('organizations.nobodyToTransferTo')}</p>}
       {membersFiltered.length > 0 && (

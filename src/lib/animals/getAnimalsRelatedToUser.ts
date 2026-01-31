@@ -11,7 +11,7 @@ export const getAnimalsRelatedToUser = async (userId: number): Promise<Animal[]>
             memberOrganizations: {
               some: {
                 memberId: userId,
-                role: MemberRole.SUPERADMIN,
+                role: { in: [MemberRole.ADMIN, MemberRole.SUPERADMIN] },
               },
             },
           },

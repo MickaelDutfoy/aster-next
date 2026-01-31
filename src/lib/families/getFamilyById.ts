@@ -1,3 +1,4 @@
+import { MemberRole } from '@prisma/client';
 import { prisma } from '../prisma';
 import { Family } from '../types';
 
@@ -16,6 +17,9 @@ export const getFamilyById = async (id: number | null): Promise<Family | null> =
               lastName: true,
               email: true,
               phoneNumber: true,
+              memberOrganizations: {
+                select: { orgId: true, role: true },
+              },
             },
           },
         },
@@ -36,6 +40,17 @@ export const getFamilyById = async (id: number | null): Promise<Family | null> =
     hasChildren: family.hasChildren,
     otherAnimals: family.otherAnimals,
     orgId: family.orgId,
-    members: family.familyMembers.map((famMem) => famMem.member),
+    members: family.familyMembers.map(({ member }) => {
+      const orgMembership = member.memberOrganizations.find(
+        (memOrg) => memOrg.orgId === family.orgId,
+      );
+
+      const { memberOrganizations, ...memberData } = member;
+
+      return {
+        ...memberData,
+        role: orgMembership?.role ?? MemberRole.MEMBER,
+      };
+    }),
   };
 };
