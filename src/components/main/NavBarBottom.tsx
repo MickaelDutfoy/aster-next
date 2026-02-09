@@ -21,10 +21,18 @@ export const NavBarBottom = () => {
 
         <button onClick={() => router.replace('/organizations')}>
           <Users
-            fill={pathname.startsWith('/organizations') ? '#999' : '"000'}
-            fillOpacity={pathname.startsWith('/organizations') ? 0.5 : 0}
+            fill={
+              pathname.startsWith('/organizations') || pathname.startsWith('/members')
+                ? '#999'
+                : '"000'
+            }
+            fillOpacity={
+              pathname.startsWith('/organizations') || pathname.startsWith('/members') ? 0.5 : 0
+            }
             size={42}
-            strokeWidth={pathname.startsWith('/organizations') ? 2.2 : 0.8}
+            strokeWidth={
+              pathname.startsWith('/organizations') || pathname.startsWith('/members') ? 2.2 : 0.8
+            }
           />
         </button>
         <button onClick={() => router.replace('/settings')}>

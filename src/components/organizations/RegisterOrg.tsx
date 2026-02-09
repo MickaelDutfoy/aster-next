@@ -47,7 +47,7 @@ export const RegisterOrg = () => {
   };
 
   return (
-    <>
+    <div>
       <h3>{t('organizations.registerTitle')}</h3>
 
       <form ref={formRef} onSubmit={handleSubmit}>
@@ -57,6 +57,6 @@ export const RegisterOrg = () => {
           {isLoading ? t('common.loading') : t('common.submit')}
         </button>
       </form>
-    </>
+    </div>
   );
 };

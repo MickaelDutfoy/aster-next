@@ -69,6 +69,12 @@ export const Dashboard = ({
       <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>
         <ul>
+          v1.2.1{locale === 'fr' && ' '}:
+          {t.raw('dashboard.changelog.items121').map((item: string, index: number) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <ul>
           v1.2.0{locale === 'fr' && ' '}:
           {t.raw('dashboard.changelog.items120').map((item: string, index: number) => (
             <li key={index}>{item}</li>

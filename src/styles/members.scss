@@ -1,0 +1,33 @@
+@use 'vars';
+
+.member-sheet {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  ul {
+    li {
+      padding: 0 5px;
+      min-height: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--button);
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      button {
+        padding-top: 6px;
+        background: transparent;
+      }
+    }
+
+    :last-child {
+      border: none;
+    }
+  }
+}

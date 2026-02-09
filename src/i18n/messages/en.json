@@ -150,6 +150,7 @@
     "map": "Map",
     "contact": "Contact",
     "organizations": "Organizations",
+    "members": "Members",
     "notifications": "Notifications",
     "settings": "Settings"
   },
@@ -193,6 +194,10 @@
         "Added the \"Manager\" role for organization members. Details of the permissions associated with each role are available on the organization page, alongside the member list.",
         "Added notifications for cat neutering at 6 months.",
         "You can now enter an identification number on animal records."
+      ],
+      "items121": [
+        "It is now possible to view a member’s details from an organization page or a foster location page, and to view organization details from a member page, making navigation easier.",
+        "Added the date of birth to animal records, in addition to age."
       ]
     }
   },
@@ -207,6 +212,7 @@
       "M": "Male",
       "F": "Female"
     },
+    "bornOn": "born on ",
     "neuteredSuffix": ", neutered",
     "legalIdLabel": "ID:",
     "detailedLegalIdLabel": "Identification number:",
@@ -288,6 +294,7 @@
     "animalsInCareLabel": "Animals in care ({count}):",
     "otherAnimalsLabel": "Other animals:",
     "prefillMeLabel": "This is me, use my details:",
+    "membersListTitle": "Location members:",
     "familyMember": "You are a member of this foster location.",
     "manageMembers": "Manage members",
     "currentMembersTitle": "Current members of this location:",
@@ -350,8 +357,14 @@
       "removeMember": "Remove member",
       "cancelRequest": "Cancel request",
       "leaveOrg": "Leave organization",
-      "transferAdmin": "Transfer admin role"
+      "promoteAdmin": "Promote to manager",
+      "downgradeMember": "Remove manager role",
+      "transferSuperAdmin": "Transfer admin role"
     }
+  },
+  "members": {
+    "ownSheet": "This is your profile.",
+    "orgsInCommonTitle": "You are both members of:"
   },
   "contact": {
     "topic": "What is this about? *",

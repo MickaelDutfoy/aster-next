@@ -150,6 +150,7 @@
     "map": "Carte",
     "contact": "Contact",
     "organizations": "Associations",
+    "members": "Membres",
     "notifications": "Notifications",
     "settings": "Paramètres"
   },
@@ -192,6 +193,10 @@
         "Ajout du rôle « Responsable » pour les membres d'association. Le détail des fonctionnalités associées à chaque rôle est accessible dans la fiche d'association, avec la liste des membres.",
         "Ajout de notifications pour la stérilisation des chats à 6 mois.",
         "Possibilité de renseigner le numéro d'identification des animaux sur leurs fiches."
+      ],
+      "items121": [
+        "Il est désormais possible de consulter les détails d'un membre depuis la fiche d'association ou la fiche d'un lieu d'accueil, et les détails d'une association depuis la fiche d'un membre, facilitant ainsi la navigation.",
+        "Ajout de la date de naissance sur les fiches d'animaux, en complément de l'âge."
       ]
     }
   },
@@ -206,6 +211,7 @@
       "M": "Mâle",
       "F": "Femelle"
     },
+    "bornOn": "né(e) le ",
     "neuteredSuffix": ", stérilisé(e)",
     "legalIdLabel": "Identification :",
     "detailedLegalIdLabel": "Numéro d'identification :",
@@ -287,6 +293,7 @@
     "animalsInCareLabel": "Animaux en charge ({count}) :",
     "otherAnimalsLabel": "Autres animaux :",
     "prefillMeLabel": "C'est moi, utiliser mes infos :",
+    "membersListTitle": "Liste des membres du lieu :",
     "familyMember": "Vous êtes membre de ce lieu d'accueil.",
     "manageMembers": "Gérer les membres",
     "currentMembersTitle": "Membres actuels de ce lieu :",
@@ -324,7 +331,7 @@
     "orgNamePlaceholder": "Nom de l'association",
     "searchExistingTitle": "Rechercher une association existante ?",
     "seeDetails": "Voir les détails de {orgName} ?",
-    "goToOrg": "Accéder à la fiche",
+    "goToOrg": "Accéder à la fiche de l'association",
     "rolesDefinitions": "Afficher les définitions des rôles",
     "pickNewAdminTitle": "Nommer un nouvel admin",
     "nobodyToTransferTo": "Il n'y a aucun membre à qui transférer le rôle.",
@@ -350,9 +357,13 @@
       "cancelRequest": "Annuler la demande",
       "leaveOrg": "Quitter l'association",
       "promoteAdmin": "Nommer responsable",
-      "downgradeMember": "Retirer le rôle de reponsable",
+      "downgradeMember": "Retirer le rôle de responsable",
       "transferSuperAdmin": "Transférer le rôle d'admin"
     }
+  },
+  "members": {
+    "ownSheet": "Ceci est votre fiche.",
+    "orgsInCommonTitle": "Vous êtes tous les deux membres de :"
   },
   "contact": {
     "topic": "De quoi s’agit-il ? *",

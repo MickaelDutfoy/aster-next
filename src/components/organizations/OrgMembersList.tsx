@@ -10,7 +10,7 @@ import { Link, useRouter } from '@/i18n/routing';
 import { Action, Member, MemberOfOrg, Organization } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import clsx from 'clsx';
-import { EllipsisVertical } from 'lucide-react';
+import { EllipsisVertical, SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { ConfirmModal } from '../tools/ConfirmModal';
@@ -268,35 +268,44 @@ export const OrgMembersList = ({
                     ' ' +
                     t(`organizations.status.${member.status}`)}
                 </span>
-                <span className="action">
-                  <EllipsisVertical
-                    className={clsx(actions.length === 0 ? 'disabled' : 'link')}
+                <div className="buttons">
+                  <span className="action">
+                    <EllipsisVertical
+                      className={clsx(actions.length === 0 ? 'disabled' : 'link')}
+                      size={26}
+                      onClick={() => {
+                        if (actions.length === 0) return;
+                        setOpenMenuMemberId((current) =>
+                          current === member.id ? null : member.id,
+                        );
+                      }}
+                    />
+                    {openMenuMemberId === member.id && actions.length > 0 && (
+                      <ul className="action-list" ref={menuRef}>
+                        {actions.map((action) => (
+                          <li
+                            key={action.name}
+                            onClick={
+                              action.id === 'transferSuperAdmin'
+                                ? action.handler
+                                : () => {
+                                    setOpenMenuMemberId(null);
+                                    setActionConfirm(action);
+                                  }
+                            }
+                          >
+                            {action.name}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </span>
+                  <SquareArrowRight
+                    className="link"
                     size={26}
-                    onClick={() => {
-                      if (actions.length === 0) return;
-                      setOpenMenuMemberId((current) => (current === member.id ? null : member.id));
-                    }}
+                    onClick={() => router.push(`/members/${member.id}`)}
                   />
-                  {openMenuMemberId === member.id && actions.length > 0 && (
-                    <ul className="action-list" ref={menuRef}>
-                      {actions.map((action) => (
-                        <li
-                          key={action.name}
-                          onClick={
-                            action.id === 'transferSuperAdmin'
-                              ? action.handler
-                              : () => {
-                                  setOpenMenuMemberId(null);
-                                  setActionConfirm(action);
-                                }
-                          }
-                        >
-                          {action.name}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </span>
+                </div>
               </li>
             );
           })}

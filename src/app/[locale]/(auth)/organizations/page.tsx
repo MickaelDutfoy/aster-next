@@ -14,13 +14,9 @@ const Organizations = async () => {
 
   return (
     <div className="org-page">
-      <div>
-        <RegisterOrg />
-      </div>
-      <div>
-        <SearchOrg />
-      </div>
       {org && <OrgPicker org={org} />}
+      <RegisterOrg />
+      <SearchOrg />
     </div>
   );
 };

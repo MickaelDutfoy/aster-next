@@ -78,8 +78,8 @@ export const AnimalDetails = ({
           {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))},{' '}
           {t(`animals.sex.${animal.sex}`).toLowerCase()}, {animal.color?.toLowerCase()}
           {animal.color ? ', ' : ' '}
-          {displayAge(animal.birthDate, locale, true)}
-          {animal.isNeutered && t('animals.neuteredSuffix')}.
+          {displayAge(animal.birthDate, locale, true)} ({t('animals.bornOn')}{' '}
+          {displayDate(animal.birthDate)}){animal.isNeutered && t('animals.neuteredSuffix')}.
         </p>
         {animal.legalId && (
           <p>

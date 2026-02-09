@@ -99,6 +99,11 @@
   align-items: center;
   border-bottom: 1px solid var(--button);
 
+  .buttons {
+    display: flex;
+   gap: 2px;
+  }
+
   .action {
     position: relative;
     display: flex;
