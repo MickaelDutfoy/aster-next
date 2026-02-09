@@ -72,7 +72,7 @@ export const SearchOrg = () => {
   };
 
   return (
-    <>
+    <div>
       <h3>{t('organizations.searchExistingTitle')}</h3>
       <form onSubmit={handleSubmit}>
         <input
@@ -111,6 +111,6 @@ export const SearchOrg = () => {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };

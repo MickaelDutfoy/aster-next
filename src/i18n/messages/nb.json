@@ -150,6 +150,7 @@
     "map": "Kart",
     "contact": "Kontakt",
     "organizations": "Organisasjoner",
+    "members": "Medlemmer",
     "notifications": "Varsler",
     "settings": "Innstillinger"
   },
@@ -193,6 +194,10 @@
         "Rollen \"Ansvarlig\" er lagt til for organisasjonsmedlemmer. Detaljer om rettighetene knyttet til hver rolle er tilgjengelige på organisasjonssiden sammen med medlemslisten.",
         "Varsler for sterilisering av katter ved 6 måneders alder er lagt til.",
         "Det er nå mulig å registrere identifikasjonsnummer på dyrenes oppføringer."
+      ],
+      "items121": [
+        "Det er nå mulig å se detaljer om et medlem fra organisasjonssiden eller siden for et omsorgssted, samt se detaljer om en organisasjon fra et medlems side, noe som gjør navigasjonen enklere.",
+        "Fødselsdato er nå lagt til på dyreoppføringer, i tillegg til alder."
       ]
     }
   },
@@ -207,6 +212,7 @@
       "M": "Hann",
       "F": "Hunn"
     },
+    "bornOn": "født ",
     "neuteredSuffix": ", kastrert/sterilisert",
     "legalIdLabel": "ID:",
     "detailedLegalIdLabel": "Identifikasjonsnummer:",
@@ -288,6 +294,7 @@
     "animalsInCareLabel": "Dyr i omsorg ({count}):",
     "otherAnimalsLabel": "Andre dyr:",
     "prefillMeLabel": "Det er meg, bruk mine opplysninger:",
+    "membersListTitle": "Medlemmer ved omsorgsstedet:",
     "familyMember": "Du er medlem av dette omsorgsstedet.",
     "manageMembers": "Administrer medlemmer",
     "currentMembersTitle": "Nåværende medlemmer av dette omsorgsstedet:",
@@ -350,8 +357,14 @@
       "removeMember": "Fjern medlem",
       "cancelRequest": "Avbryt forespørsel",
       "leaveOrg": "Forlat organisasjonen",
-      "transferAdmin": "Overfør administratorrollen"
+      "promoteAdmin": "Utnevn ansvarlig",
+      "downgradeMember": "Fjern rollen som ansvarlig",
+      "transferSuperAdmin": "Overfør administratorrollen"
     }
+  },
+  "members": {
+    "ownSheet": "Dette er profilen din.",
+    "orgsInCommonTitle": "Dere er begge medlemmer av:"
   },
   "contact": {
     "topic": "Hva gjelder det? *",

@@ -50,17 +50,10 @@ export const FamilyDetails = ({
         </div>
       </div>
 
-      <div>
+      <div className="family-page">
         <h3>{family.contactFullName}</h3>
-        <div className="text-with-link">
-          <p>{isFamilyMember ? t('families.familyMember') : t('families.notFamilyMember')}</p>
-          {canEditFamily && (
-            <Link className="little-button" href={`/families/${family.id}/add-members`}>
-              {t('families.manageMembers')}
-            </Link>
-          )}
-        </div>
-        <div className="family-contact-display">
+
+        <div className="contact-display">
           <address>
             <p>{family.address}</p>
             <p>
@@ -87,47 +80,72 @@ export const FamilyDetails = ({
           )}
         </div>
 
-        {family.hasChildren && <p>{t('families.hasChildren')}</p>}
-      </div>
+        <div className="text-with-link">
+          <p>{isFamilyMember ? t('families.familyMember') : t('families.notFamilyMember')}</p>
+          {canEditFamily && (
+            <Link className="little-button" href={`/families/${family.id}/add-members`}>
+              {t('families.manageMembers')}
+            </Link>
+          )}
+        </div>
 
-      {animals && animals.length > 0 && (
-        <div>
-          <p>{t('families.animalsInCareLabel', { count: animals.length })}</p>
-          <ul className="animals-list">
-            {animals
-              .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
-              .map((animal) => (
-                <li key={animal.id}>
-                  <span>
-                    <strong>{animal.name}</strong>
-                  </span>{' '}
-                  <span>
-                    {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
-                    <span
-                      style={{
-                        color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
-                        textShadow: '1px 1px 0px #777',
-                      }}
-                    >
-                      {animal.sex === 'M' ? '♂' : '♀'}
-                    </span>
-                  </span>
-                  <span>{displayAge(animal.birthDate, locale)}</span>
-                  <Link className="action link" href={`/animals/${animal.id}`}>
-                    <SquareArrowRight size={26} />
-                  </Link>
-                </li>
-              ))}
+        <div className="family-members-list">
+          <p>{t('families.membersListTitle')}</p>
+          <ul>
+            {family.members.map((member) => (
+              <li key={member.id}>
+                <span>
+                  {member.firstName} {member.lastName}
+                </span>
+                <Link className="action link" href={`/members/${member.id}`}>
+                  <SquareArrowRight size={26} />
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
-      )}
 
-      {family.otherAnimals && (
-        <>
-          <p>{t('families.otherAnimalsLabel')}</p>
-          <p className="family-animals">{family.otherAnimals}</p>
-        </>
-      )}
+        {family.hasChildren && <p>{t('families.hasChildren')}</p>}
+
+        {animals && animals.length > 0 && (
+          <div>
+            <p>{t('families.animalsInCareLabel', { count: animals.length })}</p>
+            <ul className="animals-list">
+              {animals
+                .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
+                .map((animal) => (
+                  <li key={animal.id}>
+                    <span>
+                      <strong>{animal.name}</strong>
+                    </span>{' '}
+                    <span>
+                      {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
+                      <span
+                        style={{
+                          color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
+                          textShadow: '1px 1px 0px #777',
+                        }}
+                      >
+                        {animal.sex === 'M' ? '♂' : '♀'}
+                      </span>
+                    </span>
+                    <span>{displayAge(animal.birthDate, locale)}</span>
+                    <Link className="action link" href={`/animals/${animal.id}`}>
+                      <SquareArrowRight size={26} />
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        )}
+
+        {family.otherAnimals && (
+          <>
+            <p>{t('families.otherAnimalsLabel')}</p>
+            <p className="family-animals">{family.otherAnimals}</p>
+          </>
+        )}
+      </div>
     </>
   );
 };
