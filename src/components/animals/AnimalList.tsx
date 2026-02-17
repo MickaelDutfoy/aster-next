@@ -19,6 +19,7 @@ export const AnimalsList = ({
   const t = useTranslations();
   const locale = useLocale();
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
+  const [nameFilter, setNameFilter] = useState<string>('');
 
   const activeAnimals = animals.filter((animal) => animal.status !== AnimalStatus.ADOPTED).length;
   const adoptedAnimals = animals.filter((animal) => animal.status === AnimalStatus.ADOPTED).length;
@@ -27,6 +28,17 @@ export const AnimalsList = ({
     <>
       {animals && (
         <div>
+          {animals.length > 0 && (
+            <div className="search-filter">
+              <p>{t('common.nameFilter')}</p>
+              <input
+                type="text"
+                placeholder={t('common.name')}
+                value={nameFilter}
+                onChange={(e) => setNameFilter(e.target.value)}
+              />
+            </div>
+          )}
           <h3>{t('animals.listTitle', { orgName: org.name, count: activeAnimals })}</h3>
 
           {animals.length === 0 && <p style={{ padding: '10px' }}>{t('animals.none')}</p>}
@@ -34,6 +46,7 @@ export const AnimalsList = ({
           {animals.length > 0 && (
             <ul className="animals-list">
               {animals
+                .filter((animal) => animal.name.includes(nameFilter))
                 .filter((animal) => animal.status !== AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (
@@ -68,6 +81,7 @@ export const AnimalsList = ({
           {!hiddenAdopted && (
             <ul className="animals-list">
               {animals
+                .filter((animal) => animal.name.includes(nameFilter))
                 .filter((animal) => animal.status === AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (

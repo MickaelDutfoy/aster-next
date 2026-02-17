@@ -71,7 +71,21 @@ export const joinOrg = async (org: Organization, locale: string): Promise<Action
               <p>${t('common.hello')}</p>
               <p>${t('orgRequestSend.content1', { orgName: org.name })}</p>
               <p>${t('orgRequestSend.content2', { memberFullName: user.firstName + ' ' + user.lastName })}</p>
-              <p>${t('orgRequestSend.content3')}</p>
+              <p style="text-align: center">
+                <a
+                  href="${process.env.AUTH_URL}/notifications"
+                  style="
+                    display: inline-block;
+                    padding: 10px 16px;
+                    background: #653d24;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 4px;
+                  "
+                >
+                  ${t('common.link')}
+                </a>
+              </p>
               <p>${t('common.footer')}</p>
             `,
       });

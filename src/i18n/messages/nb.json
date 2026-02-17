@@ -30,7 +30,9 @@
     "requiredFieldsNotice": "(Felt merket med * er obligatoriske.)",
     "copiedToClipboard": "Lenken er kopiert til utklippstavlen!",
     "accessDenied": "Du har ikke tilgang til denne ressursen.",
-    "soonToCome": "Denne funksjonen blir snart tilgjengelig."
+    "soonToCome": "Denne funksjonen blir snart tilgjengelig.",
+    "nameFilter": "Filtrer etter navn:",
+    "name": "Navn"
   },
   "toasts": {
     "errorGeneric": "Noe gikk galt.",
@@ -198,6 +200,10 @@
       "items121": [
         "Det er nå mulig å se detaljer om et medlem fra organisasjonssiden eller siden for et omsorgssted, samt se detaljer om en organisasjon fra et medlems side, noe som gjør navigasjonen enklere.",
         "Fødselsdato er nå lagt til på dyreoppføringer, i tillegg til alder."
+      ],
+      "items122": [
+        "Varslings-e-poster inneholder nå en lenke for å åpne Aster.",
+        "Et felt for å filtrere dyr, organisasjonsmedlemmer og omsorgssteder etter navn er lagt til."
       ]
     }
   },
@@ -422,6 +428,7 @@
   "emails": {
     "common": {
       "hello": "Hei,",
+      "link": "Se varslene mine",
       "footer": "Sees snart på Aster 🐾"
     },
     "register": {
@@ -448,8 +455,7 @@
     "orgRequestSend": {
       "subject": "Aster – forespørsel om medlemskap i {orgName}",
       "content1": "Du mottar denne meldingen fordi det er sendt en forespørsel om medlemskap i {orgName}, der du er administrator.",
-      "content2": "Forespørselen ble sendt av {memberFullName}.",
-      "content3": "For å godkjenne eller avslå denne forespørselen, åpne appen og gå til \"Organisasjoner\"."
+      "content2": "Forespørselen ble sendt av {memberFullName}."
     }
   },
   "privacy": {

@@ -30,7 +30,9 @@
     "requiredFieldsNotice": "(Fields marked with * are required.)",
     "copiedToClipboard": "Link copied to clipboard!",
     "accessDenied": "You do not have permission to access this resource.",
-    "soonToCome": "This feature will be available soon."
+    "soonToCome": "This feature will be available soon.",
+    "nameFilter": "Filter by name:",
+    "name": "Name"
   },
   "toasts": {
     "errorGeneric": "An error occurred.",
@@ -198,6 +200,10 @@
       "items121": [
         "It is now possible to view a member’s details from an organization page or a foster location page, and to view organization details from a member page, making navigation easier.",
         "Added the date of birth to animal records, in addition to age."
+      ],
+      "items122": [
+        "Notification emails now include a link to open Aster.",
+        "Added a field to filter animals, organization members, and foster locations by name."
       ]
     }
   },
@@ -423,6 +429,7 @@
   "emails": {
     "common": {
       "hello": "Hello,",
+      "link": "See my notifications",
       "footer": "See you soon on Aster 🐾"
     },
     "register": {
@@ -449,8 +456,7 @@
     "orgRequestSend": {
       "subject": "Aster – membership request to {orgName}",
       "content1": "You are receiving this message because a membership request has been submitted to {orgName}, where you are an administrator.",
-      "content2": "This request was submitted by {memberFullName}.",
-      "content3": "To approve or reject this request, open the app and go to the \"Organizations\" section."
+      "content2": "This request was submitted by {memberFullName}."
     }
   },
   "privacy": {
