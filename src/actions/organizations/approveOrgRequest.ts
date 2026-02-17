@@ -45,6 +45,21 @@ export const approveOrgRequest = async (
             <p>${t('orgRequestApproved.content1', { orgName: org.name })}</p>
             <p>${t('orgRequestApproved.content2')}</p>
             <p>${t('orgRequestApproved.content3')}</p>
+            <p style="text-align: center">
+              <a
+                href="${process.env.AUTH_URL}/notifications"
+                style="
+                  display: inline-block;
+                  padding: 10px 16px;
+                  background: #653d24;
+                  color: white;
+                  text-decoration: none;
+                  border-radius: 4px;
+                "
+              >
+                ${t('common.link')}
+              </a>
+            </p>
             <p>${t('common.footer')}</p>
           `,
     });

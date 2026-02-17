@@ -30,7 +30,9 @@
     "requiredFieldsNotice": "(Les champs marqués d'un * sont requis.)",
     "copiedToClipboard": "Lien copié dans le presse-papiers !",
     "accessDenied": "Vous n'avez pas les autorisations pour accéder à cette ressource.",
-    "soonToCome": "Cette fonctionnalité sera bientôt disponible."
+    "soonToCome": "Cette fonctionnalité sera bientôt disponible.",
+    "nameFilter": "Filtrer par nom :",
+    "name": "Nom"
   },
   "toasts": {
     "errorGeneric": "Une erreur est survenue.",
@@ -197,6 +199,10 @@
       "items121": [
         "Il est désormais possible de consulter les détails d'un membre depuis la fiche d'association ou la fiche d'un lieu d'accueil, et les détails d'une association depuis la fiche d'un membre, facilitant ainsi la navigation.",
         "Ajout de la date de naissance sur les fiches d'animaux, en complément de l'âge."
+      ],
+      "items122": [
+        "Les mails de notifications contiennent maintenant un lien pour ouvrir Aster.",
+        "Ajout d'un champ permettant de filtrer les animaux, membres d'association, et lieux d'accueil par nom."
       ]
     }
   },
@@ -421,6 +427,7 @@
   "emails": {
     "common": {
       "hello": "Bonjour,",
+      "link": "Voir mes notifications",
       "footer": "À bientôt sur Aster 🐾"
     },
     "register": {
@@ -447,8 +454,7 @@
     "orgRequestSend": {
       "subject": "Aster – demande d'adhésion à {orgName}",
       "content1": "Vous recevez ce message car une demande d'adhésion a été faite à {orgName}, dont vous êtes administrateur.",
-      "content2": "Cette demande a été formulée par {memberFullName}.",
-      "content3": "Pour approuver ou refuser cette demande, ouvrez l'application et rendez-vous dans la section \"Associations\"."
+      "content2": "Cette demande a été formulée par {memberFullName}."
     }
   },
   "privacy": {

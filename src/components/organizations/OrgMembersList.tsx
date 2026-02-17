@@ -32,6 +32,7 @@ export const OrgMembersList = ({
   const [hiddenRolesInfo, setHiddenRolesInfo] = useState<boolean>(true);
   const [openMenuMemberId, setOpenMenuMemberId] = useState<number | null>(null);
   const [actionConfirm, setActionConfirm] = useState<Action | null>(null);
+  const [nameFilter, setNameFilter] = useState<string>('');
 
   const menuRef = useRef<HTMLUListElement | null>(null);
 
@@ -248,9 +249,21 @@ export const OrgMembersList = ({
           </li>
         </ul>
       )}
+      {membersFiltered.length > 0 && (
+        <div className="search-filter">
+          <p>{t('common.nameFilter')}</p>
+          <input
+            type="text"
+            placeholder={t('common.name')}
+            value={nameFilter}
+            onChange={(e) => setNameFilter(e.target.value)}
+          />
+        </div>
+      )}
       <h3>{t('organizations.membersListTitle', { orgName: org.name, count: members.length })}</h3>
       <ul className="members-list">
         {membersFiltered
+          .filter((member) => (member.firstName + ' ' + member.lastName).includes(nameFilter))
           .sort((a, b) =>
             a.firstName.localeCompare(b.firstName, undefined, {
               sensitivity: 'base',

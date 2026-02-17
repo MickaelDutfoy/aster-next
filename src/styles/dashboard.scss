@@ -337,3 +337,11 @@ header {
     align-items: center;
   }
 }
+
+.search-filter {
+  padding: 5px 0;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  align-items: center;
+  gap: 5px;
+}
