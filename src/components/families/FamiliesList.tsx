@@ -32,7 +32,13 @@ export const FamiliesList = ({
               />
             </div>
           )}
-          <h3>{t('families.listTitle', { orgName: org.name, count: families.length })}</h3>
+          <h3>
+            {t('families.listTitle', {
+              orgName: org.name,
+              count: families.filter((family) => family.contactFullName.includes(nameFilter))
+                .length,
+            })}
+          </h3>
 
           {families.length === 0 && <p style={{ padding: '10px' }}>{t('families.none')}</p>}
 

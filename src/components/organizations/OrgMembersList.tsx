@@ -260,7 +260,14 @@ export const OrgMembersList = ({
           />
         </div>
       )}
-      <h3>{t('organizations.membersListTitle', { orgName: org.name, count: members.length })}</h3>
+      <h3>
+        {t('organizations.membersListTitle', {
+          orgName: org.name,
+          count: members.filter((member) =>
+            (member.firstName + ' ' + member.lastName).includes(nameFilter),
+          ).length,
+        })}
+      </h3>
       <ul className="members-list">
         {membersFiltered
           .filter((member) => (member.firstName + ' ' + member.lastName).includes(nameFilter))

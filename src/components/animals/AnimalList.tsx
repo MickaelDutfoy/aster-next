@@ -21,8 +21,12 @@ export const AnimalsList = ({
   const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
   const [nameFilter, setNameFilter] = useState<string>('');
 
-  const activeAnimals = animals.filter((animal) => animal.status !== AnimalStatus.ADOPTED).length;
-  const adoptedAnimals = animals.filter((animal) => animal.status === AnimalStatus.ADOPTED).length;
+  const activeAnimals = animals
+    .filter((animal) => animal.status !== AnimalStatus.ADOPTED)
+    .filter((animal) => animal.name.includes(nameFilter)).length;
+  const adoptedAnimals = animals
+    .filter((animal) => animal.status === AnimalStatus.ADOPTED)
+    .filter((animal) => animal.name.includes(nameFilter)).length;
 
   return (
     <>
