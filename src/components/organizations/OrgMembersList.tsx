@@ -264,13 +264,19 @@ export const OrgMembersList = ({
         {t('organizations.membersListTitle', {
           orgName: org.name,
           count: members.filter((member) =>
-            (member.firstName + ' ' + member.lastName).includes(nameFilter),
+            (member.firstName + ' ' + member.lastName)
+              .toLowerCase()
+              .includes(nameFilter.toLowerCase()),
           ).length,
         })}
       </h3>
       <ul className="members-list">
         {membersFiltered
-          .filter((member) => (member.firstName + ' ' + member.lastName).includes(nameFilter))
+          .filter((member) =>
+            (member.firstName + ' ' + member.lastName)
+              .toLowerCase()
+              .includes(nameFilter.toLowerCase()),
+          )
           .sort((a, b) =>
             a.firstName.localeCompare(b.firstName, undefined, {
               sensitivity: 'base',

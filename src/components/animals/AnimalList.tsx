@@ -23,10 +23,10 @@ export const AnimalsList = ({
 
   const activeAnimals = animals
     .filter((animal) => animal.status !== AnimalStatus.ADOPTED)
-    .filter((animal) => animal.name.includes(nameFilter)).length;
+    .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase())).length;
   const adoptedAnimals = animals
     .filter((animal) => animal.status === AnimalStatus.ADOPTED)
-    .filter((animal) => animal.name.includes(nameFilter)).length;
+    .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase())).length;
 
   return (
     <>
@@ -50,7 +50,7 @@ export const AnimalsList = ({
           {animals.length > 0 && (
             <ul className="animals-list">
               {animals
-                .filter((animal) => animal.name.includes(nameFilter))
+                .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase()))
                 .filter((animal) => animal.status !== AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (
@@ -85,7 +85,7 @@ export const AnimalsList = ({
           {!hiddenAdopted && (
             <ul className="animals-list">
               {animals
-                .filter((animal) => animal.name.includes(nameFilter))
+                .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase()))
                 .filter((animal) => animal.status === AnimalStatus.ADOPTED)
                 .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
                 .map((animal) => (
