@@ -1,7 +1,6 @@
 'use client';
 
 import { Link, useRouter } from '@/i18n/routing';
-import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import { Animal, AnimalHealthAct, Family, Member, Organization } from '@/lib/types';
 import { displayAge } from '@/lib/utils/displayAge';
 import { displayDate } from '@/lib/utils/displayDate';
@@ -73,14 +72,31 @@ export const AnimalDetails = ({
         </div>
       </div>
       <div className="animal-page">
-        <h3>{animal.name}</h3>
+        <h3>
+          {animal.name}
+          {' — '}
+          {animal.species}
+          <span
+            style={{
+              color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
+              textShadow: '1px 1px 0px #777',
+            }}
+          >
+            {animal.sex === 'M' ? ' ♂' : ' ♀'}
+          </span>
+        </h3>
+        {animal.color && <p>{t('animals.colorLabel') + animal.color}.</p>}
         <p>
-          {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))},{' '}
-          {t(`animals.sex.${animal.sex}`).toLowerCase()}, {animal.color?.toLowerCase()}
-          {animal.color ? ', ' : ' '}
-          {displayAge(animal.birthDate, locale, true)} ({t('animals.bornOn')}{' '}
-          {displayDate(animal.birthDate)}){animal.isNeutered && t('animals.neuteredSuffix')}.
+          {t('animals.bornOn')} {displayDate(animal.birthDate)}
+          {animal.status !== AnimalStatus.DECEASED &&
+            ` (${displayAge(animal.birthDate, locale, true)})`}
+          .
         </p>
+        {animal.isNeutered ? (
+          <p>{t('animals.neuteredSuffix')}.</p>
+        ) : (
+          <p>{t('animals.notNeuteredSuffix')}.</p>
+        )}
         {animal.legalId && (
           <p>
             {t('animals.detailedLegalIdLabel')} {animal.legalId}.

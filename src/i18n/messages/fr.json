@@ -203,6 +203,10 @@
       "items122": [
         "Les mails de notifications contiennent maintenant un lien pour ouvrir Aster.",
         "Ajout d'un champ permettant de filtrer les animaux, membres d'association, et lieux d'accueil par nom."
+      ],
+      "items123": [
+        "Ajout du statut « Décédé » pour les animaux.",
+        "Le créateur d'un lieu d'accueil peut éditer ce lieu même s'il n'en est pas membre."
       ]
     }
   },
@@ -217,8 +221,10 @@
       "M": "Mâle",
       "F": "Femelle"
     },
-    "bornOn": "né(e) le ",
-    "neuteredSuffix": ", stérilisé(e)",
+    "bornOn": "Né(e) le ",
+    "neuteredSuffix": "Stérilisé(e)",
+    "notNeuteredSuffix": "Non stérilisé(e)",
+    "colorLabel": "Couleur : ",
     "legalIdLabel": "Identification :",
     "detailedLegalIdLabel": "Numéro d'identification :",
     "findLocationLabel": "Découvert à :",
@@ -249,10 +255,12 @@
     "listTitle": "Animaux enregistrés pour {orgName} ({count}) :",
     "none": "Aucun animal enregistré.",
     "toggleAdopted": "Afficher les animaux adoptés ({count})",
+    "toggleDeceased": "Afficher les animaux décédés ({count})",
     "status": {
       "UNHOSTED": "En attente",
       "FOSTERED": "Dans un lieu d'accueil",
-      "ADOPTED": "Adopté(e)"
+      "ADOPTED": "Adopté(e)",
+      "DECEASED": "Décédé(e)"
     },
     "fosterFamilyLabel": "Lieu d'accueil : ",
     "toggleAdoption": "Afficher les informations d'adoption",

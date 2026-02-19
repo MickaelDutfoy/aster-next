@@ -27,7 +27,10 @@ export const FamilyDetails = ({
 
   const isFamilyMember = family.members.some((member) => member.id === user.id);
   const canEditFamily =
-    org.userRole === MemberRole.SUPERADMIN || org.userRole === MemberRole.ADMIN || isFamilyMember;
+    org.userRole === MemberRole.SUPERADMIN ||
+    org.userRole === MemberRole.ADMIN ||
+    isFamilyMember ||
+    user.id === family.createdByMemberId;
   const canDeleteFamily = org.userRole === MemberRole.SUPERADMIN;
 
   return (

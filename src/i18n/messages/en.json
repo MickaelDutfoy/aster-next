@@ -204,6 +204,10 @@
       "items122": [
         "Notification emails now include a link to open Aster.",
         "Added a field to filter animals, organization members, and foster locations by name."
+      ],
+      "items123": [
+        "Added the \"Deceased\" status for animals.",
+        "The creator of a foster location can edit it even if they are not a member."
       ]
     }
   },
@@ -218,8 +222,10 @@
       "M": "Male",
       "F": "Female"
     },
-    "bornOn": "born on ",
-    "neuteredSuffix": ", neutered",
+    "bornOn": "Born on ",
+    "neuteredSuffix": "Neutered",
+    "notNeuteredSuffix": "Not neutered",
+    "colorLabel": "Color: ",
     "legalIdLabel": "ID:",
     "detailedLegalIdLabel": "Identification number:",
     "findLocationLabel": "Found at:",
@@ -250,10 +256,12 @@
     "listTitle": "Animals registered for {orgName} ({count}):",
     "none": "No animals registered.",
     "toggleAdopted": "Show adopted animals ({count})",
+    "toggleDeceased": "Show deceased animals ({count})",
     "status": {
       "UNHOSTED": "Waiting for placement",
       "FOSTERED": "In a foster location",
-      "ADOPTED": "Adopted"
+      "ADOPTED": "Adopted",
+      "DECEASED": "Deceased"
     },
     "fosterFamilyLabel": "Foster location: ",
     "toggleAdoption": "Show adoption information",

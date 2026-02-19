@@ -14,6 +14,8 @@ export const generateUserPassiveNotifications = async (user: Member) => {
   const relatedAnimals: Animal[] = await getAnimalsRelatedToUser(user.id);
 
   for (const animal of relatedAnimals) {
+    if (animal.status === AnimalStatus.DECEASED) continue;
+
     if (
       isOlderThan(animal.birthDate, NEUTRALIZE_REMINDER_DAYS) &&
       ['Chat', 'Cat', 'Katt'].includes(animal.species) &&
