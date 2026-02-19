@@ -23,6 +23,7 @@ export type Family = {
   hasChildren: boolean;
   otherAnimals: string | null;
   orgId: number;
+  createdByMemberId: number;
   members: MemberOfFamily[];
 };
 

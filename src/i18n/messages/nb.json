@@ -204,6 +204,10 @@
       "items122": [
         "Varslings-e-poster inneholder nå en lenke for å åpne Aster.",
         "Et felt for å filtrere dyr, organisasjonsmedlemmer og omsorgssteder etter navn er lagt til."
+      ],
+      "items123": [
+        "Statusen \"Død\" er lagt til for dyr.",
+        "Oppretteren av et omsorgssted kan redigere det selv om vedkommende ikke er medlem."
       ]
     }
   },
@@ -218,8 +222,10 @@
       "M": "Hann",
       "F": "Hunn"
     },
-    "bornOn": "født ",
-    "neuteredSuffix": ", kastrert/sterilisert",
+    "bornOn": "Født ",
+    "neuteredSuffix": "Sterilisert",
+    "notNeuteredSuffix": "Ikke sterilisert",
+    "colorLabel": "Farge : ",
     "legalIdLabel": "ID:",
     "detailedLegalIdLabel": "Identifikasjonsnummer:",
     "findLocationLabel": "Funnet ved:",
@@ -250,6 +256,7 @@
     "listTitle": "Registrerte dyr for {orgName} ({count}):",
     "none": "Ingen dyr registrert.",
     "toggleAdopted": "Vis adopterte dyr ({count})",
+    "toggleDeceased": "Vis døde dyr ({count})",
     "status": {
       "UNHOSTED": "Venter på plassering",
       "FOSTERED": "I et omsorgssted",
@@ -269,7 +276,8 @@
     "tabs": {
       "general": "Generelt",
       "health": "Helse",
-      "adoption": "Adopsjon"
+      "adoption": "Adopsjon",
+      "DECEASED": "Død"
     },
     "fields": {
       "namePlaceholder": "Navn *",

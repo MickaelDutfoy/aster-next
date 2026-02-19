@@ -40,6 +40,7 @@ export const getFamilyById = async (id: number | null): Promise<Family | null> =
     hasChildren: family.hasChildren,
     otherAnimals: family.otherAnimals,
     orgId: family.orgId,
+    createdByMemberId: family.createdByMemberId,
     members: family.familyMembers.map(({ member }) => {
       const orgMembership = member.memberOrganizations.find(
         (memOrg) => memOrg.orgId === family.orgId,

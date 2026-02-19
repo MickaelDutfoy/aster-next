@@ -281,6 +281,7 @@ export const AnimalForm = ({
                 <option value={AnimalStatus.UNHOSTED}>{t('animals.status.UNHOSTED')}</option>
                 <option value={AnimalStatus.FOSTERED}>{t('animals.status.FOSTERED')}</option>
                 <option value={AnimalStatus.ADOPTED}>{t('animals.status.ADOPTED')}</option>
+                <option value={AnimalStatus.DECEASED}>{t('animals.status.DECEASED')}</option>
               </select>
             </div>
             <div className={`labeled-select ` + clsx(status === 'FOSTERED' ? '' : 'disabled')}>
@@ -320,7 +321,6 @@ export const AnimalForm = ({
           <div className="health-tab">
             <p>{t('animals.healthActsTitle')}</p>
 
-            {/* LISTE des soins */}
             {healthActsDraft.length === 0 ? (
               <p className="no-health-data">{t('animals.healthActsNone')}</p>
             ) : (
@@ -349,7 +349,6 @@ export const AnimalForm = ({
               </ul>
             )}
 
-            {/* AJOUT inline */}
             <p>{t('animals.addHealthAct')}</p>
             <div className="add-act">
               <select

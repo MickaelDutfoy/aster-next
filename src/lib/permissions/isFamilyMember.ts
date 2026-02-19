@@ -31,7 +31,12 @@ export const isFamilyMember = async (
     where: { familyId_memberId: { familyId, memberId: user.id } },
   });
 
-  if (!link) {
+  const family = await prisma.family.findUnique({
+    where: { id: familyId },
+    select: { createdByMemberId: true },
+  });
+
+  if (!link && user.id !== family?.createdByMemberId) {
     return {
       validation: { ok: false, status: 'error', message: 'toasts.notAllowed' },
       org: null,

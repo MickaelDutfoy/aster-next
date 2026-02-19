@@ -15,6 +15,7 @@ enum AnimalStatus {
   UNHOSTED
   FOSTERED
   ADOPTED
+  DECEASED
 }
 
 model Animal {
@@ -95,7 +96,7 @@ model Family {
   hasChildren       Boolean  @default(false)
   otherAnimals      String?
   orgId             Int      @map("organization_id")
-  createdByMemberId Int? // remove nullable once every family has a creator
+  createdByMemberId Int
   createdAt         DateTime @default(now())
 
   animals       Animal[]
