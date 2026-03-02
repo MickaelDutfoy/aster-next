@@ -9,7 +9,7 @@ export const markAllAsRead = async (): Promise<ActionValidation> => {
   const guard = await isUser();
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   const userId = guard.user.id;

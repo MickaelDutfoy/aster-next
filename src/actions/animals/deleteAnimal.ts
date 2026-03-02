@@ -11,7 +11,7 @@ export const deleteAnimal = async (animalId: number): Promise<ActionValidation> 
   });
 
   if (!animal) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   const guard = await isOrgSuperAdmin(animal.orgId);
@@ -23,6 +23,6 @@ export const deleteAnimal = async (animalId: number): Promise<ActionValidation> 
     return { ok: true, status: 'success', message: 'toasts.animalDelete' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

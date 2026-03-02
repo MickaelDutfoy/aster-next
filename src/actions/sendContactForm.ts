@@ -8,7 +8,7 @@ export const sendContactForm = async (formData: FormData): Promise<ActionValidat
   const guard = await isUser();
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   const user = guard.user;

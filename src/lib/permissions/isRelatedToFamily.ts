@@ -19,7 +19,7 @@ export const isRelatedToFamily = async (
   const org: Organization | null = await getSelectedOrg(user);
   if (!org)
     return {
-      validation: { ok: false, status: 'error', message: 'toasts.genericError' },
+      validation: { ok: false, status: 'error', message: 'toasts.errorGeneric' },
       org: null,
       user: null,
     };
@@ -31,7 +31,7 @@ export const isRelatedToFamily = async (
 
   if (!family) {
     return {
-      validation: { ok: false, status: 'error', message: 'toasts.genericError' },
+      validation: { ok: false, status: 'error', message: 'toasts.errorGeneric' },
       org: null,
       user: null,
     };

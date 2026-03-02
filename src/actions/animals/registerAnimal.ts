@@ -12,7 +12,7 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   const guard = await isOrgMember();
   if (!guard.validation.ok) return guard.validation;
   if (!guard.org || !guard.user)
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
 
   const org = guard.org;
   const user = guard.user;
@@ -107,6 +107,6 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
     return { ok: true, status: 'success', message: 'toasts.animalAdd' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

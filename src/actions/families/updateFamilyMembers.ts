@@ -25,7 +25,7 @@ export const updateFamilyMembers = async (
   const previousMembersIds = previousMembers.map((link) => link.memberId);
 
   if (!family) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   const adminGuard = await isOrgAdmin(family.orgId);
@@ -116,6 +116,6 @@ export const updateFamilyMembers = async (
     return { ok: true, status: 'success', message: 'toasts.modifySuccess' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

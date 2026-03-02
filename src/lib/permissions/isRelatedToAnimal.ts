@@ -21,7 +21,7 @@ export const isRelatedToAnimal = async (
 
   if (!animal) {
     return {
-      validation: { ok: false, status: 'error', message: 'toasts.genericError' },
+      validation: { ok: false, status: 'error', message: 'toasts.errorGeneric' },
       user: null,
     };
   }

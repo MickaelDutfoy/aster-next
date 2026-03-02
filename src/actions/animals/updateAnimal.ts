@@ -16,7 +16,7 @@ export const updateAnimal = async (
   const guard = await isRelatedToAnimal(animalId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   const user = guard.user;
@@ -152,6 +152,6 @@ export const updateAnimal = async (
     return { ok: true, status: 'success', message: 'toasts.modifySuccess' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

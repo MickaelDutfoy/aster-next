@@ -3,46 +3,58 @@
 import { sendEmail } from '@/lib/email';
 import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
 import { prisma } from '@/lib/prisma';
-import { ActionValidation, MemberOfOrg, Organization } from '@/lib/types';
+import { ActionValidation } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { getTranslations } from 'next-intl/server';
 import { revalidatePath } from 'next/cache';
 
 export const approveOrgRequest = async (
-  member: MemberOfOrg,
-  org: Organization,
+  memberId: number,
+  orgId: number,
   locale: string,
 ): Promise<ActionValidation> => {
   const t = await getTranslations({ locale, namespace: 'emails' });
 
-  const guard = await isOrgAdmin(org.id);
+  const guard = await isOrgAdmin(orgId);
   if (!guard.validation.ok) return guard.validation;
+
+  const org = await prisma.organization.findUnique({
+    where: { id: orgId },
+    select: { name: true },
+  });
+  const orgName = org ? org.name : '';
 
   try {
     await prisma.$transaction(async (prismaTransaction) => {
       await prismaTransaction.memberOrganization.update({
-        where: { memberId_orgId: { memberId: member.id, orgId: org.id } },
+        where: { memberId_orgId: { memberId, orgId: orgId } },
         data: { status: MemberStatus.VALIDATED },
       });
 
       await prismaTransaction.notification.create({
         data: {
-          memberId: member.id,
+          memberId,
           messageKey: 'notifications.organizations.approvedRequest',
           messageParams: {
-            orgName: org.name,
+            orgName,
           },
-          href: `/organizations/${org.id}`,
+          href: `/organizations/${orgId}`,
         },
       });
     });
 
-    await sendEmail({
-      to: member.email,
-      subject: t('orgRequestApproved.subject', { orgName: org.name }),
-      html: `
+    const member = await prisma.member.findUnique({
+      where: { id: memberId },
+      select: { email: true },
+    });
+
+    if (member) {
+      await sendEmail({
+        to: member.email,
+        subject: t('orgRequestApproved.subject', { orgName }),
+        html: `
             <p>${t('common.hello')}</p>
-            <p>${t('orgRequestApproved.content1', { orgName: org.name })}</p>
+            <p>${t('orgRequestApproved.content1', { orgName })}</p>
             <p>${t('orgRequestApproved.content2')}</p>
             <p>${t('orgRequestApproved.content3')}</p>
             <p style="text-align: center">
@@ -62,7 +74,8 @@ export const approveOrgRequest = async (
             </p>
             <p>${t('common.footer')}</p>
           `,
-    });
+      });
+    }
 
     revalidatePath('/organizations');
 

@@ -13,7 +13,7 @@ export const registerFamily = async (
   const guard = await isOrgMember();
   if (!guard.validation.ok) return guard.validation;
   if (!guard.org || !guard.user) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   const orgId = guard.org.id;
@@ -50,6 +50,6 @@ export const registerFamily = async (
     return { ok: true, status: 'success', message: 'toasts.familyAdd' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

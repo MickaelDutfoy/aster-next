@@ -21,7 +21,7 @@ export const isOrgMember = async (): Promise<{
   const org: Organization | null = await getSelectedOrg(user);
   if (!org)
     return {
-      validation: { ok: false, status: 'error', message: 'toasts.genericError' },
+      validation: { ok: false, status: 'error', message: 'toasts.errorGeneric' },
       org: null,
       user: null,
     };

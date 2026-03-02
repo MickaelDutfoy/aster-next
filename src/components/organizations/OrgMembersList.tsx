@@ -71,7 +71,7 @@ export const OrgMembersList = ({
   }, [openMenuMemberId]);
 
   const handleApproveRequest = async (member: MemberOfOrg, org: Organization, locale: string) => {
-    const res = await approveOrgRequest(member, org, locale);
+    const res = await approveOrgRequest(member.id, org.id, locale);
     setOpenMenuMemberId(null);
     setActionConfirm(null);
     showToast({

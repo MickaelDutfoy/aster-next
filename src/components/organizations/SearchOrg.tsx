@@ -49,7 +49,7 @@ export const SearchOrg = () => {
 
     setIsLoading(true);
     try {
-      const res = await joinOrg(pickedOrg, locale);
+      const res = await joinOrg(pickedOrg.id, locale);
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,

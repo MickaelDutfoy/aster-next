@@ -39,6 +39,6 @@ export const deleteOrg = async (orgId: number, formData: FormData): Promise<Acti
     return { ok: true, status: 'success', message: 'toasts.orgEditSuccess' };
   } catch (err) {
     console.error(err);
-    return { ok: false, message: 'toasts.genericError' };
+    return { ok: false, message: 'toasts.errorGeneric' };
   }
 };

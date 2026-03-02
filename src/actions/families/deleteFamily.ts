@@ -12,13 +12,13 @@ export const deleteFamily = async (familyId: number): Promise<ActionValidation> 
   });
 
   if (!family) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   const guard = await isOrgSuperAdmin(family.orgId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
   try {
@@ -32,6 +32,6 @@ export const deleteFamily = async (familyId: number): Promise<ActionValidation> 
     return { ok: true, status: 'success', message: 'toasts.familyDelete' };
   } catch (err) {
     console.error(err);
-    return { ok: false, status: 'error', message: 'toasts.genericError' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };
