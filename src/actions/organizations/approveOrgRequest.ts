@@ -25,22 +25,20 @@ export const approveOrgRequest = async (
   const orgName = org ? org.name : '';
 
   try {
-    await prisma.$transaction(async (prismaTransaction) => {
-      await prismaTransaction.memberOrganization.update({
-        where: { memberId_orgId: { memberId, orgId: orgId } },
-        data: { status: MemberStatus.VALIDATED },
-      });
+    await prisma.memberOrganization.update({
+      where: { memberId_orgId: { memberId, orgId: orgId } },
+      data: { status: MemberStatus.VALIDATED },
+    });
 
-      await prismaTransaction.notification.create({
-        data: {
-          memberId,
-          messageKey: 'notifications.organizations.approvedRequest',
-          messageParams: {
-            orgName,
-          },
-          href: `/organizations/${orgId}`,
+    await prisma.notification.create({
+      data: {
+        memberId,
+        messageKey: 'notifications.organizations.approvedRequest',
+        messageParams: {
+          orgName,
         },
-      });
+        href: `/organizations/${orgId}`,
+      },
     });
 
     const member = await prisma.member.findUnique({
