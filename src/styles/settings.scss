@@ -54,6 +54,10 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid var(--button);
+  border-bottom: 1px solid var(--button);
 
   .lang-change,
   .theme-select,
@@ -62,5 +66,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+.install-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  h4 {
+    text-align: center;
   }
 }

@@ -1,6 +1,6 @@
 import { Install } from '@/components/main/Install';
 import { InstallProvider } from '@/components/tools/InstallProvider';
-import '@/styles/privacy.scss';
+import '@/styles/install.scss';
 
 const InstallPage = () => {
   return (

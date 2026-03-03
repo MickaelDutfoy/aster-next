@@ -1,5 +1,6 @@
 'use client';
 
+import { isAppInstalled } from '@/lib/utils/isAppInstalled';
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 type BeforeInstallPromptEvent = Event & {
@@ -15,20 +16,14 @@ type InstallPromptContextValue = {
 
 const InstallPromptContext = createContext<InstallPromptContextValue | null>(null);
 
-function computeIsInstalled() {
-  return (
-    window.matchMedia?.('(display-mode: standalone)')?.matches ||
-    // @ts-expect-error - iOS Safari
-    window.navigator.standalone === true
-  );
-}
+
 
 export function InstallProvider({ children }: { children: React.ReactNode }) {
   const [bipEvent, setBipEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
-    setIsInstalled(computeIsInstalled());
+    setIsInstalled(isAppInstalled());
 
     const onBip = (e: Event) => {
       e.preventDefault?.();

@@ -4,15 +4,21 @@ import { markIntroSeen } from '@/actions/intro/markIntroSeen';
 import { LanguageSelector } from '@/components/settings/LanguageSelector';
 import { useRouter } from '@/i18n/routing';
 import { Language } from '@/lib/types';
+import { isAppInstalled } from '@/lib/utils/isAppInstalled';
 import '@/styles/intro.scss';
 import { useLocale, useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Intro = () => {
   const locale = useLocale() as Language;
   const t = useTranslations();
-    const router = useRouter();
+  const router = useRouter();
   const [step, setStep] = useState(0);
+  const [installed, setInstalled] = useState(false);
+
+  useEffect(() => {
+    setInstalled(isAppInstalled());
+  }, []);
 
   const detectEnv = () => {
     const ua = navigator.userAgent || '';
@@ -29,6 +35,17 @@ export const Intro = () => {
     return `intent://${withoutScheme}#Intent;scheme=https;package=com.android.chrome;end`;
   };
 
+  const openInstallPage = () => {
+    const { isAndroid, isFirefox } = detectEnv();
+
+    if (isAndroid && isFirefox) {
+      const target = new URL(`/${locale}/install`, window.location.origin).toString();
+      window.location.href = buildIntentUrl(target);
+      return;
+    }
+
+    router.push('/install');
+  };
 
   const nextFrame = () => {
     if (step < 4) {
@@ -36,25 +53,6 @@ export const Intro = () => {
     } else {
       markIntroSeen(locale);
     }
-  };
-
-  const openInstallPage = () => {
-    const { isAndroid, isFirefox } = detectEnv();
-
-    console.log('click!', isAndroid, isFirefox);
-
-    const installPath = `/${locale}/install`;
-
-    if (isAndroid && isFirefox) {
-      // Ouvre Chrome directement sur /install
-      const target = new URL(installPath, window.location.origin).toString();
-      window.location.href = buildIntentUrl(target);
-      return;
-    }
-
-    console.log('go', installPath);
-
-    router.push('/install');
   };
 
   return (
@@ -68,12 +66,14 @@ export const Intro = () => {
               {t('intro.see')}
             </button>
           </div>
-          {/* <div>
-            <h4>{t('install.prompt')}</h4>
-            <button className="main-button" onClick={openInstallPage}>
-              {t('install.routeButton')}
-            </button>
-          </div> */}
+          {!installed && (
+            <div>
+              <h4>{t('install.prompt')}</h4>
+              <button className="main-button" onClick={openInstallPage}>
+                {t('install.routeButton')}
+              </button>
+            </div>
+          )}
         </>
       )}
       {step === 1 && (
