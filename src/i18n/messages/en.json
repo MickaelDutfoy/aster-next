@@ -78,6 +78,20 @@
     "whatsNextParagraph3": "The application is constantly evolving, with new features regularly planned!",
     "whatsNextQuestion": "So, shall we get started?"
   },
+  "install": {
+    "prompt": "Would you like to install Aster on your mobile device?",
+    "routeButton": "View instructions",
+    "title": "Install Aster on your mobile device",
+    "disclaimer1": "Aster can be installed as an application on your smartphone.",
+    "disclaimer2": "Installation only takes a few seconds, and the application will always stay up to date automatically.",
+    "disclaimer3": "This allows Aster to run independently from Google or Apple stores, without any loss of quality.",
+    "alreadyInstalled": "Installation unavailable. Is Aster already installed?",
+    "cantInstallToast": "Open Aster in Chrome (Android) or Safari (iPhone) to install it.",
+    "copiedToClipboard": "Link copied. Open Chrome and paste it if needed.",
+    "openInChrome": "Open https://aster-pearl.vercel.app/install in Chrome to install.",
+    "isAlreadyInstalled": "Aster is already installed",
+    "launchInstall": "Install Aster"
+  },
   "auth": {
     "emailLabel": "Email:",
     "passwordLabel": "Password:",

@@ -78,6 +78,20 @@
     "whatsNextParagraph3": "Applikasjonen er i stadig utvikling, med nye funksjoner jevnlig på vei!",
     "whatsNextQuestion": "Skal vi komme i gang?"
   },
+  "install": {
+    "prompt": "Vil du installere Aster på mobilen din?",
+    "routeButton": "Se instruksjoner",
+    "title": "Installer Aster på mobilen din",
+    "disclaimer1": "Aster kan installeres som en applikasjon på smarttelefonen din.",
+    "disclaimer2": "Installasjonen tar bare noen sekunder, og applikasjonen vil alltid holde seg automatisk oppdatert.",
+    "disclaimer3": "Dette gjør at Aster kan fungere uavhengig av Google- eller Apple-butikker, uten tap av kvalitet.",
+    "alreadyInstalled": "Installasjon ikke tilgjengelig. Er Aster allerede installert?",
+    "cantInstallToast": "Åpne Aster i Chrome (Android) eller Safari (iPhone) for å installere.",
+    "copiedToClipboard": "Lenken er kopiert. Åpne Chrome og lim den inn ved behov.",
+    "openInChrome": "Åpne https://aster-pearl.vercel.app/install i Chrome for å installere.",
+    "isAlreadyInstalled": "Aster er allerede installert",
+    "launchInstall": "Installer Aster"
+  },
   "auth": {
     "emailLabel": "E-post:",
     "passwordLabel": "Passord:",
