@@ -161,6 +161,12 @@ h3 {
   font-size: 0.8rem;
 }
 
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: default;
+}
+
 [aria-busy='true'] {
   opacity: 0.6;
   pointer-events: none;

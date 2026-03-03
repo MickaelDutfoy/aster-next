@@ -3,6 +3,7 @@
 import { Language } from '@/lib/types';
 import clsx from 'clsx';
 import { useLocale, useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
 import { useInstallPrompt } from '../tools/InstallProvider';
 import { showToast } from '../tools/ToastProvider';
 
@@ -22,6 +23,22 @@ export const InstallAsterButton = () => {
   const env = detectEnv();
 
   const { bipEvent, isInstalled, markInstalled } = useInstallPrompt();
+  const [isInstalledSomewhere, setIsInstalledSomewhere] = useState(false);
+
+  useEffect(() => {
+    const run = async () => {
+      try {
+        if ('getInstalledRelatedApps' in navigator) {
+          // @ts-expect-error - not in standard TS lib yet
+          const apps = await navigator.getInstalledRelatedApps();
+          if (Array.isArray(apps) && apps.length > 0) setIsInstalledSomewhere(true);
+        }
+      } catch {}
+    };
+    run();
+  }, []);
+
+  const disableInstall = isInstalled || isInstalledSomewhere;
 
   const openInChromeAndroid = () => {
     const intent = `intent://aster-pearl.vercel.app/${locale}/install#Intent;scheme=https;package=com.android.chrome;end`;
@@ -33,7 +50,7 @@ export const InstallAsterButton = () => {
   };
 
   const installAster = async () => {
-    if (isInstalled) return;
+    if (disableInstall) return;
 
     if (bipEvent) {
       await bipEvent.prompt();
@@ -54,17 +71,20 @@ export const InstallAsterButton = () => {
       return;
     }
 
-    showToast({ status: 'error', message: t('install.cantInstallToast') });
+    showToast({
+      status: disableInstall ? 'info' : 'error',
+      message: disableInstall ? t('install.alreadyInstalled') : t('install.cantInstallToast'),
+    });
   };
 
   return (
     <button
       type="button"
-      className={'main-button ' + clsx(isInstalled && 'disabled')}
+      className={'main-button ' + clsx(disableInstall && 'disabled')}
       onClick={installAster}
-      disabled={isInstalled}
+      disabled={disableInstall}
     >
-      {isInstalled ? t('install.isAlreadyInstalled') : t('install.launchInstall')}
+      {disableInstall ? t('install.isAlreadyInstalled') : t('install.launchInstall')}
     </button>
   );
 };
