@@ -21,8 +21,6 @@ export const login = async (formData: FormData): Promise<ActionValidation> => {
       password: user.password,
     });
 
-
-
     return { ok: true, status: 'success' };
   } catch (err: any) {
     console.error(err);
