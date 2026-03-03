@@ -66,6 +66,6 @@ export function InstallProvider({ children }: { children: React.ReactNode }) {
 
 export function useInstallPrompt() {
   const ctx = useContext(InstallPromptContext);
-  if (!ctx) throw new Error('useInstallPrompt must be used within InstallPromptProvider');
+  if (!ctx) throw new Error('useInstallPrompt must be used within InstallProvider');
   return ctx;
 }

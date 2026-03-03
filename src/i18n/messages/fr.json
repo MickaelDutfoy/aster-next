@@ -64,6 +64,7 @@
   },
   "intro": {
     "selectLanguage": "Sélectionnez la langue :",
+    "see": "Voir l'intro",
     "welcomeTitle": "Bienvenue sur Aster !",
     "welcomeSubtitle": "« Aider ceux qui aident. »",
     "whyTitle": "Pourquoi faire ?",
@@ -77,6 +78,10 @@
     "whatsNextParagraph2": "Aster veut aider sans contraindre, c'est pourquoi la plupart des informations sont optionnelles : à vous de choisir celles qui comptent pour vous.",
     "whatsNextParagraph3": "L'application est en constante évolution et de nouvelles fonctionnalités sont sans cesse au programme !",
     "whatsNextQuestion": "Alors, on commence ?"
+  },
+  "install": {
+    "prompt": "Vous voulez installer Aster sur votre mobile ?",
+    "routeButton": "Voir les instructions"
   },
   "auth": {
     "emailLabel": "E-mail :",

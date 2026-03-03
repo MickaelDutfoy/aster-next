@@ -2,6 +2,7 @@
 
 import { markIntroSeen } from '@/actions/intro/markIntroSeen';
 import { LanguageSelector } from '@/components/settings/LanguageSelector';
+import { useRouter } from '@/i18n/routing';
 import { Language } from '@/lib/types';
 import '@/styles/intro.scss';
 import { useLocale, useTranslations } from 'next-intl';
@@ -10,7 +11,24 @@ import { useState } from 'react';
 export const Intro = () => {
   const locale = useLocale() as Language;
   const t = useTranslations();
+    const router = useRouter();
   const [step, setStep] = useState(0);
+
+  const detectEnv = () => {
+    const ua = navigator.userAgent || '';
+    const isAndroid = /Android/.test(ua);
+    const isFirefox = /Firefox\//.test(ua);
+    const isFirefoxIOS = /FxiOS\//.test(ua);
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+
+    return { isAndroid, isFirefox, isFirefoxIOS, isIOS };
+  };
+
+  const buildIntentUrl = (targetHttpsUrl: string) => {
+    const withoutScheme = targetHttpsUrl.replace(/^https?:\/\//, '');
+    return `intent://${withoutScheme}#Intent;scheme=https;package=com.android.chrome;end`;
+  };
+
 
   const nextFrame = () => {
     if (step < 4) {
@@ -20,16 +38,43 @@ export const Intro = () => {
     }
   };
 
+  const openInstallPage = () => {
+    const { isAndroid, isFirefox } = detectEnv();
+
+    console.log('click!', isAndroid, isFirefox);
+
+    const installPath = `/${locale}/install`;
+
+    if (isAndroid && isFirefox) {
+      // Ouvre Chrome directement sur /install
+      const target = new URL(installPath, window.location.origin).toString();
+      window.location.href = buildIntentUrl(target);
+      return;
+    }
+
+    console.log('go', installPath);
+
+    router.push('/install');
+  };
+
   return (
     <div className="intro">
       {step === 0 && (
-        <div>
-          <h2>{t('intro.selectLanguage')}</h2>
-          <LanguageSelector size={44} />
-          <button className="main-button" onClick={nextFrame}>
-            {t('common.seeMore')}
-          </button>
-        </div>
+        <>
+          <div>
+            <h2>{t('intro.selectLanguage')}</h2>
+            <LanguageSelector size={44} />
+            <button className="main-button" onClick={nextFrame}>
+              {t('intro.see')}
+            </button>
+          </div>
+          {/* <div>
+            <h4>{t('install.prompt')}</h4>
+            <button className="main-button" onClick={openInstallPage}>
+              {t('install.routeButton')}
+            </button>
+          </div> */}
+        </>
       )}
       {step === 1 && (
         <div>

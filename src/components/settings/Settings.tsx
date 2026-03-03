@@ -3,7 +3,6 @@
 import { useRouter } from '@/i18n/routing';
 import { MailQuestionMark } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { InstallAsterButton } from './InstallAsterButton';
 import { LanguageSelector } from './LanguageSelector';
 import { ManageAccount } from './ManageAccount';
 import { ThemeSelector } from './ThemeSelector';
@@ -25,7 +24,6 @@ export const Settings = () => {
           <p>{t('settings.contactIntro')}</p>
           <MailQuestionMark className="link" size={32} onClick={() => router.replace('/contact')} />
         </div>
-        <InstallAsterButton />
       </div>
     </div>
   );
