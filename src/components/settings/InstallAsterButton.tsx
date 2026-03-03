@@ -1,21 +1,7 @@
 'use client';
 
-import clsx from 'clsx';
-import { useEffect, useMemo, useState } from 'react';
-
-type BeforeInstallPromptEvent = Event & {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
-};
-
-function isStandalone() {
-  // iOS Safari + Chromium
-  return (
-    window.matchMedia?.('(display-mode: standalone)')?.matches ||
-    // @ts-expect-error - iOS Safari
-    window.navigator.standalone === true
-  );
-}
+import { useMemo } from 'react';
+import { useInstallPrompt } from '../tools/InstallProvider';
 
 function detectEnv() {
   const ua = navigator.userAgent || '';
@@ -24,46 +10,24 @@ function detectEnv() {
   const isFirefoxIOS = /FxiOS\//.test(ua);
   const isAndroid = /Android/.test(ua);
 
-  const isChromiumAndroid =
-    isAndroid && !isFirefox && /(Chrome|EdgA|Brave|SamsungBrowser)\//.test(ua);
-
-  return { isIOS, isAndroid, isFirefox, isFirefoxIOS, isChromiumAndroid };
+  return { isIOS, isAndroid, isFirefox, isFirefoxIOS };
 }
 
 export function InstallAsterButton() {
-  const [bipEvent, setBipEvent] = useState<BeforeInstallPromptEvent | null>(null);
-  const [installed, setInstalled] = useState(false);
-
+  const { bipEvent, isInstalled, markInstalled } = useInstallPrompt();
   const env = useMemo(() => (typeof window === 'undefined' ? null : detectEnv()), []);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    setInstalled(isStandalone());
-
-    const onBip = (e: Event) => {
-      // Empêche le mini-infobar auto → on contrôle via bouton
-      e.preventDefault?.();
-      setBipEvent(e as BeforeInstallPromptEvent);
-    };
-
-    window.addEventListener('beforeinstallprompt', onBip);
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', onBip);
-    };
-  }, []);
-
   const openInChromeAndroid = () => {
-    const url = 'https://aster-pearl.vercel.app/';
-    const intent = `intent://aster-pearl.vercel.app/#Intent;scheme=https;package=com.android.chrome;end`;
-    // best-effort
+    const url = window.location.href;
+    const withoutScheme = url.replace(/^https?:\/\//, '');
+    const intent = `intent://${withoutScheme}#Intent;scheme=https;package=com.android.chrome;end`;
+
     window.location.href = intent;
-    // fallback: copie URL (si intent échoue silencieusement)
+
     setTimeout(async () => {
       try {
         await navigator.clipboard.writeText(url);
-        alert("Lien copié ✅ Ouvre Chrome et colle-le dans la barre d'adresse.");
+        alert('Lien copié ✅ Ouvre Chrome et colle-le si besoin.');
       } catch {
         alert('Ouvre Chrome et va sur : ' + url);
       }
@@ -71,24 +35,18 @@ export function InstallAsterButton() {
   };
 
   const onClick = async () => {
-    if (installed) return;
+    if (isInstalled) return;
 
-    // Android Chromium installable
     if (bipEvent) {
       await bipEvent.prompt();
       const choice = await bipEvent.userChoice;
-      if (choice.outcome === 'accepted') {
-        setInstalled(true);
-        setBipEvent(null);
-      }
+      if (choice.outcome === 'accepted') markInstalled();
       return;
     }
 
-    // Guidance branches
     if (!env) return;
 
     if (env.isIOS || env.isFirefoxIOS) {
-      // Ici tu peux ouvrir un modal + bouton vers ton PDF
       window.open('/doc/Install_iPhone_FR.pdf', '_blank');
       return;
     }
@@ -98,35 +56,12 @@ export function InstallAsterButton() {
       return;
     }
 
-    // Autres navigateurs: fallback simple
-    alert(
-      "Si le bouton d'installation n'apparaît pas, ouvre Aster dans Chrome (Android) ou Safari (iPhone).",
-    );
+    alert('Ouvre Aster dans Chrome (Android) ou Safari (iPhone) pour l’installer.');
   };
 
-  const label = installed
-    ? 'Aster est déjà installé ✅'
-    : bipEvent
-      ? 'Installer Aster'
-      : 'Installer Aster';
-
   return (
-    <div className="text-with-link">
-      <p>Envie d'une meilleure expérience ?</p>
-      <button
-        type="button"
-        className={'little-button ' + clsx(installed && 'disabled')}
-        onClick={onClick}
-        disabled={installed}
-        style={{
-          padding: '12px 14px',
-          borderRadius: 10,
-          border: '1px solid currentColor',
-          width: '100%',
-        }}
-      >
-        {label}
-      </button>
-    </div>
+    <button type="button" className="little-button" onClick={onClick} disabled={isInstalled}>
+      {isInstalled ? 'Aster est déjà installé ✅' : 'Installer Aster'}
+    </button>
   );
 }
