@@ -16,8 +16,6 @@ type InstallPromptContextValue = {
 
 const InstallPromptContext = createContext<InstallPromptContextValue | null>(null);
 
-
-
 export function InstallProvider({ children }: { children: React.ReactNode }) {
   const [bipEvent, setBipEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstalled, setIsInstalled] = useState(false);
@@ -25,13 +23,19 @@ export function InstallProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setIsInstalled(isAppContext());
 
+    // If something captured it earlier, restore it
+    const cached = (window as any).__ASTER_BIP_EVENT__ as BeforeInstallPromptEvent | null;
+    if (cached) setBipEvent(cached);
+
     const onBip = (e: Event) => {
       e.preventDefault?.();
+      (window as any).__ASTER_BIP_EVENT__ = e;
       setBipEvent(e as BeforeInstallPromptEvent);
     };
 
     const onAppInstalled = () => {
       setIsInstalled(true);
+      (window as any).__ASTER_BIP_EVENT__ = null;
       setBipEvent(null);
     };
 
@@ -50,6 +54,7 @@ export function InstallProvider({ children }: { children: React.ReactNode }) {
       isInstalled,
       markInstalled: () => {
         setIsInstalled(true);
+        (window as any).__ASTER_BIP_EVENT__ = null;
         setBipEvent(null);
       },
     }),

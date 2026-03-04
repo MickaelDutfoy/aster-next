@@ -91,6 +91,7 @@ export const InstallAsterButton = () => {
     if (env.isIOS) {
       if (!env.isSafariIOS) {
         await copyInstallLink();
+        showToast({ status: 'info', message: t('install.openInSafari') });
         return;
       }
 

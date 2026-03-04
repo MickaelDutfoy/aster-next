@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
+import { InstallProvider } from './InstallProvider';
 import { showToast } from './ToastProvider';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -17,7 +18,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         30000,
       );
     }
-  }, []);
+  }, [t]);
 
-  return <>{children}</>;
+  return <InstallProvider>{children}</InstallProvider>;
 }
