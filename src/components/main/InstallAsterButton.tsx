@@ -106,12 +106,16 @@ export const InstallAsterButton = () => {
       return;
     }
 
-    // Final fallback
+    // Final fallback (context-aware)
     await copyInstallLink();
-    showToast({
-      status: 'info',
-      message: disableInstall ? t('install.alreadyInstalled') : t('install.cantInstallToast'),
-    });
+
+    if (env.isAndroid && !env.isFirefox) {
+      // Chrome/Chromium Android but no beforeinstallprompt available
+      showToast({ status: 'info', message: t('install.installNotAvailableNow') });
+      return;
+    }
+
+    showToast({ status: 'info', message: t('install.cantInstallToast') });
   };
 
   return (
@@ -122,7 +126,7 @@ export const InstallAsterButton = () => {
         onClick={installAster}
         disabled={disableInstall}
       >
-        {disableInstall ? t('install.isAlreadyInstalled') : t('install.launchInstall')}
+        {t('install.launchInstall')}
       </button>
 
       <InfoModal open={openIosInstallModal} onClose={() => setOpenIosInstallModal(false)}>
