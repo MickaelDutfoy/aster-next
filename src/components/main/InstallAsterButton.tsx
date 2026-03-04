@@ -129,7 +129,7 @@ export const InstallAsterButton = () => {
         {t('install.launchInstall')}
       </button>
 
-      <InfoModal open={true || openIosInstallModal} onClose={() => setOpenIosInstallModal(false)}>
+      <InfoModal open={openIosInstallModal} onClose={() => setOpenIosInstallModal(false)}>
         <div className="safari-tutorial">
           <h3>{t('install.safariModalTitle')}</h3>
           <p>{t('install.safariModal1')}</p>
