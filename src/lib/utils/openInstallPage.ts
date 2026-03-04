@@ -33,5 +33,5 @@ export function openInstallPage(opts: {
     return;
   }
 
-  push(installPath);
+  push(`/install`);
 }
