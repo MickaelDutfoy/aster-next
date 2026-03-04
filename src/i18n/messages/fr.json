@@ -87,9 +87,9 @@
     "disclaimer2": "L'installation ne prend que quelques secondes et l'application restera toujours à jour automatiquement.",
     "disclaimer3": "Ce choix permet à Aster de fonctionner indépendamment des stores Google ou Apple, sans perte de qualité.",
     "alreadyInstalled": "Installation impossible. Aster serait-il déjà installé ?",
-    "cantInstallToast": "Ouvrez Aster dans Chrome (Android) ou Safari (iPhone) pour l’installer.",
-    "copiedToClipboard": "Lien copié. Ouvrez Chrome et collez-le si besoin.",
-    "openInChrome": "Ouvrez https://aster-pearl.vercel.app/install dans Chrome pour installer.",
+    "openInChrome": "Lien copié. Ouvrez Chrome et collez-le pour installer.",
+    "openInSafari": "Lien copié. Ouvrez Safari et collez-le pour installer.",
+    "cantInstallToast": "Lien copié. Ouvrez Aster dans Chrome (Android) ou Safari (iPhone) pour l’installer.",
     "isAlreadyInstalled": "Aster est déjà installé",
     "launchInstall": "Installer Aster"
   },

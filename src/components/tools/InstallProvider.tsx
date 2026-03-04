@@ -1,6 +1,6 @@
 'use client';
 
-import { isAppInstalled } from '@/lib/utils/isAppInstalled';
+import { isAppContext } from '@/lib/utils/isAppContext';
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 type BeforeInstallPromptEvent = Event & {
@@ -23,7 +23,7 @@ export function InstallProvider({ children }: { children: React.ReactNode }) {
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
-    setIsInstalled(isAppInstalled());
+    setIsInstalled(isAppContext());
 
     const onBip = (e: Event) => {
       e.preventDefault?.();

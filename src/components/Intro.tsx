@@ -4,7 +4,8 @@ import { markIntroSeen } from '@/actions/intro/markIntroSeen';
 import { LanguageSelector } from '@/components/settings/LanguageSelector';
 import { useRouter } from '@/i18n/routing';
 import { Language } from '@/lib/types';
-import { isAppInstalled } from '@/lib/utils/isAppInstalled';
+import { isAppContext } from '@/lib/utils/isAppContext';
+import { openInstallPage } from '@/lib/utils/openInstallPage';
 import '@/styles/intro.scss';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
@@ -17,34 +18,15 @@ export const Intro = () => {
   const [installed, setInstalled] = useState(false);
 
   useEffect(() => {
-    setInstalled(isAppInstalled());
+    setInstalled(isAppContext());
   }, []);
 
-  const detectEnv = () => {
-    const ua = navigator.userAgent || '';
-    const isAndroid = /Android/.test(ua);
-    const isFirefox = /Firefox\//.test(ua);
-    const isFirefoxIOS = /FxiOS\//.test(ua);
-    const isIOS = /iPad|iPhone|iPod/.test(ua);
-
-    return { isAndroid, isFirefox, isFirefoxIOS, isIOS };
-  };
-
-  const buildIntentUrl = (targetHttpsUrl: string) => {
-    const withoutScheme = targetHttpsUrl.replace(/^https?:\/\//, '');
-    return `intent://${withoutScheme}#Intent;scheme=https;package=com.android.chrome;end`;
-  };
-
-  const openInstallPage = () => {
-    const { isAndroid, isFirefox } = detectEnv();
-
-    if (isAndroid && isFirefox) {
-      const target = new URL(`/${locale}/install`, window.location.origin).toString();
-      window.location.href = buildIntentUrl(target);
-      return;
-    }
-
-    router.push('/install');
+  const handleNavigate = () => {
+    openInstallPage({
+      locale,
+      origin: window.location.origin,
+      push: router.push,
+    });
   };
 
   const nextFrame = () => {
@@ -69,7 +51,7 @@ export const Intro = () => {
           {!installed && (
             <div>
               <h4>{t('install.prompt')}</h4>
-              <button className="main-button" onClick={openInstallPage}>
+              <button className="main-button" onClick={handleNavigate}>
                 {t('install.routeButton')}
               </button>
             </div>

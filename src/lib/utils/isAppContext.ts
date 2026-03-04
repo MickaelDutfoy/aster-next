@@ -1,4 +1,4 @@
-export const isAppInstalled = () => {
+export const isAppContext = () => {
   if (typeof window === 'undefined') return false;
 
   return (
