@@ -15,7 +15,7 @@ export const InfoModal = ({
 
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modal force-light" onClick={(e) => e.stopPropagation()}>
         <CircleX className="close" size={32} onClick={onClose} />
         {children}
       </div>

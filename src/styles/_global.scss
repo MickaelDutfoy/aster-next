@@ -244,6 +244,12 @@ textarea {
   }
 }
 
+.modal.force-light {
+  background-color: vars.$isabelline;
+  color: vars.$smoky-black;
+  border-color: vars.$cinereous;
+}
+
 .confirm-modal-content {
   padding: 10px;
 

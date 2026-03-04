@@ -91,7 +91,12 @@
     "openInSafari": "Lien copié. Ouvrez Safari et collez-le pour installer.",
     "cantInstallToast": "Lien copié. Ouvrez Aster dans Chrome (Android) ou Safari (iPhone) pour l’installer.",
     "isAlreadyInstalled": "Aster est déjà installé",
-    "launchInstall": "Installer Aster"
+    "launchInstall": "Installer Aster",
+    "safariModalTitle": "Installer Aster depuis Safari",
+    "safariModal1": "Safari ne peut pas installer Aster automatiquement mais vous pouvez le faire en deux clics.",
+    "safariModal2": "Sans quitter cette page, dans les options en bas, appuyez sur le bouton « Partager ».",
+    "safariModal3": "Parmi les options disponibles, appuyez sur « Ajouter à l'écran d'accueil ».",
+    "safariModal4": "Validez, c'est terminé ! Vous pouvez quitter cette page et utiliser l'application."
   },
   "auth": {
     "emailLabel": "E-mail :",

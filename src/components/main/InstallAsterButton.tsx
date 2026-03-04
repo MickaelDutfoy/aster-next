@@ -2,6 +2,7 @@
 
 import { Language } from '@/lib/types';
 import clsx from 'clsx';
+import { Share, SquarePlus } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { InfoModal } from '../tools/InfoModal';
@@ -110,7 +111,6 @@ export const InstallAsterButton = () => {
     await copyInstallLink();
 
     if (env.isAndroid && !env.isFirefox) {
-      // Chrome/Chromium Android but no beforeinstallprompt available
       showToast({ status: 'info', message: t('install.installNotAvailableNow') });
       return;
     }
@@ -129,8 +129,20 @@ export const InstallAsterButton = () => {
         {t('install.launchInstall')}
       </button>
 
-      <InfoModal open={openIosInstallModal} onClose={() => setOpenIosInstallModal(false)}>
-        <p>coucou modale (iOS Safari install)</p>
+      <InfoModal open={true || openIosInstallModal} onClose={() => setOpenIosInstallModal(false)}>
+        <div className="safari-tutorial">
+          <h3>{t('install.safariModalTitle')}</h3>
+          <p>{t('install.safariModal1')}</p>
+          <div className="text-with-icon">
+            <p>{t('install.safariModal2')}</p>
+            <Share />
+          </div>
+          <div className="text-with-icon">
+            <p>{t('install.safariModal3')}</p>
+            <SquarePlus />
+          </div>
+          <p>{t('install.safariModal4')}</p>
+        </div>
       </InfoModal>
     </>
   );

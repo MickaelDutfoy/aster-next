@@ -85,12 +85,17 @@
     "disclaimer1": "Aster kan installeres som en applikasjon på smarttelefonen din.",
     "disclaimer2": "Installasjonen tar bare noen sekunder, og applikasjonen vil alltid holde seg automatisk oppdatert.",
     "disclaimer3": "Dette gjør at Aster kan fungere uavhengig av Google- eller Apple-butikker, uten tap av kvalitet.",
-    "alreadyInstalled": "Installasjon ikke tilgjengelig. Er Aster allerede installert?",
-    "cantInstallToast": "Åpne Aster i Chrome (Android) eller Safari (iPhone) for å installere.",
-    "copiedToClipboard": "Lenken er kopiert. Åpne Chrome og lim den inn ved behov.",
-    "openInChrome": "Åpne https://aster-pearl.vercel.app/install i Chrome for å installere.",
+    "installNotAvailableNow": "Installasjon ikke tilgjengelig. Er Aster allerede installert?",
+    "openInChrome": "Lenken er kopiert. Åpne Chrome og lim den inn for å installere.",
+    "openInSafari": "Lenken er kopiert. Åpne Safari og lim den inn for å installere.",
+    "cantInstallToast": "Lenken er kopiert. Åpne Aster i Chrome (Android) eller Safari (iPhone) for å installere.",
     "isAlreadyInstalled": "Aster er allerede installert",
-    "launchInstall": "Installer Aster"
+    "launchInstall": "Installer Aster",
+    "safariModalTitle": "Installer Aster fra Safari",
+    "safariModal1": "Safari kan ikke installere Aster automatisk, men du kan gjøre det med to trykk.",
+    "safariModal2": "Uten å forlate denne siden, trykk på \"Del\"-knappen nederst.",
+    "safariModal3": "Bla ned og trykk på \"Legg til på Hjem-skjerm\".",
+    "safariModal4": "Bekreft, så er det ferdig! Du kan nå forlate denne siden og bruke appen."
   },
   "auth": {
     "emailLabel": "E-post:",

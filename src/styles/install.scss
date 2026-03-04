@@ -14,3 +14,20 @@
     margin: 5px;
   }
 }
+
+.safari-tutorial {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .text-with-icon {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    p {
+      flex: 60%;
+    }
+  }
+}
