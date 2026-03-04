@@ -331,6 +331,7 @@
     "animalsInCareLabel": "Animals in care ({count}):",
     "otherAnimalsLabel": "Other animals:",
     "prefillMeLabel": "This is me, use my details:",
+    "noMembers": "No members are currently linked to this location.",
     "membersListTitle": "Location members:",
     "familyMember": "You are a member of this foster location.",
     "manageMembers": "Manage members",

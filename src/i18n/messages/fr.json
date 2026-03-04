@@ -331,6 +331,7 @@
     "animalsInCareLabel": "Animaux en charge ({count}) :",
     "otherAnimalsLabel": "Autres animaux :",
     "prefillMeLabel": "C'est moi, utiliser mes infos :",
+    "noMembers": "Aucun membre n'est actuellement lié à ce lieu.",
     "membersListTitle": "Liste des membres du lieu :",
     "familyMember": "Vous êtes membre de ce lieu d'accueil.",
     "manageMembers": "Gérer les membres",

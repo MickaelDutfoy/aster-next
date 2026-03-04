@@ -91,22 +91,25 @@ export const FamilyDetails = ({
             </Link>
           )}
         </div>
-
-        <div className="family-members-list">
-          <p>{t('families.membersListTitle')}</p>
-          <ul>
-            {family.members.map((member) => (
-              <li key={member.id}>
-                <span>
-                  {member.firstName} {member.lastName}
-                </span>
-                <Link className="action link" href={`/members/${member.id}`}>
-                  <SquareArrowRight size={26} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {family.members.length === 0 ? (
+          <p>{t('families.noMembers')}</p>
+        ) : (
+          <div className="family-members-list">
+            <p>{t('families.membersListTitle')}</p>
+            <ul>
+              {family.members.map((member) => (
+                <li key={member.id}>
+                  <span>
+                    {member.firstName} {member.lastName}
+                  </span>
+                  <Link className="action link" href={`/members/${member.id}`}>
+                    <SquareArrowRight size={26} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {family.hasChildren && <p>{t('families.hasChildren')}</p>}
 

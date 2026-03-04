@@ -331,6 +331,7 @@
     "animalsInCareLabel": "Dyr i omsorg ({count}):",
     "otherAnimalsLabel": "Andre dyr:",
     "prefillMeLabel": "Det er meg, bruk mine opplysninger:",
+    "noMembers": "Ingen medlemmer er for øyeblikket knyttet til dette stedet.",
     "membersListTitle": "Medlemmer ved omsorgsstedet:",
     "familyMember": "Du er medlem av dette omsorgsstedet.",
     "manageMembers": "Administrer medlemmer",
