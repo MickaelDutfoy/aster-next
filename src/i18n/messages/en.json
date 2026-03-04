@@ -227,6 +227,10 @@
       "items123": [
         "Added the \"Deceased\" status for animals.",
         "The creator of a foster location can edit it even if they are not a member."
+      ],
+      "items130": [
+        "Aster can now be installed as an application independently of Google or Apple stores.",
+        "If you downloaded the application from the Play Store, it remains fully functional."
       ]
     }
   },

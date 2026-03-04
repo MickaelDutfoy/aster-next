@@ -227,6 +227,10 @@
       "items123": [
         "Statusen \"Død\" er lagt til for dyr.",
         "Oppretteren av et omsorgssted kan redigere det selv om vedkommende ikke er medlem."
+      ],
+      "items130": [
+        "Aster kan nå installeres som en applikasjon uavhengig av Google- eller Apple-butikker.",
+        "Hvis du lastet ned applikasjonen fra Play Store, fungerer den fortsatt fullt ut."
       ]
     }
   },

@@ -227,6 +227,10 @@
       "items123": [
         "Ajout du statut « Décédé » pour les animaux.",
         "Le créateur d'un lieu d'accueil peut éditer ce lieu même s'il n'en est pas membre."
+      ],
+      "items130": [
+        "Aster peut désormais être installé comme application indépendamment des stores Google ou Apple.",
+        "Si vous avez téléchargé l'application depuis le Play Store, elle reste pleinement fonctionnelle."
       ]
     }
   },
