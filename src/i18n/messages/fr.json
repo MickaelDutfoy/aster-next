@@ -32,7 +32,8 @@
     "accessDenied": "Vous n'avez pas les autorisations pour accéder à cette ressource.",
     "soonToCome": "Cette fonctionnalité sera bientôt disponible.",
     "nameFilter": "Filtrer par nom :",
-    "name": "Nom"
+    "name": "Nom",
+    "date": "Date"
   },
   "toasts": {
     "errorGeneric": "Une erreur est survenue.",
@@ -231,6 +232,11 @@
       "items130": [
         "Aster peut désormais être installé comme application indépendamment des stores Google ou Apple.",
         "Si vous avez téléchargé l'application depuis le Play Store, elle reste pleinement fonctionnelle."
+      ],
+      "items140": [
+        "Il est désormais possible d'enregistrer des pesées dans l'onglet santé en mode édition, puis de visualiser l'évolution dans la fiche de l'animal.",
+        "Le sexe des animaux peut être enregistré comme « Inconnu ».",
+        "Amélioration des notifications de rappels de vaccins. Suite à ce changement, certaines notifications peuvent réapparaître."
       ]
     }
   },
@@ -243,7 +249,8 @@
     "setSpecies": "Précisez",
     "sex": {
       "M": "Mâle",
-      "F": "Femelle"
+      "F": "Femelle",
+      "UNKNOWN": "Inconnu"
     },
     "bornOn": "Né(e) le ",
     "neuteredSuffix": "Stérilisé(e)",
@@ -274,6 +281,14 @@
       "ANTIFLEA": "Antiparasitaire externe"
     },
     "healthNotes": "Autres informations de santé :",
+    "weightEntriesTitle": "Pesées effectuées :",
+    "weightEntriesNone": "Aucune pesée enregistrée pour le moment.",
+    "addWeightEntry": "Ajouter une pesée :",
+    "weightEntry": "Poids en grammes",
+    "weight": "Poids",
+    "weightEvolutionTitle": "Évolution",
+    "weightEvolution": "{grams} g en {days} j",
+    "removeWeightEntry": "Supprimer cette pesée",
     "additionalInfoLabel": "Informations complémentaires :",
     "currentStatusLabel": "Situation actuelle :",
     "listTitle": "Animaux enregistrés pour {orgName} ({count}) :",
@@ -300,7 +315,10 @@
     "tabs": {
       "general": "Général",
       "health": "Santé",
-      "adoption": "Adoption"
+      "adoption": "Adoption",
+      "treatments": "Traitements",
+      "weighings": "Pesées",
+      "tests": "Tests"
     },
     "fields": {
       "namePlaceholder": "Nom *",

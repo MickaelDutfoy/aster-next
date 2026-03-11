@@ -17,7 +17,7 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   const org = guard.org;
   const user = guard.user;
 
-  const { animal, adopter, health } = await parseAnimalData(formData);
+  const { animal, adopter, health, weightEntries } = await parseAnimalData(formData);
 
   if (!animal) {
     return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };
@@ -37,10 +37,19 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
 
       animalId = res.id;
 
-      if (health && health.length > 0) {
+      if (health.length > 0) {
         await prismaTransaction.animalHealthAct.createMany({
           data: health.map((act) => ({
             ...act,
+            animalId,
+          })),
+        });
+      }
+
+      if (weightEntries.length > 0) {
+        await prismaTransaction.animalWeightEntry.createMany({
+          data: weightEntries.map((entry) => ({
+            ...entry,
             animalId,
           })),
         });

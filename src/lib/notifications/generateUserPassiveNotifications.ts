@@ -61,7 +61,7 @@ export const generateUserPassiveNotifications = async (user: Member) => {
         where: {
           memberId_sourceKey: {
             memberId: user.id,
-            sourceKey: `animal:${animal.id}:vax:act:${lastVaxAct.date}`,
+            sourceKey: `animal:${animal.id}:vax:act:${lastVaxAct.date.toISOString().slice(0, 10)}`,
           },
         },
         create: {
@@ -69,7 +69,7 @@ export const generateUserPassiveNotifications = async (user: Member) => {
           messageKey: 'notifications.animals.vaxReminder',
           messageParams: { animalName: animal.name },
           href: `/animals/${animal.id}`,
-          sourceKey: `animal:${animal.id}:vax:act:${lastVaxAct.date}`,
+          sourceKey: `animal:${animal.id}:vax:act:${lastVaxAct.date.toISOString().slice(0, 10)}`,
         },
         update: {},
       });

@@ -177,6 +177,32 @@ header {
   }
 }
 
+.under-tabs {
+  width: 90%;
+  margin: -5px 5% 0 5%;
+  display: flex;
+  justify-content: space-evenly;
+  align-self: center;
+  border: 1px solid var(--button);
+  border-top: none;
+  border-radius: 6px;
+
+  div {
+    cursor: pointer;
+    user-select: none;
+        font-size: 0.9rem;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .active {
+    background-color: var(--emphasized);
+    font-weight: 700;
+    border-bottom: 3px solid var(--link);
+  }
+}
+
 .text-with-link,
 .text-with-link > a {
   display: inline-flex;

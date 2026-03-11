@@ -48,6 +48,7 @@ export type Animal = {
   healthActs?: AnimalHealthAct[];
   information: string | null;
   healthInformation: string | null;
+  weightEntries?: AnimalWeightEntry[];
   familyId: number | null;
   orgId: number;
   createdByMemberId: number;
@@ -75,6 +76,18 @@ export type AnimalHealthDraft = {
   type: AnimalHealthActType;
   date: string;
   isFirst: boolean;
+};
+
+export type AnimalWeightEntry = {
+  id?: number;
+  animalId?: number;
+  date: Date;
+  weightGrams: number;
+};
+
+export type AnimalWeightDraft = {
+  date: string;
+  weightGrams: number;
 };
 
 export type AnimalAdoption = {
