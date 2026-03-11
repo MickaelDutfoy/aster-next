@@ -8,6 +8,7 @@ import {
   Animal,
   AnimalHealthActType,
   AnimalHealthDraft,
+  AnimalWeightDraft,
   FamilyWithoutDetails,
   Member,
 } from '@/lib/types';
@@ -32,6 +33,7 @@ export const AnimalForm = ({
   const router = useRouter();
 
   const [form, setForm] = useState<'general' | 'health' | 'adopt'>('general');
+  const [healthForm, setHealthForm] = useState<'treatments' | 'weight' | 'tests'>('treatments');
   const [isNeutered, setIsNeutered] = useState<boolean>(animal?.isNeutered ?? false);
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
   const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
@@ -52,6 +54,22 @@ export const AnimalForm = ({
     type: 'VACCINATION',
     date: '',
     isFirst: false,
+  });
+
+  const [weightEntriesDraft, setWeightEntriesDraft] = useState<AnimalWeightDraft[]>(() => {
+    const entries = animal?.weightEntries ?? [];
+    return entries
+      .slice()
+      .sort((a, b) => b.date.getTime() - a.date.getTime())
+      .map((entry) => ({
+        date: entry.date.toISOString().slice(0, 10),
+        weightGrams: entry.weightGrams,
+      }));
+  });
+
+  const [newWeightEntry, setNewWeightEntry] = useState<AnimalWeightDraft>({
+    date: '',
+    weightGrams: 0,
   });
 
   const commonSpecies = t.raw('animals.commonSpecies') as string[];
@@ -90,11 +108,31 @@ export const AnimalForm = ({
       return next;
     });
 
-    setNewAct((prev) => ({ ...prev, dateISO: '', isFirst: false }));
+    setNewAct((prev) => ({ ...prev, date: '', isFirst: false }));
   };
 
   const removeHealthActAt = (index: number) => {
     setHealthActsDraft((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const addWeightEntry = () => {
+    if (!newWeightEntry.date || !newWeightEntry.weightGrams) return;
+
+    setWeightEntriesDraft((prev) => {
+      const next = [...prev, newWeightEntry];
+
+      next.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+      return next;
+    });
+
+    setNewWeightEntry({
+      date: '',
+      weightGrams: 0,
+    });
+  };
+
+  const removeWeightEntryAt = (index: number) => {
+    setWeightEntriesDraft((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -102,9 +140,7 @@ export const AnimalForm = ({
     const formData = new FormData(e.currentTarget);
 
     const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
-
     const otherSpeciesFromForm = formData.get('animalSpecies')?.toString().trim();
-
     const speciesToSave =
       selectedSpeciesFromForm === 'other'
         ? otherSpeciesFromForm || undefined
@@ -158,6 +194,9 @@ export const AnimalForm = ({
 
   return (
     <>
+      <p className="notice" style={{ padding: '10px 0' }}>
+        {t('common.requiredFieldsNotice')}
+      </p>
       <div className="tabs">
         <div className={clsx(form === 'general' && 'active')} onClick={() => setForm('general')}>
           {t('animals.tabs.general')}
@@ -169,9 +208,6 @@ export const AnimalForm = ({
           {t('animals.tabs.adoption')}
         </div>
       </div>
-      <p className="notice" style={{ paddingTop: '5px' }}>
-        {t('common.requiredFieldsNotice')}
-      </p>
       <form onSubmit={handleSubmit}>
         <div hidden={form !== 'general'}>
           <div className="form-tab">
@@ -229,6 +265,7 @@ export const AnimalForm = ({
               <select name="animalSex" defaultValue={animal?.sex}>
                 <option value={Sex.M}>{t('animals.sex.M')}</option>
                 <option value={Sex.F}>{t('animals.sex.F')}</option>
+                <option value={Sex.UNKNOWN}>{t('animals.sex.UNKNOWN')}</option>
               </select>
               <p>{t('animals.fields.neuteredQuestion')}</p>
               <input
@@ -318,100 +355,201 @@ export const AnimalForm = ({
           </div>
         </div>
         <div hidden={form !== 'health'}>
-          <div className="health-tab">
-            <p>{t('animals.healthActsTitle')}</p>
-
-            {healthActsDraft.length === 0 ? (
-              <p className="no-health-data">{t('animals.healthActsNone')}</p>
-            ) : (
-              <ul className="acts-list">
-                {healthActsDraft.map((act, index) => (
-                  <li key={`${act.type}-${act.date}-${index}`}>
-                    <span>{t(`animals.healthActTypes.${act.type}`)}</span>
-
-                    <span>
-                      <span>{displayDate(new Date(act.date))}</span>{' '}
-                      {act.isFirst && (
-                        <span style={{ opacity: 0.85 }}>({t('animals.healthActFirstShort')})</span>
-                      )}
-                    </span>
-
-                    <button
-                      className="action link"
-                      type="button"
-                      onClick={() => removeHealthActAt(index)}
-                      aria-label={t('animals.removeHealthAct')}
-                    >
-                      <Trash2 style={{ transform: 'translateY(2px)' }} size={26} />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            <p>{t('animals.addHealthAct')}</p>
-            <div className="add-act">
-              <select
-                value={newAct.type}
-                onChange={(e) =>
-                  setNewAct((prev) => ({ ...prev, type: e.target.value as AnimalHealthActType }))
-                }
-              >
-                <option value="VACCINATION">{t('animals.healthActTypes.VACCINATION')}</option>
-                <option value="DEWORM">{t('animals.healthActTypes.DEWORM')}</option>
-                <option value="ANTIFLEA">{t('animals.healthActTypes.ANTIFLEA')}</option>
-              </select>
-
-              <label>
-                {t('animals.healthActFirstPrompt')}
-                <input
-                  type="checkbox"
-                  style={{ marginLeft: 10 }}
-                  checked={newAct.isFirst}
-                  onChange={(e) => setNewAct((prev) => ({ ...prev, isFirst: e.target.checked }))}
-                />
-              </label>
-
-              <input
-                type="date"
-                value={newAct.date}
-                onChange={(e) => setNewAct((prev) => ({ ...prev, date: e.target.value }))}
-              />
-              <button
-                className="little-button"
-                type="button"
-                onClick={addHealthAct}
-                disabled={!newAct.date}
-                style={{ margin: 0, cursor: newAct.date ? 'pointer' : 'not-allowed' }}
-              >
-                {t('common.add')}
-              </button>
+          <div className="under-tabs">
+            <div
+              className={clsx(healthForm === 'treatments' && 'active')}
+              onClick={() => setHealthForm('treatments')}
+            >
+              {t('animals.tabs.treatments')}
             </div>
+            <div
+              className={clsx(healthForm === 'weight' && 'active')}
+              onClick={() => setHealthForm('weight')}
+            >
+              {t('animals.tabs.weighings')}
+            </div>
+            {/* <div
+              className={clsx(healthForm === 'tests' && 'active')}
+              onClick={() => setHealthForm('tests')}
+            >
+              {t('animals.tabs.tests')}
+            </div> */}
+          </div>
+          <div className="health-tab">
+            <div hidden={healthForm !== 'treatments'}>
+              <div className="treatments">
+                <p>{t('animals.healthActsTitle')}</p>
+                {healthActsDraft.length === 0 ? (
+                  <p className="no-health-data">{t('animals.healthActsNone')}</p>
+                ) : (
+                  <ul className="acts-list">
+                    {healthActsDraft.map((act, index) => (
+                      <li key={`${act.type}-${act.date}-${index}`}>
+                        <span>{t(`animals.healthActTypes.${act.type}`)}</span>
 
-            {healthActsDraft.map(
-              // hidden input for FormData + server actions
-              (act, index) => (
-                <div key={`hidden-${index}`} style={{ display: 'none' }}>
-                  <input name="healthType[]" value={act.type} readOnly />
-                  <input name="healthDate[]" value={act.date} readOnly />
-                  <input name="healthIsFirst[]" value={act.isFirst ? '1' : '0'} readOnly />
+                        <span>
+                          <span>{displayDate(new Date(act.date))}</span>{' '}
+                          {act.isFirst && (
+                            <span style={{ opacity: 0.85 }}>
+                              ({t('animals.healthActFirstShort')})
+                            </span>
+                          )}
+                        </span>
+
+                        <button
+                          className="action link"
+                          type="button"
+                          onClick={() => removeHealthActAt(index)}
+                          aria-label={t('animals.removeHealthAct')}
+                        >
+                          <Trash2 style={{ transform: 'translateY(2px)' }} size={26} />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <p>{t('animals.addHealthAct')}</p>
+                <div className="add-act">
+                  <select
+                    value={newAct.type}
+                    onChange={(e) =>
+                      setNewAct((prev) => ({
+                        ...prev,
+                        type: e.target.value as AnimalHealthActType,
+                      }))
+                    }
+                  >
+                    <option value="VACCINATION">{t('animals.healthActTypes.VACCINATION')}</option>
+                    <option value="DEWORM">{t('animals.healthActTypes.DEWORM')}</option>
+                    <option value="ANTIFLEA">{t('animals.healthActTypes.ANTIFLEA')}</option>
+                  </select>
+
+                  <label>
+                    {t('animals.healthActFirstPrompt')}
+                    <input
+                      type="checkbox"
+                      style={{ marginLeft: 10 }}
+                      checked={newAct.isFirst}
+                      onChange={(e) =>
+                        setNewAct((prev) => ({ ...prev, isFirst: e.target.checked }))
+                      }
+                    />
+                  </label>
+
+                  <input
+                    type="date"
+                    value={newAct.date}
+                    onChange={(e) => setNewAct((prev) => ({ ...prev, date: e.target.value }))}
+                  />
+                  <button
+                    className="little-button"
+                    type="button"
+                    onClick={addHealthAct}
+                    disabled={!newAct.date}
+                    style={{ margin: 0, cursor: newAct.date ? 'pointer' : 'not-allowed' }}
+                  >
+                    {t('common.add')}
+                  </button>
                 </div>
-              ),
-            )}
+                {healthActsDraft.map(
+                  // hidden input for FormData + server actions
+                  (act, index) => (
+                    <div key={`hidden-${index}`} style={{ display: 'none' }}>
+                      <input name="healthType[]" value={act.type} readOnly />
+                      <input name="healthDate[]" value={act.date} readOnly />
+                      <input name="healthIsFirst[]" value={act.isFirst ? '1' : '0'} readOnly />
+                    </div>
+                  ),
+                )}
+                <p>{t('animals.healthNotes')}</p>
+                <textarea
+                  name="healthInformation"
+                  defaultValue={animal?.healthInformation ?? ''}
+                  onInput={(e) => {
+                    const el = e.currentTarget;
+                    el.style.height = 'auto';
+                    el.style.height = `${el.scrollHeight}px`;
+                  }}
+                />
+              </div>
+            </div>
+            <div hidden={healthForm !== 'weight'}>
+              <div className="treatments">
+                <p>{t('animals.weightEntriesTitle')}</p>
+                {weightEntriesDraft.length === 0 ? (
+                  <p className="no-health-data">{t('animals.weightEntriesNone')}</p>
+                ) : (
+                  <ul className="acts-list">
+                    {weightEntriesDraft.map((entry, index) => (
+                      <li key={`${entry.date}-${entry.weightGrams}-${index}`}>
+                        <span>{entry.weightGrams} g</span>
 
-            <p>{t('animals.healthNotes')}</p>
-            <textarea
-              name="healthInformation"
-              defaultValue={animal?.healthInformation ?? ''}
-              onInput={(e) => {
-                const el = e.currentTarget;
-                el.style.height = 'auto';
-                el.style.height = `${el.scrollHeight}px`;
-              }}
-            />
+                        <span>{displayDate(new Date(entry.date))}</span>
+
+                        <button
+                          className="action link"
+                          type="button"
+                          onClick={() => removeWeightEntryAt(index)}
+                          aria-label={t('animals.removeWeightEntry')}
+                        >
+                          <Trash2 style={{ transform: 'translateY(2px)' }} size={26} />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <p>{t('animals.addWeightEntry')}</p>
+                <div className="add-act">
+                  <input
+                    type="number"
+                    min={0}
+                    step={1}
+                    placeholder={t('animals.weightEntry')}
+                    value={newWeightEntry.weightGrams || ''}
+                    onChange={(e) =>
+                      setNewWeightEntry((prev) => ({
+                        ...prev,
+                        weightGrams: Number(e.target.value),
+                      }))
+                    }
+                  />
+
+                  <input
+                    type="date"
+                    value={newWeightEntry.date}
+                    onChange={(e) =>
+                      setNewWeightEntry((prev) => ({ ...prev, date: e.target.value }))
+                    }
+                  />
+
+                  <button
+                    className="little-button vert-center"
+                    type="button"
+                    onClick={addWeightEntry}
+                    disabled={!newWeightEntry.date || !newWeightEntry.weightGrams}
+                    style={{
+                      margin: 0,
+                      cursor:
+                        newWeightEntry.date && newWeightEntry.weightGrams
+                          ? 'pointer'
+                          : 'not-allowed',
+                    }}
+                  >
+                    {t('common.add')}
+                  </button>
+                </div>
+
+                {weightEntriesDraft.map((entry, index) => (
+                  <div key={`hidden-weight-${index}`} style={{ display: 'none' }}>
+                    <input name="weightDate[]" value={entry.date} readOnly />
+                    <input name="weightGrams[]" value={entry.weightGrams} readOnly />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div hidden={healthForm !== 'tests'}></div>
           </div>
         </div>
-
         <div hidden={form !== 'adopt'}>
           <div className="form-tab">
             <input

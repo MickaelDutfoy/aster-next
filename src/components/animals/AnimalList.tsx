@@ -76,7 +76,7 @@ export const AnimalsList = ({
                           textShadow: '1px 1px 0px #777',
                         }}
                       >
-                        {animal.sex === 'M' ? '♂' : '♀'}
+                        {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
                       </span>
                     </span>
                     <span>{displayAge(animal.birthDate, locale)}</span>
@@ -111,7 +111,7 @@ export const AnimalsList = ({
                           textShadow: '1px 1px 0px #777',
                         }}
                       >
-                        {animal.sex === 'M' ? '♂' : '♀'}
+                        {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
                       </span>
                     </span>
                     <span>{displayAge(animal.birthDate, locale)}</span>
@@ -146,7 +146,7 @@ export const AnimalsList = ({
                           textShadow: '1px 1px 0px #777',
                         }}
                       >
-                        {animal.sex === 'M' ? '♂' : '♀'}
+                        {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
                       </span>
                     </span>
                     <span style={{ opacity: 0 }}>{displayAge(animal.birthDate, locale)}</span>

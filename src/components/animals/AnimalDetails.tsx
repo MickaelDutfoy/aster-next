@@ -49,8 +49,38 @@ export const AnimalDetails = ({
   const dewormHistory = acts.filter((act) => act.type === 'DEWORM').slice(1);
   const antifleaHistory = acts.filter((act) => act.type === 'ANTIFLEA').slice(1);
 
+  const sortedWeightEntries = (animal.weightEntries ?? [])
+    .slice()
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
+
   const hasHealthInfo =
-    !!lastVaxAct || !!lastDewormAct || !!lastAntifleaAct || !!animal.healthInformation;
+    !!lastVaxAct ||
+    !!lastDewormAct ||
+    !!lastAntifleaAct ||
+    sortedWeightEntries.length > 0 ||
+    !!animal.healthInformation;
+
+  const diffDays = (current: Date, previous: Date) => {
+    const msPerDay = 1000 * 60 * 60 * 24;
+    return Math.round((current.getTime() - previous.getTime()) / msPerDay);
+  };
+
+  const getWeightEvolution = (index: number) => {
+    const current = sortedWeightEntries[index];
+    const previous = sortedWeightEntries[index + 1];
+
+    if (!current || !previous) return '';
+
+    const gramsDiff = current.weightGrams - previous.weightGrams;
+    if (gramsDiff === 0) return '';
+
+    const daysDiff = diffDays(current.date, previous.date);
+
+    return t('animals.weightEvolution', {
+      grams: gramsDiff > 0 ? `+${gramsDiff}` : gramsDiff.toString(),
+      days: daysDiff,
+    });
+  };
 
   return (
     <>
@@ -82,7 +112,7 @@ export const AnimalDetails = ({
               textShadow: '1px 1px 0px #777',
             }}
           >
-            {animal.sex === 'M' ? ' ♂' : ' ♀'}
+            {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
           </span>
         </h3>
         {animal.color && <p>{t('animals.colorLabel') + animal.color}.</p>}
@@ -191,6 +221,32 @@ export const AnimalDetails = ({
                     </ul>
                   </div>
                 )}
+              </div>
+            )}
+
+            {sortedWeightEntries.length > 0 && (
+              <div className="animal-details-section">
+                <h4>{t('animals.weightEntriesTitle')}</h4>
+
+                <table className="animal-weight">
+                  <thead>
+                    <tr>
+                      <th>{t('common.date')}</th>
+                      <th>{t('animals.weight')}</th>
+                      <th>{t('animals.weightEvolutionTitle')}</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {sortedWeightEntries.map((entry, index) => (
+                      <tr key={`${entry.date.toISOString()}-${entry.weightGrams}-${index}`}>
+                        <td>{displayDate(entry.date)}</td>
+                        <td>{`${entry.weightGrams} g`}</td>
+                        <td>{getWeightEvolution(index)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
 

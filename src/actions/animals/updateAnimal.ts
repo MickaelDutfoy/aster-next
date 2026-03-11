@@ -21,7 +21,7 @@ export const updateAnimal = async (
 
   const user = guard.user;
 
-  const { animal, adopter, health } = await parseAnimalData(formData, animalId);
+  const { animal, adopter, health, weightEntries } = await parseAnimalData(formData);
 
   if (!animal) {
     return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };
@@ -43,10 +43,25 @@ export const updateAnimal = async (
         },
       });
 
-      if (health && health.length > 0) {
+      if (health.length > 0) {
         await prismaTransaction.animalHealthAct.createMany({
           data: health.map((act) => ({
             ...act,
+            animalId,
+          })),
+        });
+      }
+
+      await prismaTransaction.animalWeightEntry.deleteMany({
+        where: {
+          animalId,
+        },
+      });
+
+      if (weightEntries.length > 0) {
+        await prismaTransaction.animalWeightEntry.createMany({
+          data: weightEntries.map((entry) => ({
+            ...entry,
             animalId,
           })),
         });

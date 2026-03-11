@@ -1,8 +1,8 @@
 import { isAdoptionSheetEmpty } from '@/lib/animals/isAdoptionSheetEmpty';
-import { AnimalHealthAct } from '@/lib/types';
+import { AnimalHealthAct, AnimalWeightEntry } from '@/lib/types';
 import { AnimalStatus, Sex } from '@prisma/client';
 
-export const parseAnimalData = async (formData: FormData, animalId?: number) => {
+export const parseAnimalData = async (formData: FormData) => {
   const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
   const otherSpeciesFromForm = formData.get('animalSpecies')?.toString().trim();
 
@@ -37,13 +37,33 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     const dateISO = healthDates[i];
     const isFirst = healthIsFirsts[i] === '1';
 
-    // ignore lignes vides / broken
     if (!type || !dateISO) continue;
 
     const date = new Date(dateISO);
     if (Number.isNaN(date.getTime())) continue;
 
     health.push({ type, date, isFirst });
+  }
+
+  const weightDates = formData.getAll('weightDate[]').map((value) => value.toString());
+  const weightGramsValues = formData.getAll('weightGrams[]').map((value) => value.toString());
+
+  const weightEntries: AnimalWeightEntry[] = [];
+  const weightCount = Math.min(weightDates.length, weightGramsValues.length);
+
+  for (let i = 0; i < weightCount; i++) {
+    const dateISO = weightDates[i];
+    const weightGrams = Number(weightGramsValues[i]);
+
+    if (!dateISO || Number.isNaN(weightGrams) || weightGrams <= 0) continue;
+
+    const date = new Date(dateISO);
+    if (Number.isNaN(date.getTime())) continue;
+
+    weightEntries.push({
+      date,
+      weightGrams,
+    });
   }
 
   let animalFamilyId: number | null = null;
@@ -110,5 +130,10 @@ export const parseAnimalData = async (formData: FormData, animalId?: number) => 
     familyId: animalFamilyId,
   };
 
-  return { animal, adopter: isAdoptionSheetEmpty(adopter) ? undefined : adopter, health };
+  return {
+    animal,
+    adopter: isAdoptionSheetEmpty(adopter) ? undefined : adopter,
+    health,
+    weightEntries,
+  };
 };

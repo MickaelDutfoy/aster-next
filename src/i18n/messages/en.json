@@ -32,7 +32,8 @@
     "accessDenied": "You do not have permission to access this resource.",
     "soonToCome": "This feature will be available soon.",
     "nameFilter": "Filter by name:",
-    "name": "Name"
+    "name": "Name",
+    "date": "Date"
   },
   "toasts": {
     "errorGeneric": "An error occurred.",
@@ -231,6 +232,11 @@
       "items130": [
         "Aster can now be installed as an application independently of Google or Apple stores.",
         "If you downloaded the application from the Play Store, it remains fully functional."
+      ],
+      "items140": [
+        "It is now possible to record weighings in the health tab while editing, and then view the change directly on the animal's page.",
+        "An animal's sex can now be recorded as \"Unknown\".",
+        "Improved vaccine reminder notifications. Following this change, some notifications may reappear."
       ]
     }
   },
@@ -243,7 +249,8 @@
     "setSpecies": "Please specify",
     "sex": {
       "M": "Male",
-      "F": "Female"
+      "F": "Female",
+      "UNKNOWN": "Unknown"
     },
     "bornOn": "Born on ",
     "neuteredSuffix": "Neutered",
@@ -274,6 +281,14 @@
       "ANTIFLEA": "External antiparasitic"
     },
     "healthNotes": "Additional health information:",
+    "weightEntriesTitle": "Recorded weighings:",
+    "weightEntriesNone": "No weighings recorded yet.",
+    "addWeightEntry": "Add a weighing:",
+    "weightEntry": "Weight in grams",
+    "weight": "Weight",
+    "weightEvolutionTitle": "Change",
+    "weightEvolution": "{grams} g in {days} d",
+    "removeWeightEntry": "Remove this weighing",
     "additionalInfoLabel": "Additional information:",
     "currentStatusLabel": "Current status:",
     "listTitle": "Animals registered for {orgName} ({count}):",
@@ -300,7 +315,10 @@
     "tabs": {
       "general": "General",
       "health": "Health",
-      "adoption": "Adoption"
+      "adoption": "Adoption",
+      "treatments": "Treatments",
+      "weighings": "Weighings",
+      "tests": "Tests"
     },
     "fields": {
       "namePlaceholder": "Name *",

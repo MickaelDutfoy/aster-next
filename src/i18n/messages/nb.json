@@ -32,7 +32,8 @@
     "accessDenied": "Du har ikke tilgang til denne ressursen.",
     "soonToCome": "Denne funksjonen blir snart tilgjengelig.",
     "nameFilter": "Filtrer etter navn:",
-    "name": "Navn"
+    "name": "Navn",
+    "date": "Dato"
   },
   "toasts": {
     "errorGeneric": "Noe gikk galt.",
@@ -231,6 +232,11 @@
       "items130": [
         "Aster kan nå installeres som en applikasjon uavhengig av Google- eller Apple-butikker.",
         "Hvis du lastet ned applikasjonen fra Play Store, fungerer den fortsatt fullt ut."
+      ],
+      "items140": [
+        "Det er nå mulig å registrere veiinger i helsefanen i redigeringsmodus, og deretter se utviklingen på dyrets side.",
+        "Dyrets kjønn kan nå registreres som \"Ukjent\".",
+        "Forbedring av vaksinepåminnelser. Etter denne endringen kan enkelte varsler dukke opp igjen."
       ]
     }
   },
@@ -243,7 +249,8 @@
     "setSpecies": "Vennligst spesifiser",
     "sex": {
       "M": "Hann",
-      "F": "Hunn"
+      "F": "Hunn",
+      "UNKNOWN": "Ukjent"
     },
     "bornOn": "Født ",
     "neuteredSuffix": "Sterilisert",
@@ -274,6 +281,14 @@
       "ANTIFLEA": "Utvortes parasittbehandling"
     },
     "healthNotes": "Andre helseopplysninger:",
+    "weightEntriesTitle": "Registrerte veiinger:",
+    "weightEntriesNone": "Ingen veiinger registrert ennå.",
+    "addWeightEntry": "Legg til en veiing:",
+    "weightEntry": "Vekt i gram",
+    "weight": "Vekt",
+    "weightEvolutionTitle": "Endring",
+    "weightEvolution": "{grams} g på {days} d",
+    "removeWeightEntry": "Fjern denne veiingen",
     "additionalInfoLabel": "Tilleggsinformasjon:",
     "currentStatusLabel": "Nåværende status:",
     "listTitle": "Registrerte dyr for {orgName} ({count}):",
@@ -283,7 +298,8 @@
     "status": {
       "UNHOSTED": "Venter på plassering",
       "FOSTERED": "I et omsorgssted",
-      "ADOPTED": "Adoptert"
+      "ADOPTED": "Adoptert",
+      "DECEASED": "Død"
     },
     "fosterFamilyLabel": "Omsorgssted: ",
     "toggleAdoption": "Vis adopsjonsinformasjon",
@@ -300,7 +316,9 @@
       "general": "Generelt",
       "health": "Helse",
       "adoption": "Adopsjon",
-      "DECEASED": "Død"
+      "treatments": "Behandlinger",
+      "weighings": "Veiinger",
+      "tests": "Tester"
     },
     "fields": {
       "namePlaceholder": "Navn *",
