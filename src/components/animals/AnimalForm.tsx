@@ -8,12 +8,13 @@ import {
   Animal,
   AnimalHealthActType,
   AnimalHealthDraft,
+  AnimalTestDraft,
   AnimalWeightDraft,
   FamilyWithoutDetails,
   Member,
 } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
-import { AnimalStatus, Sex } from '@prisma/client';
+import { AnimalStatus, AnimalTestResult, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
 import { Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -38,6 +39,7 @@ export const AnimalForm = ({
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
   const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
   const [isLoading, setIsLoading] = useState(false);
+
   const [healthActsDraft, setHealthActsDraft] = useState<AnimalHealthDraft[]>(() => {
     const acts = animal?.healthActs ?? [];
     return acts
@@ -70,6 +72,24 @@ export const AnimalForm = ({
   const [newWeightEntry, setNewWeightEntry] = useState<AnimalWeightDraft>({
     date: '',
     weightGrams: 0,
+  });
+
+  const [testEntriesDraft, setTestEntriesDraft] = useState<AnimalTestDraft[]>(() => {
+    const entries = animal?.testEntries ?? [];
+    return entries
+      .slice()
+      .sort((a, b) => b.date.getTime() - a.date.getTime())
+      .map((entry) => ({
+        testName: entry.testName,
+        result: entry.result as AnimalTestResult,
+        date: entry.date.toISOString().slice(0, 10),
+      }));
+  });
+
+  const [newTestEntry, setNewTestEntry] = useState<AnimalTestDraft>({
+    testName: '',
+    result: 'NEGATIVE',
+    date: '',
   });
 
   const commonSpecies = t.raw('animals.commonSpecies') as string[];
@@ -133,6 +153,27 @@ export const AnimalForm = ({
 
   const removeWeightEntryAt = (index: number) => {
     setWeightEntriesDraft((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const addTestEntry = () => {
+    if (!newTestEntry.testName.trim() || !newTestEntry.date) return;
+
+    setTestEntriesDraft((prev) => {
+      const next = [...prev, newTestEntry];
+
+      next.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+      return next;
+    });
+
+    setNewTestEntry({
+      testName: '',
+      result: 'NEGATIVE',
+      date: '',
+    });
+  };
+
+  const removeTestEntryAt = (index: number) => {
+    setTestEntriesDraft((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -368,12 +409,12 @@ export const AnimalForm = ({
             >
               {t('animals.tabs.weighings')}
             </div>
-            {/* <div
+            <div
               className={clsx(healthForm === 'tests' && 'active')}
               onClick={() => setHealthForm('tests')}
             >
               {t('animals.tabs.tests')}
-            </div> */}
+            </div>
           </div>
           <div className="health-tab">
             <div hidden={healthForm !== 'treatments'}>
@@ -547,7 +588,91 @@ export const AnimalForm = ({
                 ))}
               </div>
             </div>
-            <div hidden={healthForm !== 'tests'}></div>
+            <div hidden={healthForm !== 'tests'}>
+              <div className="treatments">
+                <p>{t('animals.testEntriesTitle')}</p>
+                {testEntriesDraft.length === 0 ? (
+                  <p className="no-health-data">{t('animals.testEntriesNone')}</p>
+                ) : (
+                  <ul className="acts-list">
+                    {testEntriesDraft.map((entry, index) => (
+                      <li key={`${entry.testName}-${entry.result}-${entry.date}-${index}`}>
+                        <span>
+                          <span>{entry.testName} </span>
+                          <span style={{ opacity: 0.75 }}>
+                            ({t(`animals.testResults.${entry.result}`)})
+                          </span>
+                        </span>
+                        <span>{displayDate(new Date(entry.date))}</span>{' '}
+                        <button
+                          className="action link"
+                          type="button"
+                          onClick={() => removeTestEntryAt(index)}
+                          aria-label={t('animals.removeTestEntry')}
+                        >
+                          <Trash2 style={{ transform: 'translateY(2px)' }} size={26} />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <p>{t('animals.addTestEntry')}</p>
+                <div className="add-act">
+                  <input
+                    type="text"
+                    value={newTestEntry.testName}
+                    placeholder={t('animals.testName')}
+                    onChange={(e) =>
+                      setNewTestEntry((prev) => ({
+                        ...prev,
+                        testName: e.target.value,
+                      }))
+                    }
+                  />
+
+                  <select
+                    value={newTestEntry.result}
+                    onChange={(e) =>
+                      setNewTestEntry((prev) => ({
+                        ...prev,
+                        result: e.target.value as AnimalTestResult,
+                      }))
+                    }
+                  >
+                    <option value="NEGATIVE">{t('animals.testResults.NEGATIVE')}</option>
+                    <option value="POSITIVE">{t('animals.testResults.POSITIVE')}</option>
+                  </select>
+
+                  <input
+                    type="date"
+                    value={newTestEntry.date}
+                    onChange={(e) => setNewTestEntry((prev) => ({ ...prev, date: e.target.value }))}
+                  />
+
+                  <button
+                    className="little-button"
+                    type="button"
+                    onClick={addTestEntry}
+                    disabled={!newTestEntry.testName || !newTestEntry.date}
+                    style={{
+                      margin: 0,
+                      cursor:
+                        newTestEntry.testName && newTestEntry.date ? 'pointer' : 'not-allowed',
+                    }}
+                  >
+                    {t('common.add')}
+                  </button>
+                </div>
+
+                {testEntriesDraft.map((entry, index) => (
+                  <div key={`hidden-test-${index}`} style={{ display: 'none' }}>
+                    <input name="testName[]" value={entry.testName} readOnly />
+                    <input name="testDate[]" value={entry.date} readOnly />
+                    <input name="testResult[]" value={entry.result} readOnly />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
         <div hidden={form !== 'adopt'}>

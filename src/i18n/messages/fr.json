@@ -237,6 +237,9 @@
         "Il est désormais possible d'enregistrer des pesées dans l'onglet santé en mode édition, puis de visualiser l'évolution dans la fiche de l'animal.",
         "Le sexe des animaux peut être enregistré comme « Inconnu ».",
         "Amélioration des notifications de rappels de vaccins. Suite à ce changement, certaines notifications peuvent réapparaître."
+      ],
+      "items141": [
+        "Il est désormais possible d'enregistrer des résultats de tests, de la même façon que les vaccins, déparasitages et pesées."
       ]
     }
   },
@@ -289,6 +292,16 @@
     "weightEvolutionTitle": "Évolution",
     "weightEvolution": "{grams} g en {days} j",
     "removeWeightEntry": "Supprimer cette pesée",
+    "testEntriesTitle": "Tests effectués :",
+    "testEntriesSheetTitle": "Tests et résultats :",
+    "testEntriesNone": "Aucun test enregistré pour le moment.",
+    "addTestEntry": "Ajouter un test",
+    "removeTestEntry": "Supprimer ce test",
+    "testName": "Nom du test",
+    "testResults": {
+      "NEGATIVE": "Négatif",
+      "POSITIVE": "Positif"
+    },
     "additionalInfoLabel": "Informations complémentaires :",
     "currentStatusLabel": "Situation actuelle :",
     "listTitle": "Animaux enregistrés pour {orgName} ({count}) :",

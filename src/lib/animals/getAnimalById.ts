@@ -8,6 +8,7 @@ export const getAnimalById = async (id: number): Promise<Animal | null> => {
         adoption: true,
         healthActs: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
         weightEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
+        testEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
       },
     });
 

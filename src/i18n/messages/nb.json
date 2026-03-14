@@ -237,6 +237,9 @@
         "Det er nå mulig å registrere veiinger i helsefanen i redigeringsmodus, og deretter se utviklingen på dyrets side.",
         "Dyrets kjønn kan nå registreres som \"Ukjent\".",
         "Forbedring av vaksinepåminnelser. Etter denne endringen kan enkelte varsler dukke opp igjen."
+      ],
+      "items141": [
+        "Det er nå mulig å registrere testresultater, på samme måte som vaksiner, ormekurer og veiinger."
       ]
     }
   },
@@ -289,6 +292,16 @@
     "weightEvolutionTitle": "Endring",
     "weightEvolution": "{grams} g på {days} d",
     "removeWeightEntry": "Fjern denne veiingen",
+    "testEntriesTitle": "Registrerte tester:",
+    "testEntriesSheetTitle": "Tester og resultater:",
+    "testEntriesNone": "Ingen tester registrert ennå.",
+    "addTestEntry": "Legg til en test",
+    "removeTestEntry": "Fjern denne testen",
+    "testName": "Testnavn",
+    "testResults": {
+      "NEGATIVE": "Negativ",
+      "POSITIVE": "Positiv"
+    },
     "additionalInfoLabel": "Tilleggsinformasjon:",
     "currentStatusLabel": "Nåværende status:",
     "listTitle": "Registrerte dyr for {orgName} ({count}):",

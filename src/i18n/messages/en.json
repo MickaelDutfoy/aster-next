@@ -237,6 +237,9 @@
         "It is now possible to record weighings in the health tab while editing, and then view the change directly on the animal's page.",
         "An animal's sex can now be recorded as \"Unknown\".",
         "Improved vaccine reminder notifications. Following this change, some notifications may reappear."
+      ],
+      "items141": [
+        "It is now possible to record test results, just like vaccines, deworming treatments, and weighings."
       ]
     }
   },
@@ -289,6 +292,16 @@
     "weightEvolutionTitle": "Change",
     "weightEvolution": "{grams} g in {days} d",
     "removeWeightEntry": "Remove this weighing",
+    "testEntriesTitle": "Recorded tests:",
+    "testEntriesSheetTitle": "Tests and results:",
+    "testEntriesNone": "No tests recorded yet.",
+    "addTestEntry": "Add a test",
+    "removeTestEntry": "Remove this test",
+    "testName": "Test name",
+    "testResults": {
+      "NEGATIVE": "Negative",
+      "POSITIVE": "Positive"
+    },
     "additionalInfoLabel": "Additional information:",
     "currentStatusLabel": "Current status:",
     "listTitle": "Animals registered for {orgName} ({count}):",
