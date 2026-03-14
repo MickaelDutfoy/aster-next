@@ -1,4 +1,4 @@
-import { AnimalStatus, MemberRole, MemberStatus, Sex } from '@prisma/client';
+import { AnimalStatus, AnimalTestResult, MemberRole, MemberStatus, Sex } from '@prisma/client';
 
 export type Language = 'fr' | 'en' | 'nb';
 
@@ -45,10 +45,11 @@ export type Animal = {
   birthDate: Date;
   isNeutered: boolean;
   status: AnimalStatus;
-  healthActs?: AnimalHealthAct[];
   information: string | null;
+  healthActs?: AnimalHealthAct[];
   healthInformation: string | null;
   weightEntries?: AnimalWeightEntry[];
+  testEntries?: AnimalTestEntry[];
   familyId: number | null;
   orgId: number;
   createdByMemberId: number;
@@ -88,6 +89,20 @@ export type AnimalWeightEntry = {
 export type AnimalWeightDraft = {
   date: string;
   weightGrams: number;
+};
+
+export type AnimalTestEntry = {
+  id?: number;
+  animalId?: number;
+  testName: string;
+  date: Date;
+  result: AnimalTestResult;
+};
+
+export type AnimalTestDraft = {
+  testName: string;
+  date: string;
+  result: AnimalTestResult;
 };
 
 export type AnimalAdoption = {

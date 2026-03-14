@@ -1,6 +1,6 @@
 import { isAdoptionSheetEmpty } from '@/lib/animals/isAdoptionSheetEmpty';
-import { AnimalHealthAct, AnimalWeightEntry } from '@/lib/types';
-import { AnimalStatus, Sex } from '@prisma/client';
+import { AnimalHealthAct, AnimalTestEntry, AnimalWeightEntry } from '@/lib/types';
+import { AnimalStatus, AnimalTestResult, Sex } from '@prisma/client';
 
 export const parseAnimalData = async (formData: FormData) => {
   const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
@@ -63,6 +63,30 @@ export const parseAnimalData = async (formData: FormData) => {
     weightEntries.push({
       date,
       weightGrams,
+    });
+  }
+
+  const testNames = formData.getAll('testName[]').map((value) => value.toString());
+  const testDates = formData.getAll('testDate[]').map((value) => value.toString());
+  const testResults = formData.getAll('testResult[]').map((value) => value.toString());
+
+  const tests: AnimalTestEntry[] = [];
+  const testsCount = Math.min(testNames.length, testDates.length, testResults.length);
+
+  for (let i = 0; i < testsCount; i++) {
+    const testName = testNames[i]?.trim();
+    const dateISO = testDates[i];
+    const result = testResults[i] as AnimalTestResult;
+
+    if (!testName || !dateISO || !result) continue;
+
+    const date = new Date(dateISO);
+    if (Number.isNaN(date.getTime())) continue;
+
+    tests.push({
+      testName,
+      date,
+      result,
     });
   }
 
@@ -135,5 +159,6 @@ export const parseAnimalData = async (formData: FormData) => {
     adopter: isAdoptionSheetEmpty(adopter) ? undefined : adopter,
     health,
     weightEntries,
+    tests,
   };
 };

@@ -53,11 +53,16 @@ export const AnimalDetails = ({
     .slice()
     .sort((a, b) => b.date.getTime() - a.date.getTime());
 
+    const sortedTests = (animal.testEntries ?? [])
+      .slice()
+      .sort((a, b) => b.date.getTime() - a.date.getTime());
+
   const hasHealthInfo =
     !!lastVaxAct ||
     !!lastDewormAct ||
     !!lastAntifleaAct ||
     sortedWeightEntries.length > 0 ||
+    sortedTests.length > 0 ||
     !!animal.healthInformation;
 
   const diffDays = (current: Date, previous: Date) => {
@@ -239,7 +244,7 @@ export const AnimalDetails = ({
 
                   <tbody>
                     {sortedWeightEntries.map((entry, index) => (
-                      <tr key={`${entry.date.toISOString()}-${entry.weightGrams}-${index}`}>
+                      <tr key={entry.id}>
                         <td>{displayDate(entry.date)}</td>
                         <td>{`${entry.weightGrams} g`}</td>
                         <td>{getWeightEvolution(index)}</td>
@@ -247,6 +252,19 @@ export const AnimalDetails = ({
                     ))}
                   </tbody>
                 </table>
+              </div>
+            )}
+
+            {sortedTests.length > 0 && (
+              <div className="animal-details-section">
+                <h4>{t('animals.testEntriesSheetTitle')}</h4>
+                <ul className="test-list">
+                  {sortedTests.map((test) => (
+                    <li key={test.id}>
+                      {`${test.testName} (${t(`animals.testResults.${test.result}`)}) — ${displayDate(test.date)}`}
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
 
