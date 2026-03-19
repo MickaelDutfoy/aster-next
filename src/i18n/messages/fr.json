@@ -86,13 +86,15 @@
     "title": "Installer Aster sur votre mobile",
     "disclaimer1": "Aster peut être installé comme une application sur votre smartphone.",
     "disclaimer2": "L'installation ne prend que quelques secondes et l'application restera toujours à jour automatiquement.",
-    "disclaimer3": "Ce choix permet à Aster de fonctionner indépendamment des stores Google ou Apple, sans perte de qualité.",
     "installNotAvailableNow": "Installation impossible. Aster serait-il déjà installé ?",
     "openInChrome": "Lien copié. Ouvrez Chrome et collez-le pour installer.",
     "openInSafari": "Lien copié. Ouvrez Safari et collez-le pour installer.",
     "cantInstallToast": "Lien copié. Ouvrez Aster dans Chrome (Android) ou Safari (iPhone) pour l’installer.",
     "isAlreadyInstalled": "Aster est déjà installé",
     "launchInstall": "Installer Aster",
+    "launchInstallPlayStore": "Installer via Google Play",
+    "launchInstallWithoutStore": "Installer sans Google Play",
+    "desktopIosHint": "Sur iPhone, l’installation se fait depuis Safari : ouvrez simplement aster-pearl.vercel.app depuis votre mobile et laissez-vous guider.",
     "safariModalTitle": "Installer Aster depuis Safari",
     "safariModal1": "Safari ne peut pas installer Aster automatiquement mais vous pouvez le faire en deux clics.",
     "safariModal2": "Sans quitter cette page, dans les options en bas, appuyez sur le bouton « Partager ».",
@@ -240,7 +242,8 @@
       ],
       "items141": [
         "Il est désormais possible d'enregistrer des résultats de tests, de la même façon que les vaccins, déparasitages et pesées."
-      ]
+      ],
+      "items142": ["Aster est désormais disponible sur Google Play !"]
     }
   },
   "animals": {

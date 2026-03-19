@@ -39,6 +39,17 @@ button {
 }
 
 .public-link {
+  font-size: 1.1rem;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: underline;
+  color: vars.$brown-bark;
+}
+
+.public-button {
+  font-size: 1.1rem;
+  background: none;
+  border: none;
   cursor: pointer;
   user-select: none;
   text-decoration: underline;

@@ -85,13 +85,15 @@
     "title": "Installer Aster på mobilen din",
     "disclaimer1": "Aster kan installeres som en applikasjon på smarttelefonen din.",
     "disclaimer2": "Installasjonen tar bare noen sekunder, og applikasjonen vil alltid holde seg automatisk oppdatert.",
-    "disclaimer3": "Dette gjør at Aster kan fungere uavhengig av Google- eller Apple-butikker, uten tap av kvalitet.",
     "installNotAvailableNow": "Installasjon ikke tilgjengelig. Er Aster allerede installert?",
     "openInChrome": "Lenken er kopiert. Åpne Chrome og lim den inn for å installere.",
     "openInSafari": "Lenken er kopiert. Åpne Safari og lim den inn for å installere.",
     "cantInstallToast": "Lenken er kopiert. Åpne Aster i Chrome (Android) eller Safari (iPhone) for å installere.",
     "isAlreadyInstalled": "Aster er allerede installert",
     "launchInstall": "Installer Aster",
+    "launchInstallPlayStore": "Installer via Google Play",
+    "launchInstallWithoutStore": "Installer uten Google Play",
+    "desktopIosHint": "På iPhone skjer installasjonen i Safari: åpne bare aster-pearl.vercel.app på mobilen din og følg veiledningen.",
     "safariModalTitle": "Installer Aster fra Safari",
     "safariModal1": "Safari kan ikke installere Aster automatisk, men du kan gjøre det med to trykk.",
     "safariModal2": "Uten å forlate denne siden, trykk på \"Del\"-knappen nederst.",
@@ -240,7 +242,8 @@
       ],
       "items141": [
         "Det er nå mulig å registrere testresultater, på samme måte som vaksiner, ormekurer og veiinger."
-      ]
+      ],
+      "items142": ["Aster er nå tilgjengelig på Google Play!"]
     }
   },
   "animals": {
