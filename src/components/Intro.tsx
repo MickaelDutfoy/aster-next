@@ -15,7 +15,7 @@ export const Intro = () => {
   const t = useTranslations();
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const [installed, setInstalled] = useState(false);
+  const [installed, setInstalled] = useState<boolean | null>(null);
 
   useEffect(() => {
     setInstalled(isAppContext());
@@ -48,7 +48,7 @@ export const Intro = () => {
               {t('intro.see')}
             </button>
           </div>
-          {!installed && (
+          {installed === false && (
             <div>
               <h4>{t('install.prompt')}</h4>
               <button className="main-button" onClick={handleNavigate}>

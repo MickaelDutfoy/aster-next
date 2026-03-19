@@ -16,7 +16,7 @@ export const Settings = () => {
   const t = useTranslations();
   const router = useRouter();
 
-  const [installed, setInstalled] = useState(false);
+  const [installed, setInstalled] = useState<boolean | null>(null);
 
   useEffect(() => {
     setInstalled(isAppContext());
@@ -44,7 +44,7 @@ export const Settings = () => {
           <MailQuestionMark className="link" size={32} onClick={() => router.replace('/contact')} />
         </div>
       </div>
-      {!installed && (
+      {installed === false && (
         <div className="install-link">
           <h4>{t('install.prompt')}</h4>
           <button className="little-button" onClick={handleNavigate}>
