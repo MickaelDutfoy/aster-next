@@ -93,7 +93,7 @@
     "launchInstall": "Installer Aster",
     "launchInstallPlayStore": "Installer via Google Play",
     "launchInstallWithoutStore": "Installer uten Google Play",
-    "desktopIosHint": "På iPhone skjer installasjonen i Safari: åpne bare aster-pearl.vercel.app på mobilen din og følg veiledningen.",
+    "desktopIosHint": "På iPhone skjer installasjonen i Safari: åpne bare aster-app.eu på mobilen din og følg veiledningen.",
     "safariModalTitle": "Installer Aster fra Safari",
     "safariModal1": "Safari kan ikke installere Aster automatisk, men du kan gjøre det med to trykk.",
     "safariModal2": "Uten å forlate denne siden, trykk på \"Del\"-knappen nederst.",
@@ -535,7 +535,7 @@
       "contactLabel": "Kontakt:",
       "contactEmail": "m.dutfoy@gmail.com",
       "siteLabel": "Nettsted:",
-      "siteUrl": "https://aster-pearl.vercel.app/",
+      "siteUrl": "https://aster-app.eu/",
       "note": "Merk: Aster er et uavhengig prosjekt uten kommersielt formål."
     },
     "data": {

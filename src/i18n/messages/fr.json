@@ -94,7 +94,7 @@
     "launchInstall": "Installer Aster",
     "launchInstallPlayStore": "Installer via Google Play",
     "launchInstallWithoutStore": "Installer sans Google Play",
-    "desktopIosHint": "Sur iPhone, l’installation se fait depuis Safari : ouvrez simplement aster-pearl.vercel.app depuis votre mobile et laissez-vous guider.",
+    "desktopIosHint": "Sur iPhone, l’installation se fait depuis Safari : ouvrez simplement aster-app.eu depuis votre mobile et laissez-vous guider.",
     "safariModalTitle": "Installer Aster depuis Safari",
     "safariModal1": "Safari ne peut pas installer Aster automatiquement mais vous pouvez le faire en deux clics.",
     "safariModal2": "Sans quitter cette page, dans les options en bas, appuyez sur le bouton « Partager ».",
@@ -535,7 +535,7 @@
       "contactLabel": "Contact :",
       "contactEmail": "m.dutfoy@gmail.com",
       "siteLabel": "Site :",
-      "siteUrl": "https://aster-pearl.vercel.app/",
+      "siteUrl": "https://aster-app.eu/",
       "note": "Remarque : Aster est un projet indépendant, sans objectif commercial."
     },
     "data": {
