@@ -21,13 +21,12 @@ export const Dashboard = ({
   const t = useTranslations();
   const locale = useLocale();
 
+  const { isAndroid } = detectEnv();
+
   const [shouldShowWarning, setShouldShowWarning] = useState(false);
 
   useEffect(() => {
-    const { isAndroid } = detectEnv();
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-
-    setShouldShowWarning(isAndroid && !isStandalone);
+    setShouldShowWarning(isAndroid);
   }, []);
 
   return (
@@ -79,7 +78,16 @@ export const Dashboard = ({
       </div>
       {shouldShowWarning && (
         <div className="warning">
-          <p>{t('updateFullscreenWarning')}</p>
+          <p>
+            {t('updateFullscreenWarning')}
+            <Link
+              className="link"
+              href="https://play.google.com/store/apps/details?id=com.quietforge.aster"
+            >
+              Google Play
+            </Link>
+            .
+          </p>
         </div>
       )}
       <div className="changelog">
