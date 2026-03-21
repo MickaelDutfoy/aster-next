@@ -1,4 +1,5 @@
 {
+  "updateFullscreenWarning": "⚠️ Is Aster no longer opening in full screen? Are you seeing an address bar? Simply update Aster from the Google Play Store.",
   "common": {
     "yes": "Yes",
     "no": "No",
@@ -65,6 +66,7 @@
   },
   "intro": {
     "selectLanguage": "Select language:",
+    "see": "View the intro",
     "welcomeTitle": "Welcome to Aster!",
     "welcomeSubtitle": "“Helping those who help.”",
     "whyTitle": "Why use it?",

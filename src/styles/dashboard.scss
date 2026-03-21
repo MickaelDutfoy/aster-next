@@ -264,6 +264,16 @@ header {
     }
   }
 
+    .warning {
+    margin: 5px;
+    padding: 5px;
+    background-color: var(--emphasized);
+    border: 2px solid var(--button);
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px vars.$smoky-black;
+    font-size: 0.9rem;
+  }
+
   .changelog {
     margin: 5px;
     padding: 5px;

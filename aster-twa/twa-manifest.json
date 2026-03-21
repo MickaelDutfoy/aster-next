@@ -1,6 +1,6 @@
 {
   "packageId": "com.quietforge.aster",
-  "host": "aster-pearl.vercel.app",
+  "host": "aster-app.eu",
   "name": "Aster",
   "launcherName": "Aster",
   "display": "standalone",
@@ -13,18 +13,18 @@
   "backgroundColor": "#FAF6F6",
   "enableNotifications": true,
   "startUrl": "/",
-  "iconUrl": "https://aster-pearl.vercel.app/icons/aster-icon-512.png",
-  "maskableIconUrl": "https://aster-pearl.vercel.app/icons/aster-icon-maskable-512.png",
+  "iconUrl": "https://aster-app.eu/icons/aster-icon-512.png",
+  "maskableIconUrl": "https://aster-app.eu/icons/aster-icon-maskable-512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "/home/mickael/Dokumenter/Code/Projets_perso/Aster_Next/aster-twa/android.keystore",
     "alias": "android"
   },
-  "appVersionName": "3",
-  "appVersionCode": 3,
+  "appVersionName": "6",
+  "appVersionCode": 6,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
-  "webManifestUrl": "https://aster-pearl.vercel.app/manifest.webmanifest",
+  "webManifestUrl": "https://aster-app.eu/manifest.webmanifest",
   "fallbackType": "customtabs",
   "features": {},
   "alphaDependencies": {
@@ -33,7 +33,7 @@
   "enableSiteSettingsShortcut": true,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
-  "fullScopeUrl": "https://aster-pearl.vercel.app/",
+  "fullScopeUrl": "https://aster-app.eu/",
   "minSdkVersion": 21,
   "orientation": "default",
   "fingerprints": [],
@@ -43,5 +43,5 @@
   "fileHandlers": [],
   "launchHandlerClientMode": "",
   "displayOverride": [],
-  "appVersion": "3"
+  "appVersion": "6"
 }

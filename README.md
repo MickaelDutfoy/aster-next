@@ -102,7 +102,7 @@ Aster is designed for mobile use.
 ### Web access
 
 The application can be accessed via a web browser at:  
-[https://aster-pearl.vercel.app/](https://aster-pearl.vercel.app/)
+[https://aster-app.eu/](https://aster-app.eu/)
 
 (You can view the authenticated part of the app using those demo credentials : demo@aster.app / AsterDemo2026!)
 

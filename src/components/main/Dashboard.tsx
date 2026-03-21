@@ -1,9 +1,11 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
+import { detectEnv } from '@/lib/detectEnv';
 import { FamilyWithoutDetails, Member, Organization, PendingOrgRequest } from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { useLocale, useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
 
 export const Dashboard = ({
   user,
@@ -18,6 +20,15 @@ export const Dashboard = ({
 }) => {
   const t = useTranslations();
   const locale = useLocale();
+
+  const [shouldShowWarning, setShouldShowWarning] = useState(false);
+
+  useEffect(() => {
+    const { isAndroid } = detectEnv();
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+    setShouldShowWarning(isAndroid && !isStandalone);
+  }, []);
 
   return (
     <div className="dash-contents">
@@ -66,6 +77,11 @@ export const Dashboard = ({
             </div>
           )}
       </div>
+      {shouldShowWarning && (
+        <div className="warning">
+          <p>{t('updateFullscreenWarning')}</p>
+        </div>
+      )}
       <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>
         <ul>

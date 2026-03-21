@@ -1,5 +1,6 @@
 'use client';
 
+import { detectEnv } from '@/lib/detectEnv';
 import { Language } from '@/lib/types';
 import clsx from 'clsx';
 import { Share, SquarePlus } from 'lucide-react';
@@ -10,27 +11,9 @@ import { useInstallPrompt } from '../tools/InstallProvider';
 import { showToast } from '../tools/ToastProvider';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.quietforge.aster';
-const DIRECT_INSTALL_URL = 'https://aster-pearl.vercel.app/install';
+const DIRECT_INSTALL_URL = 'https://aster-app.eu/install';
 
-function detectEnv() {
-  const ua = navigator.userAgent || '';
 
-  const isAndroid = /Android/.test(ua);
-  const isIOS = /iPad|iPhone|iPod/.test(ua);
-  const isDesktop = !isAndroid && !isIOS;
-
-  const isFirefoxIOS = /FxiOS\//.test(ua);
-  const isChromeIOS = /CriOS\//.test(ua);
-  const isEdgeIOS = /EdgiOS\//.test(ua);
-  const isOperaIOS = /OPiOS\//.test(ua);
-
-  const isFirefox = /Firefox\//.test(ua) || isFirefoxIOS;
-
-  const isSafariIOS =
-    isIOS && /Safari\//.test(ua) && !isFirefoxIOS && !isChromeIOS && !isEdgeIOS && !isOperaIOS;
-
-  return { isAndroid, isIOS, isDesktop, isFirefox, isSafariIOS };
-}
 
 export const Install = () => {
   const t = useTranslations();
@@ -82,7 +65,7 @@ export const Install = () => {
   };
 
   const openInChromeAndroid = () => {
-    const intent = `intent://aster-pearl.vercel.app/${locale}/install#Intent;scheme=https;package=com.android.chrome;end`;
+    const intent = `intent://aster-app.eu/${locale}/install#Intent;scheme=https;package=com.android.chrome;end`;
     window.location.href = intent;
 
     setTimeout(async () => {

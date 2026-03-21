@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? 'no-reply@aster.test';
 const APP_NAME = 'Aster';
-const LOGO_URL = 'https://aster-pearl.vercel.app/icons/aster-icon-192.png';
+const LOGO_URL = 'https://aster-app.eu/icons/aster-icon-192.png';
 
 type SendEmailParams = {
   to: string;
