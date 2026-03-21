@@ -41,8 +41,9 @@ yarn-error.log*
 aster-twa/build/
 aster-twa/app/
 .gradle/
-app-release-*.apk
-app-release-*.aab
+*.apk
+*.aab
+*.idsig
 manifest-checksum.txt
 
 # vercel
