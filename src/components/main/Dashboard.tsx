@@ -23,10 +23,10 @@ export const Dashboard = ({
 
   const { isAndroid } = detectEnv();
 
-  const [shouldShowWarning, setShouldShowWarning] = useState(false);
+  const [shouldShowInfo, setShouldShowInfo] = useState(false);
 
   useEffect(() => {
-    setShouldShowWarning(isAndroid);
+    setShouldShowInfo(isAndroid);
   }, []);
 
   return (
@@ -76,20 +76,18 @@ export const Dashboard = ({
             </div>
           )}
       </div>
-      {shouldShowWarning && (
-        <div className="warning">
-          <p>
-            {t('updateFullscreenWarning')}
-            <Link
-              className="link"
-              href="https://play.google.com/store/apps/details?id=com.quietforge.aster"
-            >
-              Google Play
-            </Link>
-            .
-          </p>
-        </div>
-      )}
+      <div className="info" style={!shouldShowInfo ? { visibility: 'hidden' } : undefined}>
+        <p>
+          {t('dashboard.evaluateAster')}
+          <Link
+            className="link"
+            href="https://play.google.com/store/apps/details?id=com.quietforge.aster"
+          >
+            Google Play
+          </Link>
+          .
+        </p>
+      </div>
       <div className="changelog">
         <h3>{t('dashboard.changelog.title')}</h3>
         <ul>

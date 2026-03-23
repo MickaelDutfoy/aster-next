@@ -1,5 +1,4 @@
 {
-  "updateFullscreenWarning": "⚠️ Åpnes ikke Aster i fullskjerm lenger? Ser du en adressefelt? Oppdater bare Aster fra ",
   "common": {
     "yes": "Ja",
     "no": "Nei",
@@ -189,6 +188,7 @@
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
     "contactLink": "Kontakt",
+    "evaluateAster": "Liker du Aster? Synes du den er nyttig? Legg gjerne igjen en vurdering på ",
     "changelog": {
       "title": "Hva er nytt i Aster?",
       "items0123": [

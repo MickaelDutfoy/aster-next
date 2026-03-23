@@ -251,7 +251,7 @@ header {
   padding-bottom: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
 
   .dash-links {
     display: flex;
@@ -264,8 +264,8 @@ header {
     }
   }
 
-    .warning {
-    margin: 5px;
+    .info {
+    margin: auto 5px 0 5px;
     padding: 5px;
     background-color: var(--emphasized);
     border: 2px solid var(--button);

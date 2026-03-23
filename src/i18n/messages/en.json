@@ -1,5 +1,4 @@
 {
-  "updateFullscreenWarning": "⚠️ Is Aster no longer opening in full screen? Are you seeing an address bar? Simply update Aster from ",
   "common": {
     "yes": "Yes",
     "no": "No",
@@ -189,6 +188,7 @@
     "pendingIntro": "You have membership requests to review.",
     "pendingSee": "View",
     "contactLink": "Contact",
+    "evaluateAster": "Do you like Aster? Do you find it useful? Feel free to leave a review on ",
     "changelog": {
       "title": "What’s new in Aster?",
       "items0123": [

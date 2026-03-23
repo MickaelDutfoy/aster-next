@@ -1,5 +1,4 @@
 {
-  "updateFullscreenWarning": "⚠️ Votre application n’est plus en plein écran ? Vous voyez une barre d’adresse ? Mettez simplement Aster à jour depuis ",
   "common": {
     "yes": "Oui",
     "no": "Non",
@@ -188,6 +187,7 @@
     "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
+    "evaluateAster": "Vous aimez Aster ? L'application vous est utile ? N'hésitez pas à laisser un avis sur ",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
       "items0123": [
