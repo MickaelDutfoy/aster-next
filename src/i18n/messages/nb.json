@@ -61,7 +61,9 @@
     "orgLeft": "Du har forlot denne organisasjonen.",
     "orgNameRequired": "Du må skrive inn et organisasjonsnavn.",
     "mustPickOrg": "Du må velge en eksisterende organisasjon.",
-    "mobileAlert": "Aster er optimalisert for mobil — prøv responsivt visning (Ctrl+Shift+M)."
+    "mobileAlert": "Aster er optimalisert for mobil — prøv responsivt visning (Ctrl+Shift+M).",
+    "transactionAdd": "Transaksjonen er lagt til.",
+    "transactionDelete": "Transaksjonen er slettet."
   },
   "intro": {
     "selectLanguage": "Velg språk:",
@@ -177,7 +179,8 @@
     "organizations": "Organisasjoner",
     "members": "Medlemmer",
     "notifications": "Varsler",
-    "settings": "Innstillinger"
+    "settings": "Innstillinger",
+    "transactions": "Økonomi"
   },
   "dashboard": {
     "welcome": "Velkommen, {name}!",
@@ -234,8 +237,7 @@
         "Oppretteren av et omsorgssted kan redigere det selv om vedkommende ikke er medlem."
       ],
       "items130": [
-        "Aster kan nå installeres som en applikasjon uavhengig av Google- eller Apple-butikker.",
-        "Hvis du lastet ned applikasjonen fra Play Store, fungerer den fortsatt fullt ut."
+        "Aster kan nå installeres som en applikasjon uavhengig av Google- eller Apple-butikker."
       ],
       "items140": [
         "Det er nå mulig å registrere veiinger i helsefanen i redigeringsmodus, og deretter se utviklingen på dyrets side.",
@@ -245,7 +247,11 @@
       "items141": [
         "Det er nå mulig å registrere testresultater, på samme måte som vaksiner, ormekurer og veiinger."
       ],
-      "items142": ["Aster er nå tilgjengelig på Google Play!"]
+      "items142": ["Aster er nå tilgjengelig på Google Play!"],
+      "items150": [
+        "Økonomimodulen er nå tilgjengelig.",
+        "Aster tilbyr et enkelt verktøy for å følge organisasjonens inntekter og utgifter, og se en oversikt når som helst."
+      ]
     }
   },
   "animals": {
@@ -388,6 +394,7 @@
     }
   },
   "organizations": {
+    "addTitle": "Registrer en organisasjon",
     "editInfoTitle": "Rediger organisasjonen",
     "deleteTitle": "Slett organisasjonen",
     "deleteOrg": {
@@ -402,11 +409,15 @@
     "membersListTitle": "Medlemsliste for {orgName} ({count}):",
     "hiddenOrgMembers": "Din forespørsel om medlemskap er under behandling. Av hensyn til konfidensialitet kan du ikke se de andre medlemmene.",
     "registerTitle": "Registrer en ny organisasjon?",
-    "orgNameLabel": "Navn på organisasjonen *:",
+    "orgNameLabel": "Navn på organisasjonen *:",
+    "orgDescLabel": "Beskrivelse av organisasjonen:",
+    "orgCurrLabel": "Valuta for organisasjonen *:",
+    "orgCurrNotice": "(Denne innstillingen er nødvendig for oppsettet av økonomimodulen.)",
     "orgNamePlaceholder": "Navn på organisasjonen",
     "searchExistingTitle": "Søk etter en eksisterende organisasjon?",
     "seeDetails": "Se detaljer for {orgName}?",
     "goToOrg": "Gå til organisasjonssiden",
+    "createOrg": "Gå til opprettelsesskjema",
     "rolesDefinitions": "Vis rolledefinisjoner",
     "pickNewAdminTitle": "Utnevn en ny administrator",
     "nobodyToTransferTo": "Det finnes ingen medlemmer å overføre rollen til.",
@@ -420,7 +431,7 @@
     },
     "member": "Medlem",
     "memberDescription": ": Kan opprette omsorgssteder og delta i dem. Kan redigere oppføringen og legge til eller fjerne medlemmer fra omsorgssteder de er en del av. Kan opprette dyreoppføringer og redigere dyr de selv har opprettet eller har i omsorg. Mottar kun varsler for dyr de har i omsorg.",
-    "adminDescription": ": I tillegg til medlemsrettigheter kan redigere alle dyr og omsorgssteder i organisasjonen, samt deres deltakere. Kan godkjenne forespørsler om medlemskap i organisasjonen. Mottar varsler knyttet til medlemskapsforespørsler og alle dyr.",
+    "adminDescription": ": I tillegg til medlemsrettigheter kan redigere alle dyr og omsorgssteder i organisasjonen, samt deres deltakere. Kan godkjenne forespørsler om medlemskap i organisasjonen og få tilgang til økonomimodulen. Mottar varsler knyttet til medlemskapsforespørsler og alle dyr.",
     "superAdminDescription": ": I tillegg til rettighetene til ansvarlig kan slette dyr eller omsorgssteder og administrere selve organisasjonen (redigering og sletting, utnevne ansvarlige eller fjerne medlemmer). Hver organisasjon har én admin, som kan overføre denne rollen.",
     "status": {
       "PENDING": "Avventer",
@@ -435,6 +446,42 @@
       "downgradeMember": "Fjern rollen som ansvarlig",
       "transferSuperAdmin": "Overfør administratorrollen"
     }
+  },
+  "transactions": {
+    "addTitle": "Legg til en transaksjon",
+    "editTitle": "Rediger transaksjon",
+    "deleteTitle": "Slett transaksjon",
+    "categoryTitle": "Velg en kategori:",
+    "other": "Annet",
+    "newCategoryPlaceholder": "Ny kategori",
+    "defaultCategoryType": "Standard kategoritype:",
+    "inputDetails": "Detaljer:",
+    "type": {
+      "EXPENSE": "Utgift",
+      "INCOME": "Inntekt"
+    },
+    "amountPlaceholder": "Beløp *",
+    "amountNotice": "(Skriv inn beløpet i din vanlige valuta.)",
+    "dateLabel": "Dato *:",
+    "counterpartyLabel": "Motpart:",
+    "beneficiaryPlaceholder": "f.eks. Mjau veterinærklinikk",
+    "senderPlaceholder": "f.eks. Medlemskap fra fru Voff",
+    "methodLabel": "Betalingsmåte *:",
+    "methodLabelNotNeeded": "Betalingsmåte:",
+    "paymentMethod": {
+      "BANK_TRANSFER": "Bankoverføring",
+      "CARD": "Kort",
+      "CASH": "Kontanter",
+      "CHECK": "Sjekke",
+      "OTHER": "Annet"
+    },
+    "additionalInfoLabel": "Notat:",
+    "yearLabel": "År:",
+    "categoryLabel": "Kategori:",
+    "balanceTitle": "Oversikt over valgte transaksjoner:",
+    "expensesLabel": "Utgifter:",
+    "incomesLabel": "Inntekter:",
+    "noTransactions": "Ingen transaksjoner funnet."
   },
   "members": {
     "ownSheet": "Dette er profilen din.",

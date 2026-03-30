@@ -1,6 +1,6 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
+import { CreateOrg } from '@/components/organizations/CreateOrg';
 import { OrgPicker } from '@/components/organizations/OrgPicker';
-import { RegisterOrg } from '@/components/organizations/RegisterOrg';
 import { SearchOrg } from '@/components/organizations/SearchOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
@@ -15,7 +15,7 @@ const Organizations = async () => {
   return (
     <div className="org-page">
       {org && <OrgPicker org={org} />}
-      <RegisterOrg />
+      <CreateOrg />
       <SearchOrg />
     </div>
   );

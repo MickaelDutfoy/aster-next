@@ -61,7 +61,7 @@ export const TransferSuperAdmin = ({
   }
 
   return (
-    <form className="superadmin-transfer" onSubmit={handleSubmit}>
+    <form className="org-edition" onSubmit={handleSubmit}>
       <h3>{t('organizations.pickNewAdminTitle')}</h3>
       {membersFiltered.length === 0 && <p>{t('organizations.nobodyToTransferTo')}</p>}
       {membersFiltered.length > 0 && (

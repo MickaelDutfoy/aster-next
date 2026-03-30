@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from '@/i18n/routing';
-import { Notebook, Settings, Users } from 'lucide-react';
+import { FileSpreadsheet, Notebook, Settings, Users } from 'lucide-react';
 
 export const NavBarBottom = () => {
   const pathname = usePathname();
@@ -35,6 +35,24 @@ export const NavBarBottom = () => {
             }
           />
         </button>
+
+        <button onClick={() => router.replace('/transactions')}>
+          <FileSpreadsheet
+            fill={
+              pathname.startsWith('/transactions') || pathname.startsWith('/members')
+                ? '#999'
+                : '"000'
+            }
+            fillOpacity={
+              pathname.startsWith('/transactions') || pathname.startsWith('/members') ? 0.5 : 0
+            }
+            size={42}
+            strokeWidth={
+              pathname.startsWith('/transactions') || pathname.startsWith('/members') ? 2.2 : 0.8
+            }
+          />
+        </button>
+
         <button onClick={() => router.replace('/settings')}>
           <Settings
             fill={

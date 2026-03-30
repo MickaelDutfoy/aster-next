@@ -31,7 +31,23 @@
   }
 }
 
-.superadmin-transfer {
+.org-creation {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+      align-items: center;
+        gap: 10px;
+  }
+}
+
+.org-edition {
   padding: 10px;
   width: 100%;
   display: flex;
@@ -41,6 +57,10 @@
 
   p {
     text-align: center;
+  }
+
+  textarea {
+    width: 100%;
   }
 
   .labeled-checkbox {
@@ -101,7 +121,7 @@
 
   .buttons {
     display: flex;
-   gap: 2px;
+    gap: 2px;
   }
 
   .action {

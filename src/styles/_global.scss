@@ -12,7 +12,7 @@
 
 html {
   font-family: var(--font-nunito);
-  font-size: 18px;
+  font-size: 17px;
 }
 
 body {
@@ -164,6 +164,17 @@ h3 {
 .little-button {
   cursor: pointer;
   background-color: var(--button);
+  color: vars.$smoky-black;
+  box-shadow: 1px 1px 4px vars.$smoky-black;
+  padding: 7px;
+  border: 1px solid var(--border-button);
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.filter-button {
+  cursor: pointer;
+  background-color: var(--static-button);
   color: vars.$smoky-black;
   box-shadow: 1px 1px 4px vars.$smoky-black;
   padding: 7px;

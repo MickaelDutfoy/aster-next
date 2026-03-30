@@ -111,6 +111,7 @@
     font-size: 0.8rem;
     text-align: center;
     margin-bottom: 5px;
+    padding: 10px 0;
   }
 
   form {
@@ -131,22 +132,6 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-
-    .labeled-date,
-    .labeled-select,
-    .labeled-checkbox {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .labeled-text {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      align-items: center;
-      gap: 5px;
-    }
 
     .labeled-checkbox {
       margin: 0 10px;

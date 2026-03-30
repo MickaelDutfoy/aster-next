@@ -61,7 +61,9 @@
     "orgLeft": "You have left this organization.",
     "orgNameRequired": "You must enter an organization name.",
     "mustPickOrg": "You must select an existing organization.",
-    "mobileAlert": "Aster is optimized for mobile — consider using responsive mode (Ctrl+Shift+M)."
+    "mobileAlert": "Aster is optimized for mobile — consider using responsive mode (Ctrl+Shift+M).",
+    "transactionAdd": "The transaction has been successfully added.",
+    "transactionDelete": "The transaction has been successfully deleted."
   },
   "intro": {
     "selectLanguage": "Select language:",
@@ -177,7 +179,8 @@
     "organizations": "Organizations",
     "members": "Members",
     "notifications": "Notifications",
-    "settings": "Settings"
+    "settings": "Settings",
+    "transactions": "Treasury"
   },
   "dashboard": {
     "welcome": "Welcome, {name}!",
@@ -234,8 +237,7 @@
         "The creator of a foster location can edit it even if they are not a member."
       ],
       "items130": [
-        "Aster can now be installed as an application independently of Google or Apple stores.",
-        "If you downloaded the application from the Play Store, it remains fully functional."
+        "Aster can now be installed as an application independently of Google or Apple stores."
       ],
       "items140": [
         "It is now possible to record weighings in the health tab while editing, and then view the change directly on the animal's page.",
@@ -245,7 +247,11 @@
       "items141": [
         "It is now possible to record test results, just like vaccines, deworming treatments, and weighings."
       ],
-      "items142": ["Aster is now available on Google Play!"]
+      "items142": ["Aster is now available on Google Play!"],
+      "items150": [
+        "The Treasury module is now available.",
+        "Aster provides a simple tool to track your organization’s income and expenses, and view a balance at any time."
+      ]
     }
   },
   "animals": {
@@ -388,6 +394,7 @@
     }
   },
   "organizations": {
+    "addTitle": "Register an organization",
     "editInfoTitle": "Edit organization",
     "deleteTitle": "Delete organization",
     "deleteOrg": {
@@ -402,11 +409,15 @@
     "membersListTitle": "Member list for {orgName} ({count}):",
     "hiddenOrgMembers": "Your membership request is pending. For confidentiality reasons, you cannot view the other members.",
     "registerTitle": "Register a new organization?",
-    "orgNameLabel": "Organization name *:",
+    "orgNameLabel": "Organization name *:",
+    "orgDescLabel": "Organization description:",
+    "orgCurrLabel": "Organization currency *:",
+    "orgCurrNotice": "(This setting is required for the Treasury module layout.)",
     "orgNamePlaceholder": "Organization name",
     "searchExistingTitle": "Search for an existing organization?",
     "seeDetails": "View details for {orgName}?",
     "goToOrg": "Go to organization page",
+    "createOrg": "Go to creation form",
     "rolesDefinitions": "Show role definitions",
     "pickNewAdminTitle": "Appoint a new admin",
     "nobodyToTransferTo": "There are no members to transfer the role to.",
@@ -420,7 +431,7 @@
     },
     "member": "Member",
     "memberDescription": ": Can create foster locations and take part in them. Can edit the location details and add or remove members from locations they belong to. Can create animal records and edit animals they created or currently host. Receives notifications only for animals they host.",
-    "adminDescription": ": In addition to member permissions, can edit all animals and foster locations within the organization, as well as their participants. Can approve organization membership requests. Receives notifications related to membership requests and all animals.",
+    "adminDescription": ": In addition to member permissions, can edit all animals and foster locations within the organization, as well as their participants. Can approve organization membership requests and access the Treasury module. Receives notifications related to membership requests and all animals.",
     "superAdminDescription": ": In addition to manager permissions, can delete animals or foster locations and manage the organization itself (edit or delete it, appoint managers, or remove members). Each organization has a single admin, who can transfer this role.",
     "status": {
       "PENDING": "Pending",
@@ -435,6 +446,42 @@
       "downgradeMember": "Remove manager role",
       "transferSuperAdmin": "Transfer admin role"
     }
+  },
+  "transactions": {
+    "addTitle": "Add a transaction",
+    "editTitle": "Edit transaction",
+    "deleteTitle": "Delete transaction",
+    "categoryTitle": "Choose a category:",
+    "other": "Other",
+    "newCategoryPlaceholder": "New category",
+    "defaultCategoryType": "Default category type:",
+    "inputDetails": "Details:",
+    "type": {
+      "EXPENSE": "Expense",
+      "INCOME": "Income"
+    },
+    "amountPlaceholder": "Amount *",
+    "amountNotice": "(Enter the amount in your usual currency.)",
+    "dateLabel": "Date *:",
+    "counterpartyLabel": "Counterparty:",
+    "beneficiaryPlaceholder": "e.g. Meow Veterinary Clinic",
+    "senderPlaceholder": "e.g. Membership from Mrs Woof",
+    "methodLabel": "Payment method *:",
+    "methodLabelNotNeeded": "Payment method:",
+    "paymentMethod": {
+      "BANK_TRANSFER": "Bank transfer",
+      "CARD": "Card",
+      "CASH": "Cash",
+      "CHECK": "Check",
+      "OTHER": "Other"
+    },
+    "additionalInfoLabel": "Note:",
+    "yearLabel": "Year:",
+    "categoryLabel": "Category:",
+    "balanceTitle": "Summary of selected transactions:",
+    "expensesLabel": "Expenses:",
+    "incomesLabel": "Income:",
+    "noTransactions": "No transactions found."
   },
   "members": {
     "ownSheet": "This is your profile.",

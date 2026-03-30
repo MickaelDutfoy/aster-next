@@ -1,10 +1,10 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { EditOrg } from '@/components/organizations/EditOrg';
+import { OrgForm } from '@/components/organizations/OrgForm';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+const EditOrgPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
@@ -16,9 +16,9 @@ const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }
 
   return (
     <div className="full-page-form">
-      <EditOrg org={org} />
+      <OrgForm org={org} />
     </div>
   );
 };
 
-export default transferAdminPage;
+export default EditOrgPage;

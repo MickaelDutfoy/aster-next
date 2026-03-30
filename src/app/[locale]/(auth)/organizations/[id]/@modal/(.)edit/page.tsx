@@ -1,11 +1,11 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
-import { EditOrg } from '@/components/organizations/EditOrg';
+import { OrgForm } from '@/components/organizations/OrgForm';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+const EditOrgModal = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
@@ -17,9 +17,9 @@ const transferAdminPage = async ({ params }: { params: Promise<{ id: string }> }
 
   return (
     <RouteModal expectedPath={`/organizations/${id}/edit`}>
-      <EditOrg org={org} />
+      <OrgForm org={org} />
     </RouteModal>
   );
 };
 
-export default transferAdminPage;
+export default EditOrgModal;
