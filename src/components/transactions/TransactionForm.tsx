@@ -96,105 +96,106 @@ export const TransactionForm = ({
     <div className="transaction-form">
       <h3>{transaction ? t('transactions.editTitle') : t('transactions.addTitle')}</h3>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
-      <form className="new-transaction" onSubmit={handleSubmit}>
-        <div className="category">
-          <h4>{t('transactions.categoryTitle')}</h4>
-          <div className="select-and-field">
-            <select
-              name="existingCategory"
-              value={category}
-              onChange={(e) => changeTypeFromCategory(e)}
-            >
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.name}
+      <form onSubmit={handleSubmit}>
+        <div className="form-tab">
+          {' '}
+          <div className="category">
+            <h4>{t('transactions.categoryTitle')}</h4>
+            <div className="select-and-field">
+              <select
+                name="existingCategory"
+                value={category}
+                onChange={(e) => changeTypeFromCategory(e)}
+              >
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+                <option value="">{t('transactions.other')}</option>
+              </select>
+              <input
+                type="text"
+                name="newCategory"
+                disabled={!!category}
+                className={clsx(!!category && 'disabled')}
+                placeholder={t('transactions.newCategoryPlaceholder') + (!category ? ' *' : '')}
+              />
+            </div>
+            <div className={clsx('labeled-select', !!category && 'disabled')}>
+              <p>{t('transactions.defaultCategoryType')}</p>
+              <select
+                name="defaultType"
+                value={defaultType}
+                onChange={(e) => {
+                  setDefaultType(e.target.value);
+                  setType(e.target.value);
+                }}
+              >
+                <option value={TransactionType.EXPENSE}>{t('transactions.type.EXPENSE')}</option>
+                <option value={TransactionType.INCOME}>{t('transactions.type.INCOME')}</option>
+              </select>
+            </div>
+          </div>
+          <div className="details">
+            <h4>{t('transactions.inputDetails')}</h4>
+            <div className="select-and-field">
+              <select name="type" value={type} onChange={(e) => setType(e.target.value)}>
+                <option value={TransactionType.EXPENSE}>{t('transactions.type.EXPENSE')}</option>
+                <option value={TransactionType.INCOME}>{t('transactions.type.INCOME')}</option>
+              </select>
+              <input
+                type="text"
+                name="amount"
+                placeholder={t('transactions.amountPlaceholder')}
+                defaultValue={transaction?.amountInCents ? transaction.amountInCents / 100 : ''}
+              />
+            </div>
+            <p className="notice">{t('transactions.amountNotice')}</p>
+            <div className="labeled-date">
+              <p>{t('transactions.dateLabel')}</p>
+              <input
+                type="date"
+                name="date"
+                defaultValue={transaction?.date.toISOString().slice(0, 10)}
+              />
+            </div>
+            <div className="labeled-text">
+              <p>{t('transactions.counterpartyLabel')}</p>
+              <input
+                type="text"
+                name="counterparty"
+                placeholder={
+                  type === TransactionType.INCOME
+                    ? t('transactions.senderPlaceholder')
+                    : t('transactions.beneficiaryPlaceholder')
+                }
+                defaultValue={transaction?.counterparty ?? ''}
+              />
+            </div>
+            <div className="labeled-select">
+              <p>{t('transactions.methodLabel')}</p>
+              <select name="paymentMethod" defaultValue={transaction?.paymentMethod}>
+                <option value={PaymentMethod.BANK_TRANSFER}>
+                  {t('transactions.paymentMethod.BANK_TRANSFER')}
                 </option>
-              ))}
-              <option value="">{t('transactions.other')}</option>
-            </select>
-            <input
-              type="text"
-              name="newCategory"
-              disabled={!!category}
-              className={clsx(!!category && 'disabled')}
-              placeholder={t('transactions.newCategoryPlaceholder') + (!category ? ' *' : '')}
-            />
-          </div>
-          <div className={'labeled-select' + clsx(!!category && ' disabled')}>
-            <p>{t('transactions.defaultCategoryType')}</p>
-            <select
-              name="defaultType"
-              value={defaultType}
-              onChange={(e) => {
-                setDefaultType(e.target.value);
-                setType(e.target.value);
+                <option value={PaymentMethod.CARD}>{t('transactions.paymentMethod.CARD')}</option>
+                <option value={PaymentMethod.CASH}>{t('transactions.paymentMethod.CASH')}</option>
+                <option value={PaymentMethod.CHECK}>{t('transactions.paymentMethod.CHECK')}</option>
+                <option value={PaymentMethod.OTHER}>{t('transactions.paymentMethod.OTHER')}</option>
+              </select>
+            </div>
+            <p>{t('transactions.additionalInfoLabel')}</p>
+            <textarea
+              name="note"
+              onInput={(e) => {
+                const el = e.currentTarget;
+                el.style.height = 'auto';
+                el.style.height = `${el.scrollHeight}px`;
               }}
-            >
-              <option value={TransactionType.EXPENSE}>{t('transactions.type.EXPENSE')}</option>
-              <option value={TransactionType.INCOME}>{t('transactions.type.INCOME')}</option>
-            </select>
-          </div>
-        </div>
-        <div className="details">
-          <h4>{t('transactions.inputDetails')}</h4>
-          <div className="select-and-field">
-            <select name="type" value={type} onChange={(e) => setType(e.target.value)}>
-              <option value={TransactionType.EXPENSE}>{t('transactions.type.EXPENSE')}</option>
-              <option value={TransactionType.INCOME}>{t('transactions.type.INCOME')}</option>
-            </select>
-            <input
-              type="text"
-              name="amount"
-              placeholder={t('transactions.amountPlaceholder')}
-              defaultValue={transaction?.amountInCents ? transaction.amountInCents / 100 : ''}
+              defaultValue={transaction?.note ?? ''}
             />
           </div>
-          <p className="notice" style={{ margin: '-10px 0' }}>
-            {t('transactions.amountNotice')}
-          </p>
-          <div className="labeled-date">
-            <p>{t('transactions.dateLabel')}</p>
-            <input
-              type="date"
-              name="date"
-              defaultValue={transaction?.date.toISOString().slice(0, 10)}
-            />
-          </div>
-          <div className="labeled-text">
-            <p>{t('transactions.counterpartyLabel')}</p>
-            <input
-              type="text"
-              name="counterparty"
-              placeholder={
-                type === TransactionType.INCOME
-                  ? t('transactions.senderPlaceholder')
-                  : t('transactions.beneficiaryPlaceholder')
-              }
-              defaultValue={transaction?.counterparty ?? ''}
-            />
-          </div>
-          <div className="labeled-select">
-            <p>{t('transactions.methodLabel')}</p>
-            <select name="paymentMethod" defaultValue={transaction?.paymentMethod}>
-              <option value={PaymentMethod.BANK_TRANSFER}>
-                {t('transactions.paymentMethod.BANK_TRANSFER')}
-              </option>
-              <option value={PaymentMethod.CARD}>{t('transactions.paymentMethod.CARD')}</option>
-              <option value={PaymentMethod.CASH}>{t('transactions.paymentMethod.CASH')}</option>
-              <option value={PaymentMethod.CHECK}>{t('transactions.paymentMethod.CHECK')}</option>
-              <option value={PaymentMethod.OTHER}>{t('transactions.paymentMethod.OTHER')}</option>
-            </select>
-          </div>
-          <p>{t('transactions.additionalInfoLabel')}</p>
-          <textarea
-            name="note"
-            onInput={(e) => {
-              const el = e.currentTarget;
-              el.style.height = 'auto';
-              el.style.height = `${el.scrollHeight}px`;
-            }}
-            defaultValue={transaction?.note ?? ''}
-          />
         </div>
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
           {isLoading ? t('common.loading') : t('common.submit')}
