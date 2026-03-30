@@ -199,10 +199,10 @@ model Member {
 model Organization {
   id              Int      @id @default(autoincrement())
   name            String
-  defaultCurrency String? // optionnel le temps que toutes les org en aient une
+  defaultCurrency String
   description     String?
   createdAt       DateTime @default(now()) @map("created_at")
-  updatedAt       DateTime @updatedAt @default(now()) // default à retirer
+  updatedAt       DateTime @updatedAt
 
   animals               Animal[]
   families              Family[]
@@ -230,7 +230,7 @@ model TransactionCategory {
   id          Int             @id @default(autoincrement())
   orgId       Int
   name        String
-  defaultType TransactionType @default(EXPENSE) // default à retirer
+  defaultType TransactionType
 
   organization Organization  @relation(fields: [orgId], references: [id], onDelete: Cascade)
   transactions Transaction[]

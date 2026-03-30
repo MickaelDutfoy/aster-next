@@ -134,7 +134,7 @@ export type Organization = {
   id: number;
   name: string;
   description: string | null;
-  defaultCurrency: string | null; // retirer null une fois schéma aligné
+  defaultCurrency: string;
   superAdminName?: string;
   userRole?: MemberRole;
   userStatus?: MemberStatus;

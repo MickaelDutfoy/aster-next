@@ -39,12 +39,10 @@ export const displayAge = (birthDate: Date, lang: string, full = false): string 
 
   const labels = AGE_LABELS[lang as Language] ?? AGE_LABELS.fr;
 
-  // Si tout est à zéro, on arrondit à 1 jour
   if (years === 0 && months === 0 && days === 0) {
     days = 1;
   }
 
-  // Moins d’un an
   if (years === 0) {
     if (months === 0) {
       return `${days} ${labels.day}`;
@@ -57,7 +55,6 @@ export const displayAge = (birthDate: Date, lang: string, full = false): string 
     return `${months} ${labels.month} ${days} ${labels.day}`;
   }
 
-  // Un an ou plus
   if (!full || months === 0) {
     return `${years} ${labels.year}`;
   }

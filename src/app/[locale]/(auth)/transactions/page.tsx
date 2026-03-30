@@ -28,7 +28,7 @@ const Transactions = async () => {
       <TransactionsList
         transactions={transactions}
         categories={categories}
-        displayCurrency={org.defaultCurrency ?? ''} // retirer '' une fois defaultCurrency obligé
+        displayCurrency={org.defaultCurrency}
       />
     </div>
   );

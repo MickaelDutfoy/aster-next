@@ -82,8 +82,7 @@ export const OrgForm = ({ org }: { org?: Organization }) => {
         defaultValue={org?.description ?? ''}
       />
       <p>{t('organizations.orgCurrLabel')}</p>
-      <select name="defaultCurrency" defaultValue={org?.defaultCurrency as string}>
-        // retirer as string une fois obligé
+      <select name="defaultCurrency" defaultValue={org?.defaultCurrency}>
         {currencies.map((curr) => (
           <option key={curr.value} value={curr.value}>
             {curr.label}
