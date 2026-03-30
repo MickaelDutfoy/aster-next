@@ -10,6 +10,8 @@ export const getMatchingOrgs = async (input: string): Promise<Organization[]> =>
     select: {
       id: true,
       name: true,
+      description: true,
+      defaultCurrency: true,
       memberOrganizations: {
         where: { role: MemberRole.SUPERADMIN },
         select: {
@@ -30,6 +32,8 @@ export const getMatchingOrgs = async (input: string): Promise<Organization[]> =>
     return {
       id: org.id,
       name: org.name,
+      description: org.description,
+      defaultCurrency: org.defaultCurrency,
       superAdminName: admin,
     };
   });
