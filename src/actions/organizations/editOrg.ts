@@ -9,9 +9,11 @@ export const editOrg = async (orgId: number, formData: FormData): Promise<Action
   const guard = await isOrgSuperAdmin(orgId);
   if (!guard.validation.ok) return guard.validation;
 
-  const newOrgName = formData.get('newOrgName')?.toString().trim();
+  const name = formData.get('name')?.toString().trim();
+  const description = formData.get('description')?.toString().trim();
+  const defaultCurrency = formData.get('defaultCurrency')?.toString().trim();
 
-  if (!newOrgName) {
+  if (!name || !defaultCurrency) {
     return {
       ok: false,
       status: 'error',
@@ -22,7 +24,7 @@ export const editOrg = async (orgId: number, formData: FormData): Promise<Action
   try {
     await prisma.organization.update({
       where: { id: orgId },
-      data: { name: newOrgName },
+      data: { name, description, defaultCurrency },
     });
 
     revalidatePath(`/organizations/${orgId}`);

@@ -25,13 +25,16 @@ export const DeleteFamily = ({
 
   const handleSubmit = async () => {
     setIsLoading(true);
+
     try {
       const res = await deleteFamily(family.id);
+
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,
       });
-      if (res.ok) router.replace('/families');
+
+      if (res.ok) router.back();
     } catch (err) {
       console.error(err);
       showToast({

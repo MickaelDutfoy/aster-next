@@ -76,9 +76,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
 
   return (
     <>
-      <p className="notice" style={{ paddingTop: '10px' }}>
-        {t('common.requiredFieldsNotice')}
-      </p>
+      <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <form onSubmit={handleSubmit}>
         <div className="form-tab">
           {!family && (

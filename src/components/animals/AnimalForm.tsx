@@ -235,9 +235,7 @@ export const AnimalForm = ({
 
   return (
     <>
-      <p className="notice" style={{ padding: '10px 0' }}>
-        {t('common.requiredFieldsNotice')}
-      </p>
+      <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <div className="tabs">
         <div className={clsx(form === 'general' && 'active')} onClick={() => setForm('general')}>
           {t('animals.tabs.general')}

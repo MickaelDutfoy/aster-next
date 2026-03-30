@@ -1,4 +1,12 @@
-import { AnimalStatus, AnimalTestResult, MemberRole, MemberStatus, Sex } from '@prisma/client';
+import {
+  AnimalStatus,
+  AnimalTestResult,
+  MemberRole,
+  MemberStatus,
+  PaymentMethod,
+  Sex,
+  TransactionType,
+} from '@prisma/client';
 
 export type Language = 'fr' | 'en' | 'nb';
 
@@ -125,6 +133,8 @@ export type AnimalAdoption = {
 export type Organization = {
   id: number;
   name: string;
+  description: string | null;
+  defaultCurrency: string | null; // retirer null une fois schéma aligné
   superAdminName?: string;
   userRole?: MemberRole;
   userStatus?: MemberStatus;
@@ -171,4 +181,22 @@ export type Action = {
   id: string;
   name: string;
   handler: () => Promise<void>;
+};
+
+export type TransactionCategory = {
+  id: number;
+  orgId?: number;
+  name: string;
+  defaultType: TransactionType;
+};
+
+export type Transaction = {
+  id: number;
+  type: TransactionType;
+  amountInCents: number;
+  date: Date;
+  counterparty: string | null;
+  paymentMethod: PaymentMethod;
+  note: string | null;
+  category: TransactionCategory;
 };

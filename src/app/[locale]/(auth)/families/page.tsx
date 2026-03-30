@@ -5,6 +5,7 @@ import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { FamilyWithoutDetails, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
+import { MemberStatus } from '@prisma/client';
 
 const FamiliesPage = async () => {
   const user: Member | null = await getUser();
@@ -13,7 +14,7 @@ const FamiliesPage = async () => {
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
-  if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
+  if (org.userStatus === MemberStatus.PENDING) return <DeniedPage cause="refused" />;
 
   const families: FamilyWithoutDetails[] = await getFamiliesByOrg(org.id);
 

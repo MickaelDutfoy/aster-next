@@ -65,7 +65,7 @@ nav {
 
     p {
       position: absolute;
-      top: 50%;
+      top: 48%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-weight: 700;
@@ -190,7 +190,7 @@ header {
   div {
     cursor: pointer;
     user-select: none;
-        font-size: 0.9rem;
+    font-size: 0.9rem;
     padding: 10px;
     text-align: center;
     border-radius: 5px 5px 0 0;
@@ -210,6 +210,30 @@ header {
   align-items: center;
   gap: 10px;
   text-decoration: none;
+}
+
+.labeled-date,
+.labeled-select,
+.labeled-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+.labeled-text {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  align-items: center;
+  gap: 5px;
+
+  p {
+    font-size: 0.95rem;
+  }
 }
 
 .accept-terms {
@@ -252,7 +276,6 @@ header {
   display: flex;
   flex-direction: column;
 
-
   .dash-links {
     display: flex;
     flex-direction: column;
@@ -264,7 +287,7 @@ header {
     }
   }
 
-    .info {
+  .info {
     margin: auto 5px 0 5px;
     padding: 5px;
     background-color: var(--emphasized);

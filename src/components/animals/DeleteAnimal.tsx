@@ -15,19 +15,22 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
 
   const handleSubmit = async () => {
     setIsLoading(true);
+
     try {
       const res = await deleteAnimal(animalId);
+
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,
       });
-      if (res.ok) router.replace('/animals');
+
+      if (res.ok) router.back();
     } catch (err) {
       console.error(err);
       showToast({
         ok: false,
         status: 'error',
-        message: 'Une erreur est survenue.',
+        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);

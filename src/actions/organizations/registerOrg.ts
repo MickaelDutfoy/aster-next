@@ -15,9 +15,11 @@ export const registerOrg = async (formData: FormData): Promise<ActionValidation>
 
   const userId = guard.user.id;
 
-  const orgName = formData.get('orgName')?.toString().trim();
+  const name = formData.get('name')?.toString().trim();
+  const description = formData.get('description')?.toString().trim();
+  const defaultCurrency = formData.get('defaultCurrency')?.toString().trim();
 
-  if (!orgName) {
+  if (!name || !defaultCurrency) {
     return {
       ok: false,
       status: 'error',
@@ -27,7 +29,7 @@ export const registerOrg = async (formData: FormData): Promise<ActionValidation>
 
   try {
     const res = await prisma.organization.create({
-      data: { name: orgName },
+      data: { name, description, defaultCurrency },
     });
 
     await prisma.memberOrganization.create({

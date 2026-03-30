@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from '@/i18n/routing';
 import { Member } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
-import { Bell, Cat, HouseHeart, MapPinned } from 'lucide-react';
+import { Bell, Cat, HouseHeart } from 'lucide-react';
 
 export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: number }) => {
   const pathname = usePathname();
@@ -36,18 +36,14 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
             strokeWidth={pathname.startsWith('/families') ? 2.2 : 0.8}
           />
         </button>
-        <button
-          style={{ display: 'none' }}
-          className={disableMenu()}
-          onClick={() => router.replace('/map')}
-        >
-          <MapPinned
-            fill={pathname.startsWith('/map') ? '#999' : '"000'}
-            fillOpacity={pathname.startsWith('/map') ? 0.5 : 0}
+        {/* <button className={disableMenu()} onClick={() => router.replace('/publish')}>
+          <Globe
+            fill={pathname.startsWith('/publish') ? '#999' : '"000'}
+            fillOpacity={pathname.startsWith('/publish') ? 0.5 : 0}
             size={42}
-            strokeWidth={pathname.startsWith('/map') ? 2.2 : 0.8}
+            strokeWidth={pathname.startsWith('/publish') ? 2.2 : 0.8}
           />
-        </button>
+        </button> */}
 
         <button className="notif-bell" onClick={() => router.replace('/notifications')}>
           <Bell
