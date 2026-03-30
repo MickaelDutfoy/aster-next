@@ -27,21 +27,19 @@ body {
 
 a,
 button {
+  cursor: pointer;
+  user-select: none;
   text-decoration: none;
   color: inherit;
   font: inherit;
 }
 
 .link {
-  cursor: pointer;
-  user-select: none;
   color: var(--link);
 }
 
 .public-link {
   font-size: 1.1rem;
-  cursor: pointer;
-  user-select: none;
   text-decoration: underline;
   color: vars.$brown-bark;
 }
@@ -50,8 +48,6 @@ button {
   font-size: 1.1rem;
   background: none;
   border: none;
-  cursor: pointer;
-  user-select: none;
   text-decoration: underline;
   color: vars.$brown-bark;
 }
