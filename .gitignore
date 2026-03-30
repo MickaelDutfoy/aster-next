@@ -24,7 +24,7 @@
 .DS_Store
 *.pem
 todo.txt
-/mailing-scripts
+/one-shot-scripts
 
 # debug
 npm-debug.log*

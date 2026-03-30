@@ -105,6 +105,14 @@
   gap: 10px;
 
   .category {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .details {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -112,13 +120,7 @@
 
   .select-and-field {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-  }
-
-  .details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    grid-template-columns: repeat(2, 49%);
+    gap: 2%;
   }
 }
