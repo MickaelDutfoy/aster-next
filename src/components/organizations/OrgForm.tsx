@@ -67,7 +67,7 @@ export const OrgForm = ({ org }: { org?: Organization }) => {
 
   return (
     <form className="org-edition" onSubmit={handleSubmit}>
-      <h3>{t('organizations.editInfoTitle')}</h3>
+      <h3>{org ? t('organizations.editInfoTitle') : t('organizations.addTitle')}</h3>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <p>{t('organizations.orgNameLabel')}</p>
       <input type="text" name="name" defaultValue={org?.name} />
