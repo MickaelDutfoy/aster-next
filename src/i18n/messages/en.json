@@ -84,7 +84,7 @@
     "whatsNextQuestion": "So, shall we get started?"
   },
   "install": {
-    "prompt": "Would you like to install Aster on your mobile device?",
+    "prompt": "Would you like to install Aster on your mobile?",
     "routeButton": "View instructions",
     "title": "Install Aster on your mobile device",
     "disclaimer1": "Aster can be installed as an application on your smartphone.",
