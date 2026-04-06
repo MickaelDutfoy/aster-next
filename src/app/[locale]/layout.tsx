@@ -1,4 +1,4 @@
-import ClientLayout from '@/components/tools/ClientLayout';
+import { InstallProvider } from '@/components/tools/InstallProvider';
 import ToastProvider from '@/components/tools/ToastProvider';
 import { routing } from '@/i18n/routing';
 import '@/styles/_global.scss';
@@ -76,10 +76,10 @@ export default async function LocaleLayout({
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ClientLayout>
+          <InstallProvider>
             <ToastProvider />
             {children}
-          </ClientLayout>
+          </InstallProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -228,7 +228,7 @@ textarea {
 
 .modal {
   position: relative;
-  max-width: 92dvw;
+  max-width: min(92dvw, 707px);
   max-height: 92dvh;
   background-color: var(--app-bg);
   padding: 10px;
