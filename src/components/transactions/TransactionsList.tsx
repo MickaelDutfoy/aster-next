@@ -54,11 +54,9 @@ export const TransactionsList = ({
       .reduce((acc, transaction) => acc + transaction.amountInCents, 0) / 100;
 
   const totalExpense =
-    filteredTransactions
+    -filteredTransactions
       .filter((transaction) => transaction.type === TransactionType.EXPENSE)
       .reduce((acc, transaction) => acc + transaction.amountInCents, 0) / 100;
-
-  console.log(totalExpense);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat(lang, {
@@ -167,17 +165,17 @@ export const TransactionsList = ({
                 {t('transactions.incomesLabel')} <strong>{formatCurrency(totalIncome)}</strong>
               </p>
             )}
-            {totalExpense > 0 && (
+            {totalExpense < 0 && (
               <p>
-                {t('transactions.expensesLabel')} <strong>−{formatCurrency(totalExpense)}</strong>
+                {t('transactions.expensesLabel')} <strong>{formatCurrency(totalExpense)}</strong>
               </p>
             )}
           </div>
-          {totalExpense > 0 && totalIncome > 0 && (
+          {totalExpense < 0 && totalIncome > 0 && (
             <div>
               <p>
-                {t('transactions.balanceLabel')} {totalIncome - totalExpense < 0 && '−'}
-                <strong>{formatCurrency(Math.abs(totalIncome - totalExpense))}</strong>
+                {t('transactions.balanceLabel')}{' '}
+                <strong>{formatCurrency(Math.abs(totalIncome + totalExpense))}</strong>
               </p>
             </div>
           )}
@@ -201,8 +199,9 @@ export const TransactionsList = ({
                   <p>{displayDate(transaction.date).slice(0, 5)}</p>
                   <p className="transaction-category">{transaction.category.name}</p>
                   <span>
-                    {transaction.type === TransactionType.EXPENSE && '−'}
-                    {formatCurrency(transaction.amountInCents / 100)}
+                    {transaction.type === TransactionType.INCOME
+                      ? formatCurrency(transaction.amountInCents / 100)
+                      : formatCurrency(-transaction.amountInCents / 100)}
                   </span>
                   <span>{openedTransaction === transaction.id ? '▾' : '▸'}</span>
                 </div>
