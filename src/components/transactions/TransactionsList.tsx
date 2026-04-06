@@ -162,12 +162,14 @@ export const TransactionsList = ({
           <div>
             {totalIncome > 0 && (
               <p>
-                {t('transactions.incomesLabel')} <strong>{formatCurrency(totalIncome)}</strong>
+                <span>{t('transactions.incomesLabel')}</span>{' '}
+                <strong>{formatCurrency(totalIncome)}</strong>
               </p>
             )}
             {totalExpense < 0 && (
               <p>
-                {t('transactions.expensesLabel')} <strong>{formatCurrency(totalExpense)}</strong>
+                <span>{t('transactions.expensesLabel')}</span>{' '}
+                <strong>{formatCurrency(totalExpense)}</strong>
               </p>
             )}
           </div>

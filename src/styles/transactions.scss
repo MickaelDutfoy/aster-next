@@ -40,7 +40,13 @@
 
   div {
     display: flex;
+    gap: 20px;
     justify-content: space-around;
+
+    p {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
