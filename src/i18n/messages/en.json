@@ -33,7 +33,8 @@
     "soonToCome": "This feature will be available soon.",
     "nameFilter": "Filter by name:",
     "name": "Name",
-    "date": "Date"
+    "date": "Date",
+    "all": "All"
   },
   "toasts": {
     "errorGeneric": "An error occurred.",

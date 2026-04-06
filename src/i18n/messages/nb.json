@@ -33,7 +33,8 @@
     "soonToCome": "Denne funksjonen blir snart tilgjengelig.",
     "nameFilter": "Filtrer etter navn:",
     "name": "Navn",
-    "date": "Dato"
+    "date": "Dato",
+    "all": "Alle"
   },
   "toasts": {
     "errorGeneric": "Noe gikk galt.",

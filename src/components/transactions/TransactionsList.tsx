@@ -34,12 +34,12 @@ export const TransactionsList = ({
   const sortedCategories = [...categories].sort((a, b) => a.name.localeCompare(b.name));
 
   const [openedTransaction, setOpenedTransaction] = useState<number | null>(null);
-  const [selectedYear, setSelectedYear] = useState<number | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<TransactionCategory | null>(null);
+  const [selectedYear, setSelectedYear] = useState<number>(0);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number>(0);
 
   const filteredTransactions = transactions.filter((transaction) => {
     const matchesYear = !selectedYear || new Date(transaction.date).getFullYear() === selectedYear;
-    const matchesCategory = !selectedCategory || transaction.category.id === selectedCategory.id;
+    const matchesCategory = !selectedCategoryId || transaction.category.id === selectedCategoryId;
 
     return matchesYear && matchesCategory;
   });
@@ -106,12 +106,12 @@ export const TransactionsList = ({
 
   const changeActiveYear = (year: number) => {
     setOpenedTransaction(null);
-    setSelectedYear((prev) => (prev === year ? null : year));
+    setSelectedYear(year);
   };
 
-  const changeActiveCategory = (category: TransactionCategory) => {
+  const changeActiveCategory = (categoryId: number) => {
     setOpenedTransaction(null);
-    setSelectedCategory((prev) => (prev?.id === category.id ? null : category));
+    setSelectedCategoryId(categoryId);
   };
 
   return (
@@ -121,36 +121,28 @@ export const TransactionsList = ({
           {years.length > 0 && (
             <div className="filter-select">
               <h4>{t('transactions.yearLabel')}</h4>
-              <div className="filter-buttons">
+              <select onChange={(e) => changeActiveYear(Number(e.target.value))}>
+                <option value={0}>{t('common.all')}</option>
                 {years.map((year) => (
-                  <button
-                    key={year}
-                    className="filter-button"
-                    style={year !== selectedYear ? { opacity: 0.6 } : { opacity: 1 }}
-                    onClick={() => changeActiveYear(year)}
-                  >
+                  <option key={year} value={year}>
                     {year}
-                  </button>
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
           )}
 
           {sortedCategories.length > 0 && (
             <div className="filter-select">
               <h4>{t('transactions.categoryLabel')}</h4>
-              <div className="filter-buttons">
+              <select onChange={(e) => changeActiveCategory(Number(e.target.value))}>
+                <option value={0}>{t('common.all')}</option>
                 {sortedCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    className="filter-button"
-                    style={category !== selectedCategory ? { opacity: 0.6 } : { opacity: 1 }}
-                    onClick={() => changeActiveCategory(category)}
-                  >
+                  <option key={category.id} value={category.id}>
                     {category.name}
-                  </button>
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
           )}
         </div>

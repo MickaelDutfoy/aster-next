@@ -33,7 +33,8 @@
     "soonToCome": "Cette fonctionnalité sera bientôt disponible.",
     "nameFilter": "Filtrer par nom :",
     "name": "Nom",
-    "date": "Date"
+    "date": "Date",
+    "all": "Toutes"
   },
   "toasts": {
     "errorGeneric": "Une erreur est survenue.",

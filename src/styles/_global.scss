@@ -170,17 +170,6 @@ h3 {
   font-size: 0.8rem;
 }
 
-.filter-button {
-  cursor: pointer;
-  background-color: var(--static-button);
-  color: var(--input-text);
-  box-shadow: 1px 1px 4px vars.$smoky-black;
-  padding: 7px;
-  border: 1px solid var(--border-button);
-  border-radius: 5px;
-  font-size: 0.8rem;
-}
-
 .disabled {
   opacity: 0.3;
   pointer-events: none;
