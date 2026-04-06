@@ -58,8 +58,8 @@ nav {
     position: absolute;
     top: -7px;
     right: -7px;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: 2px solid var(--input-text);
     box-shadow: 1px 1px 1px var(--input-text);
@@ -67,8 +67,8 @@ nav {
 
     p {
       position: absolute;
-      top: 48%;
-      left: 53%;
+      top: 13px;
+      left: 14px;
       transform: translate(-50%, -50%);
       font-weight: 700;
     }

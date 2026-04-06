@@ -54,7 +54,7 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
           />
           {notifCounter > 0 && (
             <div className="notif-counter">
-              <p style={{ fontSize: notifCounter < 10 ? '0.9rem' : '0.8rem' }}>
+              <p style={notifCounter < 100 ? { fontSize: '0.9rem' } : { fontSize: '0.8rem' }}>
                 {notifCounter <= 99 ? notifCounter : '99+'}
               </p>
             </div>
