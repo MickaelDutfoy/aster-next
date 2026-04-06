@@ -10,7 +10,7 @@ import {
 
 export type Language = 'fr' | 'en' | 'nb';
 
-export type ThemeChoice = 'system' | 'light' | 'dark';
+export type ThemeChoice = 'system' | 'light' | 'dark' | 'high-contrast';
 
 export type AnimalHealthActType = 'VACCINATION' | 'DEWORM' | 'ANTIFLEA';
 

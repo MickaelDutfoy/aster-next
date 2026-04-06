@@ -223,6 +223,7 @@ enum PaymentMethod {
   CARD
   BANK_TRANSFER
   CHECK
+  DIRECT_DEBIT
   OTHER
 }
 

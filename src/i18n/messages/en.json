@@ -53,6 +53,7 @@
     "orgRequestCanceled": "Your membership request has been cancelled.",
     "orgRegisterSuccess": "Your organization has been successfully registered.",
     "orgEditSuccess": "Your organization has been successfully edited.",
+    "orgDeleteSuccess": "Your organization has been successfully deleted.",
     "orgRequestApproved": "This request has been approved.",
     "orgMemberRemoved": "This member has been removed from this organization.",
     "memberPromotedToAdmin": "This member has been appointed as an organization manager.",
@@ -251,6 +252,11 @@
       "items150": [
         "The Treasury module is now available.",
         "Aster provides a simple tool to track your organization’s income and expenses, and view a balance at any time."
+      ],
+      "items151": [
+        "Added a \"High contrast\" theme in Settings.",
+        "Animal weight is now entered and displayed in kilograms.",
+        "Various fixes and improvements to the Treasury module."
       ]
     }
   },
@@ -298,10 +304,10 @@
     "weightEntriesTitle": "Recorded weighings:",
     "weightEntriesNone": "No weighings recorded yet.",
     "addWeightEntry": "Add a weighing:",
-    "weightEntry": "Weight in grams",
+    "weightEntry": "Weight in kg",
     "weight": "Weight",
     "weightEvolutionTitle": "Change",
-    "weightEvolution": "{grams} g in {days} d",
+    "weightEvolution": "{grams} in {days} d",
     "removeWeightEntry": "Remove this weighing",
     "testEntriesTitle": "Recorded tests:",
     "testEntriesSheetTitle": "Tests and results:",
@@ -473,6 +479,7 @@
       "CARD": "Card",
       "CASH": "Cash",
       "CHECK": "Check",
+      "DIRECT_DEBIT": "Direct debit",
       "OTHER": "Other"
     },
     "additionalInfoLabel": "Note:",
@@ -481,6 +488,7 @@
     "balanceTitle": "Summary of selected transactions:",
     "expensesLabel": "Expenses:",
     "incomesLabel": "Income:",
+    "balanceLabel": "Balance:",
     "noTransactions": "No transactions found."
   },
   "members": {
@@ -500,6 +508,7 @@
     "system": "System",
     "dark": "Dark",
     "light": "Light",
+    "highContrast": "High contrast",
     "contactIntro": "Need help? Get in touch:",
     "editAccount": {
       "title": "Edit my account",

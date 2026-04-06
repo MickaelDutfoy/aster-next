@@ -53,6 +53,7 @@
     "orgRequestCanceled": "Din forespørsel om medlemskap er kansellert.",
     "orgRegisterSuccess": "Organisasjonen din ble registrert.",
     "orgEditSuccess": "Organisasjonen din ble redigert.",
+    "orgDeleteSuccess": "Organisasjonen din ble slettet.",
     "orgRequestApproved": "Denne forespørselen ble godkjent.",
     "orgMemberRemoved": "Dette medlemmet er fjernet fra organisasjonen.",
     "memberPromotedToAdmin": "Dette medlemmet er utnevnt til ansvarlig i organisasjonen.",
@@ -251,6 +252,11 @@
       "items150": [
         "Økonomimodulen er nå tilgjengelig.",
         "Aster tilbyr et enkelt verktøy for å følge organisasjonens inntekter og utgifter, og se en oversikt når som helst."
+      ],
+      "items151": [
+        "Lagt til et \"Høy kontrast\"-tema i Innstillinger.",
+        "Dyrevekt registreres og vises nå i kilogram.",
+        "Diverse feilrettinger og forbedringer i økonomimodulen."
       ]
     }
   },
@@ -298,10 +304,10 @@
     "weightEntriesTitle": "Registrerte veiinger:",
     "weightEntriesNone": "Ingen veiinger registrert ennå.",
     "addWeightEntry": "Legg til en veiing:",
-    "weightEntry": "Vekt i gram",
+    "weightEntry": "Vekt i kg",
     "weight": "Vekt",
     "weightEvolutionTitle": "Endring",
-    "weightEvolution": "{grams} g på {days} d",
+    "weightEvolution": "{grams} på {days} d",
     "removeWeightEntry": "Fjern denne veiingen",
     "testEntriesTitle": "Registrerte tester:",
     "testEntriesSheetTitle": "Tester og resultater:",
@@ -473,6 +479,7 @@
       "CARD": "Kort",
       "CASH": "Kontanter",
       "CHECK": "Sjekke",
+      "DIRECT_DEBIT": "Direkte belastning",
       "OTHER": "Annet"
     },
     "additionalInfoLabel": "Notat:",
@@ -481,6 +488,7 @@
     "balanceTitle": "Oversikt over valgte transaksjoner:",
     "expensesLabel": "Utgifter:",
     "incomesLabel": "Inntekter:",
+    "balanceLabel": "Balanse:",
     "noTransactions": "Ingen transaksjoner funnet."
   },
   "members": {
@@ -500,6 +508,7 @@
     "system": "System",
     "dark": "Mørk",
     "light": "Lys",
+    "highContrast": "Høy kontrast",
     "contactIntro": "Trenger du hjelp? Ta kontakt:",
     "editAccount": {
       "title": "Rediger kontoen min",

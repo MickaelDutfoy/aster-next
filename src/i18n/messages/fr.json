@@ -53,6 +53,7 @@
     "orgRequestCanceled": "Votre demande d'adhésion a été annulée.",
     "orgRegisterSuccess": "Votre association a bien été enregistrée.",
     "orgEditSuccess": "Votre association a bien été éditée.",
+    "orgDeleteSuccess": "Votre association a bien été supprimée.",
     "orgRequestApproved": "Cette demande d'adhésion a été approuvée.",
     "orgMemberRemoved": "Ce membre a été retiré de l'association.",
     "memberPromotedToAdmin": "Ce membre a été nommé responsable de l'association.",
@@ -250,6 +251,11 @@
       "items150": [
         "Le module Trésorerie est désormais disponible.",
         "Aster propose un outil simple pour suivre les entrées et sorties d’argent de votre association, et consulter un bilan à tout moment."
+      ],
+      "items151": [
+        "Ajout d'un thème « Contraste élevé » dans les Paramètres.",
+        "Le poids des animaux est désormais saisi et affiché en kilogrammes.",
+        "Quelques corrections et améliorations sur le module Trésorerie."
       ]
     }
   },
@@ -297,10 +303,10 @@
     "weightEntriesTitle": "Pesées effectuées :",
     "weightEntriesNone": "Aucune pesée enregistrée pour le moment.",
     "addWeightEntry": "Ajouter une pesée :",
-    "weightEntry": "Poids en grammes",
+    "weightEntry": "Poids en kg",
     "weight": "Poids",
     "weightEvolutionTitle": "Évolution",
-    "weightEvolution": "{grams} g en {days} j",
+    "weightEvolution": "{grams} en {days} j",
     "removeWeightEntry": "Supprimer cette pesée",
     "testEntriesTitle": "Tests effectués :",
     "testEntriesSheetTitle": "Tests et résultats :",
@@ -472,6 +478,7 @@
       "CARD": "Carte bancaire",
       "CASH": "Espèces",
       "CHECK": "Chèque",
+      "DIRECT_DEBIT": "Prélèvement",
       "OTHER": "Autre"
     },
     "additionalInfoLabel": "Note :",
@@ -480,6 +487,7 @@
     "balanceTitle": "Bilan des transactions sélectionnées :",
     "expensesLabel": "Dépenses :",
     "incomesLabel": "Entrées :",
+    "balanceLabel": "Bilan :",
     "noTransactions": "Aucune transaction trouvée."
   },
   "members": {
@@ -499,6 +507,7 @@
     "system": "Système",
     "dark": "Sombre",
     "light": "Clair",
+    "highContrast": "Contraste élevé",
     "contactIntro": "Besoin d'aide ? Contactez-moi :",
     "editAccount": {
       "title": "Éditer mon compte",
