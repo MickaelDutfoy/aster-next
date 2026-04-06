@@ -1,6 +1,7 @@
 $outer-space: #363c38;
 $cinereous: #a6988c;
 $stone: #d3d1cf;
+$white: #ffffff;
 $snow: #faf6f5;
 $isabelline: #ece5df;
 $raw-umber: #875e45;
@@ -8,8 +9,10 @@ $brown-bark: #653d24;
 $smoky-black: #16110e;
 $graphite: #2c2e30;
 $carbon-black: #161a1b;
+$black: #000000;
 $light-coral: #ef8e8e;
 $mahogamy-red: #ac1717;
+$bright-yellow: #ffff00; 
 
 :root {
   --app-bg: #{$isabelline};
@@ -39,8 +42,22 @@ $mahogamy-red: #ac1717;
   --emphasized: rgba(255, 255, 255, 0.1);
 }
 
+:root[data-theme='high-contrast'] {
+  --app-bg: #{$smoky-black};
+  --text: #{$white};
+  --button: #{$snow};
+  --static-button: #{$snow};
+  --border-button: #{$snow};
+  --link: #{$bright-yellow};
+  --input-bg: #{$snow};
+  --input-text: #{$black};
+  --alert: #{$mahogamy-red};
+  --box: #{$carbon-black};
+  --emphasized: rgba(255, 255, 255, 0.25);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']):not([data-theme='dark']) {
+  :root:not([data-theme='light']):not([data-theme='dark']):not([data-theme='high-contrast']) {
     --app-bg: #{$outer-space};
     --text: #{$isabelline};
     --button: #{$raw-umber};

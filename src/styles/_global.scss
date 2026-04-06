@@ -173,7 +173,7 @@ h3 {
 .filter-button {
   cursor: pointer;
   background-color: var(--static-button);
-  color: vars.$smoky-black;
+  color: var(--input-text);
   box-shadow: 1px 1px 4px vars.$smoky-black;
   padding: 7px;
   border: 1px solid var(--border-button);

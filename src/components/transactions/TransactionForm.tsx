@@ -50,7 +50,7 @@ export const TransactionForm = ({
     const newCategory = formData.get('newCategory')?.toString().trim();
     const category = !existingCategory ? newCategory : existingCategory;
 
-    const amount = Number(formData.get('amount'));
+    const amount = Number(formData.get('amount')?.toString().replace(',', '.'));
     const date = formData.get('date')?.toString();
 
     if (!category || !amount || !date) {
@@ -145,7 +145,9 @@ export const TransactionForm = ({
                 <option value={TransactionType.INCOME}>{t('transactions.type.INCOME')}</option>
               </select>
               <input
-                type="text"
+                type="number"
+                min={0}
+                step={0.01}
                 name="amount"
                 placeholder={t('transactions.amountPlaceholder')}
                 defaultValue={transaction?.amountInCents ? transaction.amountInCents / 100 : ''}
@@ -182,6 +184,9 @@ export const TransactionForm = ({
                 <option value={PaymentMethod.CARD}>{t('transactions.paymentMethod.CARD')}</option>
                 <option value={PaymentMethod.CASH}>{t('transactions.paymentMethod.CASH')}</option>
                 <option value={PaymentMethod.CHECK}>{t('transactions.paymentMethod.CHECK')}</option>
+                <option value={PaymentMethod.DIRECT_DEBIT}>
+                  {t('transactions.paymentMethod.DIRECT_DEBIT')}
+                </option>
                 <option value={PaymentMethod.OTHER}>{t('transactions.paymentMethod.OTHER')}</option>
               </select>
             </div>

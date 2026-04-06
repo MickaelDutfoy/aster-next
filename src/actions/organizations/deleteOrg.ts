@@ -36,7 +36,7 @@ export const deleteOrg = async (orgId: number, formData: FormData): Promise<Acti
 
     revalidatePath(`/organizations`);
 
-    return { ok: true, status: 'success', message: 'toasts.orgEditSuccess' };
+    return { ok: true, status: 'success', message: 'toasts.orgDeleteSuccess' };
   } catch (err) {
     console.error(err);
     return { ok: false, message: 'toasts.errorGeneric' };

@@ -521,7 +521,7 @@ export const AnimalForm = ({
                   <ul className="acts-list">
                     {weightEntriesDraft.map((entry, index) => (
                       <li key={`${entry.date}-${entry.weightGrams}-${index}`}>
-                        <span>{entry.weightGrams} g</span>
+                        <span>{entry.weightGrams / 1000} kg</span>
 
                         <span>{displayDate(new Date(entry.date))}</span>
 
@@ -542,13 +542,13 @@ export const AnimalForm = ({
                   <input
                     type="number"
                     min={0}
-                    step={1}
+                    step={0.001}
                     placeholder={t('animals.weightEntry')}
-                    value={newWeightEntry.weightGrams || ''}
+                    value={newWeightEntry.weightGrams ? newWeightEntry.weightGrams / 1000 : ''}
                     onChange={(e) =>
                       setNewWeightEntry((prev) => ({
                         ...prev,
-                        weightGrams: Number(e.target.value),
+                        weightGrams: Math.round(Number(e.target.value) * 1000),
                       }))
                     }
                   />

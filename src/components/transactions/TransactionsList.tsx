@@ -128,7 +128,7 @@ export const TransactionsList = ({
                   <button
                     key={year}
                     className="filter-button"
-                    style={year !== selectedYear ? { opacity: 0.5 } : { opacity: 1 }}
+                    style={year !== selectedYear ? { opacity: 0.6 } : { opacity: 1 }}
                     onClick={() => changeActiveYear(year)}
                   >
                     {year}
@@ -146,7 +146,7 @@ export const TransactionsList = ({
                   <button
                     key={category.id}
                     className="filter-button"
-                    style={category !== selectedCategory ? { opacity: 0.5 } : { opacity: 1 }}
+                    style={category !== selectedCategory ? { opacity: 0.6 } : { opacity: 1 }}
                     onClick={() => changeActiveCategory(category)}
                   >
                     {category.name}
@@ -173,6 +173,14 @@ export const TransactionsList = ({
               </p>
             )}
           </div>
+          {totalExpense > 0 && totalIncome > 0 && (
+            <div>
+              <p>
+                {t('transactions.balanceLabel')} {totalIncome - totalExpense < 0 && '−'}
+                <strong>{formatCurrency(Math.abs(totalIncome - totalExpense))}</strong>
+              </p>
+            </div>
+          )}
         </div>
       )}
 

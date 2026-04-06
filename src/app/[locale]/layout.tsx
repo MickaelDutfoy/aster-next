@@ -61,13 +61,16 @@ export default async function LocaleLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function () {
-                try {
-                  var t = localStorage.getItem('theme'); // 'light' | 'dark' | 'system' | null
-                  if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
-                  else document.documentElement.removeAttribute('data-theme');
-                } catch (e) {}
-              })();`,
+            (function () {
+              try {
+                var t = localStorage.getItem('theme');
+                if (t === 'light' || t === 'dark' || t === 'high-contrast') {
+                  document.documentElement.dataset.theme = t;
+                } else {
+                  document.documentElement.removeAttribute('data-theme');
+                }
+              } catch (e) {}
+            })();`,
           }}
         />
       </head>

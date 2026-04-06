@@ -53,9 +53,9 @@ export const AnimalDetails = ({
     .slice()
     .sort((a, b) => b.date.getTime() - a.date.getTime());
 
-    const sortedTests = (animal.testEntries ?? [])
-      .slice()
-      .sort((a, b) => b.date.getTime() - a.date.getTime());
+  const sortedTests = (animal.testEntries ?? [])
+    .slice()
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
 
   const hasHealthInfo =
     !!lastVaxAct ||
@@ -70,6 +70,17 @@ export const AnimalDetails = ({
     return Math.round((current.getTime() - previous.getTime()) / msPerDay);
   };
 
+  const formatWeight = (grams: number) => {
+    const abs = Math.abs(grams);
+
+    if (abs >= 1000) {
+      const kg = grams / 1000;
+      return `${kg % 1 === 0 ? kg : kg.toFixed(1)} kg`;
+    }
+
+    return `${grams} g`;
+  };
+
   const getWeightEvolution = (index: number) => {
     const current = sortedWeightEntries[index];
     const previous = sortedWeightEntries[index + 1];
@@ -81,8 +92,11 @@ export const AnimalDetails = ({
 
     const daysDiff = diffDays(current.date, previous.date);
 
+    const sign = gramsDiff > 0 ? '+' : '';
+    const formatted = formatWeight(gramsDiff);
+
     return t('animals.weightEvolution', {
-      grams: gramsDiff > 0 ? `+${gramsDiff}` : gramsDiff.toString(),
+      grams: `${sign}${formatted}`,
       days: daysDiff,
     });
   };
@@ -246,7 +260,7 @@ export const AnimalDetails = ({
                     {sortedWeightEntries.map((entry, index) => (
                       <tr key={entry.id}>
                         <td>{displayDate(entry.date)}</td>
-                        <td>{`${entry.weightGrams} g`}</td>
+                        <td>{entry.weightGrams / 1000} kg</td>
                         <td>{getWeightEvolution(index)}</td>
                       </tr>
                     ))}

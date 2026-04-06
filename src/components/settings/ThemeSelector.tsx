@@ -13,7 +13,7 @@ export const ThemeSelector = () => {
   const applyTheme = (choice: ThemeChoice) => {
     const root = document.documentElement;
 
-    if (choice === 'light' || choice === 'dark') {
+    if (choice === 'light' || choice === 'dark' || choice === 'high-contrast') {
       root.dataset.theme = choice;
     } else {
       root.removeAttribute('data-theme');
@@ -22,7 +22,8 @@ export const ThemeSelector = () => {
 
   const loadTheme = (): ThemeChoice => {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw === 'light' || raw === 'dark' || raw === 'system') return raw;
+    if (raw === 'light' || raw === 'dark' || raw === 'system' || raw === 'high-contrast')
+      return raw;
     return 'system';
   };
 
@@ -46,6 +47,7 @@ export const ThemeSelector = () => {
         <option value="system">{t('settings.system')}</option>
         <option value="light">{t('settings.light')}</option>
         <option value="dark">{t('settings.dark')}</option>
+        <option value="high-contrast">{t('settings.highContrast')}</option>
       </select>
     </div>
   );
