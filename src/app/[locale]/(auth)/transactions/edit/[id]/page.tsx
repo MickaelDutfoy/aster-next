@@ -16,7 +16,7 @@ export default async function EditTransactionPage({ params }: { params: Promise<
   if (!org) return <DeniedPage cause="error" />;
 
   if (org.userRole !== MemberRole.SUPERADMIN && org.userRole !== MemberRole.ADMIN) {
-    return <DeniedPage cause="refused" />;
+    return <DeniedPage cause="treasury" />;
   }
 
   const transaction: Transaction | null = await getTransactionsById(Number(id));

@@ -73,12 +73,12 @@
     "welcomeSubtitle": "«Å hjelpe dem som hjelper.»",
     "whyTitle": "Hvorfor bruke det?",
     "whyWhatIsAster": "Aster er en administrasjonsapplikasjon for dyrevernorganisasjoner.",
-    "whyHowHelps": "Ved å samle frivillige og sentralisere data om dyr og omsorgssteder, blir Aster organisasjonens kollektive og tilkoblede hukommelse.",
+    "whyHowHelps": "Ved å samle frivillige og sentralisere organisasjonens data (dyr, omsorgssteder, økonomi), blir Aster organisasjonens kollektive og tilkoblede hukommelse.",
     "howTitle": "Hvordan fungerer det?",
-    "howFirstParagraph": "Opprett en konto, registrer organisasjonen din, inviter medlemmer, og legg deretter til omsorgsstedene dine (familier, dyreinternat, kattehjem ...) og knytt dyrene til dem.",
+    "howFirstParagraph": "Opprett en konto, registrer organisasjonen din, inviter medlemmer, og legg deretter til omsorgsstedene dine (familier, dyreinternat, kattehjem ...) og knytt dyrene til dem. Du kan deretter organisere informasjonen i organisasjonen, inkludert økonomien, på ett sted.",
     "howSecondParagraph": "100 % gratis og uten reklame har Aster ett mål: å hjelpe dem som gjør alt for å hjelpe dyr.",
     "whatsNextTitle": "Hva skjer videre?",
-    "whatsNextParagraph1": "Når omsorgssteder og dyr er registrert, kan du enkelt følge opp vaksinepåminnelser, ledige fosterhjem og pågående adopsjoner.",
+    "whatsNextParagraph1": "Når omsorgssteder og dyr er registrert, kan du enkelt følge opp vaksinepåminnelser, ledige fosterhjem, pågående adopsjoner, og få en klar oversikt over aktiviteten, også økonomisk.",
     "whatsNextParagraph2": "Aster ønsker å hjelpe uten å pålegge begrensninger, og derfor er de fleste opplysninger valgfrie: du bestemmer hva som er viktig.",
     "whatsNextParagraph3": "Applikasjonen er i stadig utvikling, med nye funksjoner jevnlig på vei!",
     "whatsNextQuestion": "Skal vi komme i gang?"
@@ -181,7 +181,8 @@
     "members": "Medlemmer",
     "notifications": "Varsler",
     "settings": "Innstillinger",
-    "transactions": "Økonomi"
+    "transactions": "Økonomi",
+    "publish": "Publisering"
   },
   "dashboard": {
     "welcome": "Velkommen, {name}!",
@@ -454,6 +455,7 @@
     }
   },
   "transactions": {
+    "accessDenied": "Kun administratorer og ansvarlige i organisasjonen kan bruke denne funksjonen.",
     "addTitle": "Legg til en transaksjon",
     "editTitle": "Rediger transaksjon",
     "deleteTitle": "Slett transaksjon",
@@ -490,6 +492,9 @@
     "incomesLabel": "Inntekter:",
     "balanceLabel": "Balanse:",
     "noTransactions": "Ingen transaksjoner funnet."
+  },
+  "publish": {
+    "soonToCome": "Snart vil du kunne opprette en miniside og publisere dyr til adopsjon fra denne modulen."
   },
   "members": {
     "ownSheet": "Dette er profilen din.",

@@ -73,12 +73,12 @@
     "welcomeSubtitle": "“Helping those who help.”",
     "whyTitle": "Why use it?",
     "whyWhatIsAster": "Aster is a management application for animal welfare organizations.",
-    "whyHowHelps": "By bringing your volunteers together and centralizing data about your animals and foster locations, Aster becomes the collective, connected memory of your organization.",
+    "whyHowHelps": "By bringing your volunteers together and centralizing your organization’s data (animals, foster locations, finances), Aster becomes the collective, connected memory of your organization.",
     "howTitle": "How does it work?",
-    "howFirstParagraph": "Create an account, register your organization, invite your members, then add your foster locations (families, shelter, cattery...) and link your animals to them.",
+    "howFirstParagraph": "Create an account, register your organization, invite your members, then add your foster locations (families, shelter, cattery...) and link your animals to them. You can then organize your organization’s information, including your finances, in one place.",
     "howSecondParagraph": "100% free and ad-free, Aster has a single goal: helping those who do everything to help animals.",
     "whatsNextTitle": "What’s next?",
-    "whatsNextParagraph1": "Once your foster locations and animals are listed, you can easily track vaccine reminders, available foster families, and ongoing adoptions.",
+    "whatsNextParagraph1": "Once your foster locations and animals are listed, you can easily track vaccine reminders, available foster families, ongoing adoptions, and keep a clear overview of your activity, including financially.",
     "whatsNextParagraph2": "Aster aims to help without imposing constraints, which is why most information is optional: it’s up to you to choose what matters.",
     "whatsNextParagraph3": "The application is constantly evolving, with new features regularly planned!",
     "whatsNextQuestion": "So, shall we get started?"
@@ -181,7 +181,8 @@
     "members": "Members",
     "notifications": "Notifications",
     "settings": "Settings",
-    "transactions": "Treasury"
+    "transactions": "Treasury",
+    "publish": "Publishing"
   },
   "dashboard": {
     "welcome": "Welcome, {name}!",
@@ -454,6 +455,7 @@
     }
   },
   "transactions": {
+    "accessDenied": "Only administrators and managers of the organization can use this feature.",
     "addTitle": "Add a transaction",
     "editTitle": "Edit transaction",
     "deleteTitle": "Delete transaction",
@@ -490,6 +492,9 @@
     "incomesLabel": "Income:",
     "balanceLabel": "Balance:",
     "noTransactions": "No transactions found."
+  },
+  "publish": {
+    "soonToCome": "Soon, you will be able to create a mini website and publish your adoptable animals from this module."
   },
   "members": {
     "ownSheet": "This is your profile.",

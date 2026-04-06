@@ -15,7 +15,7 @@ export default async function AddTransactionModal() {
   if (!org) return <DeniedPage cause="error" />;
 
   if (org.userRole !== MemberRole.SUPERADMIN && org.userRole !== MemberRole.ADMIN) {
-    return <DeniedPage cause="refused" />;
+    return <DeniedPage cause="treasury" />;
   }
 
   const categories: TransactionCategory[] = await getTransactionCategoriesOfOrg(org.id);

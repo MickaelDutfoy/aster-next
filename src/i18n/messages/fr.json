@@ -73,12 +73,12 @@
     "welcomeSubtitle": "« Aider ceux qui aident. »",
     "whyTitle": "Pourquoi faire ?",
     "whyWhatIsAster": "Aster est une application de gestion d'association de protection animale.",
-    "whyHowHelps": "En regroupant vos bénévoles et en centralisant les données de vos animaux et de vos lieux d'accueil, Aster est la mémoire collective et connectée de votre association.",
+    "whyHowHelps": "En regroupant vos bénévoles et en centralisant les données de votre association (animaux, lieux d'accueil, trésorerie), Aster devient la mémoire collective et connectée de votre association.",
     "howTitle": "Comment ça fonctionne ?",
-    "howFirstParagraph": "Créez un compte, enregistrez votre association, invitez vos membres, puis ajoutez vos lieux d'accueil (familles, refuge, chatterie...) et associez-y vos animaux.",
+    "howFirstParagraph": "Créez un compte, enregistrez votre association, invitez vos membres, puis ajoutez vos lieux d'accueil (familles, refuge, chatterie...) et associez-y vos animaux. Vous pourrez ensuite organiser les informations de votre association, y compris votre trésorerie, au même endroit.",
     "howSecondParagraph": "100% gratuite et sans publicité, Aster n'a qu'un objectif : aider ceux qui font tout pour aider les animaux.",
     "whatsNextTitle": "Et ensuite ?",
-    "whatsNextParagraph1": "Une fois vos lieux d'accueil et vos animaux listés, vous pouvez facilement suivre les rappels de vaccins, les familles vacantes et les adoptions en cours.",
+    "whatsNextParagraph1": "Une fois vos lieux d'accueil et vos animaux listés, vous pouvez suivre les rappels de vaccins, les familles vacantes, les adoptions en cours, et garder une vue claire sur votre activité, y compris financière.",
     "whatsNextParagraph2": "Aster veut aider sans contraindre, c'est pourquoi la plupart des informations sont optionnelles : à vous de choisir celles qui comptent pour vous.",
     "whatsNextParagraph3": "L'application est en constante évolution et de nouvelles fonctionnalités sont sans cesse au programme !",
     "whatsNextQuestion": "Alors, on commence ?"
@@ -181,7 +181,8 @@
     "members": "Membres",
     "notifications": "Notifications",
     "settings": "Paramètres",
-    "transactions": "Trésorerie"
+    "transactions": "Trésorerie",
+    "publish": "Diffusion"
   },
   "dashboard": {
     "welcome": "Bienvenue, {name} !",
@@ -453,6 +454,7 @@
     }
   },
   "transactions": {
+    "accessDenied": "Seuls les administrateurs et responsables de l'association peuvent utiliser cette fonctionnalité.",
     "addTitle": "Ajouter une transaction",
     "editTitle": "Éditer la transaction",
     "deleteTitle": "Supprimer la transaction",
@@ -489,6 +491,9 @@
     "incomesLabel": "Entrées :",
     "balanceLabel": "Bilan :",
     "noTransactions": "Aucune transaction trouvée."
+  },
+  "publish": {
+    "soonToCome": "Prochainement, vous pourrez créer un mini-site et diffuser vos animaux à l'adoption depuis ce module."
   },
   "members": {
     "ownSheet": "Ceci est votre fiche.",

@@ -16,7 +16,7 @@ const Transactions = async () => {
   if (!org) return <DeniedPage cause="error" />;
 
   if (org.userRole !== MemberRole.SUPERADMIN && org.userRole !== MemberRole.ADMIN) {
-    return <DeniedPage cause="refused" />;
+    return <DeniedPage cause="treasury" />;
   }
 
   const transactions: Transaction[] = await getTransactionsOfOrg(org.id);
