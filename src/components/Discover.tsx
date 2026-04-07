@@ -63,7 +63,7 @@ export default function Discover() {
           <div className="discover-screenshot-list">
             <figure className="discover-screenshot-card">
               <img
-                src={`/screenshots/animal-details_${lang}.png`}
+                src={`/screenshots/animal_${lang}.png`}
                 alt={t('discover.screenshots.animalDetails.alt')}
                 height={780}
               />
