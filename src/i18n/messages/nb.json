@@ -706,5 +706,74 @@
       "link": "personvernerklæringen",
       "suffix": " til Aster på nytt."
     }
+  },
+  "discover": {
+    "hero": {
+      "title": "Aster hjelper deg med å administrere din dyrevernorganisasjon",
+      "subtitle": "Dyr, omsorgssteder, økonomi: alt på ett sted, tilgjengelig for hele teamet.",
+      "primaryAction": "Prøv Aster",
+      "secondaryAction": "Se funksjoner"
+    },
+    "problem": {
+      "title": "En hverdag som ofte er krevende",
+      "paragraph1": "Å administrere en dyrevernorganisasjon innebærer ofte å håndtere Excel-ark, meldinger og spredt informasjon.",
+      "paragraph2": "Noe informasjon går tapt, og alt hviler på noen få personer som må følge opp alt."
+    },
+    "solution": {
+      "title": "En felles base for organisasjonen",
+      "paragraph1": "Aster samler all informasjon om organisasjonen på ett sted, tilgjengelig for alle medlemmer når som helst."
+    },
+    "features": {
+      "title": "Dette kan du gjøre med Aster",
+      "animals": {
+        "title": "Dyr",
+        "description": "Følg dyrene dine, deres historikk, helse og viktig informasjon."
+      },
+      "fosterLocations": {
+        "title": "Omsorgssteder",
+        "description": "Organiser fosterhjem, tilfluktssteder og medlemmer i organisasjonen."
+      },
+      "treasury": {
+        "title": "Økonomi",
+        "description": "Få en tydelig oversikt over inntekter og utgifter."
+      },
+      "notifications": {
+        "title": "Varsler",
+        "description": "Få nyttige påminnelser uten å måtte følge med på alt hele tiden."
+      }
+    },
+    "screenshots": {
+      "title": "Se hvordan Aster brukes i hverdagen",
+      "animals": {
+        "alt": "Liste over dyr",
+        "caption": "Se alle dyrene dine med ett blikk."
+      },
+      "animalDetails": {
+        "alt": "Detaljer om et dyr",
+        "caption": "Få tilgang til historikk og helseinformasjon."
+      },
+      "fosterLocations": {
+        "alt": "Omsorgssteder",
+        "caption": "Organiser fosterhjem og omsorgssteder."
+      },
+      "treasury": {
+        "alt": "Økonomi",
+        "caption": "Følg inntekter og utgifter."
+      },
+      "notifications": {
+        "alt": "Varsler",
+        "caption": "Hold deg oppdatert på det som er viktig."
+      }
+    },
+    "philosophy": {
+      "title": "Et verktøy laget for deg",
+      "paragraph1": "Aster er gratis og uten reklame.",
+      "paragraph2": "Det er utviklet for å hjelpe organisasjoner, uten begrensninger eller kommersielle mål."
+    },
+    "cta": {
+      "title": "Skal vi starte?",
+      "paragraph1": "Registrer organisasjonen din og begynn å organisere informasjonen enkelt.",
+      "primaryAction": "Gå til appen"
+    }
   }
 }

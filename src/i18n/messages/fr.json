@@ -705,5 +705,74 @@
       "link": "politique de confidentialité",
       "suffix": " d’Aster."
     }
+  },
+  "discover": {
+    "hero": {
+      "title": "Aster vous aide à gérer votre association de protection animale",
+      "subtitle": "Animaux, lieux d’accueil, trésorerie : tout au même endroit, accessible à toute votre équipe.",
+      "primaryAction": "Essayer Aster",
+      "secondaryAction": "Voir les fonctionnalités"
+    },
+    "problem": {
+      "title": "Un quotidien souvent compliqué",
+      "paragraph1": "Gérer une association de protection animale implique souvent de jongler entre fichiers Excel, messages, et informations dispersées.",
+      "paragraph2": "Certaines données se perdent, et tout repose sur quelques personnes qui doivent tout suivre."
+    },
+    "solution": {
+      "title": "Une base commune pour votre association",
+      "paragraph1": "Aster centralise les informations de votre association en un seul endroit, accessible à tous les membres, à tout moment."
+    },
+    "features": {
+      "title": "Ce que vous pouvez faire avec Aster",
+      "animals": {
+        "title": "Animaux",
+        "description": "Suivez vos animaux, leur historique, leur santé et les informations importantes."
+      },
+      "fosterLocations": {
+        "title": "Lieux d’accueil",
+        "description": "Organisez vos familles d’accueil, refuges et membres de votre association."
+      },
+      "treasury": {
+        "title": "Trésorerie",
+        "description": "Gardez une vue claire sur les entrées et sorties d’argent liées à votre activité."
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Recevez des rappels utiles sans avoir à tout surveiller en permanence."
+      }
+    },
+    "screenshots": {
+      "title": "Découvrez comment Aster s’utilise au quotidien",
+      "animals": {
+        "alt": "Liste des animaux",
+        "caption": "Visualisez tous vos animaux en un coup d’œil."
+      },
+      "animalDetails": {
+        "alt": "Détail d’un animal",
+        "caption": "Accédez à l’historique et aux informations de santé."
+      },
+      "fosterLocations": {
+        "alt": "Lieux d’accueil",
+        "caption": "Organisez vos familles d’accueil et vos lieux."
+      },
+      "treasury": {
+        "alt": "Trésorerie",
+        "caption": "Suivez les entrées et sorties d’argent."
+      },
+      "notifications": {
+        "alt": "Notifications",
+        "caption": "Restez informé des éléments importants."
+      }
+    },
+    "philosophy": {
+      "title": "Un outil pensé pour vous",
+      "paragraph1": "Aster est gratuit et sans publicité.",
+      "paragraph2": "Il a été conçu pour aider les associations, sans contrainte ni objectif commercial."
+    },
+    "cta": {
+      "title": "On s'y met ?",
+      "paragraph1": "Enregistrez votre association et commencez à organiser vos informations simplement.",
+      "primaryAction": "Accéder à l’application"
+    }
   }
 }

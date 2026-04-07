@@ -1,0 +1,195 @@
+@use 'vars';
+
+.discover-page {
+  min-height: 100vh;
+  background-image: url('/images/cat-background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: vars.$isabelline;
+}
+
+.discover-overlay {
+  min-height: 100vh;
+  padding: 2rem 1rem 4rem;
+}
+
+.discover-section {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  padding: 1.5rem;
+  border: 2px solid vars.$raw-umber;
+  box-shadow: 5px 5px 18px vars.$smoky-black;
+  border-radius: 1.25rem;
+  background-color: vars.$outer-space;
+  backdrop-filter: blur(2px);
+}
+
+.discover-logo {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.discover-hero {
+  padding-top: 2.5rem;
+}
+
+.discover-title {
+  margin: 0 0 1rem;
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
+.discover-subtitle {
+  margin: 0 auto;
+  max-width: 32rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.discover-text-block h2,
+.discover-features h2,
+.discover-screenshots h2,
+.discover-cta h2 {
+  margin: 0 0 1rem;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.discover-text-block p,
+.discover-section-intro,
+.discover-cta p {
+  margin: 0 0 1rem;
+  line-height: 1.7;
+}
+
+.discover-text-block p:last-child,
+.discover-cta p:last-child {
+  margin-bottom: 0;
+}
+
+.discover-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+
+.discover-button {
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  background-color: vars.$cinereous;
+  box-shadow: 2px 2px 4px vars.$outer-space;
+  padding: 15px;
+  border: 2px solid vars.$raw-umber;
+  border-radius: 10px;
+  font-size: 20px;
+  color: vars.$smoky-black;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 2px 2px 4px vars.$smoky-black;
+}
+
+.discover-button:hover,
+.discover-button:focus-visible {
+  opacity: 0.9;
+}
+
+.discover-button--secondary {
+  background-color: transparent;
+}
+
+.discover-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.discover-card {
+  padding: 1.25rem;
+  border: 2px solid vars.$cinereous;
+  border-radius: 1rem;
+  background-color: vars.$isabelline;
+  color: vars.$smoky-black;
+}
+
+.discover-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.discover-card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.discover-screenshot-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.discover-screenshot-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.discover-screenshot-card img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border: 2px solid vars.$cinereous;
+  border-radius: 1.25rem;
+  box-shadow: 2px 2px 4px vars.$smoky-black;
+  background-color: vars.$carbon-black;
+}
+
+.discover-screenshot-card figcaption {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.discover-cta {
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .discover-overlay {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .discover-section {
+    padding: 2rem;
+  }
+
+  .discover-title {
+    font-size: 2.4rem;
+  }
+
+  .discover-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .discover-screenshot-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .discover-actions {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
