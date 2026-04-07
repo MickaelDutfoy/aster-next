@@ -78,7 +78,7 @@ export const TransactionForm = ({
       });
 
       if (res.ok) {
-        router.push('/transactions');
+        router.replace('/transactions');
       }
     } catch (err) {
       console.error(err);
