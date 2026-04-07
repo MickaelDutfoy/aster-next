@@ -717,11 +717,12 @@
     "problem": {
       "title": "En hverdag som ofte er krevende",
       "paragraph1": "Å administrere en dyrevernorganisasjon innebærer ofte å håndtere Excel-ark, meldinger og spredt informasjon.",
-      "paragraph2": "Noe informasjon går tapt, og alt hviler på noen få personer som må følge opp alt."
+      "paragraph2": "Noe informasjon går tapt, og belastningen faller ofte på et lite antall personer."
     },
     "solution": {
       "title": "En felles base for organisasjonen",
-      "paragraph1": "Aster samler all informasjon om organisasjonen på ett sted, tilgjengelig for alle medlemmer når som helst."
+      "paragraph1": "Aster samler all informasjon om organisasjonen på ett sted, tilgjengelig for alle medlemmer når som helst.",
+      "paragraph2": "Hvert medlem har kun tilgang til informasjonen som er relevant for dem, basert på rollen deres i organisasjonen."
     },
     "features": {
       "title": "Dette kan du gjøre med Aster",

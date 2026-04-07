@@ -30,6 +30,7 @@ export default function Discover() {
         <section className="discover-section discover-text-block">
           <h2>{t('discover.solution.title')}</h2>
           <p>{t('discover.solution.paragraph1')}</p>
+          <p>{t('discover.solution.paragraph2')}</p>
         </section>
 
         <section className="discover-section discover-features">

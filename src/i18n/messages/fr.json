@@ -716,11 +716,12 @@
     "problem": {
       "title": "Un quotidien souvent compliqué",
       "paragraph1": "Gérer une association de protection animale implique souvent de jongler entre fichiers Excel, messages, et informations dispersées.",
-      "paragraph2": "Certaines données se perdent, et tout repose sur quelques personnes qui doivent tout suivre."
+      "paragraph2": "Certaines données se perdent, et toute la charge mentale est concentrée sur un petit nombre de personnes."
     },
     "solution": {
       "title": "Une base commune pour votre association",
-      "paragraph1": "Aster centralise les informations de votre association en un seul endroit, accessible à tous les membres, à tout moment."
+      "paragraph1": "Aster centralise les informations de votre association en un seul endroit, accessible à tous les membres, à tout moment.",
+      "paragraph2": "Chaque membre accède uniquement aux informations qui le concernent, selon son rôle au sein de l’association."
     },
     "features": {
       "title": "Ce que vous pouvez faire avec Aster",

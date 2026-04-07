@@ -718,11 +718,12 @@
     "problem": {
       "title": "A day-to-day that can get complicated",
       "paragraph1": "Managing an animal welfare organization often means juggling spreadsheets, messages, and scattered information.",
-      "paragraph2": "Some data gets lost, and everything ends up relying on a few people who have to keep track of it all."
+      "paragraph2": "Some data gets lost, and the mental load often falls on a small number of people."
     },
     "solution": {
       "title": "A shared base for your organization",
-      "paragraph1": "Aster centralizes your organization’s information in one place, accessible to all members at any time."
+      "paragraph1": "Aster centralizes your organization’s information in one place, accessible to all members at any time.",
+      "paragraph2": "Each member only has access to the information relevant to them, depending on their role within the organization."
     },
     "features": {
       "title": "What you can do with Aster",
