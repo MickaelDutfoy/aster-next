@@ -23,6 +23,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/new-password',
   '/privacy',
   '/install',
+  '/discover',
 ];
 
 const AUTH_PAGES_PREFIXES = [
@@ -31,7 +32,7 @@ const AUTH_PAGES_PREFIXES = [
   '/register',
 ];
 
-const INTRO_BYPASS_PREFIXES = ['/privacy', '/install'];
+const INTRO_BYPASS_PREFIXES = ['/privacy', '/install', '/discover'];
 
 function startsWithOneOf(pathname: string, prefixes: readonly string[]) {
   return prefixes.some((prefix) => pathname.startsWith(prefix));
@@ -69,6 +70,7 @@ async function handler(req: NextRequest) {
     pathname.startsWith('/assets') ||
     pathname.startsWith('/icons') ||
     pathname.startsWith('/doc') ||
+    pathname.startsWith('/screenshots') ||
     pathname.startsWith('/.well-known') ||
     pathname === '/favicon.ico' ||
     pathname === '/sw.js' ||

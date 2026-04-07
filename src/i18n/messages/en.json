@@ -707,5 +707,74 @@
       "link": "privacy policy",
       "suffix": "."
     }
+  },
+  "discover": {
+    "hero": {
+      "title": "Aster helps you manage your animal welfare organization",
+      "subtitle": "Animals, foster locations, treasury: everything in one place, accessible to your whole team.",
+      "primaryAction": "Try Aster",
+      "secondaryAction": "See features"
+    },
+    "problem": {
+      "title": "A day-to-day that can get complicated",
+      "paragraph1": "Managing an animal welfare organization often means juggling spreadsheets, messages, and scattered information.",
+      "paragraph2": "Some data gets lost, and everything ends up relying on a few people who have to keep track of it all."
+    },
+    "solution": {
+      "title": "A shared base for your organization",
+      "paragraph1": "Aster centralizes your organization’s information in one place, accessible to all members at any time."
+    },
+    "features": {
+      "title": "What you can do with Aster",
+      "animals": {
+        "title": "Animals",
+        "description": "Track your animals, their history, health, and key information."
+      },
+      "fosterLocations": {
+        "title": "Foster locations",
+        "description": "Organize your foster families, shelters, and organization members."
+      },
+      "treasury": {
+        "title": "Treasury",
+        "description": "Keep a clear view of your income and expenses."
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Receive useful reminders without having to monitor everything constantly."
+      }
+    },
+    "screenshots": {
+      "title": "See how Aster is used every day",
+      "animals": {
+        "alt": "Animals list",
+        "caption": "See all your animals at a glance."
+      },
+      "animalDetails": {
+        "alt": "Animal details",
+        "caption": "Access history and health information."
+      },
+      "fosterLocations": {
+        "alt": "Foster locations",
+        "caption": "Organize your foster families and locations."
+      },
+      "treasury": {
+        "alt": "Treasury",
+        "caption": "Track your income and expenses."
+      },
+      "notifications": {
+        "alt": "Notifications",
+        "caption": "Stay informed about what matters."
+      }
+    },
+    "philosophy": {
+      "title": "A tool designed for you",
+      "paragraph1": "Aster is free and has no ads.",
+      "paragraph2": "It was built to support organizations, with no constraints and no commercial goals."
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "paragraph1": "Register your organization and start organizing your information simply.",
+      "primaryAction": "Go to the app"
+    }
   }
 }

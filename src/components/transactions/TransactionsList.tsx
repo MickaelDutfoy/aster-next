@@ -169,7 +169,7 @@ export const TransactionsList = ({
             <div>
               <p>
                 {t('transactions.balanceLabel')}{' '}
-                <strong>{formatCurrency(Math.abs(totalIncome + totalExpense))}</strong>
+                <strong>{formatCurrency(totalIncome + totalExpense)}</strong>
               </p>
             </div>
           )}
