@@ -619,7 +619,8 @@
           "informations d’association (nom, description, etc.)",
           "données de membres (nom/prénom/pseudo, rôle dans l’association, etc.)",
           "données liées aux animaux (identification, statut, notes, etc.)",
-          "familles d’accueil : informations descriptives, pouvant inclure une adresse"
+          "familles d’accueil : informations descriptives, pouvant inclure une adresse",
+          "données de trésorerie (transactions, montants, catégories, notes), pouvant inclure des informations sur des tiers (ex : donateurs, prestataires)"
         ],
         "funNote": "Les informations “famille d’accueil” peuvent représenter une personne qui n’utilise pas l’application (ex : “Mamie Ginette, 91 ans, famille d’accueil — Nokia 3310 master race”)."
       },
@@ -632,7 +633,8 @@
         "créer et gérer les comptes utilisateurs",
         "sécuriser l’accès aux espaces privés (données visibles uniquement par les membres concernés)",
         "permettre aux associations d’organiser leurs informations (membres / animaux / familles d’accueil)",
-        "assurer le support et la maintenance (ex : diagnostic d’erreurs techniques)"
+        "assurer le support et la maintenance (ex : diagnostic d’erreurs techniques)",
+        "permettre aux associations de suivre leur trésorerie (recettes / dépenses)"
       ]
     },
     "legalBases": {
@@ -648,7 +650,8 @@
       "title": "5) Qui peut voir les données ?",
       "items": [
         "Les données sont privées par défaut : l’accès dépend de votre appartenance à une association et de vos droits dans celle-ci.",
-        "Les données ne sont pas revendues et ne font l’objet d’aucun partage commercial."
+        "Les données ne sont pas revendues et ne font l’objet d’aucun partage commercial.",
+        "Certaines données sensibles (ex : trésorerie) sont accessibles uniquement aux membres disposant des droits appropriés (admin / responsable)."
       ]
     },
     "vendors": {
@@ -703,7 +706,60 @@
       "registerPrefix": "En créant votre compte, vous acceptez implicitement la",
       "settingsPrefix": "Vous pouvez relire la",
       "link": "politique de confidentialité",
+      "linkCapped": "Politique de confidentialité",
       "suffix": " d’Aster."
+    }
+  },
+  "legal": {
+    "title": "Mentions légales — Aster",
+    "lastUpdated": "Dernière mise à jour :",
+    "editor": {
+      "title": "1) Éditeur du site",
+      "intro": "Le présent site / application est édité par :",
+      "nameLabel": "Nom :",
+      "name": "Mickaël Dutfoy",
+      "emailLabel": "E-mail :",
+      "email": "m.dutfoy@gmail.com",
+      "siteLabel": "Site :",
+      "site": "https://aster-app.eu/",
+      "publisherLabel": "Responsable de la publication :",
+      "publisher": "Mickaël Dutfoy"
+    },
+    "hosting": {
+      "title": "2) Hébergement",
+      "intro": "L’application Aster est hébergée par :",
+      "providerLabel": "Hébergeur :",
+      "provider": "Vercel, Inc.",
+      "addressLabel": "Adresse :",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
+      "siteLabel": "Site :",
+      "site": "https://vercel.com/",
+      "note": "L’infrastructure technique d’Aster peut également s’appuyer sur des services tiers liés au fonctionnement de l’application (base de données, e-mails transactionnels). Ces éléments sont détaillés dans la politique de confidentialité."
+    },
+    "intellectualProperty": {
+      "title": "3) Propriété intellectuelle",
+      "intro": "Sauf mention contraire, les contenus présents sur Aster sont protégés par le droit applicable à la propriété intellectuelle.",
+      "items": [
+        "Le code, les textes, la structure et l’identité visuelle de l’application ne peuvent pas être reproduits, copiés ou réutilisés sans autorisation préalable.",
+        "Les contenus ou données saisis par les associations et leurs membres restent sous leur responsabilité."
+      ]
+    },
+    "liability": {
+      "title": "4) Responsabilité",
+      "intro": "Aster est proposé avec un objectif de service et de bonne foi, mais sans garantie absolue.",
+      "items": [
+        "L’éditeur s’efforce d’assurer l’exactitude et la mise à jour des informations.",
+        "L’éditeur ne pourra pas être tenu responsable d’éventuelles interruptions, bugs ou dommages indirects liés à l’utilisation de l’application.",
+        "Chaque association reste responsable des données qu’elle saisit, modifie ou supprime dans Aster."
+      ]
+    },
+    "personalData": {
+      "title": "5) Données personnelles",
+      "p1": "Le traitement des données personnelles est décrit dans la politique de confidentialité d’Aster.",
+      "contactLabel": "Contact :"
+    },
+    "links": {
+      "link": "Mentions légales"
     }
   },
   "discover": {
@@ -774,6 +830,7 @@
       "title": "On s'y met ?",
       "paragraph1": "Enregistrez votre association et commencez à organiser vos informations simplement.",
       "primaryAction": "Accéder à l’application"
-    }
+    },
+    "usefulLinks": "Liens utiles :"
   }
 }

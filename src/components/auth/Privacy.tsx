@@ -5,9 +5,8 @@ import { useTranslations } from 'next-intl';
 export const Privacy = () => {
   const t = useTranslations('privacy');
 
-  const lastUpdated = '31-12-2025';
+  const lastUpdated = '08-04-2026';
 
-  // Lists via t.raw()
   const accountItems = t.raw('data.account.items') as string[];
   const appItems = t.raw('data.app.items') as string[];
   const purposes = t.raw('purposes.items') as string[];

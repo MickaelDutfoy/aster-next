@@ -621,7 +621,8 @@
           "organization information (name, description, etc.)",
           "member data (name / nickname, role in the organization, etc.)",
           "animal data (identification, status, notes, etc.)",
-          "foster families: descriptive information, which may include an address"
+          "foster families: descriptive information, which may include an address",
+          "Treasury data (transactions, amounts, categories, notes), which may include information about third parties (e.g. donors, service providers)"
         ],
         "funNote": "Foster-family information may refer to someone who does not use the app (e.g., “Granny Ginette, 91, foster family — Nokia 3310 master race”)."
       },
@@ -634,7 +635,8 @@
         "create and manage user accounts",
         "secure access to private areas (data visible only to relevant members)",
         "help organizations organize their information (members / animals / foster families)",
-        "provide support and maintenance (e.g., diagnosing technical issues)"
+        "provide support and maintenance (e.g., diagnosing technical issues)",
+        "Allow organizations to track their treasury (income / expenses)"
       ]
     },
     "legalBases": {
@@ -650,7 +652,8 @@
       "title": "5) Who can see the data?",
       "items": [
         "Data is private by default: access depends on your membership in an organization and your permissions within it.",
-        "Data is not sold and is not shared for commercial purposes."
+        "Data is not sold and is not shared for commercial purposes.",
+        "Certain sensitive data (e.g. treasury) is only accessible to members with the appropriate permissions (admin / manager)."
       ]
     },
     "vendors": {
@@ -705,7 +708,60 @@
       "registerPrefix": "By creating your account, you implicitly agree to Aster’s",
       "settingsPrefix": "You can review Aster’s",
       "link": "privacy policy",
+      "linkCapped": "Privacy policy",
       "suffix": "."
+    }
+  },
+  "legal": {
+    "title": "Legal notice — Aster",
+    "lastUpdated": "Last updated:",
+    "editor": {
+      "title": "1) Site publisher",
+      "intro": "This website / application is published by:",
+      "nameLabel": "Name:",
+      "name": "Mickaël Dutfoy",
+      "emailLabel": "Email:",
+      "email": "m.dutfoy@gmail.com",
+      "siteLabel": "Website:",
+      "site": "https://aster-app.eu/",
+      "publisherLabel": "Publication director:",
+      "publisher": "Mickaël Dutfoy"
+    },
+    "hosting": {
+      "title": "2) Hosting",
+      "intro": "The Aster application is hosted by:",
+      "providerLabel": "Hosting provider:",
+      "provider": "Vercel, Inc.",
+      "addressLabel": "Address:",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, United States",
+      "siteLabel": "Website:",
+      "site": "https://vercel.com/",
+      "note": "Aster’s technical infrastructure may also rely on third-party services related to the operation of the application (database, transactional emails). These elements are detailed in the privacy policy."
+    },
+    "intellectualProperty": {
+      "title": "3) Intellectual property",
+      "intro": "Unless otherwise stated, the content available on Aster is protected by applicable intellectual property laws.",
+      "items": [
+        "The code, texts, structure, and visual identity of the application may not be reproduced, copied, or reused without prior authorization.",
+        "Content or data entered by organizations and their members remain under their responsibility."
+      ]
+    },
+    "liability": {
+      "title": "4) Liability",
+      "intro": "Aster is provided with a service-oriented intent and in good faith, but without absolute guarantee.",
+      "items": [
+        "The publisher strives to ensure the accuracy and up-to-date nature of the information.",
+        "The publisher cannot be held responsible for any interruptions, bugs, or indirect damages related to the use of the application.",
+        "Each organization remains responsible for the data it enters, modifies, or deletes within Aster."
+      ]
+    },
+    "personalData": {
+      "title": "5) Personal data",
+      "p1": "The processing of personal data is described in Aster’s privacy policy.",
+      "contactLabel": "Contact:"
+    },
+    "links": {
+      "link": "Legal notice"
     }
   },
   "discover": {
@@ -776,6 +832,7 @@
       "title": "Ready to get started?",
       "paragraph1": "Register your organization and start organizing your information simply.",
       "primaryAction": "Go to the app"
-    }
+    },
+    "usefulLinks": "Useful links:"
   }
 }

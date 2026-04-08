@@ -59,7 +59,7 @@ export default function Discover() {
           </div>
         </section>
 
-        <section id="screenshots" className="discover-section discover-screenshots">
+        <section className="discover-section discover-screenshots">
           <h2>{t('discover.screenshots.title')}</h2>
           <div className="discover-screenshot-list">
             <figure className="discover-screenshot-card">
@@ -113,6 +113,19 @@ export default function Discover() {
           <div className="discover-actions">
             <a className="discover-button" href="/">
               {t('discover.cta.primaryAction')}
+            </a>
+          </div>
+        </section>
+        <section className="discover-section discover-legal">
+          <div className="links-line">
+            <span>{t('discover.usefulLinks')} </span>
+            <a href="/legal">{t('legal.links.link')}</a> •{' '}
+            <a href="/privacy">{t('privacy.links.linkCapped')}</a>
+          </div>
+          <div className="links-line">
+            <span>{t('legal.personalData.contactLabel')} </span>
+            <a href={`mailto:${t('legal.editor.email')}`} target="_blank">
+              {t('legal.editor.email')}
             </a>
           </div>
         </section>
