@@ -10,6 +10,7 @@ export const generateUserPassiveNotifications = async (user: Member) => {
   const PRIME_VAX_REMINDER_DAYS = 21;
   const VAX_REMINDER_DAYS = 335;
   const NEUTRALIZE_REMINDER_DAYS = 183;
+  const TRIAL_DURATION_DAYS = 15;
 
   const relatedAnimals: Animal[] = await getAnimalsRelatedToUser(user.id);
 
@@ -35,6 +36,33 @@ export const generateUserPassiveNotifications = async (user: Member) => {
             messageParams: { animalName: animal.name },
             href: `/animals/${animal.id}`,
             sourceKey: `animal:${animal.id}:neutralize`,
+          },
+          update: {},
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    if (
+      animal.status === AnimalStatus.IN_TRIAL &&
+      animal.trialDateStart &&
+      isOlderThan(animal.trialDateStart, TRIAL_DURATION_DAYS)
+    ) {
+      try {
+        await prisma.notification.upsert({
+          where: {
+            memberId_sourceKey: {
+              memberId: user.id,
+              sourceKey: `trial:${animal.id}:${animal.trialDateStart.toISOString().slice(0, 10)}`,
+            },
+          },
+          create: {
+            memberId: user.id,
+            messageKey: 'notifications.animals.trialReminder',
+            messageParams: { animalName: animal.name },
+            href: `/animals/${animal.id}`,
+            sourceKey: `trial:${animal.id}:${animal.trialDateStart.toISOString().slice(0, 10)}`,
           },
           update: {},
         });

@@ -259,6 +259,10 @@
         "Lagt til et \"Høy kontrast\"-tema i Innstillinger.",
         "Dyrevekt registreres og vises nå i kilogram.",
         "Diverse feilrettinger og forbedringer i økonomimodulen."
+      ],
+      "items152": [
+        "Det er nå mulig å registrere statusen til et dyr som \"I prøveperiode\".",
+        "Administratorer og ansvarlige mottar et varsel når et dyr har vært i prøveperiode i minst femten dager."
       ]
     }
   },
@@ -330,9 +334,11 @@
     "status": {
       "UNHOSTED": "Venter på plassering",
       "FOSTERED": "I et omsorgssted",
+      "IN_TRIAL": "I prøveperiode",
       "ADOPTED": "Adoptert",
       "DECEASED": "Død"
     },
+    "trialPeriodLabel": "Prøveperiode startet:",
     "fosterFamilyLabel": "Omsorgssted: ",
     "toggleAdoption": "Vis adopsjonsinformasjon",
     "adopterLabel": "Adoptant:",
@@ -341,7 +347,6 @@
     "neuteringPlannedLabel": "Sterilisering planlagt den: ",
     "contractSignedLabel": "Adopsjonskontrakt signert den: ",
     "feesPaid": "Adopsjonsgebyret er betalt.",
-    "feesNotPaid": "Adopsjonsgebyret er ikke betalt.",
     "legalTransferLabel": "Juridisk overføring gjennomført den: ",
     "adoptionNotes": "Notater om adopsjonen:",
     "tabs": {
@@ -544,6 +549,7 @@
     "animals": {
       "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
       "neutralizeReminder": "{animalName} er gammel nok til å steriliseres.",
+      "trialReminder": "{animalName} har vært i prøveperiode i minst femten dager.",
       "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",
       "createAnimal": "{memberFullName} har opprettet en profil for {animalName}."
     },

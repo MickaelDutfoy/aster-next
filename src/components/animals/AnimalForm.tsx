@@ -356,6 +356,7 @@ export const AnimalForm = ({
               >
                 <option value={AnimalStatus.UNHOSTED}>{t('animals.status.UNHOSTED')}</option>
                 <option value={AnimalStatus.FOSTERED}>{t('animals.status.FOSTERED')}</option>
+                <option value={AnimalStatus.IN_TRIAL}>{t('animals.status.IN_TRIAL')}</option>
                 <option value={AnimalStatus.ADOPTED}>{t('animals.status.ADOPTED')}</option>
                 <option value={AnimalStatus.DECEASED}>{t('animals.status.DECEASED')}</option>
               </select>
