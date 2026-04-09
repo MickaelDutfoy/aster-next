@@ -51,37 +51,44 @@ export const Login = () => {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-block">
-        <h2>{t('auth.login.notMemberTitle')}</h2>
-        <Link href="/register" className="main-button">
-          {t('auth.login.register')}
-        </Link>
-      </div>
-      <div className="auth-block">
-        <h2>{t('auth.login.memberTitle')}</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="userEmail">{t('auth.emailLabel')}</label>
-          <input
-            className="auth-field"
-            type="text"
-            name="userEmail"
-            placeholder={t('auth.emailPlaceholder')}
-          />
-
-          <label htmlFor="userPassword">{t('auth.passwordLabel')}</label>
-          <PasswordInput name="userPassword" placeholder={t('auth.passwordPlaceholder')} />
-
-          <Link className="public-link" href="/reset-password">
-            {t('auth.login.forgotPasswordLink')}
+    <>
+      <div className="auth-page">
+        <div className="auth-block">
+          <h2>{t('auth.login.notMemberTitle')}</h2>
+          <Link href="/register" className="main-button">
+            {t('auth.login.register')}
           </Link>
+        </div>
+        <div className="auth-block">
+          <h2>{t('auth.login.memberTitle')}</h2>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="userEmail">{t('auth.emailLabel')}</label>
+            <input
+              className="auth-field"
+              type="text"
+              name="userEmail"
+              placeholder={t('auth.emailPlaceholder')}
+            />
 
-          <button type="submit" className="main-button" aria-busy={isLoading} disabled={isLoading}>
-            {isLoading ? t('auth.login.loading') : t('auth.login.submit')}
-          </button>
-          <p className="version-login">Aster v1.5.1</p>
-        </form>
+            <label htmlFor="userPassword">{t('auth.passwordLabel')}</label>
+            <PasswordInput name="userPassword" placeholder={t('auth.passwordPlaceholder')} />
+
+            <Link className="public-link" href="/reset-password">
+              {t('auth.login.forgotPasswordLink')}
+            </Link>
+
+            <button
+              type="submit"
+              className="main-button"
+              aria-busy={isLoading}
+              disabled={isLoading}
+            >
+              {isLoading ? t('auth.login.loading') : t('auth.login.submit')}
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+      <p className="version-login">Aster v1.5.2</p>
+    </>
   );
 };

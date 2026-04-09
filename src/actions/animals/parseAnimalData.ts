@@ -2,7 +2,7 @@ import { isAdoptionSheetEmpty } from '@/lib/animals/isAdoptionSheetEmpty';
 import { AnimalHealthAct, AnimalTestEntry, AnimalWeightEntry } from '@/lib/types';
 import { AnimalStatus, AnimalTestResult, Sex } from '@prisma/client';
 
-export const parseAnimalData = async (formData: FormData) => {
+export const parseAnimalData = async (formData: FormData, trialDateStart: Date | null) => {
   const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
   const otherSpeciesFromForm = formData.get('animalSpecies')?.toString().trim();
 
@@ -95,6 +95,13 @@ export const parseAnimalData = async (formData: FormData) => {
     animalFamilyId = formData.get('animalFamily') ? Number(formData.get('animalFamily')) : null;
   }
 
+  let newTrialDate: Date | null = trialDateStart;
+  if (!trialDateStart && animalForm.status === AnimalStatus.IN_TRIAL) {
+    newTrialDate = new Date();
+  } else if (animalForm.status !== AnimalStatus.IN_TRIAL) {
+    newTrialDate = null;
+  }
+
   const adopterForm = {
     fullName: formData.get('adopterFullName')?.toString().trim(),
     email: formData.get('adopterEmail')?.toString().trim(),
@@ -151,6 +158,7 @@ export const parseAnimalData = async (formData: FormData) => {
     information: animalForm.information ?? null,
     healthInformation: animalForm.healthInformation ?? null,
     status: animalForm.status,
+    trialDateStart: newTrialDate,
     familyId: animalFamilyId,
   };
 

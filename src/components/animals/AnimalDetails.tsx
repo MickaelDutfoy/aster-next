@@ -65,6 +65,13 @@ export const AnimalDetails = ({
     sortedTests.length > 0 ||
     !!animal.healthInformation;
 
+    const hasAdoptionInfo =
+      animal.adoption?.homeVisitDone ||
+      animal.adoption?.neuteringPlannedAt ||
+      animal.adoption?.adoptionContractSignedAt ||
+      animal.adoption?.adoptionFeePaid ||
+      animal.adoption?.legalTransferAt;
+
   const diffDays = (current: Date, previous: Date) => {
     const msPerDay = 1000 * 60 * 60 * 24;
     return Math.round((current.getTime() - previous.getTime()) / msPerDay);
@@ -293,6 +300,11 @@ export const AnimalDetails = ({
         <p>
           {t('animals.currentStatusLabel')} {t(`animals.status.${animal.status}`)}.
         </p>
+        {animal.trialDateStart && (
+          <p>
+            {t('animals.trialPeriodLabel')} {displayDate(animal.trialDateStart)}.
+          </p>
+        )}
         {family && (
           <p>
             {t('animals.fosterFamilyLabel')}
@@ -304,7 +316,7 @@ export const AnimalDetails = ({
         <button className="collapse-expand" onClick={() => setHiddenAdoption(!hiddenAdoption)}>
           {t('animals.toggleAdoption')} {hiddenAdoption ? '▸' : '▾'}
         </button>
-        {!hiddenAdoption && (
+        {!hiddenAdoption && animal.adoption && (
           <div className="animal-details">
             {animal.adoption?.adopterFullName && (
               <div className="animal-details-section">
@@ -318,32 +330,31 @@ export const AnimalDetails = ({
                 <p>{animal.adoption.adopterPhoneNumber}</p>
               </div>
             )}
-            <div className="animal-details-section">
-              <h4>{t('animals.aboutAdoption')}</h4>
-              {animal.adoption?.homeVisitDone && <p>{t('animals.homeVisitDone')}</p>}
-              {animal.adoption?.neuteringPlannedAt && (
-                <p>
-                  {t('animals.neuteringPlannedLabel')}
-                  {displayDate(animal.adoption.neuteringPlannedAt)}
-                </p>
-              )}
-              {animal.adoption?.adoptionContractSignedAt && (
-                <p>
-                  {t('animals.contractSignedLabel')}
-                  {displayDate(animal.adoption.adoptionContractSignedAt)}
-                </p>
-              )}
-              {animal.adoption?.adoptionFeePaid ? (
-                <p>{t('animals.feesPaid')}</p>
-              ) : (
-                <p>{t('animals.feesNotPaid')}</p>
-              )}
-              {animal.adoption?.legalTransferAt && (
-                <p>
-                  {t('animals.legalTransferLabel')} {displayDate(animal.adoption.legalTransferAt)}
-                </p>
-              )}
-            </div>
+
+            {hasAdoptionInfo && (
+              <div className="animal-details-section">
+                <h4>{t('animals.aboutAdoption')}</h4>
+                {animal.adoption?.homeVisitDone && <p>{t('animals.homeVisitDone')}</p>}
+                {animal.adoption?.neuteringPlannedAt && (
+                  <p>
+                    {t('animals.neuteringPlannedLabel')}
+                    {displayDate(animal.adoption.neuteringPlannedAt)}
+                  </p>
+                )}
+                {animal.adoption?.adoptionContractSignedAt && (
+                  <p>
+                    {t('animals.contractSignedLabel')}
+                    {displayDate(animal.adoption.adoptionContractSignedAt)}
+                  </p>
+                )}
+                {animal.adoption?.adoptionFeePaid && <p>{t('animals.feesPaid')}</p>}
+                {animal.adoption?.legalTransferAt && (
+                  <p>
+                    {t('animals.legalTransferLabel')} {displayDate(animal.adoption.legalTransferAt)}
+                  </p>
+                )}
+              </div>
+            )}
             {animal.adoption?.information && (
               <div className="animal-details-section">
                 <h4>{t('animals.adoptionNotes')}</h4>

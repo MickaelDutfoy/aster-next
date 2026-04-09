@@ -259,6 +259,10 @@
         "Added a \"High contrast\" theme in Settings.",
         "Animal weight is now entered and displayed in kilograms.",
         "Various fixes and improvements to the Treasury module."
+      ],
+      "items152": [
+        "It is now possible to set an animal’s status to \"In trial period\".",
+        "Administrators and managers receive a notification when an animal has been in a trial period for at least fifteen days."
       ]
     }
   },
@@ -330,9 +334,11 @@
     "status": {
       "UNHOSTED": "Waiting for placement",
       "FOSTERED": "In a foster location",
+      "IN_TRIAL": "In trial period",
       "ADOPTED": "Adopted",
       "DECEASED": "Deceased"
     },
+    "trialPeriodLabel": "Trial period started on:",
     "fosterFamilyLabel": "Foster location: ",
     "toggleAdoption": "Show adoption information",
     "adopterLabel": "Adopter:",
@@ -341,7 +347,6 @@
     "neuteringPlannedLabel": "Neutering planned on: ",
     "contractSignedLabel": "Adoption contract signed on: ",
     "feesPaid": "The adoption fee has been paid.",
-    "feesNotPaid": "The adoption fee has not been paid.",
     "legalTransferLabel": "Legal transfer completed on: ",
     "adoptionNotes": "Adoption notes:",
     "tabs": {
@@ -545,6 +550,7 @@
     "animals": {
       "vaxReminder": "{animalName} will soon need a vaccination booster.",
       "neutralizeReminder": "{animalName} is old enough to be neutered.",
+      "trialReminder": "{animalName} has been in a trial period for at least fifteen days.",
       "editedAnimal": "{memberFullName} edited the record for {animalName}.",
       "createAnimal": "{memberFullName} created a record for {animalName}."
     },

@@ -258,6 +258,10 @@
         "Ajout d'un thème « Contraste élevé » dans les Paramètres.",
         "Le poids des animaux est désormais saisi et affiché en kilogrammes.",
         "Quelques corrections et améliorations sur le module Trésorerie."
+      ],
+      "items152": [
+        "Il est désormais possible d'enregistrer le statut d'un animal « En période d'essai ».",
+        "Les administrateurs et responsables reçoivent une notification lorsqu'un animal est à l'essai depuis au moins quinze jours."
       ]
     }
   },
@@ -329,9 +333,11 @@
     "status": {
       "UNHOSTED": "En attente",
       "FOSTERED": "Dans un lieu d'accueil",
+      "IN_TRIAL": "En période d'essai",
       "ADOPTED": "Adopté(e)",
       "DECEASED": "Décédé(e)"
     },
+    "trialPeriodLabel": "Période d'essai démarée le :",
     "fosterFamilyLabel": "Lieu d'accueil : ",
     "toggleAdoption": "Afficher les informations d'adoption",
     "adopterLabel": "Adoptant :",
@@ -340,7 +346,6 @@
     "neuteringPlannedLabel": "Stérilisation prévue le : ",
     "contractSignedLabel": "Contrat d'adoption signé le : ",
     "feesPaid": "Les frais d'adoption ont été payés.",
-    "feesNotPaid": "Les frais d'adoption n'ont pas été payés.",
     "legalTransferLabel": "Cession légale effectuée le : ",
     "adoptionNotes": "Notes à propos de l'adoption :",
     "tabs": {
@@ -543,6 +548,7 @@
     "animals": {
       "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin.",
       "neutralizeReminder": "{animalName} est en âge d'être stérilisé(e).",
+      "trialReminder": "{animalName} est en période d'essai depuis au moins quinze jours.",
       "editedAnimal": "{memberFullName} a édité la fiche de {animalName}.",
       "createAnimal": "{memberFullName} a créé une fiche pour {animalName}."
     },

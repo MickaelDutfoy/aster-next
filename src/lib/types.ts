@@ -58,6 +58,7 @@ export type Animal = {
   healthInformation: string | null;
   weightEntries?: AnimalWeightEntry[];
   testEntries?: AnimalTestEntry[];
+  trialDateStart: Date | null;
   familyId: number | null;
   orgId: number;
   createdByMemberId: number;
