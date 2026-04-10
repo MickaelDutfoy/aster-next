@@ -1,5 +1,6 @@
 import Discover from '@/components/Discover';
 import { Language } from '@/lib/types';
+import '@/styles/discover.scss';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
