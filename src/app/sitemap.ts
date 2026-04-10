@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const languages = {
     fr: `${baseUrl}/fr/discover`,
     en: `${baseUrl}/en/discover`,
-    no: `${baseUrl}/no/discover`,
+    nb: `${baseUrl}/nb/discover`,
   };
 
   return [
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: languages.no,
+      url: languages.nb,
       lastModified,
       changeFrequency: 'monthly',
       priority: 1,
