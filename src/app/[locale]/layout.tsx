@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   applicationName: 'Aster',
   title: 'Aster',
   appleWebApp: { capable: true, statusBarStyle: 'default' },
-  description: 'A mobile app for your animal welfare organizations',
+  description: 'An application for animal welfare organizations',
 };
 
 export const viewport: Viewport = {

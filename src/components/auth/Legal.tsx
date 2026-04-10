@@ -1,9 +1,8 @@
-'use client';
+import { Language } from '@/lib/types';
+import { getTranslations } from 'next-intl/server';
 
-import { useTranslations } from 'next-intl';
-
-export const Legal = () => {
-  const t = useTranslations('legal');
+export const Legal = async ({ locale }: { locale: Language }) => {
+  const t = await getTranslations({ locale, namespace: 'legal' });
 
   const lastUpdated = '08-04-2026';
 

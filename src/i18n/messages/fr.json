@@ -769,6 +769,10 @@
     }
   },
   "discover": {
+    "meta": {
+      "title": "Aster – Une application pour associations de protection animale",
+      "description": "Découvrez Aster, une application mobile-first pour centraliser le suivi des animaux, des lieux d’accueil et de la trésorerie."
+    },
     "hero": {
       "title": "Aster vous aide à gérer votre association de protection animale",
       "subtitle": "Animaux, lieux d’accueil, trésorerie : tout au même endroit, accessible gratuitement à toute votre équipe.",

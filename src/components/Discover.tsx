@@ -1,10 +1,9 @@
-'use client';
+import { Link } from '@/i18n/routing';
+import { Language } from '@/lib/types';
+import { getTranslations } from 'next-intl/server';
 
-import { useLocale, useTranslations } from 'next-intl';
-
-export default function Discover() {
-  const t = useTranslations();
-  const lang = useLocale();
+export default async function Discover({ locale }: { locale: Language }) {
+  const t = await getTranslations({ locale, namespace: '' });
 
   return (
     <main className="discover-page">
@@ -15,9 +14,9 @@ export default function Discover() {
           <p className="discover-subtitle">{t('discover.hero.subtitle')}</p>
 
           <div className="discover-actions">
-            <a className="discover-button" href="/">
+            <Link className="discover-button" href="/">
               {t('discover.hero.primaryAction')}
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -64,7 +63,7 @@ export default function Discover() {
           <div className="discover-screenshot-list">
             <figure className="discover-screenshot-card">
               <img
-                src={`/screenshots/animal_${lang}.png`}
+                src={`/screenshots/animal_${locale}.png`}
                 alt={t('discover.screenshots.animalDetails.alt')}
                 height={780}
               />
@@ -73,7 +72,7 @@ export default function Discover() {
 
             <figure className="discover-screenshot-card">
               <img
-                src={`/screenshots/foster_${lang}.png`}
+                src={`/screenshots/foster_${locale}.png`}
                 alt={t('discover.screenshots.fosterLocations.alt')}
                 height={780}
               />
@@ -82,7 +81,7 @@ export default function Discover() {
 
             <figure className="discover-screenshot-card">
               <img
-                src={`/screenshots/treasury_${lang}.png`}
+                src={`/screenshots/treasury_${locale}.png`}
                 alt={t('discover.screenshots.treasury.alt')}
                 height={780}
               />
@@ -91,7 +90,7 @@ export default function Discover() {
 
             <figure className="discover-screenshot-card">
               <img
-                src={`/screenshots/notif_${lang}.png`}
+                src={`/screenshots/notif_${locale}.png`}
                 alt={t('discover.screenshots.notifications.alt')}
                 height={780}
               />
@@ -111,22 +110,22 @@ export default function Discover() {
           <p>{t('discover.cta.paragraph1')}</p>
 
           <div className="discover-actions">
-            <a className="discover-button" href="/">
+            <Link className="discover-button" href="/">
               {t('discover.cta.primaryAction')}
-            </a>
+            </Link>
           </div>
         </section>
         <section className="discover-section discover-legal">
           <div className="links-line">
             <span>{t('discover.usefulLinks')} </span>
-            <a href="/legal">{t('legal.links.link')}</a> •{' '}
-            <a href="/privacy">{t('privacy.links.linkCapped')}</a>
+            <Link href="/legal">{t('legal.links.link')}</Link> •{' '}
+            <Link href="/privacy">{t('privacy.links.linkCapped')}</Link>
           </div>
           <div className="links-line">
             <span>{t('legal.personalData.contactLabel')} </span>
-            <a href={`mailto:${t('legal.editor.email')}`} target="_blank">
+            <Link href={`mailto:${t('legal.editor.email')}`} target="_blank">
               {t('legal.editor.email')}
-            </a>
+            </Link>
           </div>
         </section>
       </div>

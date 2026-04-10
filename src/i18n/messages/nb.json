@@ -770,6 +770,10 @@
     }
   },
   "discover": {
+    "meta": {
+      "title": "Aster – En applikasjon for dyrevernorganisasjoner",
+      "description": "Oppdag Aster, en mobil-først app for å samle håndtering av dyr, omsorgssteder og økonomi."
+    },
     "hero": {
       "title": "Aster hjelper deg med å administrere din dyrevernorganisasjon",
       "subtitle": "Dyr, omsorgssteder, økonomi: alt på ett sted, tilgjengelig gratis for hele teamet.",

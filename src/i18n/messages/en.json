@@ -546,7 +546,6 @@
   "notifications": {
     "noNotif": "No new notifications at the moment.",
     "markAsReadButton": "Mark all as read",
-
     "animals": {
       "vaxReminder": "{animalName} will soon need a vaccination booster.",
       "neutralizeReminder": "{animalName} is old enough to be neutered.",
@@ -771,6 +770,10 @@
     }
   },
   "discover": {
+    "meta": {
+      "title": "Aster – An application for animal welfare organizations",
+      "description": "Discover Aster, a mobile-first app to centralize the management of animals, foster locations, and treasury."
+    },
     "hero": {
       "title": "Aster helps you manage your animal welfare organization",
       "subtitle": "Animals, foster locations, treasury: everything in one place, accessible to your whole team for free.",
