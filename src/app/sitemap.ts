@@ -1,14 +1,42 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.AUTH_URL;
+  const baseUrl = process.env.AUTH_URL!;
+  const lastModified = new Date().toISOString().split('T')[0];
 
-  const locales = ['fr', 'en', 'no'];
+  const languages = {
+    fr: `${baseUrl}/fr/discover`,
+    en: `${baseUrl}/en/discover`,
+    no: `${baseUrl}/no/discover`,
+  };
 
-  return locales.map((locale) => ({
-    url: `${baseUrl}/${locale}/discover`,
-    lastModified: new Date().toISOString().split('T')[0],
-    changeFrequency: 'monthly',
-    priority: 1.0,
-  }));
+  return [
+    {
+      url: languages.fr,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 1,
+      alternates: {
+        languages,
+      },
+    },
+    {
+      url: languages.en,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 1,
+      alternates: {
+        languages,
+      },
+    },
+    {
+      url: languages.no,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 1,
+      alternates: {
+        languages,
+      },
+    },
+  ];
 }
