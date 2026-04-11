@@ -774,30 +774,34 @@
       "description": "Découvrez Aster, une application mobile-first pour centraliser le suivi des animaux, des lieux d’accueil et de la trésorerie."
     },
     "hero": {
-      "title": "Aster vous aide à gérer votre association de protection animale",
-      "subtitle": "Animaux, lieux d’accueil, trésorerie : tout au même endroit, accessible gratuitement à toute votre équipe.",
+      "title1": "Moins de charge mentale",
+      "title2": "Plus de temps pour les animaux",
+      "subtitle1": "Animaux, lieux d’accueil, trésorerie : tout au même endroit.",
+      "subtitle2": "Accessible depuis votre poche, gratuitement, à toute votre équipe.",
       "primaryAction": "Essayer Aster",
       "secondaryAction": "Voir les fonctionnalités"
     },
     "problem": {
       "title": "Un quotidien souvent compliqué",
       "paragraph1": "Gérer une association de protection animale implique souvent de jongler entre fichiers Excel, messages, et informations dispersées.",
-      "paragraph2": "Certaines données se perdent, et toute la charge mentale est concentrée sur un petit nombre de personnes."
+      "paragraph2": "Beaucoup d’informations restent en tête, en attendant d’être notées plus tard.",
+      "paragraph3": "Certaines données se perdent, et toute la charge mentale est concentrée sur un petit nombre de personnes."
     },
     "solution": {
       "title": "Une base commune pour votre association",
-      "paragraph1": "Aster centralise les informations de votre association en un seul endroit, accessible à tous les membres, à tout moment.",
-      "paragraph2": "Chaque membre accède uniquement aux informations qui le concernent, selon son rôle au sein de l’association."
+      "paragraph1": "Aster permet à toute votre équipe de partager les informations en temps réel.",
+      "paragraph2": "Vous notez une information une fois : elle devient accessible à tous, partout, sans avoir à y penser.",
+      "paragraph3": "Chaque membre accède uniquement aux informations qui le concernent, selon son rôle au sein de l’association."
     },
     "features": {
       "title": "Ce que vous pouvez faire avec Aster",
       "animals": {
         "title": "Animaux",
-        "description": "Suivez vos animaux, leur historique, leur santé et les informations importantes."
+        "description": "Suivez vos animaux, leur historique, leur santé détaillée et les informations sur les adoptants."
       },
       "fosterLocations": {
         "title": "Lieux d’accueil",
-        "description": "Organisez vos familles d’accueil, refuges et membres de votre association."
+        "description": "Organisez vos familles d’accueil ou refuges, attachez-y les membres impliqués et les animaux reçus."
       },
       "treasury": {
         "title": "Trésorerie",
@@ -810,35 +814,32 @@
     },
     "screenshots": {
       "title": "Découvrez comment Aster s’utilise au quotidien",
-      "animals": {
-        "alt": "Liste des animaux",
-        "caption": "Visualisez tous vos animaux en un coup d’œil."
-      },
       "animalDetails": {
         "alt": "Détail d’un animal",
-        "caption": "Accédez à l’historique et aux informations de santé."
+        "caption": "Toutes les informations d’un animal, réunies au même endroit."
       },
       "fosterLocations": {
         "alt": "Lieux d’accueil",
-        "caption": "Organisez vos familles d’accueil et vos lieux."
+        "caption": "Une vision claire de qui accueille quoi, et avec qui."
       },
       "treasury": {
         "alt": "Trésorerie",
-        "caption": "Suivez les entrées et sorties d’argent."
+        "caption": "Une vue simple de vos finances, sans tableur."
       },
       "notifications": {
         "alt": "Notifications",
-        "caption": "Restez informé des éléments importants."
+        "caption": "Les rappels importants arrivent au bon moment."
       }
     },
     "philosophy": {
       "title": "Un outil pensé pour vous",
       "paragraph1": "Aster est gratuit et sans publicité.",
-      "paragraph2": "Il a été conçu pour aider les associations, sans contrainte ni objectif commercial."
+      "paragraph2": "Il a été conçu pour aider les associations, sans contrainte ni objectif commercial.",
+      "paragraph3": "C’est un projet bénévole, développé par quelqu’un engagé dans la protection animale, pour d’autres bénévoles."
     },
     "cta": {
       "title": "On s'y met ?",
-      "paragraph1": "Enregistrez votre association et commencez à organiser vos informations simplement.",
+      "paragraph1": "Créez votre compte, ajoutez votre association et commencez à organiser vos informations simplement.",
       "primaryAction": "Accéder à l’application"
     },
     "usefulLinks": "Liens utiles :"

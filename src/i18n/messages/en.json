@@ -775,34 +775,38 @@
       "description": "Discover Aster, a mobile-first app to centralize the management of animals, foster locations, and treasury."
     },
     "hero": {
-      "title": "Aster helps you manage your animal welfare organization",
-      "subtitle": "Animals, foster locations, treasury: everything in one place, accessible to your whole team for free.",
+      "title1": "Less mental load",
+      "title2": "More time for the animals",
+      "subtitle1": "Animals, foster locations, treasury: everything in one place.",
+      "subtitle2": "Accessible from your pocket, free of charge, for your whole team.",
       "primaryAction": "Try Aster",
       "secondaryAction": "See features"
     },
     "problem": {
       "title": "A day-to-day that can get complicated",
       "paragraph1": "Managing an animal welfare organization often means juggling spreadsheets, messages, and scattered information.",
-      "paragraph2": "Some data gets lost, and the mental load often falls on a small number of people."
+      "paragraph2": "A lot of information stays in your head, waiting to be written down later.",
+      "paragraph3": "Some data gets lost, and the mental load often falls on a small number of people."
     },
     "solution": {
       "title": "A shared base for your organization",
-      "paragraph1": "Aster centralizes your organization’s information in one place, accessible to all members at any time.",
-      "paragraph2": "Each member only has access to the information relevant to them, depending on their role within the organization."
+      "paragraph1": "Aster allows your whole team to share information in real time.",
+      "paragraph2": "You write something down once: it becomes accessible to everyone, everywhere, without having to think about it again.",
+      "paragraph3": "Each member only accesses the information that concerns them, depending on their role within the organization."
     },
     "features": {
       "title": "What you can do with Aster",
       "animals": {
         "title": "Animals",
-        "description": "Track your animals, their history, health, and key information."
+        "description": "Track your animals, their history, detailed health information, and adopter-related data."
       },
       "fosterLocations": {
         "title": "Foster locations",
-        "description": "Organize your foster families, shelters, and organization members."
+        "description": "Organize your foster families or shelters, link involved members, and the animals they take in."
       },
       "treasury": {
         "title": "Treasury",
-        "description": "Keep a clear view of your income and expenses."
+        "description": "Keep a clear view of income and expenses related to your activity."
       },
       "notifications": {
         "title": "Notifications",
@@ -810,36 +814,33 @@
       }
     },
     "screenshots": {
-      "title": "See how Aster is used every day",
-      "animals": {
-        "alt": "Animals list",
-        "caption": "See all your animals at a glance."
-      },
+      "title": "See how Aster is used in everyday situations",
       "animalDetails": {
         "alt": "Animal details",
-        "caption": "Access history and health information."
+        "caption": "All information about an animal, gathered in one place."
       },
       "fosterLocations": {
         "alt": "Foster locations",
-        "caption": "Organize your foster families and locations."
+        "caption": "A clear view of who is hosting what, and with whom."
       },
       "treasury": {
         "alt": "Treasury",
-        "caption": "Track your income and expenses."
+        "caption": "A simple view of your finances, without spreadsheets."
       },
       "notifications": {
         "alt": "Notifications",
-        "caption": "Stay informed about what matters."
+        "caption": "Important reminders arrive at the right time."
       }
     },
     "philosophy": {
       "title": "A tool designed for you",
       "paragraph1": "Aster is free and has no ads.",
-      "paragraph2": "It was built to support organizations, with no constraints and no commercial goals."
+      "paragraph2": "It was built to support organizations, with no constraints and no commercial goals.",
+      "paragraph3": "It is a volunteer project, developed by someone involved in animal welfare, for other volunteers."
     },
     "cta": {
-      "title": "Ready to get started?",
-      "paragraph1": "Register your organization and start organizing your information simply.",
+      "title": "Shall we get started?",
+      "paragraph1": "Create your account, add your organization, and start organizing your information simply.",
       "primaryAction": "Go to the app"
     },
     "usefulLinks": "Useful links:"

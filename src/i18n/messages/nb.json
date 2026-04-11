@@ -775,34 +775,38 @@
       "description": "Oppdag Aster, en mobil-først app for å samle håndtering av dyr, omsorgssteder og økonomi."
     },
     "hero": {
-      "title": "Aster hjelper deg med å administrere din dyrevernorganisasjon",
-      "subtitle": "Dyr, omsorgssteder, økonomi: alt på ett sted, tilgjengelig gratis for hele teamet.",
+      "title1": "Mindre mental belastning",
+      "title2": "Mer tid til dyrene",
+      "subtitle1": "Dyr, omsorgssteder, økonomi: alt på ett sted.",
+      "subtitle2": "Tilgjengelig fra lomma di, gratis, for hele teamet ditt.",
       "primaryAction": "Prøv Aster",
       "secondaryAction": "Se funksjoner"
     },
     "problem": {
       "title": "En hverdag som ofte er krevende",
       "paragraph1": "Å administrere en dyrevernorganisasjon innebærer ofte å håndtere Excel-ark, meldinger og spredt informasjon.",
-      "paragraph2": "Noe informasjon går tapt, og belastningen faller ofte på et lite antall personer."
+      "paragraph2": "Mye informasjon blir værende i hodet, i påvente av å bli skrevet ned senere.",
+      "paragraph3": "Noe informasjon går tapt, og belastningen faller ofte på et lite antall personer."
     },
     "solution": {
       "title": "En felles base for organisasjonen",
-      "paragraph1": "Aster samler all informasjon om organisasjonen på ett sted, tilgjengelig for alle medlemmer når som helst.",
-      "paragraph2": "Hvert medlem har kun tilgang til informasjonen som er relevant for dem, basert på rollen deres i organisasjonen."
+      "paragraph1": "Aster lar hele teamet dele informasjon i sanntid.",
+      "paragraph2": "Du skriver ned en informasjon én gang: den blir tilgjengelig for alle, overalt, uten at du trenger å tenke på det igjen.",
+      "paragraph3": "Hvert medlem får kun tilgang til informasjonen som angår dem, basert på rollen deres i organisasjonen."
     },
     "features": {
       "title": "Dette kan du gjøre med Aster",
       "animals": {
         "title": "Dyr",
-        "description": "Følg dyrene dine, deres historikk, helse og viktig informasjon."
+        "description": "Følg dyrene dine, historikken deres, detaljert helseinformasjon og informasjon om adoptanter."
       },
       "fosterLocations": {
         "title": "Omsorgssteder",
-        "description": "Organiser fosterhjem, tilfluktssteder og medlemmer i organisasjonen."
+        "description": "Organiser fosterhjem eller tilfluktssteder, knytt medlemmer til dem og dyrene de tar imot."
       },
       "treasury": {
         "title": "Økonomi",
-        "description": "Få en tydelig oversikt over inntekter og utgifter."
+        "description": "Få en tydelig oversikt over inntekter og utgifter knyttet til aktiviteten din."
       },
       "notifications": {
         "title": "Varsler",
@@ -811,35 +815,32 @@
     },
     "screenshots": {
       "title": "Se hvordan Aster brukes i hverdagen",
-      "animals": {
-        "alt": "Liste over dyr",
-        "caption": "Se alle dyrene dine med ett blikk."
-      },
       "animalDetails": {
         "alt": "Detaljer om et dyr",
-        "caption": "Få tilgang til historikk og helseinformasjon."
+        "caption": "All informasjon om et dyr samlet på ett sted."
       },
       "fosterLocations": {
         "alt": "Omsorgssteder",
-        "caption": "Organiser fosterhjem og omsorgssteder."
+        "caption": "En tydelig oversikt over hvem som tar imot hva, og med hvem."
       },
       "treasury": {
         "alt": "Økonomi",
-        "caption": "Følg inntekter og utgifter."
+        "caption": "En enkel oversikt over økonomien, uten regneark."
       },
       "notifications": {
         "alt": "Varsler",
-        "caption": "Hold deg oppdatert på det som er viktig."
+        "caption": "Viktige påminnelser kommer til riktig tid."
       }
     },
     "philosophy": {
       "title": "Et verktøy laget for deg",
       "paragraph1": "Aster er gratis og uten reklame.",
-      "paragraph2": "Det er utviklet for å hjelpe organisasjoner, uten begrensninger eller kommersielle mål."
+      "paragraph2": "Det er laget for å hjelpe organisasjoner, uten begrensninger eller kommersielle mål.",
+      "paragraph3": "Det er et frivillig prosjekt, utviklet av noen som er engasjert i dyrevern, for andre frivillige."
     },
     "cta": {
-      "title": "Skal vi starte?",
-      "paragraph1": "Registrer organisasjonen din og begynn å organisere informasjonen enkelt.",
+      "title": "Skal vi sette i gang?",
+      "paragraph1": "Opprett en konto, legg til organisasjonen din og begynn å organisere informasjonen enkelt.",
       "primaryAction": "Gå til appen"
     },
     "usefulLinks": "Nyttige lenker:"
