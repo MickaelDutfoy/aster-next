@@ -44,9 +44,13 @@ export const TransactionsList = ({
     return matchesYear && matchesCategory;
   });
 
-  const sortedTransactions = [...filteredTransactions].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
+  const sortedTransactions = [...filteredTransactions].sort((a, b) => {
+    const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
+
+    if (byDate !== 0) return byDate;
+
+    return b.id - a.id;
+  });
 
   const totalIncome =
     filteredTransactions
@@ -205,14 +209,14 @@ export const TransactionsList = ({
                     <div className="method-and-actions">
                       <div className="actions link">
                         <button
-                          onClick={() => {
+                          onClick={(e) => {
                             router.push(`/transactions/edit/${transaction.id}`);
                           }}
                         >
                           <SquarePen size={26} />
                         </button>
                         <button
-                          onClick={() => {
+                          onClick={(e) => {
                             router.push(`/transactions/delete/${transaction.id}`);
                           }}
                         >

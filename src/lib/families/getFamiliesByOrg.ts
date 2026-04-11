@@ -8,7 +8,7 @@ export const getFamiliesByOrg = async (orgId: number): Promise<FamilyWithoutDeta
       id: true,
       contactFullName: true,
       city: true,
-      familyMembers: {
+      members: {
         select: {
           member: {
             select: {
@@ -29,6 +29,6 @@ export const getFamiliesByOrg = async (orgId: number): Promise<FamilyWithoutDeta
     id: family.id,
     contactFullName: family.contactFullName,
     city: family.city,
-    members: family.familyMembers.map((famMem) => famMem.member),
+    members: family.members.map((famMem) => famMem.member),
   }));
 };

@@ -1,11 +1,21 @@
 'use client';
 
 import { usePathname, useRouter } from '@/i18n/routing';
+import { Member } from '@/lib/types';
+import { MemberStatus } from '@prisma/client';
 import { FileSpreadsheet, Notebook, Settings, Users } from 'lucide-react';
 
-export const NavBarBottom = () => {
+export const NavBarBottom = ({ user }: { user: Member }) => {
   const pathname = usePathname();
   const router = useRouter();
+
+  const disableMenu = (): string => {
+    return user?.organizations?.length === 0 ||
+      user?.organizations?.every((org) => org.userStatus === MemberStatus.PENDING) ||
+      !user.selectedOrgId
+      ? 'disabled'
+      : '';
+  };
 
   return (
     <footer>
@@ -36,7 +46,7 @@ export const NavBarBottom = () => {
           />
         </button>
 
-        <button onClick={() => router.replace('/transactions')}>
+        <button className={disableMenu()} onClick={() => router.replace('/transactions')}>
           <FileSpreadsheet
             fill={pathname.startsWith('/transactions') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/transactions') ? 0.5 : 0}

@@ -28,7 +28,7 @@ export const getAnimalsRelatedToUser = async (userId: number): Promise<Animal[]>
           },
           family: {
             is: {
-              familyMembers: {
+              members: {
                 some: { memberId: userId },
               },
             },

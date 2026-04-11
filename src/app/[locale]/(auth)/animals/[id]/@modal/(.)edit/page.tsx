@@ -1,4 +1,4 @@
-import { UpdateAnimal } from '@/components/animals/UpdateAnimal';
+import { AnimalForm } from '@/components/animals/AnimalForm';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { getAnimalById } from '@/lib/animals/getAnimalById';
@@ -29,8 +29,7 @@ export default async function UpdateAnimalRouteModal({
 
   return (
     <RouteModal expectedPath={`/animals/${animal.id}/edit`}>
-      <UpdateAnimal user={user} animal={animal} families={families} />
+      <AnimalForm user={user} animal={animal} families={families} />
     </RouteModal>
   );
 }
-

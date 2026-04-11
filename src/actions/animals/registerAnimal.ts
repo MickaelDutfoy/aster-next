@@ -75,48 +75,39 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
     });
 
     const admins = await getOrgAdmins(org.id);
+    const family = await getFamilyOfAnimal(animalId);
+
+    const memberIdsToNotify = new Set<number>();
 
     for (const admin of admins) {
-      if (admin.id === user.id) continue;
+      if (admin.id !== user.id) {
+        memberIdsToNotify.add(admin.id);
+      }
+    }
 
+    if (family) {
+      for (const member of family.members) {
+        if (member.id !== user.id) {
+          memberIdsToNotify.add(member.id);
+        }
+      }
+    }
+
+    for (const memberId of memberIdsToNotify) {
       try {
         await prisma.notification.create({
           data: {
-            memberId: admin.id,
+            memberId,
             messageKey: 'notifications.animals.createAnimal',
             messageParams: {
               memberFullName: `${user.firstName} ${user.lastName}`,
               animalName: animal.name,
             },
-            href: animalId !== 0 ? `/animals/${animalId}` : null,
+            href: `/animals/${animalId}`,
           },
         });
       } catch (err) {
         console.error(err);
-      }
-    }
-
-    const family = await getFamilyOfAnimal(animalId);
-
-    if (family) {
-      for (const member of family.members) {
-        if (member.id === user.id) continue;
-
-        try {
-          await prisma.notification.create({
-            data: {
-              memberId: member.id,
-              messageKey: 'notifications.animals.createAnimal',
-              messageParams: {
-                memberFullName: `${user.firstName} ${user.lastName}`,
-                animalName: animal.name,
-              },
-              href: animalId !== 0 ? `/animals/${animalId}` : null,
-            },
-          });
-        } catch (err) {
-          console.error(err);
-        }
       }
     }
 

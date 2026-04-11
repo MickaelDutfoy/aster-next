@@ -26,31 +26,36 @@ export const approveOrgRequest = async (
 
   try {
     await prisma.memberOrganization.update({
-      where: { memberId_orgId: { memberId, orgId: orgId } },
+      where: { memberId_orgId: { memberId, orgId } },
       data: { status: MemberStatus.VALIDATED },
     });
 
-    await prisma.notification.create({
-      data: {
-        memberId,
-        messageKey: 'notifications.organizations.approvedRequest',
-        messageParams: {
-          orgName,
+    try {
+      await prisma.notification.create({
+        data: {
+          memberId,
+          messageKey: 'notifications.organizations.approvedRequest',
+          messageParams: {
+            orgName,
+          },
+          href: `/organizations/${orgId}`,
         },
-        href: `/organizations/${orgId}`,
-      },
-    });
+      });
+    } catch (err) {
+      console.error(err);
+    }
 
     const member = await prisma.member.findUnique({
       where: { id: memberId },
       select: { email: true },
     });
 
-    if (member) {
-      await sendEmail({
-        to: member.email,
-        subject: t('orgRequestApproved.subject', { orgName }),
-        html: `
+    if (member?.email) {
+      try {
+        await sendEmail({
+          to: member.email,
+          subject: t('orgRequestApproved.subject', { orgName }),
+          html: `
             <p>${t('common.hello')}</p>
             <p>${t('orgRequestApproved.content1', { orgName })}</p>
             <p>${t('orgRequestApproved.content2')}</p>
@@ -72,7 +77,10 @@ export const approveOrgRequest = async (
             </p>
             <p>${t('common.footer')}</p>
           `,
-      });
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     revalidatePath('/organizations');

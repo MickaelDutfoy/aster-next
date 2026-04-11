@@ -60,7 +60,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
       });
 
       if (res.ok) {
-        router.replace(family ? `/families/${family.id}` : '/families');
+        router.back();
       }
     } catch (err) {
       console.error(err);
@@ -75,7 +75,8 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
   };
 
   return (
-    <>
+    <div className="family-form">
+      <h3>{family ? t('families.editInfoTitle') : t('families.addTitle')}</h3>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <form onSubmit={handleSubmit}>
         <div className="form-tab">
@@ -160,6 +161,6 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
           {isLoading ? t('common.loading') : t('common.submit')}
         </button>
       </form>
-    </>
+    </div>
   );
 };

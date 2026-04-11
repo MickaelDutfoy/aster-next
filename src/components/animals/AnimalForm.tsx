@@ -219,7 +219,7 @@ export const AnimalForm = ({
       });
 
       if (res.ok) {
-        router.replace(animal ? `/animals/${animal.id}` : '/animals');
+        router.back();
       }
     } catch (err) {
       console.error(err);
@@ -234,7 +234,8 @@ export const AnimalForm = ({
   };
 
   return (
-    <>
+    <div className="animal-form">
+      <h3>{animal ? t('animals.editInfoTitle') : t('animals.addTitle')}</h3>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
       <div className="tabs">
         <div className={clsx(form === 'general' && 'active')} onClick={() => setForm('general')}>
@@ -779,6 +780,6 @@ export const AnimalForm = ({
           {isLoading ? t('common.loading') : t('common.submit')}
         </button>
       </form>
-    </>
+    </div>
   );
 };

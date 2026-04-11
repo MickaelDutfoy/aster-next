@@ -1,5 +1,6 @@
 'use server';
 
+import { checkRateLimit } from '@/lib/auth/rateLimit';
 import { sendEmail } from '@/lib/email';
 import { prisma } from '@/lib/prisma';
 import { resetPasswordSchema } from '@/lib/schemas/authSchemas';
@@ -8,6 +9,7 @@ import { zodErrorMessage } from '@/lib/utils/zodErrorMessage';
 import { TokenType } from '@prisma/client';
 import crypto from 'crypto';
 import { getTranslations } from 'next-intl/server';
+import { headers } from 'next/headers';
 
 const RESET_TOKEN_LIFETIME_MS = 1000 * 60 * 60;
 
@@ -25,6 +27,19 @@ export const sendResetPasswordMail = async (
       ok: false,
       status: 'error',
       message: zodErrorMessage(parsedEmail.error),
+    };
+  }
+
+  const requestHeaders = await headers();
+  const ip = requestHeaders.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+
+  const allowed = await checkRateLimit(`reset:${ip}`, 3, 15 * 60 * 1000);
+
+  if (!allowed) {
+    return {
+      ok: false,
+      status: 'error',
+      message: 'toasts.tooManyAttempts',
     };
   }
 

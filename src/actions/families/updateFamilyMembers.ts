@@ -83,8 +83,9 @@ export const updateFamilyMembers = async (
     for (const memberId of membersToNotifyIds) {
       if (memberId === user.id) continue;
 
+        const dayKey = new Date().toISOString().slice(0, 10);      
+
       try {
-        const dayKey = new Date().toISOString().slice(0, 10);
         const sourceKey = `family:${familyId}:member:added:${memberId}:${dayKey}`;
 
         await prisma.notification.upsert({

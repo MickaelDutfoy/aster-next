@@ -65,7 +65,8 @@
     "mustPickOrg": "Du må velge en eksisterende organisasjon.",
     "mobileAlert": "Aster er optimalisert for mobil — prøv responsivt visning (Ctrl+Shift+M).",
     "transactionAdd": "Transaksjonen er lagt til.",
-    "transactionDelete": "Transaksjonen er slettet."
+    "transactionDelete": "Transaksjonen er slettet.",
+    "tooManyAttempts": "For mange forsøk. Vennligst prøv igjen senere."
   },
   "intro": {
     "selectLanguage": "Velg språk:",
@@ -263,6 +264,10 @@
       "items152": [
         "Det er nå mulig å registrere statusen til et dyr som \"I prøveperiode\".",
         "Administratorer og ansvarlige mottar et varsel når et dyr har vært i prøveperiode i minst femten dager."
+      ],
+      "items153": [
+        "Forbedringer av ytelse og sikkerhet i applikasjonen.",
+        "Hvis du oppdager et problem, selv et lite, bruk kontaktskjemaet som er tilgjengelig i Innstillinger."
       ]
     }
   },
@@ -540,7 +545,9 @@
       "fosterRequest": "Slett også omsorgssted-oppføringer der jeg er eneste medlem:",
       "fosterExplain2": "Dette alternativet sletter kun oppføringer knyttet til kontoen din. Det sletter ikke dyr som er knyttet til dem, eller oppføringer som er opprettet uavhengig av en organisasjon og som kan gjelde deg.",
       "hasConfirmed": "Jeg forstår at denne slettingen er irreversibel *:",
-      "success": "Kontoen din er slettet."
+      "success": "Kontoen din er slettet.",
+      "superAdminExplain": "Hvis du er administrator for en organisasjon, må du først overføre denne rollen. Hvis du er eneste medlem i organisasjonen, må du slette den først.",
+      "cantIfSuperAdmin": "Du kan ikke slette kontoen din så lenge du er administrator for minst én organisasjon."
     }
   },
   "notifications": {
