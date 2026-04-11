@@ -24,7 +24,7 @@ export const DeleteAnimal = ({ id }: { id: string }) => {
         message: res.message ? t(res.message) : undefined,
       });
 
-      if (res.ok) router.back();
+      if (res.ok) router.replace('/animals');
     } catch (err) {
       console.error(err);
       showToast({
