@@ -8,7 +8,7 @@ export const getFamilyById = async (id: number | null): Promise<Family | null> =
   const family = await prisma.family.findUnique({
     where: { id },
     include: {
-      familyMembers: {
+      members: {
         include: {
           member: {
             select: {
@@ -41,7 +41,7 @@ export const getFamilyById = async (id: number | null): Promise<Family | null> =
     otherAnimals: family.otherAnimals,
     orgId: family.orgId,
     createdByMemberId: family.createdByMemberId,
-    members: family.familyMembers.map(({ member }) => {
+    members: family.members.map(({ member }) => {
       const orgMembership = member.memberOrganizations.find(
         (memOrg) => memOrg.orgId === family.orgId,
       );

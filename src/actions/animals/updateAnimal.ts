@@ -21,15 +21,15 @@ export const updateAnimal = async (
 
   const user = guard.user;
 
-    const animalTrial = await prisma.animal.findUnique({
-      where: { id: animalId },
-      select: { trialDateStart: true },
-    });
+  const animalTrial = await prisma.animal.findUnique({
+    where: { id: animalId },
+    select: { trialDateStart: true },
+  });
 
-    const { animal, adopter, health, weightEntries, tests } = await parseAnimalData(
-      formData,
-      animalTrial?.trialDateStart ?? null,
-    );
+  const { animal, adopter, health, weightEntries, tests } = await parseAnimalData(
+    formData,
+    animalTrial?.trialDateStart ?? null,
+  );
 
   if (!animal) {
     return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };
@@ -112,74 +112,54 @@ export const updateAnimal = async (
     });
 
     const org = await getAnimalOrg(animalId);
+    const family = await getFamilyOfAnimal(animalId);
+
+    const memberIdsToNotify = new Set<number>();
 
     if (org) {
       const admins = await getOrgAdmins(org.id);
 
       for (const admin of admins) {
-        if (admin.id === user.id) continue;
-
-        try {
-          const dayKey = new Date().toISOString().slice(0, 10);
-          const sourceKey = `animal:${animalId}:edited:${dayKey}`;
-
-          await prisma.notification.upsert({
-            where: {
-              memberId_sourceKey: {
-                memberId: admin.id,
-                sourceKey,
-              },
-            },
-            create: {
-              memberId: admin.id,
-              messageKey: 'notifications.animals.editedAnimal',
-              messageParams: {
-                memberFullName: `${user.firstName} ${user.lastName}`,
-                animalName: animal.name,
-              },
-              href: `/animals/${animalId}`,
-              sourceKey,
-            },
-            update: {},
-          });
-        } catch (err) {
-          console.error(err);
+        if (admin.id !== user.id) {
+          memberIdsToNotify.add(admin.id);
         }
       }
     }
 
-    const family = await getFamilyOfAnimal(animalId);
-
     if (family) {
       for (const member of family.members) {
-        if (member.id === user.id) continue;
+        if (member.id !== user.id) {
+          memberIdsToNotify.add(member.id);
+        }
+      }
+    }
 
-        try {
-          const dayKey = new Date().toISOString().slice(0, 10);
-          const sourceKey = `animal:${animalId}:edited:${dayKey}`;
+    const dayKey = new Date().toISOString().slice(0, 10);
+    const sourceKey = `animal:${animalId}:edited:${dayKey}`;
 
-          await prisma.notification.upsert({
-            where: {
-              memberId_sourceKey: {
-                memberId: member.id,
-                sourceKey,
-              },
-            },
-            create: {
-              memberId: member.id,
-              messageKey: 'notifications.animals.editedAnimal',
-              messageParams: {
-                memberFullName: `${user.firstName} ${user.lastName}`,
-                animalName: animal.name,
-              },
-              href: `/animals/${animalId}`,
+    for (const memberId of memberIdsToNotify) {
+      try {
+        await prisma.notification.upsert({
+          where: {
+            memberId_sourceKey: {
+              memberId,
               sourceKey,
             },
-            update: {},
-          });
-        } catch (err) {
-          console.error(err);
-        }
+          },
+          create: {
+            memberId,
+            messageKey: 'notifications.animals.editedAnimal',
+            messageParams: {
+              memberFullName: `${user.firstName} ${user.lastName}`,
+              animalName: animal.name,
+            },
+            href: `/animals/${animalId}`,
+            sourceKey,
+          },
+          update: {},
+        });
+      } catch (err) {
+        console.error(err);
       }
     }
 

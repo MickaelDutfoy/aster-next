@@ -1,4 +1,4 @@
-import { RegisterFamily } from '@/components/families/RegisterFamily';
+import { FamilyForm } from '@/components/families/FamilyForm';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Member, Organization } from '@/lib/types';
@@ -15,7 +15,7 @@ const RegisterFamilyPage = async () => {
 
   return (
     <div className="full-page-form">
-      <RegisterFamily user={user} />
+      <FamilyForm user={user} />
     </div>
   );
 };

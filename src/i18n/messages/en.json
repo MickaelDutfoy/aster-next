@@ -65,7 +65,8 @@
     "mustPickOrg": "You must select an existing organization.",
     "mobileAlert": "Aster is optimized for mobile — consider using responsive mode (Ctrl+Shift+M).",
     "transactionAdd": "The transaction has been successfully added.",
-    "transactionDelete": "The transaction has been successfully deleted."
+    "transactionDelete": "The transaction has been successfully deleted.",
+    "tooManyAttempts": "Too many attempts. Please try again later."
   },
   "intro": {
     "selectLanguage": "Select language:",
@@ -263,6 +264,10 @@
       "items152": [
         "It is now possible to set an animal’s status to \"In trial period\".",
         "Administrators and managers receive a notification when an animal has been in a trial period for at least fifteen days."
+      ],
+      "items153": [
+        "Various improvements to the app’s performance and security.",
+        "If you encounter any issue, even a minor one, please use the contact form available in Settings."
       ]
     }
   },
@@ -540,7 +545,9 @@
       "fosterRequest": "Also delete foster location records where I am the only member:",
       "fosterExplain2": "This option only deletes records linked to your account. It does not delete animals associated with them, nor records created independently by an organization that may involve you.",
       "hasConfirmed": "I understand that this deletion is irreversible *:",
-      "success": "Your account has been deleted."
+      "success": "Your account has been deleted.",
+      "superAdminExplain": "If you are an administrator of an organization, you must first transfer this role. If you are the only member of the organization, you must delete it first.",
+      "cantIfSuperAdmin": "You cannot delete your account while you are an administrator of at least one organization."
     }
   },
   "notifications": {

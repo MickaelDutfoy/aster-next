@@ -136,9 +136,9 @@ model Family {
   createdByMemberId Int
   createdAt         DateTime @default(now())
 
-  animals       Animal[]
-  organization  Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  familyMembers FamilyMember[]
+  animals      Animal[]
+  organization Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  members      FamilyMember[]
 
   @@map("families")
 }
@@ -293,4 +293,11 @@ model Notification {
 
   @@unique([memberId, sourceKey])
   @@index([memberId, createdAt])
+}
+
+model RateLimit {
+  id            Int      @id @default(autoincrement())
+  key           String   @unique
+  count         Int
+  lastAttemptAt DateTime
 }

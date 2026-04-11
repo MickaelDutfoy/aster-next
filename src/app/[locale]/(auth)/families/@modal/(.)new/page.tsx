@@ -1,4 +1,4 @@
-import { RegisterFamily } from '@/components/families/RegisterFamily';
+import { FamilyForm } from '@/components/families/FamilyForm';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
@@ -16,7 +16,7 @@ export default async function AddFamilyRouteModal() {
 
   return (
     <RouteModal expectedPath="/families/new">
-      <RegisterFamily user={user} />
+      <FamilyForm user={user} />
     </RouteModal>
   );
 }

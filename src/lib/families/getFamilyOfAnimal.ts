@@ -7,7 +7,7 @@ export const getFamilyOfAnimal = async (id: number): Promise<Family | null> => {
     select: {
       family: {
         include: {
-          familyMembers: { include: { member: true } },
+          members: { include: { member: true } },
         },
       },
     },
@@ -17,6 +17,6 @@ export const getFamilyOfAnimal = async (id: number): Promise<Family | null> => {
 
   return {
     ...familyLink.family,
-    members: familyLink.family.familyMembers.map((famMem) => famMem.member),
+    members: familyLink.family.members.map((famMem) => famMem.member),
   };
 };

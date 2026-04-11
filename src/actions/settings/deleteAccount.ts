@@ -4,6 +4,7 @@ import { signOut } from '@/auth';
 import { isUser } from '@/lib/permissions/isUser';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
+import { MemberRole } from '@prisma/client';
 
 export const deleteAccount = async (deleteFosterFamilies: boolean): Promise<ActionValidation> => {
   const guard = await isUser();
@@ -14,12 +15,28 @@ export const deleteAccount = async (deleteFosterFamilies: boolean): Promise<Acti
 
   const userId = guard.user.id;
 
+  const hasSuperAdminRole = await prisma.memberOrganization.findFirst({
+    where: {
+      memberId: userId,
+      role: MemberRole.SUPERADMIN,
+    },
+    select: { orgId: true },
+  });
+
+  if (hasSuperAdminRole) {
+    return {
+      ok: false,
+      status: 'error',
+      message: 'settings.deleteAccount.cantIfSuperAdmin',
+    };
+  }
+
   try {
     await prisma.$transaction(async (prismaTransaction) => {
       if (deleteFosterFamilies) {
         await prismaTransaction.family.deleteMany({
           where: {
-            familyMembers: {
+            members: {
               some: { memberId: userId },
               every: { memberId: userId },
             },

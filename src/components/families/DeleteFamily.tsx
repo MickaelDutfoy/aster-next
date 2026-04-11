@@ -34,7 +34,7 @@ export const DeleteFamily = ({
         message: res.message ? t(res.message) : undefined,
       });
 
-      if (res.ok) router.back();
+      if (res.ok) router.replace('/families');
     } catch (err) {
       console.error(err);
       showToast({

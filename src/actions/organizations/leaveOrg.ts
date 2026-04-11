@@ -16,14 +16,42 @@ export const leaveOrg = async (orgId: number): Promise<ActionValidation> => {
 
   try {
     await prisma.$transaction(async (prismaTransaction) => {
-      await prismaTransaction.member.update({
+      const member = await prismaTransaction.member.findUnique({
         where: { id: userId },
-        data: { selectedOrgId: null },
+        select: { selectedOrgId: true },
+      });
+
+      if (!member) {
+        throw new Error('Member not found');
+      }
+
+      await prismaTransaction.familyMember.deleteMany({
+        where: {
+          memberId: userId,
+          family: {
+            is: {
+              orgId,
+            },
+          },
+        },
       });
 
       await prismaTransaction.memberOrganization.delete({
         where: { memberId_orgId: { memberId: userId, orgId } },
       });
+
+      if (member.selectedOrgId === orgId) {
+        const fallbackMembership = await prismaTransaction.memberOrganization.findFirst({
+          where: { memberId: userId },
+          select: { orgId: true },
+          orderBy: { joinedAt: 'asc' },
+        });
+
+        await prismaTransaction.member.update({
+          where: { id: userId },
+          data: { selectedOrgId: fallbackMembership?.orgId ?? null },
+        });
+      }
     });
 
     revalidatePath('/organizations');

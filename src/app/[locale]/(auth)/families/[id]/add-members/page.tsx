@@ -6,7 +6,7 @@ import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, MemberOfOrg, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-const UpdateFamilyPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+const ManageFamilyPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const family: Family | null = await getFamilyById(Number(id));
   if (!family) return <DeniedPage cause="error" />;
@@ -26,4 +26,4 @@ const UpdateFamilyPage = async ({ params }: { params: Promise<{ id: string }> })
   );
 };
 
-export default UpdateFamilyPage;
+export default ManageFamilyPage;

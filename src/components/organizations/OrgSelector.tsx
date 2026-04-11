@@ -25,7 +25,7 @@ export const OrgSelector = ({ user, org }: { user: Member; org: Organization | n
       }
       router.replace(`/organizations/${orgId}`);
       return;
-    } else if ((pathname.startsWith('/animals') || pathname.startsWith('/families')) && !orgId) {
+    } else if ((pathname.startsWith('/animals') || pathname.startsWith('/families') || pathname.startsWith('/publish') || pathname.startsWith('/transactions')) && !orgId) {
       router.replace(`/`);
       return;
     } else if (pathname.startsWith('/animals') && params.id) {

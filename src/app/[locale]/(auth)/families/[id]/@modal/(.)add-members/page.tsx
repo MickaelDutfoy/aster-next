@@ -7,7 +7,7 @@ import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, MemberOfOrg, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
-export default async function UpdateFamilyRouteModal({
+export default async function ManageFamilyRouteModal({
   params,
 }: {
   params: Promise<{ id: string }>;

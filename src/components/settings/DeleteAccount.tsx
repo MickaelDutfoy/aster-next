@@ -65,6 +65,7 @@ export const DeleteAccount = () => {
         <input type="checkbox" name="deleteFosterFamilies" id="deleteFosterFamilies" />
       </div>
       <p>{t('settings.deleteAccount.fosterExplain2')}</p>
+      <p>{t('settings.deleteAccount.superAdminExplain')}</p>
       <div className="labeled-checkbox">
         <p>{t('settings.deleteAccount.hasConfirmed')}</p>
         <input

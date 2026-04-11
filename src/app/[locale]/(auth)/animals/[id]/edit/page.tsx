@@ -1,4 +1,4 @@
-import { UpdateAnimal } from '@/components/animals/UpdateAnimal';
+import { AnimalForm } from '@/components/animals/AnimalForm';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { getAnimalById } from '@/lib/animals/getAnimalById';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
@@ -24,7 +24,7 @@ const UpdateAnimalPage = async ({ params }: { params: Promise<{ id: string }> })
 
   return (
     <div className="full-page-form">
-      <UpdateAnimal user={user} animal={animal} families={families} />
+      <AnimalForm user={user} animal={animal} families={families} />
     </div>
   );
 };

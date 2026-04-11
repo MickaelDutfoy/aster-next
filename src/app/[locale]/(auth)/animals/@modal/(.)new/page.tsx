@@ -1,4 +1,4 @@
-import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
+import { AnimalForm } from '@/components/animals/AnimalForm';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
@@ -17,7 +17,7 @@ export default async function AddAnimalRouteModal() {
 
   return (
     <RouteModal expectedPath="/animals/new">
-      <RegisterAnimal user={user} families={families} />
+      <AnimalForm user={user} families={families} />
     </RouteModal>
   );
 }

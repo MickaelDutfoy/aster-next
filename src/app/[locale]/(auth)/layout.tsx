@@ -25,7 +25,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <Header />
       <OrgSelector user={user} org={org} />
       <main>{children}</main>
-      <NavBarBottom />
+      <NavBarBottom user={user} />
     </div>
   );
 };

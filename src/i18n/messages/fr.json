@@ -65,7 +65,8 @@
     "mustPickOrg": "Vous devez sélectionner une association existante.",
     "mobileAlert": "Aster est optimisé pour mobile — pensez au mode responsive (Ctrl+Shift+M).",
     "transactionAdd": "La transaction a bien été ajoutée.",
-    "transactionDelete": "La transaction a bien été supprimée."
+    "transactionDelete": "La transaction a bien été supprimée.",
+    "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard."
   },
   "intro": {
     "selectLanguage": "Sélectionnez la langue :",
@@ -262,6 +263,10 @@
       "items152": [
         "Il est désormais possible d'enregistrer le statut d'un animal « En période d'essai ».",
         "Les administrateurs et responsables reçoivent une notification lorsqu'un animal est à l'essai depuis au moins quinze jours."
+      ],
+      "items153": [
+        "Mises à jour de fluidité et de sécurité de l'application.",
+        "Si vous constatez un problème, même mineur, utilisez le formulaire de contact disponible dans Paramètres."
       ]
     }
   },
@@ -539,7 +544,9 @@
       "fosterRequest": "Supprimer également les fiches famille d'accueil dont je suis l'unique membre :",
       "fosterExplain2": "Cette option ne supprime que les fiches liées à votre compte, pas les animaux liées à elles, ni les fiches créées indépendamment par une association qui pourraient vous concerner.",
       "hasConfirmed": "Je comprends que cette suppression est irréversible * :",
-      "success": "Votre compte a été supprimé."
+      "success": "Votre compte a été supprimé.",
+      "superAdminExplain": "Si vous êtes administrateur d’une association, vous devez d’abord transférer ce rôle. Si vous êtes seul dans l’association concernée, vous devez d’abord la supprimer.",
+      "cantIfSuperAdmin": "Vous ne pouvez pas supprimer votre compte tant que vous êtes administrateur d'au moins une association."
     }
   },
   "notifications": {
@@ -835,7 +842,7 @@
       "title": "Un outil pensé pour vous",
       "paragraph1": "Aster est gratuit et sans publicité.",
       "paragraph2": "Il a été conçu pour aider les associations, sans contrainte ni objectif commercial.",
-      "paragraph3": "C’est un projet bénévole, développé par quelqu’un engagé dans la protection animale, pour d’autres bénévoles."
+      "paragraph3": "C’est un projet bénévole, développé par quelqu’un d'engagé dans la protection animale, pour d’autres bénévoles."
     },
     "cta": {
       "title": "On s'y met ?",

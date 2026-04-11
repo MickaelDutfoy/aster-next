@@ -58,25 +58,33 @@ export const joinOrg = async (orgId: number, locale: string): Promise<ActionVali
     const orgName = org ? org.name : '';
 
     for (const admin of admins) {
-      await prisma.notification.create({
-        data: {
-          memberId: admin.id,
-          messageKey: 'notifications.organizations.joinRequest',
-          messageParams: {
-            memberFullName: `${user.firstName} ${user.lastName}`,
-            orgName,
+      try {
+        await prisma.notification.create({
+          data: {
+            memberId: admin.id,
+            messageKey: 'notifications.organizations.joinRequest',
+            messageParams: {
+              memberFullName: `${user.firstName} ${user.lastName}`,
+              orgName,
+            },
+            href: `/organizations/${orgId}`,
           },
-          href: `/organizations/${orgId}`,
-        },
-      });
+        });
+      } catch (err) {
+        console.error(err);
+      }
 
-      await sendEmail({
-        to: admin.email,
-        subject: t('orgRequestSend.subject', { orgName }),
-        html: `
+      if (admin.email) {
+        try {
+          await sendEmail({
+            to: admin.email,
+            subject: t('orgRequestSend.subject', { orgName }),
+            html: `
               <p>${t('common.hello')}</p>
               <p>${t('orgRequestSend.content1', { orgName })}</p>
-              <p>${t('orgRequestSend.content2', { memberFullName: user.firstName + ' ' + user.lastName })}</p>
+              <p>${t('orgRequestSend.content2', {
+                memberFullName: `${user.firstName} ${user.lastName}`,
+              })}</p>
               <p style="text-align: center">
                 <a
                   href="${process.env.AUTH_URL}/notifications"
@@ -94,9 +102,13 @@ export const joinOrg = async (orgId: number, locale: string): Promise<ActionVali
               </p>
               <p>${t('common.footer')}</p>
             `,
-      });
+          });
 
-      await sleep(1100);
+          await sleep(1100);
+        } catch (err) {
+          console.error(err);
+        }
+      }
     }
 
     revalidatePath('/organizations');
@@ -104,6 +116,6 @@ export const joinOrg = async (orgId: number, locale: string): Promise<ActionVali
     return { ok: true, status: 'success', message: 'toasts.orgRequestSent' };
   } catch (err) {
     console.error(err);
-    return { ok: false, message: 'toasts.errorGeneric' };
+    return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

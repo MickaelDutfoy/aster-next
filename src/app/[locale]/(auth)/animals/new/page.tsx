@@ -1,4 +1,4 @@
-import { RegisterAnimal } from '@/components/animals/RegisterAnimal';
+import { AnimalForm } from '@/components/animals/AnimalForm';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
@@ -16,7 +16,7 @@ const RegisterAnimalPage = async () => {
 
   return (
     <div className="full-page-form">
-      <RegisterAnimal user={user} families={families} />
+      <AnimalForm user={user} families={families} />
     </div>
   );
 };
