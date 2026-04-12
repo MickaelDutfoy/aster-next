@@ -1,13 +1,10 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
-import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import { AnimalWithoutDetails, Organization } from '@/lib/types';
-import { displayAge } from '@/lib/utils/displayAge';
 import { AnimalStatus } from '@prisma/client';
-import { SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { AnimalDisplayList } from './AnimalDisplayList';
 
 export const AnimalsList = ({
   org,
@@ -54,38 +51,11 @@ export const AnimalsList = ({
           {animals.length === 0 && <p style={{ padding: '10px' }}>{t('animals.none')}</p>}
 
           {animals.length > 0 && (
-            <ul className="animals-list">
-              {animals
-                .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase()))
-                .filter(
-                  (animal) =>
-                    animal.status !== AnimalStatus.ADOPTED &&
-                    animal.status !== AnimalStatus.DECEASED,
-                )
-                .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
-                .map((animal) => (
-                  <li key={animal.id}>
-                    <span>
-                      <strong>{animal.name}</strong>
-                    </span>{' '}
-                    <span>
-                      {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
-                      <span
-                        style={{
-                          color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
-                          textShadow: '1px 1px 0px #777',
-                        }}
-                      >
-                        {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
-                      </span>
-                    </span>
-                    <span>{displayAge(animal.birthDate, locale)}</span>
-                    <Link className="action link" href={`/animals/${animal.id}`}>
-                      <SquareArrowRight size={26} />
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+            <AnimalDisplayList
+              animals={animals}
+              statusFilter={[AnimalStatus.UNHOSTED, AnimalStatus.FOSTERED, AnimalStatus.IN_TRIAL]}
+              nameFilter={nameFilter}
+            />
           )}
 
           <button className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
@@ -93,34 +63,11 @@ export const AnimalsList = ({
           </button>
 
           {!hiddenAdopted && (
-            <ul className="animals-list">
-              {animals
-                .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase()))
-                .filter((animal) => animal.status === AnimalStatus.ADOPTED)
-                .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
-                .map((animal) => (
-                  <li key={animal.id}>
-                    <span>
-                      <strong>{animal.name}</strong>
-                    </span>{' '}
-                    <span>
-                      {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
-                      <span
-                        style={{
-                          color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
-                          textShadow: '1px 1px 0px #777',
-                        }}
-                      >
-                        {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
-                      </span>
-                    </span>
-                    <span>{displayAge(animal.birthDate, locale)}</span>
-                    <Link className="action link" href={`/animals/${animal.id}`}>
-                      <SquareArrowRight size={26} />
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+            <AnimalDisplayList
+              animals={animals}
+              statusFilter={[AnimalStatus.ADOPTED]}
+              nameFilter={nameFilter}
+            />
           )}
 
           <button className="collapse-expand" onClick={() => setHiddenDeceased(!hiddenDeceased)}>
@@ -128,34 +75,11 @@ export const AnimalsList = ({
           </button>
 
           {!hiddenDeceased && (
-            <ul className="animals-list">
-              {animals
-                .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase()))
-                .filter((animal) => animal.status === AnimalStatus.DECEASED)
-                .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
-                .map((animal) => (
-                  <li key={animal.id}>
-                    <span>
-                      <strong>{animal.name}</strong>
-                    </span>{' '}
-                    <span>
-                      {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
-                      <span
-                        style={{
-                          color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
-                          textShadow: '1px 1px 0px #777',
-                        }}
-                      >
-                        {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
-                      </span>
-                    </span>
-                    <span style={{ opacity: 0 }}>{displayAge(animal.birthDate, locale)}</span>
-                    <Link className="action link" href={`/animals/${animal.id}`}>
-                      <SquareArrowRight size={26} />
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+            <AnimalDisplayList
+              animals={animals}
+              statusFilter={[AnimalStatus.DECEASED]}
+              nameFilter={nameFilter}
+            />
           )}
         </div>
       )}

@@ -266,6 +266,7 @@
       ],
       "items153": [
         "Mises à jour de fluidité et de sécurité de l'application.",
+        "Les dates de naissance sont désormais optionnelles sur les fiches d'animaux.",
         "Si vous constatez un problème, même mineur, utilisez le formulaire de contact disponible dans Paramètres."
       ]
     }
@@ -369,7 +370,7 @@
       "neuteredQuestion": "Stérilisé(e) ?",
       "legalIdPlaceholder": "Numéro",
       "findLocationPlaceholder": "Lieu",
-      "birthDateLabel": "Né(e) le * :",
+      "birthDateLabel": "Né(e) le :",
       "primeVaxQuestion": "Primo-vaccination ?",
       "firstDewormQuestion": "Premier déparasitage ?",
       "statusLabel": "Statut de l'animal * :",

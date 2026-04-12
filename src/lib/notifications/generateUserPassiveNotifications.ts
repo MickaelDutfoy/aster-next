@@ -18,6 +18,7 @@ export const generateUserPassiveNotifications = async (user: Member) => {
     if (animal.status === AnimalStatus.DECEASED) continue;
 
     if (
+      animal.birthDate &&
       isOlderThan(animal.birthDate, NEUTRALIZE_REMINDER_DAYS) &&
       ['Chat', 'Cat', 'Katt'].includes(animal.species) &&
       !animal.isNeutered

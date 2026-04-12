@@ -50,7 +50,7 @@ export type Animal = {
   sex: Sex;
   color: string | null;
   findLocation: string | null;
-  birthDate: Date;
+  birthDate: Date | null;
   isNeutered: boolean;
   status: AnimalStatus;
   information: string | null;
@@ -70,7 +70,7 @@ export type AnimalWithoutDetails = {
   name: string;
   species: string;
   sex: Sex;
-  birthDate: Date;
+  birthDate: Date | null;
   status: AnimalStatus;
 };
 

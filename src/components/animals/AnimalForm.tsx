@@ -190,7 +190,6 @@ export const AnimalForm = ({
     const animalForm = {
       name: formData.get('animalName')?.toString().trim(),
       species: speciesToSave,
-      birthDate: formData.get('animalBirthDate')?.toString().trim(),
       statusFromForm: formData.get('animalStatus')?.toString(),
       animalFamily: Number(formData.get('animalFamily')),
       adopterFullName: formData.get('adopterFullName')?.toString().trim(),
@@ -199,7 +198,6 @@ export const AnimalForm = ({
     if (
       !animalForm.name ||
       !animalForm.species ||
-      !animalForm.birthDate ||
       (animalForm.statusFromForm === AnimalStatus.FOSTERED && !animalForm.animalFamily)
     ) {
       showToast({
@@ -341,7 +339,7 @@ export const AnimalForm = ({
               <input
                 type="date"
                 name="animalBirthDate"
-                defaultValue={animal?.birthDate.toISOString().slice(0, 10)}
+                defaultValue={animal?.birthDate?.toISOString().slice(0, 10)}
               />
             </div>
             <div className="labeled-select">

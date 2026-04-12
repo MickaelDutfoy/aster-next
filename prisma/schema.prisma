@@ -29,11 +29,11 @@ model Animal {
   color             String?
   findLocation      String?
   status            AnimalStatus @default(UNHOSTED)
-  birthDate         DateTime     @map("birth_date") @db.Date
+  birthDate         DateTime?    @map("birth_date") @db.Date
   isNeutered        Boolean      @map("is_neutered")
   information       String?
   healthInformation String?
-  trialDateStart    DateTime?
+  trialDateStart    DateTime?    @db.Date
   familyId          Int?         @map("family_id")
   orgId             Int          @map("organization_id")
   createdAt         DateTime     @default(now()) @map("created_at")
@@ -73,7 +73,7 @@ model AnimalHealthAct {
 model AnimalWeightEntry {
   id          Int      @id @default(autoincrement())
   animalId    Int
-  date        DateTime
+  date        DateTime @db.Date
   weightGrams Int
 
   createdAt DateTime @default(now())
@@ -91,7 +91,7 @@ enum AnimalTestResult {
 model AnimalTestEntry {
   id       Int              @id @default(autoincrement())
   animalId Int
-  date     DateTime
+  date     DateTime         @db.Date
   testName String
   result   AnimalTestResult
 
@@ -249,7 +249,7 @@ model Transaction {
   orgId         Int
   type          TransactionType
   amountInCents Int
-  date          DateTime
+  date          DateTime        @db.Date
   categoryId    Int
   counterparty  String?
   paymentMethod PaymentMethod
