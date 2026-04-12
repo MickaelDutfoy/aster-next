@@ -25,6 +25,19 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
     status: formData.get('animalStatus') as AnimalStatus,
   };
 
+    let animalFamilyId: number | null = null;
+    if (animalForm.status === AnimalStatus.FOSTERED) {
+      animalFamilyId = formData.get('animalFamily') ? Number(formData.get('animalFamily')) : null;
+    }
+
+    if (
+      !animalForm.name ||
+      !animalForm.species ||
+      (animalForm.status === AnimalStatus.FOSTERED && !animalFamilyId)
+    ) {
+      return { animal: undefined, adopter: undefined, health: undefined };
+    }
+
   const healthTypes = formData.getAll('healthType[]').map((value) => value.toString());
   const healthDates = formData.getAll('healthDate[]').map((value) => value.toString());
   const healthIsFirsts = formData.getAll('healthIsFirst[]').map((value) => value.toString());
@@ -90,11 +103,6 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
     });
   }
 
-  let animalFamilyId: number | null = null;
-  if (animalForm.status === AnimalStatus.FOSTERED) {
-    animalFamilyId = formData.get('animalFamily') ? Number(formData.get('animalFamily')) : null;
-  }
-
   let newTrialDate: Date | null = trialDateStart;
   if (!trialDateStart && animalForm.status === AnimalStatus.IN_TRIAL) {
     newTrialDate = new Date();
@@ -117,15 +125,6 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
     legalTransferAt: formData.get('legalTransferAt')?.toString(),
     adoptInformation: formData.get('adoptInformation')?.toString().trim(),
   };
-
-  if (
-    !animalForm.name ||
-    !animalForm.species ||
-    !animalForm.birthDate ||
-    (animalForm.status === AnimalStatus.FOSTERED && !animalFamilyId)
-  ) {
-    return { animal: undefined, adopter: undefined, health: undefined };
-  }
 
   const adopter = {
     adopterFullName: adopterForm.fullName as string,
@@ -153,7 +152,7 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
     color: animalForm.color,
     legalId: animalForm.legalId,
     findLocation: animalForm.findLocation,
-    birthDate: new Date(animalForm.birthDate),
+    birthDate: animalForm.birthDate ? new Date(animalForm.birthDate) : null,
     isNeutered: animalForm.isNeutered,
     information: animalForm.information ?? null,
     healthInformation: animalForm.healthInformation ?? null,

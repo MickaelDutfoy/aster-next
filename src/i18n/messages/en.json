@@ -267,6 +267,7 @@
       ],
       "items153": [
         "Various improvements to the app’s performance and security.",
+        "Birth dates are now optional on animal profiles.",
         "If you encounter any issue, even a minor one, please use the contact form available in Settings."
       ]
     }
@@ -363,14 +364,14 @@
       "tests": "Tests"
     },
     "fields": {
-      "namePlaceholder": "Name *",
-      "speciesPlaceholder": "Species *:",
+      "namePlaceholder": "Name *",
+      "speciesPlaceholder": "Species *:",
       "colorPlaceholder": "Color",
-      "sexLabel": "Sex *:",
+      "sexLabel": "Sex *:",
       "neuteredQuestion": "Neutered?",
       "legalIdPlaceholder": "Number",
       "findLocationPlaceholder": "Location",
-      "birthDateLabel": "Born on *:",
+      "birthDateLabel": "Born on:",
       "primeVaxQuestion": "First vaccination?",
       "firstDewormQuestion": "First deworming?",
       "statusLabel": "Animal status *:",

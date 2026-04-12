@@ -1,13 +1,12 @@
 'use client';
 
 import { Link, useRouter } from '@/i18n/routing';
-import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import { Animal, Family, Member, Organization } from '@/lib/types';
-import { displayAge } from '@/lib/utils/displayAge';
 import { MemberRole } from '@prisma/client';
 import clsx from 'clsx';
 import { MailOpen, Phone, SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { AnimalDisplayList } from '../animals/AnimalDisplayList';
 import { ShareButton } from '../tools/ShareButton';
 
 export const FamilyDetails = ({
@@ -116,32 +115,7 @@ export const FamilyDetails = ({
         {animals && animals.length > 0 && (
           <div>
             <p>{t('families.animalsInCareLabel', { count: animals.length })}</p>
-            <ul className="animals-list">
-              {animals
-                .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
-                .map((animal) => (
-                  <li key={animal.id}>
-                    <span>
-                      <strong>{animal.name}</strong>
-                    </span>{' '}
-                    <span>
-                      {normalizeSpeciesToLocale(animal.species, t.raw('animals.commonSpecies'))}{' '}
-                      <span
-                        style={{
-                          color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',
-                          textShadow: '1px 1px 0px #777',
-                        }}
-                      >
-                        {animal.sex === 'M' ? '♂' : '♀'}
-                      </span>
-                    </span>
-                    <span>{displayAge(animal.birthDate, locale)}</span>
-                    <Link className="action link" href={`/animals/${animal.id}`}>
-                      <SquareArrowRight size={26} />
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+            <AnimalDisplayList animals={animals} />
           </div>
         )}
 

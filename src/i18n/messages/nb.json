@@ -267,6 +267,7 @@
       ],
       "items153": [
         "Forbedringer av ytelse og sikkerhet i applikasjonen.",
+        "Fødselsdato er nå valgfri på dyreprofiler.",
         "Hvis du oppdager et problem, selv et lite, bruk kontaktskjemaet som er tilgjengelig i Innstillinger."
       ]
     }
@@ -363,14 +364,14 @@
       "tests": "Tester"
     },
     "fields": {
-      "namePlaceholder": "Navn *",
-      "speciesPlaceholder": "Art *:",
+      "namePlaceholder": "Navn *",
+      "speciesPlaceholder": "Art *:",
       "colorPlaceholder": "Farge",
-      "sexLabel": "Kjønn *:",
+      "sexLabel": "Kjønn *:",
       "neuteredQuestion": "Kastrert/sterilisert?",
       "legalIdPlaceholder": "Nummer",
       "findLocationPlaceholder": "Sted",
-      "birthDateLabel": "Født den *:",
+      "birthDateLabel": "Født den:",
       "primeVaxQuestion": "Grunnvaksine?",
       "firstDewormQuestion": "Første ormekur?",
       "statusLabel": "Dyrets status *:",

@@ -142,12 +142,14 @@ export const AnimalDetails = ({
           </span>
         </h3>
         {animal.color && <p>{t('animals.colorLabel') + animal.color}.</p>}
-        <p>
-          {t('animals.bornOn')} {displayDate(animal.birthDate)}
-          {animal.status !== AnimalStatus.DECEASED &&
-            ` (${displayAge(animal.birthDate, locale, true)})`}
-          .
-        </p>
+        {animal.birthDate && (
+          <p>
+            {t('animals.bornOn')} {displayDate(animal.birthDate)}
+            {animal.status !== AnimalStatus.DECEASED &&
+              ` (${displayAge(animal.birthDate, locale, true)})`}
+            .
+          </p>
+        )}
         {animal.isNeutered ? (
           <p>{t('animals.neuteredSuffix')}.</p>
         ) : (
