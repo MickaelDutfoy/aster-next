@@ -10,8 +10,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />
     <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb/discover" />
-    <lastmod>2026-04-14</lastmod>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
@@ -19,8 +19,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />
     <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb/discover" />
-    <lastmod>2026-04-14</lastmod>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
@@ -28,8 +28,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />
     <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb/discover" />
-    <lastmod>2026-04-14</lastmod>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <!-- HOME -->
@@ -38,8 +38,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
     <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
-    <lastmod>2026-04-14</lastmod>
     <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
@@ -47,8 +47,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
     <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
-    <lastmod>2026-04-14</lastmod>
     <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
@@ -56,8 +56,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
     <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
-    <lastmod>2026-04-14</lastmod>
     <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
@@ -65,8 +65,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
     <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
-    <lastmod>2026-04-14</lastmod>
     <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
 </urlset>
