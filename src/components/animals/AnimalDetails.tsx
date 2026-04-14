@@ -145,7 +145,9 @@ export const AnimalDetails = ({
         {animal.birthDate && (
           <p>
             {t('animals.bornOn')} {displayDate(animal.birthDate)}
-            {animal.status !== AnimalStatus.DECEASED &&
+            {animal.status !== AnimalStatus.PERMANENT_PLACEMENT &&
+              animal.status !== AnimalStatus.ADOPTED &&
+              animal.status !== AnimalStatus.DECEASED &&
               ` (${displayAge(animal.birthDate, locale, true)})`}
             .
           </p>

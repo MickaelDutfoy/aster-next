@@ -2,6 +2,7 @@
   "common": {
     "yes": "Oui",
     "no": "Non",
+    "noneM": "Aucun",
     "none": "Aucune",
     "view": "Voir",
     "edit": "Modifier",
@@ -268,6 +269,11 @@
         "Mises à jour de fluidité et de sécurité de l'application.",
         "Les dates de naissance sont désormais optionnelles sur les fiches d'animaux.",
         "Si vous constatez un problème, même mineur, utilisez le formulaire de contact disponible dans Paramètres."
+      ],
+      "items154": [
+        "Ajout d'un statut « Placement permanent », afin de décrire les animaux non adoptables, gardés en refuge ou placés en sanctuaire.",
+        "Cette catégorie est séparée de votre liste d'animaux actifs (en attente, dans un lieu d'accueil ou en période d'essai).",
+        "Il est également possible de filtrer votre liste d'animaux par lieu d'accueil."
       ]
     }
   },
@@ -275,6 +281,7 @@
     "editInfoTitle": "Éditer l'animal",
     "addTitle": "Ajouter un animal",
     "deleteTitle": "Supprimer l'animal",
+    "familyFilter": "Filtrer par lieu :",
     "commonSpecies": ["Chat", "Chien", "Furet", "Lapin"],
     "otherSpecies": "Autre",
     "setSpecies": "Précisez",
@@ -334,12 +341,14 @@
     "currentStatusLabel": "Situation actuelle :",
     "listTitle": "Animaux enregistrés pour {orgName} ({count}) :",
     "none": "Aucun animal enregistré.",
+    "togglePlaced": "Afficher les animaux placés ({count})",
     "toggleAdopted": "Afficher les animaux adoptés ({count})",
     "toggleDeceased": "Afficher les animaux décédés ({count})",
     "status": {
       "UNHOSTED": "En attente",
       "FOSTERED": "Dans un lieu d'accueil",
       "IN_TRIAL": "En période d'essai",
+      "PERMANENT_PLACEMENT": "Placement permanent",
       "ADOPTED": "Adopté(e)",
       "DECEASED": "Décédé(e)"
     },
