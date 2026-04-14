@@ -69,7 +69,6 @@ async function handler(req: NextRequest) {
     pathname.startsWith('/_next') ||
     pathname.startsWith('/assets') ||
     pathname.startsWith('/icons') ||
-    pathname.startsWith('/doc') ||
     pathname.startsWith('/screenshots') ||
     pathname.startsWith('/.well-known') ||
     pathname === '/favicon.ico' ||
@@ -149,7 +148,5 @@ export const proxy = authMw(handler, {
 });
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|sitemap-test.xml).*)',
-  ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)'],
 };

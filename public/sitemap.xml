@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+
+  <!-- DISCOVER (prioritaire) -->
+  <url>
+    <loc>https://aster-app.eu/fr/discover</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb/discover" />
+    <lastmod>2026-04-14</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://aster-app.eu/en/discover</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb/discover" />
+    <lastmod>2026-04-14</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://aster-app.eu/nb/discover</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb/discover" />
+    <lastmod>2026-04-14</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- HOME -->
+  <url>
+    <loc>https://aster-app.eu/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
+    <lastmod>2026-04-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aster-app.eu/fr</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
+    <lastmod>2026-04-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aster-app.eu/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
+    <lastmod>2026-04-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aster-app.eu/nb</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb" />
+    <lastmod>2026-04-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
