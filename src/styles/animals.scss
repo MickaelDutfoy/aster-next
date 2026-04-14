@@ -41,6 +41,11 @@
   gap: 5px;
 }
 
+.animal-list-filters {
+  display: flex;
+  flex-direction: column;
+}
+
 .animal-details {
   border: 1px solid var(--link);
   border-top: none;
