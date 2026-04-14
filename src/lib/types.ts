@@ -72,6 +72,7 @@ export type AnimalWithoutDetails = {
   sex: Sex;
   birthDate: Date | null;
   status: AnimalStatus;
+  familyId: number | null;
 };
 
 export type AnimalHealthAct = {

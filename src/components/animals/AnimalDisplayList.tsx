@@ -12,10 +12,12 @@ export const AnimalDisplayList = ({
   animals,
   statusFilter,
   nameFilter,
+  familyFilter,
 }: {
   animals: AnimalWithoutDetails[];
   statusFilter?: AnimalStatus[];
   nameFilter?: string;
+  familyFilter?: number;
 }) => {
   const t = useTranslations();
   const locale = useLocale();
@@ -27,6 +29,7 @@ export const AnimalDisplayList = ({
           (animal) => !nameFilter || animal.name.toLowerCase().includes(nameFilter.toLowerCase()),
         )
         .filter((animal) => !statusFilter || statusFilter.includes(animal.status))
+        .filter((animal) => !familyFilter || animal.familyId === familyFilter)
         .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
         .map((animal) => (
           <li key={animal.id}>
@@ -46,7 +49,12 @@ export const AnimalDisplayList = ({
             </span>
             <span
               style={
-                !animal.birthDate || animal.status === AnimalStatus.DECEASED ? { opacity: 0 } : {}
+                !animal.birthDate ||
+                animal.status === AnimalStatus.PERMANENT_PLACEMENT ||
+                animal.status === AnimalStatus.ADOPTED ||
+                animal.status === AnimalStatus.DECEASED
+                  ? { opacity: 0 }
+                  : {}
               }
             >
               {displayAge(animal.birthDate as Date, locale)}

@@ -6,6 +6,15 @@
 
   <!-- DISCOVER (prioritaire) -->
   <url>
+    <loc>https://aster-app.eu/discover</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />
+    <xhtml:link rel="alternate" hreflang="nb" href="https://aster-app.eu/nb/discover" />
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
     <loc>https://aster-app.eu/fr/discover</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://aster-app.eu/fr/discover" />
     <xhtml:link rel="alternate" hreflang="en" href="https://aster-app.eu/en/discover" />

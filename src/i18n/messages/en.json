@@ -2,6 +2,7 @@
   "common": {
     "yes": "Yes",
     "no": "No",
+    "noneM": "None",
     "none": "None",
     "view": "View",
     "edit": "Edit",
@@ -269,6 +270,11 @@
         "Various improvements to the app’s performance and security.",
         "Birth dates are now optional on animal profiles.",
         "If you encounter any issue, even a minor one, please use the contact form available in Settings."
+      ],
+      "items154": [
+        "Added a \"Permanent placement\" status, to describe non-adoptable animals kept in shelters or placed in sanctuaries.",
+        "This category is separated from your list of active animals (waiting for placement, in a foster location, or in trial period).",
+        "You can also filter your animal list by foster location."
       ]
     }
   },
@@ -276,6 +282,7 @@
     "editInfoTitle": "Edit animal",
     "addTitle": "Add an animal",
     "deleteTitle": "Delete animal",
+    "familyFilter": "Filter by location:",
     "commonSpecies": ["Cat", "Dog", "Ferret", "Rabbit"],
     "otherSpecies": "Other",
     "setSpecies": "Please specify",
@@ -335,12 +342,14 @@
     "currentStatusLabel": "Current status:",
     "listTitle": "Animals registered for {orgName} ({count}):",
     "none": "No animals registered.",
+    "togglePlaced": "Show permanently placed animals ({count})",
     "toggleAdopted": "Show adopted animals ({count})",
     "toggleDeceased": "Show deceased animals ({count})",
     "status": {
       "UNHOSTED": "Waiting for placement",
       "FOSTERED": "In a foster location",
       "IN_TRIAL": "In trial period",
+      "PERMANENT_PLACEMENT": "Permanent placement",
       "ADOPTED": "Adopted",
       "DECEASED": "Deceased"
     },

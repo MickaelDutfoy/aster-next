@@ -26,7 +26,10 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
   };
 
     let animalFamilyId: number | null = null;
-    if (animalForm.status === AnimalStatus.FOSTERED) {
+    if (
+      animalForm.status === AnimalStatus.FOSTERED ||
+      animalForm.status === AnimalStatus.PERMANENT_PLACEMENT
+    ) {
       animalFamilyId = formData.get('animalFamily') ? Number(formData.get('animalFamily')) : null;
     }
 

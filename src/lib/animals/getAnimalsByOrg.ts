@@ -11,6 +11,7 @@ export const getAnimalsByOrg = async (id: number): Promise<AnimalWithoutDetails[
       sex: true,
       birthDate: true,
       status: true,
+      familyId: true,
     },
   });
 

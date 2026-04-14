@@ -350,20 +350,33 @@ export const AnimalForm = ({
                 onChange={(e) => {
                   const next = e.target.value as AnimalStatus;
                   setStatus(next);
-                  if (next !== AnimalStatus.FOSTERED) setFamilyId(undefined);
+                  if (next !== AnimalStatus.FOSTERED && next !== AnimalStatus.PERMANENT_PLACEMENT)
+                    setFamilyId(undefined);
                 }}
               >
                 <option value={AnimalStatus.UNHOSTED}>{t('animals.status.UNHOSTED')}</option>
                 <option value={AnimalStatus.FOSTERED}>{t('animals.status.FOSTERED')}</option>
                 <option value={AnimalStatus.IN_TRIAL}>{t('animals.status.IN_TRIAL')}</option>
+                <option value={AnimalStatus.PERMANENT_PLACEMENT}>
+                  {t('animals.status.PERMANENT_PLACEMENT')}
+                </option>
                 <option value={AnimalStatus.ADOPTED}>{t('animals.status.ADOPTED')}</option>
                 <option value={AnimalStatus.DECEASED}>{t('animals.status.DECEASED')}</option>
               </select>
             </div>
-            <div className={`labeled-select ` + clsx(status === 'FOSTERED' ? '' : 'disabled')}>
+            <div
+              className={
+                `labeled-select ` +
+                clsx(
+                  status === AnimalStatus.FOSTERED || status === AnimalStatus.PERMANENT_PLACEMENT
+                    ? ''
+                    : 'disabled',
+                )
+              }
+            >
               <p>
                 {t('animals.fields.familyLabel')}
-                {status === 'FOSTERED' && ' *'} :
+                {status === AnimalStatus.FOSTERED && ' *'} :
               </p>
               <select
                 name="animalFamily"
@@ -371,9 +384,11 @@ export const AnimalForm = ({
                 onChange={(e) =>
                   setFamilyId(e.target.value === '' ? undefined : Number(e.target.value))
                 }
-                disabled={status !== AnimalStatus.FOSTERED}
+                disabled={
+                  status !== AnimalStatus.FOSTERED && status !== AnimalStatus.PERMANENT_PLACEMENT
+                }
               >
-                <option value="">{t('common.none')}</option>
+                <option value="">{t('common.noneM')}</option>
                 {families.map((family) => (
                   <option key={family.id} value={family.id}>
                     {family.contactFullName}
