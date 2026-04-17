@@ -121,7 +121,7 @@ export const TransactionsList = ({
   return (
     <>
       {(years.length > 0 || sortedCategories.length > 0) && (
-        <div className="filters">
+        <div className="transaction-filters">
           {years.length > 0 && (
             <div className="filter-select">
               <h4>{t('transactions.yearLabel')}</h4>

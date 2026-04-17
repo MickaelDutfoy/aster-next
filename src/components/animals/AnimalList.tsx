@@ -55,7 +55,7 @@ export const AnimalsList = ({
       {animals && (
         <div>
           {animals.length > 0 && (
-            <div className="filters">
+            <div className="animal-filters">
               <div className="search-filter">
                 <p>{t('common.nameFilter')}</p>
                 <input
