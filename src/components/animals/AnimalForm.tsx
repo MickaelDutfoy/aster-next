@@ -3,7 +3,6 @@
 import { registerAnimal } from '@/actions/animals/registerAnimal';
 import { updateAnimal } from '@/actions/animals/updateAnimal';
 import { useRouter } from '@/i18n/routing';
-import { normalizeSpeciesToLocale } from '@/lib/animals/normalizeSpeciesToLocale';
 import {
   Animal,
   AnimalHealthActType,
@@ -20,6 +19,7 @@ import { Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
+import { isCommonSpecies } from './isCommonSpecies';
 
 export const AnimalForm = ({
   user,
@@ -92,18 +92,15 @@ export const AnimalForm = ({
     date: '',
   });
 
-  const commonSpecies = t.raw('animals.commonSpecies') as string[];
+  const initialSpecies = animal?.species || user.favoriteSpecies || 'cat';
 
-  const initialSelectedSpecies = (() => {
-    if (animal?.species) {
-      const normalized = normalizeSpeciesToLocale(animal.species, commonSpecies);
-      return normalized === 'other' ? 'other' : normalized;
-    }
+  const [selectedSpecies, setSelectedSpecies] = useState<string>(
+    isCommonSpecies(initialSpecies) ? initialSpecies : 'other',
+  );
 
-    return commonSpecies[0];
-  })();
-
-  const [selectedSpecies, setSelectedSpecies] = useState<string>(initialSelectedSpecies);
+  const [otherSpecies, setOtherSpecies] = useState<string>(
+    isCommonSpecies(initialSpecies) ? '' : initialSpecies,
+  );
 
   useEffect(() => {
     if (animal) return;
@@ -255,31 +252,24 @@ export const AnimalForm = ({
                 name="animalSpeciesSelector"
                 value={selectedSpecies}
                 onChange={(e) => {
-                  const value = e.target.value;
-                  setSelectedSpecies(value);
-                  if (value !== 'other') {
-                    const input = document.querySelector(
-                      'input[name="animalSpecies"]',
-                    ) as HTMLInputElement | null;
-                    if (input) input.value = '';
-                  }
+                  setSelectedSpecies(e.target.value);
+                  setOtherSpecies('');
                 }}
               >
-                {t.raw('animals.commonSpecies').map((item: string, index: number) => (
-                  <option key={index} value={item}>
-                    {item}
-                  </option>
-                ))}
-
+                <option value="cat">{t('animals.species.cat')}</option>
+                <option value="dog">{t('animals.species.dog')}</option>
+                <option value="ferret">{t('animals.species.ferret')}</option>
+                <option value="rabbit">{t('animals.species.rabbit')}</option>
                 <option value="other">{t('animals.otherSpecies')}</option>
               </select>
               <input
                 type="text"
                 name="animalSpecies"
+                value={otherSpecies}
+                onChange={(e) => setOtherSpecies(e.target.value)}
                 disabled={selectedSpecies !== 'other'}
                 className={clsx(selectedSpecies !== 'other' && 'disabled')}
                 placeholder={t('animals.setSpecies') + (selectedSpecies === 'other' ? ' *' : '')}
-                defaultValue={selectedSpecies === 'other' ? animal?.species : ''}
               />
             </div>
 

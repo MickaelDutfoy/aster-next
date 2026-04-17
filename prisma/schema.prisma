@@ -182,14 +182,15 @@ model MemberOrganization {
 }
 
 model Member {
-  id            Int      @id @default(autoincrement())
-  firstName     String   @map("first_name")
-  lastName      String   @map("last_name")
-  email         String   @unique
-  phoneNumber   String   @unique @map("phone_number")
-  passwordHash  String   @map("password_hash")
-  selectedOrgId Int?
-  createdAt     DateTime @default(now()) @map("created_at")
+  id              Int      @id @default(autoincrement())
+  firstName       String   @map("first_name")
+  lastName        String   @map("last_name")
+  email           String   @unique
+  phoneNumber     String   @unique @map("phone_number")
+  passwordHash    String   @map("password_hash")
+  selectedOrgId   Int?
+  favoriteSpecies String?
+  createdAt       DateTime @default(now()) @map("created_at")
 
   memberOrganizations MemberOrganization[]
   resetPasswordTokens AuthToken[]

@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { ShareButton } from '../tools/ShareButton';
+import { isCommonSpecies } from './isCommonSpecies';
 
 export const AnimalDetails = ({
   user,
@@ -131,7 +132,9 @@ export const AnimalDetails = ({
         <h3>
           {animal.name}
           {' — '}
-          {animal.species}
+          {isCommonSpecies(animal.species)
+            ? t(`animals.species.${animal.species}`)
+            : animal.species}
           <span
             style={{
               color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',

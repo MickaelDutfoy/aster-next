@@ -275,6 +275,11 @@
         "Lagt til statusen \"Permanent plassering\", for å beskrive dyr som ikke kan adopteres, og som enten bor i et tilfluktssted eller er plassert i et varig opphold.",
         "Denne kategorien er skilt fra listen over aktive dyr (venter på plassering, i et omsorgssted eller i prøveperiode).",
         "Du kan også filtrere dyrelisten etter omsorgssted."
+      ],
+      "items155": [
+        "Dyr kan nå vises som kort, i tillegg til listevisning. Kortene inkluderer status.",
+        "Den sist brukte dyrearten huskes nå og settes som standard ved opprettelse av en ny profil.",
+        "Adressen til omsorgssteder er nå skjult for ikke-medlemmer (unntatt administratorer, ansvarlige eller medlemmer av stedet)."
       ]
     }
   },
@@ -283,7 +288,12 @@
     "addTitle": "Legg til et dyr",
     "deleteTitle": "Slett dyret",
     "familyFilter": "Filtrer etter sted:",
-    "commonSpecies": ["Hund", "Ilder", "Kanin", "Katt"],
+    "species": {
+      "cat": "Katt",
+      "dog": "Hund",
+      "ferret": "Ilder",
+      "rabbit": "Kanin"
+    },
     "otherSpecies": "Annet",
     "setSpecies": "Vennligst spesifiser",
     "sex": {

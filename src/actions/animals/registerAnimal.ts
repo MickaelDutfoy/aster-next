@@ -27,6 +27,11 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
     let animalId: number = 0;
 
     await prisma.$transaction(async (prismaTransaction) => {
+      await prismaTransaction.member.update({
+        where: { id: user.id },
+        data: { favoriteSpecies: animal.species },
+      });
+
       const res = await prismaTransaction.animal.create({
         data: {
           ...animal,

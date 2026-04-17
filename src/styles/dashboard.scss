@@ -125,6 +125,30 @@ header {
   justify-content: center;
 }
 
+.display-mode {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-bottom: 3px;
+
+  .display-mode-buttons {
+    padding: 5px 0;
+    display: flex;
+    gap: 10px;
+
+    button {
+      background: var(--emphasized);
+      border: 1px solid var(--link);
+      border-radius: 5px;
+      padding: 3px;
+
+      * {
+        transform: translateY(1.5px);
+      }
+    }
+  }
+}
+
 .collapse-expand {
   display: block;
   margin: 0 auto;
@@ -289,7 +313,7 @@ header {
   .info {
     margin: auto 5px 0 5px;
     padding: 5px;
-    background-color: var(--emphasized);
+    background-color: var(--box);
     border: 2px solid var(--button);
     border-radius: 5px;
     box-shadow: 2px 2px 8px vars.$smoky-black;
@@ -299,7 +323,7 @@ header {
   .changelog {
     margin: 5px;
     padding: 5px;
-    background-color: var(--emphasized);
+    background-color: var(--box);
     border: 2px solid var(--button);
     border-radius: 5px;
     box-shadow: 2px 2px 8px vars.$smoky-black;
@@ -346,6 +370,30 @@ header {
 
   :last-child {
     border: none;
+  }
+}
+
+.animals-cards {
+  margin: 5px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+  justify-content: center;
+  gap: 5px;
+
+  li {
+    cursor: pointer;
+    width: 150px;
+    height: 160px;
+    padding: 10px;
+    background-color: var(--box);
+    border: 1px solid var(--button);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
   }
 }
 

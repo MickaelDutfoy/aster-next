@@ -2,8 +2,10 @@
 
 import { AnimalWithoutDetails, FamilyWithoutDetails, Organization } from '@/lib/types';
 import { AnimalStatus } from '@prisma/client';
+import { Grid2x2, List } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { AnimalDisplayCards } from './AnimalDisplayCards';
 import { AnimalDisplayList } from './AnimalDisplayList';
 
 export const AnimalsList = ({
@@ -22,8 +24,22 @@ export const AnimalsList = ({
   const [hiddenDeceased, setHiddenDeceased] = useState<boolean>(true);
   const [nameFilter, setNameFilter] = useState<string>('');
   const [familyFilter, setfamilyFilter] = useState<number>(0);
+  const [displayMode, setDisplayMode] = useState<'list' | 'cards' | null>(null);
 
-  console.log(familyFilter);
+  useEffect(() => {
+    const stored = localStorage.getItem('preferredDisplayMode');
+
+    if (stored === 'list' || stored === 'cards') {
+      setDisplayMode(stored);
+    } else {
+      setDisplayMode('list');
+    }
+  }, []);
+
+  const handleChangeMode = (mode: 'list' | 'cards') => {
+    setDisplayMode(mode);
+    localStorage.setItem('preferredDisplayMode', mode);
+  };
 
   const countAnimalsByStatus = (status: AnimalStatus) => {
     return animals
@@ -32,12 +48,14 @@ export const AnimalsList = ({
       .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase())).length;
   };
 
+  if (!displayMode) return null;
+
   return (
     <>
       {animals && (
         <div>
           {animals.length > 0 && (
-            <div className="animal-list-filters">
+            <div className="filters">
               <div className="search-filter">
                 <p>{t('common.nameFilter')}</p>
                 <input
@@ -64,6 +82,7 @@ export const AnimalsList = ({
               </div>
             </div>
           )}
+
           <h3>
             {t('animals.listTitle', {
               orgName: org.name,
@@ -74,60 +93,119 @@ export const AnimalsList = ({
             })}
           </h3>
 
+          <div className="display-mode">
+            <div className="display-mode-buttons">
+              <button
+                style={displayMode === 'cards' ? { opacity: 0.5 } : {}}
+                onClick={() => handleChangeMode('list')}
+              >
+                <List size={26} />
+              </button>
+              <button
+                style={displayMode === 'list' ? { opacity: 0.5 } : {}}
+                onClick={() => handleChangeMode('cards')}
+              >
+                <Grid2x2 size={26} />
+              </button>
+            </div>
+          </div>
+
           {animals.length === 0 && <p style={{ padding: '10px' }}>{t('animals.none')}</p>}
 
-          {animals.length > 0 && (
-            <AnimalDisplayList
-              animals={animals}
-              statusFilter={[AnimalStatus.UNHOSTED, AnimalStatus.FOSTERED, AnimalStatus.IN_TRIAL]}
-              nameFilter={nameFilter}
-              familyFilter={familyFilter}
-            />
+          {animals.length > 0 &&
+            (displayMode === 'list' ? (
+              <AnimalDisplayList
+                animals={animals}
+                statusFilter={[AnimalStatus.UNHOSTED, AnimalStatus.FOSTERED, AnimalStatus.IN_TRIAL]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+                showAge={true}
+              />
+            ) : (
+              <AnimalDisplayCards
+                animals={animals}
+                statusFilter={[AnimalStatus.UNHOSTED, AnimalStatus.FOSTERED, AnimalStatus.IN_TRIAL]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+                showAge={true}
+                displayStatus={true}
+              />
+            ))}
+
+          {countAnimalsByStatus(AnimalStatus.PERMANENT_PLACEMENT) > 0 && (
+            <button className="collapse-expand" onClick={() => setHiddenPlaced(!hiddenPlaced)}>
+              {t('animals.togglePlaced', {
+                count: countAnimalsByStatus(AnimalStatus.PERMANENT_PLACEMENT),
+              })}{' '}
+              {hiddenPlaced ? '▸' : '▾'}
+            </button>
           )}
 
-          <button className="collapse-expand" onClick={() => setHiddenPlaced(!hiddenPlaced)}>
-            {t('animals.togglePlaced', {
-              count: countAnimalsByStatus(AnimalStatus.PERMANENT_PLACEMENT),
-            })}{' '}
-            {hiddenPlaced ? '▸' : '▾'}
-          </button>
+          {!hiddenPlaced &&
+            (displayMode === 'list' ? (
+              <AnimalDisplayList
+                animals={animals}
+                statusFilter={[AnimalStatus.PERMANENT_PLACEMENT]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+              />
+            ) : (
+              <AnimalDisplayCards
+                animals={animals}
+                statusFilter={[AnimalStatus.PERMANENT_PLACEMENT]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+              />
+            ))}
 
-          {!hiddenPlaced && (
-            <AnimalDisplayList
-              animals={animals}
-              statusFilter={[AnimalStatus.PERMANENT_PLACEMENT]}
-              nameFilter={nameFilter}
-              familyFilter={familyFilter}
-            />
+          {countAnimalsByStatus(AnimalStatus.ADOPTED) > 0 && (
+            <button className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
+              {t('animals.toggleAdopted', { count: countAnimalsByStatus(AnimalStatus.ADOPTED) })}{' '}
+              {hiddenAdopted ? '▸' : '▾'}
+            </button>
           )}
 
-          <button className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
-            {t('animals.toggleAdopted', { count: countAnimalsByStatus(AnimalStatus.ADOPTED) })}{' '}
-            {hiddenAdopted ? '▸' : '▾'}
-          </button>
+          {!hiddenAdopted &&
+            (displayMode === 'list' ? (
+              <AnimalDisplayList
+                animals={animals}
+                statusFilter={[AnimalStatus.ADOPTED]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+              />
+            ) : (
+              <AnimalDisplayCards
+                animals={animals}
+                statusFilter={[AnimalStatus.ADOPTED]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+              />
+            ))}
 
-          {!hiddenAdopted && (
-            <AnimalDisplayList
-              animals={animals}
-              statusFilter={[AnimalStatus.ADOPTED]}
-              nameFilter={nameFilter}
-              familyFilter={familyFilter}
-            />
+          {countAnimalsByStatus(AnimalStatus.DECEASED) > 0 && (
+            <button className="collapse-expand" onClick={() => setHiddenDeceased(!hiddenDeceased)}>
+              {t('animals.toggleDeceased', { count: countAnimalsByStatus(AnimalStatus.DECEASED) })}{' '}
+              {hiddenDeceased ? '▸' : '▾'}
+            </button>
           )}
 
-          <button className="collapse-expand" onClick={() => setHiddenDeceased(!hiddenDeceased)}>
-            {t('animals.toggleDeceased', { count: countAnimalsByStatus(AnimalStatus.DECEASED) })}{' '}
-            {hiddenDeceased ? '▸' : '▾'}
-          </button>
-
-          {!hiddenDeceased && (
-            <AnimalDisplayList
-              animals={animals}
-              statusFilter={[AnimalStatus.DECEASED]}
-              nameFilter={nameFilter}
-              familyFilter={familyFilter}
-            />
-          )}
+          {!hiddenDeceased &&
+            familyFilter === 0 &&
+            (displayMode === 'list' ? (
+              <AnimalDisplayList
+                animals={animals}
+                statusFilter={[AnimalStatus.DECEASED]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+              />
+            ) : (
+              <AnimalDisplayCards
+                animals={animals}
+                statusFilter={[AnimalStatus.DECEASED]}
+                nameFilter={nameFilter}
+                familyFilter={familyFilter}
+              />
+            ))}
         </div>
       )}
     </>

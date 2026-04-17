@@ -37,6 +37,11 @@ export const updateAnimal = async (
 
   try {
     await prisma.$transaction(async (prismaTransaction) => {
+      await prismaTransaction.member.update({
+        where: { id: user.id },
+        data: { favoriteSpecies: animal.species },
+      });
+
       await prismaTransaction.animal.update({
         where: { id: animalId },
         data: {

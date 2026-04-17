@@ -4,8 +4,10 @@ import { Link, useRouter } from '@/i18n/routing';
 import { Animal, Family, Member, Organization } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
 import clsx from 'clsx';
-import { MailOpen, Phone, SquareArrowRight } from 'lucide-react';
+import { Grid2x2, List, MailOpen, Phone, SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
+import { AnimalDisplayCards } from '../animals/AnimalDisplayCards';
 import { AnimalDisplayList } from '../animals/AnimalDisplayList';
 import { ShareButton } from '../tools/ShareButton';
 
@@ -24,6 +26,23 @@ export const FamilyDetails = ({
   const locale = useLocale();
   const router = useRouter();
 
+  const [displayMode, setDisplayMode] = useState<'list' | 'cards' | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('preferredDisplayMode');
+
+    if (stored === 'list' || stored === 'cards') {
+      setDisplayMode(stored);
+    } else {
+      setDisplayMode('list');
+    }
+  }, []);
+
+  const handleChangeMode = (mode: 'list' | 'cards') => {
+    setDisplayMode(mode);
+    localStorage.setItem('preferredDisplayMode', mode);
+  };
+
   const isFamilyMember = family.members.some((member) => member.id === user.id);
   const canEditFamily =
     org.userRole === MemberRole.SUPERADMIN ||
@@ -31,6 +50,8 @@ export const FamilyDetails = ({
     isFamilyMember ||
     user.id === family.createdByMemberId;
   const canDeleteFamily = org.userRole === MemberRole.SUPERADMIN;
+
+  if (!displayMode) return null;
 
   return (
     <>
@@ -56,12 +77,14 @@ export const FamilyDetails = ({
         <h3>{family.contactFullName}</h3>
 
         <div className="contact-display">
-          <address>
-            <p>{family.address}</p>
-            <p>
-              {family.zip} {family.city}
-            </p>
-          </address>
+          {canEditFamily && (
+            <address>
+              <p>{family.address}</p>
+              <p>
+                {family.zip} {family.city}
+              </p>
+            </address>
+          )}
           {family.email && (
             <div className="contact-item">
               <MailOpen size={18} />
@@ -115,7 +138,28 @@ export const FamilyDetails = ({
         {animals && animals.length > 0 && (
           <div>
             <p>{t('families.animalsInCareLabel', { count: animals.length })}</p>
-            <AnimalDisplayList animals={animals} />
+
+            <div className="display-mode">
+              <div className="display-mode-buttons">
+                <button
+                  style={displayMode === 'cards' ? { opacity: 0.5 } : {}}
+                  onClick={() => handleChangeMode('list')}
+                >
+                  <List size={26} />
+                </button>
+                <button
+                  style={displayMode === 'list' ? { opacity: 0.5 } : {}}
+                  onClick={() => handleChangeMode('cards')}
+                >
+                  <Grid2x2 size={26} />
+                </button>
+              </div>
+            </div>
+            {displayMode === 'list' ? (
+              <AnimalDisplayList animals={animals} showAge={true} />
+            ) : (
+              <AnimalDisplayCards animals={animals} showAge={true} />
+            )}
           </div>
         )}
 
