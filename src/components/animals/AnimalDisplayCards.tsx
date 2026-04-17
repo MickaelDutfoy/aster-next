@@ -1,31 +1,33 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
+import { useRouter } from '@/i18n/routing';
 import { AnimalWithoutDetails } from '@/lib/types';
 import { displayAge } from '@/lib/utils/displayAge';
 import { AnimalStatus } from '@prisma/client';
-import { SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { isCommonSpecies } from './isCommonSpecies';
 
-export const AnimalDisplayList = ({
+export const AnimalDisplayCards = ({
   animals,
   statusFilter,
   nameFilter,
   familyFilter,
   showAge = false,
+  displayStatus = false,
 }: {
   animals: AnimalWithoutDetails[];
   statusFilter?: AnimalStatus[];
   nameFilter?: string;
   familyFilter?: number;
   showAge?: boolean;
+  displayStatus?: boolean;
 }) => {
   const t = useTranslations();
   const locale = useLocale();
+  const router = useRouter();
 
   return (
-    <ul className="animals-list">
+    <ul className="animals-cards">
       {animals
         .filter(
           (animal) => !nameFilter || animal.name.toLowerCase().includes(nameFilter.toLowerCase()),
@@ -34,7 +36,7 @@ export const AnimalDisplayList = ({
         .filter((animal) => !familyFilter || animal.familyId === familyFilter)
         .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
         .map((animal) => (
-          <li key={animal.id}>
+          <li key={animal.id} onClick={() => router.push(`/animals/${animal.id}`)}>
             <span>
               <strong>{animal.name}</strong>
             </span>{' '}
@@ -51,12 +53,10 @@ export const AnimalDisplayList = ({
                 {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
               </span>
             </span>
-            <span style={!animal.birthDate || !showAge ? { opacity: 0 } : {}}>
-              {displayAge(animal.birthDate as Date, locale)}
-            </span>
-            <Link className="action link" href={`/animals/${animal.id}`}>
-              <SquareArrowRight size={26} />
-            </Link>
+            {displayStatus && <span>{t(`animals.status.${animal.status}`)}</span>}
+            {animal.birthDate && showAge && (
+              <span>{displayAge(animal.birthDate as Date, locale)}</span>
+            )}
           </li>
         ))}
     </ul>

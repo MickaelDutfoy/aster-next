@@ -22,14 +22,16 @@ export const FamiliesList = ({
       {families && (
         <div>
           {families.length > 0 && (
-            <div className="search-filter">
-              <p>{t('common.nameFilter')}</p>
-              <input
-                type="text"
-                placeholder={t('common.name')}
-                value={nameFilter}
-                onChange={(e) => setNameFilter(e.target.value)}
-              />
+            <div className="filters">
+              <div className="search-filter">
+                <p>{t('common.nameFilter')}</p>
+                <input
+                  type="text"
+                  placeholder={t('common.name')}
+                  value={nameFilter}
+                  onChange={(e) => setNameFilter(e.target.value)}
+                />
+              </div>
             </div>
           )}
           <h3>

@@ -275,6 +275,11 @@
         "Added a \"Permanent placement\" status, to describe non-adoptable animals kept in shelters or placed in sanctuaries.",
         "This category is separated from your list of active animals (waiting for placement, in a foster location, or in trial period).",
         "You can also filter your animal list by foster location."
+      ],
+      "items155": [
+        "Animals can now be displayed as cards, in addition to the list view. Cards include the status.",
+        "The last used animal species is now remembered and set by default when creating a new profile.",
+        "Foster location addresses are now hidden from non-members (except administrators, managers, or members of the location)."
       ]
     }
   },
@@ -283,7 +288,12 @@
     "addTitle": "Add an animal",
     "deleteTitle": "Delete animal",
     "familyFilter": "Filter by location:",
-    "commonSpecies": ["Cat", "Dog", "Ferret", "Rabbit"],
+    "species": {
+      "cat": "Cat",
+      "dog": "Dog",
+      "ferret": "Ferret",
+      "rabbit": "Rabbit"
+    },
     "otherSpecies": "Other",
     "setSpecies": "Please specify",
     "sex": {

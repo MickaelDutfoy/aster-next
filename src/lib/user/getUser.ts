@@ -17,6 +17,7 @@ export const getUser = async (): Promise<Member | null> => {
         lastName: true,
         phoneNumber: true,
         selectedOrgId: true,
+        favoriteSpecies: true,
       },
     });
 
@@ -29,6 +30,7 @@ export const getUser = async (): Promise<Member | null> => {
       email,
       phoneNumber: member.phoneNumber,
       selectedOrgId: member.selectedOrgId ?? undefined,
+      favoriteSpecies: member.favoriteSpecies,
     };
   } catch (err) {
     console.error(err);

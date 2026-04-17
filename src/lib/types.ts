@@ -12,6 +12,10 @@ export type Language = 'fr' | 'en' | 'nb';
 
 export type ThemeChoice = 'system' | 'light' | 'dark' | 'high-contrast';
 
+export const COMMON_SPECIES = ['cat', 'dog', 'ferret', 'rabbit'];
+
+export type CommonSpeciesKey = (typeof COMMON_SPECIES)[number];
+
 export type AnimalHealthActType = 'VACCINATION' | 'DEWORM' | 'ANTIFLEA';
 
 export type ActionValidation = {
@@ -156,6 +160,7 @@ export type Member = {
   email: string;
   phoneNumber: string;
   selectedOrgId?: number | null;
+  favoriteSpecies?: string | null;
   organizations?: Organization[];
 };
 

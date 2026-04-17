@@ -274,6 +274,11 @@
         "Ajout d'un statut « Placement permanent », afin de décrire les animaux non adoptables, gardés en refuge ou placés en sanctuaire.",
         "Cette catégorie est séparée de votre liste d'animaux actifs (en attente, dans un lieu d'accueil ou en période d'essai).",
         "Il est également possible de filtrer votre liste d'animaux par lieu d'accueil."
+      ],
+      "items155": [
+        "Affichage des animaux possible en cartes, en plus de la liste. Les cartes incluent le statut.",
+        "La dernière espèce animale utilisée est désormais mémorisée et proposée par défaut lors de la création d’une nouvelle fiche.",
+        "L’adresse des lieux d’accueil est désormais masquée pour les non-membres (hors administrateurs, responsables ou membres du lieu)."
       ]
     }
   },
@@ -282,7 +287,12 @@
     "addTitle": "Ajouter un animal",
     "deleteTitle": "Supprimer l'animal",
     "familyFilter": "Filtrer par lieu :",
-    "commonSpecies": ["Chat", "Chien", "Furet", "Lapin"],
+    "species": {
+      "cat": "Chat",
+      "dog": "Chien",
+      "ferret": "Furet",
+      "rabbit": "Lapin"
+    },
     "otherSpecies": "Autre",
     "setSpecies": "Précisez",
     "sex": {
