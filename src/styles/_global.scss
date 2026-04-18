@@ -16,6 +16,8 @@ html {
 }
 
 body {
+  max-width: 768px;
+  margin: 0 auto;
   min-height: 100vh;
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
@@ -93,6 +95,48 @@ a:active {
   border-right-color: transparent;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
+}
+
+.help-and-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.help {
+  position: relative;
+
+  .help-button {
+    transform: translateY(-2px);
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    span {
+      font-weight: 700;
+    }
+
+    .icon {
+      border-radius: 100%;
+      color: var(--help);
+      background: var(--help-bg);
+    }
+  }
+
+  .help-message {
+    position: absolute;
+    width: min(86vw, 660px);
+    white-space: pre-line;
+    top: 30px;
+    left: 2px;
+    padding: 16px;
+    border: 2px solid var(--button);
+    border-radius: 8px;
+    background-color: var(--box);
+    z-index: 4;
+  }
 }
 
 .links-box {

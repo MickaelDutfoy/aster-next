@@ -47,7 +47,22 @@
   display: flex;
   flex-direction: column;
   border-top: 1px solid var(--link);
-  border-bottom: 1px solid var(--link)
+  border-bottom: 1px solid var(--link);
+
+  .status-filters {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 5px;
+
+    label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
 }
 
 .animal-details {

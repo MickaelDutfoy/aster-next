@@ -106,6 +106,15 @@
   }
 }
 
+.members-filters {
+  padding: 5px 0;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--link);
+  border-bottom: 1px solid var(--link)
+}
+
 .members-list {
   margin: 0 5px;
   font-size: 0.9rem;

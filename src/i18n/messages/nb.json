@@ -69,6 +69,11 @@
     "transactionDelete": "Transaksjonen er slettet.",
     "tooManyAttempts": "For mange forsøk. Vennligst prøv igjen senere."
   },
+  "help": {
+    "label": "Hjelp",
+    "animals": "Denne seksjonen lar deg registrere dyr med generell informasjon, helseopplysninger og adopsjonsdata.\n\nHvert dyr kan settes som \"i et omsorgssted\" eller i \"permanent plassering\" og knyttes til et sted.\n\nDu kan deretter filtrere dyr etter sted eller status (adoptert, i prøveperiode, osv.).",
+    "families": "Denne seksjonen lar deg definere omsorgssteder: det kan være tilfluktssteder, kattehjem, fosterhjem osv.\n\nFor hvert sted kan du knytte én eller flere medlemmer. De kan da redigere dyrene tilknyttet stedet og motta varsler om dem."
+  },
   "intro": {
     "selectLanguage": "Velg språk:",
     "see": "Se introduksjonen",
@@ -280,6 +285,10 @@
         "Dyr kan nå vises som kort, i tillegg til listevisning. Kortene inkluderer status.",
         "Den sist brukte dyrearten huskes nå og settes som standard ved opprettelse av en ny profil.",
         "Adressen til omsorgssteder er nå skjult for ikke-medlemmer (unntatt administratorer, ansvarlige eller medlemmer av stedet)."
+      ],
+      "items156": [
+        "Forbedret filtreringssystem for dyrelisten.",
+        "Lagt til hjelpetekster på enkelte sider."
       ]
     }
   },
@@ -351,7 +360,7 @@
     "additionalInfoLabel": "Tilleggsinformasjon:",
     "currentStatusLabel": "Nåværende status:",
     "listTitle": "Registrerte dyr for {orgName} ({count}):",
-    "none": "Ingen dyr registrert.",
+    "none": "Ingen dyr å vise.",
     "togglePlaced": "Vis dyr med permanent plassering ({count})",
     "toggleAdopted": "Vis adopterte dyr ({count})",
     "toggleDeceased": "Vis døde dyr ({count})",
@@ -419,7 +428,7 @@
     "elligibleMembersTitle": "Medlemmer som kan legges til dette omsorgsstedet:",
     "notFamilyMember": "Du er ikke medlem av dette omsorgsstedet.",
     "listTitle": "Registrerte omsorgssteder for {orgName} ({count}):",
-    "none": "Ingen omsorgssteder registrert.",
+    "none": "Ingen omsorgssteder å vise.",
     "fields": {
       "contactFullNamePlaceholder": "Navn på omsorgssted *",
       "addressPlaceholderRequired": "Gateadresse *",
@@ -445,6 +454,7 @@
     },
     "yourOrganizations": "Aktiv organisasjon:",
     "membersListTitle": "Medlemsliste for {orgName} ({count}):",
+    "none": "Ingen medlemmer å vise.",
     "hiddenOrgMembers": "Din forespørsel om medlemskap er under behandling. Av hensyn til konfidensialitet kan du ikke se de andre medlemmene.",
     "registerTitle": "Registrer en ny organisasjon?",
     "orgNameLabel": "Navn på organisasjonen *:",

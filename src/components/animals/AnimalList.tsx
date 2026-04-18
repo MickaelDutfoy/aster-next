@@ -19,12 +19,31 @@ export const AnimalsList = ({
 }) => {
   const t = useTranslations();
 
-  const [hiddenPlaced, setHiddenPlaced] = useState<boolean>(true);
-  const [hiddenAdopted, setHiddenAdopted] = useState<boolean>(true);
-  const [hiddenDeceased, setHiddenDeceased] = useState<boolean>(true);
+  const [displayMode, setDisplayMode] = useState<'list' | 'cards' | null>(null);
+
   const [nameFilter, setNameFilter] = useState<string>('');
   const [familyFilter, setfamilyFilter] = useState<number>(0);
-  const [displayMode, setDisplayMode] = useState<'list' | 'cards' | null>(null);
+
+  const [selectedStatuses, setSelectedStatuses] = useState<AnimalStatus[]>([
+    AnimalStatus.UNHOSTED,
+    AnimalStatus.FOSTERED,
+    AnimalStatus.IN_TRIAL,
+  ]);
+
+  const statusOptions = [
+    AnimalStatus.UNHOSTED,
+    AnimalStatus.FOSTERED,
+    AnimalStatus.ADOPTED,
+    AnimalStatus.IN_TRIAL,
+    AnimalStatus.DECEASED,
+    AnimalStatus.PERMANENT_PLACEMENT,
+  ];
+
+  const filteredAnimals = animals
+    .filter((animal) => !nameFilter || animal.name.toLowerCase().includes(nameFilter.toLowerCase()))
+    .filter((animal) => !familyFilter || animal.familyId === familyFilter)
+    .filter((animal) => selectedStatuses.includes(animal.status))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 
   useEffect(() => {
     const stored = localStorage.getItem('preferredDisplayMode');
@@ -36,16 +55,16 @@ export const AnimalsList = ({
     }
   }, []);
 
+  const toggleStatus = (status: AnimalStatus) => {
+    setSelectedStatuses((prev) =>
+      prev.includes(status) ? prev.filter((item) => item !== status) : [...prev, status],
+    );
+    setfamilyFilter(0);
+  };
+
   const handleChangeMode = (mode: 'list' | 'cards') => {
     setDisplayMode(mode);
     localStorage.setItem('preferredDisplayMode', mode);
-  };
-
-  const countAnimalsByStatus = (status: AnimalStatus) => {
-    return animals
-      .filter((animal) => animal.status === status)
-      .filter((animal) => familyFilter === 0 || animal.familyId === familyFilter)
-      .filter((animal) => animal.name.toLowerCase().includes(nameFilter.toLowerCase())).length;
   };
 
   if (!displayMode) return null;
@@ -70,7 +89,21 @@ export const AnimalsList = ({
                 <select
                   name="familyFilter"
                   value={familyFilter}
-                  onChange={(e) => setfamilyFilter(Number(e.target.value))}
+                  onChange={(e) => {
+                    setfamilyFilter(Number(e.target.value));
+                    if (Number(e.target.value) !== 0) {
+                      setSelectedStatuses([
+                        AnimalStatus.FOSTERED,
+                        AnimalStatus.PERMANENT_PLACEMENT,
+                      ]);
+                    } else {
+                      setSelectedStatuses([
+                        AnimalStatus.UNHOSTED,
+                        AnimalStatus.FOSTERED,
+                        AnimalStatus.IN_TRIAL,
+                      ]);
+                    }
+                  }}
                 >
                   <option value={0}>{t('common.noneM')}</option>
                   {families.map((family) => (
@@ -80,16 +113,25 @@ export const AnimalsList = ({
                   ))}
                 </select>
               </div>
+              <div className="status-filters">
+                {statusOptions.map((status) => (
+                  <label key={status}>
+                    <input
+                      type="checkbox"
+                      checked={selectedStatuses.includes(status)}
+                      onChange={() => toggleStatus(status)}
+                    />
+                    <span>{t(`animals.status.${status}`)}</span>
+                  </label>
+                ))}
+              </div>
             </div>
           )}
 
           <h3>
             {t('animals.listTitle', {
               orgName: org.name,
-              count:
-                countAnimalsByStatus(AnimalStatus.UNHOSTED) +
-                countAnimalsByStatus(AnimalStatus.FOSTERED) +
-                countAnimalsByStatus(AnimalStatus.IN_TRIAL),
+              count: filteredAnimals.length,
             })}
           </h3>
 
@@ -110,101 +152,13 @@ export const AnimalsList = ({
             </div>
           </div>
 
-          {animals.length === 0 && <p style={{ padding: '10px' }}>{t('animals.none')}</p>}
+          {filteredAnimals.length === 0 && <p style={{ padding: '10px' }}>{t('animals.none')}</p>}
 
-          {animals.length > 0 &&
+          {filteredAnimals.length > 0 &&
             (displayMode === 'list' ? (
-              <AnimalDisplayList
-                animals={animals}
-                statusFilter={[AnimalStatus.UNHOSTED, AnimalStatus.FOSTERED, AnimalStatus.IN_TRIAL]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-                showAge={true}
-              />
+              <AnimalDisplayList animals={filteredAnimals} />
             ) : (
-              <AnimalDisplayCards
-                animals={animals}
-                statusFilter={[AnimalStatus.UNHOSTED, AnimalStatus.FOSTERED, AnimalStatus.IN_TRIAL]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-                showAge={true}
-                displayStatus={true}
-              />
-            ))}
-
-          {countAnimalsByStatus(AnimalStatus.PERMANENT_PLACEMENT) > 0 && (
-            <button className="collapse-expand" onClick={() => setHiddenPlaced(!hiddenPlaced)}>
-              {t('animals.togglePlaced', {
-                count: countAnimalsByStatus(AnimalStatus.PERMANENT_PLACEMENT),
-              })}{' '}
-              {hiddenPlaced ? '▸' : '▾'}
-            </button>
-          )}
-
-          {!hiddenPlaced &&
-            (displayMode === 'list' ? (
-              <AnimalDisplayList
-                animals={animals}
-                statusFilter={[AnimalStatus.PERMANENT_PLACEMENT]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-              />
-            ) : (
-              <AnimalDisplayCards
-                animals={animals}
-                statusFilter={[AnimalStatus.PERMANENT_PLACEMENT]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-              />
-            ))}
-
-          {countAnimalsByStatus(AnimalStatus.ADOPTED) > 0 && (
-            <button className="collapse-expand" onClick={() => setHiddenAdopted(!hiddenAdopted)}>
-              {t('animals.toggleAdopted', { count: countAnimalsByStatus(AnimalStatus.ADOPTED) })}{' '}
-              {hiddenAdopted ? '▸' : '▾'}
-            </button>
-          )}
-
-          {!hiddenAdopted &&
-            (displayMode === 'list' ? (
-              <AnimalDisplayList
-                animals={animals}
-                statusFilter={[AnimalStatus.ADOPTED]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-              />
-            ) : (
-              <AnimalDisplayCards
-                animals={animals}
-                statusFilter={[AnimalStatus.ADOPTED]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-              />
-            ))}
-
-          {countAnimalsByStatus(AnimalStatus.DECEASED) > 0 && (
-            <button className="collapse-expand" onClick={() => setHiddenDeceased(!hiddenDeceased)}>
-              {t('animals.toggleDeceased', { count: countAnimalsByStatus(AnimalStatus.DECEASED) })}{' '}
-              {hiddenDeceased ? '▸' : '▾'}
-            </button>
-          )}
-
-          {!hiddenDeceased &&
-            familyFilter === 0 &&
-            (displayMode === 'list' ? (
-              <AnimalDisplayList
-                animals={animals}
-                statusFilter={[AnimalStatus.DECEASED]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-              />
-            ) : (
-              <AnimalDisplayCards
-                animals={animals}
-                statusFilter={[AnimalStatus.DECEASED]}
-                nameFilter={nameFilter}
-                familyFilter={familyFilter}
-              />
+              <AnimalDisplayCards animals={filteredAnimals} />
             ))}
         </div>
       )}

@@ -6,6 +6,15 @@
   gap: 5px;
 }
 
+.family-filters {
+  padding: 5px 0;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--link);
+  border-bottom: 1px solid var(--link)
+}
+
 .family-address-info {
   display: flex;
   flex-direction: column;

@@ -69,6 +69,11 @@
     "transactionDelete": "La transaction a bien été supprimée.",
     "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard."
   },
+  "help": {
+    "label": "Aide",
+    "animals": "Cette section vous permet d'enregistrer vos animaux avec leurs informations générales, de santé et d'adoption.\n\nChaque animal peut être défini « dans un lieu d'accueil » ou en « placement permanent » et affecté à un lieu.\n\nVous pouvez ensuite filtrer les animaux par lieu, ou par statut (adopté, en période d'essai, etc.).",
+    "families": "Cette section vous permet de définir des lieux d'accueil : il peut s'agir de refuges, de chatteries, de familles d'accueil...\n\nSur chaque lieu, vous pouvez affecter un ou plusieurs membres qui auront alors la possibilité d'éditer les fiches des animaux du lieu et de recevoir des notifications à leur sujet."
+  },
   "intro": {
     "selectLanguage": "Sélectionnez la langue :",
     "see": "Voir l'intro",
@@ -197,7 +202,7 @@
     "pendingSee": "Voir",
     "evaluateAster": "Vous aimez Aster ? L'application vous est utile ? N'hésitez pas à laisser un avis sur ",
     "changelog": {
-      "title": "Quoi de neuf dans Aster ?",
+      "title": "Quoi de neuf dans Aster ?",
       "items0123": [
         "Renforcement de la sécurité pour l'édition d'un animal ou d'une famille.",
         "Envoi d'un e-mail lorsqu'un membre demande à rejoindre une association, et quand cette demande est validée."
@@ -279,6 +284,10 @@
         "Affichage des animaux possible en cartes, en plus de la liste. Les cartes incluent le statut.",
         "La dernière espèce animale utilisée est désormais mémorisée et proposée par défaut lors de la création d’une nouvelle fiche.",
         "L’adresse des lieux d’accueil est désormais masquée pour les non-membres (hors administrateurs, responsables ou membres du lieu)."
+      ],
+      "items156": [
+        "Amélioration du système de filtres de la liste d'animaux.",
+        "Ajout de bulles d'aide sur certaines pages."
       ]
     }
   },
@@ -350,7 +359,7 @@
     "additionalInfoLabel": "Informations complémentaires :",
     "currentStatusLabel": "Situation actuelle :",
     "listTitle": "Animaux enregistrés pour {orgName} ({count}) :",
-    "none": "Aucun animal enregistré.",
+    "none": "Aucun animal à afficher.",
     "togglePlaced": "Afficher les animaux placés ({count})",
     "toggleAdopted": "Afficher les animaux adoptés ({count})",
     "toggleDeceased": "Afficher les animaux décédés ({count})",
@@ -418,7 +427,7 @@
     "elligibleMembersTitle": "Membres pouvant être ajoutés à ce lieu :",
     "notFamilyMember": "Vous n'êtes pas membre de ce lieu d'accueil.",
     "listTitle": "Lieux d'accueil enregistrés pour {orgName} ({count}) :",
-    "none": "Aucun lieu d'accueil enregistré.",
+    "none": "Aucun lieu d'accueil à afficher.",
     "fields": {
       "contactFullNamePlaceholder": "Nom du lieu *",
       "addressPlaceholderRequired": "N° et rue *",
@@ -444,6 +453,7 @@
     },
     "yourOrganizations": "Association active :",
     "membersListTitle": "Liste des membres pour {orgName} ({count}) :",
+    "none": "Aucun membre à afficher.",
     "hiddenOrgMembers": "Votre demande d'adhésion est en attente. Pour des raisons de confidentialité, vous ne pouvez pas voir le reste des membres.",
     "registerTitle": "Enregistrer une nouvelle association ?",
     "orgNameLabel": "Nom de l'association * :",
