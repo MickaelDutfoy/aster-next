@@ -156,9 +156,9 @@ export const FamilyDetails = ({
               </div>
             </div>
             {displayMode === 'list' ? (
-              <AnimalDisplayList animals={animals} showAge={true} />
+              <AnimalDisplayList animals={animals} />
             ) : (
-              <AnimalDisplayCards animals={animals} showAge={true} />
+              <AnimalDisplayCards animals={animals} />
             )}
           </div>
         )}
