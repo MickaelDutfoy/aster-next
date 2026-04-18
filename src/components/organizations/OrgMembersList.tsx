@@ -49,8 +49,29 @@ export const OrgMembersList = ({
   console.log(isUserSuperAdmin);
 
   const membersFiltered: MemberOfOrg[] = isUserPending
-    ? members.filter((member) => member.role === MemberRole.SUPERADMIN || member.id === user.id)
-    : members;
+    ? members
+        .filter((member) => member.role === MemberRole.SUPERADMIN || member.id === user.id)
+        .filter((member) =>
+          (member.firstName + ' ' + member.lastName)
+            .toLowerCase()
+            .includes(nameFilter.toLowerCase()),
+        )
+        .sort((a, b) =>
+          a.firstName.localeCompare(b.firstName, undefined, {
+            sensitivity: 'base',
+          }),
+        )
+    : members
+        .filter((member) =>
+          (member.firstName + ' ' + member.lastName)
+            .toLowerCase()
+            .includes(nameFilter.toLowerCase()),
+        )
+        .sort((a, b) =>
+          a.firstName.localeCompare(b.firstName, undefined, {
+            sensitivity: 'base',
+          }),
+        );
 
   useEffect(() => {
     if (!openMenuMemberId) return;
@@ -253,9 +274,8 @@ export const OrgMembersList = ({
           </li>
         </ul>
       )}
-      {membersFiltered.length > 0 && (
-        <div className="filters">
-          {' '}
+      {members.length > 0 && (
+        <div className="members-filters">
           <div className="search-filter">
             <p>{t('common.nameFilter')}</p>
             <input
@@ -277,71 +297,61 @@ export const OrgMembersList = ({
           ).length,
         })}
       </h3>
+
+      {membersFiltered.length === 0 && <p style={{ padding: '10px' }}>{t('organizations.none')}</p>}
+
       <ul className="members-list">
-        {membersFiltered
-          .filter((member) =>
-            (member.firstName + ' ' + member.lastName)
-              .toLowerCase()
-              .includes(nameFilter.toLowerCase()),
-          )
-          .sort((a, b) =>
-            a.firstName.localeCompare(b.firstName, undefined, {
-              sensitivity: 'base',
-            }),
-          )
-          .map((member) => {
-            const actions = buildActionsForMember(member, org, user);
-            return (
-              <li key={member.id}>
-                <span>
-                  {member.firstName} {member.lastName}
-                </span>
-                <span>
-                  {t(`organizations.roles.${member.role}`) +
-                    ' ' +
-                    t(`organizations.status.${member.status}`)}
-                </span>
-                <div className="buttons">
-                  <span className="action">
-                    <EllipsisVertical
-                      className={clsx(actions.length === 0 ? 'disabled' : 'link')}
-                      size={26}
-                      onClick={() => {
-                        if (actions.length === 0) return;
-                        setOpenMenuMemberId((current) =>
-                          current === member.id ? null : member.id,
-                        );
-                      }}
-                    />
-                    {openMenuMemberId === member.id && actions.length > 0 && (
-                      <ul className="action-list" ref={menuRef}>
-                        {actions.map((action) => (
-                          <li
-                            key={action.name}
-                            onClick={
-                              action.id === 'transferSuperAdmin'
-                                ? action.handler
-                                : () => {
-                                    setOpenMenuMemberId(null);
-                                    setActionConfirm(action);
-                                  }
-                            }
-                          >
-                            {action.name}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </span>
-                  <SquareArrowRight
-                    className="link"
+        {membersFiltered.map((member) => {
+          const actions = buildActionsForMember(member, org, user);
+          return (
+            <li key={member.id}>
+              <span>
+                {member.firstName} {member.lastName}
+              </span>
+              <span>
+                {t(`organizations.roles.${member.role}`) +
+                  ' ' +
+                  t(`organizations.status.${member.status}`)}
+              </span>
+              <div className="buttons">
+                <span className="action">
+                  <EllipsisVertical
+                    className={clsx(actions.length === 0 ? 'disabled' : 'link')}
                     size={26}
-                    onClick={() => router.push(`/members/${member.id}`)}
+                    onClick={() => {
+                      if (actions.length === 0) return;
+                      setOpenMenuMemberId((current) => (current === member.id ? null : member.id));
+                    }}
                   />
-                </div>
-              </li>
-            );
-          })}
+                  {openMenuMemberId === member.id && actions.length > 0 && (
+                    <ul className="action-list" ref={menuRef}>
+                      {actions.map((action) => (
+                        <li
+                          key={action.name}
+                          onClick={
+                            action.id === 'transferSuperAdmin'
+                              ? action.handler
+                              : () => {
+                                  setOpenMenuMemberId(null);
+                                  setActionConfirm(action);
+                                }
+                          }
+                        >
+                          {action.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </span>
+                <SquareArrowRight
+                  className="link"
+                  size={26}
+                  onClick={() => router.push(`/members/${member.id}`)}
+                />
+              </div>
+            </li>
+          );
+        })}
       </ul>
       {isUserPending && <p className="long-notice">{t('organizations.hiddenOrgMembers')}</p>}
     </>

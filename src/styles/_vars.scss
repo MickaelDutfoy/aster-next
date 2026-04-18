@@ -25,6 +25,8 @@ $bright-yellow: #ffff00;
   --input-text: #{$outer-space};
   --alert: #{$light-coral};
   --box: #{$snow};
+  --help-bg: #{$white};
+  --help: #{$black};
   --emphasized: rgba(0, 0, 0, 0.1);
 }
 
@@ -39,6 +41,8 @@ $bright-yellow: #ffff00;
   --input-text: #{$smoky-black};
   --alert: #{$mahogamy-red};
   --box: #{$graphite};
+  --help-bg: #{$black};
+  --help: #{$white};
   --emphasized: rgba(255, 255, 255, 0.1);
 }
 
@@ -53,6 +57,8 @@ $bright-yellow: #ffff00;
   --input-text: #{$black};
   --alert: #{$mahogamy-red};
   --box: #{$carbon-black};
+  --help-bg: #{$black};
+  --help: #{$white};
   --emphasized: rgba(255, 255, 255, 0.25);
 }
 
@@ -68,6 +74,8 @@ $bright-yellow: #ffff00;
     --input-text: #{$smoky-black};
     --alert: #{$mahogamy-red};
     --box: #{$graphite};
+    --help-bg: #{$black};
+    --help: #{$white};;
     --emphasized: rgba(255, 255, 255, 0.1);
   }
 }

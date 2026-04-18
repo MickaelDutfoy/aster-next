@@ -69,6 +69,11 @@
     "transactionDelete": "The transaction has been successfully deleted.",
     "tooManyAttempts": "Too many attempts. Please try again later."
   },
+  "help": {
+    "label": "Help",
+    "animals": "This section allows you to register your animals with their general, health, and adoption information.\n\nEach animal can be set as \"in a foster location\" or in \"permanent placement\" and assigned to a location.\n\nYou can then filter animals by location or by status (adopted, in trial period, etc.).",
+    "families": "This section allows you to define foster locations: these can be shelters, catteries, foster families, etc.\n\nFor each location, you can assign one or more members. They will then be able to edit the animals assigned to that location and receive notifications about them."
+  },
   "intro": {
     "selectLanguage": "Select language:",
     "see": "View the intro",
@@ -280,6 +285,10 @@
         "Animals can now be displayed as cards, in addition to the list view. Cards include the status.",
         "The last used animal species is now remembered and set by default when creating a new profile.",
         "Foster location addresses are now hidden from non-members (except administrators, managers, or members of the location)."
+      ],
+      "items156": [
+        "Improved filtering system for the animal list.",
+        "Added help tooltips on certain pages."
       ]
     }
   },
@@ -351,7 +360,7 @@
     "additionalInfoLabel": "Additional information:",
     "currentStatusLabel": "Current status:",
     "listTitle": "Animals registered for {orgName} ({count}):",
-    "none": "No animals registered.",
+    "none": "No animals to display.",
     "togglePlaced": "Show permanently placed animals ({count})",
     "toggleAdopted": "Show adopted animals ({count})",
     "toggleDeceased": "Show deceased animals ({count})",
@@ -419,7 +428,7 @@
     "elligibleMembersTitle": "Members who can be added to this location:",
     "notFamilyMember": "You are not a member of this foster location.",
     "listTitle": "Foster locations registered for {orgName} ({count}):",
-    "none": "No foster locations registered.",
+    "none": "No foster locations to display.",
     "fields": {
       "contactFullNamePlaceholder": "Location name *",
       "addressPlaceholderRequired": "Street and number *",
@@ -445,6 +454,7 @@
     },
     "yourOrganizations": "Active organization:",
     "membersListTitle": "Member list for {orgName} ({count}):",
+    "none": "No members to display.",
     "hiddenOrgMembers": "Your membership request is pending. For confidentiality reasons, you cannot view the other members.",
     "registerTitle": "Register a new organization?",
     "orgNameLabel": "Organization name *:",

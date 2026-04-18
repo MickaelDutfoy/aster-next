@@ -17,58 +17,57 @@ export const FamiliesList = ({
 
   const [nameFilter, setNameFilter] = useState<string>('');
 
-  return (
-    <>
-      {families && (
-        <div>
-          {families.length > 0 && (
-            <div className="filters">
-              <div className="search-filter">
-                <p>{t('common.nameFilter')}</p>
-                <input
-                  type="text"
-                  placeholder={t('common.name')}
-                  value={nameFilter}
-                  onChange={(e) => setNameFilter(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
-          <h3>
-            {t('families.listTitle', {
-              orgName: org.name,
-              count: families.filter((family) =>
-                family.contactFullName.toLowerCase().includes(nameFilter.toLowerCase()),
-              ).length,
-            })}
-          </h3>
-
-          {families.length === 0 && <p style={{ padding: '10px' }}>{t('families.none')}</p>}
-
-          {families.length > 0 && (
-            <ul className="families-list">
-              {families
-                .filter((family) =>
-                  family.contactFullName.toLowerCase().includes(nameFilter.toLowerCase()),
-                )
-                .sort((a, b) =>
-                  a.contactFullName.localeCompare(b.contactFullName, undefined, {
-                    sensitivity: 'base',
-                  }),
-                )
-                .map((family) => (
-                  <li key={family.id}>
-                    <span>{family.contactFullName}</span>
-                    <span>{family.city}</span>
-                    <Link className="action link" href={`/families/${family.id}`}>
-                      <SquareArrowRight size={26} />
-                    </Link>
-                  </li>
-                ))}
-            </ul>
-          )}
-        </div>
-      )}
-    </>
+const filteredFamilies = families
+  .filter((family) => family.contactFullName.toLowerCase().includes(nameFilter.toLowerCase()))
+  .sort((a, b) =>
+    a.contactFullName.localeCompare(b.contactFullName, undefined, {
+      sensitivity: 'base',
+    }),
   );
+
+return (
+  <>
+    {families && (
+      <div>
+        {families.length > 0 && (
+          <div className="family-filters">
+            <div className="search-filter">
+              <p>{t('common.nameFilter')}</p>
+              <input
+                type="text"
+                placeholder={t('common.name')}
+                value={nameFilter}
+                onChange={(e) => setNameFilter(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
+        <h3>
+          {t('families.listTitle', {
+            orgName: org.name,
+            count: families.filter((family) =>
+              family.contactFullName.toLowerCase().includes(nameFilter.toLowerCase()),
+            ).length,
+          })}
+        </h3>
+
+        {filteredFamilies.length === 0 && <p style={{ padding: '10px' }}>{t('families.none')}</p>}
+
+        {families.length > 0 && (
+          <ul className="families-list">
+            {filteredFamilies.map((family) => (
+              <li key={family.id}>
+                <span>{family.contactFullName}</span>
+                <span>{family.city}</span>
+                <Link className="action link" href={`/families/${family.id}`}>
+                  <SquareArrowRight size={26} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    )}
+  </>
+);
 };

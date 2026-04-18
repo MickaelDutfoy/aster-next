@@ -1,6 +1,8 @@
 @use 'vars';
 
 .transaction-filters {
+  border-top: 1px solid var(--link);
+  padding-top: 5px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin-bottom: 10px;
