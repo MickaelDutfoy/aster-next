@@ -55,10 +55,9 @@ The application relies on a relational PostgreSQL schema defined with Prisma.
 Core entities include:
 - Member
 - Organization
-- Animal
+- Animal + various health records
 - Family (conceptually representing foster locations, including families, shelters, catteries, etc.)
-- AnimalAdoption
-- AnimalHealthAct
+- Treasury
 
 MemberOrganization explicitly models both role and validation status for each member within each organization. Authorization decisions are derived from these relations.
 FamilyMember defines the association between members and foster locations.
@@ -87,6 +86,14 @@ Two types are implemented:
 
 Passive notifications are generated server-side when the application loads.  
 No background jobs or cron system are currently used, though this is planned as a future improvement.
+
+## Treasury
+
+Aster provides a treasury module for tracking income and expenses by date and category.
+
+Transactions can be filtered by year and category to simplify financial monitoring.
+
+The module is not intended to replace accounting software, but to offer a simple and interactive alternative to the spreadsheets commonly used by animal welfare organizations.
 
 ## Internationalization
 
