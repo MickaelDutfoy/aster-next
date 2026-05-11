@@ -23,6 +23,7 @@
     "deleting": "Deleting...",
     "send": "Send",
     "sending": "Sending...",
+    "saveWarning": "You have unsaved changes.",
     "areYouSure": "Are you sure?",
     "actionWarning": "Warning: this action is irreversible.",
     "agoPrefix": "",
@@ -289,6 +290,11 @@
       "items156": [
         "Improved filtering system for the animal list.",
         "Added help tooltips on certain pages."
+      ],
+      "items157": [
+        "Added a warning when a form contains unsaved changes.",
+        "Added the \"Released\" status for animals.",
+        "Added a free notes field to foster location records."
       ]
     }
   },
@@ -370,6 +376,7 @@
       "IN_TRIAL": "In trial period",
       "PERMANENT_PLACEMENT": "Permanent placement",
       "ADOPTED": "Adopted",
+      "RELEASED": "Released",
       "DECEASED": "Deceased"
     },
     "trialPeriodLabel": "Trial period started on:",
@@ -419,6 +426,7 @@
     "hasChildren": "This foster family has children.",
     "animalsInCareLabel": "Animals in care ({count}):",
     "otherAnimalsLabel": "Other animals:",
+    "notesLabel": "Additional information:",
     "prefillMeLabel": "This is me, use my details:",
     "noMembers": "No members are currently linked to this location.",
     "membersListTitle": "Location members:",

@@ -28,6 +28,7 @@ export const TransactionForm = ({
     transaction?.category.defaultType ?? TransactionType.EXPENSE,
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [saveWarning, setSaveWarning] = useState(false);
 
   const changeTypeFromCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const categoryId = Number(e.target.value);
@@ -40,6 +41,12 @@ export const TransactionForm = ({
     }
 
     setCategory(e.target.value);
+  };
+
+  const handleFirstChange = () => {
+    if (!saveWarning) {
+      setSaveWarning(true);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -96,7 +103,7 @@ export const TransactionForm = ({
     <div className="transaction-form">
       <h3>{transaction ? t('transactions.editTitle') : t('transactions.addTitle')}</h3>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onChange={handleFirstChange}>
         <div className="form-tab">
           {' '}
           <div className="category">
@@ -202,6 +209,7 @@ export const TransactionForm = ({
             />
           </div>
         </div>
+        {saveWarning && <p className="save-warning">{t('common.saveWarning')}</p>}
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
           {isLoading ? t('common.loading') : t('common.submit')}
         </button>

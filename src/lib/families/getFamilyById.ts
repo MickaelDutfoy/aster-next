@@ -39,6 +39,7 @@ export const getFamilyById = async (id: number | null): Promise<Family | null> =
     city: family.city,
     hasChildren: family.hasChildren,
     otherAnimals: family.otherAnimals,
+    notes: family.notes,
     orgId: family.orgId,
     createdByMemberId: family.createdByMemberId,
     members: family.members.map(({ member }) => {

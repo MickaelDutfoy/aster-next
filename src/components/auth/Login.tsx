@@ -88,7 +88,7 @@ export const Login = () => {
           </form>
         </div>
       </div>
-      <p className="version-login">Aster 1.5.6</p>
+      <p className="version-login">Aster 1.5.7</p>
     </>
   );
 };

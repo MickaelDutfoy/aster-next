@@ -23,6 +23,7 @@
     "deleting": "Suppression...",
     "send": "Envoyer",
     "sending": "Envoi...",
+    "saveWarning": "Vous avez des modifications à enregistrer.",
     "areYouSure": "Êtes-vous sûr(e) ?",
     "actionWarning": "Attention : cette action est irréversible.",
     "agoPrefix": "il y a ",
@@ -288,6 +289,11 @@
       "items156": [
         "Amélioration du système de filtres de la liste d'animaux.",
         "Ajout de bulles d'aide sur certaines pages."
+      ],
+      "items157": [
+        "Ajout d'un avertissement lorsqu'un formulaire contient des modifications à enregistrer.",
+        "Ajout du statut « Relâché » pour les animaux.",
+        "Ajout d'un champ de notes libre pour les fiches de lieu d'accueil."
       ]
     }
   },
@@ -369,6 +375,7 @@
       "IN_TRIAL": "En période d'essai",
       "PERMANENT_PLACEMENT": "Placement permanent",
       "ADOPTED": "Adopté(e)",
+      "RELEASED": "Relâché(e)",
       "DECEASED": "Décédé(e)"
     },
     "trialPeriodLabel": "Période d'essai démarrée le :",
@@ -418,6 +425,7 @@
     "hasChildren": "Cette famille a des enfants.",
     "animalsInCareLabel": "Animaux en charge ({count}) :",
     "otherAnimalsLabel": "Autres animaux :",
+    "notesLabel": "Autres informations :",
     "prefillMeLabel": "C'est moi, utiliser mes infos :",
     "noMembers": "Aucun membre n'est actuellement lié à ce lieu.",
     "membersListTitle": "Liste des membres du lieu :",
@@ -505,7 +513,7 @@
     "defaultCategoryType": "Type par défaut de la catégorie :",
     "inputDetails": "Détails :",
     "type": {
-      "EXPENSE": "Dépense",
+      "EXPENSE": "Sortie",
       "INCOME": "Entrée"
     },
     "amountPlaceholder": "Montant *",
@@ -528,7 +536,7 @@
     "yearLabel": "Année :",
     "categoryLabel": "Catégorie :",
     "balanceTitle": "Bilan des transactions sélectionnées :",
-    "expensesLabel": "Dépenses :",
+    "expensesLabel": "Sorties :",
     "incomesLabel": "Entrées :",
     "balanceLabel": "Bilan :",
     "noTransactions": "Aucune transaction trouvée."
