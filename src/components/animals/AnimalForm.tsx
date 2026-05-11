@@ -39,6 +39,7 @@ export const AnimalForm = ({
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
   const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [saveWarning, setSaveWarning] = useState(false);
 
   const [healthActsDraft, setHealthActsDraft] = useState<AnimalHealthDraft[]>(() => {
     const acts = animal?.healthActs ?? [];
@@ -173,6 +174,12 @@ export const AnimalForm = ({
     setTestEntriesDraft((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const handleFirstChange = () => {
+    if (!saveWarning) {
+      setSaveWarning(true);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -243,7 +250,7 @@ export const AnimalForm = ({
           {t('animals.tabs.adoption')}
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onChange={handleFirstChange}>
         <div hidden={form !== 'general'}>
           <div className="form-tab">
             <div className="species">
@@ -351,6 +358,7 @@ export const AnimalForm = ({
                   {t('animals.status.PERMANENT_PLACEMENT')}
                 </option>
                 <option value={AnimalStatus.ADOPTED}>{t('animals.status.ADOPTED')}</option>
+                <option value={AnimalStatus.RELEASED}>{t('animals.status.RELEASED')}</option>
                 <option value={AnimalStatus.DECEASED}>{t('animals.status.DECEASED')}</option>
               </select>
             </div>
@@ -779,6 +787,7 @@ export const AnimalForm = ({
             />
           </div>
         </div>
+        {saveWarning && <p className="save-warning">{t('common.saveWarning')}</p>}
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
           {isLoading ? t('common.loading') : t('common.submit')}
         </button>

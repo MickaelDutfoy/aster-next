@@ -37,6 +37,7 @@ export const AnimalsList = ({
     AnimalStatus.IN_TRIAL,
     AnimalStatus.DECEASED,
     AnimalStatus.PERMANENT_PLACEMENT,
+    AnimalStatus.RELEASED,
   ];
 
   const filteredAnimals = animals

@@ -23,6 +23,7 @@
     "deleting": "Sletter...",
     "send": "Send",
     "sending": "Sender...",
+    "saveWarning": "Du har ulagrede endringer.",
     "areYouSure": "Er du sikker?",
     "actionWarning": "Advarsel: Denne handlingen kan ikke angres.",
     "agoPrefix": "",
@@ -289,6 +290,11 @@
       "items156": [
         "Forbedret filtreringssystem for dyrelisten.",
         "Lagt til hjelpetekster på enkelte sider."
+      ],
+      "items157": [
+        "Lagt til en advarsel når et skjema inneholder ulagrede endringer.",
+        "Lagt til statusen \"Satt tilbake\" for dyr.",
+        "Lagt til et fritt notatfelt i omsorgssteder."
       ]
     }
   },
@@ -370,6 +376,7 @@
       "IN_TRIAL": "I prøveperiode",
       "PERMANENT_PLACEMENT": "Permanent plassering",
       "ADOPTED": "Adoptert",
+      "RELEASED": "Satt tilbake",
       "DECEASED": "Død"
     },
     "trialPeriodLabel": "Prøveperiode startet:",
@@ -419,6 +426,7 @@
     "hasChildren": "Dette fosterhjemmet har barn.",
     "animalsInCareLabel": "Dyr i omsorg ({count}):",
     "otherAnimalsLabel": "Andre dyr:",
+    "notesLabel": "Annen informasjon:",
     "prefillMeLabel": "Det er meg, bruk mine opplysninger:",
     "noMembers": "Ingen medlemmer er for øyeblikket knyttet til dette stedet.",
     "membersListTitle": "Medlemmer ved omsorgsstedet:",

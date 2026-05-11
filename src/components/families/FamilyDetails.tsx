@@ -169,6 +169,12 @@ export const FamilyDetails = ({
             <p className="family-animals">{family.otherAnimals}</p>
           </>
         )}
+        {family.notes && (
+          <>
+            <p>{t('families.notesLabel')}</p>
+            <p className="family-animals">{family.notes}</p>
+          </>
+        )}
       </div>
     </>
   );

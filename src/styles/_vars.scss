@@ -12,7 +12,7 @@ $carbon-black: #161a1b;
 $black: #000000;
 $light-coral: #ef8e8e;
 $mahogamy-red: #ac1717;
-$bright-yellow: #ffff00; 
+$bright-yellow: #ffff00;
 
 :root {
   --app-bg: #{$isabelline};
@@ -24,13 +24,14 @@ $bright-yellow: #ffff00;
   --input-bg: #{$snow};
   --input-text: #{$outer-space};
   --alert: #{$light-coral};
+  --alert-msg: #{$mahogamy-red};
   --box: #{$snow};
   --help-bg: #{$white};
   --help: #{$black};
   --emphasized: rgba(0, 0, 0, 0.1);
 }
 
-:root[data-theme='dark'] {
+:root[data-theme="dark"] {
   --app-bg: #{$outer-space};
   --text: #{$isabelline};
   --button: #{$raw-umber};
@@ -40,13 +41,14 @@ $bright-yellow: #ffff00;
   --input-bg: #{$isabelline};
   --input-text: #{$smoky-black};
   --alert: #{$mahogamy-red};
+  --alert-msg: #{$light-coral};
   --box: #{$graphite};
   --help-bg: #{$black};
   --help: #{$white};
   --emphasized: rgba(255, 255, 255, 0.1);
 }
 
-:root[data-theme='high-contrast'] {
+:root[data-theme="high-contrast"] {
   --app-bg: #{$smoky-black};
   --text: #{$white};
   --button: #{$snow};
@@ -56,6 +58,7 @@ $bright-yellow: #ffff00;
   --input-bg: #{$snow};
   --input-text: #{$black};
   --alert: #{$mahogamy-red};
+  --alert-msg: #{$light-coral};
   --box: #{$carbon-black};
   --help-bg: #{$black};
   --help: #{$white};
@@ -63,7 +66,7 @@ $bright-yellow: #ffff00;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']):not([data-theme='dark']):not([data-theme='high-contrast']) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]):not([data-theme="high-contrast"]) {
     --app-bg: #{$outer-space};
     --text: #{$isabelline};
     --button: #{$raw-umber};
@@ -73,9 +76,10 @@ $bright-yellow: #ffff00;
     --input-bg: #{$isabelline};
     --input-text: #{$smoky-black};
     --alert: #{$mahogamy-red};
+    --alert-msg: #{$light-coral};
     --box: #{$graphite};
     --help-bg: #{$black};
-    --help: #{$white};;
+    --help: #{$white};
     --emphasized: rgba(255, 255, 255, 0.1);
   }
 }

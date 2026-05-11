@@ -8,6 +8,7 @@ export const parseFamilyData = (formData: FormData) => {
     phoneNumber: formData.get('phoneNumber')?.toString().trim(),
     hasChildren: formData.has('hasChildren'),
     otherAnimals: formData.get('otherAnimals')?.toString().trim(),
+    notes: formData.get('notes')?.toString().trim(),
   };
 
   if (!familyForm.contactFullName || !familyForm.address || !familyForm.zip || !familyForm.city) {
@@ -23,6 +24,7 @@ export const parseFamilyData = (formData: FormData) => {
     city: familyForm.city,
     hasChildren: familyForm.hasChildren,
     otherAnimals: familyForm.otherAnimals,
+    notes: familyForm.notes,
   };
 
   return family;

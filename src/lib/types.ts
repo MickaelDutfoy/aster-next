@@ -34,6 +34,7 @@ export type Family = {
   city: string;
   hasChildren: boolean;
   otherAnimals: string | null;
+  notes: string | null;
   orgId: number;
   createdByMemberId: number;
   members: MemberOfFamily[];

@@ -1,4 +1,4 @@
-@use 'vars';
+@use "vars";
 
 .dashboard {
   position: fixed;
@@ -259,6 +259,12 @@ header {
   }
 }
 
+.save-warning {
+  text-align: center;
+  color: var(--alert-msg);
+  font-weight: 700;
+}
+
 .accept-terms {
   margin-right: 10px;
   display: flex;
@@ -274,7 +280,7 @@ header {
   justify-content: center;
   gap: 10px;
 
-  input[type='text'] {
+  input[type="text"] {
     width: 100%;
   }
 

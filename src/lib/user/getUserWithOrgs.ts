@@ -1,7 +1,8 @@
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
+import { cookies } from 'next/headers';
 import 'server-only';
-import { Member } from '../types';
+import { Language, Member } from '../types';
 
 export const getUserWithOrgs = async (): Promise<Member | null> => {
   const session = await auth();
@@ -17,6 +18,8 @@ export const getUserWithOrgs = async (): Promise<Member | null> => {
         lastName: true,
         phoneNumber: true,
         selectedOrgId: true,
+        lastSeenAt: true,
+        lastKnownLocale: true,
         memberOrganizations: {
           select: {
             role: true,
@@ -30,6 +33,26 @@ export const getUserWithOrgs = async (): Promise<Member | null> => {
     });
 
     if (!member) return null;
+
+    const today = new Date();
+
+    const cookieStore = await cookies();
+    const locale = cookieStore.get('aster_locale')?.value as Language | undefined;
+
+    const shouldUpdateLastSeen =
+      !member.lastSeenAt || member.lastSeenAt.toDateString() !== today.toDateString();
+
+    const shouldUpdateLocale = member.lastKnownLocale !== locale;
+
+    if (shouldUpdateLastSeen || shouldUpdateLocale) {
+      await prisma.member.update({
+        where: { id: member.id },
+        data: {
+          ...(shouldUpdateLastSeen && { lastSeenAt: today }),
+          ...(shouldUpdateLocale && { lastKnownLocale: locale }),
+        },
+      });
+    }
 
     return {
       id: member.id,

@@ -11,7 +11,7 @@ import { LanguageSelector } from './LanguageSelector';
 import { ManageAccount } from './ManageAccount';
 import { ThemeSelector } from './ThemeSelector';
 
-export const Settings = () => {
+export const Settings = ({ userId }: { userId: number }) => {
   const locale = useLocale() as Language;
   const t = useTranslations();
   const router = useRouter();
@@ -36,7 +36,7 @@ export const Settings = () => {
       <div className="settings-body">
         <div className="lang-change">
           <p>{t('settings.changeLanguage')}</p>
-          <LanguageSelector size={26} />
+          <LanguageSelector size={26} userId={userId} />
         </div>
         <ThemeSelector />
         <div className="contact-link">

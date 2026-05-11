@@ -16,6 +16,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
   const [familyEmail, setFamilyEmail] = useState<string>(family?.email ?? '');
   const [familyPhoneNumber, setFamilyPhoneNumber] = useState<string>(family?.phoneNumber ?? '');
   const [isLoading, setIsLoading] = useState(false);
+  const [saveWarning, setSaveWarning] = useState(false);
 
   const fillWithMemberInfo = (checked: boolean) => {
     if (checked) {
@@ -26,6 +27,12 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
       setFamilyName('');
       setFamilyEmail('');
       setFamilyPhoneNumber('');
+    }
+  };
+
+  const handleFirstChange = () => {
+    if (!saveWarning) {
+      setSaveWarning(true);
     }
   };
 
@@ -78,7 +85,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
     <div className="family-form">
       <h3>{family ? t('families.editInfoTitle') : t('families.addTitle')}</h3>
       <p className="notice">{t('common.requiredFieldsNotice')}</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onChange={handleFirstChange}>
         <div className="form-tab">
           {!family && (
             <div className={'labeled-checkbox'}>
@@ -156,7 +163,18 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               el.style.height = `${el.scrollHeight}px`;
             }}
           />
+          <p>{t('families.notesLabel')}</p>
+          <textarea
+            name="notes"
+            defaultValue={family?.notes as string}
+            onInput={(e) => {
+              const el = e.currentTarget;
+              el.style.height = 'auto';
+              el.style.height = `${el.scrollHeight}px`;
+            }}
+          />
         </div>
+        {saveWarning && <p className="save-warning">{t('common.saveWarning')}</p>}
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
           {isLoading ? t('common.loading') : t('common.submit')}
         </button>

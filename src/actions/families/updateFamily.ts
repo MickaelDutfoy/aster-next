@@ -13,8 +13,6 @@ export const updateFamily = async (familyId: number, formData: FormData): Promis
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
-  const userId = guard.user.id;
-
   const family = parseFamilyData(formData);
 
   if (!family) {
