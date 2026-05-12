@@ -59,6 +59,8 @@ export const AnimalForm = ({
     isFirst: false,
   });
 
+  const [weightInput, setWeightInput] = useState('');
+
   const [weightEntriesDraft, setWeightEntriesDraft] = useState<AnimalWeightDraft[]>(() => {
     const entries = animal?.weightEntries ?? [];
     return entries
@@ -72,7 +74,7 @@ export const AnimalForm = ({
 
   const [newWeightEntry, setNewWeightEntry] = useState<AnimalWeightDraft>({
     date: '',
-    weightGrams: 0,
+    weightGrams: null,
   });
 
   const [testEntriesDraft, setTestEntriesDraft] = useState<AnimalTestDraft[]>(() => {
@@ -145,7 +147,7 @@ export const AnimalForm = ({
 
     setNewWeightEntry({
       date: '',
-      weightGrams: 0,
+      weightGrams: null,
     });
   };
 
@@ -534,7 +536,7 @@ export const AnimalForm = ({
                   <ul className="acts-list">
                     {weightEntriesDraft.map((entry, index) => (
                       <li key={`${entry.date}-${entry.weightGrams}-${index}`}>
-                        <span>{entry.weightGrams / 1000} kg</span>
+                        <span>{(entry.weightGrams ?? 0) / 1000} kg</span>
 
                         <span>{displayDate(new Date(entry.date))}</span>
 
@@ -557,13 +559,17 @@ export const AnimalForm = ({
                     min={0}
                     step={0.001}
                     placeholder={t('animals.weightEntry')}
-                    value={newWeightEntry.weightGrams ? newWeightEntry.weightGrams / 1000 : ''}
-                    onChange={(e) =>
+                    value={weightInput}
+                    onChange={(e) => {
+                      const value = e.target.value;
+
+                      setWeightInput(value);
+
                       setNewWeightEntry((prev) => ({
                         ...prev,
-                        weightGrams: Math.round(Number(e.target.value) * 1000),
-                      }))
-                    }
+                        weightGrams: value === '' ? null : Math.round(Number(value) * 1000),
+                      }));
+                    }}
                   />
 
                   <input
@@ -594,7 +600,7 @@ export const AnimalForm = ({
                 {weightEntriesDraft.map((entry, index) => (
                   <div key={`hidden-weight-${index}`} style={{ display: 'none' }}>
                     <input name="weightDate[]" value={entry.date} readOnly />
-                    <input name="weightGrams[]" value={entry.weightGrams} readOnly />
+                    <input name="weightGrams[]" value={entry.weightGrams ?? 0} readOnly />
                   </div>
                 ))}
               </div>

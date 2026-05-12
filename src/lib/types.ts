@@ -103,7 +103,7 @@ export type AnimalWeightEntry = {
 
 export type AnimalWeightDraft = {
   date: string;
-  weightGrams: number;
+  weightGrams: number | null;
 };
 
 export type AnimalTestEntry = {
