@@ -12,7 +12,13 @@ import { ConfirmModal } from '../tools/ConfirmModal';
 import { showToast } from '../tools/ToastProvider';
 import { AnimalImageEditModal } from './AnimalImageEditModal';
 
-export const AnimalImage = ({ animal }: { animal: Animal }) => {
+export const AnimalImage = ({
+  animal,
+  canEditAnimal,
+}: {
+  animal: Animal;
+  canEditAnimal: boolean;
+}) => {
   const router = useRouter();
   const t = useTranslations();
 
@@ -114,23 +120,25 @@ export const AnimalImage = ({ animal }: { animal: Animal }) => {
         alt={animal.name}
       />
 
-      <div className="animal-image-actions">
-        <button type="button" onClick={handleEditClick}>
-          <Pencil size={26} />
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            if (!animal.imageKey) {
-              return;
-            } else {
-              setActionConfirm(deleteImage);
-            }
-          }}
-        >
-          <Trash2 size={26} />
-        </button>
-      </div>
+      {canEditAnimal && (
+        <div className="animal-image-actions">
+          <button type="button" onClick={handleEditClick}>
+            <Pencil size={26} />
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (!animal.imageKey) {
+                return;
+              } else {
+                setActionConfirm(deleteImage);
+              }
+            }}
+          >
+            <Trash2 size={26} />
+          </button>
+        </div>
+      )}
 
       <input
         ref={inputRef}

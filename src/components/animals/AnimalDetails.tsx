@@ -35,12 +35,13 @@ export const AnimalDetails = ({
   );
 
   const isAnimalSheetCreator = animal.createdByMemberId === user.id;
-  const isRelatedToAnimal = family?.members.some((member) => member.id === user.id);
+  const isRelatedToAnimal = family?.members.some((member) => member.id === user.id) ?? false;
   const canEditAnimal =
-    org.userRole === MemberRole.SUPERADMIN ||
-    org.userRole === MemberRole.ADMIN ||
-    isAnimalSheetCreator ||
-    isRelatedToAnimal;
+    (org.userRole === MemberRole.SUPERADMIN ||
+      org.userRole === MemberRole.ADMIN ||
+      isAnimalSheetCreator ||
+      isRelatedToAnimal) ??
+    false;
   const canDeleteAnimal = org.userRole === MemberRole.SUPERADMIN;
 
   const acts: AnimalHealthAct[] = animal.healthActs ?? [];
@@ -147,7 +148,7 @@ export const AnimalDetails = ({
             {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
           </span>
         </h3>
-        <AnimalImage animal={animal} />
+        <AnimalImage animal={animal} canEditAnimal={canEditAnimal} />
 
         {animal.color && <p>{t('animals.colorLabel') + animal.color}.</p>}
         {animal.birthDate && (
