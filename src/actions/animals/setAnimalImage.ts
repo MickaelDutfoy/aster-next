@@ -18,7 +18,9 @@ export const setAnimalImage = async (formData: FormData): Promise<ActionValidati
     select: { imageKey: true },
   });
 
-  const pathname = `animals/${animalId}/photo-${Date.now()}.jpg`;
+  const blobPrefix = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+
+  const pathname = `${blobPrefix}/animals/${animalId}/photo-${Date.now()}.jpg`;
 
   try {
     const blob = await put(pathname, image, {
