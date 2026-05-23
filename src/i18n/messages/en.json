@@ -36,7 +36,8 @@
     "nameFilter": "Filter by name:",
     "name": "Name",
     "date": "Date",
-    "all": "All"
+    "all": "All",
+    "deleteImage": "Delete image"
   },
   "toasts": {
     "errorGeneric": "An error occurred.",
@@ -68,7 +69,9 @@
     "mobileAlert": "Aster is optimized for mobile — consider using responsive mode (Ctrl+Shift+M).",
     "transactionAdd": "The transaction has been successfully added.",
     "transactionDelete": "The transaction has been successfully deleted.",
-    "tooManyAttempts": "Too many attempts. Please try again later."
+    "tooManyAttempts": "Too many attempts. Please try again later.",
+    "imageUploaded": "The image has been uploaded.",
+    "imageDeleted": "The image has been deleted."
   },
   "help": {
     "label": "Help",
@@ -295,11 +298,16 @@
         "Added a warning when a form contains unsaved changes.",
         "Added the \"Released\" status for animals.",
         "Added a free notes field to foster location records."
+      ],
+      "items158": [
+        "It is now possible to add a photo to each animal profile.",
+        "Aster only allows one photo per animal for identification purposes: the goal is not to become an animal Instagram app!"
       ]
     }
   },
   "animals": {
     "editInfoTitle": "Edit animal",
+    "imageEditTitle": "Add a photo",
     "addTitle": "Add an animal",
     "deleteTitle": "Delete animal",
     "familyFilter": "Filter by location:",

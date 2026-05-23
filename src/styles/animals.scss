@@ -1,4 +1,4 @@
-@use 'vars';
+@use "vars";
 
 .name-color {
   display: flex;
@@ -64,6 +64,49 @@
       gap: 10px;
     }
   }
+}
+
+.animal-image-box {
+  margin-bottom: -15px;
+
+  .animal-image {
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 1px solid var(--input-text);
+  }
+
+  .animal-image-actions {
+    transform: translateY(-20px);
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    button {
+      padding: 3px 3px 0 3px ;
+      background-color: var(--button);
+      border: 1px solid var(--border-button);
+      border-radius: 5px;
+    }
+  }
+}
+
+.animal-image-crop-container {
+  position: relative;
+  width: min(80vw, 320px);
+  height: min(80vw, 320px);
+  margin: 1rem auto;
+  background: #111;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.animal-image-edit-preview {
+  max-height: 300px;
+  object-fit: contain;
 }
 
 .animal-details {

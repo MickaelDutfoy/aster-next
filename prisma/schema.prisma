@@ -36,6 +36,7 @@ model Animal {
   information       String?
   healthInformation String?
   trialDateStart    DateTime?    @db.Date
+  imageKey          String?
   familyId          Int?         @map("family_id")
   orgId             Int          @map("organization_id")
   createdAt         DateTime     @default(now()) @map("created_at")

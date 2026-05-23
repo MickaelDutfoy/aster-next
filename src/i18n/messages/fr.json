@@ -36,7 +36,8 @@
     "nameFilter": "Filtrer par nom :",
     "name": "Nom",
     "date": "Date",
-    "all": "Toutes"
+    "all": "Toutes",
+    "deleteImage": "Supprimer l'image"
   },
   "toasts": {
     "errorGeneric": "Une erreur est survenue.",
@@ -68,7 +69,9 @@
     "mobileAlert": "Aster est optimisé pour mobile — pensez au mode responsive (Ctrl+Shift+M).",
     "transactionAdd": "La transaction a bien été ajoutée.",
     "transactionDelete": "La transaction a bien été supprimée.",
-    "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard."
+    "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard.",
+    "imageUploaded": "L'image a bien été ajoutée.",
+    "imageDeleted": "L'image a bien été supprimée."
   },
   "help": {
     "label": "Aide",
@@ -294,11 +297,16 @@
         "Ajout d'un avertissement lorsqu'un formulaire contient des modifications à enregistrer.",
         "Ajout du statut « Relâché » pour les animaux.",
         "Ajout d'un champ de notes libre pour les fiches de lieu d'accueil."
+      ],
+      "items158": [
+        "Il est désormais possible d'ajouter une photo sur chaque fiche d'animal.",
+        "Aster ne permet l'ajout que d'une seule photo à des fins d'identification de l'animal : le but n'est pas de devenir un Instagram animalier !"
       ]
     }
   },
   "animals": {
     "editInfoTitle": "Éditer l'animal",
+    "imageEditTitle": "Ajouter une photo",
     "addTitle": "Ajouter un animal",
     "deleteTitle": "Supprimer l'animal",
     "familyFilter": "Filtrer par lieu :",
