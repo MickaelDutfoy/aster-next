@@ -36,7 +36,8 @@
     "nameFilter": "Filtrer etter navn:",
     "name": "Navn",
     "date": "Dato",
-    "all": "Alle"
+    "all": "Alle",
+    "deleteImage": "Slett bilde"
   },
   "toasts": {
     "errorGeneric": "Noe gikk galt.",
@@ -68,7 +69,9 @@
     "mobileAlert": "Aster er optimalisert for mobil — prøv responsivt visning (Ctrl+Shift+M).",
     "transactionAdd": "Transaksjonen er lagt til.",
     "transactionDelete": "Transaksjonen er slettet.",
-    "tooManyAttempts": "For mange forsøk. Vennligst prøv igjen senere."
+    "tooManyAttempts": "For mange forsøk. Vennligst prøv igjen senere.",
+    "imageUploaded": "Bildet ble lagt til.",
+    "imageDeleted": "Bildet ble slettet."
   },
   "help": {
     "label": "Hjelp",
@@ -295,11 +298,16 @@
         "Lagt til en advarsel når et skjema inneholder ulagrede endringer.",
         "Lagt til statusen \"Satt tilbake\" for dyr.",
         "Lagt til et fritt notatfelt i omsorgssteder."
+      ],
+      "items158": [
+        "Det er nå mulig å legge til et bilde på hver dyreprofil.",
+        "Aster tillater kun ett bilde per dyr for identifikasjon: målet er ikke å bli en slags Instagram for dyr!"
       ]
     }
   },
   "animals": {
     "editInfoTitle": "Rediger dyret",
+    "imageEditTitle": "Legg til et bilde",
     "addTitle": "Legg til et dyr",
     "deleteTitle": "Slett dyret",
     "familyFilter": "Filtrer etter sted:",

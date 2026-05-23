@@ -1,16 +1,16 @@
-import { prisma } from "../prisma";
-import { Animal } from "../types";
+import { prisma } from '../prisma';
+import { Animal } from '../types';
 
 export const getAnimalById = async (id: number): Promise<Animal | null> => {
-    const animal: Animal | null = await prisma.animal.findUnique({
-      where: { id },
-      include: {
-        adoption: true,
-        healthActs: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
-        weightEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
-        testEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
-      },
-    });
+  const animal: Animal | null = await prisma.animal.findUnique({
+    where: { id },
+    include: {
+      adoption: true,
+      healthActs: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
+      weightEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
+      testEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
+    },
+  });
 
-    return animal;
-}
+  return animal;
+};

@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { ShareButton } from '../tools/ShareButton';
+import { AnimalImage } from './AnimalImage';
 import { isCommonSpecies } from './isCommonSpecies';
 
 export const AnimalDetails = ({
@@ -25,6 +26,7 @@ export const AnimalDetails = ({
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
+
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
     animal.status === AnimalStatus.ADOPTED ? true : false,
   );
@@ -66,12 +68,12 @@ export const AnimalDetails = ({
     sortedTests.length > 0 ||
     !!animal.healthInformation;
 
-    const hasAdoptionInfo =
-      animal.adoption?.homeVisitDone ||
-      animal.adoption?.neuteringPlannedAt ||
-      animal.adoption?.adoptionContractSignedAt ||
-      animal.adoption?.adoptionFeePaid ||
-      animal.adoption?.legalTransferAt;
+  const hasAdoptionInfo =
+    animal.adoption?.homeVisitDone ||
+    animal.adoption?.neuteringPlannedAt ||
+    animal.adoption?.adoptionContractSignedAt ||
+    animal.adoption?.adoptionFeePaid ||
+    animal.adoption?.legalTransferAt;
 
   const diffDays = (current: Date, previous: Date) => {
     const msPerDay = 1000 * 60 * 60 * 24;
@@ -128,6 +130,7 @@ export const AnimalDetails = ({
           </button>
         </div>
       </div>
+
       <div className="animal-page">
         <h3>
           {animal.name}
@@ -144,6 +147,8 @@ export const AnimalDetails = ({
             {(animal.sex === 'M' && ' ♂') || (animal.sex === 'F' && ' ♀')}
           </span>
         </h3>
+        <AnimalImage animal={animal} />
+
         {animal.color && <p>{t('animals.colorLabel') + animal.color}.</p>}
         {animal.birthDate && (
           <p>

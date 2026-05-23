@@ -70,6 +70,7 @@ async function handler(req: NextRequest) {
     pathname.startsWith('/assets') ||
     pathname.startsWith('/icons') ||
     pathname.startsWith('/screenshots') ||
+    pathname.startsWith('/images') ||
     pathname.startsWith('/.well-known') ||
     pathname === '/favicon.ico' ||
     pathname === '/sw.js' ||
