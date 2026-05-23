@@ -67,8 +67,6 @@
 }
 
 .animal-image-box {
-  margin-bottom: -15px;
-
   .animal-image {
     display: block;
     margin: 0 auto;
@@ -80,13 +78,14 @@
   }
 
   .animal-image-actions {
+    margin-bottom: -15px;
     transform: translateY(-20px);
     display: flex;
     justify-content: center;
     gap: 5px;
 
     button {
-      padding: 3px 3px 0 3px ;
+      padding: 3px 3px 0 3px;
       background-color: var(--button);
       border: 1px solid var(--border-button);
       border-radius: 5px;
