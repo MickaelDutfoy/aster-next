@@ -17,7 +17,7 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   const org = guard.org;
   const user = guard.user;
 
-  const { animal, adopter, health, weightEntries, tests } = await parseAnimalData(formData, null);
+  const { animal, adopter, health, weightEntries, tests } = await parseAnimalData(formData);
 
   if (!animal) {
     return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };

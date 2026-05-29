@@ -21,15 +21,7 @@ export const updateAnimal = async (
 
   const user = guard.user;
 
-  const animalTrial = await prisma.animal.findUnique({
-    where: { id: animalId },
-    select: { trialDateStart: true },
-  });
-
-  const { animal, adopter, health, weightEntries, tests } = await parseAnimalData(
-    formData,
-    animalTrial?.trialDateStart ?? null,
-  );
+  const { animal, adopter, health, weightEntries, tests } = await parseAnimalData(formData);
 
   if (!animal) {
     return { ok: false, status: 'error', message: 'toasts.requiredFieldsMissing' };

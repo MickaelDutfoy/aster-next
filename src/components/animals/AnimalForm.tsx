@@ -38,6 +38,11 @@ export const AnimalForm = ({
   const [isNeutered, setIsNeutered] = useState<boolean>(animal?.isNeutered ?? false);
   const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
   const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
+  const [entryDate, setEntryDate] = useState<string | undefined>(
+    animal?.quarantineDateStart?.toISOString().slice(0, 10) ??
+      animal?.trialDateStart?.toISOString().slice(0, 10) ??
+      undefined,
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [saveWarning, setSaveWarning] = useState(false);
 
@@ -105,18 +110,30 @@ export const AnimalForm = ({
     isCommonSpecies(initialSpecies) ? '' : initialSpecies,
   );
 
+  const userFamilies = families.filter((family) =>
+    family.members.some((member) => member.id === user.id),
+  );
+
   useEffect(() => {
     if (animal) return;
 
-    const userFamilies = families.filter((family) =>
-      family.members.some((member) => member.id === user.id),
-    );
-
     if (userFamilies.length === 1) {
       setStatus(AnimalStatus.FOSTERED);
+      setEntryDate(new Date().toISOString().slice(0, 10));
       setFamilyId(userFamilies[0].id);
     }
   }, []);
+
+  const changeEntryDate = (newStatus: AnimalStatus) => {
+    if (
+      (newStatus === AnimalStatus.FOSTERED && animal?.status !== AnimalStatus.FOSTERED) ||
+      (newStatus === AnimalStatus.IN_TRIAL && animal?.status !== AnimalStatus.IN_TRIAL)
+    ) {
+      setEntryDate(new Date().toISOString().slice(0, 10));
+    } else {
+      setEntryDate(undefined);
+    }
+  };
 
   const addHealthAct = () => {
     if (!newAct.date) return;
@@ -349,8 +366,12 @@ export const AnimalForm = ({
                 onChange={(e) => {
                   const next = e.target.value as AnimalStatus;
                   setStatus(next);
-                  if (next !== AnimalStatus.FOSTERED && next !== AnimalStatus.PERMANENT_PLACEMENT)
+                  changeEntryDate(next);
+                  if (next !== AnimalStatus.FOSTERED && next !== AnimalStatus.PERMANENT_PLACEMENT) {
                     setFamilyId(undefined);
+                  } else if (next === AnimalStatus.FOSTERED) {
+                    setFamilyId(userFamilies[0].id);
+                  }
                 }}
               >
                 <option value={AnimalStatus.UNHOSTED}>{t('animals.status.UNHOSTED')}</option>
@@ -366,11 +387,29 @@ export const AnimalForm = ({
             </div>
             <div
               className={
-                `labeled-select ` +
+                'labeled-date' +
+                clsx(
+                  status !== AnimalStatus.FOSTERED &&
+                    status !== AnimalStatus.IN_TRIAL &&
+                    ' disabled',
+                )
+              }
+            >
+              <p>{t('animals.fields.entryDateLabel')}</p>
+              <input
+                type="date"
+                name="animalEntryDate"
+                value={entryDate ?? ''}
+                onChange={(e) => setEntryDate(e.target.value)}
+              />
+            </div>
+            <div
+              className={
+                `labeled-select` +
                 clsx(
                   status === AnimalStatus.FOSTERED || status === AnimalStatus.PERMANENT_PLACEMENT
                     ? ''
-                    : 'disabled',
+                    : ' disabled',
                 )
               }
             >

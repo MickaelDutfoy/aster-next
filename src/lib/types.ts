@@ -64,6 +64,7 @@ export type Animal = {
   weightEntries?: AnimalWeightEntry[];
   testEntries?: AnimalTestEntry[];
   trialDateStart: Date | null;
+  quarantineDateStart: Date | null;
   imageKey?: string | null;
   familyId: number | null;
   orgId: number;

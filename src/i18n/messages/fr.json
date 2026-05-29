@@ -414,6 +414,7 @@
       "legalIdPlaceholder": "Numéro",
       "findLocationPlaceholder": "Lieu",
       "birthDateLabel": "Né(e) le :",
+      "entryDateLabel": "Entrée dans les lieux le :",
       "primeVaxQuestion": "Primo-vaccination ?",
       "firstDewormQuestion": "Premier déparasitage ?",
       "statusLabel": "Statut de l'animal * :",
@@ -602,6 +603,7 @@
       "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin.",
       "neutralizeReminder": "{animalName} est en âge d'être stérilisé(e).",
       "trialReminder": "{animalName} est en période d'essai depuis au moins quinze jours.",
+      "quarantineReminder": "{animalName} est entré(e) dans son lieu d'accueil il y a au moins quinze jours.",
       "editedAnimal": "{memberFullName} a édité la fiche de {animalName}.",
       "createAnimal": "{memberFullName} a créé une fiche pour {animalName}."
     },
