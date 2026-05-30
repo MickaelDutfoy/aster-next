@@ -454,10 +454,10 @@
     "listTitle": "Registrerte omsorgssteder for {orgName} ({count}):",
     "none": "Ingen omsorgssteder å vise.",
     "fields": {
-      "contactFullNamePlaceholder": "Navn på omsorgssted *",
-      "addressPlaceholderRequired": "Gateadresse *",
-      "zipPlaceholderRequired": "Postnummer *",
-      "cityPlaceholderRequired": "Poststed *"
+      "contactFullNamePlaceholder": "Navn på omsorgssted *",
+      "addressPlaceholderRequired": "Gateadresse",
+      "zipPlaceholderRequired": "Postnummer",
+      "cityPlaceholderRequired": "Poststed *"
     },
     "questions": {
       "hasChildren": "Er dette et fosterhjem med barn?",

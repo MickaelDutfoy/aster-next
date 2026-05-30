@@ -11,7 +11,7 @@ export const parseFamilyData = (formData: FormData) => {
     notes: formData.get('notes')?.toString().trim(),
   };
 
-  if (!familyForm.contactFullName || !familyForm.zip || !familyForm.city) {
+  if (!familyForm.contactFullName || !familyForm.city) {
     return undefined;
   }
 

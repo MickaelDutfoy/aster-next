@@ -454,10 +454,10 @@
     "listTitle": "Foster locations registered for {orgName} ({count}):",
     "none": "No foster locations to display.",
     "fields": {
-      "contactFullNamePlaceholder": "Location name *",
-      "addressPlaceholderRequired": "Street and number *",
-      "zipPlaceholderRequired": "Postal code *",
-      "cityPlaceholderRequired": "City *"
+      "contactFullNamePlaceholder": "Location name *",
+      "addressPlaceholderRequired": "Street and number",
+      "zipPlaceholderRequired": "Postal code",
+      "cityPlaceholderRequired": "City *"
     },
     "questions": {
       "hasChildren": "Is this a foster family with children?",

@@ -132,7 +132,7 @@ model Family {
   email             String?
   phoneNumber       String?  @map("phone_number")
   address           String?
-  zip               String
+  zip               String?
   city              String
   hasChildren       Boolean  @default(false)
   otherAnimals      String?

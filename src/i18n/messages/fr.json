@@ -454,8 +454,8 @@
     "none": "Aucun lieu d'accueil à afficher.",
     "fields": {
       "contactFullNamePlaceholder": "Nom du lieu *",
-      "addressPlaceholderRequired": "N° et rue *",
-      "zipPlaceholderRequired": "Code postal *",
+      "addressPlaceholderRequired": "N° et rue",
+      "zipPlaceholderRequired": "Code postal",
       "cityPlaceholderRequired": "Ville *"
     },
     "questions": {

@@ -30,7 +30,7 @@ export type Family = {
   email: string | null;
   phoneNumber: string | null;
   address: string | null;
-  zip: string;
+  zip: string | null;
   city: string;
   hasChildren: boolean;
   otherAnimals: string | null;

@@ -45,7 +45,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
     const zip = formData.get('zip')?.toString().trim();
     const city = formData.get('city')?.toString().trim();
 
-    if (!contactFullName || !zip || !city) {
+    if (!contactFullName || !city) {
       showToast({
         ok: false,
         status: 'error',
@@ -117,7 +117,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
                 type="text"
                 name="zip"
                 placeholder={t('families.fields.zipPlaceholderRequired')}
-                defaultValue={family?.zip}
+                defaultValue={family?.zip ?? ''}
               />
               <input
                 type="text"
