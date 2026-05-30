@@ -42,11 +42,10 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
 
     const isMember = formData.has('isMember');
     const contactFullName = formData.get('contactFullName')?.toString().trim();
-    const address = formData.get('address')?.toString().trim();
     const zip = formData.get('zip')?.toString().trim();
     const city = formData.get('city')?.toString().trim();
 
-    if (!contactFullName || !address || !zip || !city) {
+    if (!contactFullName || !zip || !city) {
       showToast({
         ok: false,
         status: 'error',
@@ -110,7 +109,7 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
               type="text"
               name="address"
               placeholder={t('families.fields.addressPlaceholderRequired')}
-              defaultValue={family?.address}
+              defaultValue={family?.address ?? ''}
             />
 
             <div className="family-city">

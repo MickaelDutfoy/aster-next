@@ -3,6 +3,7 @@
 import { switchUserToOrg } from '@/actions/organizations/switchUserToOrg';
 import { useRouter } from '@/i18n/routing';
 import { Member, Organization } from '@/lib/types';
+import { MemberRole } from '@prisma/client';
 import { MailOpen, Phone, SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { showToast } from '../tools/ToastProvider';
@@ -10,14 +11,19 @@ import { showToast } from '../tools/ToastProvider';
 export const MemberDetails = ({
   isUser,
   member,
+  org,
   orgsInCommon,
 }: {
   isUser: boolean;
   member: Member;
+  org: Organization;
   orgsInCommon: Organization[];
 }) => {
   const t = useTranslations();
   const router = useRouter();
+
+  const canSeeDetails =
+    isUser || org.userRole === MemberRole.SUPERADMIN || org.userRole === MemberRole.ADMIN;
 
   const navigateToOrgPage = async (orgId: number) => {
     const res = await switchUserToOrg(orgId);
@@ -40,22 +46,24 @@ export const MemberDetails = ({
       </h3>
       {isUser && <p style={{ paddingTop: 5 }}>{t('members.ownSheet')}</p>}
 
-      <div className="contact-display">
-        <div className="contact-item">
-          <MailOpen size={18} />
-          <span>:</span>
-          <a className="link" href={`mailto:${member.email}`}>
-            {member.email}
-          </a>
+      {canSeeDetails && (
+        <div className="contact-display">
+          <div className="contact-item">
+            <MailOpen size={18} />
+            <span>:</span>
+            <a className="link" href={`mailto:${member.email}`}>
+              {member.email}
+            </a>
+          </div>
+          <div className="contact-item">
+            <Phone size={18} />
+            <span>:</span>
+            <a className="link" href={`tel:${member.phoneNumber}`}>
+              {member.phoneNumber}
+            </a>
+          </div>
         </div>
-        <div className="contact-item">
-          <Phone size={18} />
-          <span>:</span>
-          <a className="link" href={`tel:${member.phoneNumber}`}>
-            {member.phoneNumber}
-          </a>
-        </div>
-      </div>
+      )}
 
       {orgsInCommon.length > 0 && (
         <div>

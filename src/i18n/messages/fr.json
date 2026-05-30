@@ -301,6 +301,12 @@
       "items158": [
         "Il est désormais possible d'ajouter une photo sur chaque fiche d'animal.",
         "Aster ne permet l'ajout que d'une seule photo à des fins d'identification de l'animal : le but n'est pas de devenir un Instagram animalier !"
+      ],
+      "items159": [
+        "Les catégories de transactions peuvent désormais être éditées et supprimées dans le module Trésorerie.",
+        "Une date d'entrée en lieu d'accueil ou en période d'essai peut être renseignée sur les fiches animaux. Cela permet de recevoir une notification après quinze jours de quarantaine ou d'essai.",
+        "Amélioration de la confidentialité : les adresses e-mail et numéros de téléphone sont désormais masqués aux membres, responsables et administrateurs.",
+        "L'adresse détaillée des lieux d'accueil est désormais optionnelle : seule la ville est requise."
       ]
     }
   },
@@ -387,6 +393,7 @@
       "DECEASED": "Décédé(e)"
     },
     "trialPeriodLabel": "Période d'essai démarrée le :",
+    "quarantinePeriodLabel": "Entrée dans le lieu d'accueil le :",
     "fosterFamilyLabel": "Lieu d'accueil : ",
     "toggleAdoption": "Afficher les informations d'adoption",
     "adopterLabel": "Adoptant :",
@@ -414,6 +421,7 @@
       "legalIdPlaceholder": "Numéro",
       "findLocationPlaceholder": "Lieu",
       "birthDateLabel": "Né(e) le :",
+      "entryDateLabel": "Entrée dans les lieux le :",
       "primeVaxQuestion": "Primo-vaccination ?",
       "firstDewormQuestion": "Premier déparasitage ?",
       "statusLabel": "Statut de l'animal * :",
@@ -513,11 +521,13 @@
   "transactions": {
     "accessDenied": "Seuls les administrateurs et responsables de l'association peuvent utiliser cette fonctionnalité.",
     "addTitle": "Ajouter une transaction",
+    "editCategories": "Éditer les catégories",
     "editTitle": "Éditer la transaction",
     "deleteTitle": "Supprimer la transaction",
     "categoryTitle": "Choisir la catégorie :",
     "other": "Autre",
     "newCategoryPlaceholder": "Nouvelle catégorie",
+    "categoryNamePlaceholder": "Nom de la catégorie *",
     "defaultCategoryType": "Type par défaut de la catégorie :",
     "inputDetails": "Détails :",
     "type": {
@@ -547,7 +557,8 @@
     "expensesLabel": "Sorties :",
     "incomesLabel": "Entrées :",
     "balanceLabel": "Bilan :",
-    "noTransactions": "Aucune transaction trouvée."
+    "noTransactions": "Aucune transaction trouvée.",
+    "deleteCategoryWarning": "Attention, cette action va supprimer {count} transaction(s) associée(s)."
   },
   "publish": {
     "soonToCome": "Prochainement, vous pourrez créer un mini-site et diffuser vos animaux à l'adoption depuis ce module."
@@ -602,6 +613,7 @@
       "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin.",
       "neutralizeReminder": "{animalName} est en âge d'être stérilisé(e).",
       "trialReminder": "{animalName} est en période d'essai depuis au moins quinze jours.",
+      "quarantineReminder": "{animalName} est entré(e) dans son lieu d'accueil il y a au moins quinze jours.",
       "editedAnimal": "{memberFullName} a édité la fiche de {animalName}.",
       "createAnimal": "{memberFullName} a créé une fiche pour {animalName}."
     },

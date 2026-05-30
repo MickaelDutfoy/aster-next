@@ -302,6 +302,12 @@
       "items158": [
         "It is now possible to add a photo to each animal profile.",
         "Aster only allows one photo per animal for identification purposes: the goal is not to become an animal Instagram app!"
+      ],
+      "items159": [
+        "Transaction categories can now be edited and deleted in the Treasury module.",
+        "A foster location entry date or trial period start date can now be recorded on animal profiles. This allows notifications to be sent after fifteen days of quarantine or trial period.",
+        "Improved privacy: email addresses and phone numbers are now hidden from members, managers, and administrators.",
+        "The detailed address of foster locations is now optional: only the city is required."
       ]
     }
   },
@@ -388,6 +394,7 @@
       "DECEASED": "Deceased"
     },
     "trialPeriodLabel": "Trial period started on:",
+    "quarantinePeriodLabel": "Entered foster location on:",
     "fosterFamilyLabel": "Foster location: ",
     "toggleAdoption": "Show adoption information",
     "adopterLabel": "Adopter:",
@@ -415,6 +422,7 @@
       "legalIdPlaceholder": "Number",
       "findLocationPlaceholder": "Location",
       "birthDateLabel": "Born on:",
+      "entryDateLabel": "Entered location on:",
       "primeVaxQuestion": "First vaccination?",
       "firstDewormQuestion": "First deworming?",
       "statusLabel": "Animal status *:",
@@ -514,11 +522,13 @@
   "transactions": {
     "accessDenied": "Only administrators and managers of the organization can use this feature.",
     "addTitle": "Add a transaction",
+    "editCategories": "Edit categories",
     "editTitle": "Edit transaction",
     "deleteTitle": "Delete transaction",
     "categoryTitle": "Choose a category:",
     "other": "Other",
     "newCategoryPlaceholder": "New category",
+    "categoryNamePlaceholder": "Category name *",
     "defaultCategoryType": "Default category type:",
     "inputDetails": "Details:",
     "type": {
@@ -548,7 +558,8 @@
     "expensesLabel": "Expenses:",
     "incomesLabel": "Income:",
     "balanceLabel": "Balance:",
-    "noTransactions": "No transactions found."
+    "noTransactions": "No transactions found.",
+    "deleteCategoryWarning": "Warning: this action will delete {count} associated transaction(s)."
   },
   "publish": {
     "soonToCome": "Soon, you will be able to create a mini website and publish your adoptable animals from this module."
@@ -603,6 +614,7 @@
       "vaxReminder": "{animalName} will soon need a vaccination booster.",
       "neutralizeReminder": "{animalName} is old enough to be neutered.",
       "trialReminder": "{animalName} has been in a trial period for at least fifteen days.",
+      "quarantineReminder": "{animalName} entered its foster location at least fifteen days ago.",
       "editedAnimal": "{memberFullName} edited the record for {animalName}.",
       "createAnimal": "{memberFullName} created a record for {animalName}."
     },

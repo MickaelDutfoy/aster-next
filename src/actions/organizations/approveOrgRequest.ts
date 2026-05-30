@@ -22,6 +22,7 @@ export const approveOrgRequest = async (
     where: { id: orgId },
     select: { name: true },
   });
+
   const orgName = org ? org.name : '';
 
   try {

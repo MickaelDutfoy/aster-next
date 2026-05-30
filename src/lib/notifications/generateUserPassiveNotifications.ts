@@ -11,6 +11,7 @@ export const generateUserPassiveNotifications = async (user: Member) => {
   const VAX_REMINDER_DAYS = 335;
   const NEUTRALIZE_REMINDER_DAYS = 183;
   const TRIAL_DURATION_DAYS = 15;
+  const QUARANTINE_DURATION_DAYS = 15;
 
   const relatedAnimals: Animal[] = await getAnimalsRelatedToUser(user.id);
 
@@ -64,6 +65,33 @@ export const generateUserPassiveNotifications = async (user: Member) => {
             messageParams: { animalName: animal.name },
             href: `/animals/${animal.id}`,
             sourceKey: `trial:${animal.id}:${animal.trialDateStart.toISOString().slice(0, 10)}`,
+          },
+          update: {},
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    if (
+      animal.status === AnimalStatus.FOSTERED &&
+      animal.quarantineDateStart &&
+      isOlderThan(animal.quarantineDateStart, QUARANTINE_DURATION_DAYS)
+    ) {
+      try {
+        await prisma.notification.upsert({
+          where: {
+            memberId_sourceKey: {
+              memberId: user.id,
+              sourceKey: `quarantine:${animal.id}:${animal.quarantineDateStart.toISOString().slice(0, 10)}`,
+            },
+          },
+          create: {
+            memberId: user.id,
+            messageKey: 'notifications.animals.quarantineReminder',
+            messageParams: { animalName: animal.name },
+            href: `/animals/${animal.id}`,
+            sourceKey: `quarantine:${animal.id}:${animal.quarantineDateStart.toISOString().slice(0, 10)}`,
           },
           update: {},
         });

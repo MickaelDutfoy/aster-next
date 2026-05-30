@@ -29,7 +29,7 @@ export type Family = {
   contactFullName: string;
   email: string | null;
   phoneNumber: string | null;
-  address: string;
+  address: string | null;
   zip: string;
   city: string;
   hasChildren: boolean;
@@ -64,6 +64,7 @@ export type Animal = {
   weightEntries?: AnimalWeightEntry[];
   testEntries?: AnimalTestEntry[];
   trialDateStart: Date | null;
+  quarantineDateStart: Date | null;
   imageKey?: string | null;
   familyId: number | null;
   orgId: number;
@@ -198,6 +199,7 @@ export type TransactionCategory = {
   orgId?: number;
   name: string;
   defaultType: TransactionType;
+  transactionsCount?: number;
 };
 
 export type Transaction = {

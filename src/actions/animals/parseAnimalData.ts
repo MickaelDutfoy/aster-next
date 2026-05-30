@@ -2,7 +2,7 @@ import { isAdoptionSheetEmpty } from '@/lib/animals/isAdoptionSheetEmpty';
 import { AnimalHealthAct, AnimalTestEntry, AnimalWeightEntry } from '@/lib/types';
 import { AnimalStatus, AnimalTestResult, Sex } from '@prisma/client';
 
-export const parseAnimalData = async (formData: FormData, trialDateStart: Date | null) => {
+export const parseAnimalData = async (formData: FormData) => {
   const selectedSpeciesFromForm = formData.get('animalSpeciesSelector')?.toString();
   const otherSpeciesFromForm = formData.get('animalSpecies')?.toString().trim();
 
@@ -23,23 +23,24 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
     information: formData.get('animalInformation')?.toString().trim(),
     healthInformation: formData.get('healthInformation')?.toString().trim(),
     status: formData.get('animalStatus') as AnimalStatus,
+    animalEntryDate: formData.get('animalEntryDate')?.toString(),
   };
 
-    let animalFamilyId: number | null = null;
-    if (
-      animalForm.status === AnimalStatus.FOSTERED ||
-      animalForm.status === AnimalStatus.PERMANENT_PLACEMENT
-    ) {
-      animalFamilyId = formData.get('animalFamily') ? Number(formData.get('animalFamily')) : null;
-    }
+  let animalFamilyId: number | null = null;
+  if (
+    animalForm.status === AnimalStatus.FOSTERED ||
+    animalForm.status === AnimalStatus.PERMANENT_PLACEMENT
+  ) {
+    animalFamilyId = formData.get('animalFamily') ? Number(formData.get('animalFamily')) : null;
+  }
 
-    if (
-      !animalForm.name ||
-      !animalForm.species ||
-      (animalForm.status === AnimalStatus.FOSTERED && !animalFamilyId)
-    ) {
-      return { animal: undefined, adopter: undefined, health: undefined };
-    }
+  if (
+    !animalForm.name ||
+    !animalForm.species ||
+    (animalForm.status === AnimalStatus.FOSTERED && !animalFamilyId)
+  ) {
+    return { animal: undefined, adopter: undefined, health: undefined };
+  }
 
   const healthTypes = formData.getAll('healthType[]').map((value) => value.toString());
   const healthDates = formData.getAll('healthDate[]').map((value) => value.toString());
@@ -106,11 +107,13 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
     });
   }
 
-  let newTrialDate: Date | null = trialDateStart;
-  if (!trialDateStart && animalForm.status === AnimalStatus.IN_TRIAL) {
-    newTrialDate = new Date();
-  } else if (animalForm.status !== AnimalStatus.IN_TRIAL) {
-    newTrialDate = null;
+  let trialDateStart: Date | null = null;
+  let quarantineDateStart: Date | null = null;
+
+  if (animalForm.status === AnimalStatus.IN_TRIAL && animalForm.animalEntryDate) {
+    trialDateStart = new Date(animalForm.animalEntryDate);
+  } else if (animalForm.status === AnimalStatus.FOSTERED && animalForm.animalEntryDate) {
+    quarantineDateStart = new Date(animalForm.animalEntryDate);
   }
 
   const adopterForm = {
@@ -160,7 +163,8 @@ export const parseAnimalData = async (formData: FormData, trialDateStart: Date |
     information: animalForm.information ?? null,
     healthInformation: animalForm.healthInformation ?? null,
     status: animalForm.status,
-    trialDateStart: newTrialDate,
+    trialDateStart,
+    quarantineDateStart,
     familyId: animalFamilyId,
   };
 

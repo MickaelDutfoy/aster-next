@@ -302,6 +302,12 @@
       "items158": [
         "Det er nå mulig å legge til et bilde på hver dyreprofil.",
         "Aster tillater kun ett bilde per dyr for identifikasjon: målet er ikke å bli en slags Instagram for dyr!"
+      ],
+      "items159": [
+        "Transaksjonskategorier kan nå redigeres og slettes i økonomimodulen.",
+        "Det er nå mulig å registrere dato for innflytting til et omsorgssted eller start på en prøveperiode på dyreprofiler. Dette gjør det mulig å motta varsler etter femten dager i karantene eller prøveperiode.",
+        "Forbedret personvern: e-postadresser og telefonnumre er nå skjult for medlemmer, ansvarlige og administratorer.",
+        "Detaljert adresse for omsorgssteder er nå valgfri: kun byen er påkrevd."
       ]
     }
   },
@@ -388,6 +394,7 @@
       "DECEASED": "Død"
     },
     "trialPeriodLabel": "Prøveperiode startet:",
+    "quarantinePeriodLabel": "Flyttet inn i omsorgsstedet:",
     "fosterFamilyLabel": "Omsorgssted: ",
     "toggleAdoption": "Vis adopsjonsinformasjon",
     "adopterLabel": "Adoptant:",
@@ -415,6 +422,7 @@
       "legalIdPlaceholder": "Nummer",
       "findLocationPlaceholder": "Sted",
       "birthDateLabel": "Født den:",
+      "entryDateLabel": "Flyttet inn:",
       "primeVaxQuestion": "Grunnvaksine?",
       "firstDewormQuestion": "Første ormekur?",
       "statusLabel": "Dyrets status *:",
@@ -514,11 +522,13 @@
   "transactions": {
     "accessDenied": "Kun administratorer og ansvarlige i organisasjonen kan bruke denne funksjonen.",
     "addTitle": "Legg til en transaksjon",
+    "editCategories": "Rediger kategorier",
     "editTitle": "Rediger transaksjon",
     "deleteTitle": "Slett transaksjon",
     "categoryTitle": "Velg en kategori:",
     "other": "Annet",
     "newCategoryPlaceholder": "Ny kategori",
+    "categoryNamePlaceholder": "Kategorinavn *",
     "defaultCategoryType": "Standard kategoritype:",
     "inputDetails": "Detaljer:",
     "type": {
@@ -548,7 +558,8 @@
     "expensesLabel": "Utgifter:",
     "incomesLabel": "Inntekter:",
     "balanceLabel": "Balanse:",
-    "noTransactions": "Ingen transaksjoner funnet."
+    "noTransactions": "Ingen transaksjoner funnet.",
+    "deleteCategoryWarning": "Advarsel: denne handlingen vil slette {count} tilknyttede transaksjon(er)."
   },
   "publish": {
     "soonToCome": "Snart vil du kunne opprette en miniside og publisere dyr til adopsjon fra denne modulen."
@@ -603,6 +614,7 @@
       "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
       "neutralizeReminder": "{animalName} er gammel nok til å steriliseres.",
       "trialReminder": "{animalName} har vært i prøveperiode i minst femten dager.",
+      "quarantineReminder": "{animalName} flyttet inn i omsorgsstedet for minst femten dager siden.",
       "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",
       "createAnimal": "{memberFullName} har opprettet en profil for {animalName}."
     },
