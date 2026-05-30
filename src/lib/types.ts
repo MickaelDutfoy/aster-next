@@ -29,7 +29,7 @@ export type Family = {
   contactFullName: string;
   email: string | null;
   phoneNumber: string | null;
-  address: string;
+  address: string | null;
   zip: string;
   city: string;
   hasChildren: boolean;

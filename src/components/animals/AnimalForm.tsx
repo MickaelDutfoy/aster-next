@@ -149,6 +149,7 @@ export const AnimalForm = ({
   };
 
   const removeHealthActAt = (index: number) => {
+    handleFirstChange();
     setHealthActsDraft((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -169,6 +170,7 @@ export const AnimalForm = ({
   };
 
   const removeWeightEntryAt = (index: number) => {
+    handleFirstChange();
     setWeightEntriesDraft((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -190,6 +192,7 @@ export const AnimalForm = ({
   };
 
   const removeTestEntryAt = (index: number) => {
+    handleFirstChange();
     setTestEntriesDraft((prev) => prev.filter((_, i) => i !== index));
   };
 

@@ -85,7 +85,7 @@ export const FamilyDetails = ({
               </p>
             </address>
           )}
-          {family.email && (
+          {canEditFamily && family.email && (
             <div className="contact-item">
               <MailOpen size={18} />
               <span>:</span>
@@ -94,7 +94,7 @@ export const FamilyDetails = ({
               </a>
             </div>
           )}
-          {family.phoneNumber && (
+          {canEditFamily && family.phoneNumber && (
             <div className="contact-item">
               <Phone size={18} />
               <span>:</span>
