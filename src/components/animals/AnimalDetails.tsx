@@ -317,6 +317,11 @@ export const AnimalDetails = ({
             {t('animals.trialPeriodLabel')} {displayDate(animal.trialDateStart)}.
           </p>
         )}
+        {animal.quarantineDateStart && (
+          <p>
+            {t('animals.quarantinePeriodLabel')} {displayDate(animal.quarantineDateStart)}.
+          </p>
+        )}
         {family && (
           <p>
             {t('animals.fosterFamilyLabel')}

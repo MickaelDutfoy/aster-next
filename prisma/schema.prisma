@@ -266,7 +266,7 @@ model Transaction {
   updatedAt     DateTime        @updatedAt
 
   organization Organization        @relation(fields: [orgId], references: [id], onDelete: Cascade)
-  category     TransactionCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  category     TransactionCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 
 enum TokenType {

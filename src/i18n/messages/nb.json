@@ -388,6 +388,7 @@
       "DECEASED": "Død"
     },
     "trialPeriodLabel": "Prøveperiode startet:",
+    "quarantinePeriodLabel": "Entrée dans le lieu d'accueil le :",
     "fosterFamilyLabel": "Omsorgssted: ",
     "toggleAdoption": "Vis adopsjonsinformasjon",
     "adopterLabel": "Adoptant:",
@@ -415,6 +416,7 @@
       "legalIdPlaceholder": "Nummer",
       "findLocationPlaceholder": "Sted",
       "birthDateLabel": "Født den:",
+      "entryDateLabel": "Entrée dans les lieux le :",
       "primeVaxQuestion": "Grunnvaksine?",
       "firstDewormQuestion": "Første ormekur?",
       "statusLabel": "Dyrets status *:",
@@ -603,6 +605,7 @@
       "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
       "neutralizeReminder": "{animalName} er gammel nok til å steriliseres.",
       "trialReminder": "{animalName} har vært i prøveperiode i minst femten dager.",
+      "quarantineReminder": "{animalName} est entré(e) dans son lieu d'accueil il y a au moins quinze jours.",
       "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",
       "createAnimal": "{memberFullName} har opprettet en profil for {animalName}."
     },

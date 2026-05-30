@@ -388,6 +388,7 @@
       "DECEASED": "Deceased"
     },
     "trialPeriodLabel": "Trial period started on:",
+    "quarantinePeriodLabel": "Entrée dans le lieu d'accueil le :",
     "fosterFamilyLabel": "Foster location: ",
     "toggleAdoption": "Show adoption information",
     "adopterLabel": "Adopter:",
@@ -415,6 +416,7 @@
       "legalIdPlaceholder": "Number",
       "findLocationPlaceholder": "Location",
       "birthDateLabel": "Born on:",
+      "entryDateLabel": "Entrée dans les lieux le :",
       "primeVaxQuestion": "First vaccination?",
       "firstDewormQuestion": "First deworming?",
       "statusLabel": "Animal status *:",
@@ -603,6 +605,7 @@
       "vaxReminder": "{animalName} will soon need a vaccination booster.",
       "neutralizeReminder": "{animalName} is old enough to be neutered.",
       "trialReminder": "{animalName} has been in a trial period for at least fifteen days.",
+      "quarantineReminder": "{animalName} est entré(e) dans son lieu d'accueil il y a au moins quinze jours.",
       "editedAnimal": "{memberFullName} edited the record for {animalName}.",
       "createAnimal": "{memberFullName} created a record for {animalName}."
     },

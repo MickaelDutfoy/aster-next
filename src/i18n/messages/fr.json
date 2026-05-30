@@ -387,6 +387,7 @@
       "DECEASED": "Décédé(e)"
     },
     "trialPeriodLabel": "Période d'essai démarrée le :",
+    "quarantinePeriodLabel": "Entrée dans le lieu d'accueil le :",
     "fosterFamilyLabel": "Lieu d'accueil : ",
     "toggleAdoption": "Afficher les informations d'adoption",
     "adopterLabel": "Adoptant :",
@@ -514,11 +515,13 @@
   "transactions": {
     "accessDenied": "Seuls les administrateurs et responsables de l'association peuvent utiliser cette fonctionnalité.",
     "addTitle": "Ajouter une transaction",
+    "editCategories": "Éditer les catégories",
     "editTitle": "Éditer la transaction",
     "deleteTitle": "Supprimer la transaction",
     "categoryTitle": "Choisir la catégorie :",
     "other": "Autre",
     "newCategoryPlaceholder": "Nouvelle catégorie",
+    "categoryNamePlaceholder": "Nom de la catégorie *",
     "defaultCategoryType": "Type par défaut de la catégorie :",
     "inputDetails": "Détails :",
     "type": {
@@ -548,7 +551,8 @@
     "expensesLabel": "Sorties :",
     "incomesLabel": "Entrées :",
     "balanceLabel": "Bilan :",
-    "noTransactions": "Aucune transaction trouvée."
+    "noTransactions": "Aucune transaction trouvée.",
+    "deleteCategoryWarning": "Attention, cette action va supprimer {count} transaction(s) associée(s)."
   },
   "publish": {
     "soonToCome": "Prochainement, vous pourrez créer un mini-site et diffuser vos animaux à l'adoption depuis ce module."

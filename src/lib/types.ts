@@ -199,6 +199,7 @@ export type TransactionCategory = {
   orgId?: number;
   name: string;
   defaultType: TransactionType;
+  transactionsCount?: number;
 };
 
 export type Transaction = {

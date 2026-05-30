@@ -12,6 +12,12 @@ export const TransactionsActions = () => {
       <button onClick={() => router.push('/transactions/new')} className="little-button">
         {t('transactions.addTitle')}
       </button>
+      <button
+        onClick={() => router.push('/transactions/edit-categories')}
+        className="little-button"
+      >
+        {t('transactions.editCategories')}
+      </button>
     </div>
   );
 };
