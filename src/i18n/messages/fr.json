@@ -71,7 +71,8 @@
     "transactionDelete": "La transaction a bien été supprimée.",
     "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard.",
     "imageUploaded": "L'image a bien été ajoutée.",
-    "imageDeleted": "L'image a bien été supprimée."
+    "imageDeleted": "L'image a bien été supprimée.",
+    "publicPageDataSubmitted": "Les informations de votre page publique ont été enregistrées."
   },
   "help": {
     "label": "Aide",
@@ -561,7 +562,12 @@
     "deleteCategoryWarning": "Attention, cette action va supprimer {count} transaction(s) associée(s)."
   },
   "publish": {
-    "soonToCome": "Prochainement, vous pourrez créer un mini-site et diffuser vos animaux à l'adoption depuis ce module."
+    "accessDenied": "Seuls les administrateurs et responsables de l'association peuvent utiliser cette fonctionnalité.",
+    "managePage": "Paramétrer la page",
+    "publicURLNotice": "Adresse de votre page publique Aster :",
+    "isSitePublishedNotice": "Page publique active :",
+    "invalidSlug": "Ce nom de domaine ne peut pas être utilisé.",
+    "validSlug": "Ce nom de domaine est valide et disponible."
   },
   "members": {
     "ownSheet": "Ceci est votre fiche.",

@@ -43,11 +43,11 @@ export const FamilyDetails = ({
     localStorage.setItem('preferredDisplayMode', mode);
   };
 
-  const isFamilyMember = family.members.some((member) => member.id === user.id);
+  const isMemberOfFamily = family.members.some((member) => member.id === user.id);
   const canEditFamily =
     org.userRole === MemberRole.SUPERADMIN ||
     org.userRole === MemberRole.ADMIN ||
-    isFamilyMember ||
+    isMemberOfFamily ||
     user.id === family.createdByMemberId;
   const canDeleteFamily = org.userRole === MemberRole.SUPERADMIN;
 
@@ -106,7 +106,7 @@ export const FamilyDetails = ({
         </div>
 
         <div className="text-with-link">
-          <p>{isFamilyMember ? t('families.familyMember') : t('families.notFamilyMember')}</p>
+          <p>{isMemberOfFamily ? t('families.familyMember') : t('families.notFamilyMember')}</p>
           {canEditFamily && (
             <Link className="little-button" href={`/families/${family.id}/add-members`}>
               {t('families.manageMembers')}

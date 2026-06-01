@@ -3,7 +3,7 @@ import { prisma } from '../prisma';
 import { ActionValidation, Member } from '../types';
 import { getUser } from '../user/getUser';
 
-export const isOrgSuperAdmin = async (
+export const isSuperAdminFromOrg = async (
   orgId: number,
 ): Promise<{ validation: ActionValidation; user: Member | null }> => {
   const user: Member | null = await getUser();

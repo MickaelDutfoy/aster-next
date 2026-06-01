@@ -212,3 +212,9 @@ export type Transaction = {
   note: string | null;
   category: TransactionCategory;
 };
+
+export type OrganizationPublicPage = {
+  id: number;
+  slug: string;
+  isPublished: boolean;
+};

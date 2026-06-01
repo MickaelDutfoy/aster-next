@@ -1,7 +1,7 @@
 'use server';
 
-import { isFamilyMember } from '@/lib/permissions/isFamilyMember';
-import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
+import { isAdminFromOrg } from '@/lib/permissions/isAdminFromOrg';
+import { isMemberOfFamily } from '@/lib/permissions/isMemberOfFamily';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Member } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
@@ -28,14 +28,14 @@ export const updateFamilyMembers = async (
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
-  const adminGuard = await isOrgAdmin(family.orgId);
+  const adminGuard = await isAdminFromOrg(family.orgId);
 
   let user: Member;
 
   if (adminGuard.validation.ok) {
     user = adminGuard.user as Member;
   } else {
-    const memberGuard = await isFamilyMember(familyId);
+    const memberGuard = await isMemberOfFamily(familyId);
     if (!memberGuard.validation.ok) return memberGuard.validation;
 
     user = memberGuard.user as Member;

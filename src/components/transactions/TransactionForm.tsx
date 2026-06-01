@@ -70,6 +70,7 @@ export const TransactionForm = ({
     }
 
     setIsLoading(true);
+
     try {
       const res = !transaction
         ? newCategory

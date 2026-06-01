@@ -40,6 +40,8 @@ model Animal {
   imageKey            String?
   familyId            Int?         @map("family_id")
   orgId               Int          @map("organization_id")
+  isPubliclyAdoptable Boolean      @default(false)
+  publicDescription   String?
   createdAt           DateTime     @default(now()) @map("created_at")
   createdByMemberId   Int
   updatedAt           DateTime     @updatedAt
@@ -219,6 +221,7 @@ model Organization {
   memberOrganizations   MemberOrganization[]
   transactionCategories TransactionCategory[]
   transactions          Transaction[]
+  publicPage            OrganizationPublicPage?
 
   @@map("organizations")
 }
@@ -267,6 +270,17 @@ model Transaction {
 
   organization Organization        @relation(fields: [orgId], references: [id], onDelete: Cascade)
   category     TransactionCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model OrganizationPublicPage {
+  id          Int      @id @default(autoincrement())
+  orgId       Int      @unique
+  slug        String   @unique
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 }
 
 enum TokenType {

@@ -14,7 +14,7 @@ export const DeniedPage = ({
       {cause === 'error' && <h3>{t('common.errorOccurred')}</h3>}
       {cause === 'refused' && <h3>{t('common.accessDenied')}</h3>}
       {cause === 'treasury' && <h3>{t('transactions.accessDenied')}</h3>}
-      {cause === 'publish' && <h3>{t('publish.soonToCome')}</h3>}
+      {cause === 'publish' && <h3>{t('publish.accessDenied')}</h3>}
     </div>
   );
 };

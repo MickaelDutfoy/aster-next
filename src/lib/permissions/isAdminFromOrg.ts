@@ -3,20 +3,16 @@ import { prisma } from '../prisma';
 import { ActionValidation, Member } from '../types';
 import { getUser } from '../user/getUser';
 
-export const isAllowedToTreasury = async (): Promise<{
-  validation: ActionValidation;
-  orgId: number | null;
-}> => {
+export const isAdminFromOrg = async (
+  orgId: number,
+): Promise<{ validation: ActionValidation; user: Member | null }> => {
   const user: Member | null = await getUser();
-
-  if (!user || !user.selectedOrgId) {
+  if (!user) {
     return {
-      validation: { ok: false, status: 'error', message: 'toasts.notAllowed' },
-      orgId: null,
+      validation: { ok: false, status: 'error', message: 'toasts.noUser' },
+      user: null,
     };
   }
-
-  let orgId = user.selectedOrgId;
 
   const membership = await prisma.memberOrganization.findUnique({
     where: { memberId_orgId: { memberId: user.id, orgId } },
@@ -26,9 +22,9 @@ export const isAllowedToTreasury = async (): Promise<{
   if (membership?.role !== MemberRole.SUPERADMIN && membership?.role !== MemberRole.ADMIN) {
     return {
       validation: { ok: false, status: 'error', message: 'toasts.notAllowed' },
-      orgId: null,
+      user: null,
     };
   }
 
-  return { validation: { ok: true }, orgId };
+  return { validation: { ok: true }, user };
 };
