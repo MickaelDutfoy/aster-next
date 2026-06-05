@@ -94,7 +94,7 @@ export const ManagePublicPage = ({
         <div className="form-tab">
           <p>{t('publish.publicURLNotice')}</p>
           <div className="full-url">
-            <p>https://aster-app.eu/public/</p>
+            <p>{`https://aster-app.eu/page/`}</p>
             <input type="text" name="slug" value={slug} onChange={(e) => setSlug(e.target.value)} />
           </div>
           {(!isValidSlug(slug) || (slugs.includes(slug) && slug !== orgPageDetails?.slug)) && (

@@ -24,6 +24,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/privacy',
   '/install',
   '/discover',
+  '/page',
 ];
 
 const AUTH_PAGES_PREFIXES = [
@@ -32,7 +33,7 @@ const AUTH_PAGES_PREFIXES = [
   '/register',
 ];
 
-const INTRO_BYPASS_PREFIXES = ['/privacy', '/install', '/discover'];
+const INTRO_BYPASS_PREFIXES = ['/privacy', '/install', '/discover', '/page'];
 
 function startsWithOneOf(pathname: string, prefixes: readonly string[]) {
   return prefixes.some((prefix) => pathname.startsWith(prefix));

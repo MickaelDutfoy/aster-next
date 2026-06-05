@@ -1,8 +1,10 @@
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { PublicPageActions } from '@/components/publish/PublicPageActions';
 import { PublicPageContentEditor } from '@/components/publish/PublicPageContentEditor';
+import { getAnimalsInCare } from '@/lib/animals/getAnimalsInCare';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { Member, Organization } from '@/lib/types';
+import { getPublicPageByOrgId } from '@/lib/publish/getPublicPageByOrgId';
+import { AnimalWithoutDetails, Member, Organization, OrganizationPublicPage } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 import { MemberRole } from '@prisma/client';
 
@@ -17,10 +19,13 @@ const Publish = async () => {
     return <DeniedPage cause="publish" />;
   }
 
+  const publicPage: OrganizationPublicPage | null = await getPublicPageByOrgId(org.id);
+  const animalsInCare: AnimalWithoutDetails[] = await getAnimalsInCare(org.id);
+
   return (
     <>
       <PublicPageActions />
-      <PublicPageContentEditor />
+      <PublicPageContentEditor publicPage={publicPage} animals={animalsInCare} />
     </>
   );
 };

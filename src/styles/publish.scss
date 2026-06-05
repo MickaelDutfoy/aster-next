@@ -67,3 +67,67 @@
     align-self: center;
   }
 }
+
+.page-status {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.page-managment-content {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.publish-animals {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+
+  li {
+    list-style: none;
+    border-bottom: 1px solid var(--button);
+
+    .line {
+      display: grid;
+      padding: 3px 0;
+      gap: 10px;
+      grid-template-columns: 4fr auto 1fr;
+      align-items: center;
+
+      .labeled-checkbox {
+        gap: 10px;
+      }
+
+      p {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .action {
+        display: flex;
+        justify-self: end;
+        align-self: center;
+      }
+    }
+
+    .edit-public-desc {
+      margin-bottom: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+
+      textarea {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  li:last-child {
+    border: none;
+  }
+}

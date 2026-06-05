@@ -80,7 +80,10 @@ export type AnimalWithoutDetails = {
   sex: Sex;
   birthDate: Date | null;
   status: AnimalStatus;
-  familyId: number | null;
+  familyId?: number | null;
+  imageKey?: string | null;
+  isPubliclyAdoptable?: boolean;
+  publicDescription?: string | null;
 };
 
 export type AnimalHealthAct = {
@@ -215,6 +218,8 @@ export type Transaction = {
 
 export type OrganizationPublicPage = {
   id: number;
+  orgId: number;
   slug: string;
   isPublished: boolean;
+  publicAnimalSheetFooter?: string;
 };

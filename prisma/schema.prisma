@@ -209,12 +209,13 @@ model Member {
 }
 
 model Organization {
-  id              Int      @id @default(autoincrement())
-  name            String
-  defaultCurrency String
-  description     String?
-  createdAt       DateTime @default(now()) @map("created_at")
-  updatedAt       DateTime @updatedAt
+  id                      Int      @id @default(autoincrement())
+  name                    String
+  defaultCurrency         String
+  description             String?
+  publicAnimalSheetFooter String?
+  createdAt               DateTime @default(now()) @map("created_at")
+  updatedAt               DateTime @updatedAt
 
   animals               Animal[]
   families              Family[]
