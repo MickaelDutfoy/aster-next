@@ -55,7 +55,7 @@ export const updateTransaction = async (
 
     return { ok: true, status: 'success', message: 'toasts.modifySuccess' };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

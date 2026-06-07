@@ -72,7 +72,9 @@
     "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard.",
     "imageUploaded": "L'image a bien été ajoutée.",
     "imageDeleted": "L'image a bien été supprimée.",
-    "publicPageDataSubmitted": "Les informations de votre page publique ont été enregistrées."
+    "publicPageDataSubmitted": "Les informations de votre page publique ont été enregistrées.",
+    "animalPublicDescriptionSubmit": "La description de l'animal a été enregistrée.",
+    "sheetsFooterSubmitted": "La signature de vos fiches a été enregistrée."
   },
   "help": {
     "label": "Aide",
@@ -309,6 +311,12 @@
         "Une date d'entrée en lieu d'accueil ou en période d'essai peut être renseignée sur les fiches animaux. Cela permet de recevoir une notification après quinze jours de quarantaine ou d'essai.",
         "Amélioration de la confidentialité : les adresses e-mail et numéros de téléphone sont désormais masqués aux membres, responsables et administrateurs.",
         "L'adresse détaillée des lieux d'accueil est désormais optionnelle : seule la ville est requise."
+      ],
+      "items160": [
+        "Le module Diffusion est enfin disponible !",
+        "Il s'agit d'une mise à jour ambitieuse vous permettant de créer un mini-site d'adoption se mettant à jour automatiquement avec les données que vous saisissez dans l'application.",
+        "La fonctionnalité évoluera au fil du temps pour mieux répondre aux besoins mais vous pouvez d'ores-et-déjà la tester : les données ne seront pas perdues.",
+        "Vous avez déjà un site pour votre association ? Aster pense à tout : une prochaine mise à jour vous permettra d'intégrer le site construit ici dans votre actuel, sans complexité."
       ]
     }
   },
@@ -563,7 +571,6 @@
     "deleteCategoryWarning": "Attention, cette action va supprimer {count} transaction(s) associée(s)."
   },
   "publish": {
-    "accessDenied": "Seuls les administrateurs et responsables de l'association peuvent utiliser cette fonctionnalité.",
     "managePage": "Paramétrer la page",
     "publicURLNotice": "Adresse de votre page publique Aster :",
     "isSitePublishedNotice": "Page publique active :",
@@ -572,11 +579,17 @@
     "cannotManagePage": "Vous devez d'abord configurer votre page.",
     "onlinePage": "Votre page est en ligne à l'adresse :",
     "offlinePage": "Votre page n'est actuellement pas en ligne.",
-    "editOrgDesc": "La description publique de votre association peut être éditée depuis le profil de celle-ci.",
+    "editOrgDesc": "La description et les coordonnées de l'association peuvent être édités depuis le profil de celle-ci.",
     "publishedLabel": "Adoptable :",
     "descPlaceholder": "Description publique de {name}",
     "footerLabel": "Signature commune de toutes vos fiches publiques :",
-    "footerPlaceholder": "Ex : vos conditions d'adoption, comment vous contacter..."
+    "footerPlaceholder": "Ex : vos conditions d'adoption, comment vous contacter...",
+    "page": {
+      "animalHealthInfo": "Santé",
+      "testPrefix": "Testé(e) ",
+      "animalDescTitle": "À propos de {name}",
+      "contact": "Nous contacter"
+    }
   },
   "members": {
     "ownSheet": "Ceci est votre fiche.",

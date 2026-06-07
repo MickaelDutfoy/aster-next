@@ -17,7 +17,6 @@ const AnimalsPage = async () => {
   if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
   const animals: AnimalWithoutDetails[] = await getAnimalsByOrg(org.id);
-
   const families: FamilyWithoutDetails[] = await getFamiliesByOrg(org.id);
 
   return (

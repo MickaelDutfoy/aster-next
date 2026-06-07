@@ -20,8 +20,6 @@ export const registerTransaction = async (
 
   const { category, transaction } = parseTransactionData(formData);
 
-  console.log(category, transaction);
-
   if (!category || !transaction) {
     return {
       ok: false,
@@ -55,7 +53,7 @@ export const registerTransaction = async (
 
     return { ok: true, status: 'success', message: 'toasts.transactionAdd' };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

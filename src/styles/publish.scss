@@ -68,9 +68,14 @@
   }
 }
 
-.page-status {
-  text-align: center;
-  line-height: 1.5;
+.page-with-share {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  .page-status {
+    text-align: center;
+    line-height: 1.5;
+  }
 }
 
 .page-managment-content {
@@ -78,6 +83,18 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    textarea {
+      width: 100%;
+    }
+  }
 }
 
 .publish-animals {
@@ -97,6 +114,7 @@
       align-items: center;
 
       .labeled-checkbox {
+        user-select: none;
         gap: 10px;
       }
 
@@ -117,11 +135,13 @@
     .edit-public-desc {
       margin-bottom: 5px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: space-around;
+      gap: 5px;
 
       textarea {
+        width: 100%;
         font-size: 0.8rem;
       }
     }

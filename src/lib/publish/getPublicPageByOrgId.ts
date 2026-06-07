@@ -1,7 +1,7 @@
 import { prisma } from '../prisma';
 
 export const getPublicPageByOrgId = async (orgId: number) => {
-  return prisma.organizationPublicPage.findUnique({
+  const publicPage = await prisma.organizationPublicPage.findUnique({
     where: { orgId },
     include: {
       organization: {
@@ -11,4 +11,11 @@ export const getPublicPageByOrgId = async (orgId: number) => {
       },
     },
   });
+
+  if (!publicPage) return null;
+
+  return {
+    ...publicPage,
+    publicAnimalSheetFooter: publicPage.organization.publicAnimalSheetFooter,
+  };
 };

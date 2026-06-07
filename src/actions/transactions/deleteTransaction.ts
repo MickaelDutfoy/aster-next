@@ -18,7 +18,7 @@ export const deleteTransaction = async (transactionId: number): Promise<ActionVa
 
     return { ok: true, status: 'success', message: 'toasts.transactionDelete' };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

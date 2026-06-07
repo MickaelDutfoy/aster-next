@@ -81,6 +81,20 @@ export const OrgForm = ({ org }: { org?: Organization }) => {
         }}
         defaultValue={org?.description ?? ''}
       />
+      <div className="org-contact">
+        <input
+          type="text"
+          name="email"
+          placeholder={t('auth.emailPlaceholder')}
+          defaultValue={org?.email ?? ''}
+        />
+        <input
+          type="text"
+          name="phoneNumber"
+          placeholder={t('auth.register.phonePlaceholder')}
+          defaultValue={org?.phoneNumber ?? ''}
+        />
+      </div>
       <p>{t('organizations.orgCurrLabel')}</p>
       <select name="defaultCurrency" defaultValue={org?.defaultCurrency}>
         {currencies.map((curr) => (

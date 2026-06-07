@@ -35,8 +35,6 @@ export const EditCategories = ({ categories }: { categories: TransactionCategory
   };
 
   const deleteCategory = async (category: TransactionCategory) => {
-    console.log(category);
-
     if (!saveWarning) setSaveWarning(true);
 
     setTransactionsToDelete((prev) => prev + (category.transactionsCount as number));

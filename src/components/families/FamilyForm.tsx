@@ -42,7 +42,6 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
 
     const isMember = formData.has('isMember');
     const contactFullName = formData.get('contactFullName')?.toString().trim();
-    const zip = formData.get('zip')?.toString().trim();
     const city = formData.get('city')?.toString().trim();
 
     if (!contactFullName || !city) {

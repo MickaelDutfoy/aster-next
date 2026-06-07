@@ -10,6 +10,21 @@ export const getPublicPageBySlug = async (slug: string) => {
             where: {
               isPubliclyAdoptable: true,
             },
+            select: {
+              id: true,
+              name: true,
+              species: true,
+              sex: true,
+              color: true,
+              birthDate: true,
+              isNeutered: true,
+              status: true,
+              updatedAt: true,
+              healthActs: true,
+              testEntries: true,
+              imageKey: true,
+              publicDescription: true,
+            },
             orderBy: {
               name: 'asc',
             },

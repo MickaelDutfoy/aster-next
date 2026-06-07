@@ -25,7 +25,14 @@ export const getUserWithOrgs = async (): Promise<Member | null> => {
             role: true,
             status: true,
             organization: {
-              select: { id: true, name: true, description: true, defaultCurrency: true },
+              select: {
+                id: true,
+                name: true,
+                description: true,
+                email: true,
+                phoneNumber: true,
+                defaultCurrency: true,
+              },
             },
           },
         },

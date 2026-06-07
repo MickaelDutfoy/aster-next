@@ -2,8 +2,7 @@
 
 import { deleteAnimalImage } from '@/actions/animals/deleteAnimalImage';
 import { setAnimalImage } from '@/actions/animals/setAnimalImage';
-import { useRouter } from '@/i18n/routing';
-import { Action, Animal } from '@/lib/types';
+import { Action, AnimalWithoutDetails } from '@/lib/types';
 import imageCompression from 'browser-image-compression';
 import { Pencil, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -16,10 +15,9 @@ export const AnimalImage = ({
   animal,
   canEditAnimal,
 }: {
-  animal: Animal;
+  animal: AnimalWithoutDetails;
   canEditAnimal: boolean;
 }) => {
-  const router = useRouter();
   const t = useTranslations();
 
   const inputRef = useRef<HTMLInputElement>(null);

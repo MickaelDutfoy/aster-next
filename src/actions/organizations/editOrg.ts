@@ -11,6 +11,8 @@ export const editOrg = async (orgId: number, formData: FormData): Promise<Action
 
   const name = formData.get('name')?.toString().trim();
   const description = formData.get('description')?.toString().trim();
+  const email = formData.get('email')?.toString().trim();
+  const phoneNumber = formData.get('phoneNumber')?.toString().trim();
   const defaultCurrency = formData.get('defaultCurrency')?.toString().trim();
 
   if (!name || !defaultCurrency) {
@@ -24,7 +26,7 @@ export const editOrg = async (orgId: number, formData: FormData): Promise<Action
   try {
     await prisma.organization.update({
       where: { id: orgId },
-      data: { name, description, defaultCurrency },
+      data: { name, description, email, phoneNumber, defaultCurrency },
     });
 
     revalidatePath(`/organizations/${orgId}`);

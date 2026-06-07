@@ -46,8 +46,6 @@ export const OrgMembersList = ({
     members.some((member) => member.id === user.id && member.role === MemberRole.ADMIN) ||
     isUserSuperAdmin;
 
-  console.log(isUserSuperAdmin);
-
   const membersFiltered: MemberOfOrg[] = isUserPending
     ? members
         .filter((member) => member.role === MemberRole.SUPERADMIN || member.id === user.id)

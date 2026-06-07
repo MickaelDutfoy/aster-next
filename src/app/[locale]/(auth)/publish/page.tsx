@@ -15,17 +15,21 @@ const Publish = async () => {
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
-  if (org.userRole !== MemberRole.SUPERADMIN && org.userRole !== MemberRole.ADMIN) {
-    return <DeniedPage cause="publish" />;
-  }
+  if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
   const publicPage: OrganizationPublicPage | null = await getPublicPageByOrgId(org.id);
-  const animalsInCare: AnimalWithoutDetails[] = await getAnimalsInCare(org.id);
+  const animalsInCare: AnimalWithoutDetails[] = await getAnimalsInCare(user, org);
 
   return (
     <>
-      <PublicPageActions />
-      <PublicPageContentEditor publicPage={publicPage} animals={animalsInCare} />
+      <PublicPageActions
+        canManagePage={org.userRole === MemberRole.SUPERADMIN || org.userRole === MemberRole.ADMIN}
+      />
+      <PublicPageContentEditor
+        canManagePage={org.userRole === MemberRole.SUPERADMIN || org.userRole === MemberRole.ADMIN}
+        publicPage={publicPage}
+        animals={animalsInCare}
+      />
     </>
   );
 };

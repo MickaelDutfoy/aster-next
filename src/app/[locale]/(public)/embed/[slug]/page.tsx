@@ -4,7 +4,7 @@ import { DeniedPage } from '@/components/main/DeniedPage';
 import { PublicPageBody } from '@/components/public-page/PublicPageBody';
 import { getPublicPageBySlug } from '@/lib/publish/getPublicPageBySlug';
 
-const PublicPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const PublicEmbedPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
 
   const publicPage = await getPublicPageBySlug(slug);
@@ -21,9 +21,9 @@ const PublicPage = async ({ params }: { params: Promise<{ slug: string }> }) => 
       animalFooter={publicPage.organization.publicAnimalSheetFooter ?? ''}
       email={publicPage.organization.email ?? ''}
       phoneNumber={publicPage.organization.phoneNumber ?? ''}
-      embed={false}
+      embed={true}
     />
   );
 };
 
-export default PublicPage;
+export default PublicEmbedPage;

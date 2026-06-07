@@ -80,10 +80,29 @@ export type AnimalWithoutDetails = {
   sex: Sex;
   birthDate: Date | null;
   status: AnimalStatus;
+  updatedAt: Date;
+  canUserEdit?: boolean;
   familyId?: number | null;
   imageKey?: string | null;
   isPubliclyAdoptable?: boolean;
   publicDescription?: string | null;
+};
+
+export type AnimalPublicSheet = {
+  id: number;
+  name: string;
+  species: string;
+  sex: Sex;
+  color: string | null;
+  birthDate: Date | null;
+  isNeutered: boolean;
+  status: AnimalStatus;
+  updatedAt: Date;
+  healthActs?: AnimalHealthAct[];
+  weightEntries?: AnimalWeightEntry[];
+  testEntries?: AnimalTestEntry[];
+  imageKey?: string | null;
+  publicDescription: string | null;
 };
 
 export type AnimalHealthAct = {
@@ -147,6 +166,8 @@ export type Organization = {
   id: number;
   name: string;
   description: string | null;
+  email: string | null;
+  phoneNumber: string | null;
   defaultCurrency: string;
   superAdminName?: string;
   userRole?: MemberRole;
@@ -221,5 +242,5 @@ export type OrganizationPublicPage = {
   orgId: number;
   slug: string;
   isPublished: boolean;
-  publicAnimalSheetFooter?: string;
+  publicAnimalSheetFooter?: string | null;
 };
