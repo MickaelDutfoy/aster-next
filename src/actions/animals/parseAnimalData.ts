@@ -116,6 +116,15 @@ export const parseAnimalData = async (formData: FormData) => {
     quarantineDateStart = new Date(animalForm.animalEntryDate);
   }
 
+  const unpublishedStatuses: AnimalStatus[] = [
+    AnimalStatus.DECEASED,
+    AnimalStatus.ADOPTED,
+    AnimalStatus.PERMANENT_PLACEMENT,
+    AnimalStatus.RELEASED,
+  ];
+
+  const shouldUnpublish = unpublishedStatuses.includes(animalForm.status);
+
   const adopterForm = {
     fullName: formData.get('adopterFullName')?.toString().trim(),
     email: formData.get('adopterEmail')?.toString().trim(),
@@ -166,6 +175,9 @@ export const parseAnimalData = async (formData: FormData) => {
     trialDateStart,
     quarantineDateStart,
     familyId: animalFamilyId,
+    ...(shouldUnpublish && {
+      isPubliclyAdoptable: false,
+    }),
   };
 
   return {

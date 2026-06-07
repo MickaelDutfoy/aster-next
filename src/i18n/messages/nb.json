@@ -586,6 +586,7 @@
     "footerLabel": "Felles signatur for alle offentlige profiler:",
     "footerPlaceholder": "f.eks. adopsjonsvilkår eller hvordan man kan kontakte dere...",
     "page": {
+      "trialInProgress": "{name} er for tiden i prøveperiode.",
       "animalHealthInfo": "Helse",
       "testPrefix": "Testet ",
       "animalDescTitle": "Om {name}",

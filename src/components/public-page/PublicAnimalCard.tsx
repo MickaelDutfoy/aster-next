@@ -2,6 +2,7 @@
 
 import { AnimalPublicSheet } from '@/lib/types';
 import { displayAge } from '@/lib/utils/displayAge';
+import { AnimalStatus } from '@prisma/client';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimalImage } from '../animals/AnimalImage';
 import { isCommonSpecies } from '../animals/isCommonSpecies';
@@ -35,6 +36,9 @@ export const PublicAnimalCard = ({
         </span>
       </h3>
       {animal.birthDate && <p>{`${displayAge(animal.birthDate, locale, true)}`}</p>}
+      {animal.status === AnimalStatus.IN_TRIAL && (
+        <p>{t('publish.page.trialInProgress', { name: animal.name })}</p>
+      )}
     </div>
   );
 };

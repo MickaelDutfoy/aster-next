@@ -3,6 +3,7 @@
 import { AnimalPublicSheet } from '@/lib/types';
 import { displayAge } from '@/lib/utils/displayAge';
 import { displayDate } from '@/lib/utils/displayDate';
+import { AnimalStatus } from '@prisma/client';
 import { CircleX } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimalImage } from '../animals/AnimalImage';
@@ -72,6 +73,11 @@ export const PublicAnimalModal = ({
           {animal.birthDate && <span>{`${displayAge(animal.birthDate, locale, true)}`}</span>}
         </h3>
         <AnimalImage animal={animal} canEditAnimal={false} />
+        {animal.status === AnimalStatus.IN_TRIAL && (
+          <section>
+            <p>{t('publish.page.trialInProgress', { name: animal.name })}</p>
+          </section>
+        )}
         <section>
           <h3>{t('publish.page.animalHealthInfo')}</h3>
           {animal.isNeutered ? (

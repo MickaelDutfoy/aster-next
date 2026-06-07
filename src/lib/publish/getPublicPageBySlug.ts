@@ -1,3 +1,4 @@
+import { AnimalStatus } from '@prisma/client';
 import { prisma } from '../prisma';
 
 export const getPublicPageBySlug = async (slug: string) => {
@@ -9,6 +10,7 @@ export const getPublicPageBySlug = async (slug: string) => {
           animals: {
             where: {
               isPubliclyAdoptable: true,
+              status: { in: [AnimalStatus.UNHOSTED, AnimalStatus.FOSTERED, AnimalStatus.IN_TRIAL] },
             },
             select: {
               id: true,

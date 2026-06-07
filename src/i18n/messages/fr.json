@@ -585,6 +585,7 @@
     "footerLabel": "Signature commune de toutes vos fiches publiques :",
     "footerPlaceholder": "Ex : vos conditions d'adoption, comment vous contacter...",
     "page": {
+      "trialInProgress": "{name} est actuellement en période d'essai.",
       "animalHealthInfo": "Santé",
       "testPrefix": "Testé(e) ",
       "animalDescTitle": "À propos de {name}",

@@ -586,6 +586,7 @@
     "footerLabel": "Shared footer for all your public profiles:",
     "footerPlaceholder": "e.g. your adoption requirements, how to contact you...",
     "page": {
+      "trialInProgress": "{name} is currently in a trial period.",
       "animalHealthInfo": "Health",
       "testPrefix": "Tested ",
       "animalDescTitle": "About {name}",
