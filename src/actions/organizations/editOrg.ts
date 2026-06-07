@@ -1,12 +1,12 @@
 'use server';
 
-import { isSuperAdminFromOrg } from '@/lib/permissions/isSuperAdminFromOrg';
+import { isAdminFromOrg } from '@/lib/permissions/isAdminFromOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
 export const editOrg = async (orgId: number, formData: FormData): Promise<ActionValidation> => {
-  const guard = await isSuperAdminFromOrg(orgId);
+  const guard = await isAdminFromOrg(orgId);
   if (!guard.validation.ok) return guard.validation;
 
   const name = formData.get('name')?.toString().trim();
