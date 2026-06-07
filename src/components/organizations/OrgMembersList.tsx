@@ -240,7 +240,7 @@ export const OrgMembersList = ({
       {actionConfirm && (
         <ConfirmModal onCancel={() => setActionConfirm(null)} action={actionConfirm} />
       )}
-      <div className={clsx(isUserSuperAdmin ? 'links-box' : 'links-box disabled')}>
+      <div className={clsx(isUserAdmin ? 'links-box' : 'links-box disabled')}>
         <Link href={`/organizations/${org.id}/delete`} className="little-button">
           {t('organizations.deleteTitle')}
         </Link>

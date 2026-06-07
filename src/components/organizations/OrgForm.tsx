@@ -61,7 +61,7 @@ export const OrgForm = ({ org }: { org?: Organization }) => {
     }
   };
 
-  if (org && org?.userRole !== MemberRole.SUPERADMIN) {
+  if (org && org.userRole !== MemberRole.SUPERADMIN && org.userRole !== MemberRole.ADMIN) {
     return <DeniedPage cause="refused" />;
   }
 
