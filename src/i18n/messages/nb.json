@@ -574,6 +574,7 @@
   "publish": {
     "managePage": "Konfigurer side",
     "publicURLNotice": "Adressen til din offentlige Aster-side:",
+    "displayHealthInfo": "Vis helseinformasjon?",
     "isSitePublishedNotice": "Offentlig side aktiv:",
     "invalidSlug": "Denne sideadressen kan ikke brukes.",
     "validSlug": "Denne sideadressen er gyldig og tilgjengelig.",
@@ -906,6 +907,14 @@
       "notifications": {
         "title": "Varsler",
         "description": "Få nyttige påminnelser uten å måtte følge med på alt hele tiden."
+      },
+      "publish": {
+        "title": "Publisering",
+        "description": "Konfigurer et nettsted for dyrene dine som er tilgjengelige for adopsjon, direkte fra mobilen."
+      },
+      "public": {
+        "title": "Offentlig side",
+        "description": "Organisasjonens nettsted holdes oppdatert ved å bruke data direkte fra appen."
       }
     },
     "screenshots": {
@@ -925,6 +934,14 @@
       "notifications": {
         "alt": "Varsler",
         "caption": "Viktige påminnelser kommer til riktig tid."
+      },
+      "publish": {
+        "alt": "Publisering",
+        "caption": "Publiser dyrene dine med bare noen få klikk."
+      },
+      "public": {
+        "alt": "Offentlig side",
+        "caption": "Nettstedet ditt er tilgjengelig for alle, både på datamaskin og mobil."
       }
     },
     "philosophy": {

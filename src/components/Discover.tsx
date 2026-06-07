@@ -59,6 +59,16 @@ export default async function Discover({ locale }: { locale: Language }) {
               <h3>{t('discover.features.notifications.title')}</h3>
               <p>{t('discover.features.notifications.description')}</p>
             </article>
+
+            <article className="discover-card">
+              <h3>{t('discover.features.publish.title')}</h3>
+              <p>{t('discover.features.publish.description')}</p>
+            </article>
+
+            <article className="discover-card">
+              <h3>{t('discover.features.public.title')}</h3>
+              <p>{t('discover.features.public.description')}</p>
+            </article>
           </div>
         </section>
 
@@ -99,6 +109,22 @@ export default async function Discover({ locale }: { locale: Language }) {
                 height={780}
               />
               <figcaption>{t('discover.screenshots.notifications.caption')}</figcaption>
+            </figure>
+            <figure className="discover-screenshot-card">
+              <img
+                src={`/screenshots/publish_${locale}.png`}
+                alt={t('discover.screenshots.publish.alt')}
+                height={780}
+              />
+              <figcaption>{t('discover.screenshots.publish.caption')}</figcaption>
+            </figure>
+            <figure className="discover-screenshot-card">
+              <img
+                src={`/screenshots/public_${locale}.png`}
+                alt={t('discover.screenshots.public.alt')}
+                height={780}
+              />
+              <figcaption>{t('discover.screenshots.public.caption')}</figcaption>
             </figure>
           </div>
         </section>

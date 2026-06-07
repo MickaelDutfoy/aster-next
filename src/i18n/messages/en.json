@@ -574,6 +574,7 @@
   "publish": {
     "managePage": "Configure page",
     "publicURLNotice": "Your Aster public page URL:",
+    "displayHealthInfo": "Display health information?",
     "isSitePublishedNotice": "Public page enabled:",
     "invalidSlug": "This page address cannot be used.",
     "validSlug": "This page address is valid and available.",
@@ -906,6 +907,14 @@
       "notifications": {
         "title": "Notifications",
         "description": "Receive useful reminders without having to monitor everything constantly."
+      },
+      "publish": {
+        "title": "Publishing",
+        "description": "Configure a website for your animals available for adoption, directly from your mobile."
+      },
+      "public": {
+        "title": "Public page",
+        "description": "Your organization's website stays up to date by using data directly from the app."
       }
     },
     "screenshots": {
@@ -925,6 +934,14 @@
       "notifications": {
         "alt": "Notifications",
         "caption": "Important reminders arrive at the right time."
+      },
+      "publish": {
+        "alt": "Publishing",
+        "caption": "Publish your animals in just a few clicks."
+      },
+      "public": {
+        "alt": "Public page",
+        "caption": "Your website is accessible to everyone, on desktop and mobile."
       }
     },
     "philosophy": {

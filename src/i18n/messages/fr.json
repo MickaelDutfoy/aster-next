@@ -906,6 +906,14 @@
       "notifications": {
         "title": "Notifications",
         "description": "Recevez des rappels utiles sans avoir à tout surveiller en permanence."
+      },
+      "publish": {
+        "title": "Diffusion",
+        "description": "Configurez un site pour vos animaux à l'adoption, directement depuis votre mobile."
+      },
+      "public": {
+        "title": "Page publique",
+        "description": "Le site de votre association reste à jour en utilisant directement les données de l'app."
       }
     },
     "screenshots": {
@@ -925,6 +933,14 @@
       "notifications": {
         "alt": "Notifications",
         "caption": "Les rappels importants arrivent au bon moment."
+      },
+      "publish": {
+        "alt": "Diffusion",
+        "caption": "Vos animaux sont diffusés en quelques clics."
+      },
+      "public": {
+        "alt": "Page publique",
+        "caption": "Votre site est accessible à tous, sur ordinateur et sur mobile."
       }
     },
     "philosophy": {
