@@ -240,11 +240,17 @@ export const OrgMembersList = ({
       {actionConfirm && (
         <ConfirmModal onCancel={() => setActionConfirm(null)} action={actionConfirm} />
       )}
-      <div className={clsx(isUserAdmin ? 'links-box' : 'links-box disabled')}>
-        <Link href={`/organizations/${org.id}/delete`} className="little-button">
+      <div className="links-box">
+        <Link
+          href={`/organizations/${org.id}/delete`}
+          className={'little-button' + clsx(!isUserSuperAdmin && ' disabled')}
+        >
           {t('organizations.deleteTitle')}
         </Link>
-        <Link href={`/organizations/${org.id}/edit`} className="little-button">
+        <Link
+          href={`/organizations/${org.id}/edit`}
+          className={'little-button' + clsx(!isUserAdmin && ' disabled')}
+        >
           {t('organizations.editInfoTitle')}
         </Link>
       </div>
