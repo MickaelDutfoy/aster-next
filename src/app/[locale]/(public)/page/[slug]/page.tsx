@@ -18,7 +18,8 @@ const PublicPage = async ({ params }: { params: Promise<{ slug: string }> }) => 
       title={publicPage.organization.name}
       description={publicPage.organization.description ?? ''}
       animals={publicPage.organization.animals}
-      animalFooter={publicPage.organization.publicAnimalSheetFooter ?? ''}
+      animalFooter={publicPage.publicAnimalSheetFooter ?? ''}
+      displayHealthInfo={publicPage.displayHealthInfo}
       email={publicPage.organization.email ?? ''}
       phoneNumber={publicPage.organization.phoneNumber ?? ''}
       embed={false}

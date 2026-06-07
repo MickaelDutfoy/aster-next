@@ -573,6 +573,7 @@
   "publish": {
     "managePage": "Paramétrer la page",
     "publicURLNotice": "Adresse de votre page publique Aster :",
+    "displayHealthInfo": "Afficher les infos de santé ?",
     "isSitePublishedNotice": "Page publique active :",
     "invalidSlug": "Ce nom de domaine ne peut pas être utilisé.",
     "validSlug": "Ce nom de domaine est valide et disponible.",

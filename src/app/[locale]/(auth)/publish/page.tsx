@@ -20,6 +20,8 @@ const Publish = async () => {
   const publicPage: OrganizationPublicPage | null = await getPublicPageByOrgId(org.id);
   const animalsInCare: AnimalWithoutDetails[] = await getAnimalsInCare(user, org);
 
+  if (!publicPage) return <DeniedPage cause="error" />;
+
   return (
     <>
       <PublicPageActions

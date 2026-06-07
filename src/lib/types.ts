@@ -243,4 +243,5 @@ export type OrganizationPublicPage = {
   slug: string;
   isPublished: boolean;
   publicAnimalSheetFooter?: string | null;
+  displayHealthInfo: boolean;
 };

@@ -14,9 +14,9 @@ export const setSheetsFooter = async (footer: string): Promise<ActionValidation>
   const orgId = guard.orgId;
 
   try {
-    await prisma.organization.update({
+    await prisma.organizationPublicPage.update({
       where: {
-        id: orgId,
+        orgId,
       },
       data: {
         publicAnimalSheetFooter: footer,

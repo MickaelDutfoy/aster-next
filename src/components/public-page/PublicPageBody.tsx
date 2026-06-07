@@ -13,6 +13,7 @@ export const PublicPageBody = ({
   description,
   animals,
   animalFooter,
+  displayHealthInfo,
   email,
   phoneNumber,
   embed,
@@ -21,6 +22,7 @@ export const PublicPageBody = ({
   description: string;
   animals: AnimalPublicSheet[];
   animalFooter: string;
+  displayHealthInfo: boolean;
   email: string;
   phoneNumber: string;
   embed: boolean;
@@ -48,6 +50,7 @@ export const PublicPageBody = ({
         <PublicAnimalModal
           animal={openedAnimal}
           animalFooter={animalFooter}
+          displayHealthInfo={displayHealthInfo}
           onClose={() => setOpenedAnimalId(null)}
         />
       )}

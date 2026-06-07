@@ -209,15 +209,14 @@ model Member {
 }
 
 model Organization {
-  id                      Int      @id @default(autoincrement())
-  name                    String
-  defaultCurrency         String
-  description             String?
-  email                   String?
-  phoneNumber             String?
-  publicAnimalSheetFooter String?
-  createdAt               DateTime @default(now()) @map("created_at")
-  updatedAt               DateTime @updatedAt
+  id              Int      @id @default(autoincrement())
+  name            String
+  defaultCurrency String
+  description     String?
+  email           String?
+  phoneNumber     String?
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt
 
   animals               Animal[]
   families              Family[]
@@ -276,12 +275,14 @@ model Transaction {
 }
 
 model OrganizationPublicPage {
-  id          Int      @id @default(autoincrement())
-  orgId       Int      @unique
-  slug        String   @unique
-  isPublished Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                      Int      @id @default(autoincrement())
+  orgId                   Int      @unique
+  slug                    String   @unique
+  isPublished             Boolean  @default(false)
+  displayHealthInfo       Boolean  @default(false)
+  publicAnimalSheetFooter String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
 
   organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
 }

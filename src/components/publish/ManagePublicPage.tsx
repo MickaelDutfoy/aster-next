@@ -104,6 +104,14 @@ export const ManagePublicPage = ({
             <p className="valid-slug">{t('publish.validSlug')}</p>
           )}
           <div className="labeled-checkbox">
+            <p>{t('publish.displayHealthInfo')}</p>
+            <input
+              type="checkbox"
+              name="isPublished"
+              defaultChecked={orgPageDetails?.displayHealthInfo ?? false}
+            />
+          </div>
+          <div className="labeled-checkbox">
             <p>{t('publish.isSitePublishedNotice')}</p>
             <input
               type="checkbox"
@@ -112,6 +120,7 @@ export const ManagePublicPage = ({
             />
           </div>
         </div>
+
         {saveWarning && <p className="save-warning">{t('common.saveWarning')}</p>}
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
           {isLoading ? t('common.loading') : t('common.submit')}

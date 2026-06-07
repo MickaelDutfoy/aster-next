@@ -11,10 +11,12 @@ import { AnimalImage } from '../animals/AnimalImage';
 export const PublicAnimalModal = ({
   animal,
   animalFooter,
+  displayHealthInfo,
   onClose,
 }: {
   animal: AnimalPublicSheet;
   animalFooter: string;
+  displayHealthInfo: boolean;
   onClose: () => void;
 }) => {
   const t = useTranslations();
@@ -78,49 +80,48 @@ export const PublicAnimalModal = ({
             <p>{t('publish.page.trialInProgress', { name: animal.name })}</p>
           </section>
         )}
-        <section>
-          <h3>{t('publish.page.animalHealthInfo')}</h3>
-          {animal.isNeutered ? (
-            <p>{t('animals.neuteredSuffix')}.</p>
-          ) : (
-            <p>{t('animals.notNeuteredSuffix')}.</p>
-          )}
-          {hasHealthActs && (
-            <div className="public-health-section">
-              {lastVaxAct && (
-                <p>
-                  {t('animals.lastVaxLabel')}
-                  {displayDate(lastVaxAct.date)}
-                  {lastVaxAct.isFirst ? ' (primo)' : ''}.
-                </p>
-              )}
-
-              {lastDewormAct && (
-                <p>
-                  {t('animals.lastDewormLabel')} {displayDate(lastDewormAct.date)}.
-                </p>
-              )}
-
-              {lastAntifleaAct && (
-                <p>
-                  {t('animals.lastFleaTreatmentLabel')} {displayDate(lastAntifleaAct.date)}.
-                </p>
-              )}
-            </div>
-          )}
-
-          {hasTests && (
-            <div className="public-tests-section">
-              {latestTests.map((test) => (
-                <p key={`${test.testName}-${test.date}`}>
-                  {t('publish.page.testPrefix')}
-                  {test.testName}
-                  {test.result === 'NEGATIVE' ? '-' : '+'} le {displayDate(test.date)}.
-                </p>
-              ))}
-            </div>
-          )}
-        </section>
+        {displayHealthInfo && (
+          <section>
+            <h3>{t('publish.page.animalHealthInfo')}</h3>
+            {animal.isNeutered ? (
+              <p>{t('animals.neuteredSuffix')}.</p>
+            ) : (
+              <p>{t('animals.notNeuteredSuffix')}.</p>
+            )}
+            {hasHealthActs && (
+              <div className="public-health-section">
+                {lastVaxAct && (
+                  <p>
+                    {t('animals.lastVaxLabel')}
+                    {displayDate(lastVaxAct.date)}
+                    {lastVaxAct.isFirst ? ' (primo)' : ''}.
+                  </p>
+                )}
+                {lastDewormAct && (
+                  <p>
+                    {t('animals.lastDewormLabel')} {displayDate(lastDewormAct.date)}.
+                  </p>
+                )}
+                {lastAntifleaAct && (
+                  <p>
+                    {t('animals.lastFleaTreatmentLabel')} {displayDate(lastAntifleaAct.date)}.
+                  </p>
+                )}
+              </div>
+            )}
+            {hasTests && (
+              <div className="public-tests-section">
+                {latestTests.map((test) => (
+                  <p key={`${test.testName}-${test.date}`}>
+                    {t('publish.page.testPrefix')}
+                    {test.testName}
+                    {test.result === 'NEGATIVE' ? '-' : '+'} le {displayDate(test.date)}.
+                  </p>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
         <section>
           <h3>{t('publish.page.animalDescTitle', { name: animal.name })}</h3>
           <p className="description">{animal.publicDescription}</p>

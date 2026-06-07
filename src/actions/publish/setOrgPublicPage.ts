@@ -14,6 +14,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
   const orgId = guard.orgId;
 
   const slug = formData.get('slug')?.toString().trim();
+  const displayHealthInfo = formData.has('isPublished');
   const isPublished = formData.has('isPublished');
 
   if (!slug) {
@@ -31,11 +32,13 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
       },
       update: {
         slug,
+        displayHealthInfo,
         isPublished,
       },
       create: {
         orgId,
         slug,
+        displayHealthInfo,
         isPublished,
       },
     });
