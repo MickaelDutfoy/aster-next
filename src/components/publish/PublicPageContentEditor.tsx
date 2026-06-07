@@ -6,7 +6,7 @@ import { setSheetsFooter } from '@/actions/publish/setSheetsFooter';
 import { Link } from '@/i18n/routing';
 import { AnimalWithoutDetails, OrganizationPublicPage } from '@/lib/types';
 import clsx from 'clsx';
-import { SquareArrowRight } from 'lucide-react';
+import { Copy, SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
@@ -105,6 +105,12 @@ export const PublicPageContentEditor = ({
     return <p>{t('publish.cannotManagePage')}</p>;
   }
 
+  const embedCode = `<iframe
+  src="https://aster-app.eu/embed/${publicPage.slug}"
+  width="100%"
+  loading="lazy"
+></iframe>`;
+
   return (
     <>
       {publicPage.isPublished ? (
@@ -122,6 +128,28 @@ export const PublicPageContentEditor = ({
       ) : (
         <p className="page-status">{t('publish.offlinePage')}</p>
       )}
+
+      {publicPage.isPublished && (
+        <div className="page-with-share">
+          <div className="page-status">
+            <p>{t('publish.iframe')}</p>
+            <pre>
+              <code>{embedCode}</code>
+            </pre>
+          </div>
+
+          <button
+            className="link"
+            onClick={() => {
+              navigator.clipboard.writeText(embedCode);
+              showToast({ status: 'success', message: t('common.copiedToClipboard') });
+            }}
+          >
+            <Copy size={26} />
+          </button>
+        </div>
+      )}
+
       <div className="page-managment-content">
         {canManagePage && (
           <div className="text-with-link">
