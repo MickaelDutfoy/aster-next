@@ -1,7 +1,7 @@
 @use "vars";
 
 body {
-  max-width: 1024px;
+  max-width: 1440px;
 }
 
 .public-page {
@@ -23,7 +23,7 @@ body {
 
 .box {
   padding: 10px;
-  max-width: 1024px;
+  max-width: 1440px;
   margin: 10px auto;
   background-color: var(--app-bg);
   color: var(--text);
@@ -53,7 +53,7 @@ main {
 
 .animal-card {
   cursor: pointer;
-  width: 45%;
+  width: 30%;
   min-width: 300px;
   margin: 5px;
   padding: 10px;
