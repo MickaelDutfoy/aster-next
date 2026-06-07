@@ -71,12 +71,16 @@
     "transactionDelete": "Transaksjonen er slettet.",
     "tooManyAttempts": "For mange forsøk. Vennligst prøv igjen senere.",
     "imageUploaded": "Bildet ble lagt til.",
-    "imageDeleted": "Bildet ble slettet."
+    "imageDeleted": "Bildet ble slettet.",
+    "publicPageDataSubmitted": "Informasjonen på den offentlige siden er lagret.",
+    "animalPublicDescriptionSubmit": "Beskrivelsen av dyret er lagret.",
+    "sheetsFooterSubmitted": "Signaturen på profilene dine er lagret."
   },
   "help": {
     "label": "Hjelp",
     "animals": "Denne seksjonen lar deg registrere dyr med generell informasjon, helseopplysninger og adopsjonsdata.\n\nHvert dyr kan settes som \"i et omsorgssted\" eller i \"permanent plassering\" og knyttes til et sted.\n\nDu kan deretter filtrere dyr etter sted eller status (adoptert, i prøveperiode, osv.).",
-    "families": "Denne seksjonen lar deg definere omsorgssteder: det kan være tilfluktssteder, kattehjem, fosterhjem osv.\n\nFor hvert sted kan du knytte én eller flere medlemmer. De kan da redigere dyrene tilknyttet stedet og motta varsler om dem."
+    "families": "Denne seksjonen lar deg definere omsorgssteder: det kan være tilfluktssteder, kattehjem, fosterhjem osv.\n\nFor hvert sted kan du knytte én eller flere medlemmer. De kan da redigere dyrene tilknyttet stedet og motta varsler om dem.",
+    "publish": "Kun dyr med statusen \"Venter på plassering\", \"I et omsorgssted\" eller \"I prøveperiode\" kan markeres som tilgjengelige for adopsjon.\n\nFor å bli publisert må dyrene ha et bilde og en beskrivelse. Disse kan redigeres ved å klikke på navnet deres.\n\nDu kan åpne dyreprofilen for å redigere informasjon og bilde ved hjelp av pilen."
   },
   "intro": {
     "selectLanguage": "Velg språk:",
@@ -308,6 +312,12 @@
         "Det er nå mulig å registrere dato for innflytting til et omsorgssted eller start på en prøveperiode på dyreprofiler. Dette gjør det mulig å motta varsler etter femten dager i karantene eller prøveperiode.",
         "Forbedret personvern: e-postadresser og telefonnumre er nå skjult for medlemmer, ansvarlige og administratorer.",
         "Detaljert adresse for omsorgssteder er nå valgfri: kun byen er påkrevd."
+      ],
+      "items160": [
+        "Publiseringsmodulen er endelig tilgjengelig!",
+        "Denne ambisiøse oppdateringen lar deg opprette en adopsjons-miniside som automatisk holdes oppdatert med dataene du registrerer i applikasjonen.",
+        "Funksjonen vil utvikles videre over tid for å møte behovene bedre, men du kan allerede begynne å bruke den i dag: dataene dine vil ikke gå tapt.",
+        "Har organisasjonen allerede et nettsted? Aster har tenkt på det også: en kommende oppdatering vil gjøre det mulig å integrere siden som bygges her i den eksisterende nettsiden deres, uten unødvendig kompleksitet."
       ]
     }
   },
@@ -562,7 +572,25 @@
     "deleteCategoryWarning": "Advarsel: denne handlingen vil slette {count} tilknyttede transaksjon(er)."
   },
   "publish": {
-    "soonToCome": "Snart vil du kunne opprette en miniside og publisere dyr til adopsjon fra denne modulen."
+    "managePage": "Konfigurer side",
+    "publicURLNotice": "Adressen til din offentlige Aster-side:",
+    "isSitePublishedNotice": "Offentlig side aktiv:",
+    "invalidSlug": "Denne sideadressen kan ikke brukes.",
+    "validSlug": "Denne sideadressen er gyldig og tilgjengelig.",
+    "cannotManagePage": "Du må konfigurere siden først.",
+    "onlinePage": "Siden din er tilgjengelig på:",
+    "offlinePage": "Siden din er ikke tilgjengelig for øyeblikket.",
+    "editOrgDesc": "Beskrivelse og kontaktinformasjon for organisasjonen kan redigeres fra organisasjonsprofilen.",
+    "publishedLabel": "Til adopsjon:",
+    "descPlaceholder": "Offentlig beskrivelse av {name}",
+    "footerLabel": "Felles signatur for alle offentlige profiler:",
+    "footerPlaceholder": "f.eks. adopsjonsvilkår eller hvordan man kan kontakte dere...",
+    "page": {
+      "animalHealthInfo": "Helse",
+      "testPrefix": "Testet ",
+      "animalDescTitle": "Om {name}",
+      "contact": "Kontakt oss"
+    }
   },
   "members": {
     "ownSheet": "Dette er profilen din.",

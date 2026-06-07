@@ -71,12 +71,16 @@
     "transactionDelete": "La transaction a bien été supprimée.",
     "tooManyAttempts": "Trop de tentatives. Veuillez réessayer plus tard.",
     "imageUploaded": "L'image a bien été ajoutée.",
-    "imageDeleted": "L'image a bien été supprimée."
+    "imageDeleted": "L'image a bien été supprimée.",
+    "publicPageDataSubmitted": "Les informations de votre page publique ont été enregistrées.",
+    "animalPublicDescriptionSubmit": "La description de l'animal a été enregistrée.",
+    "sheetsFooterSubmitted": "La signature de vos fiches a été enregistrée."
   },
   "help": {
     "label": "Aide",
     "animals": "Cette section vous permet d'enregistrer vos animaux avec leurs informations générales, de santé et d'adoption.\n\nChaque animal peut être défini « dans un lieu d'accueil » ou en « placement permanent » et affecté à un lieu.\n\nVous pouvez ensuite filtrer les animaux par lieu, ou par statut (adopté, en période d'essai, etc.).",
-    "families": "Cette section vous permet de définir des lieux d'accueil : il peut s'agir de refuges, de chatteries, de familles d'accueil...\n\nSur chaque lieu, vous pouvez affecter un ou plusieurs membres qui auront alors la possibilité d'éditer les fiches des animaux du lieu et de recevoir des notifications à leur sujet."
+    "families": "Cette section vous permet de définir des lieux d'accueil : il peut s'agir de refuges, de chatteries, de familles d'accueil...\n\nSur chaque lieu, vous pouvez affecter un ou plusieurs membres qui auront alors la possibilité d'éditer les fiches des animaux du lieu et de recevoir des notifications à leur sujet.",
+    "publish": "Seuls les animaux ayant un statut \"En attente\", \"Dans un lieu d'accueil\" ou \"En période d'essai\" peuvent être déclarés à l'adoption.\n\nPour être publiés, les animaux doivent avoir une photo et une description, que vous pouvez éditer en cliquant sur leur nom.\n\nVous pouvez accéder à la fiche de l'animal pour éditer ses informations et sa photo à l'aide de la flèche."
   },
   "intro": {
     "selectLanguage": "Sélectionnez la langue :",
@@ -307,6 +311,12 @@
         "Une date d'entrée en lieu d'accueil ou en période d'essai peut être renseignée sur les fiches animaux. Cela permet de recevoir une notification après quinze jours de quarantaine ou d'essai.",
         "Amélioration de la confidentialité : les adresses e-mail et numéros de téléphone sont désormais masqués aux membres, responsables et administrateurs.",
         "L'adresse détaillée des lieux d'accueil est désormais optionnelle : seule la ville est requise."
+      ],
+      "items160": [
+        "Le module Diffusion est enfin disponible !",
+        "Il s'agit d'une mise à jour ambitieuse vous permettant de créer un mini-site d'adoption se mettant à jour automatiquement avec les données que vous saisissez dans l'application.",
+        "La fonctionnalité évoluera au fil du temps pour mieux répondre aux besoins mais vous pouvez d'ores-et-déjà la tester : les données ne seront pas perdues.",
+        "Vous avez déjà un site pour votre association ? Aster pense à tout : une prochaine mise à jour vous permettra d'intégrer le site construit ici dans votre actuel, sans complexité."
       ]
     }
   },
@@ -561,7 +571,25 @@
     "deleteCategoryWarning": "Attention, cette action va supprimer {count} transaction(s) associée(s)."
   },
   "publish": {
-    "soonToCome": "Prochainement, vous pourrez créer un mini-site et diffuser vos animaux à l'adoption depuis ce module."
+    "managePage": "Paramétrer la page",
+    "publicURLNotice": "Adresse de votre page publique Aster :",
+    "isSitePublishedNotice": "Page publique active :",
+    "invalidSlug": "Ce nom de domaine ne peut pas être utilisé.",
+    "validSlug": "Ce nom de domaine est valide et disponible.",
+    "cannotManagePage": "Vous devez d'abord configurer votre page.",
+    "onlinePage": "Votre page est en ligne à l'adresse :",
+    "offlinePage": "Votre page n'est actuellement pas en ligne.",
+    "editOrgDesc": "La description et les coordonnées de l'association peuvent être édités depuis le profil de celle-ci.",
+    "publishedLabel": "Adoptable :",
+    "descPlaceholder": "Description publique de {name}",
+    "footerLabel": "Signature commune de toutes vos fiches publiques :",
+    "footerPlaceholder": "Ex : vos conditions d'adoption, comment vous contacter...",
+    "page": {
+      "animalHealthInfo": "Santé",
+      "testPrefix": "Testé(e) ",
+      "animalDescTitle": "À propos de {name}",
+      "contact": "Nous contacter"
+    }
   },
   "members": {
     "ownSheet": "Ceci est votre fiche.",

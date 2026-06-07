@@ -1,6 +1,6 @@
 'use server';
 
-import { isAllowedToTreasury } from '@/lib/permissions/isAllowedToTreasury';
+import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, TransactionCategory } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache';
 export const updateTransactionCategories = async (
   categories: TransactionCategory[],
 ): Promise<ActionValidation> => {
-  const guard = await isAllowedToTreasury();
+  const guard = await isOrgAdmin();
   if (!guard.validation.ok) return guard.validation;
   if (!guard.orgId) {
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
@@ -58,7 +58,7 @@ export const updateTransactionCategories = async (
 
     return { ok: true, status: 'success', message: 'toasts.modifySuccess' };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 };

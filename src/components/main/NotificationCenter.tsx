@@ -39,7 +39,6 @@ export const NotificationCenter = ({
 
       if (url.startsWith('/animals/')) {
         const org = await getAnimalOrg(Number(url.split('/')[2]));
-        console.log(org);
 
         if (!org) {
           showToast({

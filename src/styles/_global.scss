@@ -1,4 +1,4 @@
-@use 'vars';
+@use "vars";
 
 * {
   padding: 0;
@@ -20,8 +20,7 @@ body {
   margin: 0 auto;
   min-height: 100vh;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)),
-    url('../img/aster.jpg');
+    linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85)), url("../img/aster.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -167,20 +166,20 @@ a:active {
   justify-content: space-between;
   align-items: center;
 
-  .share-button {
-    color: var(--link);
-    padding-top: 6px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-  }
-
   div {
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
     gap: 5px;
   }
+}
+
+.share-button {
+  color: var(--link);
+  padding-top: 6px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
 }
 
 h1,
@@ -216,11 +215,12 @@ h3 {
 
 .disabled {
   opacity: 0.3;
+  user-select: none;
   pointer-events: none;
   cursor: default;
 }
 
-[aria-busy='true'] {
+[aria-busy="true"] {
   opacity: 0.6;
   pointer-events: none;
 }
@@ -230,7 +230,7 @@ h3 {
   margin: 20px;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   cursor: pointer;
   transform: scale(1.4);
   accent-color: var(--button);

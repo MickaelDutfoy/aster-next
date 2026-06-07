@@ -1,7 +1,7 @@
 'use server';
 
 import { sendEmail } from '@/lib/email';
-import { isOrgAdmin } from '@/lib/permissions/isOrgAdmin';
+import { isAdminFromOrg } from '@/lib/permissions/isAdminFromOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
@@ -15,7 +15,7 @@ export const approveOrgRequest = async (
 ): Promise<ActionValidation> => {
   const t = await getTranslations({ locale, namespace: 'emails' });
 
-  const guard = await isOrgAdmin(orgId);
+  const guard = await isAdminFromOrg(orgId);
   if (!guard.validation.ok) return guard.validation;
 
   const org = await prisma.organization.findUnique({

@@ -23,14 +23,14 @@ const Transactions = async () => {
   const categories: TransactionCategory[] = await getTransactionCategoriesOfOrg(org.id);
 
   return (
-    <div>
+    <>
       <TransactionsActions />
       <TransactionsList
         transactions={transactions}
         categories={categories}
         displayCurrency={org.defaultCurrency}
       />
-    </div>
+    </>
   );
 };
 

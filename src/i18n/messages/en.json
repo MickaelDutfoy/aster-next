@@ -71,12 +71,16 @@
     "transactionDelete": "The transaction has been successfully deleted.",
     "tooManyAttempts": "Too many attempts. Please try again later.",
     "imageUploaded": "The image has been uploaded.",
-    "imageDeleted": "The image has been deleted."
+    "imageDeleted": "The image has been deleted.",
+    "publicPageDataSubmitted": "Your public page information has been saved.",
+    "animalPublicDescriptionSubmit": "The animal description has been saved.",
+    "sheetsFooterSubmitted": "Your profile footer has been saved."
   },
   "help": {
     "label": "Help",
     "animals": "This section allows you to register your animals with their general, health, and adoption information.\n\nEach animal can be set as \"in a foster location\" or in \"permanent placement\" and assigned to a location.\n\nYou can then filter animals by location or by status (adopted, in trial period, etc.).",
-    "families": "This section allows you to define foster locations: these can be shelters, catteries, foster families, etc.\n\nFor each location, you can assign one or more members. They will then be able to edit the animals assigned to that location and receive notifications about them."
+    "families": "This section allows you to define foster locations: these can be shelters, catteries, foster families, etc.\n\nFor each location, you can assign one or more members. They will then be able to edit the animals assigned to that location and receive notifications about them.",
+    "publish": "Only animals with the status \"Waiting for placement\", \"In a foster location\", or \"In trial period\" can be marked as available for adoption.\n\nTo be published, animals must have a photo and a description, which you can edit by clicking on their name.\n\nYou can access the animal profile to edit its information and photo using the arrow."
   },
   "intro": {
     "selectLanguage": "Select language:",
@@ -308,6 +312,12 @@
         "A foster location entry date or trial period start date can now be recorded on animal profiles. This allows notifications to be sent after fifteen days of quarantine or trial period.",
         "Improved privacy: email addresses and phone numbers are now hidden from members, managers, and administrators.",
         "The detailed address of foster locations is now optional: only the city is required."
+      ],
+      "items160": [
+        "The Publishing module is finally available!",
+        "This ambitious update allows you to create an adoption mini-site that automatically stays in sync with the data you enter in the application.",
+        "The feature will continue to evolve over time to better meet your needs, but you can already start using it today: your data will not be lost.",
+        "Already have a website for your organization? Aster has you covered: a future update will allow you to integrate the site created here into your existing one, without complexity."
       ]
     }
   },
@@ -562,7 +572,25 @@
     "deleteCategoryWarning": "Warning: this action will delete {count} associated transaction(s)."
   },
   "publish": {
-    "soonToCome": "Soon, you will be able to create a mini website and publish your adoptable animals from this module."
+    "managePage": "Configure page",
+    "publicURLNotice": "Your Aster public page URL:",
+    "isSitePublishedNotice": "Public page enabled:",
+    "invalidSlug": "This page address cannot be used.",
+    "validSlug": "This page address is valid and available.",
+    "cannotManagePage": "You must configure your page first.",
+    "onlinePage": "Your page is available at:",
+    "offlinePage": "Your page is currently offline.",
+    "editOrgDesc": "The organization's description and contact details can be edited from its profile.",
+    "publishedLabel": "Adoptable:",
+    "descPlaceholder": "Public description of {name}",
+    "footerLabel": "Shared footer for all your public profiles:",
+    "footerPlaceholder": "e.g. your adoption requirements, how to contact you...",
+    "page": {
+      "animalHealthInfo": "Health",
+      "testPrefix": "Tested ",
+      "animalDescTitle": "About {name}",
+      "contact": "Contact us"
+    }
   },
   "members": {
     "ownSheet": "This is your profile.",

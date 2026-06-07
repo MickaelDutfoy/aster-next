@@ -11,6 +11,8 @@ export const getMatchingOrgs = async (input: string): Promise<Organization[]> =>
       id: true,
       name: true,
       description: true,
+      email: true,
+      phoneNumber: true,
       defaultCurrency: true,
       memberOrganizations: {
         where: { role: MemberRole.SUPERADMIN },
@@ -33,6 +35,8 @@ export const getMatchingOrgs = async (input: string): Promise<Organization[]> =>
       id: org.id,
       name: org.name,
       description: org.description,
+      email: org.email,
+      phoneNumber: org.phoneNumber,
       defaultCurrency: org.defaultCurrency,
       superAdminName: admin,
     };
