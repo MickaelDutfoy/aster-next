@@ -95,6 +95,16 @@ Transactions can be filtered by year and category to simplify financial monitori
 
 The module is not intended to replace accounting software, but to offer a simple and interactive alternative to the spreadsheets commonly used by animal welfare organizations.
 
+## Public Pages
+
+Aster provides a Public Pages module that allows organizations to publish adoptable animals on a dedicated public website.
+
+Organizations can choose which animals are publicly visible, write adoption-focused descriptions, and automatically display information already available in the application, such as photos, age, health data, and contact details.
+
+Public pages are generated directly from Aster's data and remain synchronized with the application. This avoids maintaining the same information in both an internal management tool and a separate website.
+
+For organizations that already have a website, an embeddable version is also available and can be integrated with a simple iframe.
+
 ## Internationalization
 
 Available languages:

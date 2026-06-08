@@ -170,7 +170,15 @@ export const PublicPageContentEditor = ({
                     <span>{animal.name}</span>
                     <span> {openedAnimal === animal.id ? '▾' : '▸'}</span>
                   </p>
-                  <div className="labeled-checkbox">
+                  <div
+                    className={
+                      'labeled-checkbox' +
+                      clsx(
+                        (!animal.imageKey || !animal.publicDescription || !canManagePage) &&
+                          ' disabled',
+                      )
+                    }
+                  >
                     <p>{t('publish.publishedLabel')}</p>
                     <input
                       type="checkbox"

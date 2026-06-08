@@ -117,8 +117,8 @@
     border-bottom: 1px solid var(--button);
 
     .line {
+      min-height: 36px;
       display: grid;
-      padding: 3px 0;
       gap: 10px;
       grid-template-columns: 4fr auto 1fr;
       align-items: center;
