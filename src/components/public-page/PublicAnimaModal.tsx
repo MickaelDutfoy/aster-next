@@ -96,7 +96,7 @@ export const PublicAnimalModal = ({
                   <p>
                     {t('animals.lastVaxLabel')}
                     {displayDate(lastVaxAct.date)}
-                    {lastVaxAct.isFirst ? ' (primo)' : ''}.
+                    {lastVaxAct.isFirst ? t('animals.primoShort') : ''}.
                   </p>
                 )}
                 {lastDewormAct && (
@@ -117,7 +117,8 @@ export const PublicAnimalModal = ({
                   <p key={`${test.testName}-${test.date}`}>
                     {t('publish.page.testPrefix')}
                     {test.testName}
-                    {test.result === 'NEGATIVE' ? '-' : '+'} le {displayDate(test.date)}.
+                    {test.result === 'NEGATIVE' ? '-' : '+'}
+                    {locale === 'fr' && ' '}: {displayDate(test.date)}.
                   </p>
                 ))}
               </div>
