@@ -5,6 +5,7 @@ import { setAnimalPublicDescription } from '@/actions/publish/setAnimalPublicDes
 import { setSheetsFooter } from '@/actions/publish/setSheetsFooter';
 import { Link } from '@/i18n/routing';
 import { AnimalWithoutDetails, OrganizationPublicPage } from '@/lib/types';
+import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import clsx from 'clsx';
 import { Copy, SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -193,11 +194,8 @@ export const PublicPageContentEditor = ({
                           [animal.id]: e.target.value,
                         }))
                       }
-                      onInput={(e) => {
-                        const el = e.currentTarget;
-                        el.style.height = 'auto';
-                        el.style.height = `${el.scrollHeight}px`;
-                      }}
+                      onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+                      onInput={(e) => autoResizeTextarea(e.currentTarget)}
                     />
                     <button
                       className="little-button"
@@ -219,11 +217,8 @@ export const PublicPageContentEditor = ({
               placeholder={t('publish.footerPlaceholder')}
               value={footer}
               onChange={(e) => setFooter(e.target.value)}
-              onInput={(e) => {
-                const el = e.currentTarget;
-                el.style.height = 'auto';
-                el.style.height = `${el.scrollHeight}px`;
-              }}
+              onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+              onInput={(e) => autoResizeTextarea(e.currentTarget)}
             />
             <button
               type="submit"

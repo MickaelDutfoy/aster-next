@@ -6,6 +6,7 @@ import { Organization } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
 
 import { registerOrg } from '@/actions/organizations/registerOrg';
+import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import { useCurrencies } from '@/lib/utils/useCurrencies';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -74,12 +75,9 @@ export const OrgForm = ({ org }: { org?: Organization }) => {
       <p>{t('organizations.orgDescLabel')}</p>
       <textarea
         name="description"
-        onInput={(e) => {
-          const el = e.currentTarget;
-          el.style.height = 'auto';
-          el.style.height = `${el.scrollHeight}px`;
-        }}
         defaultValue={org?.description ?? ''}
+        onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+        onInput={(e) => autoResizeTextarea(e.currentTarget)}
       />
       <div className="org-contact">
         <input

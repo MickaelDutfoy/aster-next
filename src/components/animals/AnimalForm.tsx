@@ -12,6 +12,7 @@ import {
   FamilyWithoutDetails,
   Member,
 } from '@/lib/types';
+import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import { displayDate } from '@/lib/utils/displayDate';
 import { AnimalStatus, AnimalTestResult, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
@@ -442,11 +443,8 @@ export const AnimalForm = ({
             <textarea
               name="animalInformation"
               defaultValue={animal?.information ?? ''}
-              onInput={(e) => {
-                const el = e.currentTarget;
-                el.style.height = 'auto';
-                el.style.height = `${el.scrollHeight}px`;
-              }}
+              onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+              onInput={(e) => autoResizeTextarea(e.currentTarget)}
             />
           </div>
         </div>
@@ -561,11 +559,8 @@ export const AnimalForm = ({
                 <textarea
                   name="healthInformation"
                   defaultValue={animal?.healthInformation ?? ''}
-                  onInput={(e) => {
-                    const el = e.currentTarget;
-                    el.style.height = 'auto';
-                    el.style.height = `${el.scrollHeight}px`;
-                  }}
+                  onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+                  onInput={(e) => autoResizeTextarea(e.currentTarget)}
                 />
               </div>
             </div>
@@ -827,11 +822,8 @@ export const AnimalForm = ({
             <textarea
               name="adoptInformation"
               defaultValue={animal?.adoption?.information ?? ''}
-              onInput={(e) => {
-                const el = e.currentTarget;
-                el.style.height = 'auto';
-                el.style.height = `${el.scrollHeight}px`;
-              }}
+              onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+              onInput={(e) => autoResizeTextarea(e.currentTarget)}
             />
           </div>
         </div>

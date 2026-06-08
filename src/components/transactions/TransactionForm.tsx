@@ -4,6 +4,7 @@ import { registerTransaction } from '@/actions/transactions/registerTransaction'
 import { updateTransaction } from '@/actions/transactions/updateTransaction';
 import { useRouter } from '@/i18n/routing';
 import { Transaction, TransactionCategory } from '@/lib/types';
+import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import { PaymentMethod, TransactionType } from '@prisma/client';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
@@ -201,12 +202,9 @@ export const TransactionForm = ({
             <p>{t('transactions.additionalInfoLabel')}</p>
             <textarea
               name="note"
-              onInput={(e) => {
-                const el = e.currentTarget;
-                el.style.height = 'auto';
-                el.style.height = `${el.scrollHeight}px`;
-              }}
               defaultValue={transaction?.note ?? ''}
+              onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+              onInput={(e) => autoResizeTextarea(e.currentTarget)}
             />
           </div>
         </div>

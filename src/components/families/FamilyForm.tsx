@@ -4,6 +4,7 @@ import { registerFamily } from '@/actions/families/registerFamily';
 import { updateFamily } from '@/actions/families/updateFamily';
 import { useRouter } from '@/i18n/routing';
 import { Family, Member } from '@/lib/types';
+import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
@@ -155,21 +156,15 @@ export const FamilyForm = ({ user, family }: { user: Member; family?: Family }) 
           <textarea
             name="otherAnimals"
             defaultValue={family?.otherAnimals as string}
-            onInput={(e) => {
-              const el = e.currentTarget;
-              el.style.height = 'auto';
-              el.style.height = `${el.scrollHeight}px`;
-            }}
+            onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+            onInput={(e) => autoResizeTextarea(e.currentTarget)}
           />
           <p>{t('families.notesLabel')}</p>
           <textarea
             name="notes"
             defaultValue={family?.notes as string}
-            onInput={(e) => {
-              const el = e.currentTarget;
-              el.style.height = 'auto';
-              el.style.height = `${el.scrollHeight}px`;
-            }}
+            onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+            onInput={(e) => autoResizeTextarea(e.currentTarget)}
           />
         </div>
         {saveWarning && <p className="save-warning">{t('common.saveWarning')}</p>}
