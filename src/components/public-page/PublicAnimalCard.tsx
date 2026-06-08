@@ -21,7 +21,9 @@ export const PublicAnimalCard = ({
 
   return (
     <div className="animal-card" onClick={() => onOpenAnimal(animal.id)}>
-      <AnimalImage animal={animal} canEditAnimal={false} />
+      <div className="animal-card-image-frame">
+        <AnimalImage animal={animal} canEditAnimal={false} />
+      </div>
       <h3>
         {animal.name}
         {' — '}
