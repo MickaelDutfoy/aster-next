@@ -106,6 +106,13 @@ export const PublicPageContentEditor = ({
     return <p>{t('publish.cannotManagePage')}</p>;
   }
 
+    const embed = `<iframe
+  src="https://aster-app.eu/embed/
+  ${publicPage.slug}?theme=light"
+  width="100%"
+  loading="lazy"
+></iframe>`;
+
   const embedCode = `<iframe
   src="https://aster-app.eu/embed/${publicPage.slug}?theme=light"
   width="100%"
@@ -135,7 +142,7 @@ export const PublicPageContentEditor = ({
           <div className="page-status">
             <p>{t('publish.iframe')}</p>
             <pre>
-              <code>{embedCode}</code>
+              <code>{embed}</code>
             </pre>
           </div>
 
