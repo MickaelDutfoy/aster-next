@@ -107,7 +107,7 @@ export const PublicPageContentEditor = ({
   }
 
   const embedCode = `<iframe
-  src="https://aster-app.eu/embed/${publicPage.slug}"
+  src="https://aster-app.eu/embed/${publicPage.slug}?theme=light"
   width="100%"
   loading="lazy"
 ></iframe>`;
