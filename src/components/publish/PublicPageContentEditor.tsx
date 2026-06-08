@@ -109,13 +109,14 @@ export const PublicPageContentEditor = ({
     const embed = `<iframe
   src="https://aster-app.eu/embed/
   ${publicPage.slug}?theme=light"
-  width="100%"
+  width="100%" height="600"
   loading="lazy"
 ></iframe>`;
 
   const embedCode = `<iframe
   src="https://aster-app.eu/embed/${publicPage.slug}?theme=light"
   width="100%"
+  height="600"
   loading="lazy"
 ></iframe>`;
 
