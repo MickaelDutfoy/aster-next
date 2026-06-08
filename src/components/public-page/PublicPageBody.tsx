@@ -3,7 +3,7 @@
 import { Link } from '@/i18n/routing';
 import { AnimalPublicSheet } from '@/lib/types';
 import { MailOpen, Phone } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { PublicAnimalCard } from './PublicAnimalCard';
 import { PublicAnimalModal } from './PublicAnimaModal';
@@ -14,6 +14,7 @@ export const PublicPageBody = ({
   animals,
   animalFooter,
   displayHealthInfo,
+  displayLocations,
   email,
   phoneNumber,
   embed,
@@ -23,12 +24,12 @@ export const PublicPageBody = ({
   animals: AnimalPublicSheet[];
   animalFooter: string;
   displayHealthInfo: boolean;
+  displayLocations: boolean;
   email: string;
   phoneNumber: string;
   embed: boolean;
 }) => {
   const t = useTranslations();
-  const locale = useLocale();
 
   const [openedAnimalId, setOpenedAnimalId] = useState<number | null>(null);
 
@@ -51,11 +52,12 @@ export const PublicPageBody = ({
           animal={openedAnimal}
           animalFooter={animalFooter}
           displayHealthInfo={displayHealthInfo}
+          displayLocations={displayLocations}
           onClose={() => setOpenedAnimalId(null)}
         />
       )}
 
-      <Link className="aster-power" href="https://aster-app.eu/discover" target="_blank">
+      <Link className="aster-power" href="/discover" target="_blank">
         <img src="/icons/aster-icon-192.png" alt="Aster icon" />
         <span>Powered by Aster</span>
       </Link>
@@ -66,13 +68,16 @@ export const PublicPageBody = ({
         </header>
       )}
       <main className="box">
-        {animals.map((animal) => (
-          <PublicAnimalCard key={animal.id} animal={animal} onOpenAnimal={setOpenedAnimalId} />
-        ))}
+        {!embed && <h2>{t('publish.page.animals')}</h2>}
+        <div className="animals">
+          {animals.map((animal) => (
+            <PublicAnimalCard key={animal.id} animal={animal} onOpenAnimal={setOpenedAnimalId} />
+          ))}
+        </div>
       </main>
       {!embed && (email || phoneNumber) && (
         <footer className="box">
-          <h3>{t('publish.page.contact')}</h3>
+          <h2>{t('publish.page.contact')}</h2>
           <div className="contact">
             {email && (
               <div className="contact-item">

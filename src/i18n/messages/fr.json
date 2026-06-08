@@ -574,6 +574,9 @@
     "managePage": "Paramétrer la page",
     "publicURLNotice": "Adresse de votre page publique Aster :",
     "displayHealthInfo": "Afficher les infos de santé ?",
+    "healthInfoNotice": "(Ceci affichera les derniers vaccins et tests effectués sur chaque fiche.)",
+    "displayLocations": "Afficher les lieux ?",
+    "locationsNotice": "(Ceci affichera l'emplacement de l'animal sur sa fiche, déduit du lieu d'accueil.)",
     "isSitePublishedNotice": "Page publique active :",
     "invalidSlug": "Ce nom de domaine ne peut pas être utilisé.",
     "validSlug": "Ce nom de domaine est valide et disponible.",
@@ -587,9 +590,12 @@
     "footerLabel": "Signature commune de toutes vos fiches publiques :",
     "footerPlaceholder": "Ex : vos conditions d'adoption, comment vous contacter...",
     "page": {
+      "animals": "Nos animaux à l'adoption",
       "trialInProgress": "{name} est actuellement en période d'essai.",
       "animalHealthInfo": "Santé",
+
       "testPrefix": "Testé(e) ",
+      "locationPrefix": "{name} est à rencontrer à : ",
       "animalDescTitle": "À propos de {name}",
       "contact": "Nous contacter"
     }

@@ -98,11 +98,11 @@ export type AnimalPublicSheet = {
   isNeutered: boolean;
   status: AnimalStatus;
   updatedAt: Date;
-  healthActs?: AnimalHealthAct[];
-  weightEntries?: AnimalWeightEntry[];
-  testEntries?: AnimalTestEntry[];
-  imageKey?: string | null;
+  healthActs: AnimalHealthAct[];
+  testEntries: AnimalTestEntry[];
+  imageKey: string | null;
   publicDescription: string | null;
+  family: { city: string } | null;
 };
 
 export type AnimalHealthAct = {
@@ -244,4 +244,5 @@ export type OrganizationPublicPage = {
   isPublished: boolean;
   publicAnimalSheetFooter?: string | null;
   displayHealthInfo: boolean;
+  displayLocations: boolean;
 };

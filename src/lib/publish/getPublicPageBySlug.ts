@@ -26,6 +26,11 @@ export const getPublicPageBySlug = async (slug: string) => {
               testEntries: true,
               imageKey: true,
               publicDescription: true,
+              family: {
+                select: {
+                  city: true,
+                },
+              },
             },
             orderBy: {
               name: 'asc',

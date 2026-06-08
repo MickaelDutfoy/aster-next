@@ -575,6 +575,9 @@
     "managePage": "Konfigurer side",
     "publicURLNotice": "Adressen til din offentlige Aster-side:",
     "displayHealthInfo": "Vis helseinformasjon?",
+    "healthInfoNotice": "(Dette vil vise de siste vaksinasjonene og testresultatene på hver profil.)",
+    "displayLocations": "Vis steder?",
+    "locationsNotice": "(Dette vil vise dyrets plassering på profilen, basert på omsorgsstedet.)",
     "isSitePublishedNotice": "Offentlig side aktiv:",
     "invalidSlug": "Denne sideadressen kan ikke brukes.",
     "validSlug": "Denne sideadressen er gyldig og tilgjengelig.",
@@ -588,9 +591,11 @@
     "footerLabel": "Felles signatur for alle offentlige profiler:",
     "footerPlaceholder": "f.eks. adopsjonsvilkår eller hvordan man kan kontakte dere...",
     "page": {
+      "animals": "Våre dyr til adopsjon",
       "trialInProgress": "{name} er for tiden i prøveperiode.",
       "animalHealthInfo": "Helse",
       "testPrefix": "Testet ",
+      "locationPrefix": "{name} kan møtes i: ",
       "animalDescTitle": "Om {name}",
       "contact": "Kontakt oss"
     }

@@ -280,6 +280,7 @@ model OrganizationPublicPage {
   slug                    String   @unique
   isPublished             Boolean  @default(false)
   displayHealthInfo       Boolean  @default(false)
+  displayLocations        Boolean  @default(false)
   publicAnimalSheetFooter String?
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt

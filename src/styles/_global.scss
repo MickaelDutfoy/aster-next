@@ -26,6 +26,15 @@ body {
   background-attachment: fixed;
 }
 
+.denied-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  text-align: center;
+}
+
 a,
 button {
   cursor: pointer;

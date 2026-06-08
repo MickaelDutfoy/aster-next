@@ -12,11 +12,13 @@ export const PublicAnimalModal = ({
   animal,
   animalFooter,
   displayHealthInfo,
+  displayLocations,
   onClose,
 }: {
   animal: AnimalPublicSheet;
   animalFooter: string;
   displayHealthInfo: boolean;
+  displayLocations: boolean;
   onClose: () => void;
 }) => {
   const t = useTranslations();
@@ -120,6 +122,14 @@ export const PublicAnimalModal = ({
                 ))}
               </div>
             )}
+          </section>
+        )}
+        {displayLocations && animal.family && (
+          <section>
+            <p>
+              {t('publish.page.locationPrefix', { name: animal.name })}
+              {animal.family.city}.
+            </p>
           </section>
         )}
         <section>

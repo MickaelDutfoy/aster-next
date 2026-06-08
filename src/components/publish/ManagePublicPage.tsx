@@ -103,13 +103,27 @@ export const ManagePublicPage = ({
           {(slug === orgPageDetails?.slug || (isValidSlug(slug) && !slugs.includes(slug))) && (
             <p className="valid-slug">{t('publish.validSlug')}</p>
           )}
-          <div className="labeled-checkbox">
-            <p>{t('publish.displayHealthInfo')}</p>
-            <input
-              type="checkbox"
-              name="isPublished"
-              defaultChecked={orgPageDetails?.displayHealthInfo ?? false}
-            />
+          <div>
+            <div className="labeled-checkbox">
+              <p>{t('publish.displayHealthInfo')}</p>
+              <input
+                type="checkbox"
+                name="displayHealthInfo"
+                defaultChecked={orgPageDetails?.displayHealthInfo ?? false}
+              />
+            </div>
+            <p className="notice">{t('publish.healthInfoNotice')}</p>
+          </div>
+          <div>
+            <div className="labeled-checkbox">
+              <p>{t('publish.displayLocations')}</p>
+              <input
+                type="checkbox"
+                name="displayLocations"
+                defaultChecked={orgPageDetails?.displayLocations ?? false}
+              />
+            </div>
+            <p className="notice">{t('publish.locationsNotice')}</p>
           </div>
           <div className="labeled-checkbox">
             <p>{t('publish.isSitePublishedNotice')}</p>

@@ -20,6 +20,7 @@ const PublicEmbedPage = async ({ params }: { params: Promise<{ slug: string }> }
       animals={publicPage.organization.animals}
       animalFooter={publicPage.publicAnimalSheetFooter ?? ''}
       displayHealthInfo={publicPage.displayHealthInfo}
+      displayLocations={publicPage.displayLocations}
       email={publicPage.organization.email ?? ''}
       phoneNumber={publicPage.organization.phoneNumber ?? ''}
       embed={true}

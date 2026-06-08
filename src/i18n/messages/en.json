@@ -575,6 +575,9 @@
     "managePage": "Configure page",
     "publicURLNotice": "Your Aster public page URL:",
     "displayHealthInfo": "Display health information?",
+    "healthInfoNotice": "(This will display the latest vaccinations and test results on each profile.)",
+    "displayLocations": "Display locations?",
+    "locationsNotice": "(This will display the animal's location on its profile, based on its foster location.)",
     "isSitePublishedNotice": "Public page enabled:",
     "invalidSlug": "This page address cannot be used.",
     "validSlug": "This page address is valid and available.",
@@ -588,9 +591,11 @@
     "footerLabel": "Shared footer for all your public profiles:",
     "footerPlaceholder": "e.g. your adoption requirements, how to contact you...",
     "page": {
+      "animals": "Our animals available for adoption",
       "trialInProgress": "{name} is currently in a trial period.",
       "animalHealthInfo": "Health",
       "testPrefix": "Tested ",
+      "locationPrefix": "{name} can be met in: ",
       "animalDescTitle": "About {name}",
       "contact": "Contact us"
     }
