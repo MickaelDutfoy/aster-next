@@ -919,7 +919,7 @@
       },
       "public": {
         "title": "Page publique",
-        "description": "Le site de votre association reste à jour en utilisant directement les données de l'app."
+        "description": "Le site de votre association reste à jour en utilisant les données de l'app."
       }
     },
     "screenshots": {
