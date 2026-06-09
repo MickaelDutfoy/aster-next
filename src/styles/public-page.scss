@@ -30,6 +30,7 @@ body {
   border: 3px solid var(--input-text);
   border-radius: 10px;
   opacity: 0.9;
+  box-shadow: 2px 2px 15px vars.$smoky-black;
 }
 
 header {
@@ -58,7 +59,7 @@ h2 {
 
 .animal-card {
   cursor: pointer;
-  width: 30%;
+  width: 23%;
   min-width: 300px;
   margin: 5px;
   padding: 10px;
@@ -84,11 +85,16 @@ h2 {
     height: 100%;
     border: 0;
   }
+
+  .notice {
+    font-size: 0.8rem;
+  }
 }
 
 .animal-modal {
   margin: 10px;
   max-width: 880px;
+  max-height: 85%;
   color: var(--text);
   background-color: var(--app-bg);
   border: 2px solid var(--button);

@@ -39,7 +39,7 @@ export const PublicAnimalCard = ({
       </h3>
       {animal.birthDate && <p>{`${displayAge(animal.birthDate, locale, true)}`}</p>}
       {animal.status === AnimalStatus.IN_TRIAL && (
-        <p>{t('publish.page.trialInProgress', { name: animal.name })}</p>
+        <p className="notice">{t('publish.page.trialInProgress', { name: animal.name })}</p>
       )}
     </div>
   );
