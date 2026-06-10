@@ -21,6 +21,15 @@ body {
   }
 }
 
+.aster-power:hover {
+  color: vars.$brown-bark;
+  transition: all 0.2s ease;
+
+  span {
+    text-decoration: underline;
+  }
+}
+
 .box {
   padding: 10px;
   max-width: 1440px;
@@ -91,6 +100,12 @@ h2 {
   }
 }
 
+.animal-card:hover {
+  background-color: var(--box-hover);
+  border: 2px solid var(--link);
+  transition: all 0.4s ease;
+}
+
 .animal-modal {
   margin: 10px;
   max-width: 880px;
@@ -148,8 +163,13 @@ footer {
     .contact-item {
       display: flex;
       align-items: center;
-
       gap: 5px;
+    }
+
+    .link:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+      transition: all 0.2s ease;
     }
   }
 }

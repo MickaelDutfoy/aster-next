@@ -112,7 +112,7 @@ export const AnimalImage = ({
         className="animal-image"
         src={
           animal.imageKey
-            ? `/api/animals/${animal.id}/image?v=${animal.updatedAt.getTime()}`
+            ? `/api/animals/${animal.id}/image${canEditAnimal ? `?v=${animal.updatedAt.getTime()}` : ''}`
             : '/images/animal-placeholder.png'
         }
         alt={animal.name}
