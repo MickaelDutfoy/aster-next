@@ -588,6 +588,7 @@
     "footerLabel": "Felles signatur for alle offentlige profiler:",
     "footerPlaceholder": "f.eks. adopsjonsvilkår eller hvordan man kan kontakte dere...",
     "page": {
+      "poweredByAster": "Laget med Aster",
       "animals": "Våre dyr til adopsjon",
       "trialInProgress": "{name} er for tiden i prøveperiode.",
       "animalHealthInfo": "Helse",

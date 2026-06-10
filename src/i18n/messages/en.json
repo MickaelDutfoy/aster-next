@@ -588,6 +588,7 @@
     "footerLabel": "Shared footer for all your public profiles:",
     "footerPlaceholder": "e.g. your adoption requirements, how to contact you...",
     "page": {
+      "poweredByAster": "Created with Aster",
       "animals": "Our animals available for adoption",
       "trialInProgress": "{name} is currently in a trial period.",
       "animalHealthInfo": "Health",
