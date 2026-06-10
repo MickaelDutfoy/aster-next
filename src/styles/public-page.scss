@@ -9,8 +9,10 @@ body {
 }
 
 .aster-power {
-  margin: 10px;
+  cursor: pointer;
   display: flex;
+  width: fit-content;
+  margin: 10px 10px 10px auto;
   flex-direction: row-reverse;
   align-items: center;
   gap: 7px;
@@ -24,10 +26,7 @@ body {
 .aster-power:hover {
   color: vars.$brown-bark;
   transition: all 0.2s ease;
-
-  span {
-    text-decoration: underline;
-  }
+  text-decoration: underline;
 }
 
 .box {
@@ -72,8 +71,8 @@ h2 {
   min-width: 300px;
   margin: 5px;
   padding: 10px;
-  background-color: var(--box);
-  border: 2px solid var(--button);
+  background-color: var(--public-card);
+  border: 2px solid var(--public-card-border);
   border-radius: 5px;
   box-shadow: 2px 2px 8px vars.$smoky-black;
   display: flex;
@@ -101,8 +100,10 @@ h2 {
 }
 
 .animal-card:hover {
-  background-color: var(--box-hover);
-  border: 2px solid var(--link);
+  background-color: var(--public-card-hover);
+  border: 2px solid var(--public-card-border-hover);
+  box-shadow: 2px 5px 8px vars.$smoky-black;
+  transform: translateY(-3px);
   transition: all 0.4s ease;
 }
 

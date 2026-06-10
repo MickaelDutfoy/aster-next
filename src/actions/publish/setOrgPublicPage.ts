@@ -18,6 +18,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
   const displayLocations = formData.has('displayLocations');
   const isPublished = formData.has('isPublished');
   const isEmbeddable = formData.has('isEmbeddable');
+    const publicAnimalSheetFooter = formData.get('publicAnimalSheetFooter')?.toString().trim();
 
   if (!slug) {
     return {
@@ -38,6 +39,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
         displayLocations,
         isPublished,
         isEmbeddable,
+        publicAnimalSheetFooter,
       },
       create: {
         orgId,
@@ -46,6 +48,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
         displayLocations,
         isPublished,
         isEmbeddable,
+        publicAnimalSheetFooter,
       },
     });
 

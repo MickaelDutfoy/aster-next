@@ -61,6 +61,7 @@ export const PublicPageBody = ({
         <img src="/icons/aster-icon-192.png" alt="Aster icon" />
         <span>Powered by Aster</span>
       </Link>
+
       {!embed && (
         <header className="box">
           <h1>{title}</h1>

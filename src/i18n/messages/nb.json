@@ -73,8 +73,7 @@
     "imageUploaded": "Bildet ble lagt til.",
     "imageDeleted": "Bildet ble slettet.",
     "publicPageDataSubmitted": "Informasjonen på den offentlige siden er lagret.",
-    "animalPublicDescriptionSubmit": "Beskrivelsen av dyret er lagret.",
-    "sheetsFooterSubmitted": "Signaturen på profilene dine er lagret."
+    "animalPublicDescriptionSubmit": "Beskrivelsen av dyret er lagret."
   },
   "help": {
     "label": "Hjelp",

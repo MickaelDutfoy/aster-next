@@ -3,6 +3,7 @@
 import { setOrgPublicPage } from '@/actions/publish/setOrgPublicPage';
 import { useRouter } from '@/i18n/routing';
 import { OrganizationPublicPage } from '@/lib/types';
+import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
@@ -142,7 +143,14 @@ export const ManagePublicPage = ({
             />
           </div>
         </div>
-
+        <p>{t('publish.footerLabel')}</p>
+        <textarea
+          name="publicAnimalSheetFooter"
+          placeholder={t('publish.footerPlaceholder')}
+          defaultValue={orgPageDetails?.publicAnimalSheetFooter ?? ''}
+          onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+          onInput={(e) => autoResizeTextarea(e.currentTarget)}
+        />
         {saveWarning && <p className="save-warning">{t('common.saveWarning')}</p>}
         <button type="submit" className="little-button" aria-busy={isLoading} disabled={isLoading}>
           {isLoading ? t('common.loading') : t('common.submit')}

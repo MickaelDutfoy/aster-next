@@ -73,8 +73,7 @@
     "imageUploaded": "The image has been uploaded.",
     "imageDeleted": "The image has been deleted.",
     "publicPageDataSubmitted": "Your public page information has been saved.",
-    "animalPublicDescriptionSubmit": "The animal description has been saved.",
-    "sheetsFooterSubmitted": "Your profile footer has been saved."
+    "animalPublicDescriptionSubmit": "The animal description has been saved."
   },
   "help": {
     "label": "Help",

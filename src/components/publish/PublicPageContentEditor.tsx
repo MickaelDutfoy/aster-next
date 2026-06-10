@@ -2,7 +2,6 @@
 
 import { toggleAnimalPublishing } from '@/actions/animals/toggleAnimalPublishing';
 import { setAnimalPublicDescription } from '@/actions/publish/setAnimalPublicDescription';
-import { setSheetsFooter } from '@/actions/publish/setSheetsFooter';
 import { Link } from '@/i18n/routing';
 import { AnimalWithoutDetails, OrganizationPublicPage } from '@/lib/types';
 import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
@@ -29,7 +28,6 @@ export const PublicPageContentEditor = ({
   const [descriptions, setDescriptions] = useState<Record<number, string>>(
     Object.fromEntries(animals.map((animal) => [animal.id, animal.publicDescription ?? ''])),
   );
-  const [footer, setFooter] = useState<string>(publicPage?.publicAnimalSheetFooter ?? '');
   const [isLoading, setIsLoading] = useState(false);
 
   const openOrCollapseAnimal = (animalId: number) => {
@@ -76,33 +74,6 @@ export const PublicPageContentEditor = ({
     }
   };
 
-  const handleSaveFooter = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!footer) {
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const res = await setSheetsFooter(footer);
-
-      showToast({
-        ...res,
-        message: res.message ? t(res.message) : undefined,
-      });
-    } catch (err) {
-      console.error(err);
-      showToast({
-        ok: false,
-        status: 'error',
-        message: t('toasts.errorGeneric'),
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   if (!publicPage) {
     return <p>{t('publish.cannotManagePage')}</p>;
   }
@@ -127,9 +98,9 @@ export const PublicPageContentEditor = ({
               className="link"
               href={`/page/${publicPage.slug}`}
               target="_blank"
-            >{`https://aster-app.eu/${locale}/page/${publicPage.slug}`}</Link>
+            >{`https://aster-app.eu/page/${publicPage.slug}`}</Link>
           </div>
-          <SharePublicPage url={`https://aster-app.eu/${locale}/page/${publicPage.slug}`} />
+          <SharePublicPage url={`https://aster-app.eu/page/${publicPage.slug}`} />
         </div>
       )}
       {publicPage.isEmbeddable && (
@@ -218,26 +189,6 @@ export const PublicPageContentEditor = ({
               </li>
             ))}
         </ul>
-        {canManagePage && (
-          <form onSubmit={handleSaveFooter}>
-            <p>{t('publish.footerLabel')}</p>
-            <textarea
-              placeholder={t('publish.footerPlaceholder')}
-              value={footer}
-              onChange={(e) => setFooter(e.target.value)}
-              onFocus={(e) => autoResizeTextarea(e.currentTarget)}
-              onInput={(e) => autoResizeTextarea(e.currentTarget)}
-            />
-            <button
-              type="submit"
-              className="little-button"
-              aria-busy={isLoading}
-              disabled={isLoading}
-            >
-              {isLoading ? t('common.loading') : t('common.submit')}
-            </button>
-          </form>
-        )}
       </div>
     </>
   );

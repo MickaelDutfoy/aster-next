@@ -73,8 +73,7 @@
     "imageUploaded": "L'image a bien été ajoutée.",
     "imageDeleted": "L'image a bien été supprimée.",
     "publicPageDataSubmitted": "Les informations de votre page publique ont été enregistrées.",
-    "animalPublicDescriptionSubmit": "La description de l'animal a été enregistrée.",
-    "sheetsFooterSubmitted": "La signature de vos fiches a été enregistrée."
+    "animalPublicDescriptionSubmit": "La description de l'animal a été enregistrée."
   },
   "help": {
     "label": "Aide",
