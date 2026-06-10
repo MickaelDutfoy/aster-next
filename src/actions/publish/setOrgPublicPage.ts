@@ -17,6 +17,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
   const displayHealthInfo = formData.has('displayHealthInfo');
   const displayLocations = formData.has('displayLocations');
   const isPublished = formData.has('isPublished');
+  const isEmbeddable = formData.has('isEmbeddable');
 
   if (!slug) {
     return {
@@ -36,6 +37,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
         displayHealthInfo,
         displayLocations,
         isPublished,
+        isEmbeddable,
       },
       create: {
         orgId,
@@ -43,6 +45,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
         displayHealthInfo,
         displayLocations,
         isPublished,
+        isEmbeddable,
       },
     });
 

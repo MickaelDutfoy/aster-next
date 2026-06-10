@@ -17,7 +17,7 @@ const PublicEmbedPage = async ({
 
   const publicPage = await getPublicPageBySlug(slug);
 
-  if (!publicPage || !publicPage.isPublished) {
+  if (!publicPage || !publicPage.isEmbeddable) {
     return <DeniedPage cause="error" />;
   }
 

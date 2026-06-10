@@ -8,7 +8,7 @@ import { AnimalWithoutDetails, OrganizationPublicPage } from '@/lib/types';
 import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import clsx from 'clsx';
 import { Copy, SquareArrowRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 import { SharePublicPage } from './SharePublicPage';
@@ -23,6 +23,7 @@ export const PublicPageContentEditor = ({
   canManagePage: boolean;
 }) => {
   const t = useTranslations();
+  const locale = useLocale();
 
   const [openedAnimal, setOpenedAnimal] = useState<number | null>(null);
   const [descriptions, setDescriptions] = useState<Record<number, string>>(
@@ -106,15 +107,8 @@ export const PublicPageContentEditor = ({
     return <p>{t('publish.cannotManagePage')}</p>;
   }
 
-    const embed = `<iframe
-  src="https://aster-app.eu/embed/
-  ${publicPage.slug}?theme=light"
-  width="100%" height="600"
-  loading="lazy"
-></iframe>`;
-
   const embedCode = `<iframe
-  src="https://aster-app.eu/embed/${publicPage.slug}?theme=light"
+  src="https://aster-app.eu/${locale}/embed/${publicPage.slug}?theme=light"
   width="100%"
   height="600"
   loading="lazy"
@@ -122,7 +116,10 @@ export const PublicPageContentEditor = ({
 
   return (
     <>
-      {publicPage.isPublished ? (
+      {!publicPage.isEmbeddable && !publicPage.isPublished && (
+        <p className="page-status">{t('publish.offlinePage')}</p>
+      )}
+      {publicPage.isPublished && (
         <div className="page-with-share">
           <div className="page-status">
             <p>{t('publish.onlinePage')}</p>
@@ -130,21 +127,16 @@ export const PublicPageContentEditor = ({
               className="link"
               href={`/page/${publicPage.slug}`}
               target="_blank"
-            >{`https://aster-app.eu/page/${publicPage.slug}`}</Link>
+            >{`https://aster-app.eu/${locale}/page/${publicPage.slug}`}</Link>
           </div>
-          <SharePublicPage url={`https://aster-app.eu/page/${publicPage.slug}`} />
+          <SharePublicPage url={`https://aster-app.eu/${locale}/page/${publicPage.slug}`} />
         </div>
-      ) : (
-        <p className="page-status">{t('publish.offlinePage')}</p>
       )}
-
-      {publicPage.isPublished && (
+      {publicPage.isEmbeddable && (
         <div className="page-with-share">
           <div className="page-status">
             <p>{t('publish.iframe')}</p>
-            <pre>
-              <code>{embed}</code>
-            </pre>
+            <textarea defaultValue={embedCode} readOnly></textarea>
           </div>
 
           <button

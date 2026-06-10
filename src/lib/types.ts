@@ -242,6 +242,7 @@ export type OrganizationPublicPage = {
   orgId: number;
   slug: string;
   isPublished: boolean;
+  isEmbeddable: boolean;
   publicAnimalSheetFooter?: string | null;
   displayHealthInfo: boolean;
   displayLocations: boolean;

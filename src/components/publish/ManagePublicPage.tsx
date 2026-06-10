@@ -133,6 +133,14 @@ export const ManagePublicPage = ({
               defaultChecked={orgPageDetails?.isPublished ?? false}
             />
           </div>
+          <div className="labeled-checkbox">
+            <p>{t('publish.isSiteEmbeddableNotice')}</p>
+            <input
+              type="checkbox"
+              name="isEmbeddable"
+              defaultChecked={orgPageDetails?.isEmbeddable ?? false}
+            />
+          </div>
         </div>
 
         {saveWarning && <p className="save-warning">{t('common.saveWarning')}</p>}

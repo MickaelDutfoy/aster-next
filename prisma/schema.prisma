@@ -279,6 +279,7 @@ model OrganizationPublicPage {
   orgId                   Int      @unique
   slug                    String   @unique
   isPublished             Boolean  @default(false)
+  isEmbeddable            Boolean  @default(false)
   displayHealthInfo       Boolean  @default(false)
   displayLocations        Boolean  @default(false)
   publicAnimalSheetFooter String?

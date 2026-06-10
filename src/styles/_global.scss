@@ -109,6 +109,7 @@ a:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .help {
@@ -134,6 +135,7 @@ a:active {
   }
 
   .help-message {
+    font-size: 0.9rem;
     position: absolute;
     width: min(86vw, 660px);
     white-space: pre-line;

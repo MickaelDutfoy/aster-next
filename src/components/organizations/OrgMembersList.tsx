@@ -13,6 +13,7 @@ import clsx from 'clsx';
 import { EllipsisVertical, SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
+import { HelpButton } from '../main/HelpButton';
 import { ConfirmModal } from '../tools/ConfirmModal';
 import { showToast } from '../tools/ToastProvider';
 
@@ -29,7 +30,6 @@ export const OrgMembersList = ({
   const locale = useLocale();
   const router = useRouter();
 
-  const [hiddenRolesInfo, setHiddenRolesInfo] = useState<boolean>(true);
   const [openMenuMemberId, setOpenMenuMemberId] = useState<number | null>(null);
   const [actionConfirm, setActionConfirm] = useState<Action | null>(null);
   const [nameFilter, setNameFilter] = useState<string>('');
@@ -240,44 +240,23 @@ export const OrgMembersList = ({
       {actionConfirm && (
         <ConfirmModal onCancel={() => setActionConfirm(null)} action={actionConfirm} />
       )}
-      <div className="links-box">
-        <Link
-          href={`/organizations/${org.id}/delete`}
-          className={'little-button' + clsx(!isUserSuperAdmin && ' disabled')}
-        >
-          {t('organizations.deleteTitle')}
-        </Link>
-        <Link
-          href={`/organizations/${org.id}/edit`}
-          className={'little-button' + clsx(!isUserAdmin && ' disabled')}
-        >
-          {t('organizations.editInfoTitle')}
-        </Link>
+      <div className="help-and-buttons">
+        <HelpButton message="help.orgList" />
+        <div className="links-box">
+          <Link
+            href={`/organizations/${org.id}/delete`}
+            className={'little-button' + clsx(!isUserSuperAdmin && ' disabled')}
+          >
+            {t('organizations.deleteTitle')}
+          </Link>
+          <Link
+            href={`/organizations/${org.id}/edit`}
+            className={'little-button' + clsx(!isUserAdmin && ' disabled')}
+          >
+            {t('organizations.editInfoTitle')}
+          </Link>
+        </div>
       </div>
-
-      <button
-        className="collapse-expand"
-        style={{ marginBottom: 5 }}
-        onClick={() => setHiddenRolesInfo(!hiddenRolesInfo)}
-      >
-        {t('organizations.rolesDefinitions')} {hiddenRolesInfo ? '▸' : '▾'}
-      </button>
-      {!hiddenRolesInfo && (
-        <ul className="roles-reminder">
-          <li>
-            <strong>{t('organizations.member')}</strong>
-            {t('organizations.memberDescription')}
-          </li>
-          <li>
-            <strong>{t('organizations.roles.ADMIN')}</strong>
-            {t('organizations.adminDescription')}
-          </li>
-          <li>
-            <strong>{t('organizations.roles.SUPERADMIN')}</strong>
-            {t('organizations.superAdminDescription')}
-          </li>
-        </ul>
-      )}
       {members.length > 0 && (
         <div className="members-filters">
           <div className="search-filter">

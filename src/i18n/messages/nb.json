@@ -80,7 +80,8 @@
     "label": "Hjelp",
     "animals": "Denne seksjonen lar deg registrere dyr med generell informasjon, helseopplysninger og adopsjonsdata.\n\nHvert dyr kan settes som \"i et omsorgssted\" eller i \"permanent plassering\" og knyttes til et sted.\n\nDu kan deretter filtrere dyr etter sted eller status (adoptert, i prøveperiode, osv.).",
     "families": "Denne seksjonen lar deg definere omsorgssteder: det kan være tilfluktssteder, kattehjem, fosterhjem osv.\n\nFor hvert sted kan du knytte én eller flere medlemmer. De kan da redigere dyrene tilknyttet stedet og motta varsler om dem.",
-    "publish": "Kun dyr med statusen \"Venter på plassering\", \"I et omsorgssted\" eller \"I prøveperiode\" kan markeres som tilgjengelige for adopsjon.\n\nFor å bli publisert må dyrene ha et bilde og en beskrivelse. Disse kan redigeres ved å klikke på navnet deres.\n\nDu kan åpne dyreprofilen for å redigere informasjon og bilde ved hjelp av pilen."
+    "publish": "Kun dyr med statusen \"Venter på plassering\", \"I et omsorgssted\" eller \"I prøveperiode\" kan markeres som tilgjengelige for adopsjon.\n\nFor å bli publisert må dyrene ha et bilde og en beskrivelse. Disse kan redigeres ved å klikke på navnet deres.\n\nDu kan åpne dyreprofilen for å redigere informasjon og bilde ved hjelp av pilen.",
+    "orgList": "Medlem: Kan opprette omsorgssteder. Kan redigere profilen og legge til eller fjerne medlemmer på steder vedkommende tilhører. Kan opprette dyreprofiler og redigere dyr som vedkommende har opprettet eller har ansvar for, inkludert deres offentlige beskrivelse. Mottar varsler kun for dyr vedkommende har ansvar for.\n\nAnsvarlig: I tillegg til medlemsrettigheter kan redigere alle dyr og omsorgssteder i organisasjonen, samt deres deltakere. Kan redigere organisasjonens data, godkjenne medlemskapsforespørsler, få tilgang til økonomimodulen og publisere dyr for adopsjon. Mottar varsler knyttet til medlemskapsforespørsler og alle dyr.\n\nAdmin: I tillegg til rettighetene til en ansvarlig kan slette dyr, omsorgssteder og organisasjonen selv, samt utnevne ansvarlige eller fjerne medlemmer. Hver organisasjon har én admin som kan overføre denne rollen."
   },
   "intro": {
     "selectLanguage": "Velg språk:",
@@ -95,8 +96,8 @@
     "howSecondParagraph": "100 % gratis og uten reklame har Aster ett mål: å hjelpe dem som gjør alt for å hjelpe dyr.",
     "whatsNextTitle": "Hva skjer videre?",
     "whatsNextParagraph1": "Når omsorgssteder og dyr er registrert, kan du enkelt følge opp vaksinepåminnelser, ledige fosterhjem, pågående adopsjoner, og få en klar oversikt over aktiviteten, også økonomisk.",
-    "whatsNextParagraph2": "Aster ønsker å hjelpe uten å pålegge begrensninger, og derfor er de fleste opplysninger valgfrie: du bestemmer hva som er viktig.",
-    "whatsNextParagraph3": "Applikasjonen er i stadig utvikling, med nye funksjoner jevnlig på vei!",
+    "whatsNextParagraph2": "Du kan også opprette et adopsjonsnettsted som automatisk oppdateres med data fra applikasjonen, slik at du kan presentere dyrene dine for publikum uten å registrere den samme informasjonen to ganger.",
+    "whatsNextParagraph3": "Aster ønsker å hjelpe uten å pålegge begrensninger, og derfor er de fleste opplysninger valgfrie: du bestemmer hva som er viktig.",
     "whatsNextQuestion": "Skal vi komme i gang?"
   },
   "install": {
@@ -511,10 +512,6 @@
       "ADMIN": "Ansvarlig",
       "MEMBER": ""
     },
-    "member": "Medlem",
-    "memberDescription": ": Kan opprette omsorgssteder og delta i dem. Kan redigere oppføringen og legge til eller fjerne medlemmer fra omsorgssteder de er en del av. Kan opprette dyreoppføringer og redigere dyr de selv har opprettet eller har i omsorg. Mottar kun varsler for dyr de har i omsorg.",
-    "adminDescription": ": I tillegg til medlemsrettigheter kan redigere alle dyr og omsorgssteder i organisasjonen, samt deres deltakere. Kan godkjenne forespørsler om medlemskap i organisasjonen og få tilgang til økonomimodulen. Mottar varsler knyttet til medlemskapsforespørsler og alle dyr.",
-    "superAdminDescription": ": I tillegg til rettighetene til ansvarlig kan slette dyr eller omsorgssteder og administrere selve organisasjonen (redigering og sletting, utnevne ansvarlige eller fjerne medlemmer). Hver organisasjon har én admin, som kan overføre denne rollen.",
     "status": {
       "PENDING": "Avventer",
       "VALIDATED": ""
@@ -579,6 +576,7 @@
     "displayLocations": "Vis steder?",
     "locationsNotice": "(Dette vil vise dyrets plassering på profilen, basert på omsorgsstedet.)",
     "isSitePublishedNotice": "Offentlig side aktiv:",
+    "isSiteEmbeddableNotice": "Integrerbar versjon aktiv:",
     "invalidSlug": "Denne sideadressen kan ikke brukes.",
     "validSlug": "Denne sideadressen er gyldig og tilgjengelig.",
     "cannotManagePage": "Du må konfigurere siden først.",
