@@ -73,7 +73,7 @@ export const PublicPageBody = ({
           }}
         />
       )}
-      <Link className="aster-power" href="/discover" target="_blank">
+      <Link className="aster-power" href="/discover" target="_blank" prefetch={false}>
         <img src="/icons/aster-icon-192.png" alt="Aster icon" />
         <span>{t('publish.page.poweredByAster')}</span>
       </Link>

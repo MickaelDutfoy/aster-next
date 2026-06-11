@@ -116,6 +116,9 @@ export const AnimalImage = ({
             : '/images/animal-placeholder.png'
         }
         alt={animal.name}
+        onLoad={() => {
+          window.dispatchEvent(new Event('aster:resize-embed'));
+        }}
       />
 
       {canEditAnimal && (
