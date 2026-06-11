@@ -56,12 +56,10 @@ export const PublicPageBody = ({
           onClose={() => setOpenedAnimalId(null)}
         />
       )}
-
       <Link className="aster-power" href="/discover" target="_blank">
         <img src="/icons/aster-icon-192.png" alt="Aster icon" />
         <span>{t('publish.page.poweredByAster')}</span>
       </Link>
-
       {!embed && (
         <header className="box">
           <h1>{title}</h1>
