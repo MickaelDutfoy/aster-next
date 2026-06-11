@@ -1,4 +1,7 @@
 (function () {
+  let baseHeight = null;
+  let expandedHeight = null;
+
   const currentScript = document.currentScript;
 
   if (!currentScript) return;
@@ -27,9 +30,20 @@
 
   window.addEventListener('message', (event) => {
     if (event.origin !== 'https://aster-app.eu') return;
-    if (!event.data || event.data.type !== 'ASTER_EMBED_HEIGHT') return;
-    if (event.data.slug !== slug) return;
+    if (!event.data || event.data.slug !== slug) return;
 
-    iframe.style.height = `${event.data.height}px`;
+    if (event.data.type === 'ASTER_EMBED_HEIGHT') {
+      baseHeight = event.data.height;
+      iframe.style.height = `${baseHeight}px`;
+    }
+
+    if (event.data.type === 'ASTER_EMBED_MODAL_HEIGHT') {
+      expandedHeight = event.data.height;
+      iframe.style.height = `${expandedHeight}px`;
+    }
+
+    if (event.data.type === 'ASTER_EMBED_RESET_HEIGHT' && baseHeight !== null) {
+      iframe.style.height = `${baseHeight}px`;
+    }
   });
 })();
