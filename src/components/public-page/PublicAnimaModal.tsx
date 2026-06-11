@@ -66,6 +66,11 @@ export const PublicAnimalModal = ({
   return (
     <div
       className={`animal-modal-overlay ${embed ? 'animal-modal-overlay-embed' : ''}`}
+      style={
+        embed && top !== null
+          ? ({ '--modal-top': `${Math.max(16, top - 40)}px` } as React.CSSProperties)
+          : undefined
+      }
       onClick={onClose}
     >
       <div

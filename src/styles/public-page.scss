@@ -122,7 +122,9 @@ h2 {
 
 .animal-modal-overlay-embed {
   position: absolute;
+  inset: 0;
   align-items: flex-start;
+  min-height: calc(var(--modal-top) + 90dvh);
 }
 
 .animal-modal-overlay-embed .animal-modal {
@@ -130,6 +132,7 @@ h2 {
   top: var(--modal-top);
   left: 50%;
   transform: translateX(-50%);
+  max-height: 85dvh;
 }
 
 .animal-modal {
