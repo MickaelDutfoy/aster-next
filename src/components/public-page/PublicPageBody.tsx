@@ -32,6 +32,12 @@ export const PublicPageBody = ({
   const t = useTranslations();
 
   const [openedAnimalId, setOpenedAnimalId] = useState<number | null>(null);
+  const [modalTop, setModalTop] = useState<number | null>(null);
+
+  const handleOpenAnimal = (animalId: number, top?: number) => {
+    setOpenedAnimalId(animalId);
+    setModalTop(top ?? null);
+  };
 
   useEffect(() => {
     if (!openedAnimalId) return;
@@ -53,7 +59,12 @@ export const PublicPageBody = ({
           animalFooter={animalFooter}
           displayHealthInfo={displayHealthInfo}
           displayLocations={displayLocations}
-          onClose={() => setOpenedAnimalId(null)}
+          top={modalTop}
+          embed={embed}
+          onClose={() => {
+            setOpenedAnimalId(null);
+            setModalTop(null);
+          }}
         />
       )}
       <Link className="aster-power" href="/discover" target="_blank">
@@ -70,7 +81,7 @@ export const PublicPageBody = ({
         {!embed && <h2>{t('publish.page.animals')}</h2>}
         <div className="animals">
           {animals.map((animal) => (
-            <PublicAnimalCard key={animal.id} animal={animal} onOpenAnimal={setOpenedAnimalId} />
+            <PublicAnimalCard key={animal.id} animal={animal} onOpenAnimal={handleOpenAnimal} />
           ))}
         </div>
       </main>

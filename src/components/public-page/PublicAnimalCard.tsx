@@ -9,18 +9,22 @@ import { isCommonSpecies } from '../animals/isCommonSpecies';
 
 export const PublicAnimalCard = ({
   animal,
-
   onOpenAnimal,
 }: {
   animal: AnimalPublicSheet;
-
-  onOpenAnimal: (animalId: number) => void;
+  onOpenAnimal: (animalId: number, top?: number) => void;
 }) => {
   const t = useTranslations();
   const locale = useLocale();
 
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    onOpenAnimal(animal.id, rect.top + window.scrollY);
+  };
+
   return (
-    <div className="animal-card" onClick={() => onOpenAnimal(animal.id)}>
+    <div className="animal-card" onClick={handleClick}>
       <div className="animal-card-image-frame">
         <AnimalImage animal={animal} canEditAnimal={false} />
       </div>

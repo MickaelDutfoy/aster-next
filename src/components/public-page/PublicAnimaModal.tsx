@@ -13,12 +13,16 @@ export const PublicAnimalModal = ({
   animalFooter,
   displayHealthInfo,
   displayLocations,
+  top,
+  embed,
   onClose,
 }: {
   animal: AnimalPublicSheet;
   animalFooter: string;
   displayHealthInfo: boolean;
   displayLocations: boolean;
+  top: number | null;
+  embed: boolean;
   onClose: () => void;
 }) => {
   const t = useTranslations();
@@ -60,8 +64,15 @@ export const PublicAnimalModal = ({
   const hasTests = latestTests.length > 0;
 
   return (
-    <div className="public-overlay" onClick={onClose}>
-      <div className="animal-modal" onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`animal-modal-overlay ${embed ? 'animal-modal-overlay-embed' : ''}`}
+      onClick={onClose}
+    >
+      <div
+        className="animal-modal"
+        style={embed && top !== null ? { top } : undefined}
+        onClick={(e) => e.stopPropagation()}
+      >
         <CircleX className="close" size={35} onClick={onClose} />
         <h3>
           {animal.name}

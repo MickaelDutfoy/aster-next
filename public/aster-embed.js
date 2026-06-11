@@ -4,7 +4,7 @@
   if (!currentScript) return;
 
   const slug = currentScript.dataset.slug;
-  const locale = currentScript.dataset.locale || 'fr';
+  const locale = currentScript.dataset.locale || 'en';
   const theme = currentScript.dataset.theme || 'system';
 
   if (!slug) return;
