@@ -58,7 +58,7 @@ export const PublicPageBody = ({
   const openedAnimal = animals.find((animal) => animal.id === openedAnimalId) ?? null;
 
   return (
-    <div className="public-page">
+    <div className="public-page" data-aster-embed-content>
       {openedAnimal && (
         <PublicAnimalModal
           animal={openedAnimal}

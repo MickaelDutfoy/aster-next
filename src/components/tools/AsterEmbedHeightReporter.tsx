@@ -9,8 +9,14 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
 
     const sendHeight = (force = false) => {
       const modal = document.querySelector('[data-aster-modal]');
-      const baseHeight = document.documentElement.scrollHeight;
+      const mainContent = document.querySelector('[data-aster-embed-content]');
+
+      const baseHeight = mainContent
+        ? mainContent.getBoundingClientRect().bottom + window.scrollY
+        : document.documentElement.scrollHeight;
+
       const modalBottom = modal ? modal.getBoundingClientRect().bottom + window.scrollY : 0;
+
       const height = Math.ceil(Math.max(baseHeight, modalBottom + 24));
 
       const isSmallChange = Math.abs(height - lastHeight) < HEIGHT_THRESHOLD;
