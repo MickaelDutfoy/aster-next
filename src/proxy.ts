@@ -76,6 +76,7 @@ async function handler(req: NextRequest) {
     pathname.startsWith('/.well-known') ||
     pathname === '/favicon.ico' ||
     pathname === '/sw.js' ||
+    pathname === '/aster-embed.js' ||
     pathname === '/manifest.webmanifest'
   ) {
     return NextResponse.next();
