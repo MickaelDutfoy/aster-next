@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
   useEffect(() => {
+    const HEIGHT_THRESHOLD = 24;
     let lastHeight = 0;
 
     const sendHeight = () => {
@@ -12,12 +13,11 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
       const modalBottom = modal ? modal.getBoundingClientRect().bottom + window.scrollY : 0;
       const height = Math.ceil(Math.max(baseHeight, modalBottom + 24));
 
-      const isSmallIncrease = height > lastHeight && height - lastHeight < 8;
+      const isSmallChange = Math.abs(height - lastHeight) < HEIGHT_THRESHOLD;
 
-      if (isSmallIncrease) return;
+      if (isSmallChange) return;
 
       lastHeight = height;
-
       window.parent.postMessage(
         {
           type: 'ASTER_EMBED_HEIGHT',
