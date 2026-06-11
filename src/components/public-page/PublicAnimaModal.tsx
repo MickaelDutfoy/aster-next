@@ -60,8 +60,8 @@ export const PublicAnimalModal = ({
   const hasTests = latestTests.length > 0;
 
   return (
-    <div className="overlay" onClick={onClose}>
-      <div className="modal animal-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="public-overlay" onClick={onClose}>
+      <div className="animal-modal" onClick={(e) => e.stopPropagation()}>
         <CircleX className="close" size={35} onClick={onClose} />
         <h3>
           {animal.name}

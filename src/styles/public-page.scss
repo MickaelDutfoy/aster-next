@@ -109,18 +109,46 @@ h2 {
   transition: all 0.4s ease;
 }
 
+.public-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 10px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .animal-modal {
-  margin: 10px;
-  max-width: 880px;
+  margin: 0;
+  padding: 10px;
+  position: relative;
+  width: min(92dvw, 880px);
   max-height: 85%;
+  overflow-y: auto;
   color: var(--text);
   background-color: var(--app-bg);
   border: 2px solid var(--button);
+  border-radius: 5px;
   box-shadow: 2px 2px 8px vars.$smoky-black;
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
+
+  h3 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 44px;
+  }
+
+  .close {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+  }
 
   .animal-image {
     display: block;
