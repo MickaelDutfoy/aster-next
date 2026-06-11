@@ -12,7 +12,9 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
       const modalBottom = modal ? modal.getBoundingClientRect().bottom + window.scrollY : 0;
       const height = Math.ceil(Math.max(baseHeight, modalBottom + 24));
 
-      if (Math.abs(height - lastHeight) < 8) return;
+      const isSmallIncrease = height > lastHeight && height - lastHeight < 8;
+
+      if (isSmallIncrease) return;
 
       lastHeight = height;
 
