@@ -1,6 +1,6 @@
 (function () {
-  let baseHeight = null;
-  let expandedHeight = null;
+  const ASTER_ORIGIN = 'https://aster-app.eu';
+  const EXPAND_TRANSITION = 'height 120ms ease-out';
 
   const currentScript = document.currentScript;
 
@@ -14,36 +14,47 @@
 
   const iframe = document.createElement('iframe');
 
-  iframe.src = `https://aster-app.eu/${locale}/embed/${slug}?theme=${theme}`;
+  iframe.src = `${ASTER_ORIGIN}/${locale}/embed/${slug}?theme=${theme}`;
   iframe.width = '100%';
+
   iframe.style.width = '100%';
   iframe.style.border = '1px solid black';
   iframe.style.borderRadius = '20px';
   iframe.style.display = 'block';
   iframe.style.overflow = 'hidden';
-  iframe.style.transition = 'height 120ms ease-out';
   iframe.style.overflowAnchor = 'none';
+  iframe.style.transition = EXPAND_TRANSITION;
+
   iframe.setAttribute('scrolling', 'no');
   iframe.setAttribute('loading', 'lazy');
 
   currentScript.parentNode.insertBefore(iframe, currentScript.nextSibling);
 
+  const setIframeHeight = (nextHeight) => {
+    const currentHeight = iframe.getBoundingClientRect().height;
+    const isShrinking = nextHeight < currentHeight;
+
+    if (isShrinking) {
+      iframe.style.transition = 'none';
+      iframe.style.height = `${nextHeight}px`;
+
+      requestAnimationFrame(() => {
+        iframe.style.transition = EXPAND_TRANSITION;
+      });
+
+      return;
+    }
+
+    iframe.style.transition = EXPAND_TRANSITION;
+    iframe.style.height = `${nextHeight}px`;
+  };
+
   window.addEventListener('message', (event) => {
-    if (event.origin !== 'https://aster-app.eu') return;
-    if (!event.data || event.data.slug !== slug) return;
+    if (event.origin !== ASTER_ORIGIN) return;
+    if (!event.data || event.data.type !== 'ASTER_EMBED_HEIGHT') return;
+    if (event.data.slug !== slug) return;
+    if (typeof event.data.height !== 'number') return;
 
-    if (event.data.type === 'ASTER_EMBED_HEIGHT') {
-      baseHeight = event.data.height;
-      iframe.style.height = `${baseHeight}px`;
-    }
-
-    if (event.data.type === 'ASTER_EMBED_MODAL_HEIGHT') {
-      expandedHeight = event.data.height;
-      iframe.style.height = `${expandedHeight}px`;
-    }
-
-    if (event.data.type === 'ASTER_EMBED_RESET_HEIGHT' && baseHeight !== null) {
-      iframe.style.height = `${baseHeight}px`;
-    }
+    setIframeHeight(event.data.height);
   });
 })();
