@@ -28,7 +28,14 @@
   iframe.setAttribute('scrolling', 'no');
   iframe.setAttribute('loading', 'lazy');
 
-  currentScript.parentNode.insertBefore(iframe, currentScript.nextSibling);
+  const wrapper = document.createElement('div');
+
+  wrapper.style.width = '100%';
+  wrapper.style.display = 'block';
+  wrapper.style.overflowAnchor = 'none';
+
+  wrapper.appendChild(iframe);
+  currentScript.parentNode.insertBefore(wrapper, currentScript.nextSibling);
 
   const setIframeHeight = (nextHeight) => {
     const currentHeight = iframe.getBoundingClientRect().height;
