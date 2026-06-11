@@ -18,6 +18,7 @@
   iframe.style.borderRadius = '20px';
   iframe.style.display = 'block';
   iframe.style.overflow = 'hidden';
+  iframe.style.transition = 'height 120ms ease-out';
   iframe.setAttribute('scrolling', 'no');
   iframe.setAttribute('loading', 'lazy');
 
