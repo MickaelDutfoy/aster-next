@@ -5,18 +5,28 @@ import { useEffect } from 'react';
 export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
   useEffect(() => {
     const sendHeight = () => {
+      const modal = document.querySelector('[data-aster-modal]');
+
+      const baseHeight = document.documentElement.scrollHeight;
+
+      const modalBottom = modal ? modal.getBoundingClientRect().bottom + window.scrollY : 0;
+
+      const height = Math.ceil(Math.max(baseHeight, modalBottom + 24));
+
       window.parent.postMessage(
         {
           type: 'ASTER_EMBED_HEIGHT',
           slug,
-          height: document.documentElement.scrollHeight,
+          height,
         },
         '*',
       );
     };
 
     const sendHeightAfterRender = () => {
-      requestAnimationFrame(sendHeight);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(sendHeight);
+      });
     };
 
     sendHeightAfterRender();

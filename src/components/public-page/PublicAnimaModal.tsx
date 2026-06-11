@@ -77,6 +77,7 @@ export const PublicAnimalModal = ({
         className="animal-modal"
         style={embed && top !== null ? { top } : undefined}
         onClick={(e) => e.stopPropagation()}
+        data-aster-modal
       >
         <CircleX className="close" size={35} onClick={onClose} />
         <h3>

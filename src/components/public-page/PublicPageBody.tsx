@@ -46,14 +46,14 @@ export const PublicPageBody = ({
   }, [embed, openedAnimalId]);
 
   useEffect(() => {
-    if (!openedAnimalId) return;
+    if (embed || !openedAnimalId) return;
 
     document.body.style.overflow = 'hidden';
 
     return () => {
       document.body.style.overflow = '';
     };
-  }, [openedAnimalId]);
+  }, [embed, openedAnimalId]);
 
   const openedAnimal = animals.find((animal) => animal.id === openedAnimalId) ?? null;
 
