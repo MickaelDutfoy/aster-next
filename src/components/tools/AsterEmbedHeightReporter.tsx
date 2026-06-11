@@ -7,7 +7,7 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
     const HEIGHT_THRESHOLD = 24;
     let lastHeight = 0;
 
-    const sendHeight = () => {
+    const sendHeight = (force = false) => {
       const modal = document.querySelector('[data-aster-modal]');
       const baseHeight = document.documentElement.scrollHeight;
       const modalBottom = modal ? modal.getBoundingClientRect().bottom + window.scrollY : 0;
@@ -15,9 +15,10 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
 
       const isSmallChange = Math.abs(height - lastHeight) < HEIGHT_THRESHOLD;
 
-      if (isSmallChange) return;
+      if (!force && isSmallChange) return;
 
       lastHeight = height;
+
       window.parent.postMessage(
         {
           type: 'ASTER_EMBED_HEIGHT',
@@ -28,27 +29,35 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
       );
     };
 
-    const sendHeightAfterRender = () => {
+    const sendHeightAfterRender = (force = false) => {
       requestAnimationFrame(() => {
-        requestAnimationFrame(sendHeight);
+        requestAnimationFrame(() => sendHeight(force));
       });
     };
 
+    const handleLoad = () => sendHeightAfterRender();
+    const handleResize = () => sendHeightAfterRender();
+    const handleEmbedResize = () => sendHeightAfterRender(true);
+
     sendHeightAfterRender();
 
-    const observer = new ResizeObserver(sendHeightAfterRender);
+    window.addEventListener('aster:resize-embed', handleEmbedResize);
+
+    const observer = new ResizeObserver(() => sendHeightAfterRender());
+
     observer.observe(document.documentElement);
     observer.observe(document.body);
 
-    window.addEventListener('load', sendHeightAfterRender);
-    window.addEventListener('resize', sendHeightAfterRender);
-    window.addEventListener('aster:resize-embed', sendHeightAfterRender);
+    window.addEventListener('load', handleLoad);
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('aster:resize-embed', handleEmbedResize);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('load', sendHeightAfterRender);
-      window.removeEventListener('resize', sendHeightAfterRender);
-      window.removeEventListener('aster:resize-embed', sendHeightAfterRender);
+
+      window.removeEventListener('load', handleLoad);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('aster:resize-embed', handleEmbedResize);
     };
   }, [slug]);
 
