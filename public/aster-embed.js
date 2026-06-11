@@ -22,20 +22,12 @@
   iframe.style.borderRadius = '20px';
   iframe.style.display = 'block';
   iframe.style.overflow = 'hidden';
-  iframe.style.overflowAnchor = 'none';
   iframe.style.transition = EXPAND_TRANSITION;
 
   iframe.setAttribute('scrolling', 'no');
   iframe.setAttribute('loading', 'lazy');
 
-  const wrapper = document.createElement('div');
-
-  wrapper.style.width = '100%';
-  wrapper.style.display = 'block';
-  wrapper.style.overflowAnchor = 'none';
-
-  wrapper.appendChild(iframe);
-  currentScript.parentNode.insertBefore(wrapper, currentScript.nextSibling);
+  currentScript.parentNode.insertBefore(iframe, currentScript.nextSibling);
 
   const setIframeHeight = (nextHeight) => {
     const currentHeight = iframe.getBoundingClientRect().height;
