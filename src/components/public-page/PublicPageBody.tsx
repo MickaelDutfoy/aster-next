@@ -40,6 +40,12 @@ export const PublicPageBody = ({
   };
 
   useEffect(() => {
+    if (!embed) return;
+
+    window.dispatchEvent(new Event('aster:resize-embed'));
+  }, [embed, openedAnimalId]);
+
+  useEffect(() => {
     if (!openedAnimalId) return;
 
     document.body.style.overflow = 'hidden';

@@ -15,19 +15,25 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
       );
     };
 
-    sendHeight();
+    const sendHeightAfterRender = () => {
+      requestAnimationFrame(sendHeight);
+    };
 
-    const observer = new ResizeObserver(sendHeight);
+    sendHeightAfterRender();
+
+    const observer = new ResizeObserver(sendHeightAfterRender);
     observer.observe(document.documentElement);
     observer.observe(document.body);
 
-    window.addEventListener('load', sendHeight);
-    window.addEventListener('resize', sendHeight);
+    window.addEventListener('load', sendHeightAfterRender);
+    window.addEventListener('resize', sendHeightAfterRender);
+    window.addEventListener('aster:resize-embed', sendHeightAfterRender);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('load', sendHeight);
-      window.removeEventListener('resize', sendHeight);
+      window.removeEventListener('load', sendHeightAfterRender);
+      window.removeEventListener('resize', sendHeightAfterRender);
+      window.removeEventListener('aster:resize-embed', sendHeightAfterRender);
     };
   }, [slug]);
 
