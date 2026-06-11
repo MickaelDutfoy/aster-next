@@ -876,7 +876,7 @@
     "hero": {
       "title1": "Moins de charge mentale",
       "title2": "Plus de temps pour les animaux",
-      "subtitle1": "Animaux, lieux d’accueil, trésorerie : tout au même endroit.",
+      "subtitle1": "Animaux, lieux d’accueil, trésorerie, site web : tout au même endroit.",
       "subtitle2": "Accessible depuis votre poche, gratuitement, à toute votre équipe.",
       "primaryAction": "Essayer Aster",
       "secondaryAction": "Voir les fonctionnalités"
@@ -885,13 +885,15 @@
       "title": "Un quotidien souvent compliqué",
       "paragraph1": "Gérer une association de protection animale implique souvent de jongler entre fichiers Excel, messages, et informations dispersées.",
       "paragraph2": "Beaucoup d’informations restent en tête, en attendant d’être notées plus tard.",
-      "paragraph3": "Certaines données se perdent, et toute la charge mentale est concentrée sur un petit nombre de personnes."
+      "paragraph3": "Certaines données se perdent, et toute la charge mentale est concentrée sur un petit nombre de personnes.",
+      "paragraph4": "Pire encore : garder une trésorerie ou un site web à jour dépend de personnes pas toujours disponibles."
     },
     "solution": {
       "title": "Une base commune pour votre association",
       "paragraph1": "Aster permet à toute votre équipe de partager les informations en temps réel.",
-      "paragraph2": "Vous notez une information une fois : elle devient accessible à tous, partout, sans avoir à y penser.",
-      "paragraph3": "Chaque membre accède uniquement aux informations qui le concernent, selon son rôle au sein de l’association."
+      "paragraph2": "Vous notez une information une fois : elle devient accessible à tous, partout, sans avoir à y penser.",
+      "paragraph3": "Vous gardez votre comptabilité et votre site d'adoption à jour sans compétence technique particulière.",
+      "paragraph4": "Chaque membre accède uniquement aux informations qui le concernent, selon son rôle au sein de l’association."
     },
     "features": {
       "title": "Ce que vous pouvez faire avec Aster",

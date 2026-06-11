@@ -27,6 +27,7 @@ export default async function Discover({ locale }: { locale: Language }) {
           <p>{t('discover.problem.paragraph1')}</p>
           <p>{t('discover.problem.paragraph2')}</p>
           <p>{t('discover.problem.paragraph3')}</p>
+          <p>{t('discover.problem.paragraph4')}</p>
         </section>
 
         <section className="discover-section discover-text-block">
@@ -34,6 +35,7 @@ export default async function Discover({ locale }: { locale: Language }) {
           <p>{t('discover.solution.paragraph1')}</p>
           <p>{t('discover.solution.paragraph2')}</p>
           <p>{t('discover.solution.paragraph3')}</p>
+          <p>{t('discover.solution.paragraph4')}</p>
         </section>
 
         <section className="discover-section discover-features">

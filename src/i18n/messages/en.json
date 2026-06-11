@@ -876,7 +876,7 @@
     "hero": {
       "title1": "Less mental load",
       "title2": "More time for the animals",
-      "subtitle1": "Animals, foster locations, treasury: everything in one place.",
+      "subtitle1": "Animals, foster locations, treasury, website: everything in one place.",
       "subtitle2": "Accessible from your pocket, free of charge, for your whole team.",
       "primaryAction": "Try Aster",
       "secondaryAction": "See features"
@@ -885,13 +885,15 @@
       "title": "A day-to-day that can get complicated",
       "paragraph1": "Managing an animal welfare organization often means juggling spreadsheets, messages, and scattered information.",
       "paragraph2": "A lot of information stays in your head, waiting to be written down later.",
-      "paragraph3": "Some data gets lost, and the mental load often falls on a small number of people."
+      "paragraph3": "Some data gets lost, and the mental load often falls on a small number of people.",
+      "paragraph4": "Even worse: keeping a treasury or a website up to date often depends on people who are not always available."
     },
     "solution": {
       "title": "A shared base for your organization",
       "paragraph1": "Aster allows your whole team to share information in real time.",
       "paragraph2": "You write something down once: it becomes accessible to everyone, everywhere, without having to think about it again.",
-      "paragraph3": "Each member only accesses the information that concerns them, depending on their role within the organization."
+      "paragraph3": "Keep your treasury and adoption website up to date without any particular technical skills.",
+      "paragraph4": "Each member only accesses the information that concerns them, depending on their role within the organization."
     },
     "features": {
       "title": "What you can do with Aster",
