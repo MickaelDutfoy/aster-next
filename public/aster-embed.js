@@ -14,12 +14,12 @@
   iframe.src = `https://aster-app.eu/${locale}/embed/${slug}?theme=${theme}`;
   iframe.width = '100%';
   iframe.style.width = '100%';
-  iframe.style.border = '0';
+  iframe.style.border = '1px solid black';
+  iframe.style.borderRadius = '20px';
   iframe.style.display = 'block';
   iframe.style.overflow = 'hidden';
   iframe.setAttribute('scrolling', 'no');
   iframe.setAttribute('loading', 'lazy');
-  iframe.setAttribute('title', 'Aster adoption listings');
 
   currentScript.parentNode.insertBefore(iframe, currentScript.nextSibling);
 

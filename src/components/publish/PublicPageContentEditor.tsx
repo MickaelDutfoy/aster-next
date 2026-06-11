@@ -78,12 +78,12 @@ export const PublicPageContentEditor = ({
     return <p>{t('publish.cannotManagePage')}</p>;
   }
 
-  const embedCode = `<iframe
-  src="https://aster-app.eu/${locale}/embed/${publicPage.slug}?theme=light"
-  width="100%"
-  height="600"
-  loading="lazy"
-></iframe>`;
+  const embedCode = `<script
+  src="https://aster-app.eu/aster-embed.js"
+  data-slug="${publicPage.slug}"
+  data-locale="${locale}"
+  data-theme="light"
+></script>`;
 
   return (
     <>
