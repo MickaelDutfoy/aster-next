@@ -33,19 +33,14 @@
     const currentHeight = iframe.getBoundingClientRect().height;
     const isShrinking = nextHeight < currentHeight;
 
-    if (isShrinking) {
-      iframe.style.transition = 'none';
-      iframe.style.height = `${nextHeight}px`;
+    iframe.style.transition = isShrinking ? 'none' : EXPAND_TRANSITION;
+    iframe.style.height = `${nextHeight}px`;
 
+    if (isShrinking) {
       requestAnimationFrame(() => {
         iframe.style.transition = EXPAND_TRANSITION;
       });
-
-      return;
     }
-
-    iframe.style.transition = EXPAND_TRANSITION;
-    iframe.style.height = `${nextHeight}px`;
   };
 
   window.addEventListener('message', (event) => {
@@ -53,8 +48,6 @@
     if (!event.data || event.data.type !== 'ASTER_EMBED_HEIGHT') return;
     if (event.data.slug !== slug) return;
     if (typeof event.data.height !== 'number') return;
-
-    console.log('height received', event.data.height);
 
     setIframeHeight(event.data.height);
   });

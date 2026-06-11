@@ -4,26 +4,19 @@ import { useEffect } from 'react';
 
 export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
   useEffect(() => {
-    const HEIGHT_THRESHOLD = 24;
-    let lastHeight = 0;
+    const EMBED_HEIGHT_PADDING = 16;
 
-    const sendHeight = (force = false) => {
-      const modal = document.querySelector('[data-aster-modal]');
+    const sendHeight = () => {
       const mainContent = document.querySelector('[data-aster-embed-content]');
+      const modal = document.querySelector('[data-aster-modal]');
 
-      const baseHeight = mainContent
+      const contentBottom = mainContent
         ? mainContent.getBoundingClientRect().bottom + window.scrollY
         : document.documentElement.scrollHeight;
 
       const modalBottom = modal ? modal.getBoundingClientRect().bottom + window.scrollY : 0;
 
-      const height = Math.ceil(Math.max(baseHeight, modalBottom + 24));
-
-      const isSmallChange = Math.abs(height - lastHeight) < HEIGHT_THRESHOLD;
-
-      if (!force && isSmallChange) return;
-
-      lastHeight = height;
+      const height = Math.ceil(Math.max(contentBottom, modalBottom) + EMBED_HEIGHT_PADDING);
 
       window.parent.postMessage(
         {
@@ -35,35 +28,29 @@ export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
       );
     };
 
-    const sendHeightAfterRender = (force = false) => {
+    const sendHeightAfterRender = () => {
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => sendHeight(force));
+        requestAnimationFrame(sendHeight);
       });
     };
 
-    const handleLoad = () => sendHeightAfterRender();
-    const handleResize = () => sendHeightAfterRender();
-    const handleEmbedResize = () => sendHeightAfterRender(true);
-
-    sendHeightAfterRender();
-
-    window.addEventListener('aster:resize-embed', handleEmbedResize);
-
-    const observer = new ResizeObserver(() => sendHeightAfterRender());
+    const observer = new ResizeObserver(sendHeightAfterRender);
 
     observer.observe(document.documentElement);
     observer.observe(document.body);
 
-    window.addEventListener('load', handleLoad);
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('aster:resize-embed', handleEmbedResize);
+    window.addEventListener('load', sendHeightAfterRender);
+    window.addEventListener('resize', sendHeightAfterRender);
+    window.addEventListener('aster:resize-embed', sendHeightAfterRender);
+
+    sendHeightAfterRender();
 
     return () => {
       observer.disconnect();
 
-      window.removeEventListener('load', handleLoad);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('aster:resize-embed', handleEmbedResize);
+      window.removeEventListener('load', sendHeightAfterRender);
+      window.removeEventListener('resize', sendHeightAfterRender);
+      window.removeEventListener('aster:resize-embed', sendHeightAfterRender);
     };
   }, [slug]);
 
