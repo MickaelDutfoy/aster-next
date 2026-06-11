@@ -2,6 +2,7 @@ import '@/styles/public-page.scss';
 
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { PublicPageBody } from '@/components/public-page/PublicPageBody';
+import { AsterEmbedHeightReporter } from '@/components/tools/AsterEmbedHeightReporter';
 import { ForcedTheme } from '@/components/tools/ForcedTheme';
 import { getPublicPageBySlug } from '@/lib/publish/getPublicPageBySlug';
 
@@ -24,6 +25,7 @@ const PublicEmbedPage = async ({
   return (
     <>
       <ForcedTheme theme={theme} />
+      <AsterEmbedHeightReporter slug={slug} />
       <PublicPageBody
         title={publicPage.organization.name}
         description={publicPage.organization.description ?? ''}
