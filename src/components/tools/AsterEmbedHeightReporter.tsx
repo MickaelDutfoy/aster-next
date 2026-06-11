@@ -4,14 +4,17 @@ import { useEffect } from 'react';
 
 export const AsterEmbedHeightReporter = ({ slug }: { slug: string }) => {
   useEffect(() => {
+    let lastHeight = 0;
+
     const sendHeight = () => {
       const modal = document.querySelector('[data-aster-modal]');
-
       const baseHeight = document.documentElement.scrollHeight;
-
       const modalBottom = modal ? modal.getBoundingClientRect().bottom + window.scrollY : 0;
-
       const height = Math.ceil(Math.max(baseHeight, modalBottom + 24));
+
+      if (Math.abs(height - lastHeight) < 8) return;
+
+      lastHeight = height;
 
       window.parent.postMessage(
         {

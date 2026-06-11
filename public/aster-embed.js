@@ -54,6 +54,8 @@
     if (event.data.slug !== slug) return;
     if (typeof event.data.height !== 'number') return;
 
+    console.log('height received', event.data.height);
+
     setIframeHeight(event.data.height);
   });
 })();
