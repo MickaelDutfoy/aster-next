@@ -590,10 +590,10 @@
     "page": {
       "poweredByAster": "Laget med Aster",
       "animals": "Våre dyr til adopsjon",
-      "trialInProgress": "{name} er for tiden i prøveperiode.",
+      "trialInProgress": "🏡 {name} er for tiden i prøveperiode.",
       "animalHealthInfo": "Helse",
       "testPrefix": "Testet ",
-      "locationPrefix": "{name} kan møtes i: ",
+      "locationPrefix": "🌍 {name} kan møtes i: ",
       "animalDescTitle": "Om {name}",
       "contact": "Kontakt oss"
     }
