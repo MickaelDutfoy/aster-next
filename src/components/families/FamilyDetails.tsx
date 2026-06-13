@@ -117,7 +117,7 @@ export const FamilyDetails = ({
           <p>{t('families.noMembers')}</p>
         ) : (
           <div className="family-members-list">
-            <p>{t('families.membersListTitle')}</p>
+            <h4>{t('families.membersListTitle')}</h4>
             <ul>
               {family.members.map((member) => (
                 <li key={member.id}>
@@ -137,7 +137,7 @@ export const FamilyDetails = ({
 
         {animals && animals.length > 0 && (
           <div>
-            <p>{t('families.animalsInCareLabel', { count: animals.length })}</p>
+            <h4>{t('families.animalsInCareLabel', { count: animals.length })}</h4>
 
             <div className="display-mode">
               <div className="display-mode-buttons">
@@ -165,13 +165,13 @@ export const FamilyDetails = ({
 
         {family.otherAnimals && (
           <>
-            <p>{t('families.otherAnimalsLabel')}</p>
+            <h4>{t('families.otherAnimalsLabel')}</h4>
             <p className="family-animals">{family.otherAnimals}</p>
           </>
         )}
         {family.notes && (
           <>
-            <p>{t('families.notesLabel')}</p>
+            <h4>{t('families.notesLabel')}</h4>
             <p className="family-animals">{family.notes}</p>
           </>
         )}

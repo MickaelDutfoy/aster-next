@@ -590,11 +590,10 @@
     "page": {
       "poweredByAster": "Created with Aster",
       "animals": "Our animals available for adoption",
-      "trialInProgressShort": "{name} is currently in a trial period.",
-      "trialInProgress": "🏡 {name} is currently in a trial period.",
+      "trialInProgress": "{name} is currently in a trial period.",
       "animalHealthInfo": "Health",
       "testPrefix": "Tested ",
-      "locationPrefix": "🌍 {name} can be met in: ",
+      "locationPrefix": "{name} can be met in: ",
       "animalDescTitle": "About {name}",
       "contact": "Contact us"
     }

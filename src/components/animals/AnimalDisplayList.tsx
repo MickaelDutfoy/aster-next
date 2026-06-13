@@ -16,9 +16,7 @@ export const AnimalDisplayList = ({ animals }: { animals: AnimalWithoutDetails[]
     <ul className="animals-list">
       {animals.map((animal) => (
         <li key={animal.id}>
-          <span>
-            <strong>{animal.name}</strong>
-          </span>{' '}
+          <span>{animal.name}</span>{' '}
           <span>
             {isCommonSpecies(animal.species)
               ? t(`animals.species.${animal.species}`)

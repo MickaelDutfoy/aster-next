@@ -96,7 +96,7 @@ export const PublicAnimalModal = ({
         <AnimalImage animal={animal} canEditAnimal={false} />
         {animal.status === AnimalStatus.IN_TRIAL && (
           <section>
-            <p>{t('publish.page.trialInProgress', { name: animal.name })}</p>
+            <p>{'🏡 ' + t('publish.page.trialInProgress', { name: animal.name })}</p>
           </section>
         )}
         {displayHealthInfo && (
@@ -145,7 +145,7 @@ export const PublicAnimalModal = ({
         {displayLocations && animal.family && (
           <section>
             <p>
-              {t('publish.page.locationPrefix', { name: animal.name })}
+              {'🌍 ' + t('publish.page.locationPrefix', { name: animal.name })}
               {animal.family.city}.
             </p>
           </section>
