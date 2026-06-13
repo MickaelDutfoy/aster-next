@@ -590,6 +590,7 @@
     "page": {
       "poweredByAster": "Créé avec Aster",
       "animals": "Nos animaux à l'adoption",
+      "trialInProgressShort": "{name} est actuellement en période d'essai.",
       "trialInProgress": "🏡 {name} est actuellement en période d'essai.",
       "animalHealthInfo": "Santé",
       "testPrefix": "Testé(e) ",
