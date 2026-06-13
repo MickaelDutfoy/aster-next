@@ -304,7 +304,7 @@ export const AnimalDetails = ({
             {animal.healthInformation && (
               <div className="animal-details-section">
                 <h4>{t('animals.healthNotes')}</h4>
-                <p>{animal.healthInformation}</p>
+                <p className="long-text">{animal.healthInformation}</p>
               </div>
             )}
           </div>
@@ -375,7 +375,7 @@ export const AnimalDetails = ({
             {animal.adoption?.information && (
               <div className="animal-details-section">
                 <h4>{t('animals.adoptionNotes')}</h4>
-                <p>{animal.adoption?.information}</p>
+                <p className="long-text">{animal.adoption?.information}</p>
               </div>
             )}
           </div>
@@ -383,7 +383,7 @@ export const AnimalDetails = ({
         {animal.information && (
           <div className="animal-general-info">
             <h4>{t('animals.additionalInfoLabel')}</h4>
-            <p>{animal.information}</p>
+            <p className="long-text">{animal.information}</p>
           </div>
         )}
       </div>

@@ -168,6 +168,10 @@ header {
   }
 }
 
+.long-text {
+  white-space: pre-wrap;
+}
+
 .tabs {
   display: flex;
   justify-content: space-evenly;
