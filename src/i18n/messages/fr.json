@@ -871,7 +871,7 @@
   "discover": {
     "meta": {
       "title": "Aster – Une application pour associations de protection animale",
-      "description": "Découvrez Aster, une application mobile-first pour centraliser le suivi des animaux, des lieux d’accueil et de la trésorerie."
+      "description": "Découvrez Aster, une application web/mobile pour centraliser le suivi des animaux, des lieux d’accueil et de la trésorerie."
     },
     "hero": {
       "title1": "Moins de charge mentale",

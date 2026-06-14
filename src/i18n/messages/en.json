@@ -871,7 +871,7 @@
   "discover": {
     "meta": {
       "title": "Aster – An application for animal welfare organizations",
-      "description": "Discover Aster, a mobile-first app to centralize the management of animals, foster locations, and treasury."
+      "description": "Discover Aster, a web and mobile app to centralize the management of animals, foster locations, and treasury."
     },
     "hero": {
       "title1": "Less mental load",
