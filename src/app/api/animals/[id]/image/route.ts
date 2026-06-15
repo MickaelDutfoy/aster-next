@@ -31,7 +31,8 @@ export const GET = async (_request: Request, { params }: { params: Promise<{ id:
   return new NextResponse(blob.stream, {
     headers: {
       'Content-Type': blob.headers.get('content-type') ?? 'image/jpeg',
-      'Cache-Control': 'no-store',
+      'Content-Disposition': 'inline',
+      'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
 };
