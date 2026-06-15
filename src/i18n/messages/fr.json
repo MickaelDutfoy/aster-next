@@ -578,7 +578,7 @@
     "isSiteEmbeddableNotice": "Version intégrable active :",
     "invalidSlug": "Ce nom de domaine ne peut pas être utilisé.",
     "validSlug": "Ce nom de domaine est valide et disponible.",
-    "cannotManagePage": "Vous devez d'abord configurer votre page.",
+    "cannotManagePage": "Un admin ou responsable doit d'abord configurer la page.",
     "onlinePage": "Votre page est en ligne à l'adresse :",
     "iframe": "Pour intégrer votre page à un site existant :",
     "offlinePage": "Votre page n'est actuellement pas en ligne.",

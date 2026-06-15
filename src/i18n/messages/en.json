@@ -578,7 +578,7 @@
     "isSiteEmbeddableNotice": "Embeddable version enabled:",
     "invalidSlug": "This page address cannot be used.",
     "validSlug": "This page address is valid and available.",
-    "cannotManagePage": "You must configure your page first.",
+    "cannotManagePage": "An administrator or manager must configure the page first.",
     "onlinePage": "Your page is available at:",
     "iframe": "To embed your page into an existing website:",
     "offlinePage": "Your page is currently offline.",

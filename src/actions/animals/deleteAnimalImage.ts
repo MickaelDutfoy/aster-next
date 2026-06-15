@@ -18,7 +18,7 @@ export const deleteAnimalImage = async (animalId: number): Promise<ActionValidat
   try {
     await prisma.animal.update({
       where: { id: animalId },
-      data: { imageKey: null },
+      data: { imageKey: null, imageUpdatedAt: new Date() },
     });
 
     await del(animal.imageKey);

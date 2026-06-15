@@ -578,7 +578,7 @@
     "isSiteEmbeddableNotice": "Integrerbar versjon aktiv:",
     "invalidSlug": "Denne sideadressen kan ikke brukes.",
     "validSlug": "Denne sideadressen er gyldig og tilgjengelig.",
-    "cannotManagePage": "Du må konfigurere siden først.",
+    "cannotManagePage": "En administrator eller ansvarlig må først konfigurere siden.",
     "onlinePage": "Siden din er tilgjengelig på:",
     "iframe": "For å integrere siden din i et eksisterende nettsted:",
     "offlinePage": "Siden din er ikke tilgjengelig for øyeblikket.",

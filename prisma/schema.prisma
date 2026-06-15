@@ -45,6 +45,7 @@ model Animal {
   createdAt           DateTime     @default(now()) @map("created_at")
   createdByMemberId   Int
   updatedAt           DateTime     @updatedAt
+  imageUpdatedAt      DateTime?
   updatedByMemberId   Int?
 
   family        Family?             @relation(fields: [familyId], references: [id], onDelete: SetNull, onUpdate: NoAction)

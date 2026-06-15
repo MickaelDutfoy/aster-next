@@ -70,6 +70,7 @@ export type Animal = {
   orgId: number;
   createdByMemberId: number;
   updatedAt: Date;
+  imageUpdatedAt: Date | null;
   adoption?: AnimalAdoption | null;
 };
 
@@ -80,10 +81,10 @@ export type AnimalWithoutDetails = {
   sex: Sex;
   birthDate: Date | null;
   status: AnimalStatus;
-  updatedAt: Date;
   canUserEdit?: boolean;
   familyId?: number | null;
   imageKey?: string | null;
+  imageUpdatedAt?: Date | null;
   isPubliclyAdoptable?: boolean;
   publicDescription?: string | null;
 };
@@ -93,14 +94,13 @@ export type AnimalPublicSheet = {
   name: string;
   species: string;
   sex: Sex;
-  color: string | null;
   birthDate: Date | null;
   isNeutered: boolean;
   status: AnimalStatus;
-  updatedAt: Date;
   healthActs: AnimalHealthAct[];
   testEntries: AnimalTestEntry[];
   imageKey: string | null;
+  imageUpdatedAt: Date | null;
   publicDescription: string | null;
   family: { city: string } | null;
 };

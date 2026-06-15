@@ -29,7 +29,7 @@ export const setAnimalImage = async (formData: FormData): Promise<ActionValidati
 
     await prisma.animal.update({
       where: { id: animalId },
-      data: { imageKey: blob.pathname },
+      data: { imageKey: blob.pathname, imageUpdatedAt: new Date() },
     });
 
     if (previousAnimal?.imageKey) {

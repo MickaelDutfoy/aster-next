@@ -17,14 +17,13 @@ export const getPublicPageBySlug = async (slug: string) => {
               name: true,
               species: true,
               sex: true,
-              color: true,
               birthDate: true,
               isNeutered: true,
               status: true,
-              updatedAt: true,
               healthActs: true,
               testEntries: true,
               imageKey: true,
+              imageUpdatedAt: true,
               publicDescription: true,
               family: {
                 select: {
