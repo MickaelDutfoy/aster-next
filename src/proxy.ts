@@ -153,6 +153,6 @@ export const proxy = authMw(handler, {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|sitemap-static.xml).*)',
+    '/((?!api|_next/static|_next/image|assets|icons|screenshots|images|\\.well-known|favicon.ico|robots.txt|sitemap.xml|sitemap-static.xml|manifest.webmanifest|sw.js|aster-embed.js).*)',
   ],
 };
