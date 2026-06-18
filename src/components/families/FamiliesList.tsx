@@ -59,7 +59,7 @@ return (
               <li key={family.id}>
                 <span>{family.contactFullName}</span>
                 <span>{family.city}</span>
-                <Link className="action link" href={`/families/${family.id}`}>
+                <Link className="action link" href={`/families/${family.id}`} prefetch={false}>
                   <SquareArrowRight size={26} />
                 </Link>
               </li>

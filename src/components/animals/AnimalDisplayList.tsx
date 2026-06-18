@@ -37,7 +37,7 @@ export const AnimalDisplayList = ({ animals }: { animals: AnimalWithoutDetails[]
           >
             {displayAge(animal.birthDate as Date, locale)}
           </span>
-          <Link className="action link" href={`/animals/${animal.id}`}>
+          <Link className="action link" href={`/animals/${animal.id}`} prefetch={false}>
             <SquareArrowRight size={26} />
           </Link>
         </li>

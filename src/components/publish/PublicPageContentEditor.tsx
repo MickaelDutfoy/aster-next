@@ -158,7 +158,7 @@ export const PublicPageContentEditor = ({
                       onChange={() => handleAnimalToggle(animal.id)}
                     />
                   </div>
-                  <Link className="action link" href={`/animals/${animal.id}`}>
+                  <Link className="action link" href={`/animals/${animal.id}`} prefetch={false}>
                     <SquareArrowRight size={26} />
                   </Link>
                 </div>

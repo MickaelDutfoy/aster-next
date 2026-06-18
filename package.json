@@ -13,7 +13,8 @@
     "db:migrate:dev": "dotenv -e .env -- prisma migrate dev",
     "db:studio:dev": "dotenv -e .env -- prisma studio",
     "db:migrate:prod": "dotenv -e .env.prod -- prisma migrate deploy",
-    "db:studio:prod": "dotenv -e .env.prod -- prisma studio"
+    "db:studio:prod": "dotenv -e .env.prod -- prisma studio",
+    "stats": "tokei . --exclude node_modules --exclude .next --exclude .git --exclude dist --exclude build --exclude coverage --exclude .vercel --exclude pnpm-lock.yaml --exclude package-lock.json --exclude yarn.lock"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.1.0",
