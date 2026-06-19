@@ -5,6 +5,7 @@ import { getPendingOrgRequests } from '@/lib/organizations/getPendingOrgRequests
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { FamilyWithoutDetails, Member, Organization, PendingOrgRequest } from '@/lib/types';
 import { getUserWithOrgs } from '@/lib/user/getUserWithOrgs';
+import { cookies } from 'next/headers';
 
 const DashboardPage = async () => {
   const user: Member | null = await getUserWithOrgs();
@@ -17,7 +18,19 @@ const DashboardPage = async () => {
 
   const pending: PendingOrgRequest[] = await getPendingOrgRequests(org?.id);
 
-  return <Dashboard user={user} org={org} families={families} pending={pending} />;
+    const cookieStore = await cookies();
+
+    const shouldShowTutorial = cookieStore.get('dashboard_tutorial_seen')?.value !== 'v1';
+
+    return (
+      <Dashboard
+        user={user}
+        org={org}
+        families={families}
+        pending={pending}
+        shouldShowTutorial={shouldShowTutorial}
+      />
+    );
 };
 
 export default DashboardPage;

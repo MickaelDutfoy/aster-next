@@ -99,6 +99,15 @@
     "whatsNextParagraph3": "Aster ønsker å hjelpe uten å pålegge begrensninger, og derfor er de fleste opplysninger valgfrie: du bestemmer hva som er viktig.",
     "whatsNextQuestion": "Skal vi komme i gang?"
   },
+  "tutorial": {
+    "organizations": "Start med å registrere organisasjonen din, eller bli med hvis noen allerede har opprettet den. Tips: du kan være medlem av flere organisasjoner, og Aster gjør det enkelt å bytte mellom dem.",
+    "families": "Når du er medlem av en organisasjon, kan du administrere fosterhjem, tilfluktssteder og andre omsorgssteder her. Du kan invitere fosterhjem til å bruke Aster for å administrere sitt eget sted og sine egne dyr, eller administrere alt selv.",
+    "animals": "Kjernen i Aster. Legg til alle dyrene organisasjonen har ansvar for, knytt dem til et omsorgssted, last opp et bilde, og følg profilen deres, helseopplysninger, adopsjonsinformasjon og mye mer.",
+    "publish": "Gjør dyreprofilene dine om til et adopsjonsnettsted som automatisk oppdateres fra Aster. Du beholder kontrollen og bestemmer hvilke dyr som skal publiseres. Har du allerede et nettsted? Du kan generere en integrerbar versjon og beholde ditt eget domene!",
+    "notifications": "Hold oversikt over vaksiner, karanteneperioder, medlemskapsforespørsler og andre viktige påminnelser.",
+    "transactions": "Trenger du litt mer enn dyreoppfølging? Her kan du følge organisasjonens økonomiske aktivitet med et enkelt og effektivt økonomiverktøy.",
+    "settings": "Bytt tema eller språk, eller kontakt meg her hvis du trenger hjelp. Jeg svarer så raskt som mulig."
+  },
   "install": {
     "prompt": "Vil du installere Aster på mobilen din?",
     "routeButton": "Se instruksjoner",
@@ -209,6 +218,8 @@
     "pendingIntro": "Du har innmeldingsforespørsler som må behandles.",
     "pendingSee": "Se",
     "contactLink": "Kontakt",
+    "replayTutorial": "Usikker på noen av funksjonene i Aster? Vil du se veiledningen på nytt?",
+    "replayTutorialCTA": "Kom i gang!",
     "evaluateAster": "Liker du Aster? Synes du den er nyttig? Legg gjerne igjen en vurdering på ",
     "changelog": {
       "title": "Hva er nytt i Aster?",
@@ -318,6 +329,10 @@
         "Denne ambisiøse oppdateringen lar deg opprette en adopsjons-miniside som automatisk holdes oppdatert med dataene du registrerer i applikasjonen.",
         "Funksjonen vil utvikles videre over tid for å møte behovene bedre, men du kan allerede begynne å bruke den i dag: dataene dine vil ikke gå tapt.",
         "Har organisasjonen allerede et nettsted? Aster har tenkt på det også: fra publiseringsmodulen kan du hente en versjon som er klar til å integreres i det eksisterende nettstedet."
+      ],
+      "items161": [
+        "Lagt til en rask gjennomgang av Asters funksjoner ved første oppstart av appen.",
+        "Denne veiledningen vises automatisk for alle brukere som ikke allerede har sett den, inkludert brukere som har brukt Aster lenge."
       ]
     }
   },

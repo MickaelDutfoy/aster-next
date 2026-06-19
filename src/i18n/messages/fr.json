@@ -100,6 +100,15 @@
     "whatsNextParagraph4": "L'application est en constante évolution et de nouvelles fonctionnalités sont sans cesse au programme !",
     "whatsNextQuestion": "Alors, on commence ?"
   },
+  "tutorial": {
+    "organizations": "Commencez par enregistrer votre association, ou rejoignez-la si quelqu’un l’a déjà créée. Astuce : vous pouvez appartenir à plusieurs associations, et Aster vous permet de facilement basculer entre elles.",
+    "families": "Une fois dans une association, gérez ici les familles d’accueil, refuges et autres lieux. Vous pouvez inviter les familles d’accueil à utiliser Aster pour gérer leur lieu et leurs animaux, ou tout gérer vous-même.",
+    "animals": "Le cœur d’Aster. Ajoutez tous les animaux dont l'association a la charge, associez-les à un lieu, ajoutez une photo, puis suivez leur fiche, leur santé, leur adoption et bien plus encore.",
+    "publish": "Transformez vos fiches animaux en un site d’adoption se mettant tout seul à jour depuis Aster. Vous gardez le contrôle et décidez de qui est publié ou non. Vous avez déjà un site ? Vous pouvez générer une version intégrable et conserver votre propre domaine !",
+    "notifications": "Gardez un œil sur les vaccins, les quarantaines, les demandes d’adhésion et les autres rappels importants.",
+    "transactions": "Besoin d’un peu plus qu’un simple suivi des animaux ? Suivez ici l’activité financière de votre association grâce à un outil de trésorerie simple et efficace.",
+    "settings": "Changez le thème, la langue, ou contactez-moi ici si vous avez besoin d’aide. Je vous répondrai dès que possible."
+  },
   "install": {
     "prompt": "Vous voulez installer Aster sur votre mobile ?",
     "routeButton": "Voir les instructions",
@@ -209,6 +218,8 @@
     "notFoster": "Êtes-vous famille d'accueil pour {orgName} ?",
     "pendingIntro": "Vous devez valider des demandes d'adhésion.",
     "pendingSee": "Voir",
+    "replayTutorial": "Un doute sur les fonctionnalités d'Aster ? Vous voulez revoir le tutoriel ?",
+    "replayTutorialCTA": "Allons-y !",
     "evaluateAster": "Vous aimez Aster ? L'application vous est utile ? N'hésitez pas à laisser un avis sur ",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
@@ -318,6 +329,10 @@
         "Il s'agit d'une mise à jour ambitieuse vous permettant de créer un mini-site d'adoption se mettant à jour automatiquement avec les données que vous saisissez dans l'application.",
         "La fonctionnalité évoluera au fil du temps pour mieux répondre aux besoins mais vous pouvez d'ores-et-déjà la tester : les données ne seront pas perdues.",
         "Vous avez déjà un site pour votre association ? Aster pense à tout : vous pouvez récupérer depuis le module Diffusion une version prête à intégrer dans votre site actuel."
+      ],
+      "items161": [
+        "Ajout d'un rapide tour d'horizon des fonctionnalités d'Aster au premier lancement de l'appli.",
+        "Ce tutoriel se délenche naturellement pour tous les utilisateurs ne l'ayant pas déjà vu, y compris les utilisateurs de longue date."
       ]
     }
   },

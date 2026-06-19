@@ -222,12 +222,18 @@ header {
 }
 
 .text-with-link,
-.text-with-link > a {
+.text-with-link > a,
+.text-with-link > button {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
   text-decoration: none;
+
+  a,
+  button {
+    white-space: nowrap;
+  }
 }
 
 .labeled-date,
@@ -447,4 +453,61 @@ header {
   grid-template-columns: 2fr 3fr;
   align-items: center;
   gap: 5px;
+}
+
+.tutorial-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  background: radial-gradient(
+    circle at var(--spotlight-x) var(--spotlight-y),
+    transparent 0,
+    transparent var(--spotlight-inner),
+    rgba(0, 0, 0, 0.49) var(--spotlight-mid),
+    rgba(0, 0, 0, 0.92) var(--spotlight-outer)
+  );
+}
+
+.tutorial-spotlight {
+  position: fixed;
+  border-radius: 50%;
+  box-shadow: 0 0 0 100% rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.tutorial-ring {
+  position: fixed;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.45),
+    0 0 24px rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+.tutorial-text {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(85vw, 420px);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  user-select: none;
+  text-align: center;
+  pointer-events: none;
+}
+
+.tutorial-target-active {
+  position: relative;
+  z-index: 4;
+  filter: brightness(1.35);
+}
+
+.tutorial-target-active svg {
+  stroke-width: 2.6;
 }

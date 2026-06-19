@@ -29,7 +29,10 @@ export const NavBarBottom = ({ user }: { user: Member }) => {
           />
         </button>
 
-        <button onClick={() => router.replace('/organizations')}>
+        <button
+          data-tutorial-target="organizations"
+          onClick={() => router.replace('/organizations')}
+        >
           <Users
             fill={
               pathname.startsWith('/organizations') || pathname.startsWith('/members')
@@ -46,7 +49,11 @@ export const NavBarBottom = ({ user }: { user: Member }) => {
           />
         </button>
 
-        <button className={disableMenu()} onClick={() => router.replace('/transactions')}>
+        <button
+          data-tutorial-target="transactions"
+          className={disableMenu()}
+          onClick={() => router.replace('/transactions')}
+        >
           <FileSpreadsheet
             fill={pathname.startsWith('/transactions') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/transactions') ? 0.5 : 0}
@@ -55,7 +62,7 @@ export const NavBarBottom = ({ user }: { user: Member }) => {
           />
         </button>
 
-        <button onClick={() => router.replace('/settings')}>
+        <button data-tutorial-target="settings" onClick={() => router.replace('/settings')}>
           <Settings
             fill={
               pathname.startsWith('/settings') || pathname.startsWith('/contact') ? '#999' : '"000'

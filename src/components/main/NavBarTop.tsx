@@ -20,7 +20,11 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
   return (
     <div className="top-menu">
       <nav>
-        <button className={disableMenu()} onClick={() => router.replace('/animals')}>
+        <button
+          data-tutorial-target="animals"
+          className={disableMenu()}
+          onClick={() => router.replace('/animals')}
+        >
           <Cat
             fill={pathname.startsWith('/animals') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/animals') ? 0.5 : 0}
@@ -28,7 +32,11 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
             strokeWidth={pathname.startsWith('/animals') ? 2.2 : 0.8}
           />
         </button>
-        <button className={disableMenu()} onClick={() => router.replace('/families')}>
+        <button
+          data-tutorial-target="families"
+          className={disableMenu()}
+          onClick={() => router.replace('/families')}
+        >
           <HouseHeart
             fill={pathname.startsWith('/families') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/families') ? 0.5 : 0}
@@ -36,7 +44,11 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
             strokeWidth={pathname.startsWith('/families') ? 2.2 : 0.8}
           />
         </button>
-        <button className={disableMenu()} onClick={() => router.replace('/publish')}>
+        <button
+          data-tutorial-target="publish"
+          className={disableMenu()}
+          onClick={() => router.replace('/publish')}
+        >
           <Globe
             fill={pathname.startsWith('/publish') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/publish') ? 0.5 : 0}
@@ -45,7 +57,11 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
           />
         </button>
 
-        <button className="notif-bell" onClick={() => router.replace('/notifications')}>
+        <button
+          data-tutorial-target="notifications"
+          className="notif-bell"
+          onClick={() => router.replace('/notifications')}
+        >
           <Bell
             fill={pathname.startsWith('/notifications') ? '#999' : '"000'}
             fillOpacity={pathname.startsWith('/notifications') ? 0.5 : 0}
