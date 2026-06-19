@@ -504,6 +504,7 @@ header {
 
 .tutorial-target-active {
   position: relative;
+  opacity: 1;
   z-index: 4;
   filter: brightness(1.35);
 }
