@@ -1,39 +1,37 @@
 import Discover from '@/components/Discover';
+import { getAsterOpenGraph } from '@/lib/metadata';
 import { Language } from '@/lib/types';
 import '@/styles/discover.scss';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-type PageProps = {
+export async function generateMetadata({
+  params,
+}: {
   params: Promise<{ locale: Language }>;
-};
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
 
+  const title = t('discover.meta.title');
+  const description = t('discover.meta.description');
+  const path = `/${locale}/discover`;
+
   return {
-    title: t('discover.meta.title'),
-    description: t('discover.meta.description'),
+    title,
+    description,
     alternates: {
-      canonical: `/${locale}/discover`,
+      canonical: path,
     },
-    openGraph: {
-      title: t('discover.meta.title'),
-      description: t('discover.meta.description'),
-      url: `/${locale}/discover`,
-      siteName: 'Aster',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('discover.meta.title'),
-      description: t('discover.meta.description'),
-    },
+    openGraph: getAsterOpenGraph({
+      title,
+      description,
+      path,
+    }),
   };
 }
 
-const DiscoverPage = async ({ params }: PageProps) => {
+const DiscoverPage = async ({ params }: { params: Promise<{ locale: Language }> }) => {
   const { locale } = await params;
 
   return <Discover locale={locale} />;

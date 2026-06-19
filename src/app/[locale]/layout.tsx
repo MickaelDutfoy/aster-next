@@ -1,6 +1,7 @@
 import { InstallProvider } from '@/components/tools/InstallProvider';
 import ToastProvider from '@/components/tools/ToastProvider';
 import { routing } from '@/i18n/routing';
+import { DEFAULT_METADATA, getAsterOpenGraph, SITE_URL } from '@/lib/metadata';
 import '@/styles/_global.scss';
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
@@ -24,21 +25,19 @@ export const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aster-app.eu'),
+  metadataBase: new URL(SITE_URL),
   applicationName: 'Aster',
-  title: 'Aster',
-  description: 'An application for animal welfare organizations',
+  title: DEFAULT_METADATA.title,
+  description: DEFAULT_METADATA.description,
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
   },
-  openGraph: {
-    title: 'Aster',
-    description: 'An application for animal welfare organizations',
-    url: 'https://aster-app.eu',
-    siteName: 'Aster',
-    type: 'website',
-  },
+  openGraph: getAsterOpenGraph({
+    title: DEFAULT_METADATA.title,
+    description: DEFAULT_METADATA.description,
+    path: '/',
+  }),
 };
 
 export const viewport: Viewport = {
