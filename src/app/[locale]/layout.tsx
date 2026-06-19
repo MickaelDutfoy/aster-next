@@ -24,10 +24,21 @@ export const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aster-app.eu'),
   applicationName: 'Aster',
   title: 'Aster',
-  appleWebApp: { capable: true, statusBarStyle: 'default' },
   description: 'An application for animal welfare organizations',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+  },
+  openGraph: {
+    title: 'Aster',
+    description: 'An application for animal welfare organizations',
+    url: 'https://aster-app.eu',
+    siteName: 'Aster',
+    type: 'website',
+  },
 };
 
 export const viewport: Viewport = {
