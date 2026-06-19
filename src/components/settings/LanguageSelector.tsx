@@ -26,7 +26,7 @@ export function LanguageSelector({ size, userId }: { size: number; userId?: numb
   return (
     <div className="lang-select">
       {routing.locales.map((lang) => (
-        <button key={lang} onClick={() => changeLocale(lang)}>
+        <button className="lang-flag" key={lang} onClick={() => changeLocale(lang)}>
           <Image style={{ height: size, width: 1.2 * size }} src={flagByLocale[lang]} alt={lang} />
         </button>
       ))}

@@ -15,7 +15,11 @@ export const AnimalDisplayCards = ({ animals }: { animals: AnimalWithoutDetails[
   return (
     <ul className="animals-cards">
       {animals.map((animal) => (
-        <li key={animal.id} onClick={() => router.push(`/animals/${animal.id}`)}>
+        <li
+          className="in-app-animal-card"
+          key={animal.id}
+          onClick={() => router.push(`/animals/${animal.id}`)}
+        >
           <span>
             <strong>{animal.name}</strong>
           </span>{' '}

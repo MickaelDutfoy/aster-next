@@ -342,3 +342,15 @@ textarea {
     box-shadow: 2px 2px 4px vars.$smoky-black;
   }
 }
+
+.main-button:active, .little-button:active, .share-button:active, .link:active, .close:active, .help-button:active, .clickable:active, .lang-flag:active, nav > button:active, .display-mode-buttons > button:active, .in-app-animal-card:active {
+  transform: scale(0.97);
+  filter: brightness(0.95);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .main-button:hover, .little-button:hover, .share-button:hover, .link:hover, .close:hover, .help-button:hover, .clickable:hover, .lang-flag:hover, nav > button:hover, .display-mode-buttons > button:hover, .in-app-animal-card:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+}
