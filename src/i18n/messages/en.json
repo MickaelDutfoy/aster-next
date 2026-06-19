@@ -99,6 +99,15 @@
     "whatsNextParagraph3": "Aster aims to help without imposing constraints, which is why most information is optional: it’s up to you to choose what matters.",
     "whatsNextQuestion": "So, shall we get started?"
   },
+  "tutorial": {
+    "organizations": "Start by registering your organization, or join it if someone has already created it. Tip: you can belong to several organizations, and Aster makes it easy to switch between them.",
+    "families": "Once you're in an organization, manage foster families, shelters, and other locations here. You can invite foster families to use Aster to manage their own location and animals, or manage everything yourself.",
+    "animals": "The heart of Aster. Add every animal your organization cares for, link them to a location, upload a picture, and track their profile, health records, adoption details, and much more.",
+    "publish": "Turn your animal profiles into an adoption website that stays up to date automatically from Aster. You stay in control and decide which animals are published. Already have a website? You can generate an embeddable version and keep your own domain!",
+    "notifications": "Stay on top of vaccines, quarantine periods, membership requests, and other important reminders.",
+    "transactions": "Need a bit more than animal tracking? Monitor your organization's financial activity here with a simple and efficient treasury tool.",
+    "settings": "Change the theme, language, or contact me here if you need help. I'll reply as soon as possible."
+  },
   "install": {
     "prompt": "Would you like to install Aster on your mobile?",
     "routeButton": "View instructions",
@@ -209,6 +218,8 @@
     "pendingIntro": "You have membership requests to review.",
     "pendingSee": "View",
     "contactLink": "Contact",
+    "replayTutorial": "Need a reminder about Aster's features? Want to go through the tutorial again?",
+    "replayTutorialCTA": "Let's go!",
     "evaluateAster": "Do you like Aster? Do you find it useful? Feel free to leave a review on ",
     "changelog": {
       "title": "What’s new in Aster?",
@@ -318,6 +329,10 @@
         "This ambitious update allows you to create an adoption mini-site that automatically stays in sync with the data you enter in the application.",
         "The feature will continue to evolve over time to better meet your needs, but you can already start using it today: your data will not be lost.",
         "Already have a website for your organization? Aster has you covered: from the Publishing module, you can retrieve a version ready to embed into your existing website."
+      ],
+      "items161": [
+        "Added a quick overview of Aster's features when launching the app for the first time.",
+        "This tutorial is automatically shown to all users who have not already seen it, including long-time users."
       ]
     }
   },
