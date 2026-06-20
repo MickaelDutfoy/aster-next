@@ -1,5 +1,11 @@
 @use 'vars';
 
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
 .discover-page {
   min-height: 100vh;
   background-image: url('/images/cat-background.jpg');
@@ -16,7 +22,7 @@
 
 .discover-section {
   width: 100%;
-  max-width: 768px;
+  max-width: 1440px;
   margin: 0 auto 2rem;
   text-align: center;
   padding: 1.5rem;
@@ -50,7 +56,7 @@
 
 .discover-subtitle {
   margin: 0 auto;
-  max-width: 32rem;
+  max-width: 80%;
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -177,7 +183,7 @@
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 640px) and (max-width: 1023px) {
   .discover-overlay {
     padding: 2.5rem 1.25rem 4rem;
   }
@@ -202,5 +208,15 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1024px) {
+    .discover-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .discover-screenshot-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

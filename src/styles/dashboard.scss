@@ -395,6 +395,7 @@ header {
     background-color: var(--box);
     border: 1px solid var(--button);
     border-radius: 8px;
+    box-shadow: 2px 2px 4px vars.$smoky-black;
     display: flex;
     flex-direction: column;
     justify-content: center;

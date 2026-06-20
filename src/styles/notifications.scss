@@ -1,4 +1,4 @@
-@use 'vars';
+@use "vars";
 
 .notif-list {
   display: flex;
@@ -16,6 +16,7 @@
     background: var(--box);
     border: 1px solid var(--link);
     border-radius: 5px;
+    box-shadow: 1px 1px 3px vars.$smoky-black;
     margin: 5px;
     padding: 10px;
     opacity: 0.5;
