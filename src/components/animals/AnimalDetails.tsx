@@ -6,6 +6,7 @@ import { displayAge } from '@/lib/utils/displayAge';
 import { displayDate } from '@/lib/utils/displayDate';
 import { AnimalStatus, MemberRole } from '@prisma/client';
 import clsx from 'clsx';
+import { Download } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { ShareButton } from '../tools/ShareButton';
@@ -23,8 +24,8 @@ export const AnimalDetails = ({
   animal: Animal;
   family: Family | null;
 }) => {
-  const t = useTranslations();
   const locale = useLocale();
+  const t = useTranslations();
   const router = useRouter();
 
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
@@ -115,8 +116,18 @@ export const AnimalDetails = ({
   return (
     <>
       <div className="share-and-links-box">
-        <ShareButton />
-        <div>
+        <div className="share-and-download">
+          <ShareButton />
+          {canEditAnimal && (
+            <a
+              className="share-button"
+              href={`/api/organizations/${org.id}/animals/${animal.id}/export?locale=${locale}`}
+            >
+              <Download size={28} />
+            </a>
+          )}
+        </div>
+        <div className="links-box">
           <button
             onClick={() => router.push(`/animals/${animal.id}/delete`)}
             className={'little-button' + clsx(!canDeleteAnimal && ' disabled')}

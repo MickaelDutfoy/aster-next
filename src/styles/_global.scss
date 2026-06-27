@@ -178,11 +178,13 @@ a:active {
   justify-content: space-between;
   align-items: center;
 
-  div {
+  .share-and-download {
     display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    gap: 5px;
+    gap: 10px;
+  }
+
+  .links-box {
+    padding: 0;
   }
 }
 

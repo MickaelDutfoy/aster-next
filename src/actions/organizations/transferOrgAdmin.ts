@@ -1,13 +1,13 @@
 'use server';
 
-import { isAdminFromOrg } from '@/lib/permissions/isAdminFromOrg';
+import { isAdminOfOrg } from '@/lib/permissions/isAdminOfOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 export const transferOrgAdmin = async (orgId: number, newAdminId: number): Promise<ActionValidation> => {
-  const guard = await isAdminFromOrg(orgId);
+  const guard = await isAdminOfOrg(orgId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };

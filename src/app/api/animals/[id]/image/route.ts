@@ -1,7 +1,6 @@
+import { prisma } from '@/lib/prisma';
 import { get } from '@vercel/blob';
 import { NextResponse } from 'next/server';
-
-import { prisma } from '@/lib/prisma';
 
 export const GET = async (_request: Request, { params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;

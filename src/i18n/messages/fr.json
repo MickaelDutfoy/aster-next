@@ -333,6 +333,10 @@
       "items161": [
         "Ajout d'un rapide tour d'horizon des fonctionnalités d'Aster au premier lancement de l'appli.",
         "Ce tutoriel se délenche naturellement pour tous les utilisateurs ne l'ayant pas déjà vu, y compris les utilisateurs de longue date."
+      ],
+      "items162": [
+        "Les administrateurs et responsables peuvent désormais exporter les données de Trésorerie au format tableur et les fiches Animal au format pdf.",
+        "Si vous constatez des problèmes avec cette fonctionnalité, notamment en termes de mise en page, n'hésitez pas à me le faire savoir."
       ]
     }
   },
@@ -444,12 +448,14 @@
       "colorPlaceholder": "Couleur",
       "sexLabel": "Sexe * :",
       "neuteredQuestion": "Stérilisé(e) ?",
+      "neuteredStatus": "État stérilisation :",
       "legalIdPlaceholder": "Numéro",
       "findLocationPlaceholder": "Lieu",
       "birthDateLabel": "Né(e) le :",
       "entryDateLabel": "Entrée dans les lieux le :",
       "primeVaxQuestion": "Primo-vaccination ?",
       "firstDewormQuestion": "Premier déparasitage ?",
+      "statusUnrequiredLabel": "Statut de l'animal :",
       "statusLabel": "Statut de l'animal * :",
       "familyLabel": "Lieu d'accueil",
       "adopterFullNamePlaceholder": "Nom et prénom de l'adoptant",
@@ -580,7 +586,15 @@
     "incomesLabel": "Entrées :",
     "balanceLabel": "Bilan :",
     "noTransactions": "Aucune transaction trouvée.",
-    "deleteCategoryWarning": "Attention, cette action va supprimer {count} transaction(s) associée(s)."
+    "deleteCategoryWarning": "Attention, cette action va supprimer {count} transaction(s) associée(s).",
+    "csv": {
+      "type": "Type",
+      "category": "Catégorie",
+      "amount": "Montant",
+      "paymentMethod": "Moyen de paiement",
+      "counterparty": "Tiers",
+      "note": "Note"
+    }
   },
   "publish": {
     "managePage": "Paramétrer la page",
@@ -885,7 +899,7 @@
   },
   "discover": {
     "meta": {
-      "title": "Aster – Une application pour associations de protection animale",
+      "title": "Aster – Une application pour les associations de protection animale",
       "description": "Découvrez Aster, une application web/mobile pour centraliser le suivi des animaux, des lieux d’accueil et de la trésorerie."
     },
     "hero": {
@@ -966,8 +980,8 @@
     },
     "philosophy": {
       "title": "Un outil pensé pour vous",
-      "paragraph1": "Aster est gratuit et sans publicité.",
-      "paragraph2": "Il a été conçu pour aider les associations, sans contrainte ni objectif commercial.",
+      "paragraph1": "Aster est gratuit, car une association ne devrait pas avoir à choisir entre financer les soins aux animaux et payer un outil.",
+      "paragraph2": "Il est aussi sans publicité : le but est de vous faire gagner du temps, pas de vous en faire perdre.",
       "paragraph3": "C’est un projet bénévole, développé par quelqu’un d'engagé dans la protection animale, pour d’autres bénévoles."
     },
     "cta": {
