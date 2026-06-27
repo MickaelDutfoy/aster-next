@@ -52,6 +52,12 @@ const styles = StyleSheet.create({
     gap: 6,
   },
 
+  brandTextAndLink: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+
   brandText: {
     fontWeight: 700,
     paddingTop: 3,
@@ -59,9 +65,17 @@ const styles = StyleSheet.create({
     color: colors.muted,
   },
 
+  brandLink: {
+    fontWeight: 700,
+    textDecoration: 'underline',
+    paddingTop: 3,
+    fontSize: 9,
+    color: colors.muted,
+  },
+
   brandLogo: {
-    width: 18,
-    height: 18,
+    width: 28,
+    height: 28,
   },
 
   brand: {
@@ -669,7 +683,10 @@ const AnimalPdfDocument = ({ animal, locale, t }: BuildAnimalPdfParams) => {
             <Text style={styles.title}>{animal.name}</Text>
 
             <View style={styles.brandBox}>
-              <Text style={styles.brandText}>{t('publish.page.poweredByAster')}</Text>
+              <View style={styles.brandTextAndLink}>
+                <Text style={styles.brandText}>{t('publish.page.poweredByAster')}</Text>
+                <Text style={styles.brandLink}>aster-app.eu</Text>
+              </View>
               <Image style={styles.brandLogo} src={ASTER_LOGO_PATH} />
             </View>
           </View>

@@ -26,8 +26,6 @@ export async function GET(
   const parsedOrgId = Number(orgId);
   const parsedAnimalId = Number(animalId);
 
-  const isDev = process.env.NODE_ENV === 'development';
-
   if (!Number.isSafeInteger(parsedOrgId) || parsedOrgId <= 0) {
     return new NextResponse('Invalid organization id', { status: 400 });
   }
