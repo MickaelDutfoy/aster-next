@@ -3,6 +3,7 @@ import ToastProvider from '@/components/tools/ToastProvider';
 import { routing } from '@/i18n/routing';
 import { DEFAULT_METADATA, getAsterOpenGraph, SITE_URL } from '@/lib/metadata';
 import '@/styles/_global.scss';
+import '@/styles/_reactive-ui.scss';
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';

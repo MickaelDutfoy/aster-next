@@ -1,0 +1,117 @@
+.main-button,
+.little-button,
+.share-button,
+.link,
+.public-link,
+.close,
+.help-button,
+.clickable,
+.lang-flag,
+.nav-button,
+.display-button,
+.in-app-animal-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 80ms ease,
+        filter 80ms ease,
+        background-color 80ms ease,
+        box-shadow 80ms ease;
+}
+
+/* Boutons texte */
+.main-button:active,
+.little-button:active {
+    transform: translateY(1px) scale(0.96);
+    filter: brightness(0.9);
+}
+
+/* Petites icônes */
+.close:active,
+.help-button:active,
+.lang-flag:active,
+.display-button:active {
+    transform: scale(0.78);
+    filter: brightness(0.82);
+}
+
+.share-button {
+    transition:
+        transform 140ms ease,
+        filter 140ms ease,
+        box-shadow 260ms ease-out,
+        background-color 260ms ease-out;
+}
+
+.share-button.is-loading {
+    transform: scale(0.82);
+    filter: brightness(0.72);
+    border-radius: 100%;
+
+    background: radial-gradient(
+        circle at center,
+        rgba(160, 111, 82, 0.32) 0%,
+        rgba(160, 111, 82, 0.2) 35%,
+        rgba(160, 111, 82, 0.1) 60%,
+        rgba(160, 111, 82, 0) 80%
+    );
+
+    box-shadow:
+        0 0 0 7px rgba(160, 111, 82, 0.08),
+        0 0 18px rgba(160, 111, 82, 0.22);
+}
+
+/* Icônes de navigation principales */
+.nav-button:active {
+    transform: scale(0.84);
+    filter: brightness(0.82);
+}
+
+/* Liens / lignes / expand-collapse */
+.link:active,
+.public-link:active {
+    transform: translateX(2px);
+    filter: brightness(0.88);
+}
+
+/* Cards / notifications */
+.clickable:active,
+.in-app-animal-card:active {
+    transform: translateY(1px) scale(0.992);
+    filter: brightness(0.94);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .main-button:hover,
+    .little-button:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.12);
+    }
+
+    .share-button:hover,
+    .close:hover,
+    .help-button:hover,
+    .lang-flag:hover,
+    .display-button:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.18);
+    }
+
+    .nav-button:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.15);
+    }
+
+    .link:hover,
+    .public-link:hover {
+        transform: translateX(2px);
+        filter: brightness(1.12);
+    }
+
+    .clickable:hover,
+    .in-app-animal-card:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.06);
+    }
+}

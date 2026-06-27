@@ -1,9 +1,26 @@
+'use client';
+
 import { Share2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { showToast } from './ToastProvider';
 
 export const ShareButton = () => {
   const t = useTranslations();
+
+  const [isSharing, setIsSharing] = useState(false);
+
+  async function handleShareClick() {
+    setIsSharing(true);
+
+    try {
+      await handleShare();
+    } finally {
+      window.setTimeout(() => {
+        setIsSharing(false);
+      }, 250);
+    }
+  }
 
   const handleShare = async () => {
     const url = window.location.href;
@@ -17,7 +34,11 @@ export const ShareButton = () => {
   };
 
   return (
-    <button className="share-button" onClick={handleShare}>
+    <button
+      type="button"
+      className={`share-button ${isSharing ? 'is-loading' : ''}`}
+      onClick={handleShareClick}
+    >
       <Share2 size={28} />
     </button>
   );

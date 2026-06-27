@@ -141,12 +141,14 @@ export const AnimalsList = ({
           <div className="display-mode">
             <div className="display-mode-buttons">
               <button
+                className="display-button"
                 style={displayMode === 'cards' ? { opacity: 0.5 } : {}}
                 onClick={() => handleChangeMode('list')}
               >
                 <List size={26} />
               </button>
               <button
+                className="display-button"
                 style={displayMode === 'list' ? { opacity: 0.5 } : {}}
                 onClick={() => handleChangeMode('cards')}
               >

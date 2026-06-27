@@ -6,9 +6,9 @@ import { displayAge } from '@/lib/utils/displayAge';
 import { displayDate } from '@/lib/utils/displayDate';
 import { AnimalStatus, MemberRole } from '@prisma/client';
 import clsx from 'clsx';
-import { Download } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { DonwloadButton } from '../tools/DownloadButton';
 import { ShareButton } from '../tools/ShareButton';
 import { AnimalImage } from './AnimalImage';
 import { isCommonSpecies } from './isCommonSpecies';
@@ -119,12 +119,9 @@ export const AnimalDetails = ({
         <div className="share-and-download">
           <ShareButton />
           {canEditAnimal && (
-            <a
-              className="share-button"
+            <DonwloadButton
               href={`/api/organizations/${org.id}/animals/${animal.id}/export?locale=${locale}`}
-            >
-              <Download size={28} />
-            </a>
+            />
           )}
         </div>
         <div className="links-box">

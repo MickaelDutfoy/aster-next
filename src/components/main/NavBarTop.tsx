@@ -22,7 +22,7 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
       <nav>
         <button
           data-tutorial-target="animals"
-          className={disableMenu()}
+          className={'nav-button ' + disableMenu()}
           onClick={() => router.replace('/animals')}
         >
           <Cat
@@ -34,7 +34,7 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
         </button>
         <button
           data-tutorial-target="families"
-          className={disableMenu()}
+          className={'nav-button ' + disableMenu()}
           onClick={() => router.replace('/families')}
         >
           <HouseHeart
@@ -46,7 +46,7 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
         </button>
         <button
           data-tutorial-target="publish"
-          className={disableMenu()}
+          className={'nav-button ' + disableMenu()}
           onClick={() => router.replace('/publish')}
         >
           <Globe
@@ -59,7 +59,7 @@ export const NavBarTop = ({ user, notifCounter }: { user: Member; notifCounter: 
 
         <button
           data-tutorial-target="notifications"
-          className="notif-bell"
+          className="notif-bell nav-button"
           onClick={() => router.replace('/notifications')}
         >
           <Bell
