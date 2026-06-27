@@ -333,6 +333,10 @@
       "items161": [
         "Lagt til en rask gjennomgang av Asters funksjoner ved første oppstart av appen.",
         "Denne veiledningen vises automatisk for alle brukere som ikke allerede har sett den, inkludert brukere som har brukt Aster lenge."
+      ],
+      "items162": [
+        "Administratorer og ansvarlige kan nå eksportere data fra økonomimodulen til regneark, og dyreprofiler som PDF.",
+        "Hvis du oppdager problemer med denne funksjonen, spesielt når det gjelder layouten, må du gjerne gi meg beskjed."
       ]
     }
   },
@@ -444,13 +448,15 @@
       "colorPlaceholder": "Farge",
       "sexLabel": "Kjønn *:",
       "neuteredQuestion": "Kastrert/sterilisert?",
+      "neuteredStatus": "Steriliseringsstatus:",
       "legalIdPlaceholder": "Nummer",
       "findLocationPlaceholder": "Sted",
       "birthDateLabel": "Født den:",
       "entryDateLabel": "Flyttet inn:",
       "primeVaxQuestion": "Grunnvaksine?",
       "firstDewormQuestion": "Første ormekur?",
-      "statusLabel": "Dyrets status *:",
+      "statusLabel": "Dyrets status *:",
+      "statusUnrequiredLabel": "Dyrets status:",
       "familyLabel": "Omsorgssted",
       "adopterFullNamePlaceholder": "Adoptantens fulle navn",
       "addressPlaceholder": "Gate og nummer",
@@ -580,7 +586,15 @@
     "incomesLabel": "Inntekter:",
     "balanceLabel": "Balanse:",
     "noTransactions": "Ingen transaksjoner funnet.",
-    "deleteCategoryWarning": "Advarsel: denne handlingen vil slette {count} tilknyttede transaksjon(er)."
+    "deleteCategoryWarning": "Advarsel: denne handlingen vil slette {count} tilknyttede transaksjon(er).",
+    "csv": {
+      "type": "Type",
+      "category": "Kategori",
+      "amount": "Beløp",
+      "paymentMethod": "Betalingsmåte",
+      "counterparty": "Motpart",
+      "note": "Notat"
+    }
   },
   "publish": {
     "managePage": "Konfigurer side",
@@ -966,8 +980,8 @@
     },
     "philosophy": {
       "title": "Et verktøy laget for deg",
-      "paragraph1": "Aster er gratis og uten reklame.",
-      "paragraph2": "Det er laget for å hjelpe organisasjoner, uten begrensninger eller kommersielle mål.",
+      "paragraph1": "Aster er gratis, fordi en organisasjon ikke skal måtte velge mellom å finansiere dyreomsorg og å betale for et verktøy.",
+      "paragraph2": "Det er også reklamefritt: målet er å spare deg for tid, ikke å kaste bort tiden din.",
       "paragraph3": "Det er et frivillig prosjekt, utviklet av noen som er engasjert i dyrevern, for andre frivillige."
     },
     "cta": {

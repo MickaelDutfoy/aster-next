@@ -1,12 +1,12 @@
 'use server';
 
-import { isAdminFromOrg } from '@/lib/permissions/isAdminFromOrg';
+import { isAdminOfOrg } from '@/lib/permissions/isAdminOfOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
 export const editOrg = async (orgId: number, formData: FormData): Promise<ActionValidation> => {
-  const guard = await isAdminFromOrg(orgId);
+  const guard = await isAdminOfOrg(orgId);
   if (!guard.validation.ok) return guard.validation;
 
   const name = formData.get('name')?.toString().trim();

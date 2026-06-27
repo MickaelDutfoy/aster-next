@@ -24,7 +24,7 @@ const Transactions = async () => {
 
   return (
     <>
-      <TransactionsActions />
+      <TransactionsActions orgId={org.id} />
       <TransactionsList
         transactions={transactions}
         categories={categories}

@@ -1,12 +1,12 @@
 'use server';
 
-import { isNotSuperAdminFromOrg } from '@/lib/permissions/isNotSuperAdminFromOrg';
+import { isNotSuperAdminOfOrg } from '@/lib/permissions/isNotSuperAdminOfOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
 
 export const leaveOrg = async (orgId: number): Promise<ActionValidation> => {
-  const guard = await isNotSuperAdminFromOrg(orgId);
+  const guard = await isNotSuperAdminOfOrg(orgId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };

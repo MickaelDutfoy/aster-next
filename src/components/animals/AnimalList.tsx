@@ -4,7 +4,7 @@ import { AnimalWithoutDetails, FamilyWithoutDetails, Organization } from '@/lib/
 import { AnimalStatus } from '@prisma/client';
 import { Grid2x2, List } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimalDisplayCards } from './AnimalDisplayCards';
 import { AnimalDisplayList } from './AnimalDisplayList';
 
@@ -20,10 +20,8 @@ export const AnimalsList = ({
   const t = useTranslations();
 
   const [displayMode, setDisplayMode] = useState<'list' | 'cards' | null>(null);
-
   const [nameFilter, setNameFilter] = useState<string>('');
   const [familyFilter, setfamilyFilter] = useState<number>(0);
-
   const [selectedStatuses, setSelectedStatuses] = useState<AnimalStatus[]>([
     AnimalStatus.UNHOSTED,
     AnimalStatus.FOSTERED,
@@ -39,12 +37,16 @@ export const AnimalsList = ({
     AnimalStatus.PERMANENT_PLACEMENT,
     AnimalStatus.RELEASED,
   ];
-
-  const filteredAnimals = animals
-    .filter((animal) => !nameFilter || animal.name.toLowerCase().includes(nameFilter.toLowerCase()))
-    .filter((animal) => !familyFilter || animal.familyId === familyFilter)
-    .filter((animal) => selectedStatuses.includes(animal.status))
-    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+  
+  const filteredAnimals = useMemo(() => {
+    return animals
+      .filter(
+        (animal) => !nameFilter || animal.name.toLowerCase().includes(nameFilter.toLowerCase()),
+      )
+      .filter((animal) => !familyFilter || animal.familyId === familyFilter)
+      .filter((animal) => selectedStatuses.includes(animal.status))
+      .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+  }, [animals, nameFilter, familyFilter, selectedStatuses]);
 
   useEffect(() => {
     const stored = localStorage.getItem('preferredDisplayMode');

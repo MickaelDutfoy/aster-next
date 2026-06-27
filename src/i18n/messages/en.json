@@ -333,6 +333,10 @@
       "items161": [
         "Added a quick overview of Aster's features when launching the app for the first time.",
         "This tutorial is automatically shown to all users who have not already seen it, including long-time users."
+      ],
+      "items162": [
+        "Administrators and managers can now export Treasury data as a spreadsheet, and animal profiles as PDF files.",
+        "If you encounter any issues with this feature, especially regarding the layout, please don't hesitate to let me know."
       ]
     }
   },
@@ -444,13 +448,15 @@
       "colorPlaceholder": "Color",
       "sexLabel": "Sex *:",
       "neuteredQuestion": "Neutered?",
+      "neuteredStatus": "Neutering status:",
       "legalIdPlaceholder": "Number",
       "findLocationPlaceholder": "Location",
       "birthDateLabel": "Born on:",
       "entryDateLabel": "Entered location on:",
       "primeVaxQuestion": "First vaccination?",
       "firstDewormQuestion": "First deworming?",
-      "statusLabel": "Animal status *:",
+      "statusLabel": "Animal status *:",
+      "statusUnrequiredLabel": "Animal status:",
       "familyLabel": "Foster location",
       "adopterFullNamePlaceholder": "Adopter’s full name",
       "addressPlaceholder": "Street and number",
@@ -580,7 +586,15 @@
     "incomesLabel": "Income:",
     "balanceLabel": "Balance:",
     "noTransactions": "No transactions found.",
-    "deleteCategoryWarning": "Warning: this action will delete {count} associated transaction(s)."
+    "deleteCategoryWarning": "Warning: this action will delete {count} associated transaction(s).",
+    "csv": {
+      "type": "Type",
+      "category": "Category",
+      "amount": "Amount",
+      "paymentMethod": "Payment method",
+      "counterparty": "Counterparty",
+      "note": "Note"
+    }
   },
   "publish": {
     "managePage": "Configure page",
@@ -966,9 +980,9 @@
     },
     "philosophy": {
       "title": "A tool designed for you",
-      "paragraph1": "Aster is free and has no ads.",
-      "paragraph2": "It was built to support organizations, with no constraints and no commercial goals.",
-      "paragraph3": "It is a volunteer project, developed by someone involved in animal welfare, for other volunteers."
+      "paragraph1": "Aster is free, because an organization should not have to choose between funding animal care and paying for a tool.",
+      "paragraph2": "It is also ad-free: the goal is to save you time, not waste it.",
+      "paragraph3": "It is a volunteer project, developed by someone committed to animal welfare, for other volunteers."
     },
     "cta": {
       "title": "Shall we get started?",

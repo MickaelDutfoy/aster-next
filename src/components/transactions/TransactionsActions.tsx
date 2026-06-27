@@ -1,23 +1,33 @@
 'use client';
 
 import { useRouter } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { Download } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 
-export const TransactionsActions = () => {
+export const TransactionsActions = ({ orgId }: { orgId: number }) => {
+  const locale = useLocale();
   const t = useTranslations();
   const router = useRouter();
 
   return (
-    <div className="links-box">
-      <button onClick={() => router.push('/transactions/new')} className="little-button">
-        {t('transactions.addTitle')}
-      </button>
-      <button
-        onClick={() => router.push('/transactions/edit-categories')}
-        className="little-button"
+    <div className="share-and-links-box">
+      <a
+        className="share-button"
+        href={`/api/organizations/${orgId}/transactions/export?locale=${locale}`}
       >
-        {t('transactions.editCategories')}
-      </button>
+        <Download size={28} />
+      </a>
+      <div className="links-box">
+        <button onClick={() => router.push('/transactions/new')} className="little-button">
+          {t('transactions.addTitle')}
+        </button>
+        <button
+          onClick={() => router.push('/transactions/edit-categories')}
+          className="little-button"
+        >
+          {t('transactions.editCategories')}
+        </button>
+      </div>
     </div>
   );
 };

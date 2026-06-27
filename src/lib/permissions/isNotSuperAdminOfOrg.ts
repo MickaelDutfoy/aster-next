@@ -3,7 +3,7 @@ import { prisma } from '../prisma';
 import { ActionValidation, Member } from '../types';
 import { getUser } from '../user/getUser';
 
-export const isAdminFromOrg = async (
+export const isNotSuperAdminOfOrg = async (
   orgId: number,
 ): Promise<{ validation: ActionValidation; user: Member | null }> => {
   const user: Member | null = await getUser();
@@ -19,7 +19,7 @@ export const isAdminFromOrg = async (
     select: { role: true },
   });
 
-  if (membership?.role !== MemberRole.SUPERADMIN && membership?.role !== MemberRole.ADMIN) {
+  if (membership?.role === MemberRole.SUPERADMIN) {
     return {
       validation: { ok: false, status: 'error', message: 'toasts.notAllowed' },
       user: null,

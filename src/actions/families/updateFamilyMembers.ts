@@ -1,6 +1,6 @@
 'use server';
 
-import { isAdminFromOrg } from '@/lib/permissions/isAdminFromOrg';
+import { isAdminOfOrg } from '@/lib/permissions/isAdminOfOrg';
 import { isMemberOfFamily } from '@/lib/permissions/isMemberOfFamily';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Member } from '@/lib/types';
@@ -28,7 +28,7 @@ export const updateFamilyMembers = async (
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
-  const adminGuard = await isAdminFromOrg(family.orgId);
+  const adminGuard = await isAdminOfOrg(family.orgId);
 
   let user: Member;
 

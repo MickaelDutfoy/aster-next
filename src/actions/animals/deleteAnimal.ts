@@ -1,6 +1,6 @@
 'use server';
 
-import { isSuperAdminFromOrg } from '@/lib/permissions/isSuperAdminFromOrg';
+import { isSuperAdminOfOrg } from '@/lib/permissions/isSuperAdminOfOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 
@@ -14,7 +14,7 @@ export const deleteAnimal = async (animalId: number): Promise<ActionValidation> 
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
-  const guard = await isSuperAdminFromOrg(animal.orgId);
+  const guard = await isSuperAdminOfOrg(animal.orgId);
   if (!guard.validation.ok) return guard.validation;
 
   try {

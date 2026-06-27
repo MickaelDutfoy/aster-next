@@ -126,7 +126,7 @@ export const PublicPageContentEditor = ({
         {canManagePage && (
           <div className="text-with-link">
             <p>{t('publish.editOrgDesc')}</p>
-            <Link className="little-button" href={`/organizations/${publicPage.orgId}/edit`}>
+            <Link className="little-button" href={`/organizations/${publicPage.orgId}`}>
               {t('common.view')}
             </Link>
           </div>
