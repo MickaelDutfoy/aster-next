@@ -932,7 +932,7 @@
       },
       "fosterLocations": {
         "title": "Omsorgssteder",
-        "description": "Organiser fosterhjem eller tilfluktssteder, knytt medlemmer til dem og dyrene de tar imot."
+        "description": "Organiser fosterhjem, dyreinternater og andre omsorgssteder, knytt medlemmer til dem og dyrene de tar imot."
       },
       "treasury": {
         "title": "Økonomi",
@@ -989,6 +989,7 @@
       "paragraph1": "Opprett en konto, legg til organisasjonen din og begynn å organisere informasjonen enkelt.",
       "primaryAction": "Gå til appen"
     },
-    "usefulLinks": "Nyttige lenker:"
+    "usefulLinks": "Nyttige lenker:",
+    "sourceCode": "Applikasjonens kildekode:"
   }
 }

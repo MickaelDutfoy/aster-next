@@ -158,6 +158,16 @@ export default async function Discover({ locale }: { locale: Language }) {
             <span>{t('legal.personalData.contactLabel')} </span>
             <Link href={`mailto:${t('legal.editor.email')}`} target="_blank">
               {t('legal.editor.email')}
+            </Link>{' '}
+            •{' '}
+            <Link href="https://www.linkedin.com/in/mickaeldutfoy/" target="_blank">
+              LinkedIn
+            </Link>
+          </div>
+          <div className="links-line">
+            <span>{t('discover.sourceCode')} </span>
+            <Link href="https://github.com/MickaelDutfoy/aster-next" target="_blank">
+              GitHub
             </Link>
           </div>
         </section>

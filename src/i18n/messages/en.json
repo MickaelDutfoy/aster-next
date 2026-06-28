@@ -989,6 +989,7 @@
       "paragraph1": "Create your account, add your organization, and start organizing your information simply.",
       "primaryAction": "Go to the app"
     },
-    "usefulLinks": "Useful links:"
+    "usefulLinks": "Useful links:",
+    "sourceCode": "Application source code:"
   }
 }
