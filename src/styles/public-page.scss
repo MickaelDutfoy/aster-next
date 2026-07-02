@@ -44,15 +44,11 @@ body {
 }
 
 header {
-  z-index: 1;
+  text-align: center;
+}
 
-  h1 {
-    text-align: center;
-  }
-
-  p {
-    font-size: 1.2rem;
-  }
+.large-text {
+  font-size: 1.2rem;
 }
 
 h2 {

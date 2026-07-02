@@ -26,7 +26,7 @@ export default async function ManageFamilyRouteModal({
 
   return (
     <RouteModal expectedPath={`/families/${family.id}/add-members`}>
-      <ManageFamilyMembers orgMembers={orgMembers} family={family} />
+      <ManageFamilyMembers user={user} orgMembers={orgMembers} family={family} />
     </RouteModal>
   );
 }

@@ -80,12 +80,13 @@ export const PublicPageBody = ({
       {!embed && (
         <header className="box">
           <h1>{title}</h1>
-          <p>{description}</p>
+          <p className="large-text">{description}</p>
         </header>
       )}
       <main className="box">
         {!embed && <h2>{t('publish.page.animals')}</h2>}
         <div className="animals">
+          {animals.length === 0 && <p className="large-text">{t('publish.page.noAnimals')}</p>}
           {animals.map((animal) => (
             <PublicAnimalCard key={animal.id} animal={animal} onOpenAnimal={handleOpenAnimal} />
           ))}

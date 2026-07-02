@@ -139,7 +139,7 @@
 
   .buttons {
     display: flex;
-    gap: 2px;
+    gap: 10px;
   }
 
   .action {
@@ -149,7 +149,7 @@
     align-self: center;
 
     .action-list {
-      width: 50vw;
+      width: min(400px, 50vw);
       position: absolute;
       right: 0px;
       bottom: 30px;
@@ -171,7 +171,7 @@
         border-bottom: 1px solid var(--input-text);
         border-right: 1px solid var(--input-text);
         border-left: 1px solid var(--input-text);
-        padding: 10px;
+        padding: 15px;
       }
     }
   }

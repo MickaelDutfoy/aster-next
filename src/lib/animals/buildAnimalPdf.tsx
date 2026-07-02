@@ -444,7 +444,7 @@ const SituationSection = ({
 }) => {
   return (
     <View style={styles.section} wrap={false}>
-      <Text style={styles.sectionTitle}>{t('animals.currentStatusLabel')}</Text>
+      <Text style={styles.sectionTitle}>{t('animals.currentStatus')}</Text>
 
       <View style={styles.sectionBody}>
         <ValueRow

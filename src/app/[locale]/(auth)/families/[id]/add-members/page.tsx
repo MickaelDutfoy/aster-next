@@ -21,7 +21,7 @@ const ManageFamilyPage = async ({ params }: { params: Promise<{ id: string }> })
 
   return (
     <div className="full-page-form">
-      <ManageFamilyMembers orgMembers={orgMembers} family={family} />
+      <ManageFamilyMembers user={user} orgMembers={orgMembers} family={family} />
     </div>
   );
 };

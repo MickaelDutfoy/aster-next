@@ -104,7 +104,7 @@
     "organizations": "Commencez par enregistrer votre association, ou rejoignez-la si quelqu’un l’a déjà créée. Astuce : vous pouvez appartenir à plusieurs associations, et Aster vous permet de facilement basculer entre elles.",
     "families": "Une fois dans une association, gérez ici les familles d’accueil, refuges et autres lieux. Vous pouvez inviter les familles d’accueil à utiliser Aster pour gérer leur lieu et leurs animaux, ou tout gérer vous-même.",
     "animals": "Le cœur d’Aster. Ajoutez tous les animaux dont l'association a la charge, associez-les à un lieu, ajoutez une photo, puis suivez leur fiche, leur santé, leur adoption et bien plus encore.",
-    "publish": "Transformez vos fiches animaux en un site d’adoption se mettant tout seul à jour depuis Aster. Vous gardez le contrôle et décidez de qui est publié ou non. Vous avez déjà un site ? Vous pouvez générer une version intégrable et conserver votre propre domaine !",
+    "publish": "Transformez vos fiches animaux en un site d’adoption se mettant tout seul à jour depuis Aster. Vous gardez le contrôle et décidez de qui est publié ou non. Vous avez déjà un site ? Vous pouvez générer une version intégrable et conserver votre propre domaine !",
     "notifications": "Gardez un œil sur les vaccins, les quarantaines, les demandes d’adhésion et les autres rappels importants.",
     "transactions": "Besoin d’un peu plus qu’un simple suivi des animaux ? Suivez ici l’activité financière de votre association grâce à un outil de trésorerie simple et efficace.",
     "settings": "Changez le thème, la langue, ou contactez-moi ici si vous avez besoin d’aide. Je vous répondrai dès que possible."
@@ -408,6 +408,7 @@
     },
     "additionalInfoLabel": "Informations complémentaires :",
     "currentStatusLabel": "Situation actuelle :",
+    "currentStatus": "Situation actuelle",
     "listTitle": "Animaux enregistrés pour {orgName} ({count}) :",
     "none": "Aucun animal à afficher.",
     "togglePlaced": "Afficher les animaux placés ({count})",
@@ -619,6 +620,7 @@
     "page": {
       "poweredByAster": "Créé avec Aster",
       "animals": "Nos animaux à l'adoption",
+      "noAnimals": "Nous n'avons actuellement aucun animal à l'adoption.",
       "trialInProgress": "{name} est actuellement en période d'essai.",
       "animalHealthInfo": "Santé",
       "testPrefix": "Testé(e) ",

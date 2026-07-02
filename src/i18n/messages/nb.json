@@ -408,6 +408,7 @@
     },
     "additionalInfoLabel": "Tilleggsinformasjon:",
     "currentStatusLabel": "Nåværende status:",
+    "currentStatus": "Nåværende status",
     "listTitle": "Registrerte dyr for {orgName} ({count}):",
     "none": "Ingen dyr å vise.",
     "togglePlaced": "Vis dyr med permanent plassering ({count})",
@@ -619,6 +620,7 @@
     "page": {
       "poweredByAster": "Laget med Aster",
       "animals": "Våre dyr til adopsjon",
+      "noAnimals": "Vi har for øyeblikket ingen dyr til adopsjon.",
       "trialInProgress": "{name} er for tiden i prøveperiode.",
       "animalHealthInfo": "Helse",
       "testPrefix": "Testet ",

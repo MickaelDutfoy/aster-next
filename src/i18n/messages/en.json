@@ -408,6 +408,7 @@
     },
     "additionalInfoLabel": "Additional information:",
     "currentStatusLabel": "Current status:",
+    "currentStatus": "Current status",
     "listTitle": "Animals registered for {orgName} ({count}):",
     "none": "No animals to display.",
     "togglePlaced": "Show permanently placed animals ({count})",
@@ -619,6 +620,7 @@
     "page": {
       "poweredByAster": "Created with Aster",
       "animals": "Our animals available for adoption",
+      "noAnimals": "We currently have no animals available for adoption.",
       "trialInProgress": "{name} is currently in a trial period.",
       "animalHealthInfo": "Health",
       "testPrefix": "Tested ",

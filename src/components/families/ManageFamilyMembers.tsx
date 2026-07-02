@@ -2,7 +2,7 @@
 
 import { updateFamilyMembers } from '@/actions/families/updateFamilyMembers';
 import { useRouter } from '@/i18n/routing';
-import { Family, MemberOfFamily, MemberOfOrg } from '@/lib/types';
+import { Family, Member, MemberOfFamily, MemberOfOrg } from '@/lib/types';
 import { MemberStatus } from '@prisma/client';
 import { CircleMinus, CirclePlus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -10,9 +10,11 @@ import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 
 export const ManageFamilyMembers = ({
+  user,
   orgMembers,
   family,
 }: {
+  user: Member;
   orgMembers: MemberOfOrg[];
   family: Family;
 }) => {
@@ -23,7 +25,6 @@ export const ManageFamilyMembers = ({
   const initialAdminMemberIds = family.members
     .filter((member) => member.role !== 'MEMBER')
     .map((member) => member.id);
-
 
   const [isLoading, setIsLoading] = useState(false);
   const [actualMembers, setActualMembers] = useState<MemberOfFamily[]>(family.members);
@@ -44,11 +45,10 @@ export const ManageFamilyMembers = ({
   };
 
   const canRemoveMember = (member: MemberOfFamily) => {
-    if (initialAdminMemberIds.includes(member.id)) return false;
+    if (initialAdminMemberIds.includes(member.id) && member.id !== user.id) return false;
 
     return true;
   };
-
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
