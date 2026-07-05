@@ -496,7 +496,9 @@ export const AnimalForm = ({
                       <li key={`${act.type}-${act.date}-${index}`}>
                         <div className="treatment-and-product">
                           <span>{t(`animals.healthActTypes.${act.type}`)}</span>
-                          <span style={{ opacity: 0.6 }}>{'(' + act.productName + ')'}</span>
+                          <span style={{ opacity: 0.6 }}>
+                            {act.productName ? '(' + act.productName + ')' : ''}
+                          </span>
                         </div>
 
                         <span>

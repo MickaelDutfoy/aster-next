@@ -3,24 +3,33 @@ export const displayAge = (birthDate: Date, lang: string, full = false): string 
 
   const AGE_LABELS = {
     fr: {
+      today: "aujourd'hui",
       day: 'jour(s)',
       month: 'mois',
       year: 'an(s)',
     },
     en: {
+      today: 'today',
       day: 'day(s)',
       month: 'month(s)',
       year: 'year(s)',
     },
     nb: {
+      today: 'i dag',
       day: 'dag(er)',
       month: 'måned(er)',
       year: 'år',
     },
   };
 
-  const birth = new Date(birthDate);
-  const now = new Date();
+  const labels = AGE_LABELS[lang as Language] ?? AGE_LABELS.fr;
+
+  const toLocalDateOnly = (date: Date) => {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  };
+
+  const birth = toLocalDateOnly(new Date(birthDate));
+  const now = toLocalDateOnly(new Date());
 
   let years = now.getFullYear() - birth.getFullYear();
   let months = now.getMonth() - birth.getMonth();
@@ -28,6 +37,7 @@ export const displayAge = (birthDate: Date, lang: string, full = false): string 
 
   if (days < 0) {
     months--;
+
     const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
     days += prevMonth.getDate();
   }
@@ -37,10 +47,8 @@ export const displayAge = (birthDate: Date, lang: string, full = false): string 
     months += 12;
   }
 
-  const labels = AGE_LABELS[lang as Language] ?? AGE_LABELS.fr;
-
   if (years === 0 && months === 0 && days === 0) {
-    days = 1;
+    return labels.today;
   }
 
   if (years === 0) {

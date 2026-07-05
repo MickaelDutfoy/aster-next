@@ -27,6 +27,7 @@ export const AnimalDetails = ({
   const locale = useLocale();
   const t = useTranslations();
   const router = useRouter();
+  const now = new Date().toISOString().slice(0, 10);
 
   const [hiddenHealth, setHiddenHealth] = useState<boolean>(
     animal.status === AnimalStatus.ADOPTED ? true : false,
@@ -194,10 +195,11 @@ export const AnimalDetails = ({
                 <h4>{t('animals.lastVaxLabel')}</h4>
                 <p>
                   {displayDate(lastVaxAct.date)}
-                  {lastVaxAct.isFirst && t('animals.primoShort')}, {lastVaxAct.productName},{' '}
-                  {t('common.agoPrefix')}
+                  {lastVaxAct.isFirst && t('animals.primoShort')}, {lastVaxAct.productName}
+                  {lastVaxAct.productName && ','}{' '}
+                  {now !== lastVaxAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                   {displayAge(lastVaxAct.date, locale, true)}
-                  {t('common.agoSuffix')}.
+                  {now !== lastVaxAct.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
                 </p>
 
                 {vaxHistory.length > 0 && (
@@ -206,9 +208,11 @@ export const AnimalDetails = ({
                     <ul>
                       {vaxHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}, {act.productName}, {t('common.agoPrefix')}
+                          {displayDate(act.date)}, {act.productName}
+                          {act.productName && ','}{' '}
+                          {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
-                          {t('common.agoSuffix')}.
+                          {now !== act.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
                         </li>
                       ))}
                     </ul>
@@ -223,9 +227,11 @@ export const AnimalDetails = ({
                 <p>
                   {displayDate(lastDewormAct.date)}
                   {lastDewormAct.isFirst && t('animals.firstDewormShort')},{' '}
-                  {lastDewormAct.productName}, {t('common.agoPrefix')}
+                  {lastDewormAct.productName}
+                  {lastDewormAct.productName && ','}{' '}
+                  {now !== lastDewormAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                   {displayAge(lastDewormAct.date, locale, true)}
-                  {t('common.agoSuffix')}.
+                  {now !== lastDewormAct.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
                 </p>
 
                 {dewormHistory.length > 0 && (
@@ -234,9 +240,11 @@ export const AnimalDetails = ({
                     <ul style={{ paddingLeft: 40 }}>
                       {dewormHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}, {act.productName}, {t('common.agoPrefix')}
+                          {displayDate(act.date)}, {act.productName}
+                          {act.productName && ','}{' '}
+                          {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
-                          {t('common.agoSuffix')}.
+                          {now !== act.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
                         </li>
                       ))}
                     </ul>
@@ -251,9 +259,12 @@ export const AnimalDetails = ({
                 <p>
                   {displayDate(lastAntifleaAct.date)}
                   {lastAntifleaAct.isFirst && t('animals.firstDewormShort')},{' '}
-                  {lastAntifleaAct.productName}, {t('common.agoPrefix')}
+                  {lastAntifleaAct.productName}
+                  {lastAntifleaAct.productName && ','}{' '}
+                  {now !== lastAntifleaAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                   {displayAge(lastAntifleaAct.date, locale, true)}
-                  {t('common.agoSuffix')}.
+                  {now !== lastAntifleaAct.date.toISOString().slice(0, 10) && t('common.agoSuffix')}
+                  .
                 </p>
 
                 {antifleaHistory.length > 0 && (
@@ -262,9 +273,11 @@ export const AnimalDetails = ({
                     <ul style={{ paddingLeft: 40 }}>
                       {antifleaHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}, {act.productName}, {t('common.agoPrefix')}
+                          {displayDate(act.date)}, {act.productName}
+                          {act.productName && ','}{' '}
+                          {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
-                          {t('common.agoSuffix')}.
+                          {now !== act.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
                         </li>
                       ))}
                     </ul>
