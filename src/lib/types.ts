@@ -58,6 +58,7 @@ export type Animal = {
   birthDate: Date | null;
   isNeutered: boolean;
   status: AnimalStatus;
+  deathCause: string | null;
   information: string | null;
   healthActs?: AnimalHealthAct[];
   healthInformation: string | null;
@@ -111,12 +112,14 @@ export type AnimalHealthAct = {
   type: AnimalHealthActType;
   date: Date;
   isFirst: boolean;
+  productName: string | null;
 };
 
 export type AnimalHealthDraft = {
   type: AnimalHealthActType;
   date: string;
   isFirst: boolean;
+  productName: string | null;
 };
 
 export type AnimalWeightEntry = {

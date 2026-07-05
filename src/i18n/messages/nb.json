@@ -337,6 +337,10 @@
       "items162": [
         "Administratorer og ansvarlige kan nå eksportere data fra økonomimodulen til regneark, og dyreprofiler som PDF.",
         "Hvis du oppdager problemer med denne funksjonen, spesielt når det gjelder layouten, må du gjerne gi meg beskjed."
+      ],
+      "items163": [
+        "Det er nå mulig å angi vaksinetype eller produktet som er brukt ved behandling mot parasitter eller ormekur.",
+        "Det er også mulig å registrere dødsårsaken for avdøde dyr."
       ]
     }
   },
@@ -454,8 +458,11 @@
       "findLocationPlaceholder": "Sted",
       "birthDateLabel": "Født den:",
       "entryDateLabel": "Flyttet inn:",
+      "deathCause": "Dødsårsak:",
+      "deathCausePlaceholder": "Hvis kjent",
       "primeVaxQuestion": "Grunnvaksine?",
       "firstDewormQuestion": "Første ormekur?",
+      "productNamePlaceholder": "Type eller brukt produkt",
       "statusLabel": "Dyrets status *:",
       "statusUnrequiredLabel": "Dyrets status:",
       "familyLabel": "Omsorgssted",

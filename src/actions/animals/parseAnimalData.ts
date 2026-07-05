@@ -24,6 +24,7 @@ export const parseAnimalData = async (formData: FormData) => {
     healthInformation: formData.get('healthInformation')?.toString().trim(),
     status: formData.get('animalStatus') as AnimalStatus,
     animalEntryDate: formData.get('animalEntryDate')?.toString(),
+    deathCause: formData.get('animalDeathCause')?.toString().trim(),
   };
 
   let animalFamilyId: number | null = null;
@@ -45,6 +46,9 @@ export const parseAnimalData = async (formData: FormData) => {
   const healthTypes = formData.getAll('healthType[]').map((value) => value.toString());
   const healthDates = formData.getAll('healthDate[]').map((value) => value.toString());
   const healthIsFirsts = formData.getAll('healthIsFirst[]').map((value) => value.toString());
+  const healthProductNames = formData
+    .getAll('healthProductName[]')
+    .map((value) => value.toString());
 
   const health: AnimalHealthAct[] = [];
   const count = Math.min(healthTypes.length, healthDates.length, healthIsFirsts.length);
@@ -53,13 +57,14 @@ export const parseAnimalData = async (formData: FormData) => {
     const type = healthTypes[i] as AnimalHealthAct['type'];
     const dateISO = healthDates[i];
     const isFirst = healthIsFirsts[i] === '1';
+    const productName = healthProductNames[i];
 
     if (!type || !dateISO) continue;
 
     const date = new Date(dateISO);
     if (Number.isNaN(date.getTime())) continue;
 
-    health.push({ type, date, isFirst });
+    health.push({ type, date, isFirst, productName });
   }
 
   const weightDates = formData.getAll('weightDate[]').map((value) => value.toString());
@@ -174,6 +179,7 @@ export const parseAnimalData = async (formData: FormData) => {
     status: animalForm.status,
     trialDateStart,
     quarantineDateStart,
+    deathCause: animalForm.status === AnimalStatus.DECEASED ? animalForm.deathCause : '',
     familyId: animalFamilyId,
     ...(shouldUnpublish && {
       isPubliclyAdoptable: false,

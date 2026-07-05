@@ -337,6 +337,10 @@
       "items162": [
         "Les administrateurs et responsables peuvent désormais exporter les données de Trésorerie au format tableur et les fiches Animal au format pdf.",
         "Si vous constatez des problèmes avec cette fonctionnalité, notamment en termes de mise en page, n'hésitez pas à me le faire savoir."
+      ],
+      "items163": [
+        "Il est désormais possible de préciser la nature d'un vaccin, ou le produit utilisé pour un antiparasitaire / vermifuge.",
+        "Il est également possible d'indiquer la cause du décès pour les animaux décédés."
       ]
     }
   },
@@ -454,8 +458,11 @@
       "findLocationPlaceholder": "Lieu",
       "birthDateLabel": "Né(e) le :",
       "entryDateLabel": "Entrée dans les lieux le :",
+      "deathCause": "Cause du décès :",
+      "deathCausePlaceholder": "Si connue",
       "primeVaxQuestion": "Primo-vaccination ?",
       "firstDewormQuestion": "Premier déparasitage ?",
+      "productNamePlaceholder": "Nature ou produit utilisé",
       "statusUnrequiredLabel": "Statut de l'animal :",
       "statusLabel": "Statut de l'animal * :",
       "familyLabel": "Lieu d'accueil",

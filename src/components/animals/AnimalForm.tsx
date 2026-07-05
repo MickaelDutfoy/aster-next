@@ -56,6 +56,7 @@ export const AnimalForm = ({
         type: act.type as AnimalHealthActType,
         date: act.date.toISOString().slice(0, 10),
         isFirst: act.isFirst,
+        productName: act.productName,
       }));
   });
 
@@ -63,6 +64,7 @@ export const AnimalForm = ({
     type: 'VACCINATION',
     date: '',
     isFirst: false,
+    productName: '',
   });
 
   const [weightInput, setWeightInput] = useState('');
@@ -389,24 +391,37 @@ export const AnimalForm = ({
                 <option value={AnimalStatus.DECEASED}>{t('animals.status.DECEASED')}</option>
               </select>
             </div>
-            <div
-              className={
-                'labeled-date' +
-                clsx(
-                  status !== AnimalStatus.FOSTERED &&
-                    status !== AnimalStatus.IN_TRIAL &&
-                    ' disabled',
-                )
-              }
-            >
-              <p>{t('animals.fields.entryDateLabel')}</p>
-              <input
-                type="date"
-                name="animalEntryDate"
-                value={entryDate ?? ''}
-                onChange={(e) => setEntryDate(e.target.value)}
-              />
-            </div>
+            {status !== AnimalStatus.DECEASED && (
+              <div
+                className={
+                  'labeled-date' +
+                  clsx(
+                    status !== AnimalStatus.FOSTERED &&
+                      status !== AnimalStatus.IN_TRIAL &&
+                      ' disabled',
+                  )
+                }
+              >
+                <p>{t('animals.fields.entryDateLabel')}</p>
+                <input
+                  type="date"
+                  name="animalEntryDate"
+                  value={entryDate ?? ''}
+                  onChange={(e) => setEntryDate(e.target.value)}
+                />
+              </div>
+            )}
+            {status === AnimalStatus.DECEASED && (
+              <div className="labeled-text">
+                <p>{t('animals.fields.deathCause')}</p>
+                <input
+                  type="text"
+                  name="animalDeathCause"
+                  placeholder={t('animals.fields.deathCausePlaceholder')}
+                  defaultValue={animal?.deathCause ?? ''}
+                />
+              </div>
+            )}
             <div
               className={
                 `labeled-select` +
@@ -479,12 +494,15 @@ export const AnimalForm = ({
                   <ul className="acts-list">
                     {healthActsDraft.map((act, index) => (
                       <li key={`${act.type}-${act.date}-${index}`}>
-                        <span>{t(`animals.healthActTypes.${act.type}`)}</span>
+                        <div className="treatment-and-product">
+                          <span>{t(`animals.healthActTypes.${act.type}`)}</span>
+                          <span style={{ opacity: 0.6 }}>{'(' + act.productName + ')'}</span>
+                        </div>
 
                         <span>
                           <span>{displayDate(new Date(act.date))}</span>{' '}
                           {act.isFirst && (
-                            <span style={{ opacity: 0.85 }}>
+                            <span style={{ opacity: 0.6 }}>
                               ({t('animals.healthActFirstShort')})
                             </span>
                           )}
@@ -518,32 +536,42 @@ export const AnimalForm = ({
                     <option value="ANTIFLEA">{t('animals.healthActTypes.ANTIFLEA')}</option>
                   </select>
 
-                  <label>
-                    {t('animals.healthActFirstPrompt')}
-                    <input
-                      type="checkbox"
-                      style={{ marginLeft: 10 }}
-                      checked={newAct.isFirst}
-                      onChange={(e) =>
-                        setNewAct((prev) => ({ ...prev, isFirst: e.target.checked }))
-                      }
-                    />
-                  </label>
-
                   <input
                     type="date"
                     value={newAct.date}
                     onChange={(e) => setNewAct((prev) => ({ ...prev, date: e.target.value }))}
                   />
-                  <button
-                    className="little-button"
-                    type="button"
-                    onClick={addHealthAct}
-                    disabled={!newAct.date}
-                    style={{ margin: 0, cursor: newAct.date ? 'pointer' : 'not-allowed' }}
-                  >
-                    {t('common.add')}
-                  </button>
+                  <input
+                    type="text"
+                    placeholder={t('animals.fields.productNamePlaceholder')}
+                    value={newAct.productName ?? ''}
+                    onChange={(e) =>
+                      setNewAct((prev) => ({ ...prev, productName: e.target.value }))
+                    }
+                  />
+
+                  <div className="vert-center-3">
+                    <label>
+                      {t('animals.healthActFirstPrompt')}
+                      <input
+                        type="checkbox"
+                        style={{ marginLeft: 10 }}
+                        checked={newAct.isFirst}
+                        onChange={(e) =>
+                          setNewAct((prev) => ({ ...prev, isFirst: e.target.checked }))
+                        }
+                      />
+                    </label>
+                    <button
+                      className="little-button"
+                      type="button"
+                      onClick={addHealthAct}
+                      disabled={!newAct.date}
+                      style={{ margin: 0, cursor: newAct.date ? 'pointer' : 'not-allowed' }}
+                    >
+                      {t('common.add')}
+                    </button>
+                  </div>
                 </div>
                 {healthActsDraft.map(
                   // hidden input for FormData + server actions
@@ -552,16 +580,10 @@ export const AnimalForm = ({
                       <input name="healthType[]" value={act.type} readOnly />
                       <input name="healthDate[]" value={act.date} readOnly />
                       <input name="healthIsFirst[]" value={act.isFirst ? '1' : '0'} readOnly />
+                      <input name="healthProductName[]" value={act.productName ?? ''} readOnly />
                     </div>
                   ),
                 )}
-                <p>{t('animals.healthNotes')}</p>
-                <textarea
-                  name="healthInformation"
-                  defaultValue={animal?.healthInformation ?? ''}
-                  onFocus={(e) => autoResizeTextarea(e.currentTarget)}
-                  onInput={(e) => autoResizeTextarea(e.currentTarget)}
-                />
               </div>
             </div>
             <div hidden={healthForm !== 'weight'}>
@@ -653,7 +675,7 @@ export const AnimalForm = ({
                       <li key={`${entry.testName}-${entry.result}-${entry.date}-${index}`}>
                         <span>
                           <span>{entry.testName} </span>
-                          <span style={{ opacity: 0.75 }}>
+                          <span style={{ opacity: 0.6 }}>
                             ({t(`animals.testResults.${entry.result}`)})
                           </span>
                         </span>
@@ -726,6 +748,15 @@ export const AnimalForm = ({
                   </div>
                 ))}
               </div>
+            </div>
+            <div className="health-info">
+              <p>{t('animals.healthNotes')}</p>
+              <textarea
+                name="healthInformation"
+                defaultValue={animal?.healthInformation ?? ''}
+                onFocus={(e) => autoResizeTextarea(e.currentTarget)}
+                onInput={(e) => autoResizeTextarea(e.currentTarget)}
+              />
             </div>
           </div>
         </div>
