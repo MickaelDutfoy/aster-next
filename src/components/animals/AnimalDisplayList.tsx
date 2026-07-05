@@ -31,6 +31,7 @@ export const AnimalDisplayList = ({ animals }: { animals: AnimalWithoutDetails[]
             </span>
           </span>
           <span
+            className="capitalize"
             style={
               !animal.birthDate || animal.status === AnimalStatus.DECEASED ? { opacity: 0 } : {}
             }

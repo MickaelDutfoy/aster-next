@@ -45,6 +45,10 @@ button {
   font: inherit;
 }
 
+.capitalize:first-letter {
+    text-transform: uppercase;
+}
+
 .link {
   cursor: pointer;
   user-select: none;

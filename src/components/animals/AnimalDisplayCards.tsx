@@ -38,7 +38,7 @@ export const AnimalDisplayCards = ({ animals }: { animals: AnimalWithoutDetails[
           </span>
           <span>{t(`animals.status.${animal.status}`)}</span>
           {animal.birthDate && animal.status !== AnimalStatus.DECEASED && (
-            <span>{displayAge(animal.birthDate as Date, locale)}</span>
+            <span className="capitalize">{displayAge(animal.birthDate as Date, locale)}</span>
           )}
         </li>
       ))}
