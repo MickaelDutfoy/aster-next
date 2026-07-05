@@ -205,9 +205,26 @@
     }
   }
 
+  .health-tab {
+    min-height: 45dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .health-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
   .treatments {
     width: min(86dvw, 660px);
-    min-height: 45dvh;
+
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -224,12 +241,19 @@
       flex-direction: column;
       margin: 0 10px;
 
+      .treatment-and-product {
+        display: flex;
+        flex-direction: column;
+      }
+
       li {
+        padding: 5px 0;
         min-height: 36px;
         display: grid;
         gap: 10px;
         grid-template-columns: 1fr 1fr auto;
         align-items: center;
+              border-bottom: 1px dashed var(--link);
 
         .action {
           background: transparent;
@@ -238,6 +262,15 @@
           justify-self: end;
           align-self: center;
         }
+      }
+
+      li:first-child {
+        padding-top: 0;
+      }
+
+      li:last-child {
+        border: none;
+        padding-bottom: 0;
       }
     }
 
@@ -259,6 +292,15 @@
         grid-column: 2;
         grid-row: 1 / span 2;
         align-self: center;
+      }
+
+      .vert-center-3 {
+                grid-column: 2;
+        grid-row: 1 / span 3;
+        align-self: center;
+                display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
     }
   }

@@ -31,6 +31,7 @@ model Animal {
   color               String?
   findLocation        String?
   status              AnimalStatus @default(UNHOSTED)
+  deathCause          String?
   birthDate           DateTime?    @map("birth_date") @db.Date
   isNeutered          Boolean      @map("is_neutered")
   information         String?
@@ -65,12 +66,13 @@ enum AnimalHealthActType {
 }
 
 model AnimalHealthAct {
-  id        Int                 @id @default(autoincrement())
-  animalId  Int
-  type      AnimalHealthActType
-  date      DateTime            @db.Date
-  isFirst   Boolean             @default(false)
-  createdAt DateTime            @default(now())
+  id          Int                 @id @default(autoincrement())
+  animalId    Int
+  type        AnimalHealthActType
+  date        DateTime            @db.Date
+  isFirst     Boolean             @default(false)
+  productName String?
+  createdAt   DateTime            @default(now())
 
   animal Animal @relation(fields: [animalId], references: [id], onDelete: Cascade)
 

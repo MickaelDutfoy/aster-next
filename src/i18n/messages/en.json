@@ -337,6 +337,10 @@
       "items162": [
         "Administrators and managers can now export Treasury data as a spreadsheet, and animal profiles as PDF files.",
         "If you encounter any issues with this feature, especially regarding the layout, please don't hesitate to let me know."
+      ],
+      "items163": [
+        "You can now specify the type of vaccine, or the product used for flea treatments and deworming.",
+        "It is also possible to record the cause of death for deceased animals."
       ]
     }
   },
@@ -454,8 +458,11 @@
       "findLocationPlaceholder": "Location",
       "birthDateLabel": "Born on:",
       "entryDateLabel": "Entered location on:",
+      "deathCause": "Cause of death:",
+      "deathCausePlaceholder": "If known",
       "primeVaxQuestion": "First vaccination?",
       "firstDewormQuestion": "First deworming?",
+      "productNamePlaceholder": "Type or product used",
       "statusLabel": "Animal status *:",
       "statusUnrequiredLabel": "Animal status:",
       "familyLabel": "Foster location",
