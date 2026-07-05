@@ -369,6 +369,7 @@ const HealthActBlock = ({
         <Text style={styles.label}>{title}</Text>
         <Text style={styles.value}>
           {formatDate(lastAct.date, locale)}
+          {lastAct.productName && ', ' + lastAct.productName}
           {lastAct.isFirst ? firstLabel : ''}
         </Text>
       </View>
@@ -378,7 +379,7 @@ const HealthActBlock = ({
           <Text style={styles.paragraph}>{historyTitle}</Text>
           {history.map((act, index) => (
             <BulletItem key={act.id ?? index}>
-              {`${formatDate(act.date, locale)}${act.isFirst ? firstLabel : ''}`}
+              {`${formatDate(act.date, locale)}${act.productName && ', ' + act.productName}${act.isFirst ? firstLabel : ''}`}
             </BulletItem>
           ))}
         </View>

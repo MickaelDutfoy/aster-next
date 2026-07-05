@@ -195,8 +195,8 @@ export const AnimalDetails = ({
                 <h4>{t('animals.lastVaxLabel')}</h4>
                 <p>
                   {displayDate(lastVaxAct.date)}
-                  {lastVaxAct.isFirst && t('animals.primoShort')}, {lastVaxAct.productName}
-                  {lastVaxAct.productName && ','}{' '}
+                  {lastVaxAct.isFirst && t('animals.primoShort')}
+                  {lastVaxAct.productName && ', ' + lastVaxAct.productName},{' '}
                   {now !== lastVaxAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                   {displayAge(lastVaxAct.date, locale, true)}
                   {now !== lastVaxAct.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
@@ -208,8 +208,8 @@ export const AnimalDetails = ({
                     <ul>
                       {vaxHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}, {act.productName}
-                          {act.productName && ','}{' '}
+                          {displayDate(act.date)}
+                          {act.productName && ', ' + act.productName},{' '}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
@@ -226,9 +226,8 @@ export const AnimalDetails = ({
                 <h4>{t('animals.lastDewormLabel')}</h4>
                 <p>
                   {displayDate(lastDewormAct.date)}
-                  {lastDewormAct.isFirst && t('animals.firstDewormShort')},{' '}
-                  {lastDewormAct.productName}
-                  {lastDewormAct.productName && ','}{' '}
+                  {lastDewormAct.isFirst && t('animals.firstDewormShort')}
+                  {lastDewormAct.productName && ', ' + lastDewormAct.productName},{' '}
                   {now !== lastDewormAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                   {displayAge(lastDewormAct.date, locale, true)}
                   {now !== lastDewormAct.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
@@ -240,8 +239,8 @@ export const AnimalDetails = ({
                     <ul style={{ paddingLeft: 40 }}>
                       {dewormHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}, {act.productName}
-                          {act.productName && ','}{' '}
+                          {displayDate(act.date)}
+                          {act.productName && ', ' + act.productName},{' '}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
@@ -258,9 +257,8 @@ export const AnimalDetails = ({
                 <h4>{t('animals.lastFleaTreatmentLabel')}</h4>
                 <p>
                   {displayDate(lastAntifleaAct.date)}
-                  {lastAntifleaAct.isFirst && t('animals.firstDewormShort')},{' '}
-                  {lastAntifleaAct.productName}
-                  {lastAntifleaAct.productName && ','}{' '}
+                  {lastAntifleaAct.isFirst && t('animals.firstDewormShort')}
+                  {lastAntifleaAct.productName && ', ' + lastAntifleaAct.productName},{' '}
                   {now !== lastAntifleaAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                   {displayAge(lastAntifleaAct.date, locale, true)}
                   {now !== lastAntifleaAct.date.toISOString().slice(0, 10) && t('common.agoSuffix')}
@@ -273,8 +271,8 @@ export const AnimalDetails = ({
                     <ul style={{ paddingLeft: 40 }}>
                       {antifleaHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}, {act.productName}
-                          {act.productName && ','}{' '}
+                          {displayDate(act.date)}
+                          {act.productName && ', ' + act.productName},{' '}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoSuffix')}.
