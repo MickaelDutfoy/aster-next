@@ -23,6 +23,7 @@ export const NotificationCenter = ({
   const t = useTranslations();
   const router = useRouter();
   const locale = useLocale();
+    const now = new Date().toISOString().slice(0, 10);
 
   const readOne = async (notifId: number, url: string | null) => {
     await markAsRead(notifId);
@@ -87,10 +88,9 @@ export const NotificationCenter = ({
           >
             <div className={clsx(!notif.readAt && 'unread')}>
               <p className="age">
-                {t('common.agoPrefix').charAt(0).toUpperCase() +
-                  t('common.agoPrefix').slice(1) +
-                  displayAge(notif.createdAt, locale) +
-                  t('common.agoSuffix')}
+                {now !== notif.createdAt.toISOString().slice(0, 10) && t('common.agoPrefix')}
+                {displayAge(notif.createdAt, locale)}
+                {now !== notif.createdAt.toISOString().slice(0, 10) && t('common.agoSuffix')}
               </p>
               <p>{t(notif.messageKey, notif.messageParams as Record<string, string>)}</p>
               {notif.href && <SquareArrowRight className="link" size={26} />}

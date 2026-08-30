@@ -28,6 +28,10 @@
       font-size: 0.75rem;
     }
 
+    .age::first-letter {
+      text-transform: uppercase;
+    }
+
     p {
       font-size: 0.9rem;
       flex: 80%;
