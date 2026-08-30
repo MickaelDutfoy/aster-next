@@ -566,6 +566,10 @@ nav {
     align-items: center;
     justify-content: center;
 
+    .little-button {
+        box-shadow: 1px 1px 4px vars.$black;
+    }
+
     .arrow {
       background: none;
       border: none;
@@ -595,12 +599,5 @@ nav {
 
   .event-end {
     padding-left: 1rem;
-  }
-}
-
-@media (max-width: 700px) {
-  .event-calendar {
-    height: 600px;
-    max-height: none;
   }
 }
