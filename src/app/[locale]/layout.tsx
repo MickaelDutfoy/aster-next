@@ -1,4 +1,5 @@
 import { InstallProvider } from '@/components/tools/InstallProvider';
+import { ThemeProvider } from '@/components/tools/ThemeProvider';
 import ToastProvider from '@/components/tools/ToastProvider';
 import { routing } from '@/i18n/routing';
 import { DEFAULT_METADATA, getAsterOpenGraph, SITE_URL } from '@/lib/metadata';
@@ -87,10 +88,12 @@ export default async function LocaleLayout({
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <InstallProvider>
-            <ToastProvider />
-            {children}
-          </InstallProvider>
+          <ThemeProvider>
+            <InstallProvider>
+              <ToastProvider />
+              {children}
+            </InstallProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

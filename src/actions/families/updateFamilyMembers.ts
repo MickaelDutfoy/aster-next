@@ -1,7 +1,7 @@
 'use server';
 
 import { isAdminOfOrg } from '@/lib/permissions/isAdminOfOrg';
-import { isMemberOfFamily } from '@/lib/permissions/isMemberOfFamily';
+import { isRelatedToFamily } from '@/lib/permissions/isRelatedToFamily';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation, Member } from '@/lib/types';
 import { revalidatePath } from 'next/cache';
@@ -35,7 +35,7 @@ export const updateFamilyMembers = async (
   if (adminGuard.validation.ok) {
     user = adminGuard.user as Member;
   } else {
-    const memberGuard = await isMemberOfFamily(familyId);
+    const memberGuard = await isRelatedToFamily(familyId);
     if (!memberGuard.validation.ok) return memberGuard.validation;
 
     user = memberGuard.user as Member;

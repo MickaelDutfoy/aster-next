@@ -14,7 +14,7 @@ export const toggleAnimalPublishing = async (animalId: number): Promise<ActionVa
   const orgId = guard.orgId;
 
   const animal = await prisma.animal.findUnique({
-    where: { id: animalId },
+    where: { id: animalId, orgId },
     select: { isPubliclyAdoptable: true },
   });
 

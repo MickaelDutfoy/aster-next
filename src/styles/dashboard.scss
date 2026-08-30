@@ -75,7 +75,7 @@ nav {
   }
 }
 
-header {
+.app-header {
   height: 50px;
   font-weight: 700;
   border-bottom: 2px solid var(--button);
@@ -512,4 +512,78 @@ header {
 
 .tutorial-target-active svg {
   stroke-width: 2.6;
+}
+
+.event-calendar {
+  width: 100%;
+  max-height: 80vh;
+
+  * {
+    box-shadow: none;
+  }
+
+  .sx__calendar-header {
+    display: none;
+  }
+
+  .sx__month-agenda-wrapper {
+      padding-bottom: 10px;
+  }
+
+  .sx-react-calendar-wrapper {
+    width: 100%;
+  }
+
+  .sx__event {
+    cursor: pointer;
+  }
+
+  .event-calendar-navigation {
+    width: 100%;
+    padding: 7px 0 5px 0;
+    background-color: var(--box);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+    .arrow {
+      background: none;
+      border: none;
+
+      * {
+        transform: translateY(1px);
+      }
+    }
+  }
+}
+
+.event-date-time-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  .date-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .event-start {
+    padding-right: 1rem;
+    border-right: 1px solid var(--link);
+  }
+
+  .event-end {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .event-calendar {
+    height: 600px;
+    max-height: none;
+  }
 }

@@ -1,6 +1,8 @@
 import {
   AnimalStatus,
   AnimalTestResult,
+  CalendarScope,
+  EventType,
   MemberRole,
   MemberStatus,
   PaymentMethod,
@@ -249,4 +251,24 @@ export type OrganizationPublicPage = {
   publicAnimalSheetFooter?: string | null;
   displayHealthInfo: boolean;
   displayLocations: boolean;
+};
+
+export type Calendar = {
+  id: number;
+  scope: CalendarScope;
+  orgId: number;
+  familyId: number | null;
+  memberId: number | null;
+  events: Event[];
+};
+
+export type Event = {
+  id: number;
+  calendarId: number;
+  type: EventType;
+  title: string;
+  description: string | null;
+  startsAt: Date;
+  endsAt: Date;
+  participants: Member[];
 };

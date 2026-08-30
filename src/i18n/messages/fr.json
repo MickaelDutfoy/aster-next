@@ -73,7 +73,10 @@
     "imageUploaded": "L'image a bien été ajoutée.",
     "imageDeleted": "L'image a bien été supprimée.",
     "publicPageDataSubmitted": "Les informations de votre page publique ont été enregistrées.",
-    "animalPublicDescriptionSubmit": "La description de l'animal a été enregistrée."
+    "animalPublicDescriptionSubmit": "La description de l'animal a été enregistrée.",
+    "presenceCreated": "La présence a bien été enregistrée.",
+    "presenceEdited": "La présence a bien été éditée.",
+    "presenceDeleted": "La présence a bien été supprimée."
   },
   "help": {
     "label": "Aide",
@@ -639,6 +642,18 @@
   "members": {
     "ownSheet": "Ceci est votre fiche.",
     "orgsInCommonTitle": "Vous êtes tous les deux membres de :"
+  },
+  "calendars": {
+    "family": {
+      "title": "Agenda du lieu :",
+      "noCalendar": "Il n'y a aucune permanence enregistrée pour ce lieu.",
+      "addEvent": "Ajouter une présence",
+      "editEvent": "Éditer une présence",
+      "eventStart": "Début :",
+      "eventEnd": "Fin :",
+      "remarks": "Remarques :",
+      "deletePrompt": "Voulez-vous supprimer cette présence ?"
+    }
   },
   "contact": {
     "topic": "De quoi s’agit-il ? *",

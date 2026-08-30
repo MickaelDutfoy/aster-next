@@ -1,9 +1,10 @@
 import { FamilyDetails } from '@/components/families/FamilyDetails';
 import { DeniedPage } from '@/components/main/DeniedPage';
 import { getAnimalsByFamily } from '@/lib/animals/getAnimalsByFamily';
+import { getCalendarAndEventsByFamily } from '@/lib/calendars/getCalendarAndEventsByFamily';
 import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { Animal, Family, Member, Organization } from '@/lib/types';
+import { Animal, Calendar, Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
 const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -22,8 +23,11 @@ const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
   }
 
   const animals: Animal[] = await getAnimalsByFamily(Number(id));
+  const calendar: Calendar | null = await getCalendarAndEventsByFamily(Number(id));
 
-  return <FamilyDetails user={user} org={org} family={family} animals={animals} />;
+  return (
+    <FamilyDetails user={user} org={org} family={family} animals={animals} calendar={calendar} />
+  );
 };
 
 export default FamilyDetail;

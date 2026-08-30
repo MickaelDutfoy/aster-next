@@ -1,14 +1,15 @@
 'use client';
 
 import { Link, useRouter } from '@/i18n/routing';
-import { Animal, Family, Member, Organization } from '@/lib/types';
+import { Animal, Calendar, Family, Member, Organization } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
 import clsx from 'clsx';
 import { Grid2x2, List, MailOpen, Phone, SquareArrowRight } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { AnimalDisplayCards } from '../animals/AnimalDisplayCards';
 import { AnimalDisplayList } from '../animals/AnimalDisplayList';
+import EventsCalendar from '../calendars/EventsCalendar';
 import { ShareButton } from '../tools/ShareButton';
 
 export const FamilyDetails = ({
@@ -16,17 +17,27 @@ export const FamilyDetails = ({
   org,
   family,
   animals,
+  calendar,
 }: {
   user: Member;
   org: Organization;
   family: Family;
   animals: Animal[];
+  calendar: Calendar | null;
 }) => {
   const t = useTranslations();
-  const locale = useLocale();
   const router = useRouter();
 
   const [displayMode, setDisplayMode] = useState<'list' | 'cards' | null>(null);
+
+  const isMemberOfFamily = family.members.some((member) => member.id === user.id);
+  const canEditFamily =
+    org.userRole === MemberRole.SUPERADMIN ||
+    org.userRole === MemberRole.ADMIN ||
+    isMemberOfFamily ||
+    user.id === family.createdByMemberId;
+  const canDeleteFamily = org.userRole === MemberRole.SUPERADMIN;
+  const events = calendar?.events ?? [];
 
   useEffect(() => {
     const stored = localStorage.getItem('preferredDisplayMode');
@@ -43,13 +54,13 @@ export const FamilyDetails = ({
     localStorage.setItem('preferredDisplayMode', mode);
   };
 
-  const isMemberOfFamily = family.members.some((member) => member.id === user.id);
-  const canEditFamily =
-    org.userRole === MemberRole.SUPERADMIN ||
-    org.userRole === MemberRole.ADMIN ||
-    isMemberOfFamily ||
-    user.id === family.createdByMemberId;
-  const canDeleteFamily = org.userRole === MemberRole.SUPERADMIN;
+  const handleSelectEvent = (eventId: number) => {
+    router.push(`/families/${family.id}/edit-event/${eventId}`);
+  };
+
+  const handleCreateEvent = (date: string) => {
+    router.push(`/families/${family.id}/add-event?date=${date}`);
+  };
 
   if (!displayMode) return null;
 
@@ -163,6 +174,26 @@ export const FamilyDetails = ({
               <AnimalDisplayCards animals={animals} />
             )}
           </div>
+        )}
+
+        <h4>{t('calendars.family.title')}</h4>
+        {(!calendar || calendar?.events.length === 0) && (
+          <div className="text-with-link">
+            <p>{t('calendars.family.noCalendar')}</p>
+
+            {canEditFamily && family.members.length > 0 && (
+              <Link className="little-button" href={`/families/${family.id}/add-event`}>
+                {t('calendars.family.addEvent')}
+              </Link>
+            )}
+          </div>
+        )}
+        {events.length > 0 && (
+          <EventsCalendar
+            events={events}
+            onSelectEvent={handleSelectEvent}
+            onCreateEvent={handleCreateEvent}
+          />
         )}
 
         {family.otherAnimals && (
