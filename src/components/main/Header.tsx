@@ -9,7 +9,7 @@ export const Header = () => {
   const pathname = usePathname().split('/')[1] || 'home';
 
   return (
-    <header>
+    <header className="app-header">
       <h2>{t(`header.${pathname}`)}</h2>
     </header>
   );

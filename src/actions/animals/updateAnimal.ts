@@ -1,8 +1,5 @@
 'use server';
 
-import { getFamilyOfAnimal } from '@/lib/families/getFamilyOfAnimal';
-import { getAnimalOrg } from '@/lib/organizations/getAnimalOrg';
-import { getOrgAdmins } from '@/lib/organizations/getOrgAdmins';
 import { isRelatedToAnimal } from '@/lib/permissions/isRelatedToAnimal';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
@@ -108,57 +105,57 @@ export const updateAnimal = async (
       }
     });
 
-    const org = await getAnimalOrg(animalId);
-    const family = await getFamilyOfAnimal(animalId);
+    // const org = await getAnimalOrg(animalId);
+    // const family = await getFamilyOfAnimal(animalId);
 
-    const memberIdsToNotify = new Set<number>();
+    // const memberIdsToNotify = new Set<number>();
 
-    if (org) {
-      const admins = await getOrgAdmins(org.id);
+    // if (org) {
+    //   const admins = await getOrgAdmins(org.id);
 
-      for (const admin of admins) {
-        if (admin.id !== user.id) {
-          memberIdsToNotify.add(admin.id);
-        }
-      }
-    }
+    //   for (const admin of admins) {
+    //     if (admin.id !== user.id) {
+    //       memberIdsToNotify.add(admin.id);
+    //     }
+    //   }
+    // }
 
-    if (family) {
-      for (const member of family.members) {
-        if (member.id !== user.id) {
-          memberIdsToNotify.add(member.id);
-        }
-      }
-    }
+    // if (family) {
+    //   for (const member of family.members) {
+    //     if (member.id !== user.id) {
+    //       memberIdsToNotify.add(member.id);
+    //     }
+    //   }
+    // }
 
-    const dayKey = new Date().toISOString().slice(0, 10);
-    const sourceKey = `animal:${animalId}:edited:${dayKey}`;
+    // const dayKey = new Date().toISOString().slice(0, 10);
+    // const sourceKey = `animal:${animalId}:edited:${dayKey}`;
 
-    for (const memberId of memberIdsToNotify) {
-      try {
-        await prisma.notification.upsert({
-          where: {
-            memberId_sourceKey: {
-              memberId,
-              sourceKey,
-            },
-          },
-          create: {
-            memberId,
-            messageKey: 'notifications.animals.editedAnimal',
-            messageParams: {
-              memberFullName: `${user.firstName} ${user.lastName}`,
-              animalName: animal.name,
-            },
-            href: `/animals/${animalId}`,
-            sourceKey,
-          },
-          update: {},
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    }
+    // for (const memberId of memberIdsToNotify) {
+    //   try {
+    //     await prisma.notification.upsert({
+    //       where: {
+    //         memberId_sourceKey: {
+    //           memberId,
+    //           sourceKey,
+    //         },
+    //       },
+    //       create: {
+    //         memberId,
+    //         messageKey: 'notifications.animals.editedAnimal',
+    //         messageParams: {
+    //           memberFullName: `${user.firstName} ${user.lastName}`,
+    //           animalName: animal.name,
+    //         },
+    //         href: `/animals/${animalId}`,
+    //         sourceKey,
+    //       },
+    //       update: {},
+    //     });
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // }
 
     revalidatePath(`/animals/${animalId}`);
 

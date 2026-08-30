@@ -73,7 +73,10 @@
     "imageUploaded": "Bildet ble lagt til.",
     "imageDeleted": "Bildet ble slettet.",
     "publicPageDataSubmitted": "Informasjonen på den offentlige siden er lagret.",
-    "animalPublicDescriptionSubmit": "Beskrivelsen av dyret er lagret."
+    "animalPublicDescriptionSubmit": "Beskrivelsen av dyret er lagret.",
+    "presenceCreated": "Vakten ble registrert.",
+    "presenceEdited": "Vakten ble redigert.",
+    "presenceDeleted": "Vakten ble slettet."
   },
   "help": {
     "label": "Hjelp",
@@ -341,6 +344,11 @@
       "items163": [
         "Det er nå mulig å angi vaksinetype eller produktet som er brukt ved behandling mot parasitter eller ormekur.",
         "Det er også mulig å registrere dødsårsaken for avdøde dyr."
+      ],
+      "items170": [
+        "Det er lagt til en vaktplan for omsorgssteder, som kan administreres direkte fra omsorgsstedets profil. Etter hvert vil Aster tilby flere kalenderfunksjoner, for eksempel en kalender for hele organisasjonen eller personlige kalendere for medlemmer.",
+        "Varsler om oppdateringer av dyreprofiler er deaktivert inntil de kan konfigureres i en fremtidig oppdatering.",
+        "Dyrelister kan nå sorteres etter navn eller alder, i stigende eller synkende rekkefølge."
       ]
     }
   },
@@ -350,6 +358,9 @@
     "addTitle": "Legg til et dyr",
     "deleteTitle": "Slett dyret",
     "familyFilter": "Filtrer etter sted:",
+    "sortLabel": "Sorter etter:",
+    "name": "Navn",
+    "age": "Alder",
     "species": {
       "cat": "Katt",
       "dog": "Hund",
@@ -639,6 +650,18 @@
   "members": {
     "ownSheet": "Dette er profilen din.",
     "orgsInCommonTitle": "Dere er begge medlemmer av:"
+  },
+  "calendars": {
+    "family": {
+      "title": "Vaktplan:",
+      "noCalendar": "Ingen vakter er registrert for dette omsorgsstedet.",
+      "addEvent": "Legg til vakt",
+      "editEvent": "Rediger vakt",
+      "eventStart": "Start:",
+      "eventEnd": "Slutt:",
+      "remarks": "Merknader:",
+      "deletePrompt": "Vil du slette denne vakten?"
+    }
   },
   "contact": {
     "topic": "Hva gjelder det? *",

@@ -2,7 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "packageManager": "pnpm@11.22.0+sha512.1ff870c4c6133dfd88fb2afc46dd13d47f09c9794b438c6fdb47ca98caf3bc16381ee0be93a091b8e3824cf01f889f46d7d9e20910fb0be1ab0fb5baa80dd621",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -17,9 +17,15 @@
     "stats": "tokei . --exclude node_modules --exclude .next --exclude .git --exclude dist --exclude build --exclude coverage --exclude .vercel --exclude pnpm-lock.yaml --exclude package-lock.json --exclude yarn.lock"
   },
   "dependencies": {
+    "@preact/signals": "^2.11.1",
     "@prisma/adapter-pg": "^7.1.0",
-    "@prisma/client": "7.8.0",
+    "@prisma/client": "7.9.1",
     "@react-pdf/renderer": "^4.5.1",
+    "@schedule-x/calendar": "^4.6.1",
+    "@schedule-x/calendar-controls": "^4.6.1",
+    "@schedule-x/events-service": "^4.6.1",
+    "@schedule-x/react": "^4.1.0",
+    "@schedule-x/theme-default": "^4.6.1",
     "@vercel/blob": "^2.4.0",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
@@ -32,10 +38,12 @@
     "next-auth": "5.0.0-beta.29",
     "next-intl": "^4.5.8",
     "pg": "^8.16.3",
+    "preact": "^10.29.8",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-easy-crop": "^5.5.7",
     "resend": "^6.5.2",
+    "temporal-polyfill": "^1.0.4",
     "zod": "^4.1.13"
   },
   "devDependencies": {
@@ -49,7 +57,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "prettier": "^3.6.2",
-    "prisma": "^7.8.0",
+    "prisma": "^7.9.1",
     "sass": "^1.93.0",
     "tsx": "^4.21.0",
     "typescript": "^5"

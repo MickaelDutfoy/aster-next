@@ -6,16 +6,33 @@ import { displayAge } from '@/lib/utils/displayAge';
 import { AnimalStatus } from '@prisma/client';
 import { SquareArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 import { isCommonSpecies } from './isCommonSpecies';
 
 export const AnimalDisplayList = ({ animals }: { animals: AnimalWithoutDetails[] }) => {
   const t = useTranslations();
   const locale = useLocale();
 
+  useEffect(() => {
+    const animalId = sessionStorage.getItem('lastViewedAnimalId');
+
+    if (!animalId) return;
+
+    const element = document.getElementById(`animal-${animalId}`);
+
+    if (!element) return;
+
+    element.scrollIntoView({
+      block: 'center',
+    });
+
+    sessionStorage.removeItem('lastViewedAnimalId');
+  }, []);
+
   return (
     <ul className="animals-list">
       {animals.map((animal) => (
-        <li key={animal.id}>
+        <li key={animal.id} id={`animal-${animal.id}`}>
           <span>{animal.name}</span>{' '}
           <span>
             {isCommonSpecies(animal.species)
@@ -38,7 +55,12 @@ export const AnimalDisplayList = ({ animals }: { animals: AnimalWithoutDetails[]
           >
             {displayAge(animal.birthDate as Date, locale)}
           </span>
-          <Link className="action link" href={`/animals/${animal.id}`} prefetch={false}>
+          <Link
+            className="action link"
+            href={`/animals/${animal.id}`}
+            prefetch={false}
+            onClick={() => sessionStorage.setItem('lastViewedAnimalId', String(animal.id))}
+          >
             <SquareArrowRight size={26} />
           </Link>
         </li>

@@ -1,6 +1,6 @@
 'use server';
 
-import { isAdminOfOrg } from '@/lib/permissions/isAdminOfOrg';
+import { isSuperAdminOfOrg } from '@/lib/permissions/isSuperAdminOfOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
@@ -10,7 +10,7 @@ export const promoteAdminOfOrg = async (
   memberId: number,
   orgId: number,
 ): Promise<ActionValidation> => {
-  const guard = await isAdminOfOrg(orgId);
+  const guard = await isSuperAdminOfOrg(orgId);
   if (!guard.validation.ok) return guard.validation;
 
   try {
