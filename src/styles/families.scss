@@ -153,7 +153,12 @@
 }
 
 .family-event-delete {
+  text-align: center;
   margin: 0 10px 5px 10px;
+
+  p {
+    text-align: left;
+  }
 
   .notice {
     text-align: center;

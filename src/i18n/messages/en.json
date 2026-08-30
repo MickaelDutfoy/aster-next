@@ -73,7 +73,10 @@
     "imageUploaded": "The image has been uploaded.",
     "imageDeleted": "The image has been deleted.",
     "publicPageDataSubmitted": "Your public page information has been saved.",
-    "animalPublicDescriptionSubmit": "The animal description has been saved."
+    "animalPublicDescriptionSubmit": "The animal description has been saved.",
+    "presenceCreated": "The shift has been successfully added.",
+    "presenceEdited": "The shift has been successfully updated.",
+    "presenceDeleted": "The shift has been successfully deleted."
   },
   "help": {
     "label": "Help",
@@ -341,6 +344,11 @@
       "items163": [
         "You can now specify the type of vaccine, or the product used for flea treatments and deworming.",
         "It is also possible to record the cause of death for deceased animals."
+      ],
+      "items170": [
+        "Added a shift schedule for foster locations, managed directly from their profile. Over time, Aster will offer more calendar options, such as an organization-wide calendar or personal calendars for members.",
+        "Notifications for updates to animal profiles have been disabled until they can be configured in a future update.",
+        "Animal lists can now be sorted by name or age, in ascending or descending order."
       ]
     }
   },
@@ -350,6 +358,9 @@
     "addTitle": "Add an animal",
     "deleteTitle": "Delete animal",
     "familyFilter": "Filter by location:",
+    "sortLabel": "Sort by:",
+    "name": "Name",
+    "age": "Age",
     "species": {
       "cat": "Cat",
       "dog": "Dog",
@@ -639,6 +650,18 @@
   "members": {
     "ownSheet": "This is your profile.",
     "orgsInCommonTitle": "You are both members of:"
+  },
+  "calendars": {
+    "family": {
+      "title": "Location schedule:",
+      "noCalendar": "No shifts are currently scheduled for this location.",
+      "addEvent": "Add a shift",
+      "editEvent": "Edit shift",
+      "eventStart": "Start:",
+      "eventEnd": "End:",
+      "remarks": "Notes:",
+      "deletePrompt": "Do you want to delete this shift?"
+    }
   },
   "contact": {
     "topic": "What is this about? *",

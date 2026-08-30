@@ -127,9 +127,22 @@ nav {
 
 .display-mode {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 3px;
+
+  .sort {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    button {
+      transform: translateY(2px);
+      background: none;
+      border: none;
+    }
+  }
 
   .display-mode-buttons {
     padding: 5px 0;
@@ -402,6 +415,10 @@ nav {
     align-items: center;
     text-align: center;
     gap: 5px;
+    
+    a {
+      display: contents;
+    }
   }
 }
 

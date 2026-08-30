@@ -6,10 +6,11 @@ import { switchUserToOrg } from '@/actions/organizations/switchUserToOrg';
 import { useRouter } from '@/i18n/routing';
 import { getAnimalOrg } from '@/lib/organizations/getAnimalOrg';
 import { Member } from '@/lib/types';
+import { displayAge } from '@/lib/utils/displayAge';
 import { Notification } from '@prisma/client';
 import clsx from 'clsx';
 import { SquareArrowRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { showToast } from '../tools/ToastProvider';
 
 export const NotificationCenter = ({
@@ -21,6 +22,7 @@ export const NotificationCenter = ({
 }) => {
   const t = useTranslations();
   const router = useRouter();
+  const locale = useLocale();
 
   const readOne = async (notifId: number, url: string | null) => {
     await markAsRead(notifId);
@@ -84,6 +86,12 @@ export const NotificationCenter = ({
             onClick={() => readOne(notif.id, notif.href)}
           >
             <div className={clsx(!notif.readAt && 'unread')}>
+              <p className="age">
+                {t('common.agoPrefix').charAt(0).toUpperCase() +
+                  t('common.agoPrefix').slice(1) +
+                  displayAge(notif.createdAt, locale) +
+                  t('common.agoSuffix')}
+              </p>
               <p>{t(notif.messageKey, notif.messageParams as Record<string, string>)}</p>
               {notif.href && <SquareArrowRight className="link" size={26} />}
             </div>

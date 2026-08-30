@@ -9,6 +9,7 @@ import '@schedule-x/theme-default/dist/index.css';
 import { CircleArrowLeft, CircleArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useMemo, useState } from 'react';
+import { Temporal } from 'temporal-polyfill';
 import 'temporal-polyfill/global';
 import { useTheme } from '../tools/ThemeProvider';
 

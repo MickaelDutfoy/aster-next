@@ -344,6 +344,11 @@
       "items163": [
         "Il est désormais possible de préciser la nature d'un vaccin, ou le produit utilisé pour un antiparasitaire / vermifuge.",
         "Il est également possible d'indiquer la cause du décès pour les animaux décédés."
+      ],
+      "items170": [
+        "Ajout d'un agenda de permanences pour les lieux d'accueil, gérable directement depuis leur fiche. À terme, Aster proposera davantage de gestion d'agendas, par exemple un agenda de l'association entière ou des agendas personnels pour les membres.",
+        "Les notifications de mise à jour d'une fiche animal sont désactivées jusqu'à pouvoir être paramétrées dans une mise à jour future.",
+        "Il est désormais possible de trier les listes d'animaux soit par nom soit par âge, croissant ou décroissant."
       ]
     }
   },
@@ -353,6 +358,9 @@
     "addTitle": "Ajouter un animal",
     "deleteTitle": "Supprimer l'animal",
     "familyFilter": "Filtrer par lieu :",
+    "sortLabel": "Trier par :",
+    "name": "Nom",
+    "age": "Âge",
     "species": {
       "cat": "Chat",
       "dog": "Chien",

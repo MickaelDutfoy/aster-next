@@ -4,9 +4,17 @@ import { Link, useRouter } from '@/i18n/routing';
 import { Animal, Calendar, Family, Member, Organization } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
 import clsx from 'clsx';
-import { Grid2x2, List, MailOpen, Phone, SquareArrowRight } from 'lucide-react';
+import {
+  ArrowBigDown,
+  ArrowBigUp,
+  Grid2x2,
+  List,
+  MailOpen,
+  Phone,
+  SquareArrowRight,
+} from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimalDisplayCards } from '../animals/AnimalDisplayCards';
 import { AnimalDisplayList } from '../animals/AnimalDisplayList';
 import EventsCalendar from '../calendars/EventsCalendar';
@@ -28,7 +36,10 @@ export const FamilyDetails = ({
   const t = useTranslations();
   const router = useRouter();
 
+  const [sortMode, setSortMode] = useState<string | null>(null);
+  const [sortDesc, setSortDesc] = useState<boolean>(false);
   const [displayMode, setDisplayMode] = useState<'list' | 'cards' | null>(null);
+  const [preferencesLoaded, setPreferencesLoaded] = useState(false);
 
   const isMemberOfFamily = family.members.some((member) => member.id === user.id);
   const canEditFamily =
@@ -39,19 +50,62 @@ export const FamilyDetails = ({
   const canDeleteFamily = org.userRole === MemberRole.SUPERADMIN;
   const events = calendar?.events ?? [];
 
-  useEffect(() => {
-    const stored = localStorage.getItem('preferredDisplayMode');
+  const sortedAnimals = useMemo(() => {
+    const direction = sortDesc ? -1 : 1;
 
-    if (stored === 'list' || stored === 'cards') {
-      setDisplayMode(stored);
+    if (sortMode === 'name') {
+      return animals.sort(
+        (a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) * direction,
+      );
+    }
+
+    return animals.sort((a, b) => {
+      if (!a.birthDate && !b.birthDate) return 0;
+      if (!a.birthDate) return 1;
+      if (!b.birthDate) return -1;
+
+      return (b.birthDate.getTime() - a.birthDate.getTime()) * direction;
+    });
+  }, [animals, sortMode, displayMode, sortDesc]);
+
+  useEffect(() => {
+    const display = localStorage.getItem('preferredDisplayMode');
+    const sort = localStorage.getItem('preferredSortMode');
+    const sortDesc = localStorage.getItem('preferredSortDesc');
+
+    if (display === 'list' || display === 'cards') {
+      setDisplayMode(display);
     } else {
       setDisplayMode('list');
     }
+
+    if (sort === 'name' || sort === 'age') {
+      setSortMode(sort);
+    } else {
+      setSortMode('name');
+    }
+
+    setSortDesc(sortDesc === 'true');
+
+    setPreferencesLoaded(true);
   }, []);
 
-  const handleChangeMode = (mode: 'list' | 'cards') => {
+  const handleChangeDisplay = (mode: 'list' | 'cards') => {
     setDisplayMode(mode);
     localStorage.setItem('preferredDisplayMode', mode);
+  };
+
+  const handleChangeSort = (mode: string) => {
+    setSortMode(mode);
+    localStorage.setItem('preferredSortMode', mode);
+  };
+
+  const handleChangeSortOrder = () => {
+    setSortDesc((prev) => {
+      const next = !prev;
+      localStorage.setItem('preferredSortDesc', String(next));
+      return next;
+    });
   };
 
   const handleSelectEvent = (eventId: number) => {
@@ -151,18 +205,28 @@ export const FamilyDetails = ({
             <h4>{t('families.animalsInCareLabel', { count: animals.length })}</h4>
 
             <div className="display-mode">
+              <div className="sort">
+                <p>{t('animals.sortLabel')}</p>
+                <select onChange={(e) => handleChangeSort(e.target.value)}>
+                  <option value="name">{t('animals.name')}</option>
+                  <option value="age">{t('animals.age')}</option>
+                </select>
+                <button className="link" onClick={() => handleChangeSortOrder()}>
+                  {sortDesc ? <ArrowBigDown size={26} /> : <ArrowBigUp size={26} />}
+                </button>
+              </div>
               <div className="display-mode-buttons">
                 <button
                   className="display-button"
                   style={displayMode === 'cards' ? { opacity: 0.5 } : {}}
-                  onClick={() => handleChangeMode('list')}
+                  onClick={() => handleChangeDisplay('list')}
                 >
                   <List size={26} />
                 </button>
                 <button
                   className="display-button"
                   style={displayMode === 'list' ? { opacity: 0.5 } : {}}
-                  onClick={() => handleChangeMode('cards')}
+                  onClick={() => handleChangeDisplay('cards')}
                 >
                   <Grid2x2 size={26} />
                 </button>
