@@ -43,12 +43,12 @@ body {
   box-shadow: 2px 2px 15px vars.$smoky-black;
 }
 
-html:has([data-aster-embed-appearance='seamless']),
-body:has([data-aster-embed-appearance='seamless']) {
+html:has([data-aster-embed-appearance="seamless"]),
+body:has([data-aster-embed-appearance="seamless"]) {
   background: transparent;
 }
 
-[data-aster-embed-appearance='seamless'] {
+[data-aster-embed-appearance="seamless"] {
   background: transparent;
 
   .public-page {
@@ -60,6 +60,10 @@ body:has([data-aster-embed-appearance='seamless']) {
     border: 0;
     box-shadow: none;
     opacity: 1;
+  }
+
+  .animal-modal-overlay-embed {
+    background: transparent;
   }
 }
 
@@ -147,7 +151,7 @@ h2 {
   top: var(--modal-top);
   left: 50%;
   transform: translateX(-50%);
-  max-height: 85dvh;
+  max-height: none;
 }
 
 .animal-modal {
