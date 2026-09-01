@@ -11,10 +11,11 @@ const PublicEmbedPage = async ({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ theme?: string }>;
+  searchParams: Promise<{ theme?: string; appearance?: string }>;
 }) => {
   const { slug } = await params;
-  const { theme } = await searchParams;
+  const { theme, appearance } = await searchParams;
+  const isSeamless = appearance === 'seamless';
 
   const publicPage = await getPublicPageBySlug(slug);
 
@@ -23,7 +24,7 @@ const PublicEmbedPage = async ({
   }
 
   return (
-    <>
+    <div data-aster-embed-appearance={isSeamless ? 'seamless' : undefined}>
       <ForcedTheme theme={theme} />
       <AsterEmbedHeightReporter slug={slug} />
       <PublicPageBody
@@ -37,7 +38,7 @@ const PublicEmbedPage = async ({
         phoneNumber={publicPage.organization.phoneNumber ?? ''}
         embed={true}
       />
-    </>
+    </div>
   );
 };
 

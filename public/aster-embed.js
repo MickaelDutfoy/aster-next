@@ -9,17 +9,23 @@
   const slug = currentScript.dataset.slug;
   const locale = currentScript.dataset.locale || 'en';
   const theme = currentScript.dataset.theme || 'system';
+  const isSeamless = currentScript.dataset.appearance === 'seamless';
 
   if (!slug) return;
 
   const iframe = document.createElement('iframe');
 
-  iframe.src = `${ASTER_ORIGIN}/${locale}/embed/${slug}?theme=${theme}`;
+  iframe.src = `${ASTER_ORIGIN}/${locale}/embed/${slug}?theme=${theme}${
+    isSeamless ? '&appearance=seamless' : ''
+  }`;
   iframe.width = '100%';
 
   iframe.style.width = '100%';
-  iframe.style.border = '1px solid black';
-  iframe.style.borderRadius = '20px';
+  iframe.style.border = isSeamless ? '0' : '1px solid black';
+  iframe.style.borderRadius = isSeamless ? '0' : '20px';
+  if (isSeamless) {
+    iframe.style.background = 'transparent';
+  }
   iframe.style.display = 'block';
   iframe.style.overflow = 'hidden';
   iframe.style.transition = EXPAND_TRANSITION;

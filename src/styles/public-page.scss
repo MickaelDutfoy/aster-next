@@ -43,6 +43,26 @@ body {
   box-shadow: 2px 2px 15px vars.$smoky-black;
 }
 
+html:has([data-aster-embed-appearance='seamless']),
+body:has([data-aster-embed-appearance='seamless']) {
+  background: transparent;
+}
+
+[data-aster-embed-appearance='seamless'] {
+  background: transparent;
+
+  .public-page {
+    background: transparent;
+  }
+
+  .box {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    opacity: 1;
+  }
+}
+
 header {
   text-align: center;
 }
