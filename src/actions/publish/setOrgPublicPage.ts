@@ -16,9 +16,10 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
   const slug = formData.get('slug')?.toString().trim();
   const displayHealthInfo = formData.has('displayHealthInfo');
   const displayLocations = formData.has('displayLocations');
+  const displaySpecies = formData.has('displaySpecies');
   const isPublished = formData.has('isPublished');
   const isEmbeddable = formData.has('isEmbeddable');
-    const publicAnimalSheetFooter = formData.get('publicAnimalSheetFooter')?.toString().trim();
+  const publicAnimalSheetFooter = formData.get('publicAnimalSheetFooter')?.toString().trim();
 
   if (!slug) {
     return {
@@ -37,6 +38,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
         slug,
         displayHealthInfo,
         displayLocations,
+        displaySpecies,
         isPublished,
         isEmbeddable,
         publicAnimalSheetFooter,
@@ -46,6 +48,7 @@ export const setOrgPublicPage = async (formData: FormData): Promise<ActionValida
         slug,
         displayHealthInfo,
         displayLocations,
+        displaySpecies,
         isPublished,
         isEmbeddable,
         publicAnimalSheetFooter,

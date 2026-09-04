@@ -15,6 +15,7 @@ export const PublicPageBody = ({
   animalFooter,
   displayHealthInfo,
   displayLocations,
+  displaySpecies,
   email,
   phoneNumber,
   embed,
@@ -25,6 +26,7 @@ export const PublicPageBody = ({
   animalFooter: string;
   displayHealthInfo: boolean;
   displayLocations: boolean;
+  displaySpecies: boolean;
   email: string;
   phoneNumber: string;
   embed: boolean;
@@ -88,7 +90,12 @@ export const PublicPageBody = ({
         <div className="animals">
           {animals.length === 0 && <p className="large-text">{t('publish.page.noAnimals')}</p>}
           {animals.map((animal) => (
-            <PublicAnimalCard key={animal.id} animal={animal} onOpenAnimal={handleOpenAnimal} />
+            <PublicAnimalCard
+              key={animal.id}
+              animal={animal}
+              displaySpecies={displaySpecies}
+              onOpenAnimal={handleOpenAnimal}
+            />
           ))}
         </div>
       </main>

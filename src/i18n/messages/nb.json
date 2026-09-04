@@ -622,6 +622,8 @@
     "healthInfoNotice": "(Dette vil vise de siste vaksinasjonene og testresultatene på hver profil.)",
     "displayLocations": "Vis steder?",
     "locationsNotice": "(Dette vil vise dyrets plassering på profilen, basert på omsorgsstedet.)",
+    "displaySpecies": "Vis art?",
+    "speciesNotice": "Dette vil vise arten til hvert dyr (katt, hund osv.) på profilen.",
     "isSitePublishedNotice": "Offentlig side aktiv:",
     "isSiteEmbeddableNotice": "Integrerbar versjon aktiv:",
     "invalidSlug": "Denne sideadressen kan ikke brukes.",

@@ -126,6 +126,18 @@ export const ManagePublicPage = ({
             </div>
             <p className="notice">{t('publish.locationsNotice')}</p>
           </div>
+          <div>
+            <div className="labeled-checkbox">
+              <p>{t('publish.displaySpecies')}</p>
+              <input
+                type="checkbox"
+                name="displaySpecies"
+                defaultChecked={orgPageDetails?.displaySpecies ?? false}
+              />
+            </div>
+            <p className="notice">{t('publish.speciesNotice')}</p>
+          </div>
+
           <div className="labeled-checkbox">
             <p>{t('publish.isSitePublishedNotice')}</p>
             <input

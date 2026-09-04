@@ -251,6 +251,7 @@ export type OrganizationPublicPage = {
   publicAnimalSheetFooter?: string | null;
   displayHealthInfo: boolean;
   displayLocations: boolean;
+  displaySpecies: boolean;
 };
 
 export type Calendar = {

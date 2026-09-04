@@ -622,6 +622,8 @@
     "healthInfoNotice": "(This will display the latest vaccinations and test results on each profile.)",
     "displayLocations": "Display locations?",
     "locationsNotice": "(This will display the animal's location on its profile, based on its foster location.)",
+    "displaySpecies": "Display species?",
+    "speciesNotice": "This will display each animal's species (cat, dog, etc.) on its profile.",
     "isSitePublishedNotice": "Public page enabled:",
     "isSiteEmbeddableNotice": "Embeddable version enabled:",
     "invalidSlug": "This page address cannot be used.",

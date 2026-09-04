@@ -9,9 +9,11 @@ import { isCommonSpecies } from '../animals/isCommonSpecies';
 
 export const PublicAnimalCard = ({
   animal,
+  displaySpecies,
   onOpenAnimal,
 }: {
   animal: AnimalPublicSheet;
+  displaySpecies: boolean;
   onOpenAnimal: (animalId: number, top?: number) => void;
 }) => {
   const t = useTranslations();
@@ -30,8 +32,14 @@ export const PublicAnimalCard = ({
       </div>
       <h3>
         {animal.name}
-        {' — '}
-        {isCommonSpecies(animal.species) ? t(`animals.species.${animal.species}`) : animal.species}
+        {displaySpecies && (
+          <span>
+            {' — '}
+            {isCommonSpecies(animal.species)
+              ? t(`animals.species.${animal.species}`)
+              : animal.species}
+          </span>
+        )}
         <span
           style={{
             color: animal.sex === 'M' ? '#8AB6F5' : '#F5A6A6',

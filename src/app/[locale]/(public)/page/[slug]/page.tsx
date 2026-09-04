@@ -54,6 +54,7 @@ const PublicPage = async ({ params }: { params: Promise<{ slug: string }> }) => 
       animalFooter={publicPage.publicAnimalSheetFooter ?? ''}
       displayHealthInfo={publicPage.displayHealthInfo}
       displayLocations={publicPage.displayLocations}
+      displaySpecies={publicPage.displaySpecies}
       email={publicPage.organization.email ?? ''}
       phoneNumber={publicPage.organization.phoneNumber ?? ''}
       embed={false}
