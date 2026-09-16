@@ -10,6 +10,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Comfortaa, Nunito } from 'next/font/google';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import { ReactNode } from 'react';
 
 export const nunito = Nunito({
@@ -69,24 +70,25 @@ export default async function LocaleLayout({
 
   return (
     <html suppressHydrationWarning className={`${nunito.variable} ${comfortaa.variable}`}>
-      <head>
-        <script
+      <body>
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-            (function () {
-              try {
-                var t = localStorage.getItem('theme');
-                if (t === 'light' || t === 'dark' || t === 'high-contrast') {
-                  document.documentElement.dataset.theme = t;
-                } else {
-                  document.documentElement.removeAttribute('data-theme');
-                }
-              } catch (e) {}
-            })();`,
+              (function () {
+                try {
+                  var t = localStorage.getItem('theme');
+                  if (t === 'light' || t === 'dark' || t === 'high-contrast') {
+                    document.documentElement.dataset.theme = t;
+                  } else {
+                    document.documentElement.removeAttribute('data-theme');
+                  }
+                } catch (e) {}
+              })();
+            `,
           }}
         />
-      </head>
-      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <InstallProvider>

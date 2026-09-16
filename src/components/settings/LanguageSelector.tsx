@@ -17,10 +17,9 @@ export function LanguageSelector({ size, userId }: { size: number; userId?: numb
     nb: nbFlag,
   };
 
-  const changeLocale = async (lang: Language) => {
+  const changeLocale = (lang: Language) => {
     document.cookie = `aster_locale=${lang}; Path=/; Max-Age=31536000; SameSite=Lax`;
     router.replace(pathname, { locale: lang });
-    router.refresh();
   };
 
   return (
