@@ -68,7 +68,7 @@ export const Dashboard = ({
               </div>
             </>
           )}
-          {org?.userRole === MemberRole.SUPERADMIN && (
+          {(org?.userRole === MemberRole.SUPERADMIN || org?.userRole === MemberRole.ADMIN) && (
             <>
               <p>{t('dashboard.adminOf', { orgName: org.name })}</p>
 

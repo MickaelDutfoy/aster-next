@@ -2,7 +2,7 @@ import { DeniedPage } from '@/components/main/DeniedPage';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { TransactionForm } from '@/components/transactions/TransactionForm';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { getTransactionsById } from '@/lib/transactions/getTransactionById';
+import { getTransactionById } from '@/lib/transactions/getTransactionById';
 import { getTransactionCategoriesOfOrg } from '@/lib/transactions/getTransactionCategoriesOfOrg';
 import { Member, Organization, Transaction, TransactionCategory } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
@@ -14,6 +14,7 @@ export default async function EditTransactionModal({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
   const user: Member | null = await getUser();
   if (!user) return <DeniedPage cause="error" />;
 
@@ -24,7 +25,7 @@ export default async function EditTransactionModal({
     return <DeniedPage cause="treasury" />;
   }
 
-  const transaction: Transaction | null = await getTransactionsById(Number(id));
+  const transaction: Transaction | null = await getTransactionById(Number(id), org.id);
   if (!transaction) return <DeniedPage cause="error" />;
 
   const categories: TransactionCategory[] = await getTransactionCategoriesOfOrg(org.id);

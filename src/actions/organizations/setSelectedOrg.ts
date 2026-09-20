@@ -15,6 +15,28 @@ export const setSelectedOrg = async (orgId: number | null): Promise<ActionValida
   const userId = guard.user.id;
 
   try {
+    if (orgId !== null) {
+      const membership = await prisma.memberOrganization.findUnique({
+        where: {
+          memberId_orgId: {
+            memberId: userId,
+            orgId,
+          },
+        },
+        select: {
+          memberId: true,
+        },
+      });
+
+      if (!membership) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+    }
+
     await prisma.member.update({
       where: { id: userId },
       data: { selectedOrgId: orgId },

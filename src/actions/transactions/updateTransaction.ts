@@ -39,14 +39,33 @@ export const updateTransaction = async (
 
       categoryId = res.id;
     } else {
-      categoryId = Number(category.categoryNameOrId);
+      const requestedCategoryId = Number(category.categoryNameOrId);
+
+      const existingCategory = await prisma.transactionCategory.findUnique({
+        where: {
+          id: requestedCategoryId,
+          orgId,
+        },
+        select: {
+          id: true,
+        },
+      });
+
+      if (!existingCategory) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+
+      categoryId = existingCategory.id;
     }
 
     await prisma.transaction.update({
-      where: { id: transactionId },
+      where: { id: transactionId, orgId },
       data: {
         ...transaction,
-        orgId,
         categoryId,
       },
     });

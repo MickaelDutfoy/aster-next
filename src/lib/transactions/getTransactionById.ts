@@ -1,9 +1,12 @@
 import { prisma } from '../prisma';
 import { Transaction } from '../types';
 
-export const getTransactionsById = async (transactionId: number): Promise<Transaction | null> => {
+export const getTransactionById = async (
+  transactionId: number,
+  orgId: number,
+): Promise<Transaction | null> => {
   const transaction = await prisma.transaction.findUnique({
-    where: { id: transactionId },
+    where: { id: transactionId, orgId },
     select: {
       id: true,
       type: true,

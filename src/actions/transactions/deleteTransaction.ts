@@ -8,10 +8,15 @@ import { revalidatePath } from 'next/cache';
 export const deleteTransaction = async (transactionId: number): Promise<ActionValidation> => {
   const guard = await isOrgAdmin();
   if (!guard.validation.ok) return guard.validation;
+    if (!guard.orgId) {
+      return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
+    }
+
+    const orgId = guard.orgId;
 
   try {
     await prisma.transaction.delete({
-      where: { id: transactionId },
+      where: { id: transactionId, orgId },
     });
 
     revalidatePath('/transactions');

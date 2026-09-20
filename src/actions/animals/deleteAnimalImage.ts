@@ -1,11 +1,15 @@
 'use server';
 
+import { isRelatedToAnimal } from '@/lib/permissions/isRelatedToAnimal';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { del } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
 
 export const deleteAnimalImage = async (animalId: number): Promise<ActionValidation> => {
+  const guard = await isRelatedToAnimal(animalId);
+  if (!guard.validation.ok) return guard.validation;
+
   const animal = await prisma.animal.findUnique({
     where: { id: animalId },
     select: { imageKey: true },

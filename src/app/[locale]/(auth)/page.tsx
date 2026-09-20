@@ -3,8 +3,9 @@ import { DeniedPage } from '@/components/main/DeniedPage';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getPendingOrgRequests } from '@/lib/organizations/getPendingOrgRequests';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { FamilyWithoutDetails, Member, Organization, PendingOrgRequest } from '@/lib/types';
+import { FamilyWithoutDetails, Member, Organization } from '@/lib/types';
 import { getUserWithOrgs } from '@/lib/user/getUserWithOrgs';
+import { MemberRole } from '@prisma/client';
 import { cookies } from 'next/headers';
 
 const DashboardPage = async () => {
@@ -16,21 +17,24 @@ const DashboardPage = async () => {
   let families: FamilyWithoutDetails[] = [];
   if (org) families = await getFamiliesByOrg(org.id);
 
-  const pending: PendingOrgRequest[] = await getPendingOrgRequests(org?.id);
+const pending =
+  org && (org.userRole === MemberRole.ADMIN || org.userRole === MemberRole.SUPERADMIN)
+    ? await getPendingOrgRequests(org.id)
+    : [];
 
-    const cookieStore = await cookies();
+  const cookieStore = await cookies();
 
-    const shouldShowTutorial = cookieStore.get('dashboard_tutorial_seen')?.value !== 'v1';
+  const shouldShowTutorial = cookieStore.get('dashboard_tutorial_seen')?.value !== 'v1';
 
-    return (
-      <Dashboard
-        user={user}
-        org={org}
-        families={families}
-        pending={pending}
-        shouldShowTutorial={shouldShowTutorial}
-      />
-    );
+  return (
+    <Dashboard
+      user={user}
+      org={org}
+      families={families}
+      pending={pending}
+      shouldShowTutorial={shouldShowTutorial}
+    />
+  );
 };
 
 export default DashboardPage;

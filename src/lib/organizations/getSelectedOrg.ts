@@ -4,25 +4,25 @@ import { Member, Organization } from '../types';
 export const getSelectedOrg = async (user: Member): Promise<Organization | null> => {
   if (!user.selectedOrgId) return null;
 
-  const org: Organization | null = await prisma.organization.findUnique({
-    where: { id: user.selectedOrgId },
-  });
-
-  if (!org) return null;
-
-  const memberId = user.id;
-  const orgId = org.id;
-
-  const memberOrg = await prisma.memberOrganization.findUnique({
-    where: { memberId_orgId: { memberId, orgId } },
+  const membership = await prisma.memberOrganization.findUnique({
+    where: {
+      memberId_orgId: {
+        memberId: user.id,
+        orgId: user.selectedOrgId,
+      },
+    },
     select: {
-      status: true,
       role: true,
+      status: true,
+      organization: true,
     },
   });
 
-  org.userRole = memberOrg?.role;
-  org.userStatus = memberOrg?.status;
+  if (!membership) return null;
 
-  return org;
+  return {
+    ...membership.organization,
+    userRole: membership.role,
+    userStatus: membership.status,
+  };
 };
