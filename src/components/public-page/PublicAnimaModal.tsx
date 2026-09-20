@@ -7,6 +7,7 @@ import { AnimalStatus } from '@prisma/client';
 import { CircleX } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimalImage } from '../animals/AnimalImage';
+import { TextWithLinks } from '../tools/TextWithLinks';
 
 export const PublicAnimalModal = ({
   animal,
@@ -152,8 +153,13 @@ export const PublicAnimalModal = ({
         )}
         <section>
           <h3>{t('publish.page.animalDescTitle', { name: animal.name })}</h3>
-          <p className="description">{animal.publicDescription}</p>
-          <p className="animal-footer">{animalFooter}</p>
+          <p className="description">
+            <TextWithLinks text={animal.publicDescription} />
+          </p>
+
+          <p className="animal-footer">
+            <TextWithLinks text={animalFooter} />
+          </p>
         </section>
       </div>
     </div>
