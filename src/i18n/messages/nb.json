@@ -253,7 +253,7 @@
       ],
       "items120": [
         "Rollen \"Ansvarlig\" er lagt til for organisasjonsmedlemmer. Detaljer om rettighetene knyttet til hver rolle er tilgjengelige på organisasjonssiden sammen med medlemslisten.",
-        "Varsler for sterilisering av katter ved 6 måneders alder er lagt til.",
+        "Varsler for kastrering av katter ved 6 måneders alder er lagt til.",
         "Det er nå mulig å registrere identifikasjonsnummer på dyrenes oppføringer."
       ],
       "items121": [
@@ -375,8 +375,8 @@
       "UNKNOWN": "Ukjent"
     },
     "bornOn": "Født ",
-    "neuteredSuffix": "Sterilisert",
-    "notNeuteredSuffix": "Ikke sterilisert",
+    "neuteredSuffix": "Kastrert",
+    "notNeuteredSuffix": "Ikke kastrert",
     "colorLabel": "Farge : ",
     "legalIdLabel": "ID:",
     "detailedLegalIdLabel": "Identifikasjonsnummer:",
@@ -445,7 +445,7 @@
     "adopterLabel": "Adoptant:",
     "aboutAdoption": "Om adopsjonen:",
     "homeVisitDone": "Et hjemmebesøk er gjennomført.",
-    "neuteringPlannedLabel": "Sterilisering planlagt den: ",
+    "neuteringPlannedLabel": "Kastrering planlagt den: ",
     "contractSignedLabel": "Adopsjonskontrakt signert den: ",
     "feesPaid": "Adopsjonsgebyret er betalt.",
     "legalTransferLabel": "Juridisk overføring gjennomført den: ",
@@ -463,8 +463,8 @@
       "speciesPlaceholder": "Art *:",
       "colorPlaceholder": "Farge",
       "sexLabel": "Kjønn *:",
-      "neuteredQuestion": "Kastrert/sterilisert?",
-      "neuteredStatus": "Steriliseringsstatus:",
+      "neuteredQuestion": "Kastrert?",
+      "neuteredStatus": "Kastreringsstatus:",
       "legalIdPlaceholder": "Nummer",
       "findLocationPlaceholder": "Sted",
       "birthDateLabel": "Født den:",
@@ -709,7 +709,7 @@
     "markAsReadButton": "Merk alle som lest",
     "animals": {
       "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
-      "neutralizeReminder": "{animalName} er gammel nok til å steriliseres.",
+      "neutralizeReminder": "{animalName} er gammel nok til å kastreres.",
       "trialReminder": "{animalName} har vært i prøveperiode i minst femten dager.",
       "quarantineReminder": "{animalName} flyttet inn i omsorgsstedet for minst femten dager siden.",
       "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",
@@ -820,7 +820,8 @@
       "items": [
         "Data er private som standard: tilgang avhenger av medlemskap i en organisasjon og dine rettigheter der.",
         "Data selges ikke og deles ikke for kommersielle formål.",
-        "Noen sensitive data (f.eks. økonomi) er kun tilgjengelige for medlemmer med riktige rettigheter (admin / ansvarlig)."
+        "Noen sensitive data (f.eks. økonomi) er kun tilgjengelige for medlemmer med riktige rettigheter (admin / ansvarlig).",
+        "Enkelte opplysninger kan gjøres offentlig tilgjengelige av en organisasjon gjennom Publisering-modulen (for eksempel informasjon om organisasjonen, bilder og beskrivelser av dyr, samt enkelte valgfrie opplysninger avhengig av valgte innstillinger)."
       ]
     },
     "vendors": {
@@ -913,8 +914,18 @@
         "Innhold eller data som legges inn av organisasjoner og deres medlemmer forblir deres ansvar."
       ]
     },
+    "publicContent": {
+      "title": "4) Offentlig innhold publisert av organisasjoner",
+      "intro": "Noe informasjon som registreres i Aster, kan gjøres offentlig tilgjengelig av organisasjonene gjennom offentlige sider, enten de vises direkte av Aster eller integreres på et annet nettsted.",
+      "items": [
+        "Tekster, bilder og lenker som publiseres på disse sidene, legges inn av organisasjonene som bruker Aster og forhåndskontrolleres ikke av Aster.",
+        "Hver organisasjon er ansvarlig for innholdet den velger å publisere offentlig, og må blant annet sørge for at den har nødvendige rettigheter til å publisere det.",
+        "Eksterne lenker kan føre til tredjeparts nettsteder eller tjenester som Aster ikke kontrollerer, og Aster kan ikke garantere deres tilgjengelighet, innhold eller praksis."
+      ],
+      "note": "Aster forbeholder seg retten til å fjerne eller gjøre utilgjengelig innhold som åpenbart er ulovlig eller utgjør misbruk av tjenesten, blant annet etter at innholdet er varslet."
+    },
     "liability": {
-      "title": "4) Ansvar",
+      "title": "5) Ansvar",
       "intro": "Aster tilbys med mål om å være nyttig og i god tro, men uten noen absolutt garanti.",
       "items": [
         "Utgiveren forsøker å sikre at informasjonen er korrekt og oppdatert.",
@@ -923,7 +934,7 @@
       ]
     },
     "personalData": {
-      "title": "5) Personopplysninger",
+      "title": "6) Personopplysninger",
       "p1": "Behandlingen av personopplysninger er beskrevet i Asters personvernerklæring.",
       "contactLabel": "Kontakt:"
     },

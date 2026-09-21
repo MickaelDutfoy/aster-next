@@ -4,10 +4,11 @@ import { getTranslations } from 'next-intl/server';
 export const Legal = async ({ locale }: { locale: Language }) => {
   const t = await getTranslations({ locale, namespace: 'legal' });
 
-  const lastUpdated = '08-04-2026';
+const lastUpdated = '20-09-2026';
 
-  const intellectualPropertyItems = t.raw('intellectualProperty.items') as string[];
-  const liabilityItems = t.raw('liability.items') as string[];
+const intellectualPropertyItems = t.raw('intellectualProperty.items') as string[];
+const publicContentItems = t.raw('publicContent.items') as string[];
+const liabilityItems = t.raw('liability.items') as string[];
 
   return (
     <main className="privacy-page">
@@ -73,7 +74,18 @@ export const Legal = async ({ locale }: { locale: Language }) => {
           ))}
         </ul>
       </section>
+      <section className="privacy-section">
+        <h2>{t('publicContent.title')}</h2>
+        <p>{t('publicContent.intro')}</p>
 
+        <ul>
+          {publicContentItems.map((item, idx) => (
+            <li key={`public-content-${idx}`}>{item}</li>
+          ))}
+        </ul>
+
+        <p>{t('publicContent.note')}</p>
+      </section>
       <section className="privacy-section">
         <h2>{t('liability.title')}</h2>
         <p>{t('liability.intro')}</p>

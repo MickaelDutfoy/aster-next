@@ -820,7 +820,8 @@
       "items": [
         "Data is private by default: access depends on your membership in an organization and your permissions within it.",
         "Data is not sold and is not shared for commercial purposes.",
-        "Certain sensitive data (e.g. treasury) is only accessible to members with the appropriate permissions (admin / manager)."
+        "Certain sensitive data (e.g. treasury) is only accessible to members with the appropriate permissions (admin / manager).",
+        "Certain data may be made public by an organization through the Publishing module (for example: organization information, animal photos and descriptions, as well as certain optional information depending on the selected settings)."
       ]
     },
     "vendors": {
@@ -913,8 +914,18 @@
         "Content or data entered by organizations and their members remain under their responsibility."
       ]
     },
+    "publicContent": {
+      "title": "4) Content published by organizations",
+      "intro": "Some information entered in Aster may be made public by organizations through Public Pages, whether displayed directly by Aster or embedded on a third-party website.",
+      "items": [
+        "Texts, images, and links published on these pages are provided by the organizations using Aster and are not reviewed or approved in advance by Aster.",
+        "Each organization is responsible for the content it chooses to make public and must ensure that it has the necessary rights to publish it.",
+        "External links may lead to third-party websites or services over which Aster has no control and whose availability, content, or practices Aster cannot guarantee."
+      ],
+      "note": "Aster reserves the right to remove or disable access to content that is clearly unlawful or constitutes an abusive use of the service, particularly after it has been reported."
+    },
     "liability": {
-      "title": "4) Liability",
+      "title": "5) Liability",
       "intro": "Aster is provided with a service-oriented intent and in good faith, but without absolute guarantee.",
       "items": [
         "The publisher strives to ensure the accuracy and up-to-date nature of the information.",
@@ -923,7 +934,7 @@
       ]
     },
     "personalData": {
-      "title": "5) Personal data",
+      "title": "6) Personal data",
       "p1": "The processing of personal data is described in Aster’s privacy policy.",
       "contactLabel": "Contact:"
     },

@@ -820,7 +820,8 @@
       "items": [
         "Les données sont privées par défaut : l’accès dépend de votre appartenance à une association et de vos droits dans celle-ci.",
         "Les données ne sont pas revendues et ne font l’objet d’aucun partage commercial.",
-        "Certaines données sensibles (ex : trésorerie) sont accessibles uniquement aux membres disposant des droits appropriés (admin / responsable)."
+        "Certaines données sensibles (ex : trésorerie) sont accessibles uniquement aux membres disposant des droits appropriés (admin / responsable).",
+        "Certaines données peuvent être rendues publiques par une association via le module Diffusion (par exemple : informations de l’association, photos et descriptions d’animaux, ainsi que certaines informations optionnelles selon les réglages choisis)."
       ]
     },
     "vendors": {
@@ -913,8 +914,18 @@
         "Les contenus ou données saisis par les associations et leurs membres restent sous leur responsabilité."
       ]
     },
+    "publicContent": {
+      "title": "4) Contenus publiés par les associations",
+      "intro": "Certaines informations saisies dans Aster peuvent être rendues publiques par les associations via les Pages Publiques, qu’elles soient affichées directement par Aster ou intégrées à un site tiers.",
+      "items": [
+        "Les textes, images et liens publiés sur ces pages sont fournis par les associations utilisatrices et ne font pas l’objet d’une validation préalable par Aster.",
+        "Chaque association est responsable des contenus qu’elle choisit de rendre publics et doit notamment s’assurer qu’elle dispose des droits nécessaires pour les publier.",
+        "Les liens externes peuvent renvoyer vers des sites ou services tiers sur lesquels Aster n’exerce aucun contrôle et dont il ne peut garantir la disponibilité, le contenu ou les pratiques."
+      ],
+      "note": "Aster se réserve la possibilité de retirer ou de rendre inaccessible tout contenu manifestement illicite ou constituant un usage abusif du service, notamment après signalement."
+    },
     "liability": {
-      "title": "4) Responsabilité",
+      "title": "5) Responsabilité",
       "intro": "Aster est proposé avec un objectif de service et de bonne foi, mais sans garantie absolue.",
       "items": [
         "L’éditeur s’efforce d’assurer l’exactitude et la mise à jour des informations.",
@@ -923,7 +934,7 @@
       ]
     },
     "personalData": {
-      "title": "5) Données personnelles",
+      "title": "6) Données personnelles",
       "p1": "Le traitement des données personnelles est décrit dans la politique de confidentialité d’Aster.",
       "contactLabel": "Contact :"
     },
