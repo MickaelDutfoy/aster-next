@@ -7,7 +7,7 @@ import nbFlag from '@/img/nb.png';
 import { Language } from '@/lib/types';
 import Image from 'next/image';
 
-export function LanguageSelector({ size, userId }: { size: number; userId?: number }) {
+export function LanguageSelector({ size }: { size: number }) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -18,6 +18,7 @@ export function LanguageSelector({ size, userId }: { size: number; userId?: numb
   };
 
   const changeLocale = (lang: Language) => {
+    // virer le cookie un jour
     document.cookie = `aster_locale=${lang}; Path=/; Max-Age=31536000; SameSite=Lax`;
     router.replace(pathname, { locale: lang });
   };

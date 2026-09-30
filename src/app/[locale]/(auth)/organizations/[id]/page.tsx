@@ -4,6 +4,7 @@ import { getMembersByOrg } from '@/lib/members/getMembersByOrg';
 import { getOrgById } from '@/lib/organizations/getOrgById';
 import { Member, MemberOfOrg, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
+import { MemberRole, MemberStatus } from '@prisma/client';
 
 const OrganizationPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -19,7 +20,25 @@ const OrganizationPage = async ({ params }: { params: Promise<{ id: string }> })
 
   const members: MemberOfOrg[] = await getMembersByOrg(org.id);
 
-  return <OrgMembersList user={user} org={org} members={members} />;
+  const isUserPending = members.some(
+    (member) => member.id === user.id && member.status === MemberStatus.PENDING,
+  );
+
+  const membersFiltered: MemberOfOrg[] = isUserPending
+    ? members
+        .filter((member) => member.role === MemberRole.SUPERADMIN || member.id === user.id)
+        .sort((a, b) =>
+          a.firstName.localeCompare(b.firstName, undefined, {
+            sensitivity: 'base',
+          }),
+        )
+    : members.sort((a, b) =>
+        a.firstName.localeCompare(b.firstName, undefined, {
+          sensitivity: 'base',
+        }),
+      );
+
+  return <OrgMembersList user={user} org={org} members={membersFiltered} />;
 };
 
 export default OrganizationPage;

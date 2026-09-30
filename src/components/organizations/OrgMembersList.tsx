@@ -39,6 +39,7 @@ export const OrgMembersList = ({
   const isUserPending = members.some(
     (member) => member.id === user.id && member.status === MemberStatus.PENDING,
   );
+  
   const isUserSuperAdmin = members.some(
     (member) => member.id === user.id && member.role === MemberRole.SUPERADMIN,
   );
@@ -46,30 +47,9 @@ export const OrgMembersList = ({
     members.some((member) => member.id === user.id && member.role === MemberRole.ADMIN) ||
     isUserSuperAdmin;
 
-  const membersFiltered: MemberOfOrg[] = isUserPending
-    ? members
-        .filter((member) => member.role === MemberRole.SUPERADMIN || member.id === user.id)
-        .filter((member) =>
-          (member.firstName + ' ' + member.lastName)
-            .toLowerCase()
-            .includes(nameFilter.toLowerCase()),
-        )
-        .sort((a, b) =>
-          a.firstName.localeCompare(b.firstName, undefined, {
-            sensitivity: 'base',
-          }),
-        )
-    : members
-        .filter((member) =>
-          (member.firstName + ' ' + member.lastName)
-            .toLowerCase()
-            .includes(nameFilter.toLowerCase()),
-        )
-        .sort((a, b) =>
-          a.firstName.localeCompare(b.firstName, undefined, {
-            sensitivity: 'base',
-          }),
-        );
+  const membersFiltered: MemberOfOrg[] = members.filter((member) =>
+    (member.firstName + ' ' + member.lastName).toLowerCase().includes(nameFilter.toLowerCase()),
+  );
 
   useEffect(() => {
     if (!openMenuMemberId) return;

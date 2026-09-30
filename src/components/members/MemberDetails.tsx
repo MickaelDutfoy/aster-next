@@ -2,28 +2,22 @@
 
 import { switchUserToOrg } from '@/actions/organizations/switchUserToOrg';
 import { useRouter } from '@/i18n/routing';
-import { Member, Organization } from '@/lib/types';
-import { MemberRole } from '@prisma/client';
+import { MemberWithoutDetails, Organization } from '@/lib/types';
 import { MailOpen, Phone, SquareArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { showToast } from '../tools/ToastProvider';
 
 export const MemberDetails = ({
   isUser,
-  member,
-  org,
+  memberInfo,
   orgsInCommon,
 }: {
   isUser: boolean;
-  member: Member;
-  org: Organization;
+  memberInfo: MemberWithoutDetails;
   orgsInCommon: Organization[];
 }) => {
   const t = useTranslations();
   const router = useRouter();
-
-  const canSeeDetails =
-    isUser || org.userRole === MemberRole.SUPERADMIN || org.userRole === MemberRole.ADMIN;
 
   const navigateToOrgPage = async (orgId: number) => {
     const res = await switchUserToOrg(orgId);
@@ -42,24 +36,24 @@ export const MemberDetails = ({
   return (
     <div className="member-sheet">
       <h3>
-        {member.firstName} {member.lastName}
+        {memberInfo.firstName} {memberInfo.lastName}
       </h3>
       {isUser && <p style={{ paddingTop: 5 }}>{t('members.ownSheet')}</p>}
 
-      {canSeeDetails && (
+      {memberInfo.email && memberInfo.phoneNumber && (
         <div className="contact-display">
           <div className="contact-item">
             <MailOpen size={18} />
             <span>:</span>
-            <a className="link" href={`mailto:${member.email}`}>
-              {member.email}
+            <a className="link" href={`mailto:${memberInfo.email}`}>
+              {memberInfo.email}
             </a>
           </div>
           <div className="contact-item">
             <Phone size={18} />
             <span>:</span>
-            <a className="link" href={`tel:${member.phoneNumber}`}>
-              {member.phoneNumber}
+            <a className="link" href={`tel:${memberInfo.phoneNumber}`}>
+              {memberInfo.phoneNumber}
             </a>
           </div>
         </div>

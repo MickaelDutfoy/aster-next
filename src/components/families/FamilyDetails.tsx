@@ -122,7 +122,7 @@ export const FamilyDetails = ({
     <>
       <div className="share-and-links-box">
         <ShareButton />
-        <div>
+        <div className="links-box">
           <button
             onClick={() => router.push(`/families/${family.id}/delete`)}
             className={'little-button' + clsx(!canDeleteFamily && ' disabled')}

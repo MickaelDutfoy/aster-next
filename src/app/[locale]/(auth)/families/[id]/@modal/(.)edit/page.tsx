@@ -25,7 +25,8 @@ export default async function UpdateFamilyRouteModal({
   if (
     family.members.length > 0 &&
     family.members.every((member) => member.id !== user.id) &&
-    org.userRole !== MemberRole.SUPERADMIN
+    org.userRole !== MemberRole.SUPERADMIN &&
+    org.userRole !== MemberRole.ADMIN
   ) {
     return <DeniedPage cause="refused" />;
   }

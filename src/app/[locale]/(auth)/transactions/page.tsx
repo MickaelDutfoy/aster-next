@@ -4,7 +4,7 @@ import { TransactionsList } from '@/components/transactions/TransactionsList';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { getTransactionCategoriesOfOrg } from '@/lib/transactions/getTransactionCategoriesOfOrg';
 import { getTransactionsOfOrg } from '@/lib/transactions/getTransactionsOfOrg';
-import { Member, Organization, Transaction, TransactionCategory } from '@/lib/types';
+import { Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 import { MemberRole } from '@prisma/client';
 
@@ -19,9 +19,11 @@ const Transactions = async () => {
     return <DeniedPage cause="treasury" />;
   }
 
-  const transactions: Transaction[] = await getTransactionsOfOrg(org.id);
-  const categories: TransactionCategory[] = await getTransactionCategoriesOfOrg(org.id);
-
+  const [transactions, categories] = await Promise.all([
+    getTransactionsOfOrg(org.id),
+    getTransactionCategoriesOfOrg(org.id),
+  ]);
+  
   return (
     <>
       <TransactionsActions orgId={org.id} />

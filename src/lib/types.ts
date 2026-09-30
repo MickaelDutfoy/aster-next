@@ -197,6 +197,14 @@ export type Member = {
   organizations?: Organization[];
 };
 
+export type MemberWithoutDetails = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email?: string;
+  phoneNumber?: string;
+};
+
 export type MemberOfOrg = {
   id: number;
   firstName: string;

@@ -4,7 +4,7 @@ import { DeniedPage } from '@/components/main/DeniedPage';
 import { getAnimalsByOrg } from '@/lib/animals/getAnimalsByOrg';
 import { getFamiliesByOrg } from '@/lib/families/getFamiliesByOrg';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { AnimalWithoutDetails, FamilyWithoutDetails, Member, Organization } from '@/lib/types';
+import { Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
 const AnimalsPage = async () => {
@@ -16,8 +16,10 @@ const AnimalsPage = async () => {
 
   if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
-  const animals: AnimalWithoutDetails[] = await getAnimalsByOrg(org.id);
-  const families: FamilyWithoutDetails[] = await getFamiliesByOrg(org.id);
+  const [animals, families] = await Promise.all([
+    getAnimalsByOrg(org.id),
+    getFamiliesByOrg(org.id),
+  ]);
 
   return (
     <>

@@ -20,7 +20,8 @@ const UpdateFamilyPage = async ({ params }: { params: Promise<{ id: string }> })
   if (
     family.members.length > 0 &&
     family.members.every((member) => member.id !== user.id) &&
-    org.userRole !== MemberRole.SUPERADMIN
+    org.userRole !== MemberRole.SUPERADMIN &&
+    org.userRole !== MemberRole.ADMIN
   ) {
     return <DeniedPage cause="refused" />;
   }

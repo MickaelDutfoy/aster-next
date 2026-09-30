@@ -4,7 +4,7 @@ import { getAnimalsByFamily } from '@/lib/animals/getAnimalsByFamily';
 import { getCalendarAndEventsByFamily } from '@/lib/calendars/getCalendarAndEventsByFamily';
 import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
-import { Animal, Calendar, Family, Member, Organization } from '@/lib/types';
+import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 
 const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -22,8 +22,10 @@ const FamilyDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
     return <DeniedPage cause="refused" />;
   }
 
-  const animals: Animal[] = await getAnimalsByFamily(Number(id));
-  const calendar: Calendar | null = await getCalendarAndEventsByFamily(Number(id));
+  const [animals, calendar] = await Promise.all([
+    getAnimalsByFamily(Number(id)),
+    getCalendarAndEventsByFamily(Number(id)),
+  ]);
 
   return (
     <FamilyDetails user={user} org={org} family={family} animals={animals} calendar={calendar} />

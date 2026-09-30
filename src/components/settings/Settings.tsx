@@ -36,7 +36,7 @@ export const Settings = ({ userId }: { userId: number }) => {
       <div className="settings-body">
         <div className="lang-change">
           <p>{t('settings.changeLanguage')}</p>
-          <LanguageSelector size={26} userId={userId} />
+          <LanguageSelector size={26} />
         </div>
         <ThemeSelector />
         <div className="contact-link">
