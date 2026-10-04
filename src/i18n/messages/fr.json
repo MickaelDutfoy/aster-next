@@ -349,6 +349,10 @@
         "Ajout d'un agenda de permanences pour les lieux d'accueil, gérable directement depuis leur fiche. À terme, Aster proposera davantage de gestion d'agendas, par exemple un agenda de l'association entière ou des agendas personnels pour les membres.",
         "Les notifications de mise à jour d'une fiche animal sont désactivées jusqu'à pouvoir être paramétrées dans une mise à jour future.",
         "Il est désormais possible de trier les listes d'animaux soit par nom soit par âge, croissant ou décroissant."
+      ],
+      "items171": [
+        "Améliorations de stabilité et de sécurité. N'hésitez surtout pas à m'envoyer un message lorsque quelque chose ne fonctionne pas comme prévu, cela m'aide à améliorer Aster pour tout le monde ! Vous pouvez me contacter depuis le menu Paramètres.",
+        "Depuis le menu Paramètres, vous pouvez également soutenir Aster. L'application est et restera gratuite pour ses utilisateurs, même si son développement et son hébergement ont un coût."
       ]
     }
   },
@@ -702,6 +706,11 @@
       "success": "Votre compte a été supprimé.",
       "superAdminExplain": "Si vous êtes administrateur d’une association, vous devez d’abord transférer ce rôle. Si vous êtes seul dans l’association concernée, vous devez d’abord la supprimer.",
       "cantIfSuperAdmin": "Vous ne pouvez pas supprimer votre compte tant que vous êtes administrateur d'au moins une association."
+    },
+    "supportAster": {
+      "title": "Vous aimez Aster ? Il vous simplifie la vie ?",
+      "button": "Soutenir Aster",
+      "notice": "Les soutiens se font via un partenaire de confiance. Le montant est libre, et peut être ponctuel ou mensuel. Que ce soit 1 €, 10 € ou 0 €, merci : utiliser Aster, c’est déjà contribuer à le faire exister."
     }
   },
   "notifications": {

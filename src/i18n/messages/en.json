@@ -349,6 +349,10 @@
         "Added a shift schedule for foster locations, managed directly from their profile. Over time, Aster will offer more calendar options, such as an organization-wide calendar or personal calendars for members.",
         "Notifications for updates to animal profiles have been disabled until they can be configured in a future update.",
         "Animal lists can now be sorted by name or age, in ascending or descending order."
+      ],
+      "items171": [
+        "Stability and security improvements. Please feel free to send me a message whenever something does not work as expected — it helps me improve Aster for everyone! You can contact me from the Settings menu.",
+        "From the Settings menu, you can also support Aster. The app is and will remain free for its users, even though development and hosting come with costs."
       ]
     }
   },
@@ -702,6 +706,11 @@
       "success": "Your account has been deleted.",
       "superAdminExplain": "If you are an administrator of an organization, you must first transfer this role. If you are the only member of the organization, you must delete it first.",
       "cantIfSuperAdmin": "You cannot delete your account while you are an administrator of at least one organization."
+    },
+    "supportAster": {
+      "title": "Do you like Aster? Does it make things easier for you?",
+      "button": "Support Aster",
+      "notice": "Support is handled through a trusted partner. The amount is up to you, and can be one-time or monthly. Whether it’s €1, €10 or €0, thank you: simply using Aster already helps keep it going."
     }
   },
   "notifications": {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { Language } from '@/lib/types';
 import { isAppContext } from '@/lib/utils/isAppContext';
 import { openInstallPage } from '@/lib/utils/openInstallPage';
@@ -44,14 +44,30 @@ export const Settings = ({ userId }: { userId: number }) => {
           <MailQuestionMark className="link" size={32} onClick={() => router.replace('/contact')} />
         </div>
       </div>
-      {installed === false && (
-        <div className="install-link">
-          <h4>{t('install.prompt')}</h4>
-          <button className="little-button" onClick={handleNavigate}>
-            {t('install.routeButton')}
-          </button>
+      <div className="install-and-support">
+        {installed === false && (
+          <div className="install-link">
+            <h4>{t('install.prompt')}</h4>
+            <button className="little-button" onClick={handleNavigate}>
+              {t('install.routeButton')}
+            </button>
+          </div>
+        )}
+        <div className="support-link">
+          <h4>{t('settings.supportAster.title')}</h4>
+
+          <Link
+            className="little-button"
+            href="https://ko-fi.com/asterapp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t('settings.supportAster.button')}
+          </Link>
+
+          <p className="notice">{t('settings.supportAster.notice')}</p>
         </div>
-      )}
+      </div>
     </div>
   );
 };

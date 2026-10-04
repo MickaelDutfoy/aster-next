@@ -9,6 +9,12 @@
     opacity: 0.7;
     text-align: right;
   }
+
+  .install-and-support {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .edit-account {
@@ -69,7 +75,7 @@
   }
 }
 
-.install-link {
+.install-link, .support-link {
   display: flex;
   flex-direction: column;
   align-items: center;

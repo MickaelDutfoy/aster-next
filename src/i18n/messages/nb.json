@@ -349,6 +349,10 @@
         "Det er lagt til en vaktplan for omsorgssteder, som kan administreres direkte fra omsorgsstedets profil. Etter hvert vil Aster tilby flere kalenderfunksjoner, for eksempel en kalender for hele organisasjonen eller personlige kalendere for medlemmer.",
         "Varsler om oppdateringer av dyreprofiler er deaktivert inntil de kan konfigureres i en fremtidig oppdatering.",
         "Dyrelister kan nå sorteres etter navn eller alder, i stigende eller synkende rekkefølge."
+      ],
+      "items171": [
+        "Forbedringer av stabilitet og sikkerhet. Ikke nøl med å sende meg en melding dersom noe ikke fungerer som forventet – det hjelper meg med å forbedre Aster for alle! Du kan kontakte meg fra Innstillinger-menyen.",
+        "Fra Innstillinger-menyen kan du også støtte Aster. Appen er og vil fortsatt være gratis for brukerne, selv om utvikling og drift medfører kostnader."
       ]
     }
   },
@@ -702,6 +706,11 @@
       "success": "Kontoen din er slettet.",
       "superAdminExplain": "Hvis du er administrator for en organisasjon, må du først overføre denne rollen. Hvis du er eneste medlem i organisasjonen, må du slette den først.",
       "cantIfSuperAdmin": "Du kan ikke slette kontoen din så lenge du er administrator for minst én organisasjon."
+    },
+    "supportAster": {
+      "title": "Liker du Aster? Gjør det hverdagen enklere?",
+      "button": "Støtt Aster",
+      "notice": "Støtten håndteres via en betrodd partner. Beløpet velger du selv, og støtten kan være enten engangsbeløp eller månedlig. Enten det er 1 €, 10 € eller 0 €, takk: bare det å bruke Aster bidrar allerede til å holde prosjektet i gang."
     }
   },
   "notifications": {

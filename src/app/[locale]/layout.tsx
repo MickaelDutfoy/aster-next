@@ -1,4 +1,5 @@
 import { InstallProvider } from '@/components/tools/InstallProvider';
+import { ThemeInitializer } from '@/components/tools/ThemeInitializer';
 import { ThemeProvider } from '@/components/tools/ThemeProvider';
 import ToastProvider from '@/components/tools/ToastProvider';
 import { routing } from '@/i18n/routing';
@@ -10,7 +11,6 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Comfortaa, Nunito } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { ReactNode } from 'react';
 
 export const nunito = Nunito({
@@ -71,24 +71,7 @@ export default async function LocaleLayout({
   return (
     <html suppressHydrationWarning className={`${nunito.variable} ${comfortaa.variable}`}>
       <body>
-        <Script
-          id="theme-initializer"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                try {
-                  var t = localStorage.getItem('theme');
-                  if (t === 'light' || t === 'dark' || t === 'high-contrast') {
-                    document.documentElement.dataset.theme = t;
-                  } else {
-                    document.documentElement.removeAttribute('data-theme');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
+        <ThemeInitializer />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <InstallProvider>
