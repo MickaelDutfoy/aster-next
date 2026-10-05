@@ -3,7 +3,13 @@
 import { resetDashboardTutorial } from '@/actions/tutorial/resetDashboardTutorial';
 import { Link, useRouter } from '@/i18n/routing';
 import { detectEnv } from '@/lib/detectEnv';
-import { FamilyWithoutDetails, Member, Organization, PendingOrgRequest } from '@/lib/types';
+import {
+  FamilyWithoutDetails,
+  Language,
+  Member,
+  Organization,
+  PendingOrgRequest,
+} from '@/lib/types';
 import { MemberRole, MemberStatus } from '@prisma/client';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
@@ -23,13 +29,21 @@ export const Dashboard = ({
   shouldShowTutorial: boolean;
 }) => {
   const t = useTranslations();
-  const locale = useLocale();
+  const locale = useLocale() as Language;
   const router = useRouter();
 
   const { isAndroid } = detectEnv();
 
   const [isLoading, setIsLoading] = useState(false);
   const [shouldShowInfo, setShouldShowInfo] = useState(false);
+
+  const tallyFormUrls = {
+    fr: 'https://tally.so/r/jaOe0J',
+    nb: 'https://tally.so/r/dW5EMz',
+    en: 'https://tally.so/r/Y5L416',
+  } as const;
+
+  const tallyFormUrl = tallyFormUrls[locale];
 
   useEffect(() => {
     setShouldShowInfo(isAndroid);
@@ -102,6 +116,18 @@ export const Dashboard = ({
             >
               {t('dashboard.replayTutorialCTA')}
             </button>
+          </div>
+          <div className="form-invite">
+            <p>{t('dashboard.tallyForm')}</p>
+
+            <Link
+              className="little-button"
+              href={tallyFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('dashboard.tallyFormCTA')}
+            </Link>
           </div>
         </div>
         <div className="info" style={!shouldShowInfo ? { visibility: 'hidden' } : undefined}>

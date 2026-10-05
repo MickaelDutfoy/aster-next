@@ -340,6 +340,13 @@ nav {
     font-size: 0.9rem;
   }
 
+  .form-invite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
   .changelog {
     margin: 5px;
     padding: 5px;
