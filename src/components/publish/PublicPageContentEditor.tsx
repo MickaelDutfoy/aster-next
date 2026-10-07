@@ -83,7 +83,10 @@ export const PublicPageContentEditor = ({
   data-slug="${publicPage.slug}"
   data-locale="${locale}"
   data-theme="light"
-></script>`;
+  data-appearance="seamless"
+></script>
+<!-- you can remove data-appearance, change data-theme
+to "dark" and choose which combination you prefer -->`;
 
   return (
     <>

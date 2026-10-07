@@ -32,6 +32,7 @@ export const GET = async (_request: Request, { params }: { params: Promise<{ id:
       'Content-Type': blob.headers.get('content-type') ?? 'image/jpeg',
       'Content-Disposition': 'inline',
       'Cache-Control': 'public, max-age=31536000, immutable',
+      'Vercel-CDN-Cache-Control': 'public, max-age=86400',
     },
   });
 };
