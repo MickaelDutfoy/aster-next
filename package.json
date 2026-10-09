@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && pnpm build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate && prisma migrate deploy",
     "tsc": "tsc --noEmit",
     "db:migrate:dev": "dotenv -e .env -- prisma migrate dev",
     "db:studio:dev": "dotenv -e .env -- prisma studio",

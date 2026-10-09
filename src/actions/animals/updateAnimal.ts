@@ -25,6 +25,37 @@ export const updateAnimal = async (
   }
 
   try {
+    if (animal.familyId !== null) {
+      const existingAnimal = await prisma.animal.findUnique({
+        where: { id: animalId },
+        select: { orgId: true },
+      });
+
+      if (!existingAnimal) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.errorGeneric',
+        };
+      }
+
+      const family = await prisma.family.findFirst({
+        where: {
+          id: animal.familyId,
+          orgId: existingAnimal.orgId,
+        },
+        select: { id: true },
+      });
+
+      if (!family) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+    }
+
     await prisma.$transaction(async (prismaTransaction) => {
       await prismaTransaction.member.update({
         where: { id: user.id },

@@ -24,6 +24,24 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   }
 
   try {
+    if (animal.familyId !== null) {
+      const family = await prisma.family.findFirst({
+        where: {
+          id: animal.familyId,
+          orgId: org.id,
+        },
+        select: { id: true },
+      });
+
+      if (!family) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+    }
+
     let animalId: number = 0;
 
     await prisma.$transaction(async (prismaTransaction) => {

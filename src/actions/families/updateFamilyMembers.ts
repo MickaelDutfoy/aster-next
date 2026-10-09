@@ -63,6 +63,26 @@ export const updateFamilyMembers = async (
   }
 
   try {
+    const uniqueMemberIds = [...new Set(newMembersIds)];
+
+    if (uniqueMemberIds.length > 0) {
+      const validMembersCount = await prisma.memberOrganization.count({
+        where: {
+          orgId: family.orgId,
+          memberId: { in: uniqueMemberIds },
+          status: 'VALIDATED',
+        },
+      });
+
+      if (validMembersCount !== uniqueMemberIds.length) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+    }
+
     await prisma.$transaction(async (prismaTransaction) => {
       if (newMembersIds.length === 0) {
         await prismaTransaction.familyMember.deleteMany({ where: { familyId } });
@@ -83,7 +103,7 @@ export const updateFamilyMembers = async (
     for (const memberId of membersToNotifyIds) {
       if (memberId === user.id) continue;
 
-        const dayKey = new Date().toISOString().slice(0, 10);      
+      const dayKey = new Date().toISOString().slice(0, 10);
 
       try {
         const sourceKey = `family:${familyId}:member:added:${memberId}:${dayKey}`;
