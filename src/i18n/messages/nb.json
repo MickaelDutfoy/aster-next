@@ -721,6 +721,7 @@
     "animals": {
       "vaxReminder": "{animalName} må snart få påfyll av vaksine.",
       "neutralizeReminder": "{animalName} er gammel nok til å kastreres.",
+      "plannedNeutralizeReminder": "Planlagt dato for kastrering av {animalName} er om noen dager.",
       "trialReminder": "{animalName} har vært i prøveperiode i minst femten dager.",
       "quarantineReminder": "{animalName} flyttet inn i omsorgsstedet for minst femten dager siden.",
       "editedAnimal": "{memberFullName} har redigert informasjonen for {animalName}.",

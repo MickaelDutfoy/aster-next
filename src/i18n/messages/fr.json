@@ -721,6 +721,7 @@
     "animals": {
       "vaxReminder": "{animalName} doit bientôt faire son rappel de vaccin.",
       "neutralizeReminder": "{animalName} est en âge d'être stérilisé(e).",
+      "plannedNeutralizeReminder": "La date de stérilisation prévue pour {animalName} est dans quelques jours.",
       "trialReminder": "{animalName} est en période d'essai depuis au moins quinze jours.",
       "quarantineReminder": "{animalName} est entré(e) dans son lieu d'accueil il y a au moins quinze jours.",
       "editedAnimal": "{memberFullName} a édité la fiche de {animalName}.",

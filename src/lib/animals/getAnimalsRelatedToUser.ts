@@ -36,6 +36,9 @@ export const getAnimalsRelatedToUser = async (userId: number): Promise<Animal[]>
         },
       ],
     },
-    include: { healthActs: true },
+    include: {
+      healthActs: { orderBy: { date: 'desc' } },
+      adoption: true,
+    },
   });
 };

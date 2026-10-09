@@ -18,7 +18,33 @@ export const generateUserPassiveNotifications = async (user: Member) => {
   for (const animal of relatedAnimals) {
     if (animal.status === AnimalStatus.DECEASED) continue;
 
-    if (
+    if (animal.adoption?.neuteringPlannedAt) {
+      const reminderDate = new Date(animal.adoption?.neuteringPlannedAt);
+      reminderDate.setDate(reminderDate.getDate() - 7);
+
+      if (!animal.isNeutered && new Date() >= reminderDate) {
+        try {
+          await prisma.notification.upsert({
+            where: {
+              memberId_sourceKey: {
+                memberId: user.id,
+                sourceKey: `animal:${animal.id}:neutralize`,
+              },
+            },
+            create: {
+              memberId: user.id,
+              messageKey: 'notifications.animals.plannedNeutralizeReminder',
+              messageParams: { animalName: animal.name },
+              href: `/animals/${animal.id}`,
+              sourceKey: `animal:${animal.id}:neutralize`,
+            },
+            update: {},
+          });
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    } else if (
       animal.birthDate &&
       isOlderThan(animal.birthDate, NEUTRALIZE_REMINDER_DAYS) &&
       ['Chat', 'Cat', 'Katt'].includes(animal.species) &&

@@ -721,6 +721,7 @@
     "animals": {
       "vaxReminder": "{animalName} will soon need a vaccination booster.",
       "neutralizeReminder": "{animalName} is old enough to be neutered.",
+      "plannedNeutralizeReminder": "The planned neutering date for {animalName} is in a few days.",
       "trialReminder": "{animalName} has been in a trial period for at least fifteen days.",
       "quarantineReminder": "{animalName} entered its foster location at least fifteen days ago.",
       "editedAnimal": "{memberFullName} edited the record for {animalName}.",
