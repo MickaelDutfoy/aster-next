@@ -405,7 +405,7 @@ export const AnimalDetails = ({
             )}
           </div>
         )}
-        {animal.transactions.length > 0 && (
+        {animal.transactions && animal.transactions.length > 0 && (
           <div className="animal-transactions">
             <h4>
               {t('animals.transactionsTitle', {

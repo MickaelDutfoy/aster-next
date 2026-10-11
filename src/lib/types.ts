@@ -75,7 +75,7 @@ export type Animal = {
   updatedAt: Date;
   imageUpdatedAt: Date | null;
   adoption?: AnimalAdoption | null;
-  transactions: Transaction[];
+  transactions?: Transaction[];
 };
 
 export type AnimalWithoutDetails = {
@@ -250,7 +250,7 @@ export type Transaction = {
   animalId: number | null;
   note: string | null;
   category: TransactionCategory;
-  animal: AnimalWithoutDetails | null;
+  animal?: AnimalWithoutDetails | null;
 };
 
 export type OrganizationPublicPage = {
