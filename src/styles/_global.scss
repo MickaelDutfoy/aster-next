@@ -272,8 +272,7 @@ input[type="checkbox"] {
   height: 16px;
   margin: 0;
   accent-color: var(--button);
-  box-shadow: 1px 1px 4px vars.$smoky-black;
-  overflow: hidden;
+  clip-path: inset(0 round 3px);
 }
 
 textarea {
