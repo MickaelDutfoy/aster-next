@@ -575,7 +575,7 @@
       "animals": "Nos animaux à l'adoption",
       "noAnimals": "Nous n'avons actuellement aucun animal à l'adoption.",
       "trialInProgress": "{name} est actuellement en période d'essai.",
-      "reserved": "{name} est actuellement réservé.",
+      "reserved": "{name} est actuellement réservé(e).",
       "animalHealthInfo": "Santé",
       "testPrefix": "Testé(e) ",
       "locationPrefix": "{name} est à rencontrer à : ",
