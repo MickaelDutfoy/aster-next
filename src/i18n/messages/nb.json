@@ -427,6 +427,7 @@
       "NEGATIVE": "Negativ",
       "POSITIVE": "Positiv"
     },
+    "transactionsTitle": "Tilknyttede transaksjoner (Totalt {amount}):",
     "additionalInfoLabel": "Tilleggsinformasjon:",
     "currentStatusLabel": "Nåværende status:",
     "currentStatus": "Nåværende status",
@@ -603,6 +604,10 @@
       "DIRECT_DEBIT": "Direkte belastning",
       "OTHER": "Annet"
     },
+    "linkedAnimal": "Tilknyttet dyr:",
+    "filterAnimals": "Vis dyr:",
+    "currentAnimals": "I omsorg",
+    "archivedAnimals": "Tidligere",
     "additionalInfoLabel": "Notat:",
     "yearLabel": "År:",
     "categoryLabel": "Kategori:",

@@ -14,6 +14,7 @@ export const getTransactionById = async (
       date: true,
       counterparty: true,
       paymentMethod: true,
+      animalId: true,
       note: true,
       category: true,
     },

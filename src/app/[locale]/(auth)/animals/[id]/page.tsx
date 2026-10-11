@@ -23,7 +23,15 @@ const AnimalDetail = async ({ params }: { params: Promise<{ id: string }> }) => 
 
   const family: Family | null = await getFamilyById(animal.familyId);
 
-  return <AnimalDetails user={user} org={org} animal={animal} family={family} />;
+  return (
+    <AnimalDetails
+      user={user}
+      org={org}
+      animal={animal}
+      family={family}
+      displayCurrency={org.defaultCurrency}
+    />
+  );
 };
 
 export default AnimalDetail;

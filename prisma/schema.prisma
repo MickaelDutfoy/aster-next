@@ -54,6 +54,7 @@ model Animal {
   healthActs    AnimalHealthAct[]
   weightEntries AnimalWeightEntry[]
   testEntries   AnimalTestEntry[]
+  transactions  Transaction[]
   adoption      AnimalAdoption?
 
   @@map("animals")
@@ -274,10 +275,12 @@ model Transaction {
   counterparty  String?
   paymentMethod PaymentMethod
   note          String?
+  animalId      Int?
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
 
   organization Organization        @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  animal       Animal?             @relation(fields: [animalId], references: [id], onDelete: SetNull)
   category     TransactionCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 

@@ -29,6 +29,26 @@ export const registerTransaction = async (
   }
 
   try {
+    if (transaction.animalId) {
+      const animal = await prisma.animal.findUnique({
+        where: {
+          id: transaction.animalId,
+          orgId,
+        },
+        select: {
+          id: true,
+        },
+      });
+
+      if (!animal) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+    }
+
     let categoryId: number;
 
     if (createCategory) {
@@ -38,7 +58,27 @@ export const registerTransaction = async (
 
       categoryId = res.id;
     } else {
-      categoryId = Number(category.categoryNameOrId);
+      const requestedCategoryId = Number(category.categoryNameOrId);
+
+      const existingCategory = await prisma.transactionCategory.findUnique({
+        where: {
+          id: requestedCategoryId,
+          orgId,
+        },
+        select: {
+          id: true,
+        },
+      });
+
+      if (!existingCategory) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+
+      categoryId = existingCategory.id;
     }
 
     await prisma.transaction.create({

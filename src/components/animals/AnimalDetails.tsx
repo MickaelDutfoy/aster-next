@@ -1,10 +1,11 @@
 'use client';
 
 import { Link, useRouter } from '@/i18n/routing';
-import { Animal, AnimalHealthAct, Family, Member, Organization } from '@/lib/types';
+import { Animal, AnimalHealthAct, Family, Language, Member, Organization } from '@/lib/types';
 import { displayAge } from '@/lib/utils/displayAge';
 import { displayDate } from '@/lib/utils/displayDate';
-import { AnimalStatus, MemberRole } from '@prisma/client';
+import { formatCurrency } from '@/lib/utils/formatCurrency';
+import { AnimalStatus, MemberRole, TransactionType } from '@prisma/client';
 import clsx from 'clsx';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -18,13 +19,15 @@ export const AnimalDetails = ({
   org,
   animal,
   family,
+  displayCurrency,
 }: {
   user: Member;
   org: Organization;
   animal: Animal;
   family: Family | null;
+  displayCurrency: string;
 }) => {
-  const locale = useLocale();
+  const locale = useLocale() as Language;
   const t = useTranslations();
   const router = useRouter();
   const now = new Date().toISOString().slice(0, 10);
@@ -400,6 +403,39 @@ export const AnimalDetails = ({
                 <p className="long-text">{animal.adoption?.information}</p>
               </div>
             )}
+          </div>
+        )}
+        {animal.transactions.length > 0 && (
+          <div className="animal-transactions">
+            <h4>
+              {t('animals.transactionsTitle', {
+                amount: formatCurrency(
+                  animal.transactions.reduce(
+                    (sum, transaction) =>
+                      sum +
+                      (transaction.type === TransactionType.INCOME
+                        ? transaction.amountInCents
+                        : -transaction.amountInCents),
+                    0,
+                  ) / 100,
+                  locale,
+                  displayCurrency,
+                ),
+              })}
+            </h4>
+            <ul>
+              {animal.transactions.map((transaction) => (
+                <li key={transaction.id}>
+                  <span>{displayDate(transaction.date)}</span>
+                  <span>{transaction.category.name}</span>
+                  <span className="amount">
+                    {transaction.type === TransactionType.INCOME
+                      ? formatCurrency(transaction.amountInCents / 100, locale, displayCurrency)
+                      : formatCurrency(-transaction.amountInCents / 100, locale, displayCurrency)}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         {animal.information && (

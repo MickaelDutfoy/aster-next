@@ -30,6 +30,26 @@ export const updateTransaction = async (
   }
 
   try {
+    if (transaction.animalId) {
+      const animal = await prisma.animal.findUnique({
+        where: {
+          id: transaction.animalId,
+          orgId,
+        },
+        select: {
+          id: true,
+        },
+      });
+
+      if (!animal) {
+        return {
+          ok: false,
+          status: 'error',
+          message: 'toasts.notAllowed',
+        };
+      }
+    }
+
     let categoryId: number;
 
     if (createCategory) {

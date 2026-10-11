@@ -249,9 +249,37 @@ nav {
   }
 }
 
+.two-way-toggle {
+  display: inline-flex;
+  justify-content: space-around;
+  border: 1px solid var(--text);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  transform: translateY(2px);
+
+  button {
+    margin-bottom: 0 !important;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+
+    &.active {
+      background-color: var(--button);
+      border: 1px solid var(--input-text);
+      color: var(--text);
+    }
+  }
+}
+
 .labeled-date,
 .labeled-select,
-.labeled-checkbox {
+.labeled-checkbox,
+.labeled-toggle {
   display: flex;
   justify-content: space-between;
   align-items: center;

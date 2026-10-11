@@ -25,7 +25,7 @@ export const updateAnimal = async (
   }
 
   try {
-    if (animal.familyId !== null) {
+    if (animal.familyId) {
       const existingAnimal = await prisma.animal.findUnique({
         where: { id: animalId },
         select: { orgId: true },

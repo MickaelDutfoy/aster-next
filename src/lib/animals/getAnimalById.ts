@@ -9,6 +9,7 @@ export const getAnimalById = async (id: number): Promise<Animal | null> => {
       healthActs: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
       weightEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
       testEntries: { orderBy: [{ date: 'desc' }, { createdAt: 'desc' }] },
+      transactions: { include: { category: true } },
     },
   });
 
