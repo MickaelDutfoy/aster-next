@@ -1,9 +1,10 @@
 'use client';
 
 import { toggleAnimalPublishing } from '@/actions/animals/toggleAnimalPublishing';
+import { toggleAnimalReserved } from '@/actions/animals/toggleAnimalReserved';
 import { setAnimalPublicDescription } from '@/actions/publish/setAnimalPublicDescription';
 import { Link } from '@/i18n/routing';
-import { AnimalWithoutDetails, OrganizationPublicPage } from '@/lib/types';
+import { AnimalPublicSetup, OrganizationPublicPage } from '@/lib/types';
 import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
 import clsx from 'clsx';
 import { Copy, SquareArrowRight } from 'lucide-react';
@@ -18,14 +19,23 @@ export const PublicPageContentEditor = ({
   canManagePage,
 }: {
   publicPage: OrganizationPublicPage | null;
-  animals: AnimalWithoutDetails[];
+  animals: AnimalPublicSetup[];
   canManagePage: boolean;
 }) => {
   const t = useTranslations();
   const locale = useLocale();
 
   const [openedAnimal, setOpenedAnimal] = useState<number | null>(null);
+  const [publishedAnimals, setPublishedAnimals] = useState<Record<number, boolean>>(
+    Object.fromEntries(animals.map((animal) => [animal.id, animal.isPubliclyAdoptable])),
+  );
+  const [reservedAnimals, setReservedAnimals] = useState<Record<number, boolean>>(
+    Object.fromEntries(animals.map((animal) => [animal.id, animal.isReserved])),
+  );
   const [descriptions, setDescriptions] = useState<Record<number, string>>(
+    Object.fromEntries(animals.map((animal) => [animal.id, animal.publicDescription ?? ''])),
+  );
+  const [savedDescriptions, setSavedDescriptions] = useState<Record<number, string>>(
     Object.fromEntries(animals.map((animal) => [animal.id, animal.publicDescription ?? ''])),
   );
   const [isLoading, setIsLoading] = useState(false);
@@ -38,36 +48,74 @@ export const PublicPageContentEditor = ({
     }
   };
 
-  const handleAnimalToggle = async (animalId: number) => {
+  const handleAnimalPublishing = async (animalId: number, checked: boolean) => {
     const res = await toggleAnimalPublishing(animalId);
+
+    if (res.ok) {
+      setPublishedAnimals((prev) => ({
+        ...prev,
+        [animalId]: checked,
+      }));
+    }
 
     if (res.message) {
       showToast({
         ...res,
-        message: res.message ? t(res.message) : undefined,
+        message: t(res.message),
+      });
+    }
+  };
+
+  const handleAnimalReserved = async (animalId: number, checked: boolean) => {
+    const res = await toggleAnimalReserved(animalId);
+
+    if (res.ok) {
+      setReservedAnimals((prev) => ({
+        ...prev,
+        [animalId]: checked,
+      }));
+    }
+
+    if (res.message) {
+      showToast({
+        ...res,
+        message: t(res.message),
       });
     }
   };
 
   const handleSaveDescription = async (animalId: number, description: string) => {
-    if (!description) {
+    const trimmedDescription = description.trim();
+
+    if (!trimmedDescription && publishedAnimals[animalId]) {
+      showToast({
+        status: 'error',
+        message: t('toasts.animalPublicDescriptionError'),
+      });
+
+      setDescriptions((prev) => ({
+        ...prev,
+        [animalId]: savedDescriptions[animalId],
+      }));
+
       return;
     }
 
     setIsLoading(true);
+
     try {
-      const res = await setAnimalPublicDescription(animalId, description);
+      const res = await setAnimalPublicDescription(animalId, trimmedDescription);
+
+      if (res.ok) {
+        setSavedDescriptions((prev) => ({
+          ...prev,
+          [animalId]: trimmedDescription,
+        }));
+      }
 
       showToast({
         ...res,
         message: res.message ? t(res.message) : undefined,
-      });
-    } catch (err) {
-      console.error(err);
-      showToast({
-        ok: false,
-        status: 'error',
-        message: t('toasts.errorGeneric'),
       });
     } finally {
       setIsLoading(false);
@@ -153,13 +201,28 @@ to "dark" and choose which combination you prefer -->`;
                       )
                     }
                   >
-                    <p>{t('publish.publishedLabel')}</p>
-                    <input
-                      type="checkbox"
-                      defaultChecked={animal.isPubliclyAdoptable}
-                      disabled={!animal.imageKey || !animal.publicDescription || !canManagePage}
-                      onChange={() => handleAnimalToggle(animal.id)}
-                    />
+                    <div className="checkboxes">
+                      <div>
+                        <p>{t('publish.publishedLabel')}</p>
+                        <input
+                          type="checkbox"
+                          checked={publishedAnimals[animal.id]}
+                          disabled={!animal.imageKey || !animal.publicDescription || !canManagePage}
+                          onChange={(e) =>
+                            handleAnimalPublishing(animal.id, e.currentTarget.checked)
+                          }
+                        />
+                      </div>
+                      <div>
+                        <p>{t('publish.reservedLabel')}</p>
+                        <input
+                          type="checkbox"
+                          checked={reservedAnimals[animal.id]}
+                          disabled={!publishedAnimals[animal.id] || !canManagePage}
+                          onChange={(e) => handleAnimalReserved(animal.id, e.currentTarget.checked)}
+                        />
+                      </div>
+                    </div>
                   </div>
                   <Link className="action link" href={`/animals/${animal.id}`} prefetch={false}>
                     <SquareArrowRight size={26} />

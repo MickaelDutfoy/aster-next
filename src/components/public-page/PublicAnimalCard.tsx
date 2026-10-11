@@ -53,6 +53,9 @@ export const PublicAnimalCard = ({
       {animal.status === AnimalStatus.IN_TRIAL && (
         <p className="notice">{t('publish.page.trialInProgress', { name: animal.name })}</p>
       )}
+      {animal.status !== AnimalStatus.IN_TRIAL && animal.isReserved && (
+        <p className="notice">{t('publish.page.reserved', { name: animal.name })}</p>
+      )}
     </div>
   );
 };

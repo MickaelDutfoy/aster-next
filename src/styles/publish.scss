@@ -134,7 +134,19 @@
         gap: 10px;
       }
 
-      p {
+      .checkboxes {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px 0;
+
+        div {
+          display: flex;
+          gap: 8px;
+        }
+      }
+
+      p.link {
         display: flex;
         flex-direction: row;
         gap: 8px;

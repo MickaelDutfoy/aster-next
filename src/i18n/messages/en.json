@@ -74,6 +74,7 @@
     "imageDeleted": "The image has been deleted.",
     "publicPageDataSubmitted": "Your public page information has been saved.",
     "animalPublicDescriptionSubmit": "The animal description has been saved.",
+    "animalPublicDescriptionError": "The animal must no longer be available for adoption before its description can be removed.",
     "presenceCreated": "The shift has been successfully added.",
     "presenceEdited": "The shift has been successfully updated.",
     "presenceDeleted": "The shift has been successfully deleted."
@@ -82,7 +83,7 @@
     "label": "Help",
     "animals": "This section allows you to register your animals with their general, health, and adoption information.\n\nEach animal can be set as \"in a foster location\" or in \"permanent placement\" and assigned to a location.\n\nYou can then filter animals by location or by status (adopted, in trial period, etc.).",
     "families": "This section allows you to define foster locations: these can be shelters, catteries, foster families, etc.\n\nFor each location, you can assign one or more members. They will then be able to edit the animals assigned to that location and receive notifications about them.",
-    "publish": "Only animals with the status \"Waiting for placement\", \"In a foster location\", or \"In trial period\" can be marked as available for adoption.\n\nTo be published, animals must have a photo and a public description, which you can edit by clicking on their name.\n\nYou can access the animal profile to edit its information and photo using the arrow.",
+    "publish": "Only animals with the status \"Waiting for placement\", \"In a foster location\", or \"In trial period\" can be marked as available for adoption. Animals available for adoption can be marked as \"Reserved\" so they appear as such on your public page.\n\nTo be published, animals must have a photo and a public description, which you can edit by clicking on their name.\n\nYou can access the animal profile to edit its information and photo using the arrow.",
     "orgList": "Member: Can create foster locations. Can edit the profile and add or remove members from locations they belong to. Can create animal profiles and edit animals they created or host, including their public description. Receives notifications only for animals they host.\n\nManager: In addition to member permissions, can edit all animals and foster locations within the organization, as well as their participants. Can edit organization data, approve membership requests, access the Treasury module, and publish animals for adoption. Receives notifications related to membership requests and all animals.\n\nAdmin: In addition to manager permissions, can delete animals, foster locations, and the organization itself, as well as appoint managers or remove members. Each organization has a single admin, who can transfer this role."
   },
   "intro": {
@@ -228,92 +229,6 @@
     "evaluateAster": "Do you like Aster? Do you find it useful? Feel free to leave a review on ",
     "changelog": {
       "title": "What’s new in Aster?",
-      "items0123": [
-        "Improved security when editing an animal or a foster family.",
-        "Email notifications are now sent when a member requests to join an organization, and when that request is approved."
-      ],
-      "items0130": [
-        "Improved interface for the \"Organizations\" section.",
-        "You can now transfer the admin role of an organization to another approved member."
-      ],
-      "items0140": [
-        "New features: edit or delete your account, edit or delete an organization...",
-        "Security improvements and smoother user flows.",
-        "The privacy policy is now available and can be accessed from the settings."
-      ],
-      "items0150": [
-        "Redesigned animal creation and editing form, including a new \"Health\" section for clearer tracking."
-      ],
-      "items100": [
-        "Added a notification system.",
-        "For now, notifications include organization join requests/approvals and animal creation/edits or vaccination reminders.",
-        "Added a \"Share\" button on \"Animal\" and \"Foster family\" pages."
-      ],
-      "items110": [
-        "Foster families can now include multiple members. They are now referred to as “Foster locations” to better represent the possibility of registering a shelter, cattery, or other collective care structure.",
-        "The notification system has been extended to all members involved in the same foster location."
-      ],
-      "items120": [
-        "Added the \"Manager\" role for organization members. Details of the permissions associated with each role are available on the organization page, alongside the member list.",
-        "Added notifications for cat neutering at 6 months.",
-        "You can now enter an identification number on animal records."
-      ],
-      "items121": [
-        "It is now possible to view a member’s details from an organization page or a foster location page, and to view organization details from a member page, making navigation easier.",
-        "Added the date of birth to animal records, in addition to age."
-      ],
-      "items122": [
-        "Notification emails now include a link to open Aster.",
-        "Added a field to filter animals, organization members, and foster locations by name."
-      ],
-      "items123": [
-        "Added the \"Deceased\" status for animals.",
-        "The creator of a foster location can edit it even if they are not a member."
-      ],
-      "items130": [
-        "Aster can now be installed as an application independently of Google or Apple stores."
-      ],
-      "items140": [
-        "It is now possible to record weighings in the health tab while editing, and then view the change directly on the animal's page.",
-        "An animal's sex can now be recorded as \"Unknown\".",
-        "Improved vaccine reminder notifications. Following this change, some notifications may reappear."
-      ],
-      "items141": [
-        "It is now possible to record test results, just like vaccines, deworming treatments, and weighings."
-      ],
-      "items142": ["Aster is now available on Google Play!"],
-      "items150": [
-        "The Treasury module is now available.",
-        "Aster provides a simple tool to track your organization’s income and expenses, and view a balance at any time."
-      ],
-      "items151": [
-        "Added a \"High contrast\" theme in Settings.",
-        "Animal weight is now entered and displayed in kilograms.",
-        "Various fixes and improvements to the Treasury module."
-      ],
-      "items152": [
-        "It is now possible to set an animal’s status to \"In trial period\".",
-        "Administrators and managers receive a notification when an animal has been in a trial period for at least fifteen days."
-      ],
-      "items153": [
-        "Various improvements to the app’s performance and security.",
-        "Birth dates are now optional on animal profiles.",
-        "If you encounter any issue, even a minor one, please use the contact form available in Settings."
-      ],
-      "items154": [
-        "Added a \"Permanent placement\" status, to describe non-adoptable animals kept in shelters or placed in sanctuaries.",
-        "This category is separated from your list of active animals (waiting for placement, in a foster location, or in trial period).",
-        "You can also filter your animal list by foster location."
-      ],
-      "items155": [
-        "Animals can now be displayed as cards, in addition to the list view. Cards include the status.",
-        "The last used animal species is now remembered and set by default when creating a new profile.",
-        "Foster location addresses are now hidden from non-members (except administrators, managers, or members of the location)."
-      ],
-      "items156": [
-        "Improved filtering system for the animal list.",
-        "Added help tooltips on certain pages."
-      ],
       "items157": [
         "Added a warning when a form contains unsaved changes.",
         "Added the \"Released\" status for animals.",
@@ -355,6 +270,11 @@
       "items171": [
         "Stability and security improvements. Please feel free to send me a message whenever something does not work as expected — it helps me improve Aster for everyone! You can contact me from the Settings menu.",
         "From the Settings menu, you can also support Aster. The app is and will remain free for its users, even though development and hosting come with costs."
+      ],
+      "items172": [
+        "It is now possible to link an animal to a transaction from the Treasury module. You can then find all transactions linked to an animal directly from its profile.",
+        "It is now possible to mark an animal as « Reserved » in the Publishing module, so that it appears as such on your public page.",
+        "Added a new animal status: Returned to owner."
       ]
     }
   },
@@ -441,6 +361,7 @@
       "FOSTERED": "In a foster location",
       "IN_TRIAL": "In trial period",
       "PERMANENT_PLACEMENT": "Permanent placement",
+      "REUNITED_WITH_OWNER": "Returned to owner",
       "ADOPTED": "Adopted",
       "RELEASED": "Released",
       "DECEASED": "Deceased"
@@ -645,6 +566,7 @@
     "offlinePage": "Your page is currently offline.",
     "editOrgDesc": "The organization's description and contact details can be edited from its profile.",
     "publishedLabel": "Adoptable:",
+    "reservedLabel": "Reserved:",
     "descPlaceholder": "Public description of {name}",
     "footerLabel": "Shared footer for all your public profiles:",
     "footerPlaceholder": "e.g. your adoption requirements, how to contact you...",
@@ -653,6 +575,7 @@
       "animals": "Our animals available for adoption",
       "noAnimals": "We currently have no animals available for adoption.",
       "trialInProgress": "{name} is currently in a trial period.",
+      "reserved": "{name} is currently reserved.",
       "animalHealthInfo": "Health",
       "testPrefix": "Tested ",
       "locationPrefix": "{name} can be met in: ",

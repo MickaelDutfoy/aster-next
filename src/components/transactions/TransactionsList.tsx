@@ -19,7 +19,7 @@ export const TransactionsList = ({
   displayCurrency: string;
 }) => {
   const t = useTranslations();
-  const lang = useLocale() as Language;
+  const locale = useLocale() as Language;
   const router = useRouter();
 
   const localeMap: Record<string, string> = {
@@ -64,7 +64,7 @@ export const TransactionsList = ({
       .reduce((acc, transaction) => acc + transaction.amountInCents, 0) / 100;
 
   const getMonthLabel = (date: Date) =>
-    new Intl.DateTimeFormat(localeMap[lang], {
+    new Intl.DateTimeFormat(localeMap[locale], {
       month: 'long',
       year: selectedYear ? undefined : 'numeric',
     }).format(date);
@@ -153,13 +153,13 @@ export const TransactionsList = ({
             {totalIncome > 0 && (
               <p>
                 <span>{t('transactions.incomesLabel')}</span>{' '}
-                <strong>{formatCurrency(totalIncome, lang, displayCurrency)}</strong>
+                <strong>{formatCurrency(totalIncome, locale, displayCurrency)}</strong>
               </p>
             )}
             {totalExpense < 0 && (
               <p>
                 <span>{t('transactions.expensesLabel')}</span>{' '}
-                <strong>{formatCurrency(totalExpense, lang, displayCurrency)}</strong>
+                <strong>{formatCurrency(totalExpense, locale, displayCurrency)}</strong>
               </p>
             )}
           </div>
@@ -167,7 +167,9 @@ export const TransactionsList = ({
             <div>
               <p>
                 {t('transactions.balanceLabel')}{' '}
-                <strong>{formatCurrency(totalIncome + totalExpense, lang, displayCurrency)}</strong>
+                <strong>
+                  {formatCurrency(totalIncome + totalExpense, locale, displayCurrency)}
+                </strong>
               </p>
             </div>
           )}
@@ -188,12 +190,12 @@ export const TransactionsList = ({
                   className="transaction link"
                   onClick={() => openOrCollapseTransaction(transaction.id)}
                 >
-                  <p>{displayDate(transaction.date).slice(0, 5)}</p>
+                  <p>{displayDate(transaction.date, locale).slice(0, 5)}</p>
                   <p className="transaction-category">{transaction.category.name}</p>
                   <span>
                     {transaction.type === TransactionType.INCOME
-                      ? formatCurrency(transaction.amountInCents / 100, lang, displayCurrency)
-                      : formatCurrency(-transaction.amountInCents / 100, lang, displayCurrency)}
+                      ? formatCurrency(transaction.amountInCents / 100, locale, displayCurrency)
+                      : formatCurrency(-transaction.amountInCents / 100, locale, displayCurrency)}
                   </span>
                   <span>{openedTransaction === transaction.id ? '▾' : '▸'}</span>
                 </div>

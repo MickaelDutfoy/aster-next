@@ -10,6 +10,7 @@ import {
   AnimalTestDraft,
   AnimalWeightDraft,
   FamilyWithoutDetails,
+  Language,
   Member,
 } from '@/lib/types';
 import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
@@ -17,7 +18,7 @@ import { displayDate } from '@/lib/utils/displayDate';
 import { AnimalStatus, AnimalTestResult, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
 import { Trash2 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 import { isCommonSpecies } from './isCommonSpecies';
@@ -32,6 +33,7 @@ export const AnimalForm = ({
   families: FamilyWithoutDetails[];
 }) => {
   const t = useTranslations();
+  const locale = useLocale() as Language;
   const router = useRouter();
 
   const [form, setForm] = useState<'general' | 'health' | 'adopt'>('general');
@@ -386,6 +388,9 @@ export const AnimalForm = ({
                 <option value={AnimalStatus.PERMANENT_PLACEMENT}>
                   {t('animals.status.PERMANENT_PLACEMENT')}
                 </option>
+                <option value={AnimalStatus.REUNITED_WITH_OWNER}>
+                  {t('animals.status.REUNITED_WITH_OWNER')}
+                </option>
                 <option value={AnimalStatus.ADOPTED}>{t('animals.status.ADOPTED')}</option>
                 <option value={AnimalStatus.RELEASED}>{t('animals.status.RELEASED')}</option>
                 <option value={AnimalStatus.DECEASED}>{t('animals.status.DECEASED')}</option>
@@ -502,7 +507,7 @@ export const AnimalForm = ({
                         </div>
 
                         <span>
-                          <span>{displayDate(new Date(act.date))}</span>{' '}
+                          <span>{displayDate(new Date(act.date), locale)}</span>{' '}
                           {act.isFirst && (
                             <span style={{ opacity: 0.6 }}>
                               ({t('animals.healthActFirstShort')})
@@ -599,7 +604,7 @@ export const AnimalForm = ({
                       <li key={`${entry.date}-${entry.weightGrams}-${index}`}>
                         <span>{(entry.weightGrams ?? 0) / 1000} kg</span>
 
-                        <span>{displayDate(new Date(entry.date))}</span>
+                        <span>{displayDate(new Date(entry.date), locale)}</span>
 
                         <button
                           className="action link"
@@ -681,7 +686,7 @@ export const AnimalForm = ({
                             ({t(`animals.testResults.${entry.result}`)})
                           </span>
                         </span>
-                        <span>{displayDate(new Date(entry.date))}</span>{' '}
+                        <span>{displayDate(new Date(entry.date), locale)}</span>{' '}
                         <button
                           className="action link"
                           type="button"

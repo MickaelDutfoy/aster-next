@@ -4,7 +4,7 @@ import { PublicPageContentEditor } from '@/components/publish/PublicPageContentE
 import { getAnimalsInCare } from '@/lib/animals/getAnimalsInCare';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { getPublicPageByOrgId } from '@/lib/publish/getPublicPageByOrgId';
-import { AnimalWithoutDetails, Member, Organization, OrganizationPublicPage } from '@/lib/types';
+import { AnimalPublicSetup, Member, Organization, OrganizationPublicPage } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
 import { MemberRole } from '@prisma/client';
 
@@ -18,7 +18,7 @@ const Publish = async () => {
   if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
 
   const publicPage: OrganizationPublicPage | null = await getPublicPageByOrgId(org.id);
-  const animalsInCare: AnimalWithoutDetails[] = await getAnimalsInCare(user, org);
+  const animalsInCare: AnimalPublicSetup[] = await getAnimalsInCare(user, org);
 
   return (
     <>

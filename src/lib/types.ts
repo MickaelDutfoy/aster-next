@@ -90,7 +90,19 @@ export type AnimalWithoutDetails = {
   imageKey?: string | null;
   imageUpdatedAt?: Date | null;
   isPubliclyAdoptable?: boolean;
+  isReserved?: boolean;
   publicDescription?: string | null;
+};
+
+export type AnimalPublicSetup = {
+  id: number;
+  name: string;
+  status: AnimalStatus;
+  canUserEdit: boolean;
+  imageKey: string | null;
+  isPubliclyAdoptable: boolean;
+  isReserved: boolean;
+  publicDescription: string | null;
 };
 
 export type AnimalPublicSheet = {
@@ -101,6 +113,7 @@ export type AnimalPublicSheet = {
   birthDate: Date | null;
   isNeutered: boolean;
   status: AnimalStatus;
+  isReserved: boolean;
   healthActs: AnimalHealthAct[];
   testEntries: AnimalTestEntry[];
   imageKey: string | null;

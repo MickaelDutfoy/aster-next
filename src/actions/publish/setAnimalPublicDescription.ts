@@ -14,13 +14,28 @@ export const setAnimalPublicDescription = async (
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
+  const animal = await prisma.animal.findUnique({
+    where: { id: animalId },
+    select: { isPubliclyAdoptable: true },
+  });
+
+  const normalizedDescription = description.trim();
+
+  if (!normalizedDescription && animal?.isPubliclyAdoptable) {
+    return {
+      ok: false,
+      status: 'error',
+      message: 'toasts.animalPublicDescriptionError',
+    };
+  }
+
   try {
     await prisma.animal.update({
       where: {
         id: animalId,
       },
       data: {
-        publicDescription: description,
+        publicDescription: normalizedDescription || null,
       },
     });
 

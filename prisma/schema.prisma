@@ -20,6 +20,7 @@ enum AnimalStatus {
   ADOPTED
   RELEASED
   DECEASED
+  REUNITED_WITH_OWNER
 }
 
 model Animal {
@@ -42,6 +43,7 @@ model Animal {
   familyId            Int?         @map("family_id")
   orgId               Int          @map("organization_id")
   isPubliclyAdoptable Boolean      @default(false)
+  isReserved          Boolean      @default(false)
   publicDescription   String?
   createdAt           DateTime     @default(now()) @map("created_at")
   createdByMemberId   Int

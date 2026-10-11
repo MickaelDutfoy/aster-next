@@ -165,7 +165,7 @@ export const AnimalDetails = ({
         {animal.color && <p>{t('animals.colorLabel') + animal.color}.</p>}
         {animal.birthDate && (
           <p>
-            {t('animals.bornOn')} {displayDate(animal.birthDate)}
+            {t('animals.bornOn')} {displayDate(animal.birthDate, locale)}
             {animal.status !== AnimalStatus.DECEASED
               ? ` (${displayAge(animal.birthDate, locale, true)})`
               : `. ${t('animals.status.DECEASED')}`}
@@ -197,7 +197,7 @@ export const AnimalDetails = ({
               <div className="animal-details-section">
                 <h4>{t('animals.lastVaxLabel')}</h4>
                 <p>
-                  {displayDate(lastVaxAct.date)}
+                  {displayDate(lastVaxAct.date, locale)}
                   {lastVaxAct.isFirst && t('animals.primoShort')}
                   {lastVaxAct.productName && ', ' + lastVaxAct.productName},{' '}
                   {now !== lastVaxAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
@@ -211,7 +211,7 @@ export const AnimalDetails = ({
                     <ul>
                       {vaxHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}
+                          {displayDate(act.date, locale)}
                           {act.productName && ', ' + act.productName},{' '}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
@@ -228,7 +228,7 @@ export const AnimalDetails = ({
               <div className="animal-details-section">
                 <h4>{t('animals.lastDewormLabel')}</h4>
                 <p>
-                  {displayDate(lastDewormAct.date)}
+                  {displayDate(lastDewormAct.date, locale)}
                   {lastDewormAct.isFirst && t('animals.firstDewormShort')}
                   {lastDewormAct.productName && ', ' + lastDewormAct.productName},{' '}
                   {now !== lastDewormAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
@@ -242,7 +242,7 @@ export const AnimalDetails = ({
                     <ul style={{ paddingLeft: 40 }}>
                       {dewormHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}
+                          {displayDate(act.date, locale)}
                           {act.productName && ', ' + act.productName},{' '}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
@@ -259,7 +259,7 @@ export const AnimalDetails = ({
               <div className="animal-details-section">
                 <h4>{t('animals.lastFleaTreatmentLabel')}</h4>
                 <p>
-                  {displayDate(lastAntifleaAct.date)}
+                  {displayDate(lastAntifleaAct.date, locale)}
                   {lastAntifleaAct.isFirst && t('animals.firstDewormShort')}
                   {lastAntifleaAct.productName && ', ' + lastAntifleaAct.productName},{' '}
                   {now !== lastAntifleaAct.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
@@ -274,7 +274,7 @@ export const AnimalDetails = ({
                     <ul style={{ paddingLeft: 40 }}>
                       {antifleaHistory.map((act) => (
                         <li key={act.id}>
-                          {displayDate(act.date)}
+                          {displayDate(act.date, locale)}
                           {act.productName && ', ' + act.productName},{' '}
                           {now !== act.date.toISOString().slice(0, 10) && t('common.agoPrefix')}
                           {displayAge(act.date, locale, true)}
@@ -303,7 +303,7 @@ export const AnimalDetails = ({
                   <tbody>
                     {sortedWeightEntries.map((entry, index) => (
                       <tr key={entry.id}>
-                        <td>{displayDate(entry.date)}</td>
+                        <td>{displayDate(entry.date, locale)}</td>
                         <td>{entry.weightGrams / 1000} kg</td>
                         <td>{getWeightEvolution(index)}</td>
                       </tr>
@@ -319,7 +319,7 @@ export const AnimalDetails = ({
                 <ul className="test-list">
                   {sortedTests.map((test) => (
                     <li key={test.id}>
-                      {`${test.testName} (${t(`animals.testResults.${test.result}`)}) — ${displayDate(test.date)}`}
+                      {`${test.testName} (${t(`animals.testResults.${test.result}`)}) — ${displayDate(test.date, locale)}`}
                     </li>
                   ))}
                 </ul>
@@ -339,12 +339,12 @@ export const AnimalDetails = ({
         </p>
         {animal.trialDateStart && (
           <p>
-            {t('animals.trialPeriodLabel')} {displayDate(animal.trialDateStart)}.
+            {t('animals.trialPeriodLabel')} {displayDate(animal.trialDateStart, locale)}.
           </p>
         )}
         {animal.quarantineDateStart && (
           <p>
-            {t('animals.quarantinePeriodLabel')} {displayDate(animal.quarantineDateStart)}.
+            {t('animals.quarantinePeriodLabel')} {displayDate(animal.quarantineDateStart, locale)}.
           </p>
         )}
         {family && (
@@ -380,19 +380,20 @@ export const AnimalDetails = ({
                 {animal.adoption?.neuteringPlannedAt && (
                   <p>
                     {t('animals.neuteringPlannedLabel')}
-                    {displayDate(animal.adoption.neuteringPlannedAt)}
+                    {displayDate(animal.adoption.neuteringPlannedAt, locale)}
                   </p>
                 )}
                 {animal.adoption?.adoptionContractSignedAt && (
                   <p>
                     {t('animals.contractSignedLabel')}
-                    {displayDate(animal.adoption.adoptionContractSignedAt)}
+                    {displayDate(animal.adoption.adoptionContractSignedAt, locale)}
                   </p>
                 )}
                 {animal.adoption?.adoptionFeePaid && <p>{t('animals.feesPaid')}</p>}
                 {animal.adoption?.legalTransferAt && (
                   <p>
-                    {t('animals.legalTransferLabel')} {displayDate(animal.adoption.legalTransferAt)}
+                    {t('animals.legalTransferLabel')}{' '}
+                    {displayDate(animal.adoption.legalTransferAt, locale)}
                   </p>
                 )}
               </div>
@@ -426,7 +427,7 @@ export const AnimalDetails = ({
             <ul>
               {animal.transactions.map((transaction) => (
                 <li key={transaction.id}>
-                  <span>{displayDate(transaction.date)}</span>
+                  <span>{displayDate(transaction.date, locale)}</span>
                   <span>{transaction.category.name}</span>
                   <span className="amount">
                     {transaction.type === TransactionType.INCOME

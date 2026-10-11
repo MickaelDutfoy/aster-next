@@ -74,6 +74,7 @@
     "imageDeleted": "Bildet ble slettet.",
     "publicPageDataSubmitted": "Informasjonen på den offentlige siden er lagret.",
     "animalPublicDescriptionSubmit": "Beskrivelsen av dyret er lagret.",
+    "animalPublicDescriptionError": "Dyret må ikke lenger være tilgjengelig for adopsjon før beskrivelsen kan fjernes.",
     "presenceCreated": "Vakten ble registrert.",
     "presenceEdited": "Vakten ble redigert.",
     "presenceDeleted": "Vakten ble slettet."
@@ -82,7 +83,7 @@
     "label": "Hjelp",
     "animals": "Denne seksjonen lar deg registrere dyr med generell informasjon, helseopplysninger og adopsjonsdata.\n\nHvert dyr kan settes som \"i et omsorgssted\" eller i \"permanent plassering\" og knyttes til et sted.\n\nDu kan deretter filtrere dyr etter sted eller status (adoptert, i prøveperiode, osv.).",
     "families": "Denne seksjonen lar deg definere omsorgssteder: det kan være tilfluktssteder, kattehjem, fosterhjem osv.\n\nFor hvert sted kan du knytte én eller flere medlemmer. De kan da redigere dyrene tilknyttet stedet og motta varsler om dem.",
-    "publish": "Kun dyr med statusen \"Venter på plassering\", \"I et omsorgssted\" eller \"I prøveperiode\" kan markeres som tilgjengelige for adopsjon.\n\nFor å bli publisert må dyrene ha et bilde og en offentlig beskrivelse. Denne kan redigeres ved å klikke på navnet deres.\n\nDu kan åpne dyreprofilen for å redigere informasjon og bilde ved hjelp av pilen.",
+    "publish": "Kun dyr med statusen \"Venter på plassering\", \"I et omsorgssted\" eller \"I prøveperiode\" kan markeres som tilgjengelige for adopsjon. Dyr som er tilgjengelige for adopsjon kan markeres som \"Reservert\" slik at dette vises på den offentlige siden deres.\n\nFor å bli publisert må dyrene ha et bilde og en offentlig beskrivelse. Denne kan redigeres ved å klikke på navnet deres.\n\nDu kan åpne dyreprofilen for å redigere informasjon og bilde ved hjelp av pilen.",
     "orgList": "Medlem: Kan opprette omsorgssteder. Kan redigere profilen og legge til eller fjerne medlemmer på steder vedkommende tilhører. Kan opprette dyreprofiler og redigere dyr som vedkommende har opprettet eller har ansvar for, inkludert deres offentlige beskrivelse. Mottar varsler kun for dyr vedkommende har ansvar for.\n\nAnsvarlig: I tillegg til medlemsrettigheter kan redigere alle dyr og omsorgssteder i organisasjonen, samt deres deltakere. Kan redigere organisasjonens data, godkjenne medlemskapsforespørsler, få tilgang til økonomimodulen og publisere dyr for adopsjon. Mottar varsler knyttet til medlemskapsforespørsler og alle dyr.\n\nAdmin: I tillegg til rettighetene til en ansvarlig kan slette dyr, omsorgssteder og organisasjonen selv, samt utnevne ansvarlige eller fjerne medlemmer. Hver organisasjon har én admin som kan overføre denne rollen."
   },
   "intro": {
@@ -228,92 +229,6 @@
     "evaluateAster": "Liker du Aster? Synes du den er nyttig? Legg gjerne igjen en vurdering på ",
     "changelog": {
       "title": "Hva er nytt i Aster?",
-      "items0123": [
-        "Forbedret sikkerhet ved redigering av et dyr eller en fosterfamilie.",
-        "E-postvarsler sendes nå når et medlem ber om å bli med i en organisasjon, og når forespørselen blir godkjent."
-      ],
-      "items0130": [
-        "Forbedret grensesnitt for seksjonen \"Organisasjoner\".",
-        "Det er nå mulig å overføre administratorrollen i en organisasjon til et annet godkjent medlem."
-      ],
-      "items0140": [
-        "Nye funksjoner: redigering eller sletting av konto, redigering eller sletting av en organisasjon...",
-        "Forbedringer innen sikkerhet og brukerflyt.",
-        "Personvernerklæringen er tilgjengelig og kan leses fra innstillingene."
-      ],
-      "items0150": [
-        "Ny utforming av skjemaet for opprettelse og redigering av dyr, med en ny \"Helse\"-seksjon for bedre oversikt."
-      ],
-      "items100": [
-        "Nytt varslingssystem er lagt til.",
-        "Foreløpig gjelder varsler forespørsel/godkjenning av medlemskap i organisasjon samt opprettelse/redigering og vaksinepåminnelser for dyr.",
-        "Lagt til en \"Del\"-knapp på sidene \"Dyr\" og \"Fosterhjem\"."
-      ],
-      "items110": [
-        "Fosterfamilier kan nå bestå av flere medlemmer. De omtales nå som «Omsorgssteder» for bedre å gjenspeile muligheten til å registrere et dyrehjem, en kattegård eller andre kollektive omsorgsstrukturer.",
-        "Varslingssystemet er utvidet til alle medlemmer som er knyttet til samme omsorgssted."
-      ],
-      "items120": [
-        "Rollen \"Ansvarlig\" er lagt til for organisasjonsmedlemmer. Detaljer om rettighetene knyttet til hver rolle er tilgjengelige på organisasjonssiden sammen med medlemslisten.",
-        "Varsler for kastrering av katter ved 6 måneders alder er lagt til.",
-        "Det er nå mulig å registrere identifikasjonsnummer på dyrenes oppføringer."
-      ],
-      "items121": [
-        "Det er nå mulig å se detaljer om et medlem fra organisasjonssiden eller siden for et omsorgssted, samt se detaljer om en organisasjon fra et medlems side, noe som gjør navigasjonen enklere.",
-        "Fødselsdato er nå lagt til på dyreoppføringer, i tillegg til alder."
-      ],
-      "items122": [
-        "Varslings-e-poster inneholder nå en lenke for å åpne Aster.",
-        "Et felt for å filtrere dyr, organisasjonsmedlemmer og omsorgssteder etter navn er lagt til."
-      ],
-      "items123": [
-        "Statusen \"Død\" er lagt til for dyr.",
-        "Oppretteren av et omsorgssted kan redigere det selv om vedkommende ikke er medlem."
-      ],
-      "items130": [
-        "Aster kan nå installeres som en applikasjon uavhengig av Google- eller Apple-butikker."
-      ],
-      "items140": [
-        "Det er nå mulig å registrere veiinger i helsefanen i redigeringsmodus, og deretter se utviklingen på dyrets side.",
-        "Dyrets kjønn kan nå registreres som \"Ukjent\".",
-        "Forbedring av vaksinepåminnelser. Etter denne endringen kan enkelte varsler dukke opp igjen."
-      ],
-      "items141": [
-        "Det er nå mulig å registrere testresultater, på samme måte som vaksiner, ormekurer og veiinger."
-      ],
-      "items142": ["Aster er nå tilgjengelig på Google Play!"],
-      "items150": [
-        "Økonomimodulen er nå tilgjengelig.",
-        "Aster tilbyr et enkelt verktøy for å følge organisasjonens inntekter og utgifter, og se en oversikt når som helst."
-      ],
-      "items151": [
-        "Lagt til et \"Høy kontrast\"-tema i Innstillinger.",
-        "Dyrevekt registreres og vises nå i kilogram.",
-        "Diverse feilrettinger og forbedringer i økonomimodulen."
-      ],
-      "items152": [
-        "Det er nå mulig å registrere statusen til et dyr som \"I prøveperiode\".",
-        "Administratorer og ansvarlige mottar et varsel når et dyr har vært i prøveperiode i minst femten dager."
-      ],
-      "items153": [
-        "Forbedringer av ytelse og sikkerhet i applikasjonen.",
-        "Fødselsdato er nå valgfri på dyreprofiler.",
-        "Hvis du oppdager et problem, selv et lite, bruk kontaktskjemaet som er tilgjengelig i Innstillinger."
-      ],
-      "items154": [
-        "Lagt til statusen \"Permanent plassering\", for å beskrive dyr som ikke kan adopteres, og som enten bor i et tilfluktssted eller er plassert i et varig opphold.",
-        "Denne kategorien er skilt fra listen over aktive dyr (venter på plassering, i et omsorgssted eller i prøveperiode).",
-        "Du kan også filtrere dyrelisten etter omsorgssted."
-      ],
-      "items155": [
-        "Dyr kan nå vises som kort, i tillegg til listevisning. Kortene inkluderer status.",
-        "Den sist brukte dyrearten huskes nå og settes som standard ved opprettelse av en ny profil.",
-        "Adressen til omsorgssteder er nå skjult for ikke-medlemmer (unntatt administratorer, ansvarlige eller medlemmer av stedet)."
-      ],
-      "items156": [
-        "Forbedret filtreringssystem for dyrelisten.",
-        "Lagt til hjelpetekster på enkelte sider."
-      ],
       "items157": [
         "Lagt til en advarsel når et skjema inneholder ulagrede endringer.",
         "Lagt til statusen \"Satt tilbake\" for dyr.",
@@ -355,6 +270,11 @@
       "items171": [
         "Forbedringer av stabilitet og sikkerhet. Ikke nøl med å sende meg en melding dersom noe ikke fungerer som forventet – det hjelper meg med å forbedre Aster for alle! Du kan kontakte meg fra Innstillinger-menyen.",
         "Fra Innstillinger-menyen kan du også støtte Aster. Appen er og vil fortsatt være gratis for brukerne, selv om utvikling og drift medfører kostnader."
+      ],
+      "items172": [
+        "Det er nå mulig å knytte et dyr til en transaksjon fra Økonomi-modulen. Du kan deretter finne alle transaksjoner knyttet til et dyr direkte fra dyreprofilen.",
+        "Det er nå mulig å markere et dyr som « Reservert » i Publisering-modulen, slik at det vises som reservert på den offentlige siden deres.",
+        "Lagt til en ny status for dyr: Gjenforent med eier."
       ]
     }
   },
@@ -441,6 +361,7 @@
       "FOSTERED": "I et omsorgssted",
       "IN_TRIAL": "I prøveperiode",
       "PERMANENT_PLACEMENT": "Permanent plassering",
+      "REUNITED_WITH_OWNER": "Gjenforent med eier",
       "ADOPTED": "Adoptert",
       "RELEASED": "Satt tilbake",
       "DECEASED": "Død"
@@ -645,6 +566,7 @@
     "offlinePage": "Siden din er ikke tilgjengelig for øyeblikket.",
     "editOrgDesc": "Beskrivelse og kontaktinformasjon for organisasjonen kan redigeres fra organisasjonsprofilen.",
     "publishedLabel": "Til adopsjon:",
+    "reservedLabel": "Reservert:",
     "descPlaceholder": "Offentlig beskrivelse av {name}",
     "footerLabel": "Felles signatur for alle offentlige profiler:",
     "footerPlaceholder": "f.eks. adopsjonsvilkår eller hvordan man kan kontakte dere...",
@@ -653,6 +575,7 @@
       "animals": "Våre dyr til adopsjon",
       "noAnimals": "Vi har for øyeblikket ingen dyr til adopsjon.",
       "trialInProgress": "{name} er for tiden i prøveperiode.",
+      "reserved": "{name} er for øyeblikket reservert.",
       "animalHealthInfo": "Helse",
       "testPrefix": "Testet ",
       "locationPrefix": "{name} kan møtes i: ",

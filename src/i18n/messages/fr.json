@@ -74,6 +74,7 @@
     "imageDeleted": "L'image a bien été supprimée.",
     "publicPageDataSubmitted": "Les informations de votre page publique ont été enregistrées.",
     "animalPublicDescriptionSubmit": "La description de l'animal a été enregistrée.",
+    "animalPublicDescriptionError": "L'animal doit être non adoptable pour retirer sa description.",
     "presenceCreated": "La présence a bien été enregistrée.",
     "presenceEdited": "La présence a bien été éditée.",
     "presenceDeleted": "La présence a bien été supprimée."
@@ -82,7 +83,7 @@
     "label": "Aide",
     "animals": "Cette section vous permet d'enregistrer vos animaux avec leurs informations générales, de santé et d'adoption.\n\nChaque animal peut être défini « dans un lieu d'accueil » ou en « placement permanent » et affecté à un lieu.\n\nVous pouvez ensuite filtrer les animaux par lieu, ou par statut (adopté, en période d'essai, etc.).",
     "families": "Cette section vous permet de définir des lieux d'accueil : il peut s'agir de refuges, de chatteries, de familles d'accueil...\n\nSur chaque lieu, vous pouvez affecter un ou plusieurs membres qui auront alors la possibilité d'éditer les fiches des animaux du lieu et de recevoir des notifications à leur sujet.",
-    "publish": "Seuls les animaux ayant un statut \"En attente\", \"Dans un lieu d'accueil\" ou \"En période d'essai\" peuvent être déclarés à l'adoption.\n\nPour être publiés, les animaux doivent avoir une photo et une description publique, que vous pouvez éditer en cliquant sur leur nom.\n\nVous pouvez accéder à la fiche de l'animal pour éditer ses informations et sa photo à l'aide de la flèche.",
+    "publish": "Seuls les animaux ayant un statut \"En attente\", \"Dans un lieu d'accueil\" ou \"En période d'essai\" peuvent être déclarés à l'adoption. Les animaux adoptables peuvent être déclarés \"Réservés\" pour être montrés comme tels sur votre page publique.\n\nPour être publiés, les animaux doivent avoir une photo et une description publique, que vous pouvez éditer en cliquant sur leur nom.\n\nVous pouvez accéder à la fiche de l'animal pour éditer ses informations et sa photo à l'aide de la flèche.",
     "orgList": "Membre : Peut créer des lieux d’accueil. Peut éditer la fiche, ajouter ou retirer des membres sur les lieux dont il fait partie. Peut créer des fiches d’animaux et éditer les animaux qu’il a créés ou accueille, y compris leur description publique. Est notifié uniquement sur les animaux qu’il accueille.\n\nResponsable : En plus des droits de membre, peut éditer l’ensemble des animaux et lieux d’accueil de l’association, ainsi que leurs participants. Peut éditer les données de l'association et valider les demandes d’adhésion, ainsi qu'accéder au module Trésorerie et publier les animaux à l'adoption. Reçoit les notifications liées aux demandes d’adhésion et à tous les animaux.\n\nAdmin : En plus des droits de responsable, peut supprimer des animaux ou des lieux d’accueil et supprimer l’association elle-même, ainsi qu'y nommer des reponsables ou supprimer des membres. Chaque association possède un seul admin, qui peut transférer ce rôle."
   },
   "intro": {
@@ -228,92 +229,6 @@
     "evaluateAster": "Vous aimez Aster ? L'application vous est utile ? N'hésitez pas à laisser un avis sur ",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
-      "items0123": [
-        "Renforcement de la sécurité pour l'édition d'un animal ou d'une famille.",
-        "Envoi d'un e-mail lorsqu'un membre demande à rejoindre une association, et quand cette demande est validée."
-      ],
-      "items0130": [
-        "Amélioration de l'interface pour la section « Associations ».",
-        "Possibilité de transférer le statut d'admin d'une association à un autre membre validé."
-      ],
-      "items0140": [
-        "Nouvelles fonctionnalités : éditer ou supprimer son compte, éditer ou supprimer une association...",
-        "Améliorations de sécurité et de flux utilisateur.",
-        "La politique de confidentialité est disponible et peut être lue depuis les options."
-      ],
-      "items0150": [
-        "Refonte du formulaire de création et d’édition des animaux, avec une nouvelle section « Santé » pour un suivi plus clair."
-      ],
-      "items100": [
-        "Ajout du système de notifications.",
-        "Pour l'instant, les notifications concernent demande/validation d'adhésion à une association et création/édition ou rappels de vaccins des animaux.",
-        "Ajout d'un bouton « Partager » sur les pages « Animal » et « Famille d'accueil »."
-      ],
-      "items110": [
-        "Les familles d'accueil peuvent compter plusieurs membres. Elles sont désormais renommées « Lieux d'accueil » afin de mieux représenter la possibilité d'enregistrer un refuge, une chatterie ou toute autre structure collective.",
-        "Extension du système de notifications aux membres concernés par un même lieu d'accueil."
-      ],
-      "items120": [
-        "Ajout du rôle « Responsable » pour les membres d'association. Le détail des fonctionnalités associées à chaque rôle est accessible dans la fiche d'association, avec la liste des membres.",
-        "Ajout de notifications pour la stérilisation des chats à 6 mois.",
-        "Possibilité de renseigner le numéro d'identification des animaux sur leurs fiches."
-      ],
-      "items121": [
-        "Il est désormais possible de consulter les détails d'un membre depuis la fiche d'association ou la fiche d'un lieu d'accueil, et les détails d'une association depuis la fiche d'un membre, facilitant ainsi la navigation.",
-        "Ajout de la date de naissance sur les fiches d'animaux, en complément de l'âge."
-      ],
-      "items122": [
-        "Les mails de notifications contiennent maintenant un lien pour ouvrir Aster.",
-        "Ajout d'un champ permettant de filtrer les animaux, membres d'association, et lieux d'accueil par nom."
-      ],
-      "items123": [
-        "Ajout du statut « Décédé » pour les animaux.",
-        "Le créateur d'un lieu d'accueil peut éditer ce lieu même s'il n'en est pas membre."
-      ],
-      "items130": [
-        "Aster peut désormais être installé comme application indépendamment des stores Google ou Apple."
-      ],
-      "items140": [
-        "Il est désormais possible d'enregistrer des pesées dans l'onglet santé en mode édition, puis de visualiser l'évolution dans la fiche de l'animal.",
-        "Le sexe des animaux peut être enregistré comme « Inconnu ».",
-        "Amélioration des notifications de rappels de vaccins. Suite à ce changement, certaines notifications peuvent réapparaître."
-      ],
-      "items141": [
-        "Il est désormais possible d'enregistrer des résultats de tests, de la même façon que les vaccins, déparasitages et pesées."
-      ],
-      "items142": ["Aster est désormais disponible sur Google Play !"],
-      "items150": [
-        "Le module Trésorerie est désormais disponible.",
-        "Aster propose un outil simple pour suivre les entrées et sorties d’argent de votre association, et consulter un bilan à tout moment."
-      ],
-      "items151": [
-        "Ajout d'un thème « Contraste élevé » dans les Paramètres.",
-        "Le poids des animaux est désormais saisi et affiché en kilogrammes.",
-        "Quelques corrections et améliorations sur le module Trésorerie."
-      ],
-      "items152": [
-        "Il est désormais possible d'enregistrer le statut d'un animal « En période d'essai ».",
-        "Les administrateurs et responsables reçoivent une notification lorsqu'un animal est à l'essai depuis au moins quinze jours."
-      ],
-      "items153": [
-        "Mises à jour de fluidité et de sécurité de l'application.",
-        "Les dates de naissance sont désormais optionnelles sur les fiches d'animaux.",
-        "Si vous constatez un problème, même mineur, utilisez le formulaire de contact disponible dans Paramètres."
-      ],
-      "items154": [
-        "Ajout d'un statut « Placement permanent », afin de décrire les animaux non adoptables, gardés en refuge ou placés en sanctuaire.",
-        "Cette catégorie est séparée de votre liste d'animaux actifs (en attente, dans un lieu d'accueil ou en période d'essai).",
-        "Il est également possible de filtrer votre liste d'animaux par lieu d'accueil."
-      ],
-      "items155": [
-        "Affichage des animaux possible en cartes, en plus de la liste. Les cartes incluent le statut.",
-        "La dernière espèce animale utilisée est désormais mémorisée et proposée par défaut lors de la création d’une nouvelle fiche.",
-        "L’adresse des lieux d’accueil est désormais masquée pour les non-membres (hors administrateurs, responsables ou membres du lieu)."
-      ],
-      "items156": [
-        "Amélioration du système de filtres de la liste d'animaux.",
-        "Ajout de bulles d'aide sur certaines pages."
-      ],
       "items157": [
         "Ajout d'un avertissement lorsqu'un formulaire contient des modifications à enregistrer.",
         "Ajout du statut « Relâché » pour les animaux.",
@@ -355,6 +270,11 @@
       "items171": [
         "Améliorations de stabilité et de sécurité. N'hésitez surtout pas à m'envoyer un message lorsque quelque chose ne fonctionne pas comme prévu, cela m'aide à améliorer Aster pour tout le monde ! Vous pouvez me contacter depuis le menu Paramètres.",
         "Depuis le menu Paramètres, vous pouvez également soutenir Aster. L'application est et restera gratuite pour ses utilisateurs, même si son développement et son hébergement ont un coût."
+      ],
+      "items172": [
+        "Il est désormais possible d'associer un animal à une transaction depuis le module Trésorerie. Vous pouvez ensuite retrouver toutes les transactions liées à un animal depuis sa fiche.",
+        "Il est désormais possible de marquer un animal comme étant « Réservé » dans le module Diffusion, afin qu'il soit indiqué comme tel sur votre page publique.",
+        "Ajout d'un nouveau statut pour les animaux : Rendu au propriétaire."
       ]
     }
   },
@@ -441,6 +361,7 @@
       "FOSTERED": "Dans un lieu d'accueil",
       "IN_TRIAL": "En période d'essai",
       "PERMANENT_PLACEMENT": "Placement permanent",
+      "REUNITED_WITH_OWNER": "Rendu au propriétaire",
       "ADOPTED": "Adopté(e)",
       "RELEASED": "Relâché(e)",
       "DECEASED": "Décédé(e)"
@@ -645,6 +566,7 @@
     "offlinePage": "Votre page n'est actuellement pas en ligne.",
     "editOrgDesc": "La description et les coordonnées de l'association peuvent être édités depuis le profil de celle-ci.",
     "publishedLabel": "Adoptable :",
+    "reservedLabel": "Réservé :",
     "descPlaceholder": "Description publique de {name}",
     "footerLabel": "Signature commune de toutes vos fiches publiques :",
     "footerPlaceholder": "Ex : vos conditions d'adoption, comment vous contacter...",
@@ -653,6 +575,7 @@
       "animals": "Nos animaux à l'adoption",
       "noAnimals": "Nous n'avons actuellement aucun animal à l'adoption.",
       "trialInProgress": "{name} est actuellement en période d'essai.",
+      "reserved": "{name} est actuellement réservé.",
       "animalHealthInfo": "Santé",
       "testPrefix": "Testé(e) ",
       "locationPrefix": "{name} est à rencontrer à : ",

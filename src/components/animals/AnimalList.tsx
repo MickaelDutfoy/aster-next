@@ -39,6 +39,7 @@ export const AnimalsList = ({
     AnimalStatus.DECEASED,
     AnimalStatus.PERMANENT_PLACEMENT,
     AnimalStatus.RELEASED,
+    AnimalStatus.REUNITED_WITH_OWNER,
   ];
 
   const sortedAnimals = useMemo(() => {

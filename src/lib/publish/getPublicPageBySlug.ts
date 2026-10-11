@@ -20,6 +20,7 @@ export const getPublicPageBySlug = async (slug: string) => {
               birthDate: true,
               isNeutered: true,
               status: true,
+              isReserved: true,
               healthActs: true,
               testEntries: true,
               imageKey: true,

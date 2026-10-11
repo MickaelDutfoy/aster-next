@@ -1,11 +1,11 @@
 import { AnimalStatus, MemberRole } from '@prisma/client';
 import { prisma } from '../prisma';
-import { AnimalWithoutDetails, Member, Organization } from '../types';
+import { AnimalPublicSetup, Member, Organization } from '../types';
 
 export const getAnimalsInCare = async (
   user: Member,
   org: Organization,
-): Promise<AnimalWithoutDetails[]> => {
+): Promise<AnimalPublicSetup[]> => {
   const animals = await prisma.animal.findMany({
     where: {
       orgId: org.id,
@@ -14,13 +14,11 @@ export const getAnimalsInCare = async (
     select: {
       id: true,
       name: true,
-      species: true,
-      sex: true,
-      birthDate: true,
       status: true,
       updatedAt: true,
       imageKey: true,
       isPubliclyAdoptable: true,
+      isReserved: true,
       publicDescription: true,
       createdByMemberId: true,
       family: {
@@ -46,13 +44,11 @@ export const getAnimalsInCare = async (
     return {
       id: animal.id,
       name: animal.name,
-      species: animal.species,
-      sex: animal.sex,
-      birthDate: animal.birthDate,
       status: animal.status,
       updatedAt: animal.updatedAt,
       imageKey: animal.imageKey,
       isPubliclyAdoptable: animal.isPubliclyAdoptable,
+      isReserved: animal.isReserved,
       publicDescription: animal.publicDescription,
       canUserEdit: isOrgAdmin || isAnimalSheetCreator || isRelatedToAnimal,
     };

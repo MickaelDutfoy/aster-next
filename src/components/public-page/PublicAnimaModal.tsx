@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimalPublicSheet } from '@/lib/types';
+import { AnimalPublicSheet, Language } from '@/lib/types';
 import { displayAge } from '@/lib/utils/displayAge';
 import { displayDate } from '@/lib/utils/displayDate';
 import { AnimalStatus } from '@prisma/client';
@@ -27,7 +27,7 @@ export const PublicAnimalModal = ({
   onClose: () => void;
 }) => {
   const t = useTranslations();
-  const locale = useLocale();
+  const locale = useLocale() as Language;
 
   const getLastActByType = (
     acts: AnimalPublicSheet['healthActs'] = [],
@@ -100,6 +100,11 @@ export const PublicAnimalModal = ({
             <p>{'🏡 ' + t('publish.page.trialInProgress', { name: animal.name })}</p>
           </section>
         )}
+        {animal.status !== AnimalStatus.IN_TRIAL && animal.isReserved && (
+          <section>
+            <p>{'📄 ' + t('publish.page.reserved', { name: animal.name })}</p>
+          </section>
+        )}
         {displayHealthInfo && (
           <section>
             <h3>{t('publish.page.animalHealthInfo')}</h3>
@@ -113,18 +118,19 @@ export const PublicAnimalModal = ({
                 {lastVaxAct && (
                   <p>
                     {t('animals.lastVaxLabel')}
-                    {displayDate(lastVaxAct.date)}
+                    {displayDate(lastVaxAct.date, locale)}
                     {lastVaxAct.isFirst ? t('animals.primoShort') : ''}.
                   </p>
                 )}
                 {lastDewormAct && (
                   <p>
-                    {t('animals.lastDewormLabel')} {displayDate(lastDewormAct.date)}.
+                    {t('animals.lastDewormLabel')} {displayDate(lastDewormAct.date, locale)}.
                   </p>
                 )}
                 {lastAntifleaAct && (
                   <p>
-                    {t('animals.lastFleaTreatmentLabel')} {displayDate(lastAntifleaAct.date)}.
+                    {t('animals.lastFleaTreatmentLabel')}{' '}
+                    {displayDate(lastAntifleaAct.date, locale)}.
                   </p>
                 )}
               </div>
@@ -136,7 +142,7 @@ export const PublicAnimalModal = ({
                     {t('publish.page.testPrefix')}
                     {test.testName}
                     {test.result === 'NEGATIVE' ? '-' : '+'}
-                    {locale === 'fr' && ' '}: {displayDate(test.date)}.
+                    {locale === 'fr' && ' '}: {displayDate(test.date, locale)}.
                   </p>
                 ))}
               </div>

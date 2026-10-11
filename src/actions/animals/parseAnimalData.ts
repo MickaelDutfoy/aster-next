@@ -126,6 +126,7 @@ export const parseAnimalData = async (formData: FormData) => {
     AnimalStatus.ADOPTED,
     AnimalStatus.PERMANENT_PLACEMENT,
     AnimalStatus.RELEASED,
+    AnimalStatus.REUNITED_WITH_OWNER,
   ];
 
   const shouldUnpublish = unpublishedStatuses.includes(animalForm.status);
@@ -183,6 +184,7 @@ export const parseAnimalData = async (formData: FormData) => {
     familyId: animalFamilyId,
     ...(shouldUnpublish && {
       isPubliclyAdoptable: false,
+      isReserved: false,
     }),
   };
 

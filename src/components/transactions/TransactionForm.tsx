@@ -45,6 +45,7 @@ export const TransactionForm = ({
     AnimalStatus.ADOPTED,
     AnimalStatus.DECEASED,
     AnimalStatus.RELEASED,
+    AnimalStatus.REUNITED_WITH_OWNER,
   ];
 
   const transactionAnimal = animals.find((animal) => animal.id === transaction?.animalId);
