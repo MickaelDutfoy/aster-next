@@ -131,6 +131,8 @@ export const parseAnimalData = async (formData: FormData) => {
 
   const shouldUnpublish = unpublishedStatuses.includes(animalForm.status);
 
+  const shouldUnreserve = shouldUnpublish || animalForm.status === AnimalStatus.IN_TRIAL;
+
   const adopterForm = {
     fullName: formData.get('adopterFullName')?.toString().trim(),
     email: formData.get('adopterEmail')?.toString().trim(),
@@ -184,6 +186,8 @@ export const parseAnimalData = async (formData: FormData) => {
     familyId: animalFamilyId,
     ...(shouldUnpublish && {
       isPubliclyAdoptable: false,
+    }),
+    ...(shouldUnreserve && {
       isReserved: false,
     }),
   };
