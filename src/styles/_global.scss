@@ -46,7 +46,7 @@ button {
 }
 
 .capitalize:first-letter {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .link {
@@ -254,7 +254,7 @@ input[type="checkbox"] {
   accent-color: var(--button);
 }
 
-input,
+input:not([type="checkbox"]),
 select,
 textarea {
   font-family: var(--font-nunito);
@@ -264,6 +264,15 @@ textarea {
   border-radius: 3px;
   box-shadow: 1px 1px 4px vars.$smoky-black;
   padding: 5px;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--button);
+  box-shadow: 1px 1px 4px vars.$smoky-black;
 }
 
 textarea {

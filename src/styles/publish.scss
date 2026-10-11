@@ -139,11 +139,10 @@
         flex-direction: column;
         gap: 5px;
         padding: 5px 0;
-        background: none;
-        border: none;
 
         div {
           display: flex;
+          align-items: center;
           gap: 8px;
         }
       }
