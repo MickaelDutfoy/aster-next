@@ -427,6 +427,7 @@
       "NEGATIVE": "Négatif",
       "POSITIVE": "Positif"
     },
+    "transactionsTitle": "Transactions liées (Total {amount}) :",
     "additionalInfoLabel": "Informations complémentaires :",
     "currentStatusLabel": "Situation actuelle :",
     "currentStatus": "Situation actuelle",
@@ -603,6 +604,10 @@
       "DIRECT_DEBIT": "Prélèvement",
       "OTHER": "Autre"
     },
+    "linkedAnimal": "Animal concerné :",
+    "filterAnimals": "Afficher les animaux :",
+    "currentAnimals": "En charge",
+    "archivedAnimals": "Anciens",
     "additionalInfoLabel": "Note :",
     "yearLabel": "Année :",
     "categoryLabel": "Catégorie :",

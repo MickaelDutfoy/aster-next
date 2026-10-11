@@ -427,6 +427,7 @@
       "NEGATIVE": "Negative",
       "POSITIVE": "Positive"
     },
+    "transactionsTitle": "Linked transactions (Total {amount}):",
     "additionalInfoLabel": "Additional information:",
     "currentStatusLabel": "Current status:",
     "currentStatus": "Current status",
@@ -603,6 +604,10 @@
       "DIRECT_DEBIT": "Direct debit",
       "OTHER": "Other"
     },
+    "linkedAnimal": "Linked animal:",
+    "filterAnimals": "Show animals:",
+    "currentAnimals": "In care",
+    "archivedAnimals": "Former",
     "additionalInfoLabel": "Note:",
     "yearLabel": "Year:",
     "categoryLabel": "Category:",

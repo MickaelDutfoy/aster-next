@@ -24,7 +24,7 @@ export const registerAnimal = async (formData: FormData): Promise<ActionValidati
   }
 
   try {
-    if (animal.familyId !== null) {
+    if (animal.familyId) {
       const family = await prisma.family.findFirst({
         where: {
           id: animal.familyId,

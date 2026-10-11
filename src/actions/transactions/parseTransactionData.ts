@@ -14,6 +14,7 @@ export const parseTransactionData = (formData: FormData) => {
   const date = formData.get('date')?.toString();
   const counterparty = formData.get('counterparty')?.toString().trim();
   const paymentMethod = formData.get('paymentMethod') as PaymentMethod;
+  const animalId = formData.get('animalId') ? Number(formData.get('animalId')) : null;
   const note = formData.get('note')?.toString().trim();
 
   if (!categoryNameOrId || !amountInCents || !date) {
@@ -34,6 +35,7 @@ export const parseTransactionData = (formData: FormData) => {
     date: new Date(date),
     counterparty,
     paymentMethod,
+    animalId,
     note,
   };
 

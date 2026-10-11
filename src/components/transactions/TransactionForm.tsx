@@ -3,20 +3,23 @@
 import { registerTransaction } from '@/actions/transactions/registerTransaction';
 import { updateTransaction } from '@/actions/transactions/updateTransaction';
 import { useRouter } from '@/i18n/routing';
-import { Transaction, TransactionCategory } from '@/lib/types';
+import { AnimalWithoutDetails, Transaction, TransactionCategory } from '@/lib/types';
 import { autoResizeTextarea } from '@/lib/utils/autoResizeTextarea';
-import { PaymentMethod, TransactionType } from '@prisma/client';
+import { AnimalStatus, PaymentMethod, TransactionType } from '@prisma/client';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
+import { TwoWayToggle } from '../tools/TwoWayToggle';
 
 export const TransactionForm = ({
   categories,
   transaction,
+  animals,
 }: {
   categories: TransactionCategory[];
   transaction?: Transaction;
+  animals: AnimalWithoutDetails[];
 }) => {
   const t = useTranslations();
   const router = useRouter();
@@ -30,6 +33,37 @@ export const TransactionForm = ({
   );
   const [isLoading, setIsLoading] = useState(false);
   const [saveWarning, setSaveWarning] = useState(false);
+
+  const currentStatuses: AnimalStatus[] = [
+    AnimalStatus.UNHOSTED,
+    AnimalStatus.FOSTERED,
+    AnimalStatus.IN_TRIAL,
+    AnimalStatus.PERMANENT_PLACEMENT,
+  ];
+
+  const archivedStatuses: AnimalStatus[] = [
+    AnimalStatus.ADOPTED,
+    AnimalStatus.DECEASED,
+    AnimalStatus.RELEASED,
+  ];
+
+  const transactionAnimal = animals.find((animal) => animal.id === transaction?.animalId);
+
+  const [animalListMode, setAnimalListMode] = useState<'current' | 'archived'>(
+    transactionAnimal && archivedStatuses.includes(transactionAnimal.status)
+      ? 'archived'
+      : 'current',
+  );
+
+  const [animalId, setAnimalId] = useState(transaction?.animalId?.toString() ?? '');
+
+  const filteredAnimals = animals
+    .filter((animal) =>
+      animalListMode === 'archived'
+        ? archivedStatuses.includes(animal.status)
+        : currentStatuses.includes(animal.status),
+    )
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 
   const changeTypeFromCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const categoryId = Number(e.target.value);
@@ -198,6 +232,36 @@ export const TransactionForm = ({
                 </option>
                 <option value={PaymentMethod.OTHER}>{t('transactions.paymentMethod.OTHER')}</option>
               </select>
+            </div>
+            <div className="labeled-select">
+              <p>{t('transactions.linkedAnimal')}</p>
+              <select
+                name="animalId"
+                value={animalId}
+                onChange={(e) => setAnimalId(e.target.value)}
+              >
+                <option value="">{t('common.noneM')}</option>
+                {filteredAnimals.map((animal) => (
+                  <option key={animal.id} value={animal.id}>
+                    {animal.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="labeled-toggle transaction-filter-animals">
+              <p>{t('transactions.filterAnimals')}</p>
+              <TwoWayToggle
+                value={animalListMode}
+                onChange={setAnimalListMode}
+                left={{
+                  value: 'current',
+                  label: t('transactions.currentAnimals'),
+                }}
+                right={{
+                  value: 'archived',
+                  label: t('transactions.archivedAnimals'),
+                }}
+              />
             </div>
             <p>{t('transactions.additionalInfoLabel')}</p>
             <textarea

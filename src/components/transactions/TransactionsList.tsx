@@ -1,8 +1,9 @@
 'use client';
 
-import { useRouter } from '@/i18n/routing';
-import { Transaction, TransactionCategory } from '@/lib/types';
+import { Link, useRouter } from '@/i18n/routing';
+import { Language, Transaction, TransactionCategory } from '@/lib/types';
 import { displayDate } from '@/lib/utils/displayDate';
+import { formatCurrency } from '@/lib/utils/formatCurrency';
 import { TransactionType } from '@prisma/client';
 import { SquarePen, Trash2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -18,7 +19,7 @@ export const TransactionsList = ({
   displayCurrency: string;
 }) => {
   const t = useTranslations();
-  const lang = useLocale();
+  const lang = useLocale() as Language;
   const router = useRouter();
 
   const localeMap: Record<string, string> = {
@@ -61,13 +62,6 @@ export const TransactionsList = ({
     -filteredTransactions
       .filter((transaction) => transaction.type === TransactionType.EXPENSE)
       .reduce((acc, transaction) => acc + transaction.amountInCents, 0) / 100;
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat(lang, {
-      style: 'currency',
-      currency: displayCurrency,
-    }).format(amount);
-  };
 
   const getMonthLabel = (date: Date) =>
     new Intl.DateTimeFormat(localeMap[lang], {
@@ -159,13 +153,13 @@ export const TransactionsList = ({
             {totalIncome > 0 && (
               <p>
                 <span>{t('transactions.incomesLabel')}</span>{' '}
-                <strong>{formatCurrency(totalIncome)}</strong>
+                <strong>{formatCurrency(totalIncome, lang, displayCurrency)}</strong>
               </p>
             )}
             {totalExpense < 0 && (
               <p>
                 <span>{t('transactions.expensesLabel')}</span>{' '}
-                <strong>{formatCurrency(totalExpense)}</strong>
+                <strong>{formatCurrency(totalExpense, lang, displayCurrency)}</strong>
               </p>
             )}
           </div>
@@ -173,7 +167,7 @@ export const TransactionsList = ({
             <div>
               <p>
                 {t('transactions.balanceLabel')}{' '}
-                <strong>{formatCurrency(totalIncome + totalExpense)}</strong>
+                <strong>{formatCurrency(totalIncome + totalExpense, lang, displayCurrency)}</strong>
               </p>
             </div>
           )}
@@ -198,8 +192,8 @@ export const TransactionsList = ({
                   <p className="transaction-category">{transaction.category.name}</p>
                   <span>
                     {transaction.type === TransactionType.INCOME
-                      ? formatCurrency(transaction.amountInCents / 100)
-                      : formatCurrency(-transaction.amountInCents / 100)}
+                      ? formatCurrency(transaction.amountInCents / 100, lang, displayCurrency)
+                      : formatCurrency(-transaction.amountInCents / 100, lang, displayCurrency)}
                   </span>
                   <span>{openedTransaction === transaction.id ? '▾' : '▸'}</span>
                 </div>
@@ -236,6 +230,14 @@ export const TransactionsList = ({
                     {transaction.note && (
                       <p>
                         {t('transactions.additionalInfoLabel')} {transaction.note}
+                      </p>
+                    )}
+                    {transaction.animal && (
+                      <p>
+                        {t('transactions.linkedAnimal')}{' '}
+                        <Link className="link" href={`/animals/${transaction.animal.id}`}>
+                          {transaction.animal.name}
+                        </Link>
                       </p>
                     )}
                   </div>
