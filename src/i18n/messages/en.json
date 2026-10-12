@@ -969,6 +969,29 @@
       "paragraph2": "It is also ad-free: the goal is to save you time, not waste it.",
       "paragraph3": "It is a volunteer project, developed by someone committed to animal welfare, for other volunteers."
     },
+    "testimonials": {
+      "title": "Over to the people who use Aster…",
+      "countries": {
+        "france": "France",
+        "norway": "Norway"
+      },
+      "smoke": {
+        "organization": "Association Smoke — Justice pour les Animaux",
+        "quote": "Aster has changed our day-to-day work as an organization thanks to how easy it is to use: we can easily see where our animals are, find their key information and follow-up, as well as use the financial side. It is a simple tool that brings together everything an organization needs."
+      },
+      "hautsChatlpins": {
+        "organization": "Les Hauts Chat’lpins",
+        "quote": "Aster makes management enormously easier, clearer and much more efficient when it comes to the animals’ health, allowing us to take in many more animals while maintaining an excellent standard of care. Aster reduces oversights and mistakes and gives us an overall view at any given time. It is a complete hub for the cats’ health and profiles."
+      },
+      "katterINod": {
+        "organization": "Katter i Nød",
+        "quote": "Finally, everything is going digital. Previously, everything was recorded in notebooks, which was very cumbersome. Aster is a fantastic system that makes it so much easier to keep track of everything happening with the cats, while giving other members of the organization access to the information and the ability to add to it."
+      },
+      "dyrevennVestfold": {
+        "organization": "Dyrevenn Vestfold",
+        "quote": "Aster has given our organization a better overview of the cats in our care, foster homes and which cats have been adopted. Previously, this was handled manually, so day-to-day work has become easier. The best thing about Aster is definitely how easy it is to use, along with the adoption feature connected to our website."
+      }
+    },
     "cta": {
       "title": "Shall we get started?",
       "paragraph1": "Create your account, add your organization, and start organizing your information simply.",

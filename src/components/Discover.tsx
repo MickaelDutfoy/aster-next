@@ -138,6 +138,42 @@ export default async function Discover({ locale }: { locale: Language }) {
           <p>{t('discover.philosophy.paragraph3')}</p>
         </section>
 
+        <section className="discover-section discover-testimonials">
+          <h2>{t('discover.testimonials.title')}</h2>
+
+          <div className="discover-testimonial-grid">
+            <blockquote className="discover-testimonial-card">
+              <p>{t('discover.testimonials.hautsChatlpins.quote')}</p>
+              <footer className="discover-testimonial-source">
+                {t('discover.testimonials.hautsChatlpins.organization')},{' '}
+                {t('discover.testimonials.countries.france')}
+              </footer>
+            </blockquote>
+            <blockquote className="discover-testimonial-card">
+              <p>{t('discover.testimonials.dyrevennVestfold.quote')}</p>
+              <footer className="discover-testimonial-source">
+                {t('discover.testimonials.dyrevennVestfold.organization')},{' '}
+                {t('discover.testimonials.countries.norway')}
+              </footer>
+            </blockquote>
+            <blockquote className="discover-testimonial-card">
+              <p>{t('discover.testimonials.smoke.quote')}</p>
+              <footer className="discover-testimonial-source">
+                {t('discover.testimonials.smoke.organization')},{' '}
+                {t('discover.testimonials.countries.france')}
+              </footer>
+            </blockquote>
+
+            <blockquote className="discover-testimonial-card">
+              <p>{t('discover.testimonials.katterINod.quote')}</p>
+              <footer className="discover-testimonial-source">
+                {t('discover.testimonials.katterINod.organization')},{' '}
+                {t('discover.testimonials.countries.norway')}
+              </footer>
+            </blockquote>
+          </div>
+        </section>
+
         <section className="discover-section discover-cta">
           <h2>{t('discover.cta.title')}</h2>
           <p>{t('discover.cta.paragraph1')}</p>

@@ -969,6 +969,29 @@
       "paragraph2": "Det er også reklamefritt: målet er å spare deg for tid, ikke å kaste bort tiden din.",
       "paragraph3": "Det er et frivillig prosjekt, utviklet av noen som er engasjert i dyrevern, for andre frivillige."
     },
+    "testimonials": {
+      "title": "Ordet går til dem som bruker Aster …",
+      "countries": {
+        "france": "Frankrike",
+        "norway": "Norge"
+      },
+      "smoke": {
+        "organization": "Association Smoke — Justice pour les Animaux",
+        "quote": "Aster har endret organisasjonshverdagen vår fordi det er så enkelt å bruke: vi kan enkelt se hvor dyrene våre er, finne de viktigste opplysningene og følge dem opp, i tillegg til økonomidelen. Det er et enkelt verktøy som samler alt en organisasjon trenger."
+      },
+      "hautsChatlpins": {
+        "organization": "Les Hauts Chat’lpins",
+        "quote": "Aster gjør administrasjonen enormt mye enklere og gir både bedre oversikt og stor effektivitet i den helsemessige oppfølgingen av dyrene. Det gjør at vi kan ta imot mange flere dyr samtidig som vi opprettholder et svært høyt kvalitetsnivå i oppfølgingen. Aster reduserer risikoen for glemsler og feil og gir et helhetsbilde til enhver tid. Det er et komplett samlingspunkt for kattenes helse og profil."
+      },
+      "katterINod": {
+        "organization": "Katter i Nød",
+        "quote": "Endelig blir alt digitalt. Tidligere har alt blitt ført inn i bøker, noe som er svært tungvint. Aster er et fantastisk system som gjør det så mye enklere å holde styr på alt som skjer med kattene, samtidig som andre i organisasjonen får tilgang og kan legge inn informasjon."
+      },
+      "dyrevennVestfold": {
+        "organization": "Dyrevenn Vestfold",
+        "quote": "Aster har gitt vår organisasjon bedre oversikt over kattene i vår varetekt, fosterhjem og hvilke katter som er blitt adoptert ut. Tidligere ble dette gjort manuelt, så hverdagen har blitt enklere. Det beste med Aster er absolutt hvor enkelt det er å bruke, samt adopsjonsfunksjonen som kobles opp til nettsiden."
+      }
+    },
     "cta": {
       "title": "Skal vi sette i gang?",
       "paragraph1": "Opprett en konto, legg til organisasjonen din og begynn å organisere informasjonen enkelt.",

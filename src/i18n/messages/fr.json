@@ -969,6 +969,29 @@
       "paragraph2": "Il est aussi sans publicité : le but est de vous faire gagner du temps, pas de vous en faire perdre.",
       "paragraph3": "C’est un projet bénévole, développé par quelqu’un d'engagé dans la protection animale, pour d’autres bénévoles."
     },
+    "testimonials": {
+      "title": "La parole aux principaux concernés…",
+      "countries": {
+        "france": "France",
+        "norway": "Norvège"
+      },
+      "smoke": {
+        "organization": "Association Smoke — Justice pour les Animaux",
+        "quote": "Aster a changé notre quotidien associatif grâce à sa facilité d’utilisation : il est simple de savoir où sont nos animaux, de retrouver leurs informations principales et leur suivi, avec aussi tout le côté trésorerie. C’est un outil simple et qui regroupe tout ce dont une association a besoin."
+      },
+      "hautsChatlpins": {
+        "organization": "Les Hauts Chat’lpins",
+        "quote": "Aster offre une énorme facilité de gestion, une clarté et beaucoup d’efficacité dans la gestion sanitaire des animaux, permettant d’en accueillir beaucoup plus tout en maintenant un excellent niveau de qualité de prise en charge. Aster limite les oublis, les erreurs et permet une vision globale à un instant T. C’est un espace de regroupement complet sur la santé et le profil des chats."
+      },
+      "katterINod": {
+        "organization": "Katter i Nød",
+        "quote": "Enfin, tout devient numérique. Auparavant, tout était consigné dans des livres, ce qui était très contraignant. Aster est un système fantastique qui permet de suivre beaucoup plus facilement tout ce qui se passe avec les chats, mais aussi aux autres membres de l’association d’accéder aux informations et d’en ajouter."
+      },
+      "dyrevennVestfold": {
+        "organization": "Dyrevenn Vestfold",
+        "quote": "Aster nous a donné une meilleure vue d’ensemble des chats dont nous avons la charge, des familles d’accueil et des chats qui ont été adoptés. Auparavant, cela se faisait manuellement, donc le quotidien est devenu plus simple. Le meilleur avec Aster, c’est clairement sa simplicité d’utilisation, ainsi que la fonction d’adoption reliée à notre site Internet."
+      }
+    },
     "cta": {
       "title": "On s'y met ?",
       "paragraph1": "Créez votre compte, ajoutez votre association et commencez à organiser vos informations simplement.",

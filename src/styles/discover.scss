@@ -1,4 +1,4 @@
-@use 'vars';
+@use "vars";
 
 body {
   max-width: 1440px;
@@ -63,6 +63,7 @@ body {
 .discover-text-block h2,
 .discover-features h2,
 .discover-screenshots h2,
+.discover-testimonials h2,
 .discover-cta h2 {
   margin: 0 0 1rem;
   font-size: 1.5rem;
@@ -173,6 +174,59 @@ body {
   font-style: italic;
 }
 
+.discover-testimonial-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.discover-testimonial-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 1.5rem 1.5rem;
+  overflow: hidden;
+  text-align: left;
+  border: 2px solid vars.$cinereous;
+  border-radius: 1rem;
+  background-color: vars.$isabelline;
+  color: vars.$smoky-black;
+
+  &::before {
+    content: '“';
+    position: absolute;
+    top: -0.45rem;
+    left: 0.75rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 6em;
+    font-weight: 700;
+    line-height: 1;
+    color: vars.$cinereous;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    line-height: 1.65;
+    text-indent: 2.3rem;
+  }
+
+  footer {
+    font-style: italic;
+  }
+}
+
+.discover-testimonial-source {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
 .discover-legal {
   margin-bottom: 0;
 
@@ -211,11 +265,17 @@ body {
 }
 
 @media (min-width: 1024px) {
-    .discover-feature-grid {
+  .discover-feature-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .discover-screenshot-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 640px) {
+  .discover-testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
