@@ -78,6 +78,7 @@ async function handler(req: NextRequest) {
     pathname === '/favicon.ico' ||
     pathname === '/sw.js' ||
     pathname === '/aster-embed.js' ||
+    pathname === '/aster-hostinger.js' ||
     pathname === '/manifest.webmanifest'
   ) {
     return NextResponse.next();
@@ -154,6 +155,6 @@ export const proxy = authMw(handler, {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|assets|icons|screenshots|images|\\.well-known|favicon.ico|robots.txt|sitemap.xml|sitemap-static.xml|opengraph-image.png|manifest.webmanifest|sw.js|aster-embed.js).*)',
+    '/((?!api|_next/static|_next/image|assets|icons|screenshots|images|\\.well-known|favicon.ico|robots.txt|sitemap.xml|sitemap-static.xml|opengraph-image.png|manifest.webmanifest|sw.js|aster-embed.js|aster-hostinger.js).*)',
   ],
 };
