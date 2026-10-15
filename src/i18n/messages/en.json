@@ -90,6 +90,8 @@
     "selectLanguage": "Select language:",
     "see": "View the intro",
     "welcomeTitle": "Welcome to Aster!",
+    "discoverPrompt": "Not quite sure what you're doing here?",
+    "discoverAction": "Discover Aster",
     "welcomeSubtitle": "“Helping those who help.”",
     "whyTitle": "Why use it?",
     "whyWhatIsAster": "Aster is a management application for animal welfare organizations.",
@@ -884,8 +886,8 @@
   },
   "discover": {
     "meta": {
-      "title": "Aster – An application for animal welfare organizations",
-      "description": "Discover Aster, a web and mobile app to centralize the management of animals, foster locations, and treasury."
+      "title": "Aster – An application for animal shelters and animal protection organizations",
+      "description": "Aster is a free web and mobile application for animal shelters and animal protection organizations. A simple management software solution for animals, foster locations, adoptions and finances."
     },
     "hero": {
       "title1": "Less mental load",
@@ -897,7 +899,7 @@
     },
     "problem": {
       "title": "A day-to-day that can get complicated",
-      "paragraph1": "Managing an animal welfare organization often means juggling spreadsheets, messages, and scattered information.",
+      "paragraph1": "Managing an animal welfare organization or shelter often means juggling spreadsheets, software, messages and scattered information.",
       "paragraph2": "A lot of information stays in your head, waiting to be written down later.",
       "paragraph3": "Some data gets lost, and the mental load often falls on a small number of people.",
       "paragraph4": "Even worse: keeping a treasury or a website up to date often depends on people who are not always available."

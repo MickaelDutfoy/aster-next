@@ -90,6 +90,8 @@
     "selectLanguage": "Sélectionnez la langue :",
     "see": "Voir l'intro",
     "welcomeTitle": "Bienvenue sur Aster !",
+    "discoverPrompt": "Vous ne savez pas trop ce que vous faites ici ?",
+    "discoverAction": "Découvrir Aster",
     "welcomeSubtitle": "« Aider ceux qui aident. »",
     "whyTitle": "Pourquoi faire ?",
     "whyWhatIsAster": "Aster est une application de gestion d'association de protection animale.",
@@ -884,8 +886,8 @@
   },
   "discover": {
     "meta": {
-      "title": "Aster – Une application pour les associations de protection animale",
-      "description": "Découvrez Aster, une application web/mobile pour centraliser le suivi des animaux, des lieux d’accueil et de la trésorerie."
+      "title": "Aster – Une application pour refuges et associations de protection animale",
+      "description": "Aster est une application web et mobile gratuite pour les refuges et associations de protection animale. Un logiciel de gestion simple pour centraliser animaux, lieux d’accueil, adoptions et trésorerie."
     },
     "hero": {
       "title1": "Moins de charge mentale",
@@ -897,7 +899,7 @@
     },
     "problem": {
       "title": "Un quotidien souvent compliqué",
-      "paragraph1": "Gérer une association de protection animale implique souvent de jongler entre fichiers Excel, messages, et informations dispersées.",
+      "paragraph1": "Gérer une association de protection animale ou un refuge implique souvent de jongler entre fichiers Excel, logiciels, messages et informations dispersées.",
       "paragraph2": "Beaucoup d’informations restent en tête, en attendant d’être notées plus tard.",
       "paragraph3": "Certaines données se perdent, et toute la charge mentale est concentrée sur un petit nombre de personnes.",
       "paragraph4": "Pire encore : garder une trésorerie ou un site web à jour dépend de personnes pas toujours disponibles."

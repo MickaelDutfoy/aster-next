@@ -10,13 +10,15 @@ export default async function Discover({ locale }: { locale: Language }) {
       <div className="discover-overlay">
         <section className="discover-section discover-hero">
           <img className="discover-logo" src="/icons/aster-icon-192.png" alt="Aster icon" />
-          <h2 className="discover-title">{t('discover.hero.title1')}</h2>
-          <h2 className="discover-title">{t('discover.hero.title2')}</h2>
+          <h1 className="discover-title">
+            <span>{t('discover.hero.title1')}</span>
+            <span>{t('discover.hero.title2')}</span>
+          </h1>
           <p className="discover-subtitle">{t('discover.hero.subtitle1')}</p>
           <p className="discover-subtitle">{t('discover.hero.subtitle2')}</p>
 
           <div className="discover-actions">
-            <Link className="discover-button" href="/">
+            <Link className="discover-button" href="/" locale={locale}>
               {t('discover.hero.primaryAction')}
             </Link>
           </div>
@@ -179,7 +181,7 @@ export default async function Discover({ locale }: { locale: Language }) {
           <p>{t('discover.cta.paragraph1')}</p>
 
           <div className="discover-actions">
-            <Link className="discover-button" href="/">
+            <Link className="discover-button" href="/" locale={locale}>
               {t('discover.cta.primaryAction')}
             </Link>
           </div>

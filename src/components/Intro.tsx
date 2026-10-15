@@ -2,7 +2,7 @@
 
 import { markIntroSeen } from '@/actions/intro/markIntroSeen';
 import { LanguageSelector } from '@/components/settings/LanguageSelector';
-import { useRouter } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { Language } from '@/lib/types';
 import { isAppContext } from '@/lib/utils/isAppContext';
 import { openInstallPage } from '@/lib/utils/openInstallPage';
@@ -47,6 +47,12 @@ export const Intro = () => {
             <button className="main-button" onClick={nextFrame}>
               {t('intro.see')}
             </button>
+          </div>
+          <div>
+            <h4>{t('intro.discoverPrompt')}</h4>
+            <Link className="main-button" href="/discover">
+              {t('intro.discoverAction')}
+            </Link>
           </div>
           {installed === false && (
             <div>

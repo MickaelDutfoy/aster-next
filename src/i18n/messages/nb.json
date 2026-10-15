@@ -90,6 +90,8 @@
     "selectLanguage": "Velg språk:",
     "see": "Se introduksjonen",
     "welcomeTitle": "Velkommen til Aster!",
+    "discoverPrompt": "Ikke helt sikker på hva du gjør her?",
+    "discoverAction": "Oppdag Aster",
     "welcomeSubtitle": "«Å hjelpe dem som hjelper.»",
     "whyTitle": "Hvorfor bruke det?",
     "whyWhatIsAster": "Aster er en administrasjonsapplikasjon for dyrevernorganisasjoner.",
@@ -884,8 +886,8 @@
   },
   "discover": {
     "meta": {
-      "title": "Aster – En applikasjon for dyrevernorganisasjoner",
-      "description": "Oppdag Aster, en web- og mobilapp for å samle håndtering av dyr, omsorgssteder og økonomi."
+      "title": "Aster – En applikasjon for dyrehjem og dyrevernorganisasjoner",
+      "description": "Aster er en gratis web- og mobilapplikasjon for dyrehjem og dyrevernorganisasjoner. Et enkelt administrasjonsverktøy for dyr, omsorgssteder, adopsjoner og økonomi."
     },
     "hero": {
       "title1": "Mindre mental belastning",
@@ -897,7 +899,7 @@
     },
     "problem": {
       "title": "En hverdag som ofte er krevende",
-      "paragraph1": "Å administrere en dyrevernorganisasjon innebærer ofte å håndtere Excel-ark, meldinger og spredt informasjon.",
+      "paragraph1": "Å administrere en dyrevernorganisasjon eller et dyrehjem innebærer ofte å håndtere Excel-ark, programvare, meldinger og spredt informasjon.",
       "paragraph2": "Mye informasjon blir værende i hodet, i påvente av å bli skrevet ned senere.",
       "paragraph3": "Noe informasjon går tapt, og belastningen faller ofte på et lite antall personer.",
       "paragraph4": "Enda verre: å holde økonomien eller nettsiden oppdatert avhenger ofte av personer som ikke alltid er tilgjengelige."
