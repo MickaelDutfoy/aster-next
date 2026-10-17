@@ -4,9 +4,17 @@ import { AnimalWithoutDetails, FamilyWithoutDetails, Organization } from '@/lib/
 import { AnimalStatus } from '@prisma/client';
 import { ArrowBigDown, ArrowBigUp, Grid2x2, List } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { AnimalDisplayCards } from './AnimalDisplayCards';
 import { AnimalDisplayList } from './AnimalDisplayList';
+
+const DEFAULT_STATUSES: AnimalStatus[] = [
+  AnimalStatus.UNHOSTED,
+  AnimalStatus.FOSTERED,
+  AnimalStatus.IN_TRIAL,
+];
+
+const ANIMAL_STATUS_FILTERS_KEY = 'animalListSelectedStatuses';
 
 export const AnimalsList = ({
   org,
@@ -25,11 +33,7 @@ export const AnimalsList = ({
   const [preferencesLoaded, setPreferencesLoaded] = useState(false);
   const [nameFilter, setNameFilter] = useState<string>('');
   const [familyFilter, setfamilyFilter] = useState<number>(0);
-  const [selectedStatuses, setSelectedStatuses] = useState<AnimalStatus[]>([
-    AnimalStatus.UNHOSTED,
-    AnimalStatus.FOSTERED,
-    AnimalStatus.IN_TRIAL,
-  ]);
+  const [selectedStatuses, setSelectedStatuses] = useState<AnimalStatus[]>(DEFAULT_STATUSES);
 
   const statusOptions = [
     AnimalStatus.UNHOSTED,
@@ -41,6 +45,25 @@ export const AnimalsList = ({
     AnimalStatus.RELEASED,
     AnimalStatus.REUNITED_WITH_OWNER,
   ];
+
+  const getStoredStatuses = (): AnimalStatus[] => {
+    const stored = localStorage.getItem('animalListSelectedStatuses');
+
+    if (!stored) return DEFAULT_STATUSES;
+
+    try {
+      const parsed: unknown = JSON.parse(stored);
+
+      if (
+        Array.isArray(parsed) &&
+        parsed.every((status) => statusOptions.includes(status as AnimalStatus))
+      ) {
+        return parsed as AnimalStatus[];
+      }
+    } catch {}
+
+    return DEFAULT_STATUSES;
+  };
 
   const sortedAnimals = useMemo(() => {
     const filteredAnimals = animals
@@ -87,13 +110,35 @@ export const AnimalsList = ({
     setSortDesc(sortDesc === 'true');
 
     setPreferencesLoaded(true);
+    setSelectedStatuses(getStoredStatuses());
   }, []);
 
   const toggleStatus = (status: AnimalStatus) => {
-    setSelectedStatuses((prev) =>
-      prev.includes(status) ? prev.filter((item) => item !== status) : [...prev, status],
-    );
+    setSelectedStatuses((prev) => {
+      const next = prev.includes(status)
+        ? prev.filter((item) => item !== status)
+        : [...prev, status];
+
+      localStorage.setItem('animalListSelectedStatuses', JSON.stringify(next));
+
+      return next;
+    });
+
     setfamilyFilter(0);
+  };
+
+  const handleFamilyFilter = (e: ChangeEvent<HTMLSelectElement>) => {
+    const familyId = Number(e.target.value);
+
+    setfamilyFilter(familyId);
+
+    if (familyId !== 0) {
+      setSelectedStatuses((prev) => [
+        ...new Set([...prev, AnimalStatus.FOSTERED, AnimalStatus.PERMANENT_PLACEMENT]),
+      ]);
+    } else {
+      setSelectedStatuses(getStoredStatuses());
+    }
   };
 
   const handleChangeDisplay = (mode: 'list' | 'cards') => {
@@ -136,21 +181,7 @@ export const AnimalsList = ({
                 <select
                   name="familyFilter"
                   value={familyFilter}
-                  onChange={(e) => {
-                    setfamilyFilter(Number(e.target.value));
-                    if (Number(e.target.value) !== 0) {
-                      setSelectedStatuses([
-                        AnimalStatus.FOSTERED,
-                        AnimalStatus.PERMANENT_PLACEMENT,
-                      ]);
-                    } else {
-                      setSelectedStatuses([
-                        AnimalStatus.UNHOSTED,
-                        AnimalStatus.FOSTERED,
-                        AnimalStatus.IN_TRIAL,
-                      ]);
-                    }
-                  }}
+                  onChange={(e) => handleFamilyFilter(e)}
                 >
                   <option value={0}>{t('common.noneM')}</option>
                   {families.map((family) => (

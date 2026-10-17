@@ -277,6 +277,11 @@
         "It is now possible to link an animal to a transaction from the Treasury module. You can then find all transactions linked to an animal directly from its profile.",
         "It is now possible to mark an animal as « Reserved » in the Publishing module, so that it appears as such on your public page.",
         "Added a new animal status: Returned to owner."
+      ],
+      "items173": [
+        "The foster locations list now shows how many animals are currently staying at each location.",
+        "Notifications can now be enabled or disabled for each animal. This makes it possible, for example, to keep receiving health-related notifications for an adopted animal.",
+        "Also fixed a bug that prevented neutering reminders from being generated for cats. Related notifications may suddenly appear..."
       ]
     }
   },
@@ -405,6 +410,7 @@
       "firstDewormQuestion": "First deworming?",
       "productNamePlaceholder": "Type or product used",
       "statusLabel": "Animal status *:",
+      "notificationsEnabled": "Receive notifications?",
       "statusUnrequiredLabel": "Animal status:",
       "familyLabel": "Foster location",
       "adopterFullNamePlaceholder": "Adopter’s full name",
@@ -419,6 +425,7 @@
     "editInfoTitle": "Edit location",
     "addTitle": "Add location",
     "deleteTitle": "Delete location",
+    "animalCountList": "Animals hosted: {count}",
     "hasChildren": "This foster family has children.",
     "animalsInCareLabel": "Animals in care ({count}):",
     "otherAnimalsLabel": "Other animals:",
@@ -1001,5 +1008,19 @@
     },
     "usefulLinks": "Useful links:",
     "sourceCode": "Application source code:"
+  },
+  "faq": {
+    "question1": "Why is Aster free? How is the project funded?",
+    "question2": "Can Aster generate documents? Is it possible to export all of my organization’s data?",
+    "question3": "Can other organizations see my organization’s information?",
+    "question4": "Is Aster suitable for both small animal welfare organizations and larger organizations with many animals and members?",
+    "question5": "Can I use only some of Aster’s features and ignore the rest?",
+    "question6": "Do all members of the organization need to use Aster?",
+    "question7": "Can I give different permissions to members of my organization depending on their role?",
+    "question8": "Does Aster work equally well on mobile and desktop with the same account? Is it available on Google Play and the App Store?",
+    "question9": "Can I start using Aster gradually without migrating everything at once?",
+    "question10": "Can I import existing data from Excel or another software solution?",
+    "question11": "Can Aster connect to Petlog or other UK microchip databases?",
+    "question12": "If I use Aster for my website, what becomes automatic and what do I still need to manage myself?"
   }
 }

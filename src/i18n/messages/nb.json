@@ -277,6 +277,11 @@
         "Det er nå mulig å knytte et dyr til en transaksjon fra Økonomi-modulen. Du kan deretter finne alle transaksjoner knyttet til et dyr direkte fra dyreprofilen.",
         "Det er nå mulig å markere et dyr som « Reservert » i Publisering-modulen, slik at det vises som reservert på den offentlige siden deres.",
         "Lagt til en ny status for dyr: Gjenforent med eier."
+      ],
+      "items173": [
+        "Listen over omsorgssteder viser nå hvor mange dyr som er plassert på hvert sted.",
+        "Det er nå mulig å aktivere eller deaktivere varsler for hvert dyr. Det gjør det blant annet mulig å fortsette å motta helsevarsler for et dyr etter adopsjon.",
+        "Samtidig ble en feil rettet som hindret at påminnelser om kastrering ble generert for katter. Relaterte varsler kan derfor plutselig dukke opp..."
       ]
     }
   },
@@ -405,6 +410,7 @@
       "firstDewormQuestion": "Første ormekur?",
       "productNamePlaceholder": "Type eller brukt produkt",
       "statusLabel": "Dyrets status *:",
+      "notificationsEnabled": "Motta varsler?",
       "statusUnrequiredLabel": "Dyrets status:",
       "familyLabel": "Omsorgssted",
       "adopterFullNamePlaceholder": "Adoptantens fulle navn",
@@ -419,6 +425,7 @@
     "editInfoTitle": "Rediger omsorgssted",
     "addTitle": "Legg til omsorgssted",
     "deleteTitle": "Slett omsorgssted",
+    "animalCountList": "Dyr i omsorg: {count}",
     "hasChildren": "Dette fosterhjemmet har barn.",
     "animalsInCareLabel": "Dyr i omsorg ({count}):",
     "otherAnimalsLabel": "Andre dyr:",
@@ -1001,5 +1008,19 @@
     },
     "usefulLinks": "Nyttige lenker:",
     "sourceCode": "Applikasjonens kildekode:"
+  },
+  "faq": {
+    "question1": "Hvorfor er Aster gratis? Hvordan finansieres prosjektet?",
+    "question2": "Kan Aster generere dokumenter? Er det mulig å eksportere alle dataene til organisasjonen?",
+    "question3": "Kan andre organisasjoner se informasjonen til organisasjonen min?",
+    "question4": "Passer Aster både for små dyrevernorganisasjoner og større organisasjoner med mange dyr og medlemmer?",
+    "question5": "Kan jeg bruke bare enkelte funksjoner i Aster og la være å bruke resten?",
+    "question6": "Må alle medlemmene i organisasjonen bruke Aster?",
+    "question7": "Kan jeg gi ulike rettigheter til medlemmene i organisasjonen, avhengig av rollen deres?",
+    "question8": "Fungerer Aster like godt på mobil og datamaskin med samme konto? Er det tilgjengelig på Google Play og App Store?",
+    "question9": "Kan jeg begynne å bruke Aster gradvis, uten å flytte alt over med én gang?",
+    "question10": "Kan jeg importere eksisterende data fra Excel eller annen programvare?",
+    "question11": "Kan Aster kobles til DyreID eller andre lignende norske tjenester?",
+    "question12": "Hvis jeg bruker Aster til nettsiden min, hva blir automatisk, og hva må jeg fortsatt administrere selv?"
   }
 }

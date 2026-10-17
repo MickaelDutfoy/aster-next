@@ -194,7 +194,7 @@
 
   .form-tab {
     width: min(88dvw, 676px);
-    min-height: 50dvh;
+    min-height: 55dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -206,7 +206,7 @@
   }
 
   .health-tab {
-    min-height: 45dvh;
+    min-height: calc(55dvh - 50px);
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -90,7 +90,7 @@
     "selectLanguage": "Sélectionnez la langue :",
     "see": "Voir l'intro",
     "welcomeTitle": "Bienvenue sur Aster !",
-    "discoverPrompt": "Vous ne savez pas trop ce que vous faites ici ?",
+    "discoverPrompt": "Vous ne savez pas trop ce que vous faites ici ?",
     "discoverAction": "Découvrir Aster",
     "welcomeSubtitle": "« Aider ceux qui aident. »",
     "whyTitle": "Pourquoi faire ?",
@@ -231,11 +231,6 @@
     "evaluateAster": "Vous aimez Aster ? L'application vous est utile ? N'hésitez pas à laisser un avis sur ",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
-      "items157": [
-        "Ajout d'un avertissement lorsqu'un formulaire contient des modifications à enregistrer.",
-        "Ajout du statut « Relâché » pour les animaux.",
-        "Ajout d'un champ de notes libre pour les fiches de lieu d'accueil."
-      ],
       "items158": [
         "Il est désormais possible d'ajouter une photo sur chaque fiche d'animal.",
         "Aster ne permet l'ajout que d'une seule photo à des fins d'identification de l'animal : le but n'est pas de devenir un Instagram animalier !"
@@ -277,6 +272,11 @@
         "Il est désormais possible d'associer un animal à une transaction depuis le module Trésorerie. Vous pouvez ensuite retrouver toutes les transactions liées à un animal depuis sa fiche.",
         "Il est désormais possible de marquer un animal comme étant « Réservé » dans le module Diffusion, afin qu'il soit indiqué comme tel sur votre page publique.",
         "Ajout d'un nouveau statut pour les animaux : Rendu au propriétaire."
+      ],
+      "items173": [
+        "La liste des lieux d'accueil précise désormais le nombre d'animaux accueillis dans chacun.",
+        "Il est désormais possible d'activer ou désactiver les notifications pour chaque animal. Cela permet notamment de garder des notifications de santé sur un animal adopté.",
+        "Correction au passage d'un bug qui empêchait la génération des rappels de stérilisation pour les chats. Des notifications liées peuvent apparaître soudainement..."
       ]
     }
   },
@@ -406,6 +406,7 @@
       "productNamePlaceholder": "Nature ou produit utilisé",
       "statusUnrequiredLabel": "Statut de l'animal :",
       "statusLabel": "Statut de l'animal * :",
+      "notificationsEnabled": "Recevoir les notifications ?",
       "familyLabel": "Lieu d'accueil",
       "adopterFullNamePlaceholder": "Nom et prénom de l'adoptant",
       "addressPlaceholder": "N° et rue",
@@ -419,6 +420,7 @@
     "editInfoTitle": "Éditer le lieu",
     "addTitle": "Ajouter un lieu",
     "deleteTitle": "Supprimer le lieu",
+    "animalCountList": "Animaux accueillis : {count}",
     "hasChildren": "Cette famille a des enfants.",
     "animalsInCareLabel": "Animaux en charge ({count}) :",
     "otherAnimalsLabel": "Autres animaux :",
@@ -1001,5 +1003,19 @@
     },
     "usefulLinks": "Liens utiles :",
     "sourceCode": "Code source de l'application :"
+  },
+  "faq": {
+    "question1": "Pourquoi Aster est-il gratuit ? Comment le projet se finance-t-il ?",
+    "question2": "Est-ce qu’Aster peut générer des documents ? Est-il possible d’exporter l’ensemble de ses données ?",
+    "question3": "Les autres associations ont-elles accès aux informations de mon association ?",
+    "question4": "Aster convient-il aussi bien à une petite association qu’à une structure avec beaucoup d’animaux et de membres ?",
+    "question5": "Est-ce qu’on peut utiliser seulement certaines fonctionnalités d’Aster et ignorer le reste ?",
+    "question6": "Tous les membres de l’association doivent-ils utiliser Aster ?",
+    "question7": "Puis-je donner des droits différents aux membres de mon association, selon leur rôle ?",
+    "question8": "Aster fonctionne-t-il aussi bien sur téléphone que sur ordinateur avec le même compte ? Est-il disponible sur Google Play et l’App Store ?",
+    "question9": "Est-ce qu’on peut commencer à utiliser Aster progressivement, sans tout migrer d’un coup ?",
+    "question10": "Peut-on importer des données existantes depuis Excel ou un autre logiciel ?",
+    "question11": "Est-ce qu’Aster peut se connecter à I-CAD ou à d’autres services du même type ?",
+    "question12": "Si j’utilise Aster pour mon site web, qu’est-ce qui devient automatique et que dois-je continuer à gérer moi-même ?"
   }
 }

@@ -386,10 +386,17 @@ nav {
     max-height: 200px;
     overflow-y: auto;
 
-    li {
+    ul {
+      padding: 5px 0;
+
+          li {
       margin-left: 20px;
+      padding: 3px 0;
       list-style: disc;
     }
+    }
+
+
   }
 }
 

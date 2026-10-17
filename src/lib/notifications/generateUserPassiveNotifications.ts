@@ -16,7 +16,7 @@ export const generateUserPassiveNotifications = async (user: Member) => {
   const relatedAnimals: Animal[] = await getAnimalsRelatedToUser(user.id);
 
   for (const animal of relatedAnimals) {
-    if (animal.status === AnimalStatus.DECEASED) continue;
+    if (!animal.notificationsEnabled) continue;
 
     if (animal.adoption?.neuteringPlannedAt) {
       const reminderDate = new Date(animal.adoption?.neuteringPlannedAt);
@@ -47,7 +47,7 @@ export const generateUserPassiveNotifications = async (user: Member) => {
     } else if (
       animal.birthDate &&
       isOlderThan(animal.birthDate, NEUTRALIZE_REMINDER_DAYS) &&
-      ['Chat', 'Cat', 'Katt'].includes(animal.species) &&
+      animal.species === 'cat' &&
       !animal.isNeutered
     ) {
       try {
@@ -125,8 +125,6 @@ export const generateUserPassiveNotifications = async (user: Member) => {
         console.error(err);
       }
     }
-
-    if (animal.status === AnimalStatus.ADOPTED) continue;
 
     const acts: AnimalHealthAct[] = animal.healthActs ?? [];
     const lastVaxAct = acts.find((act) => act.type === AnimalHealthActType.VACCINATION);

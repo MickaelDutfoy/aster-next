@@ -19,7 +19,7 @@ import { AnimalStatus, AnimalTestResult, Sex } from '@prisma/client';
 import { clsx } from 'clsx';
 import { Trash2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { showToast } from '../tools/ToastProvider';
 import { isCommonSpecies } from './isCommonSpecies';
 
@@ -39,7 +39,10 @@ export const AnimalForm = ({
   const [form, setForm] = useState<'general' | 'health' | 'adopt'>('general');
   const [healthForm, setHealthForm] = useState<'treatments' | 'weight' | 'tests'>('treatments');
   const [isNeutered, setIsNeutered] = useState<boolean>(animal?.isNeutered ?? false);
-  const [status, setStatus] = useState<string>(animal?.status ?? AnimalStatus.UNHOSTED);
+  const [status, setStatus] = useState<AnimalStatus>(animal?.status ?? AnimalStatus.UNHOSTED);
+  const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(
+    animal?.notificationsEnabled ?? true,
+  );
   const [familyId, setFamilyId] = useState<number | undefined>(animal?.familyId ?? undefined);
   const [entryDate, setEntryDate] = useState<string | undefined>(
     animal?.quarantineDateStart?.toISOString().slice(0, 10) ??
@@ -199,6 +202,35 @@ export const AnimalForm = ({
   const removeTestEntryAt = (index: number) => {
     handleFirstChange();
     setTestEntriesDraft((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleStatusChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const next = e.target.value as AnimalStatus;
+
+    setStatus(next);
+    changeEntryDate(next);
+
+    if (next !== AnimalStatus.FOSTERED && next !== AnimalStatus.PERMANENT_PLACEMENT) {
+      setFamilyId(undefined);
+    } else if (next === AnimalStatus.FOSTERED) {
+      setFamilyId(userFamilies[0].id);
+    }
+
+    const unnotifiedStatuses: AnimalStatus[] = [
+      AnimalStatus.ADOPTED,
+      AnimalStatus.DECEASED,
+      AnimalStatus.RELEASED,
+      AnimalStatus.REUNITED_WITH_OWNER,
+    ];
+
+    const wasUnnotified = unnotifiedStatuses.includes(status);
+    const willBeUnnotified = unnotifiedStatuses.includes(next);
+
+    if (willBeUnnotified) {
+      setNotificationsEnabled(false);
+    } else if (wasUnnotified) {
+      setNotificationsEnabled(animal?.notificationsEnabled ?? true);
+    }
   };
 
   const handleFirstChange = () => {
@@ -368,20 +400,7 @@ export const AnimalForm = ({
             </div>
             <div className="labeled-select">
               <p>{t('animals.fields.statusLabel')}</p>
-              <select
-                name="animalStatus"
-                value={status}
-                onChange={(e) => {
-                  const next = e.target.value as AnimalStatus;
-                  setStatus(next);
-                  changeEntryDate(next);
-                  if (next !== AnimalStatus.FOSTERED && next !== AnimalStatus.PERMANENT_PLACEMENT) {
-                    setFamilyId(undefined);
-                  } else if (next === AnimalStatus.FOSTERED) {
-                    setFamilyId(userFamilies[0].id);
-                  }
-                }}
-              >
+              <select name="animalStatus" value={status} onChange={(e) => handleStatusChange(e)}>
                 <option value={AnimalStatus.UNHOSTED}>{t('animals.status.UNHOSTED')}</option>
                 <option value={AnimalStatus.FOSTERED}>{t('animals.status.FOSTERED')}</option>
                 <option value={AnimalStatus.IN_TRIAL}>{t('animals.status.IN_TRIAL')}</option>
@@ -395,6 +414,20 @@ export const AnimalForm = ({
                 <option value={AnimalStatus.RELEASED}>{t('animals.status.RELEASED')}</option>
                 <option value={AnimalStatus.DECEASED}>{t('animals.status.DECEASED')}</option>
               </select>
+            </div>
+            <div
+              className={
+                'labeled-checkbox' + clsx(status === AnimalStatus.DECEASED ? ' disabled' : '')
+              }
+            >
+              <p>{t('animals.fields.notificationsEnabled')}</p>
+              <input
+                type="checkbox"
+                name="animalNotifications"
+                checked={notificationsEnabled}
+                onChange={(e) => setNotificationsEnabled(e.target.checked)}
+                disabled={status === AnimalStatus.DECEASED}
+              />
             </div>
             {status !== AnimalStatus.DECEASED && (
               <div

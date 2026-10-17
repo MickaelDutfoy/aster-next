@@ -23,6 +23,7 @@ export const parseAnimalData = async (formData: FormData) => {
     information: formData.get('animalInformation')?.toString().trim(),
     healthInformation: formData.get('healthInformation')?.toString().trim(),
     status: formData.get('animalStatus') as AnimalStatus,
+    notificationsEnabled: formData.has('animalNotifications'),
     animalEntryDate: formData.get('animalEntryDate')?.toString(),
     deathCause: formData.get('animalDeathCause')?.toString().trim(),
   };
@@ -121,6 +122,9 @@ export const parseAnimalData = async (formData: FormData) => {
     quarantineDateStart = new Date(animalForm.animalEntryDate);
   }
 
+  const notificationsEnabled =
+    animalForm.status === AnimalStatus.DECEASED ? false : animalForm.notificationsEnabled;
+
   const unpublishedStatuses: AnimalStatus[] = [
     AnimalStatus.DECEASED,
     AnimalStatus.ADOPTED,
@@ -180,6 +184,7 @@ export const parseAnimalData = async (formData: FormData) => {
     information: animalForm.information ?? null,
     healthInformation: animalForm.healthInformation ?? null,
     status: animalForm.status,
+    notificationsEnabled,
     trialDateStart,
     quarantineDateStart,
     deathCause: animalForm.status === AnimalStatus.DECEASED ? animalForm.deathCause : '',

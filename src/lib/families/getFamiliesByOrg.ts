@@ -21,6 +21,9 @@ export const getFamiliesByOrg = async (orgId: number): Promise<FamilyWithoutDeta
           },
         },
       },
+      animals: {
+        select: { id: true },
+      },
     },
     orderBy: { contactFullName: 'asc' },
   });
@@ -30,5 +33,6 @@ export const getFamiliesByOrg = async (orgId: number): Promise<FamilyWithoutDeta
     contactFullName: family.contactFullName,
     city: family.city,
     members: family.members.map((famMem) => famMem.member),
+    animalCount: family.animals.length,
   }));
 };

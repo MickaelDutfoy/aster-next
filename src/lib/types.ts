@@ -47,6 +47,7 @@ export type FamilyWithoutDetails = {
   contactFullName: string;
   city: string;
   members: MemberOfFamily[];
+  animalCount?: number;
 };
 
 export type Animal = {
@@ -71,6 +72,7 @@ export type Animal = {
   imageKey?: string | null;
   familyId: number | null;
   orgId: number;
+  notificationsEnabled: boolean;
   createdByMemberId: number;
   updatedAt: Date;
   imageUpdatedAt: Date | null;

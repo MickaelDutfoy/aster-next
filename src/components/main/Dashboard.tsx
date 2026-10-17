@@ -146,7 +146,17 @@ export const Dashboard = ({
         <div className="changelog">
           <h3>{t('dashboard.changelog.title')}</h3>
           <ul>
-            v1.7.2 ({displayDate(new Date(2026, 9, 11), locale)}){locale === 'fr' && ' '}:
+            <strong>
+              v1.7.3 ({displayDate(new Date(2026, 9, 17), locale)}){locale === 'fr' && ' '}:
+            </strong>
+            {t.raw('dashboard.changelog.items173').map((item: string, index: number) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+          <ul>
+            <strong>
+              v1.7.2 ({displayDate(new Date(2026, 9, 11), locale)}){locale === 'fr' && ' '}:
+            </strong>
             {t.raw('dashboard.changelog.items172').map((item: string, index: number) => (
               <li key={index}>{item}</li>
             ))}
@@ -196,12 +206,6 @@ export const Dashboard = ({
           <ul>
             v1.5.8{locale === 'fr' && ' '}:
             {t.raw('dashboard.changelog.items158').map((item: string, index: number) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-          <ul>
-            v1.5.7{locale === 'fr' && ' '}:
-            {t.raw('dashboard.changelog.items157').map((item: string, index: number) => (
               <li key={index}>{item}</li>
             ))}
           </ul>

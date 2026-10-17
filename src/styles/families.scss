@@ -41,16 +41,26 @@
   list-style: none;
 
   li {
+    padding: 6px 0;
     min-height: 36px;
     display: grid;
-    gap: 10px;
+    gap: 3px;
     grid-template-columns: 6fr 6fr auto;
     align-items: center;
     border-bottom: 1px solid var(--button);
 
+    .animal-count {
+      padding-left: 10px;
+      grid-column: span 2;
+      font-size: 0.85rem;
+    }
+
     .action {
       display: flex;
       justify-self: end;
+      align-self: center;
+      grid-column: 3;
+      grid-row: 1 / span 2;
       align-self: center;
     }
   }
