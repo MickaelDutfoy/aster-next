@@ -971,7 +971,8 @@
       "title": "Un outil pensé pour vous",
       "paragraph1": "Aster est gratuit, car une association ne devrait pas avoir à choisir entre financer les soins aux animaux et payer un outil.",
       "paragraph2": "Il est aussi sans publicité : le but est de vous faire gagner du temps, pas de vous en faire perdre.",
-      "paragraph3": "C’est un projet bénévole, développé par quelqu’un d'engagé dans la protection animale, pour d’autres bénévoles."
+      "paragraph3": "C’est un projet bénévole, développé par quelqu’un d'engagé dans la protection animale, pour d’autres bénévoles.",
+      "paragraph4": "Enfin, c'est un outil qui fait le choix de rester simple, car empiler des fonctionnalités ne sert à rien si cela décourage les bénévoles de s'en servir."
     },
     "testimonials": {
       "title": "La parole aux principaux concernés…",
@@ -1016,6 +1017,7 @@
     "question9": "Est-ce qu’on peut commencer à utiliser Aster progressivement, sans tout migrer d’un coup ?",
     "question10": "Peut-on importer des données existantes depuis Excel ou un autre logiciel ?",
     "question11": "Est-ce qu’Aster peut se connecter à I-CAD ou à d’autres services du même type ?",
-    "question12": "Si j’utilise Aster pour mon site web, qu’est-ce qui devient automatique et que dois-je continuer à gérer moi-même ?"
+    "question12": "Si j’utilise Aster pour mon site web, qu’est-ce qui devient automatique et que dois-je continuer à gérer moi-même ?",
+    "question13": "Qui sont les personnes derrière Aster ?"
   }
 }

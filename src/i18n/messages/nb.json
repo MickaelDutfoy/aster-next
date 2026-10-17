@@ -976,7 +976,8 @@
       "title": "Et verktøy laget for deg",
       "paragraph1": "Aster er gratis, fordi en organisasjon ikke skal måtte velge mellom å finansiere dyreomsorg og å betale for et verktøy.",
       "paragraph2": "Det er også reklamefritt: målet er å spare deg for tid, ikke å kaste bort tiden din.",
-      "paragraph3": "Det er et frivillig prosjekt, utviklet av noen som er engasjert i dyrevern, for andre frivillige."
+      "paragraph3": "Det er et frivillig prosjekt, utviklet av noen som er engasjert i dyrevern, for andre frivillige.",
+      "paragraph4": "Til slutt er Aster bevisst laget for å forbli enkelt, fordi det ikke hjelper å legge til stadig flere funksjoner hvis det gjør at frivillige ikke vil bruke det."
     },
     "testimonials": {
       "title": "Ordet går til dem som bruker Aster …",
@@ -1017,10 +1018,11 @@
     "question5": "Kan jeg bruke bare enkelte funksjoner i Aster og la være å bruke resten?",
     "question6": "Må alle medlemmene i organisasjonen bruke Aster?",
     "question7": "Kan jeg gi ulike rettigheter til medlemmene i organisasjonen, avhengig av rollen deres?",
-    "question8": "Fungerer Aster like godt på mobil og datamaskin med samme konto? Er det tilgjengelig på Google Play og App Store?",
+    "question8": "Fungerer Aster like godt på mobil som på datamaskin med samme konto? Er det tilgjengelig på Google Play og App Store?",
     "question9": "Kan jeg begynne å bruke Aster gradvis, uten å flytte alt over med én gang?",
     "question10": "Kan jeg importere eksisterende data fra Excel eller annen programvare?",
     "question11": "Kan Aster kobles til DyreID eller andre lignende norske tjenester?",
-    "question12": "Hvis jeg bruker Aster til nettsiden min, hva blir automatisk, og hva må jeg fortsatt administrere selv?"
+    "question12": "Hvis jeg bruker Aster til nettsiden min, hva blir automatisk, og hva må jeg fortsatt administrere selv?",
+    "question13": "Hvem er personene bak Aster?"
   }
 }

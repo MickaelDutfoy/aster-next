@@ -138,6 +138,7 @@ export default async function Discover({ locale }: { locale: Language }) {
           <p>{t('discover.philosophy.paragraph1')}</p>
           <p>{t('discover.philosophy.paragraph2')}</p>
           <p>{t('discover.philosophy.paragraph3')}</p>
+          <p>{t('discover.philosophy.paragraph4')}</p>
         </section>
 
         <section className="discover-section discover-testimonials">
