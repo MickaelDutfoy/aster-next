@@ -1011,18 +1011,18 @@
     "sourceCode": "Application source code:"
   },
   "faq": {
-    "question1": "Why is Aster free? How is the project funded?",
-    "question2": "Can Aster generate documents? Is it possible to export all of my organization’s data?",
-    "question3": "Can other organizations see my organization’s information?",
-    "question4": "Is Aster suitable for both small animal welfare organizations and larger organizations with many animals and members?",
-    "question5": "Can I use only some of Aster’s features and ignore the rest?",
-    "question6": "Do all members of the organization need to use Aster?",
-    "question7": "Can I give different permissions to members of my organization depending on their role?",
-    "question8": "Does Aster work equally well on mobile and desktop with the same account? Is it available on Google Play and the App Store?",
-    "question9": "Can I start using Aster gradually without migrating everything at once?",
-    "question10": "Can I import existing data from Excel or another software solution?",
-    "question11": "Can Aster connect to Petlog or other UK microchip databases?",
-    "question12": "If I use Aster for my website, what becomes automatic and what do I still need to manage myself?",
-    "question13": "Who are the people behind Aster?"
+    "question1": "Who are the people behind Aster?",
+    "question2": "Why is Aster free? How is the project funded?",
+    "question3": "Can Aster generate documents? Is it possible to export all of my organization’s data?",
+    "question4": "Can other organizations see my organization’s information?",
+    "question5": "Is Aster suitable for both small animal welfare organizations and larger organizations with many animals and members?",
+    "question6": "Can I use only some of Aster’s features and ignore the rest?",
+    "question7": "Do all members of the organization need to use Aster?",
+    "question8": "Can I give different permissions to members of my organization depending on their role?",
+    "question9": "Does Aster work equally well on mobile and desktop with the same account? Is it available on Google Play and the App Store?",
+    "question10": "Can I start using Aster gradually without migrating everything at once?",
+    "question11": "Can I import existing data from Excel or another software solution?",
+    "question12": "Can Aster connect to Petlog or other UK microchip databases?",
+    "question13": "If I use Aster for my website, what becomes automatic and what do I still need to manage myself?"
   }
 }

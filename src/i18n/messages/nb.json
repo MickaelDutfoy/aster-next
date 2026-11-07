@@ -1011,18 +1011,18 @@
     "sourceCode": "Applikasjonens kildekode:"
   },
   "faq": {
-    "question1": "Hvorfor er Aster gratis? Hvordan finansieres prosjektet?",
-    "question2": "Kan Aster generere dokumenter? Er det mulig å eksportere alle dataene til organisasjonen?",
-    "question3": "Kan andre organisasjoner se informasjonen til organisasjonen min?",
-    "question4": "Passer Aster både for små dyrevernorganisasjoner og større organisasjoner med mange dyr og medlemmer?",
-    "question5": "Kan jeg bruke bare enkelte funksjoner i Aster og la være å bruke resten?",
-    "question6": "Må alle medlemmene i organisasjonen bruke Aster?",
-    "question7": "Kan jeg gi ulike rettigheter til medlemmene i organisasjonen, avhengig av rollen deres?",
-    "question8": "Fungerer Aster like godt på mobil som på datamaskin med samme konto? Er det tilgjengelig på Google Play og App Store?",
-    "question9": "Kan jeg begynne å bruke Aster gradvis, uten å flytte alt over med én gang?",
-    "question10": "Kan jeg importere eksisterende data fra Excel eller annen programvare?",
-    "question11": "Kan Aster kobles til DyreID eller andre lignende norske tjenester?",
-    "question12": "Hvis jeg bruker Aster til nettsiden min, hva blir automatisk, og hva må jeg fortsatt administrere selv?",
-    "question13": "Hvem er personene bak Aster?"
+    "question1": "Hvem er personene bak Aster?",
+    "question2": "Hvorfor er Aster gratis? Hvordan finansieres prosjektet?",
+    "question3": "Kan Aster generere dokumenter? Er det mulig å eksportere alle dataene til organisasjonen?",
+    "question4": "Kan andre organisasjoner se informasjonen til organisasjonen min?",
+    "question5": "Passer Aster både for små dyrevernorganisasjoner og større organisasjoner med mange dyr og medlemmer?",
+    "question6": "Kan jeg bruke bare enkelte funksjoner i Aster og la være å bruke resten?",
+    "question7": "Må alle medlemmene i organisasjonen bruke Aster?",
+    "question8": "Kan jeg gi ulike rettigheter til medlemmene i organisasjonen, avhengig av rollen deres?",
+    "question9": "Fungerer Aster like godt på mobil som på datamaskin med samme konto? Er det tilgjengelig på Google Play og App Store?",
+    "question10": "Kan jeg begynne å bruke Aster gradvis, uten å flytte alt over med én gang?",
+    "question11": "Kan jeg importere eksisterende data fra Excel eller annen programvare?",
+    "question12": "Kan Aster kobles til DyreID eller andre lignende norske tjenester?",
+    "question13": "Hvis jeg bruker Aster til nettsiden min, hva blir automatisk, og hva må jeg fortsatt administrere selv?"
   }
 }

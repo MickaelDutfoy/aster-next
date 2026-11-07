@@ -1006,18 +1006,22 @@
     "sourceCode": "Code source de l'application :"
   },
   "faq": {
-    "question1": "Pourquoi Aster est-il gratuit ? Comment le projet se finance-t-il ?",
-    "question2": "Est-ce qu’Aster peut générer des documents ? Est-il possible d’exporter l’ensemble de ses données ?",
-    "question3": "Les autres associations ont-elles accès aux informations de mon association ?",
-    "question4": "Aster convient-il aussi bien à une petite association qu’à une structure avec beaucoup d’animaux et de membres ?",
-    "question5": "Est-ce qu’on peut utiliser seulement certaines fonctionnalités d’Aster et ignorer le reste ?",
-    "question6": "Tous les membres de l’association doivent-ils utiliser Aster ?",
-    "question7": "Puis-je donner des droits différents aux membres de mon association, selon leur rôle ?",
-    "question8": "Aster fonctionne-t-il aussi bien sur téléphone que sur ordinateur avec le même compte ? Est-il disponible sur Google Play et l’App Store ?",
-    "question9": "Est-ce qu’on peut commencer à utiliser Aster progressivement, sans tout migrer d’un coup ?",
-    "question10": "Peut-on importer des données existantes depuis Excel ou un autre logiciel ?",
-    "question11": "Est-ce qu’Aster peut se connecter à I-CAD ou à d’autres services du même type ?",
-    "question12": "Si j’utilise Aster pour mon site web, qu’est-ce qui devient automatique et que dois-je continuer à gérer moi-même ?",
-    "question13": "Qui sont les personnes derrière Aster ?"
+    "question1": "Qui sont les personnes derrière Aster ?",
+    "aswer1": "En réalité, il n’y en a qu’une seule. Je m’appelle Mickaël, j’ai 42 ans, je suis français installé en Norvège et impliqué depuis une vingtaine d’années dans la protection animale de diverses façons : comme trésorier, famille d’accueil, pour entretenir la chatterie, animer des événements associatifs et, aujourd’hui, développer un outil numérique pour les associations.\n\nAster est né de ma volonté de mettre ma reconversion professionnelle comme développeur au service de quelque chose d’utile. À cette époque, je faisais partie d’une association dont la gestion des données était laborieuse, comme c’est le cas dans beaucoup d'autres. Aster était donc à la fois un bon terrain pour progresser à travers un projet concret et une façon de rendre service à l’association.\n\nTrès vite, le projet a évolué pour ne plus répondre aux besoins d’une seule structure, mais devenir accessible à toutes celles qui pourraient en avoir l’utilité.",
+    "question2": "Pourquoi Aster est-il gratuit ? Comment le projet se finance-t-il ?",
+    "asnwer2": "C’est très simple : je suis bénévole dans la protection animale, comme beaucoup d’entre vous qui me lisez. Faire fonctionner une association et soigner les animaux a un coût et Aster aussi  aujourd’hui, j’absorbe moi-même ces dépenses, avec parfois des dons ponctuel. Je suis certain que cette logique ne vous est pas étrangère.\n\nIl n’y a donc ni loup caché ni options payantes : nous faisons, vous et moi, la même chose, à savoir donner de notre temps et de nos moyens au service de la cause animale.\n\nEt c’est important, car cela fait partie de la philosophie d’Aster : j’estime que des bénévoles n’ont pas à payer des logiciels quand il est déjà parfois difficile de payer le vétérinaire.",
+    "question3": "Est-ce qu’Aster peut générer des documents ? Est-il possible d’exporter l’ensemble de ses données ?",
+    "answer3": "Pas encore dans leur intégralité, mais Aster évolue constamment en ce sens. Même lorsqu’on a confiance dans un produit, il est normal de vouloir garder la main sur ses données.\n\nAujourd’hui, Aster permet déjà deux types d’export importants. Dans le module Trésorerie, vous pouvez récupérer à tout moment l’intégralité des informations saisies au format tableur. Il est également possible de télécharger chaque fiche animal au format PDF, que ce soit pour l’archiver, conserver une copie personnelle ou transmettre les informations à une personne qui n’utilise pas Aster, par exemple un vétérinaire ou un futur adoptant.\n\nCela ne représente pas encore la totalité des données enregistrées dans l’application, mais bien une grande partie des données essentielles que vous manipulez au quotidien. Certaines informations, comme la configuration d’un site web créé avec Aster, ont par exemple surtout une utilité à l’intérieur de l’application.",
+    "question4": "Les autres associations ont-elles accès aux informations de mon association ?",
+    "answer4": "Absolument pas. Aster fonctionne avec des espaces associatifs sécurisés. Une fois votre association enregistrée dans Aster, toute personne souhaitant la rejoindre doit envoyer une demande d’adhésion, que seuls l’administrateur et les responsables peuvent valider.\n\nEn dehors des membres autorisés de votre association, personne ne peut accéder aux données saisies dans votre espace. La seule exception concerne évidemment les informations que vous choisissez de rendre publiques, via la fonctionnalité permettant de créer votre page web d’animaux à l’adoption.",
+    "question5": "Aster convient-il aussi bien à une petite association qu’à une structure avec beaucoup d’animaux et de membres ?",
+    "question6": "Est-ce qu’on peut utiliser seulement certaines fonctionnalités d’Aster et ignorer le reste ?",
+    "question7": "Tous les membres de l’association doivent-ils utiliser Aster ?",
+    "question8": "Puis-je donner des droits différents aux membres de mon association, selon leur rôle ?",
+    "question9": "Aster fonctionne-t-il aussi bien sur téléphone que sur ordinateur avec le même compte ? Est-il disponible sur Google Play et l’App Store ?",
+    "question10": "Est-ce qu’on peut commencer à utiliser Aster progressivement, sans tout migrer d’un coup ?",
+    "question11": "Peut-on importer des données existantes depuis Excel ou un autre logiciel ?",
+    "question12": "Est-ce qu’Aster peut se connecter à I-CAD ou à d’autres services du même type ?",
+    "question13": "Si j’utilise Aster pour mon site web, qu’est-ce qui devient automatique et que dois-je continuer à gérer moi-même ?"
   }
 }
