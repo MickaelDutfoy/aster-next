@@ -9,7 +9,7 @@ export const parseTransactionData = (formData: FormData) => {
 
   const type = formData.get('type') as TransactionType;
   const amountInCents = Math.abs(
-    Number(formData.get('amount')?.toString().replace(',', '.')) * 100,
+    Math.round(Number(formData.get('amount')?.toString().replace(',', '.')) * 100),
   );
   const date = formData.get('date')?.toString();
   const counterparty = formData.get('counterparty')?.toString().trim();
