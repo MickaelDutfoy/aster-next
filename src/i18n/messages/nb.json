@@ -231,15 +231,6 @@
     "evaluateAster": "Liker du Aster? Synes du den er nyttig? Legg gjerne igjen en vurdering på ",
     "changelog": {
       "title": "Hva er nytt i Aster?",
-      "items157": [
-        "Lagt til en advarsel når et skjema inneholder ulagrede endringer.",
-        "Lagt til statusen \"Satt tilbake\" for dyr.",
-        "Lagt til et fritt notatfelt i omsorgssteder."
-      ],
-      "items158": [
-        "Det er nå mulig å legge til et bilde på hver dyreprofil.",
-        "Aster tillater kun ett bilde per dyr for identifikasjon: målet er ikke å bli en slags Instagram for dyr!"
-      ],
       "items159": [
         "Transaksjonskategorier kan nå redigeres og slettes i økonomimodulen.",
         "Det er nå mulig å registrere dato for innflytting til et omsorgssted eller start på en prøveperiode på dyreprofiler. Dette gjør det mulig å motta varsler etter femten dager i karantene eller prøveperiode.",
@@ -282,7 +273,8 @@
         "Listen over omsorgssteder viser nå hvor mange dyr som er plassert på hvert sted.",
         "Det er nå mulig å aktivere eller deaktivere varsler for hvert dyr. Det gjør det blant annet mulig å fortsette å motta helsevarsler for et dyr etter adopsjon.",
         "Samtidig ble en feil rettet som hindret at påminnelser om kastrering ble generert for katter. Relaterte varsler kan derfor plutselig dukke opp..."
-      ]
+      ],
+      "items174": ["Ansvarlige kan nå slette dyreprofiler og oppføringer for omsorgssteder."]
     }
   },
   "animals": {

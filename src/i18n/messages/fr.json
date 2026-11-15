@@ -231,10 +231,6 @@
     "evaluateAster": "Vous aimez Aster ? L'application vous est utile ? N'hésitez pas à laisser un avis sur ",
     "changelog": {
       "title": "Quoi de neuf dans Aster ?",
-      "items158": [
-        "Il est désormais possible d'ajouter une photo sur chaque fiche d'animal.",
-        "Aster ne permet l'ajout que d'une seule photo à des fins d'identification de l'animal : le but n'est pas de devenir un Instagram animalier !"
-      ],
       "items159": [
         "Les catégories de transactions peuvent désormais être éditées et supprimées dans le module Trésorerie.",
         "Une date d'entrée en lieu d'accueil ou en période d'essai peut être renseignée sur les fiches animaux. Cela permet de recevoir une notification après quinze jours de quarantaine ou d'essai.",
@@ -277,7 +273,8 @@
         "La liste des lieux d'accueil précise désormais le nombre d'animaux accueillis dans chacun.",
         "Il est désormais possible d'activer ou désactiver les notifications pour chaque animal. Cela permet notamment de garder des notifications de santé sur un animal adopté.",
         "Correction au passage d'un bug qui empêchait la génération des rappels de stérilisation pour les chats. Des notifications liées peuvent apparaître soudainement..."
-      ]
+      ],
+      "items174": ["Les responsables peuvent désormer supprimer des fiches d'animaux et de lieux."]
     }
   },
   "animals": {

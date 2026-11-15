@@ -231,15 +231,6 @@
     "evaluateAster": "Do you like Aster? Do you find it useful? Feel free to leave a review on ",
     "changelog": {
       "title": "What’s new in Aster?",
-      "items157": [
-        "Added a warning when a form contains unsaved changes.",
-        "Added the \"Released\" status for animals.",
-        "Added a free notes field to foster location records."
-      ],
-      "items158": [
-        "It is now possible to add a photo to each animal profile.",
-        "Aster only allows one photo per animal for identification purposes: the goal is not to become an animal Instagram app!"
-      ],
       "items159": [
         "Transaction categories can now be edited and deleted in the Treasury module.",
         "A foster location entry date or trial period start date can now be recorded on animal profiles. This allows notifications to be sent after fifteen days of quarantine or trial period.",
@@ -282,7 +273,8 @@
         "The foster locations list now shows how many animals are currently staying at each location.",
         "Notifications can now be enabled or disabled for each animal. This makes it possible, for example, to keep receiving health-related notifications for an adopted animal.",
         "Also fixed a bug that prevented neutering reminders from being generated for cats. Related notifications may suddenly appear..."
-      ]
+      ],
+      "items174": ["Managers can now delete animal profiles and foster location records."]
     }
   },
   "animals": {
