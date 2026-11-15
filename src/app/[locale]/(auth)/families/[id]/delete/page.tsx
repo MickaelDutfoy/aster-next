@@ -4,6 +4,7 @@ import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
 import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
+import { MemberRole } from '@prisma/client';
 
 const DeleteFamilyPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -16,9 +17,15 @@ const DeleteFamilyPage = async ({ params }: { params: Promise<{ id: string }> })
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
+  if (org.userStatus === 'PENDING') return <DeniedPage cause="refused" />;
+  if (org.userRole !== MemberRole.SUPERADMIN && org.userRole !== MemberRole.ADMIN) {
+    return <DeniedPage cause="refused" />;
+  }
+  if (family.orgId !== org.id) return <DeniedPage cause="refused" />;
+
   return (
     <div className="full-page-form">
-      <DeleteFamily user={user} org={org} family={family} />;
+      <DeleteFamily org={org} family={family} />
     </div>
   );
 };

@@ -47,7 +47,8 @@ export const AnimalDetails = ({
       isAnimalSheetCreator ||
       isRelatedToAnimal) ??
     false;
-  const canDeleteAnimal = org.userRole === MemberRole.SUPERADMIN;
+  const canDeleteAnimal =
+    org.userRole === MemberRole.SUPERADMIN || org.userRole === MemberRole.ADMIN;
 
   const acts: AnimalHealthAct[] = animal.healthActs ?? [];
 
