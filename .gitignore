@@ -29,6 +29,7 @@ src/app/sitemap.ts
 *.pem
 todo.txt
 /one-shot-scripts
+/scripts
 
 # debug
 npm-debug.log*

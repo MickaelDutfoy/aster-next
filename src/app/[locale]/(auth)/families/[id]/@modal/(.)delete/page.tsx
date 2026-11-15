@@ -23,7 +23,7 @@ export default async function DeleteFamilyRouteModal({
 
   return (
     <RouteModal expectedPath={`/families/${family.id}/delete`}>
-      <DeleteFamily user={user} org={org} family={family} />
+      <DeleteFamily org={org} family={family} />
     </RouteModal>
   );
 }
