@@ -3,9 +3,9 @@ import { DeniedPage } from '@/components/main/DeniedPage';
 import { RouteModal } from '@/components/tools/RouteModal';
 import { getFamilyById } from '@/lib/families/getFamilyById';
 import { getSelectedOrg } from '@/lib/organizations/getSelectedOrg';
+import { isRelatedToFamily } from '@/lib/permissions/isRelatedToFamily';
 import { Family, Member, Organization } from '@/lib/types';
 import { getUser } from '@/lib/user/getUser';
-import { MemberRole } from '@prisma/client';
 
 export default async function UpdateFamilyRouteModal({
   params,
@@ -22,14 +22,10 @@ export default async function UpdateFamilyRouteModal({
   const org: Organization | null = await getSelectedOrg(user);
   if (!org) return <DeniedPage cause="error" />;
 
-  if (
-    family.members.length > 0 &&
-    family.members.every((member) => member.id !== user.id) &&
-    org.userRole !== MemberRole.SUPERADMIN &&
-    org.userRole !== MemberRole.ADMIN
-  ) {
-    return <DeniedPage cause="refused" />;
-  }
+  if (family.orgId !== org.id) return <DeniedPage cause="refused" />;
+
+  const guard = await isRelatedToFamily(family.id);
+  if (!guard.validation.ok) return <DeniedPage cause="refused" />;
 
   return (
     <RouteModal expectedPath={`/families/${family.id}/edit`}>

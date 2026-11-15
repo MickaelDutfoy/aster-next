@@ -47,7 +47,8 @@ export const FamilyDetails = ({
     org.userRole === MemberRole.ADMIN ||
     isMemberOfFamily ||
     user.id === family.createdByMemberId;
-  const canDeleteFamily = org.userRole === MemberRole.SUPERADMIN;
+  const canDeleteFamily =
+    org.userRole === MemberRole.SUPERADMIN || org.userRole === MemberRole.ADMIN;
   const events = calendar?.events ?? [];
 
   const sortedAnimals = useMemo(() => {

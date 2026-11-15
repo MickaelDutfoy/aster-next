@@ -2,22 +2,14 @@
 
 import { deleteFamily } from '@/actions/families/deleteFamily';
 import { useRouter } from '@/i18n/routing';
-import { Family, Member, Organization } from '@/lib/types';
+import { Family, Organization } from '@/lib/types';
 import { MemberRole } from '@prisma/client';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { DeniedPage } from '../main/DeniedPage';
 import { showToast } from '../tools/ToastProvider';
 
-export const DeleteFamily = ({
-  user,
-  org,
-  family,
-}: {
-  user: Member;
-  org: Organization;
-  family: Family;
-}) => {
+export const DeleteFamily = ({ org, family }: { org: Organization; family: Family }) => {
   const t = useTranslations();
   const router = useRouter();
 
@@ -47,11 +39,7 @@ export const DeleteFamily = ({
     }
   };
 
-  if (
-    family.members.length > 0 &&
-    family.members.every((member) => member.id !== user.id) &&
-    org.userRole !== MemberRole.SUPERADMIN
-  ) {
+  if (org.userRole !== MemberRole.SUPERADMIN && org.userRole !== MemberRole.ADMIN) {
     return <DeniedPage cause="refused" />;
   }
 

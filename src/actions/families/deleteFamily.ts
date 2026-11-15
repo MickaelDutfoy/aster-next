@@ -1,6 +1,6 @@
 'use server';
 
-import { isSuperAdminOfOrg } from '@/lib/permissions/isSuperAdminOfOrg';
+import { isAdminOfOrg } from '@/lib/permissions/isAdminOfOrg';
 import { prisma } from '@/lib/prisma';
 import { ActionValidation } from '@/lib/types';
 import { AnimalStatus } from '@prisma/client';
@@ -15,7 +15,7 @@ export const deleteFamily = async (familyId: number): Promise<ActionValidation> 
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
   }
 
-  const guard = await isSuperAdminOfOrg(family.orgId);
+  const guard = await isAdminOfOrg(family.orgId);
   if (!guard.validation.ok) return guard.validation;
   if (!guard.user) {
     return { ok: false, status: 'error', message: 'toasts.errorGeneric' };
